@@ -1,0 +1,12 @@
+<title>{{$pageTitle}}</title>
+
+<form method="post">
+<input type="hidden" name="page" value="{{$page}}" />
+<input type="hidden" name="s_postName" value="{{$s_postName}}" />
+<input type="hidden" name="id" value="{{$id}}" />
+<input type="hidden" name="act" value="{{$action}}" />
+<input type="text" name="postName" placeholder="职务名称" value="{{$i.postName}}" /><br />
+<input type="text" name="rank" value="{{$rank}}" placeholder="排序" /><br />
+
+<input type="submit" value="保存" />
+</form>

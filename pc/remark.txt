@@ -1,0 +1,31 @@
+ --------------------- 目录说明 -----------------------
+
+  # public：公共文件夹
+  #templates_c：缓存文件夹
+  
+  # org：DIT组织架构业务模块
+  # humanAffairs：人事管理业务模块
+  # leave：请假业务模块
+  # businessTravel：出差业务模块
+  # car：车辆业务模块
+  # officeTool：办公备品业务模块
+  # generalAffairs：综合事务业务模块
+  # system：系统运维业务模块
+  # sign：考勤业务模块
+  # message：系统消息业务模块
+  # index：登录页/首页/设置初始密码/修改密码入口文件
+
+  # org.php：DIT组织架构业务模块入口文件
+  # human-affairs：人事管理业务模块入口文件
+  # leave：请假业务模块入口文件
+  # business-travel：出差业务模块入口文件
+  # car：车辆业务模块入口文件
+  # office-tool：办公备品业务模块入口文件
+  # general-affairs：综合事务业务模块入口文件
+  # system：系统运维业务模块入口文件
+  # sign：考勤业务模块入口文件
+  # message：系统消息业务模块入口文件
+  # index：登录页/首页/设置初始密码/修改密码入口文件
+
+ ---------------------
+
