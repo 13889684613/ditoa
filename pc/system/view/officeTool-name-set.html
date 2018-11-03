@@ -8,7 +8,7 @@
 	<input type="hidden" name="id" value="{{$id}}" />
 	<input type="hidden" name="act" value="{{$action}}" />
 	<select name="category">
-		<option value="0" {{if $s_category==''}} selected="true"{{/if}}>备品分类</option>
+		<option value="0" {{if $i.categoryId==0}} selected="true"{{/if}}>备品分类</option>
 		{{foreach item=c name=categorys from=$categorys}}
 		<option value="{{$c.categoryId}}"{{if $c.categoryId==$i.categoryId}} selected="true"{{/if}}>{{$c.categoryCode|cat:$c.categoryName}}</option>
 		{{/foreach}}

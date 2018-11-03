@@ -121,7 +121,7 @@ class DB
     function connect() { 
        switch($this->db_type) { 
 			case "mysql": 
-				$this->Link_ID = @mysql_connect($this->dsn['host'], $this->dsn['user'], $this->dsn['password']);
+				$this->Link_ID = @mysql_connect($this->dsn['host'], $this->dsn['user'], $this->dsn['password']); 
 
 				if(!$this->Link_ID){
 					return die('Could not connect: ' . mysql_error());
@@ -237,7 +237,7 @@ class DB
 				return $array;        
 			break; 
 		}        
-    }
+    } 
 
     public function get_row($sql) {  
 		$this->query($sql);  

@@ -12,6 +12,7 @@
 
 	include("oa.db.php");			 					//DB操作
 	include("oa.function.php");		 					//常用函数库
+	include("oa.static.php");							//静态数据
 	include("public/library/smarty/Smarty.class.php");  //smarty 核心文件
 	include("oa.smarty.php");		                    //smarty 模板引擎配置文件
 	
@@ -24,12 +25,12 @@
 	$DB_PWD = '123';//密码
 	
 	$DB_NAME = 'ditoa';//数据库名称
-		
+	
 	$dsn = array(
 		'host'     => $DB_HOST, 
 		'user'     => $DB_USER,
 		'password' => $DB_PWD, 
-		'database' => $DB_NAME
+		'database' => $DB_NAME   
 	);
 
 	$db = new DB($dsn,'mysql');

@@ -1,0 +1,28 @@
+<meta charset="utf-8" />
+<title>{{$pageTitle}}</title>
+
+<table border="1">
+	<tr>
+		<td>#</td>
+		<td>类别</td>
+		<td>审批级别</td>
+		<td>通用审批流程</td>
+		<td>操作</td>
+	</tr>
+	{{foreach item=i name=data from=$data}}
+	<tr>
+		<td>{{$i.sn}}</td>
+		<td>{{$i.checkCategory}}</td>
+		<td>{{$i.checkLevel}}级</td>
+		<td>{{$i.checkProcess}}</td>
+		<td>
+			<a href="?_f=checkProcess-default&act=remove&page={{$curPage}}&id={{$i.defaultCheckProcessId}}{{$track}}">删除</a>
+			<a href="?_f=checkProcess-default-set&act=edit&page={{$curPage}}&id={{$i.defaultCheckProcessId}}{{$track}}">修改</a>
+		</td>
+	</tr>
+	{{/foreach}}
+	
+</table>
+<div class="pagebox">
+	{{$page}}
+</div>

@@ -20,13 +20,14 @@
 		$s_category = getVal('s_category',1,'');
 		$s_name = getVal('s_name',2,'');
 		if($s_category!=0){
-			$where .= 'where categoryId='.$s_category.'';
+			$where .= ' and categoryId='.$s_category.'';
 			$track .= '&s_category='.$s_category.'';
 		}
 		if($s_name!=''){
-			$where .= 'where toolName like "%'.$s_name.'%"';
+			$where .= ' and toolName like "%'.$s_name.'%"';
 			$track .= '&s_name='.$s_name.'';
 		}
+		$where = 'where 1=1'.$where;
 	}
 
 	//页面分页配置
