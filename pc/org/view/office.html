@@ -1,0 +1,36 @@
+<meta charset="utf-8" />
+<title>{{$pageTitle}}</title>
+
+<table border="1">
+	<tr>
+		<td>#</td>
+		<td>部门编号</td>
+		<td>部门名称</td>
+		<td>联系电话</td>
+		<td>传真</td>
+		<td>详细地址</td>
+		<td>排序</td>
+		<td>操作</td>
+	</tr>
+	{{foreach item=i name=data from=$data}}
+	<tr>
+		<td>{{$i.sn}}</td>
+		<td>{{$i.officeCode}}</td>
+		<td>{{$i.officeName}}</td>
+		<td>{{$i.phone}}</td>
+		<td>{{$i.fax}}</td>
+		<td>{{$i.address}}</td>
+		<td>
+			<input id="rank{{$i.officeId}}" name="rank{{$i.officeId}}" class="m-wrap" type="text" size="5" style="width:30px;height: 9px;margin: 0;" value="{{$i.rank}}"/><a href="javascript:void(0);" onclick="javascript:location.href='?_f=office&act=updateRank&page={{$curPage}}&id={{$i.officeId}}{{$track}}&rank='+document.getElementById('rank{{$i.officeId}}').value;">保存</a>
+		</td>
+		<td>
+			<a href="?_f=office&act=remove&page={{$curPage}}&id={{$i.officeId}}{{$track}}">删除</a>
+			<a href="?_f=office-set&act=edit&page={{$curPage}}&id={{$i.officeId}}{{$track}}">修改</a>
+		</td>
+	</tr>
+	{{/foreach}}
+	
+</table>
+<div class="pagebox">
+	{{$page}}
+</div>

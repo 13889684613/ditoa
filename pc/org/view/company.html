@@ -1,0 +1,38 @@
+<meta charset="utf-8" />
+<title>{{$pageTitle}}</title>
+
+<table border="1">
+	<tr>
+		<td>#</td>
+		<td>企业名称</td>
+		<td>办公地址</td>
+		<td>邮编</td>
+		<td>电话</td>
+		<td>传真</td>
+		<td>企业成立时间</td>
+		<td>排序</td>
+		<td>操作</td>
+	</tr>
+	{{foreach item=i name=data from=$data}}
+	<tr>
+		<td>{{$i.sn}}</td>
+		<td>{{$i.cnName}}</td>
+		<td>{{$i.cnOfficeAddress}}</td>
+		<td>{{$i.zipCode}}</td>
+		<td>{{$i.phone}}</td>
+		<td>{{$i.fax}}</td>
+		<td>{{$i.createDate}}</td>
+		<td>
+			<input id="rank{{$i.companyId}}" name="rank{{$i.companyId}}" class="m-wrap" type="text" size="5" style="width:30px;height: 9px;margin: 0;" value="{{$i.rank}}"/><a href="javascript:void(0);" onclick="javascript:location.href='?_f=company&act=updateRank&page={{$curPage}}&id={{$i.companyId}}{{$track}}&rank='+document.getElementById('rank{{$i.companyId}}').value;">保存</a>
+		</td>
+		<td>
+			<a href="?_f=company&act=remove&page={{$curPage}}&id={{$i.companyId}}{{$track}}">删除</a>
+			<a href="?_f=company-set&act=edit&page={{$curPage}}&id={{$i.companyId}}{{$track}}">修改</a>
+		</td>
+	</tr>
+	{{/foreach}}
+	
+</table>
+<div class="pagebox">
+	{{$page}}
+</div>
