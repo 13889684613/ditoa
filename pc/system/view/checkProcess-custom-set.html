@@ -1,0 +1,94 @@
+<title>{{$pageTitle}}</title>
+
+<form method="post">
+
+	<input type="hidden" name="page" value="{{$page}}" />
+	<input type="hidden" name="s_type" value="{{$s_type}}" />
+	<input type="hidden" name="s_role" value="{{$s_role}}" />
+	<input type="hidden" name="s_role" value="{{$s_s_office}}" />
+	<input type="hidden" name="id" value="{{$id}}" />
+	<input type="hidden" name="act" value="{{$action}}" />
+
+	<select name="category">
+		<option value="" {{if $i.checkCategory==0}} selected="true"{{/if}}>审批流程类别</option>
+		{{foreach $categorys as $key=>$value}}
+		<option value="{{$key}}"{{if $key==$i.checkCategory}} selected="true"{{/if}}>{{$value}}</option>
+		{{/foreach}}
+	</select><br />
+
+	<select name="beginOffice">
+		<option value="" {{if $i.officeId==0}} selected="true"{{/if}}>所属办事处</option>
+		{{foreach item=o name=offices from=$offices}}
+		<option value="{{$o.officeId}}"{{if $o.officeId==$i.officeId}} selected="{{/if}}">{{$o.officeName}}</option>
+		{{/foreach}}
+	</select><br />
+
+	<select name="beginGroup">
+		<option value="" {{if $i.groupId==0}} selected="true"{{/if}}>所属工作组</option>
+		{{foreach item=g name=groups from=$groups}}
+		<option value="{{$g.groupId}}"{{if $g.groupId==$i.groupId}} selected="{{/if}}">{{$g.groupName}}</option>
+		{{/foreach}}
+	</select><br />
+
+	<select name="beginRole">
+		<option value="" {{if $i.beginRole==0}} selected="true"{{/if}}>发起审批角色</option>
+		{{foreach item=r name=roles from=$roles}}
+		<option value="{{$r.checkRoleId}}"{{if $r.checkRoleId==$i.beginRole}} selected="true"{{/if}}>{{$r.checkRoleName}}</option>
+		{{/foreach}}
+	</select><br />
+
+	<!--创建 begin-->
+	{{if $action=='addSave'}}
+	{{for $sn=1 to 4}}
+	{{$sn}}级审批
+	<select name="office[]">
+		<option value="" {{if $i.officeId==0}} selected="true"{{/if}}>所属办事处</option>
+		{{foreach item=o name=offices from=$offices}}
+		<option value="{{$o.officeId}}"{{if $o.officeId==$i.officeId}} selected="{{/if}}">{{$o.officeName}}</option>
+		{{/foreach}}
+	</select>
+	<select name="group[]">
+		<option value="">所属工作组</option>
+		<!-- 测试 beign -->
+		{{foreach item=g name=groups from=$groups}}
+		<option value="{{$g.groupId}}"{{if $g.groupId==$p.groupId}} selected="{{/if}}">{{$g.groupName}}</option>
+		{{/foreach}}
+		<!-- 测试 over -->
+	</select>
+	<select name="role[]">
+		<option value="">审批角色</option>
+		{{foreach item=r name=roles from=$roles}}
+		<option value="{{$r.checkRoleId}}">{{$r.checkRoleName}}</option>
+		{{/foreach}}
+	</select><br />
+	{{/for}}
+	{{/if}}
+	<!--创建 over-->
+
+	<!--编辑 begin-->
+	{{foreach item=p name=process from=$i.process}}
+	{{$smarty.foreach.process.iteration}}级审批：
+	<select name="office[]">
+		<option value="" {{if $p.officeId==0}} selected="true"{{/if}}>所属办事处</option>
+		{{foreach item=o name=offices from=$offices}}
+		<option value="{{$o.officeId}}"{{if $o.officeId==$p.officeId}} selected="{{/if}}">{{$o.officeName}}</option>
+		{{/foreach}}
+	</select>
+	<select name="group[]">
+		<option value="" {{if $p.groupId==0}} selected="true"{{/if}}>所属工作组</option>
+		{{foreach item=g name=group from=$p.group}}
+		<option value="{{$g.groupId}}"{{if $g.groupId==$p.groupId}} selected="{{/if}}">{{$g.groupName}}</option>
+		{{/foreach}}
+	</select>
+	<select name="role[]">
+		<option value="">审批角色</option>
+		{{foreach item=r name=roles from=$roles}}
+		<option value="{{$r.checkRoleId}}"{{if $r.checkRoleId==$p.roleId}} selected="{{/if}}">{{$r.checkRoleName}}</option>
+		{{/foreach}}
+	</select><br />
+	{{/foreach}}
+	<!--编辑 over-->
+
+	<input type="submit" value="保存" />
+
+</form>
