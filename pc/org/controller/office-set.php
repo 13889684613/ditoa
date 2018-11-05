@@ -68,14 +68,14 @@
 		if($workBeginTime == ''){
 			ErrorResturn('请填写上班时间');
 		}
-		if(stringLen($workBeginTime)>10){
-			ErrorResturn('上班时间长度不能超过10个字符');
+		if(!preg_match("/^([0-1]\d|2[0-4]):([0-5]\d)$/",$workBeginTime)){
+			ErrorResturn('请填写正确的上班时间格式');
 		}
 		if($workOverTime == ''){
 			ErrorResturn('请填写下班时间');
 		}
-		if(stringLen($workOverTime)>10){
-			ErrorResturn('下班时间长度不能超过10个字符');
+		if(!preg_match("/^([0-1]\d|2[0-4]):([0-5]\d)$/",$workOverTime)){
+			ErrorResturn('请填写正确的下班时间格式');
 		}
 		if($workRange == 0){
 			ErrorResturn('请选择打卡有效范围');
