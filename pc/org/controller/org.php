@@ -1,0 +1,115 @@
+<?php
+
+	//# Mr.Z
+	//# 2018-11-06
+	//# 企业组织架构
+
+	//分页类
+	include_once(PUBLICPATH.'oa.page.php');
+
+	//当前页面公共配置
+	$pageTitle = '企业组织架构';
+	$router = '?_f=org';
+	$curPage = $_REQUEST['page'];
+	$act = $_REQUEST['act'];
+	$groupId = getVal('g',1,'');
+	$where = '';
+
+	//左侧菜单 begin
+
+	$offices = $db->get_all(PRFIX.'office','order by rank desc,createTime desc','officeId,officeName');
+	for($e=0;$e<count($offices);$e++){
+		//工作组数量
+		$offices[$e]['number'] = $db->Count(PRFIX.'group','where officeId='.$offices[$e]['officeId'].'');
+		//工作组数据
+		$groups = $db->get_all(PRFIX.'group','where officeId='.$offices[$e]['officeId'].'','groupId,groupName');
+		for($g=0;$g<count($groups);$g++){
+			//员工数量
+			$groups[$g]['number'] = $db->Count(PRFIX.'staff','where groupId='.$groups[$g]['groupId'].'');
+		}
+		$offices[$e]['groups'] = $groups;
+	}
+
+	//左侧菜单 over
+
+	//检索
+	if($act == 'searchPost'){
+		$s_name = getVal('s_name',2,'');
+		if($s_name!=''){
+			$where .= ' and staffName like "%'.$s_name.'%"';
+			$track .= '&s_name='.$s_name.'';
+		}
+	}
+	$where = 'where groupId='.$groupId.''.$where;
+
+	//页面分页配置
+	$total = $db->Count($table,$where);
+	$length = 5;
+	$page = new page_link();
+	$page->page_linkTo($total,$length,'page');
+	if(empty($curPage)){$curPage = 1;}
+	$sn = $curPage * $length - $length;	//序号
+
+	//拉取员工数据
+	$field = 'staffName,postId,phone,extensionNumber,tel,email,status';
+	$data = $db->get_some(PRFIX.'staff',$page->firstcount,$length,'order by createTime desc',$where,$field);
+	foreach ($data as $key => $value) {
+		//隶属公司 begin
+		$company = $db->get_one(PRFIX.'staff_contract','where staffId='.$data[$key]['staffId'].' order by overDate desc limit 1','companyId');
+		$C = $db->get_one(PRFIX.'company','companyId='.$company['companyId'].'','cnName');
+		if($C){
+			$data[$key]['company'] = $C['cnName'];
+		}else{
+			$data[$key]['company'] = '待指定';
+		}
+		//隶属公司 over
+		//职务
+		$P = $db->get_one(PRFIX.'post','where postId='.$data[$key]['postId'].'','postName');
+		$data[$key]['post'] = $P['postName'];
+		//状态 begin
+		$status = static_staffStatus($data[$key]['status']);
+		if($data[$key]['status'] == 0||$data[$key]['status'] == 1){
+			//查询请假状态 begin
+			$leaveWhere = 'where leaveId in(select leaveApplyId from '.PRFIX.'leaveapply_time where beginDate<="'.date().'" and overDate>="'.date().'") and checkStatus=2 limit 1';
+			$leave = $db->get_one(PRFIX.'leaveapply',$leaveWhere,'typeId,receiverUsr');
+			if($leave){
+				$tips = '';
+				//假期类型
+				$T = $db->get_one(PRFIX.'leavetype','where leaveTypeId='.$leave['typeId'].'','typeName');
+				$tips .= $T['typeName'];
+				//请假时间
+				$time = $db->get_one(PRFIX.'leaveapply_time','where leaveApplyId='.$leave['typeId'].'','min(CONCAT(beginDate," ",beginTime)) as beginDateTime,max(CONCAT(overDate," ",overTime)) as overDateTime');
+				if($time){
+					$tips .= $time['beginDateTime'].'至'.$time['overDateTime'];
+				}
+
+				//工作接管人
+				$S = $db->get_one(PRFIX.'staff','where staffId='.$leave['receiverUsr'].'','staffName');
+				$tips .= '<br />'.$S['staffName'];
+				$status = $tips;
+			}
+			//查询请假状态 over
+		}
+		//状态 over
+		$data[$key]['status'] = $status;
+	}
+
+	if(count($data) == 0){
+		$TIP = '暂无员工';
+	}
+
+	if($groupId == 0){
+		$TIP = '请选择工作组';
+	}
+	
+	//数据绑定
+	$smarty->assign('pageTitle',$pageTitle);
+	$smarty->assign('offices',$offices);
+	$smarty->assign('groupId',$groupId);
+	$smarty->assign('s_name',$s_name);
+	$smarty->assign('data',$data);
+	$smarty->assign('TIP',$TIP);
+	$smarty->assign('page',$page->show_link(1));
+	$smarty->assign('curPage',$curPage);
+
+?>

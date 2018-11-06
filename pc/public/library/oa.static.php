@@ -1,7 +1,7 @@
 <?php
 
 	//# Mr.Z
-	//# 2018-11-03
+	//# 2018-11-06
 	//# 静态数据
 
 	//审批流程类型
@@ -18,6 +18,23 @@
 			'8' => '离职',
 			'9' => '邮箱申请',
 			'10' => '转正'
+		);
+
+		if($key == ''){
+			return $typeArray;
+		}else{
+			return $typeArray[$key];
+		}
+
+	}
+
+	//员工帐号状态
+	function static_staffStatus($key=''){
+
+		$typeArray = array(
+			'0' => '试用',
+			'1' => '已转正',
+			'2' => '离职'
 		);
 
 		if($key == ''){
