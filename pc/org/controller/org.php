@@ -51,16 +51,15 @@
 	$sn = $curPage * $length - $length;	//序号
 
 	//拉取员工数据
-	$field = 'staffName,postId,phone,extensionNumber,tel,email,status';
+	$field = 'staffName,companyId,postId,phone,extensionNumber,tel,email,status';
 	$data = $db->get_some(PRFIX.'staff',$page->firstcount,$length,'order by createTime desc',$where,$field);
 	foreach ($data as $key => $value) {
 		//隶属公司 begin
-		$company = $db->get_one(PRFIX.'staff_contract','where staffId='.$data[$key]['staffId'].' order by overDate desc limit 1','companyId');
-		$C = $db->get_one(PRFIX.'company','companyId='.$company['companyId'].'','cnName');
-		if($C){
-			$data[$key]['company'] = $C['cnName'];
-		}else{
+		if($data[$key]['companyId'] == 0){
 			$data[$key]['company'] = '待指定';
+		}else{
+			$c = $db->get_one(PRFIX.'company','where companyId='.$data[$key]['companyId'].'','cnName');
+			$data[$key]['company'] = $c['cnName'];
 		}
 		//隶属公司 over
 		//职务
@@ -90,6 +89,8 @@
 			}
 			//查询请假状态 over
 		}
+		//座机
+		$data[$key]['phone'] = $data[$key]['phone'].'-'.$data[$key]['extensionNumber'];
 		//状态 over
 		$data[$key]['status'] = $status;
 	}
