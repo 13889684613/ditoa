@@ -73,7 +73,9 @@
 				$val['staffId'] = $id;
 				$val['familyName'] = $familyName[$e];
 				$val['sex'] = $sex[$e];
-				$val['birthDate'] = $birthDate[$e];
+				if($birthDate[$e]!=''){
+					$val['birthDate'] = $birthDate[$e];
+				}
 				$val['relation'] = $relation[$e];
 				$val['telphone'] = $telphone[$e];
 				$val['workUnit'] = $workUnit[$e];

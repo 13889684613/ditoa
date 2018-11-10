@@ -1,0 +1,51 @@
+<title>{{$pageTitle}}</title>
+
+<form method="post" enctype="multipart/form-data">
+
+	<input type="hidden" name="page" value="{{$page}}" />
+	<input type="hidden" name="s_company" value="{{$s_company}}" />
+	<input type="hidden" name="s_office" value="{{$s_office}}" />
+	<input type="hidden" name="s_role" value="{{$s_role}}" />
+	<input type="hidden" name="s_post" value="{{$s_post}}" />
+	<input type="hidden" name="s_status" value="{{$s_status}}" />
+	<input type="hidden" name="s_begintime" value="{{$s_begintime}}" />
+	<input type="hidden" name="s_overtime" value="{{$s_overtime}}" />
+	<input type="hidden" name="s_name" value="{{$s_name}}" />
+	<input type="hidden" name="s_idno" value="{{$s_idno}}" />
+	<input type="hidden" name="id" value="{{$id}}" />
+	<input type="hidden" name="act" value="editSave" />
+	
+	{{if $idFile!=''}}
+	<a href="upload/file/staff/{{$idFile}}">{{$idFile}}</a>
+	{{/if}}
+	身份证正反面：<input type="file" name="staffFile[]" /><br />
+
+	{{if $eduFile!=''}}
+	<a href="upload/file/staff/{{$eduFile}}">{{$eduFile}}</a>
+	{{/if}}
+	学历证书:<input type="file" name="staffFile[]" /><br />
+
+	{{if $registerFile!=''}}
+	<a href="upload/file/staff/{{$registerFile}}">{{$registerFile}}</a>
+	{{/if}}
+	户口本:<input type="file" name="staffFile[]" /><br />
+
+	{{if $reportFile!=''}}
+	<a href="upload/file/staff/{{$reportFile}}">{{$reportFile}}</a>
+	{{/if}}
+	体检报告:<input type="file" name="staffFile[]" /><br />
+
+	其它资质证件:<span style="color:#ce0000;">证件名称不能重复</span><br />
+	{{foreach item=o name=others from=$others}}
+	<input type="text" name="otherName[]" value="{{$o.attachName}}" placeholder="证件名称" ><input type="file" name="staffFile[]" /><a href="upload/file/staff/{{$o.attachFile}}">{{$o.attachName}}</a><br />
+	{{foreachelse}}
+	<input type="text" name="otherName[]" placeholder="证件名称" >
+	<input type="file" name="staffFile[]" /><br />
+	<input type="text" name="otherName[]" placeholder="证件名称" >
+	<input type="file" name="staffFile[]" /><br />
+	{{/foreach}}
+
+
+	<input type="submit" value="保存" />
+
+</form>

@@ -1,0 +1,27 @@
+<title>{{$pageTitle}}</title>
+
+<form method="post">
+
+	<input type="hidden" name="page" value="{{$page}}" />
+	<input type="hidden" name="s_company" value="{{$s_company}}" />
+	<input type="hidden" name="s_office" value="{{$s_office}}" />
+	<input type="hidden" name="s_role" value="{{$s_role}}" />
+	<input type="hidden" name="s_post" value="{{$s_post}}" />
+	<input type="hidden" name="s_status" value="{{$s_status}}" />
+	<input type="hidden" name="s_begintime" value="{{$s_begintime}}" />
+	<input type="hidden" name="s_overtime" value="{{$s_overtime}}" />
+	<input type="hidden" name="s_name" value="{{$s_name}}" />
+	<input type="hidden" name="s_idno" value="{{$s_idno}}" />
+	<input type="hidden" name="id" value="{{$id}}" />
+	<input type="hidden" name="act" value="editSave" />
+	
+	<input type="text" name="joinDate" placeholder="入职时间" value="{{$i.joinDate}}" /><br />
+	<input type="text" name="tryBeginDate" placeholder="试用开始日期" value="{{$i.tryBeginDate}}" /><br />
+	<input type="text" name="tryOverDate" placeholder="试用截止日期" value="{{$i.tryOverDate}}" /><br />
+	<input type="text" name="interviewer" placeholder="面试人员" value="{{$i.interviewer}}" /><br />
+	<input type="text" name="expectedSalary" placeholder="期望工资" value="{{$i.expectedSalary}}" />元/月<br />
+	<input type="text" name="trySalary" placeholder="试用期工资" value="{{$i.trySalary}}" />元/月<br />
+
+	<input type="submit" value="保存" />
+
+</form>

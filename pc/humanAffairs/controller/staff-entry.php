@@ -2,10 +2,10 @@
 
 	//# Mr.Z
 	//# 2018-11-10
-	//# 社保与公积金
+	//# 入职信息
 
 	//当前页面公共配置
-	$pageTitle = '社保与公积金';
+	$pageTitle = '入职信息';
 	$act = $_REQUEST['act'];
 	$page = $_REQUEST['page'];
 	$table = PRFIX.'staff';	
@@ -16,10 +16,6 @@
 	if($id == 0){
 		exit;
 	}
-
-	//表单赋能 begin
-	$trusteeship = static_Trusteeship();
-	//表单赋能 over
 
 	//记录列表页检索条件begin
 	$s_company = getVal('s_company',1,'');
@@ -34,49 +30,53 @@
 	//记录列表页检索条件over
 
 	//获取值 begin
-	$insuranceNo = getVal('insuranceNo',2,'');
-	$insuranceStatus = getVal('insuranceStatus',1,'');
-	$insuranceOverDate = getVal('insuranceOverDate',2,'');
-	$fundNo = getVal('fundNo',2,'');
-	$fundStatus = getVal('fundStatus',1,'');
-	$fundOverDate = getVal('fundOverDate',2,'');
+	$joinDate = getVal('joinDate',2,'');
+	$tryBeginDate = getVal('tryBeginDate',2,'');
+	$tryOverDate = getVal('tryOverDate',2,'');
+	$interviewer = getVal('interviewer',2,'');
+	$expectedSalary = getVal('expectedSalary',1,'');
+	$trySalary = getVal('trySalary',1,'');
 	//获取值 over
 
 	//验证
 	if($act == 'editSave'){
-		if($insuranceOverDate!=''){
-			if(!isdate($insuranceOverDate)){
-				ErrorResturn('请填写正确的保险缴纳日期');
-			}
+		if($joinDate == ''){
+			ErrorResturn('请填写入职日期');
 		}
-		if($fundOverDate!=''){
-			if(!isdate($fundOverDate)){
-				ErrorResturn('请填写正确的公积金缴纳日期');
-			}
+		if(!isdate($joinDate)){
+			ErrorResturn('请填写正确的入职日期');
+		}
+		if($tryBeginDate == ''){
+			ErrorResturn('请填写试用期开始日期');
+		}
+		if(!isdate($tryBeginDate)){
+			ErrorResturn('请填写正确的试用期开始日期');
+		}
+		if($tryOverDate == ''){
+			ErrorResturn('请填写试用期截止日期');
+		}
+		if(!isdate($tryOverDate)){
+			ErrorResturn('请填写正确的试用期截止日期');
 		}
 	}
 
-	$fileds = 'insuranceNo,insuranceStatus,insuranceOverDate,fundNo,fundStatus,fundOverDate';
+	$fileds = 'joinDate,tryBeginDate,tryOverDate,interviewer,expectedSalary,trySalary';
 	$data = $db->get_one($table,'where staffId='.$id.'',$fileds);
 	
 	//创建保存
 	if($act == 'editSave'){
 
-		$val['insuranceNo'] = $insuranceNo;
-		$val['insuranceStatus'] = $insuranceStatus;
-		if($insuranceOverDate!=''){
-			$val['insuranceOverDate'] = $insuranceOverDate;
-		}	
-		$val['fundNo'] = $fundNo;
-		$val['fundStatus'] = $fundStatus;
-		if($fundOverDate!=''){
-			$val['fundOverDate'] = $fundOverDate;
-		}
+		$val['joinDate'] = $joinDate;
+		$val['tryBeginDate'] = $tryBeginDate;
+		$val['tryOverDate'] = $tryOverDate;
+		$val['interviewer'] = $interviewer;
+		$val['expectedSalary'] = $expectedSalary;
+		$val['trySalary'] = $trySalary;
 
 		$result = $db->update($table,$val,'where staffId='.$id.'');
 		if($result){
 
-			$url = 'human-affairs.php?_f=staff-welfare&page='.$page.'&id='.$id.'&s_company='.$s_company.'&s_office='.$s_office.'&s_role='.$s_role.'&s_post='.$s_post.'';
+			$url = 'human-affairs.php?_f=staff-entry&page='.$page.'&id='.$id.'&s_company='.$s_company.'&s_office='.$s_office.'&s_role='.$s_role.'&s_post='.$s_post.'';
 			$url .= '&s_status='.$s_status.'&s_begintime='.$s_begintime.'&s_overtime='.$s_overtime.'&s_name='.$s_name.'&s_idno='.$s_idno.'';
 
 			TipsRefreshResturn('操作成功',$url);
@@ -89,7 +89,6 @@
 
 	//数据绑定
 	$smarty->assign('pageTitle',$pageTitle);
-	$smarty->assign('trusteeship',$trusteeship);
 	$smarty->assign('s_company',$s_company);
 	$smarty->assign('s_office',$s_office);
 	$smarty->assign('s_role',$s_role);

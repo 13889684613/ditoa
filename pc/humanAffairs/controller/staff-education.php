@@ -67,8 +67,12 @@
 			if($beginDate[$e]!=''){
 				
 				$val['staffId'] = $id;
-				$val['beginDate'] = $beginDate[$e];
-				$val['overDate'] = $overDate[$e];
+				if($beginDate[$e]!=''){
+					$val['beginDate'] = $beginDate[$e];
+				}
+				if($overDate[$e]!=''){
+					$val['overDate'] = $overDate[$e];
+				}
 				$val['workUnit'] = $workUnit[$e];
 				$val['postName'] = $postName[$e];
 				$val['remark'] = $remark[$e];

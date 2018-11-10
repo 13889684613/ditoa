@@ -221,12 +221,12 @@
 				//判断上传文件类型
 				if(!in_array($pics["type"][$pici],$typelimit))
 				{
-					errorjump("只能上传rar/zip/gzip类型文件.");
+					ErrorResturn("只能上传pdf类型文件.");
 				}
 				//检查文件大小
 				if($sizelimit < $pics["size"][$pici])
 				{
-					errorjump("文件大小不能超过".$sizename."M.");
+					ErrorResturn("文件大小不能超过".$sizename."M.");
 				}
 
 				$filedir = $picpath;
@@ -238,13 +238,13 @@
 				//不允许上传同名文件
 				if (file_exists($imgname) && $overwrite != true)
 				{
-					errorjump("同名文件已经存在.");
+					ErrorResturn("同名文件已经存在.");
 				}
 
 				//执行上传
 				if (!move_uploaded_file($pics["tmp_name"][$pici],$filedir.$imgname))
 				{
-					errorjump("移动文件出错.");
+					ErrorResturn("移动文件出错.");
 				}
 
 				//返回值
