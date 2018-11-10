@@ -191,6 +191,20 @@
 		}
 	}
 
+	//保险公积金托管状态
+	function static_Trusteeship($key=''){
+		$status = array(
+			'1' => '托管',
+			'0' => '非托管'
+		);
+
+		if($key == ''){
+			return $status;
+		}else{
+			return $status[$key];
+		}
+	}
+
 	//员工帐号状态
 	function static_staffStatus($key=''){
 

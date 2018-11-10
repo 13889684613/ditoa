@@ -15,6 +15,7 @@
 
 	$roleName = getVal('roleName',2,'');
 	$rank = getVal('rank',1,'');
+	$default = getVal('default',1,'');
 
 	//权限
 	$m1 = getVal('m1',1,'');
@@ -125,6 +126,7 @@
 		$val['sysRoleName'] = $roleName;
 		$val['power'] = $power;
 		$val['rank'] = $rank;
+		$val['isDefault'] = $default;
 		$val['createTime'] = date('Y-m-d H:i:s');
 
 		$result = $db->insert($table,$val);
@@ -145,7 +147,7 @@
 		$page = getVal('page',2,'');
 		$s_roleName = getVal('s_roleName',2,'');
 
-		$data = $db->get_one($table,'where sysRoleId='.$sysRoleId.'','sysRoleName,power,rank');
+		$data = $db->get_one($table,'where sysRoleId='.$sysRoleId.'','sysRoleName,power,rank,isDefault');
 		if($data){
 			$power = explode('|',$data['power']);					//完整权限
 			$data['orgPower'] = explode(',',$power[0]);				//DIT组织架构
@@ -178,6 +180,7 @@
 		$val['sysRoleName'] = $roleName;
 		$val['power'] = $power;
 		$val['rank'] = $rank;
+		$val['isDefault'] = $default;
 		$val['updateTime'] = date('Y-m-d H:i:s');
 
 		$result = $db->update($table,$val,'where sysRoleId='.$sysRoleId.'');

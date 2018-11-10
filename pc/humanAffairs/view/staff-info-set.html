@@ -1,6 +1,6 @@
 <title>{{$pageTitle}}</title>
 
-<form method="post" enctype="multipart/form-data">
+<form method="post">
 
 	<input type="hidden" name="page" value="{{$page}}" />
 	<input type="hidden" name="s_company" value="{{$s_company}}" />
@@ -15,36 +15,72 @@
 	<input type="hidden" name="id" value="{{$id}}" />
 	<input type="hidden" name="act" value="{{$action}}" />
 
+	<select name="company">
+		<option value=""{{if $i.companyId==0}} selected=true{{/if}}>所属企业</option>
+		{{foreach item=c name=companys from=$companys}}
+		<option value="{{$c.companyId}}"{{if $i.companyId==$c.companyId}} selected=true{{/if}}>{{$c.cnName}}</option>
+		{{/foreach}}
+	</select>
+
+	<select name="office">
+		<option value=""{{if $i.officeId==0}} selected=true{{/if}}>所属部门</option>
+		{{foreach item=o name=offices from=$offices}}
+		<option value="{{$o.officeId}}"{{if $i.officeId==$o.officeId}} selected=true{{/if}}>{{$o.officeName}}</option>
+		{{/foreach}}
+	</select>
+
+	<select name="group">
+		<option value=""{{if $i.groupId==0}} selected=true{{/if}}>所属工作组</option>
+		{{foreach item=g name=groups from=$groups}}
+		<option value="{{$g.groupId}}"{{if $i.groupId==$g.groupId}} selected=true{{/if}}>{{$g.groupName}}</option>
+		{{/foreach}}
+	</select>
+
+	<br />
+
 	<input type="text" name="staffName" placeholder="真实姓名" value="{{$i.staffName}}" /><br />
+
+	<select name="post">
+		<option value=""{{if $i.postId==0}} selected=true{{/if}}>职务</option>
+		{{foreach item=p name=posts from=$posts}}
+		<option value="{{$p.postId}}"{{if $i.postId==$p.postId}} selected=true{{/if}}>{{$p.postName}}</option>
+		{{/foreach}}
+	</select>
+
 	性别:
-	{{foreach $sex as $key=>value}}
+	{{foreach $sex as $key=>$value}}
 	<input type="radio" name="sex" value="{{$key}}"{{if $i.sex==$key}} checked="true"{{/if}}>{{$value}}
 	{{/foreach}}
 	<input type="text" name="idNumber" placeholder="身份证号" value="{{$i.idNumber}}" /><br />
 	{{if $i.photo!=''}}
 	<img src="/upload/images/staff/head/{{$i.photo}}" />
+	<input type="hidden" name="oldHead" value="/upload/images/staff/head/{{$i.photo}}">
 	{{/if}}
-	<input type="file" value="上传照片" /><br />
+	<input type="file" name="photo" value="上传照片" /><br />
 	<input type="text" name="birthDate" placeholder="出生日期" value="{{$i.birthDate}}" /><br />
 	农历：
 	<select name="lunarMonth">
 		<option value="" value="">月份</option>
-		{{foreach $lunarMonth as $key=>value}}
-		<option value="{{$key}}"{{if $i.lunarMonth==$key}} selected="true"{{/if}}>{{$value}}</option>
+		{{foreach $lunarMonths as $key=>$value}}
+		<option value="{{$value}}"{{if $i.lunarMonth==$value}} selected="true"{{/if}}>{{$value}}</option>
 		{{/foreach}}
 	</select>
 	<select name="lunarDay">
 		<option value="" value="">日期</option>
-		{{foreach $lunarDay as $key=>value}}
-		<option value="{{$key}}"{{if $i.lunarDay==$key}} selected="true"{{/if}}>{{$value}}</option>
+		{{foreach $lunarDays as $key=>$value}}
+		<option value="{{$value}}"{{if $i.lunarDay==$value}} selected="true"{{/if}}>{{$value}}</option>
 		{{/foreach}}
 	</select>
 
-	<input type="text" name="lunarHour" placeholder="时" value="{{$i.lunarHour}}" /><br />
+	<input type="text" name="lunarHour" placeholder="时" value="{{$i.lunarHour}}" />
 
 	<input type="text" name="lunarMinute" placeholder="分" value="{{$i.lunarMinute}}" /><br />
 
 	<input type="text" name="tel" placeholder="手机号" value="{{$i.tel}}" /><br />
+
+	<input type="text" name="phone" placeholder="座机号" value="{{$i.phone}}" />&nbsp;<input type="text" name="extensionNumber" placeholder="分机号" value="{{$i.extensionNumber}}" /><br />
+
+	<input type="text" name="email" placeholder="邮箱地址" value="{{$i.email}}" /><br />
 
 	<input type="text" name="address" placeholder="联系地址" value="{{$i.address}}" /><br />
 
@@ -52,7 +88,7 @@
 
 	<select name="education">
 		<option value="" value="">学历</option>
-		{{foreach $education as $key=>value}}
+		{{foreach $educations as $key=>$value}}
 		<option value="{{$key}}"{{if $i.education==$key}} selected="true"{{/if}}>{{$value}}</option>
 		{{/foreach}}
 	</select>
@@ -62,13 +98,13 @@
 	<input type="text" name="registerAddress" placeholder="户口所在地" value="{{$i.registerAddress}}" /><br />
 
 	户口性质：
-	{{foreach $registerNature as $key=>value}}
-	<input type="radio" name="sex" value="{{$key}}"{{if $i.registerNature==$key}} checked="true"{{/if}}>{{$value}}
+	{{foreach $registers as $key=>$value}}
+	<input type="radio" name="registerNature" value="{{$key}}"{{if $i.registerNature==$key}} checked="true"{{/if}}>{{$value}}
 	{{/foreach}}
 
 	<select name="politicalType">
 		<option value="" value="">政治面貌</option>
-		{{foreach $politicalType as $key=>value}}
+		{{foreach $politicals as $key=>$value}}
 		<option value="{{$key}}"{{if $i.politicalType==$key}} selected="true"{{/if}}>{{$value}}</option>
 		{{/foreach}}
 	</select>
@@ -80,13 +116,13 @@
 	<input type="text" name="weight" placeholder="体重" value="{{$i.weight}}" /><br />kg
 
 	血型：
-	{{foreach $blood as $key=>value}}
+	{{foreach $bloods as $key=>$value}}
 	<input type="radio" name="blood" value="{{$key}}"{{if $i.blood==$key}} checked="true"{{/if}}>{{$value}}
 	{{/foreach}}
 
 	婚姻状况：
-	{{foreach $marital as $key=>value}}
-	<input type="radio" name="blood" value="{{$key}}"{{if $i.maritalStatus==$key}} checked="true"{{/if}}>{{$value}}
+	{{foreach $maritals as $key=>$value}}
+	<input type="radio" name="marital" value="{{$key}}"{{if $i.maritalStatus==$key}} checked="true"{{/if}}>{{$value}}
 	{{/foreach}}
 
 	<input type="text" name="firstWorkDate" placeholder="首次参加工作时间" value="{{$i.firstWorkDate}}" /><br />
@@ -99,7 +135,7 @@
 
 	背景调查：<textarea name="background">{{$i.background}}</textarea>
 
-	备注：<textarea name="background">{{$i.remark}}</textarea>
+	备注：<textarea name="remark">{{$i.remark}}</textarea>
 
 	<input type="submit" value="保存" />
 

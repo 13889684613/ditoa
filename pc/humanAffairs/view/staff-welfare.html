@@ -1,0 +1,33 @@
+<title>{{$pageTitle}}</title>
+
+<form method="post">
+
+	<input type="hidden" name="page" value="{{$page}}" />
+	<input type="hidden" name="s_company" value="{{$s_company}}" />
+	<input type="hidden" name="s_office" value="{{$s_office}}" />
+	<input type="hidden" name="s_role" value="{{$s_role}}" />
+	<input type="hidden" name="s_post" value="{{$s_post}}" />
+	<input type="hidden" name="s_status" value="{{$s_status}}" />
+	<input type="hidden" name="s_begintime" value="{{$s_begintime}}" />
+	<input type="hidden" name="s_overtime" value="{{$s_overtime}}" />
+	<input type="hidden" name="s_name" value="{{$s_name}}" />
+	<input type="hidden" name="s_idno" value="{{$s_idno}}" />
+	<input type="hidden" name="id" value="{{$id}}" />
+	<input type="hidden" name="act" value="editSave" />
+	
+	<input type="text" name="insuranceNo" placeholder="养老保险编号" value="{{$i.insuranceNo}}" /><br />
+	社保帐户状态：
+	{{foreach $trusteeship as $key=>$value}}
+	<input type="radio" name="insuranceStatus" value="{{$key}}"{{if $key==$i.insuranceStatus}} checked="true"{{/if}}>{{$value}}
+	{{/foreach}}<br />
+	<input type="text" name="insuranceOverDate" placeholder="末次社保缴纳日期" value="{{$i.insuranceOverDate}}" /><br />
+	<input type="text" name="fundNo" placeholder="住房公积金编号" value="{{$i.fundNo}}" /><br />
+	公积金帐户状态：
+	{{foreach $trusteeship as $key=>$value}}
+	<input type="radio" name="fundStatus" value="{{$key}}"{{if $key==$i.fundStatus}} checked="true"{{/if}}>{{$value}}
+	{{/foreach}}<br />
+	<input type="text" name="fundOverDate" placeholder="末次公积金缴纳日期" value="{{$i.fundOverDate}}" /><br />
+
+	<input type="submit" value="保存" />
+
+</form>

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-11-03 14:36:58
+/* Smarty version 3.1.29, created on 2018-11-10 09:01:06
   from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/system/view/system-role-set.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5bdd420a482ce8_04672832',
+  'unifunc' => 'content_5be62dd24f50b5_39003119',
   'file_dependency' => 
   array (
     '72458065ffd9815da82d3bb27fcb819e3a5fafe3' => 
     array (
       0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/system/view/system-role-set.html',
-      1 => 1540466343,
+      1 => 1541811664,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5bdd420a482ce8_04672832 ($_smarty_tpl) {
+function content_5be62dd24f50b5_39003119 ($_smarty_tpl) {
 ?>
 <title><?php echo $_smarty_tpl->tpl_vars['pageTitle']->value;?>
 </title>
@@ -99,6 +99,9 @@ function content_5bdd420a482ce8_04672832 ($_smarty_tpl) {
 <input type="checkbox" name="m51" value="1"<?php if ($_smarty_tpl->tpl_vars['i']->value['signPower'][2] == 1) {?> checked<?php }?>>打卡统计<br />
 <input type="checkbox" name="m52" value="1"<?php if ($_smarty_tpl->tpl_vars['i']->value['signPower'][3] == 1) {?> checked<?php }?>>每日打卡记录<br />
 <input type="checkbox" name="m53" value="1"<?php if ($_smarty_tpl->tpl_vars['i']->value['signPower'][4] == 1) {?> checked<?php }?>>打卡时间<br /><br />
+系统默认角色：
+<input type="radio" name="default" value="1"<?php if ($_smarty_tpl->tpl_vars['i']->value['isDefault'] == 1) {?> checked="true"<?php }?>>是
+<input type="radio" name="default" value="0"<?php if ($_smarty_tpl->tpl_vars['i']->value['isDefault'] == 0) {?> checked="true"<?php }?>>否
 
 <input type="submit" value="保存" />
 </form>

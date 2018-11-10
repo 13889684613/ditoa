@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-11-08 20:03:53
+/* Smarty version 3.1.29, created on 2018-11-10 08:47:55
   from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/humanAffairs/view/staff.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5be4262969cd11_64659812',
+  'unifunc' => 'content_5be62abb013b80_11358274',
   'file_dependency' => 
   array (
     '35311621771f53997ecc5d83261a4b855c6d0aeb' => 
     array (
       0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/humanAffairs/view/staff.html',
-      1 => 1541604592,
+      1 => 1541774032,
       2 => 'file',
     ),
   ),
@@ -19,15 +19,14 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5be4262969cd11_64659812 ($_smarty_tpl) {
+function content_5be62abb013b80_11358274 ($_smarty_tpl) {
 ?>
 <meta charset="utf-8" />
 <title><?php echo $_smarty_tpl->tpl_vars['pageTitle']->value;?>
 </title>
 
-<form method="post">
+<form method="get">
 	<input type="hidden" name="_f" value="staff">
-	<input type="hidden" name="act" value="searchPost">
 	<select name="s_company">
 		<option value=""<?php if ($_smarty_tpl->tpl_vars['s_company']->value == 0) {?> selected=true<?php }?>>所属公司</option>
 		<?php
@@ -144,8 +143,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['key']->value => $_smarty_tpl->tpl_var
 $_smarty_tpl->tpl_vars['value']->_loop = true;
 $__foreach_value_4_saved_local_item = $_smarty_tpl->tpl_vars['value'];
 ?>
-		<option value="<?php echo $_smarty_tpl->tpl_vars['s_status']->value;?>
-"<?php if ($_smarty_tpl->tpl_vars['key']->value === $_smarty_tpl->tpl_vars['s_status']->value) {?> selected="true"<?php }?>><?php echo $_smarty_tpl->tpl_vars['value']->value;?>
+		<option value="<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+"<?php if ($_smarty_tpl->tpl_vars['key']->value == $_smarty_tpl->tpl_vars['s_status']->value) {?> selected="true"<?php }?>><?php echo $_smarty_tpl->tpl_vars['value']->value;?>
 </option>
 		<?php
 $_smarty_tpl->tpl_vars['value'] = $__foreach_value_4_saved_local_item;
@@ -159,13 +158,14 @@ $_smarty_tpl->tpl_vars['key'] = $__foreach_value_4_saved_key;
 ?>
 	</select>
 	<input type="text" name="s_begintime" value="<?php echo $_smarty_tpl->tpl_vars['s_begintime']->value;?>
-" placeholder="合同开始日期">
+" placeholder="合同到期开始日期">
 	<input type="text" name="s_overtime" value="<?php echo $_smarty_tpl->tpl_vars['s_overtime']->value;?>
-" placeholder="合同截止日期">
+" placeholder="合同到期截止日期">
 	<input type="text" name="s_name" value="<?php echo $_smarty_tpl->tpl_vars['s_name']->value;?>
 " placeholder="真实姓名">
 	<input type="text" name="s_idno" value="<?php echo $_smarty_tpl->tpl_vars['s_idno']->value;?>
 " placeholder="身份证号">
+	<input type="submit" value="检索">
 </form>
 
 <table border="1">
@@ -198,6 +198,8 @@ $_smarty_tpl->tpl_vars['i']->_loop = true;
 $__foreach_data_5_saved_local_item = $_smarty_tpl->tpl_vars['i'];
 ?>
 	<tr>
+		<td><?php echo $_smarty_tpl->tpl_vars['i']->value['sn'];?>
+</td>
 		<td><?php echo $_smarty_tpl->tpl_vars['i']->value['role'];?>
 </td>
 		<td><?php echo $_smarty_tpl->tpl_vars['i']->value['staffName'];?>
@@ -227,7 +229,7 @@ $__foreach_data_5_saved_local_item = $_smarty_tpl->tpl_vars['i'];
 &id=<?php echo $_smarty_tpl->tpl_vars['i']->value['staffId'];
 echo $_smarty_tpl->tpl_vars['track']->value;?>
 ">删除</a>
-			<a href="?_f=staff-set&act=edit&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
+			<a href="?_f=staff-info-set&act=edit&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
 &id=<?php echo $_smarty_tpl->tpl_vars['i']->value['staffId'];
 echo $_smarty_tpl->tpl_vars['track']->value;?>
 ">修改</a>

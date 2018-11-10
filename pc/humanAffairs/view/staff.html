@@ -1,9 +1,8 @@
 <meta charset="utf-8" />
 <title>{{$pageTitle}}</title>
 
-<form method="post">
+<form method="get">
 	<input type="hidden" name="_f" value="staff">
-	<input type="hidden" name="act" value="searchPost">
 	<select name="s_company">
 		<option value=""{{if $s_company==0}} selected=true{{/if}}>所属公司</option>
 		{{foreach item=c name=company from=$company}}
@@ -31,13 +30,14 @@
 	<select name="s_status">
 		<option value=""{{if $s_status==""}} selected="true"{{/if}}>状态</option>
 		{{foreach $status as $key=>$value}}
-		<option value="{{$s_status}}"{{if $key===$s_status}} selected="true"{{/if}}>{{$value}}</option>
+		<option value="{{$key}}"{{if $key==$s_status}} selected="true"{{/if}}>{{$value}}</option>
 		{{/foreach}}
 	</select>
-	<input type="text" name="s_begintime" value="{{$s_begintime}}" placeholder="合同开始日期">
-	<input type="text" name="s_overtime" value="{{$s_overtime}}" placeholder="合同截止日期">
+	<input type="text" name="s_begintime" value="{{$s_begintime}}" placeholder="合同到期开始日期">
+	<input type="text" name="s_overtime" value="{{$s_overtime}}" placeholder="合同到期截止日期">
 	<input type="text" name="s_name" value="{{$s_name}}" placeholder="真实姓名">
 	<input type="text" name="s_idno" value="{{$s_idno}}" placeholder="身份证号">
+	<input type="submit" value="检索">
 </form>
 
 <table border="1">
@@ -59,6 +59,7 @@
 	</tr>
 	{{foreach item=i name=data from=$data}}
 	<tr>
+		<td>{{$i.sn}}</td>
 		<td>{{$i.role}}</td>
 		<td>{{$i.staffName}}</td>
 		<td>{{$i.sex}}</td>
@@ -73,7 +74,7 @@
 		<td>{{$i.status}}</td>
 		<td>
 			<a href="?_f=staff&act=remove&page={{$curPage}}&id={{$i.staffId}}{{$track}}">删除</a>
-			<a href="?_f=staff-set&act=edit&page={{$curPage}}&id={{$i.staffId}}{{$track}}">修改</a>
+			<a href="?_f=staff-info-set&act=edit&page={{$curPage}}&id={{$i.staffId}}{{$track}}">修改</a>
 		</td>
 	</tr>
 	{{/foreach}}
