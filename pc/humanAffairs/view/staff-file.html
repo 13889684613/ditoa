@@ -37,10 +37,13 @@
 
 	其它资质证件:<span style="color:#ce0000;">证件名称不能重复</span><br />
 	{{foreach item=o name=others from=$others}}
+	<input type="hidden" name="otherId[]" value="{{$o.attachId}}">
 	<input type="text" name="otherName[]" value="{{$o.attachName}}" placeholder="证件名称" ><input type="file" name="staffFile[]" /><a href="upload/file/staff/{{$o.attachFile}}">{{$o.attachName}}</a><br />
 	{{foreachelse}}
+	<input type="hidden" name="otherId[]" value="0">
 	<input type="text" name="otherName[]" placeholder="证件名称" >
 	<input type="file" name="staffFile[]" /><br />
+	<input type="hidden" name="otherId[]" value="0">
 	<input type="text" name="otherName[]" placeholder="证件名称" >
 	<input type="file" name="staffFile[]" /><br />
 	{{/foreach}}

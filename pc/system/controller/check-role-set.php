@@ -14,6 +14,7 @@
 	//获取值
 	$roleName = getVal('roleName',2,'');
 	$rank = getVal('rank',1,'');
+	$default = getVal('default',1,'');
 
 	//验证
 	if($act == 'addSave'||$act == 'editSave'){
@@ -41,6 +42,7 @@
 
 		$val['checkRoleName'] = $roleName;
 		$val['rank'] = $rank;
+		$val['isDefault'] = $default;
 		$val['createTime'] = date('Y-m-d H:i:s');
 
 		$result = $db->insert($table,$val);
@@ -61,7 +63,7 @@
 		$page = getVal('page',2,'');
 		$s_roleName = getVal('s_roleName',2,'');
 
-		$data = $db->get_one($table,'where checkRoleId='.$checkRoleId.'','checkRoleName,rank');
+		$data = $db->get_one($table,'where checkRoleId='.$checkRoleId.'','checkRoleName,rank,isDefault');
 		if($data){
 			$rank = $data['rank'];
 		}
@@ -83,6 +85,7 @@
 
 		$val['checkRoleName'] = $roleName;
 		$val['rank'] = $rank;
+		$val['isDefault'] = $default;
 		$val['updateTime'] = date('Y-m-d H:i:s');
 
 		$result = $db->update($table,$val,'where checkRoleId='.$checkRoleId.'');

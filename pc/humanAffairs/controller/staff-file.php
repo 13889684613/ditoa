@@ -30,8 +30,8 @@
 	//记录列表页检索条件over
 
 	//获取值 begin
+	$otherId = getVal('otherId',2,'');
 	$otherName = getVal('otherName',2,'');
-	$staffFile = $_FILES['staffFile'];
 	//获取值 over
 
 	//验证
@@ -77,7 +77,7 @@
 	}
 	
 	//其它文件
-	$others = $db->get_all($table,'where staffId='.$id.' and category=5','attachName,attachFile');
+	$others = $db->get_all($table,'where staffId='.$id.' and category=5','attachId,attachName,attachFile');
 	
 	//创建保存
 	if($act == 'editSave'){
@@ -99,55 +99,148 @@
 
 				if($value!='NO'){
 
-					$val['staffId'] = $id;
-					$val['attachFile'] = date('Ymd').'/'.$value;
-					$val['updateTime'] = date('Y-m-d H:i:s');
-
 					if($key == '0'){
-						$val['category'] = 1;
+						$id_file = date('Ymd').'/'.$value;
 					}elseif($key == '1'){
-						$val['category'] = 2;
+						$edu_file = date('Ymd').'/'.$value;
 					}elseif($key == '2'){
-						$val['category'] = 3;
+						$register_file = date('Ymd').'/'.$value;
 					}elseif($key == '3'){
-						$val['category'] = 4;
+						$report_file = date('Ymd').'/'.$value;
 					}elseif($key > 3){
-						$val['category'] = 5;
-						$val['attachName'] = $otherName[$otherCursor];
+						$other_file[$otherCursor]['attachFile'] = date('Ymd').'/'.$value;
 					}
 
-					//清除物理文件
-					$where = 'where staffId='.$id.' and category='.$val['category'].'';
-					if($val['category'] == 5){
-						$where .= ' and attachName="'.$val['attachName'].'"';
-					}
-					$A = $db->get_one($table,$where,'attachFile');
-					if($A){
-						$historyFile = 'upload/file/staff/'.$A['attachFile'];
-						unlink($historyFile);
-					}
-					
-					//清除DB记录
-					$db->delete($table,$where);
+				}
 
-					//新增文件
-					$db->insert($table,$val);
+				if($key == 0 && $idFile == '' && $id_file == ''){
+					ErrorResturn('请上传身份证正反面文件');
+				}
 
+				if($key == 1 && $eduFile == '' && $edu_file == ''){
+					ErrorResturn('请上传学历证书文件');
+				}
+
+				if($key == 2 && $registerFile == '' && $register_file == ''){
+					ErrorResturn('请上传户口本文件');
+				}
+
+				if($key == 3 && $reportFile == '' && $report_file == ''){
+					ErrorResturn('请上传体检报告');
 				}
 
 				if($key > 3){
+					$other_file[$otherCursor]['attachId'] = $otherId[$otherCursor];
+					$other_file[$otherCursor]['attachName'] = $otherName[$otherCursor];
+					if($value == 'NO'){
+						$other_file[$otherCursor]['attachFile'] = '';
+					}
 					++ $otherCursor;
 				}
-				
+
 			}
 
-			$url = 'human-affairs.php?_f=staff-file&page='.$page.'&id='.$id.'&s_company='.$s_company.'&='.$s_office.'&s_role='.$s_role.'&s_post='.$s_post.'';
+			//更新资料文件数据 begin
+			// -- 身份证
+			if($id_file!=''){
+
+				$idArr['staffId'] = $id;
+				$idArr['category'] = 1;
+				$idArr['attachFile'] = $id_file;
+				$idArr['updateTime'] = date('Y-m-d H:i:s');
+
+				if($idFile!=''){
+					unlink('upload/file/staff/'.$idFile);
+					$db->update($table,$idArr,'where staffId='.$id.' and category=1');
+				}else{
+					$db->insert($table,$idArr);
+				}
+
+			}
+			// -- 学历证
+			if($edu_file!=''){
+
+				$eduArr['staffId'] = $id;
+				$eduArr['category'] = 2;
+				$eduArr['attachFile'] = $edu_file;
+				$eduArr['updateTime'] = date('Y-m-d H:i:s');
+
+				if($eduFile!=''){
+					unlink('upload/file/staff/'.$eduFile);
+					$db->update($table,$eduArr,'where staffId='.$id.' and category=2');
+				}else{
+					$db->insert($table,$eduArr);
+				}
+
+			}
+			// -- 户口本
+			if($register_file!=''){
+
+				$registerArr['staffId'] = $id;
+				$registerArr['category'] = 3;
+				$registerArr['attachFile'] = $register_file;
+				$registerArr['updateTime'] = date('Y-m-d H:i:s');
+
+				if($registerFile!=''){
+					unlink('upload/file/staff/'.$registerFile);
+					$db->update($table,$registerArr,'where staffId='.$id.' and category=3');
+				}else{
+					$db->insert($table,$registerArr);
+				}
+
+			}
+			// -- 体验报告
+			if($report_file!=''){
+
+				$reportArr['staffId'] = $id;
+				$reportArr['category'] = 4;
+				$reportArr['attachFile'] = $report_file;
+				$reportArr['updateTime'] = date('Y-m-d H:i:s');
+
+				if($reportFile!=''){
+					unlink('upload/file/staff/'.$reportFile);
+					$db->update($table,$reportArr,'where staffId='.$id.' and category=4');
+				}else{
+					$db->insert($table,$reportArr);
+				}
+
+			}
+			// -- 其它文件
+			if(count($other_file)>0){
+
+				for($e=0;$e<count($other_file);$e++){
+
+					$val = array();
+
+					if($other_file[$e]['attachName']!=''){
+
+						$val['staffId'] = $id;
+						$val['category'] = 5;
+						$val['updateTime'] = date('Y-m-d H:i:s');
+						$val['attachName'] = $other_file[$e]['attachName'];
+						if($other_file[$e]['attachFile']!=''){
+							$val['attachFile'] = $other_file[$e]['attachFile'];
+						}
+
+						if($other_file[$e]['attachId'] == 0){
+							$db->insert($table,$val);
+						}else{
+							$db->update($table,$val,'where attachId='.$other_file[$e]['attachId'].'');
+						}
+
+					}
+
+				}
+
+			}
+
+			//更新资料文件数据 over
+
+			$url = 'human-affairs.php?_f=staff-file&page='.$page.'&id='.$id.'&s_company='.$s_company.'&s_office='.$s_office.'&s_role='.$s_role.'&s_post='.$s_post.'';
 			$url .= '&s_status='.$s_status.'&s_begintime='.$s_begintime.'&s_overtime='.$s_overtime.'&s_name='.$s_name.'&s_idno='.$s_idno.'';
 
 			TipsRefreshResturn('操作成功',$url);
 
-		}else{
-			ErrorResturn('请上传资料文件');
 		}
 
 	}

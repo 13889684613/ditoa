@@ -8,5 +8,9 @@
 <input type="text" name="roleName" placeholder="审批角色名称" value="{{$i.checkRoleName}}" /><br />
 <input type="text" name="rank" value="{{$rank}}" placeholder="排序" /><br />
 
+系统用户默认角色：
+<input type="radio" name="default" value="1"{{if $i.isDefault==1}} checked="true"{{/if}}>是
+<input type="radio" name="default" value="0"{{if $i.isDefault==0}} checked="true"{{/if}}>否
+
 <input type="submit" value="保存" />
 </form>

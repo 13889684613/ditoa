@@ -21,7 +21,7 @@
 	
 	$DB_USER = 'root';//用户
 	
-	$DB_PWD = '123';//密码
+	$DB_PWD = '123456';//密码
 	
 	$DB_NAME = 'ditoa';//数据库名称
 	

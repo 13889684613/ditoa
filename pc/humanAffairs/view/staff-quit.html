@@ -1,0 +1,27 @@
+<title>{{$pageTitle}}</title>
+
+<form method="post" enctype="multipart/form-data">
+
+	<input type="hidden" name="page" value="{{$page}}" />
+	<input type="hidden" name="s_company" value="{{$s_company}}" />
+	<input type="hidden" name="s_office" value="{{$s_office}}" />
+	<input type="hidden" name="s_role" value="{{$s_role}}" />
+	<input type="hidden" name="s_post" value="{{$s_post}}" />
+	<input type="hidden" name="s_status" value="{{$s_status}}" />
+	<input type="hidden" name="s_begintime" value="{{$s_begintime}}" />
+	<input type="hidden" name="s_overtime" value="{{$s_overtime}}" />
+	<input type="hidden" name="s_name" value="{{$s_name}}" />
+	<input type="hidden" name="s_idno" value="{{$s_idno}}" />
+	<input type="hidden" name="id" value="{{$id}}" />
+	<input type="hidden" name="act" value="editSave" />
+	
+	<input type="text" name="trueQuitDate" value="{{$i.trueQuitDate}}" placeholder="离职日期"><br />
+
+	{{if $i.quitTable!=''}}
+	<a href="upload/file/staff/{{$i.quitTable}}">{{$i.quitTable}}</a>
+	{{/if}}
+	离职申请表：<input type="file" name="quitTable[]" /><br />
+
+	<input type="submit" value="保存" />
+
+</form>

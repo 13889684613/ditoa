@@ -218,10 +218,19 @@
 			$sysRoleId = $R['sysRoleId'];
 		}
 
+		//审批默认角色
+		$C = $db->get_one(PRFIX.'checkrole','where isDefault=1','checkRoleId');
+		if(!$C){
+			ErrorResturn('请先设置审批默认角色');
+		}else{
+			$checkRoleId = $C['checkRoleId'];
+		}
+
 		$val['companyId'] = $company;
 		$val['officeId'] = $office;
 		$val['groupId'] = $group;
 		$val['sysRoleId'] = $sysRoleId;
+		$val['checkRoleId'] = $checkRoleId;
 		$val['postId'] = $post;
 		$val['staffName'] = $staffName;
 		$val['loginPwd'] = $loginPwd;

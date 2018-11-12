@@ -1,0 +1,52 @@
+<title>{{$pageTitle}}</title>
+
+<form method="post">
+
+	<input type="hidden" name="page" value="{{$page}}" />
+	<input type="hidden" name="s_company" value="{{$s_company}}" />
+	<input type="hidden" name="s_office" value="{{$s_office}}" />
+	<input type="hidden" name="s_role" value="{{$s_role}}" />
+	<input type="hidden" name="s_post" value="{{$s_post}}" />
+	<input type="hidden" name="s_status" value="{{$s_status}}" />
+	<input type="hidden" name="s_begintime" value="{{$s_begintime}}" />
+	<input type="hidden" name="s_overtime" value="{{$s_overtime}}" />
+	<input type="hidden" name="s_name" value="{{$s_name}}" />
+	<input type="hidden" name="s_idno" value="{{$s_idno}}" />
+	<input type="hidden" name="id" value="{{$id}}" />
+	<input type="hidden" name="act" value="{{$action}}" />
+
+	{{foreach item=i name=data from=$data}}
+	<select name="company[]">
+		<option value=""{{if $i.companyId==0}} selected="true"{{/if}}>所属企业</option>
+		{{foreach item=c name=companys from=$companys}}
+		<option value="{{$c.companyId}}"{{if $i.companyId==$c.companyId}} selected="true"{{/if}}>{{$c.cnName}}</option>
+		{{/foreach}}
+	</select><br />
+	<input type="text" name="contractNo[]" placeholder="合同编号" value="{{$i.contractNo}}" /><br />
+	<input type="text" name="beginDate[]" placeholder="开始日期" value="{{$i.beginDate}}" /><br />
+	<input type="text" name="overDate[]" placeholder="截止日期" value="{{$i.overDate}}" /><br />
+	{{foreachelse}}
+	<select name="company[]">
+		<option value="">所属企业</option>
+		{{foreach item=c name=companys from=$companys}}
+		<option value="{{$c.companyId}}">{{$c.cnName}}</option>
+		{{/foreach}}
+	</select><br />
+	<input type="text" name="contractNo[]" placeholder="合同编号" value="" /><br />
+	<input type="text" name="beginDate[]" placeholder="开始日期" value="" /><br />
+	<input type="text" name="overDate[]" placeholder="截止日期" value="" /><br />
+	<br />
+	<select name="company[]">
+		<option value="">所属企业</option>
+		{{foreach item=c name=companys from=$companys}}
+		<option value="{{$c.companyId}}">{{$c.cnName}}</option>
+		{{/foreach}}
+	</select><br />
+	<input type="text" name="contractNo[]" placeholder="合同编号" value="" /><br />
+	<input type="text" name="beginDate[]" placeholder="开始日期" value="" /><br />
+	<input type="text" name="overDate[]" placeholder="截止日期" value="" /><br />
+	{{/foreach}}
+
+	<input type="submit" value="保存" />
+
+</form>
