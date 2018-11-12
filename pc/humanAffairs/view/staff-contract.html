@@ -13,9 +13,10 @@
 	<input type="hidden" name="s_name" value="{{$s_name}}" />
 	<input type="hidden" name="s_idno" value="{{$s_idno}}" />
 	<input type="hidden" name="id" value="{{$id}}" />
-	<input type="hidden" name="act" value="{{$action}}" />
+	<input type="hidden" name="act" value="editSave" />
 
 	{{foreach item=i name=data from=$data}}
+	<input type="hidden" name="contractId[]" value="{{$i.contractId}}">
 	<select name="company[]">
 		<option value=""{{if $i.companyId==0}} selected="true"{{/if}}>所属企业</option>
 		{{foreach item=c name=companys from=$companys}}
@@ -26,6 +27,7 @@
 	<input type="text" name="beginDate[]" placeholder="开始日期" value="{{$i.beginDate}}" /><br />
 	<input type="text" name="overDate[]" placeholder="截止日期" value="{{$i.overDate}}" /><br />
 	{{foreachelse}}
+	<input type="hidden" name="contractId[]" value="0">
 	<select name="company[]">
 		<option value="">所属企业</option>
 		{{foreach item=c name=companys from=$companys}}
@@ -36,6 +38,7 @@
 	<input type="text" name="beginDate[]" placeholder="开始日期" value="" /><br />
 	<input type="text" name="overDate[]" placeholder="截止日期" value="" /><br />
 	<br />
+	<input type="hidden" name="contractId[]" value="0">
 	<select name="company[]">
 		<option value="">所属企业</option>
 		{{foreach item=c name=companys from=$companys}}
@@ -46,6 +49,10 @@
 	<input type="text" name="beginDate[]" placeholder="开始日期" value="" /><br />
 	<input type="text" name="overDate[]" placeholder="截止日期" value="" /><br />
 	{{/foreach}}
+
+	{{if $dataCount > 0}}
+	修改资料备注：<textarea name="updateRemark" placeholder="请标明调整内容及原因"></textarea>
+	{{/if}}
 
 	<input type="submit" value="保存" />
 

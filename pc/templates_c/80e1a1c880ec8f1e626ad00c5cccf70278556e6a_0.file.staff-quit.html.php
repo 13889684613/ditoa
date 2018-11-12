@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-11-12 14:58:33
-  from "F:\website\ditoaCoder\ditoa\pc\humanAffairs\view\staff-quit.html" */
+/* Smarty version 3.1.29, created on 2018-11-12 22:27:36
+  from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/humanAffairs/view/staff-quit.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5be92499a2ece0_94009103',
+  'unifunc' => 'content_5be98dd89b30f9_48383786',
   'file_dependency' => 
   array (
-    '01966270d98358d02e6281de3af08ee98a473d48' => 
+    '80e1a1c880ec8f1e626ad00c5cccf70278556e6a' => 
     array (
-      0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\humanAffairs\\view\\staff-quit.html',
-      1 => 1542005902,
+      0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/humanAffairs/view/staff-quit.html',
+      1 => 1542032849,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5be92499a2ece0_94009103 ($_smarty_tpl) {
+function content_5be98dd89b30f9_48383786 ($_smarty_tpl) {
 ?>
 <title><?php echo $_smarty_tpl->tpl_vars['pageTitle']->value;?>
 </title>
@@ -59,6 +59,10 @@ function content_5be92499a2ece0_94009103 ($_smarty_tpl) {
 </a>
 	<?php }?>
 	离职申请表：<input type="file" name="quitTable[]" /><br />
+
+	<?php if ($_smarty_tpl->tpl_vars['isSet']->value == true) {?>
+	修改资料备注：<textarea name="updateRemark" placeholder="请标明调整内容及原因"></textarea>
+	<?php }?>
 
 	<input type="submit" value="保存" />
 

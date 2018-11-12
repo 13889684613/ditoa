@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-11-10 21:17:57
+/* Smarty version 3.1.29, created on 2018-11-12 22:19:29
   from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/humanAffairs/view/staff-file.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5be6da85b6aaf6_25417066',
+  'unifunc' => 'content_5be98bf1daa1f2_30830773',
   'file_dependency' => 
   array (
     '8ec7379a520765b5cab0631fa4ff2918fbac392f' => 
     array (
       0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/humanAffairs/view/staff-file.html',
-      1 => 1541855876,
+      1 => 1542032364,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5be6da85b6aaf6_25417066 ($_smarty_tpl) {
+function content_5be98bf1daa1f2_30830773 ($_smarty_tpl) {
 ?>
 <title><?php echo $_smarty_tpl->tpl_vars['pageTitle']->value;?>
 </title>
@@ -91,6 +91,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['o']->value) {
 $_smarty_tpl->tpl_vars['o']->_loop = true;
 $__foreach_others_0_saved_local_item = $_smarty_tpl->tpl_vars['o'];
 ?>
+	<input type="hidden" name="otherId[]" value="<?php echo $_smarty_tpl->tpl_vars['o']->value['attachId'];?>
+">
 	<input type="text" name="otherName[]" value="<?php echo $_smarty_tpl->tpl_vars['o']->value['attachName'];?>
 " placeholder="证件名称" ><input type="file" name="staffFile[]" /><a href="upload/file/staff/<?php echo $_smarty_tpl->tpl_vars['o']->value['attachFile'];?>
 "><?php echo $_smarty_tpl->tpl_vars['o']->value['attachName'];?>
@@ -100,8 +102,10 @@ $_smarty_tpl->tpl_vars['o'] = $__foreach_others_0_saved_local_item;
 }
 if (!$_smarty_tpl->tpl_vars['o']->_loop) {
 ?>
+	<input type="hidden" name="otherId[]" value="0">
 	<input type="text" name="otherName[]" placeholder="证件名称" >
 	<input type="file" name="staffFile[]" /><br />
+	<input type="hidden" name="otherId[]" value="0">
 	<input type="text" name="otherName[]" placeholder="证件名称" >
 	<input type="file" name="staffFile[]" /><br />
 	<?php
@@ -110,6 +114,10 @@ if ($__foreach_others_0_saved_item) {
 $_smarty_tpl->tpl_vars['o'] = $__foreach_others_0_saved_item;
 }
 ?>
+
+	<?php if ($_smarty_tpl->tpl_vars['isSet']->value == 1) {?>
+	修改资料备注：<textarea name="updateRemark" placeholder="请标明调整内容及原因"></textarea>
+	<?php }?>
 
 
 	<input type="submit" value="保存" />

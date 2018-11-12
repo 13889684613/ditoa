@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-11-10 09:14:15
+/* Smarty version 3.1.29, created on 2018-11-12 21:45:31
   from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/humanAffairs/view/staff-info-set.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5be630e7634677_99688954',
+  'unifunc' => 'content_5be983fb3c84b0_88993416',
   'file_dependency' => 
   array (
     '0ffa18d7653dfdbbc9de538676908311fc6ced68' => 
     array (
       0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/humanAffairs/view/staff-info-set.html',
-      1 => 1541770267,
+      1 => 1542029489,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5be630e7634677_99688954 ($_smarty_tpl) {
+function content_5be983fb3c84b0_88993416 ($_smarty_tpl) {
 ?>
 <title><?php echo $_smarty_tpl->tpl_vars['pageTitle']->value;?>
 </title>
@@ -464,6 +464,10 @@ $_smarty_tpl->tpl_vars['key'] = $__foreach_value_11_saved_key;
 
 	备注：<textarea name="remark"><?php echo $_smarty_tpl->tpl_vars['i']->value['remark'];?>
 </textarea>
+
+	<?php if ($_smarty_tpl->tpl_vars['action']->value == 'editSave') {?>
+	修改资料备注：<textarea name="updateRemark" placeholder="请标明调整内容及原因"></textarea>
+	<?php }?>
 
 	<input type="submit" value="保存" />
 

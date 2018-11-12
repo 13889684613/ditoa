@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-11-10 08:47:55
+/* Smarty version 3.1.29, created on 2018-11-12 21:45:43
   from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/humanAffairs/view/staff.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5be62abb013b80_11358274',
+  'unifunc' => 'content_5be98407d75640_65510084',
   'file_dependency' => 
   array (
     '35311621771f53997ecc5d83261a4b855c6d0aeb' => 
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5be62abb013b80_11358274 ($_smarty_tpl) {
+function content_5be98407d75640_65510084 ($_smarty_tpl) {
 ?>
 <meta charset="utf-8" />
 <title><?php echo $_smarty_tpl->tpl_vars['pageTitle']->value;?>

@@ -22,6 +22,10 @@
 	{{/if}}
 	离职申请表：<input type="file" name="quitTable[]" /><br />
 
+	{{if $isSet == true}}
+	修改资料备注：<textarea name="updateRemark" placeholder="请标明调整内容及原因"></textarea>
+	{{/if}}
+
 	<input type="submit" value="保存" />
 
 </form>

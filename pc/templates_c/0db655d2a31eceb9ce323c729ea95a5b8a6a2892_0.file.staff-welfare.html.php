@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-11-10 12:02:58
+/* Smarty version 3.1.29, created on 2018-11-12 22:10:29
   from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/humanAffairs/view/staff-welfare.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5be65872b49d38_28935542',
+  'unifunc' => 'content_5be989d5465ac0_84854268',
   'file_dependency' => 
   array (
     '0db655d2a31eceb9ce323c729ea95a5b8a6a2892' => 
     array (
       0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/humanAffairs/view/staff-welfare.html',
-      1 => 1541822575,
+      1 => 1542031825,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5be65872b49d38_28935542 ($_smarty_tpl) {
+function content_5be989d5465ac0_84854268 ($_smarty_tpl) {
 ?>
 <title><?php echo $_smarty_tpl->tpl_vars['pageTitle']->value;?>
 </title>
@@ -114,6 +114,12 @@ $_smarty_tpl->tpl_vars['key'] = $__foreach_value_1_saved_key;
 ?><br />
 	<input type="text" name="fundOverDate" placeholder="末次公积金缴纳日期" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['fundOverDate'];?>
 " /><br />
+
+	<?php if ($_smarty_tpl->tpl_vars['isSet']->value == 1) {?>
+	修改资料备注：<textarea name="updateRemark" placeholder="请标明调整内容及原因"></textarea>
+	<?php }?>
+
+
 
 	<input type="submit" value="保存" />
 

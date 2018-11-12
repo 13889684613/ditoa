@@ -66,6 +66,14 @@
 	//编辑保存
 	if($act == 'editSave'){
 
+		$updateRemark = getVal('updateRemark',2,'');
+		if($updateRemark == ''){
+			ErrorResturn('修改员工资料需标明修改内容');
+		}
+		if(stringLen($updateRemark)>100){
+			ErrorResturn('修改备注内容长度不能超过100个字');
+		}
+
 		if($pwd!=''){
 			$loginPwd = 'dit'.$pwd.'2018';
 			$val['loginPwd'] = md5($loginPwd);
@@ -78,8 +86,20 @@
 
 		$result = $db->update($table,$val,'where staffId='.$id.'');
 		if($result){
+
+			//记录修改内容 
+			$_COOKIE['usrId'] = 1;	//测试
+
+			$record['staffId'] = $id;
+			$record['editUsr'] = $_COOKIE['usrId'];
+			$record['logContent'] = $updateRemark;
+			$record['logTime'] = date('Y-m-d H:i:s');
+
+			$db->insert(PRFIX.'staff_editlog',$record);
+
 			$url = 'human-affairs.php?_f=staff-account&id='.$id.'&page='.$page.'&s_company='.$s_company.'&s_office='.$s_office.'&s_role='.$s_role.'&s_post='.$s_post.'';
 			$url .= '&s_status='.$s_status.'&s_begintime='.$s_begintime.'&s_overtime='.$s_overtime.'&s_name='.$s_name.'&s_idno='.$s_idno.'';
+			
 			TipsRefreshResturn('操作成功',$url);
 		}else{
 			ErrorResturn(ERRORTIPS);

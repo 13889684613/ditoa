@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-11-12 12:13:04
-  from "F:\website\ditoaCoder\ditoa\pc\humanAffairs\view\staff-contract.html" */
+/* Smarty version 3.1.29, created on 2018-11-12 22:21:45
+  from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/humanAffairs/view/staff-contract.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5be8fdd085deb8_71355348',
+  'unifunc' => 'content_5be98c794a2b80_74287392',
   'file_dependency' => 
   array (
-    '26a25ca67d6ad7aa15d0ed3ec004c1d1017e9028' => 
+    'b5abb1f72bb576260ca170e82acc6965fbd1b11e' => 
     array (
-      0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\humanAffairs\\view\\staff-contract.html',
-      1 => 1541994588,
+      0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/humanAffairs/view/staff-contract.html',
+      1 => 1542032494,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5be8fdd085deb8_71355348 ($_smarty_tpl) {
+function content_5be98c794a2b80_74287392 ($_smarty_tpl) {
 ?>
 <title><?php echo $_smarty_tpl->tpl_vars['pageTitle']->value;?>
 </title>
@@ -48,8 +48,7 @@ function content_5be8fdd085deb8_71355348 ($_smarty_tpl) {
 " />
 	<input type="hidden" name="id" value="<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
 " />
-	<input type="hidden" name="act" value="<?php echo $_smarty_tpl->tpl_vars['action']->value;?>
-" />
+	<input type="hidden" name="act" value="editSave" />
 
 	<?php
 $_from = $_smarty_tpl->tpl_vars['data']->value;
@@ -63,6 +62,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 $_smarty_tpl->tpl_vars['i']->_loop = true;
 $__foreach_data_0_saved_local_item = $_smarty_tpl->tpl_vars['i'];
 ?>
+	<input type="hidden" name="contractId[]" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['contractId'];?>
+">
 	<select name="company[]">
 		<option value=""<?php if ($_smarty_tpl->tpl_vars['i']->value['companyId'] == 0) {?> selected="true"<?php }?>>所属企业</option>
 		<?php
@@ -99,6 +100,7 @@ $_smarty_tpl->tpl_vars['i'] = $__foreach_data_0_saved_local_item;
 }
 if (!$_smarty_tpl->tpl_vars['i']->_loop) {
 ?>
+	<input type="hidden" name="contractId[]" value="0">
 	<select name="company[]">
 		<option value="">所属企业</option>
 		<?php
@@ -128,6 +130,7 @@ $_smarty_tpl->tpl_vars['c'] = $__foreach_companys_2_saved_item;
 	<input type="text" name="beginDate[]" placeholder="开始日期" value="" /><br />
 	<input type="text" name="overDate[]" placeholder="截止日期" value="" /><br />
 	<br />
+	<input type="hidden" name="contractId[]" value="0">
 	<select name="company[]">
 		<option value="">所属企业</option>
 		<?php
@@ -162,6 +165,10 @@ if ($__foreach_data_0_saved_item) {
 $_smarty_tpl->tpl_vars['i'] = $__foreach_data_0_saved_item;
 }
 ?>
+
+	<?php if ($_smarty_tpl->tpl_vars['dataCount']->value > 0) {?>
+	修改资料备注：<textarea name="updateRemark" placeholder="请标明调整内容及原因"></textarea>
+	<?php }?>
 
 	<input type="submit" value="保存" />
 

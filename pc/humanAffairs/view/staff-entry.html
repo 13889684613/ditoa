@@ -22,6 +22,10 @@
 	<input type="text" name="expectedSalary" placeholder="期望工资" value="{{$i.expectedSalary}}" />元/月<br />
 	<input type="text" name="trySalary" placeholder="试用期工资" value="{{$i.trySalary}}" />元/月<br />
 
+	{{if $isSet == 1}}
+	修改资料备注：<textarea name="updateRemark" placeholder="请标明调整内容及原因"></textarea>
+	{{/if}}
+
 	<input type="submit" value="保存" />
 
 </form>

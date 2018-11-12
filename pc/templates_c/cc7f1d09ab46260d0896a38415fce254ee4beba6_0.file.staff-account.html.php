@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-11-12 13:52:51
-  from "F:\website\ditoaCoder\ditoa\pc\humanAffairs\view\staff-account.html" */
+/* Smarty version 3.1.29, created on 2018-11-12 22:24:30
+  from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/humanAffairs/view/staff-account.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5be91533e35939_78441048',
+  'unifunc' => 'content_5be98d1ecdeab4_54277661',
   'file_dependency' => 
   array (
-    'f5e0cbcb65c6be4458630acf5a266495f9cef04a' => 
+    'cc7f1d09ab46260d0896a38415fce254ee4beba6' => 
     array (
-      0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\humanAffairs\\view\\staff-account.html',
-      1 => 1542001969,
+      0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/humanAffairs/view/staff-account.html',
+      1 => 1542032614,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5be91533e35939_78441048 ($_smarty_tpl) {
+function content_5be98d1ecdeab4_54277661 ($_smarty_tpl) {
 ?>
 <title><?php echo $_smarty_tpl->tpl_vars['pageTitle']->value;?>
 </title>
@@ -133,6 +133,8 @@ if ($__foreach_value_2_saved_key) {
 $_smarty_tpl->tpl_vars['key'] = $__foreach_value_2_saved_key;
 }
 ?><br />
+
+	修改备注：<textarea name="updateRemark" placeholder="请标明调整内容及原因"></textarea>
 	
 	<input type="submit" value="保存" />
 

@@ -36,6 +36,8 @@
 	{{foreach $status as $key=>$value}}
 	<input type="radio" name="status" value="{{$key}}"{{if $key==$i.status}} checked="true"{{/if}}>{{$value}}
 	{{/foreach}}<br />
+
+	修改备注：<textarea name="updateRemark" placeholder="请标明调整内容及原因"></textarea>
 	
 	<input type="submit" value="保存" />
 

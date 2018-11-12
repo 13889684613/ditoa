@@ -137,6 +137,10 @@
 
 	备注：<textarea name="remark">{{$i.remark}}</textarea>
 
+	{{if $action == 'editSave'}}
+	修改资料备注：<textarea name="updateRemark" placeholder="请标明调整内容及原因"></textarea>
+	{{/if}}
+
 	<input type="submit" value="保存" />
 
 </form>

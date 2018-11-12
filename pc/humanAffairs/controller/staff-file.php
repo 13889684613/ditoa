@@ -53,6 +53,7 @@
 	$if = $db->get_one($table,'where staffId='.$id.' and category=1','attachFile');
 	if($if){
 		$idFile = $if['attachFile'];
+		$isSet = 1;
 	}
 	
 	//学历证书
@@ -81,6 +82,16 @@
 	
 	//创建保存
 	if($act == 'editSave'){
+
+		if($isSet == 1){
+			$updateRemark = getVal('updateRemark',2,'');
+			if($updateRemark == ''){
+				ErrorResturn('修改员工资料需标明修改内容');
+			}
+			if(stringLen($updateRemark)>100){
+				ErrorResturn('修改备注内容长度不能超过100个字');
+			}
+		}
 
 		$formname = 'staffFile';
 		$picname = rand(0,10000).time();
@@ -208,6 +219,10 @@
 			// -- 其它文件
 			if(count($other_file)>0){
 
+				//清除历史无用数据
+				$delId = implode(',',$otherId);
+				$db->delete($table,'where staffId='.$id.' and category=5 and attachId not in('.$delId.')');
+
 				for($e=0;$e<count($other_file);$e++){
 
 					$val = array();
@@ -235,6 +250,16 @@
 			}
 
 			//更新资料文件数据 over
+
+			//记录修改内容 
+			$_COOKIE['usrId'] = 1;	//测试
+
+			$record['staffId'] = $id;
+			$record['editUsr'] = $_COOKIE['usrId'];
+			$record['logContent'] = $updateRemark;
+			$record['logTime'] = date('Y-m-d H:i:s');
+
+			$db->insert(PRFIX.'staff_editlog',$record);
 
 			$url = 'human-affairs.php?_f=staff-file&page='.$page.'&id='.$id.'&s_company='.$s_company.'&s_office='.$s_office.'&s_role='.$s_role.'&s_post='.$s_post.'';
 			$url .= '&s_status='.$s_status.'&s_begintime='.$s_begintime.'&s_overtime='.$s_overtime.'&s_name='.$s_name.'&s_idno='.$s_idno.'';
@@ -264,6 +289,6 @@
 	$smarty->assign('i',$data);
 	$smarty->assign('id',$id);
 	$smarty->assign('page',$page);
-	$smarty->assign('action',$action);
+	$smarty->assign('isSet',$isSet);
 
 ?>

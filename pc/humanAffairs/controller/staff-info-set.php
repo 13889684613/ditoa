@@ -269,7 +269,8 @@
 
 		$result = $db->insert($table,$val);
 		if($result){
-			TipsRefreshResturn('操作成功','human-affairs.php?_f=staff');
+			$staffId = $db->get_lastId();
+			TipsRefreshResturn('操作成功','human-affairs.php?_f=staff-entry&id='.$staffId.'');
 		}else{
 			ErrorResturn(ERRORTIPS);
 		}
@@ -307,6 +308,11 @@
 		$id = getVal('id',1,'');
 		$page = getVal('page',2,'');
 		$oldHead = getVal('oldHead',2,'');
+		$updateRemark = getVal('updateRemark',2,'');
+
+		if($updateRemark == ''){
+			ErrorResturn('修改员工资料需标明修改内容');
+		}
 
 		//验证手机号是否存在
 		$validate = $db->get_one($table,'where tel="'.$tel.'" and staffId<>'.$id.'','staffId');
@@ -366,6 +372,17 @@
 
 		$result = $db->update($table,$val,'where staffId='.$id.'');
 		if($result){
+
+			//记录修改内容 
+			$_COOKIE['usrId'] = 1;	//测试
+
+			$record['staffId'] = $id;
+			$record['editUsr'] = $_COOKIE['usrId'];
+			$record['logContent'] = $updateRemark;
+			$record['logTime'] = date('Y-m-d H:i:s');
+
+			$db->insert(PRFIX.'staff_editlog',$record);
+
 			$url = 'human-affairs.php?_f=staff&page='.$page.'&s_company='.$s_company.'&s_office='.$s_office.'&s_role='.$s_role.'&s_post='.$s_post.'';
 			$url .= '&s_status='.$s_status.'&s_begintime='.$s_begintime.'&s_overtime='.$s_overtime.'&s_name='.$s_name.'&s_idno='.$s_idno.'';
 			TipsRefreshResturn('操作成功',$url);

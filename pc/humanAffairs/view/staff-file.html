@@ -48,6 +48,10 @@
 	<input type="file" name="staffFile[]" /><br />
 	{{/foreach}}
 
+	{{if $isSet == 1}}
+	修改资料备注：<textarea name="updateRemark" placeholder="请标明调整内容及原因"></textarea>
+	{{/if}}
+
 
 	<input type="submit" value="保存" />
 

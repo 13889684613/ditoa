@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-11-03 17:54:59
-  from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/system/view/checkProcess-default.html" */
+/* Smarty version 3.1.29, created on 2018-11-12 22:41:44
+  from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/humanAffairs/view/staff-edit-log.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5bdd707368bd12_29111799',
+  'unifunc' => 'content_5be99128a9e397_99916065',
   'file_dependency' => 
   array (
-    '461f67704573861b0c9dfaf8e3f356f62f619151' => 
+    '72f2b0eb0fdbe3d3ee5d67b6aa4f0240bd7b8996' => 
     array (
-      0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/system/view/checkProcess-default.html',
-      1 => 1541238897,
+      0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/humanAffairs/view/staff-edit-log.html',
+      1 => 1542033067,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5bdd707368bd12_29111799 ($_smarty_tpl) {
+function content_5be99128a9e397_99916065 ($_smarty_tpl) {
 ?>
 <meta charset="utf-8" />
 <title><?php echo $_smarty_tpl->tpl_vars['pageTitle']->value;?>
@@ -28,10 +28,11 @@ function content_5bdd707368bd12_29111799 ($_smarty_tpl) {
 <table border="1">
 	<tr>
 		<td>#</td>
-		<td>类别</td>
-		<td>审批级别</td>
-		<td>通用审批流程</td>
-		<td>操作</td>
+		<td>编辑人</td>
+		<td>所属部门</td>
+		<td>职务</td>
+		<td>编辑时间</td>
+		<td>编辑备注</td>
 	</tr>
 	<?php
 $_from = $_smarty_tpl->tpl_vars['data']->value;
@@ -48,22 +49,16 @@ $__foreach_data_0_saved_local_item = $_smarty_tpl->tpl_vars['i'];
 	<tr>
 		<td><?php echo $_smarty_tpl->tpl_vars['i']->value['sn'];?>
 </td>
-		<td><?php echo $_smarty_tpl->tpl_vars['i']->value['checkCategory'];?>
+		<td><?php echo $_smarty_tpl->tpl_vars['i']->value['editor'];?>
 </td>
-		<td><?php echo $_smarty_tpl->tpl_vars['i']->value['checkLevel'];?>
-级</td>
-		<td><?php echo $_smarty_tpl->tpl_vars['i']->value['checkProcess'];?>
+		<td><?php echo $_smarty_tpl->tpl_vars['i']->value['office'];?>
 </td>
-		<td>
-			<a href="?_f=checkProcess-default&act=remove&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
-&id=<?php echo $_smarty_tpl->tpl_vars['i']->value['defaultCheckProcessId'];
-echo $_smarty_tpl->tpl_vars['track']->value;?>
-">删除</a>
-			<a href="?_f=checkProcess-default-set&act=edit&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
-&id=<?php echo $_smarty_tpl->tpl_vars['i']->value['defaultCheckProcessId'];
-echo $_smarty_tpl->tpl_vars['track']->value;?>
-">修改</a>
-		</td>
+		<td><?php echo $_smarty_tpl->tpl_vars['i']->value['post'];?>
+</td>
+		<td><?php echo $_smarty_tpl->tpl_vars['i']->value['logTime'];?>
+</td>
+		<td><?php echo $_smarty_tpl->tpl_vars['i']->value['logContent'];?>
+</td>
 	</tr>
 	<?php
 $_smarty_tpl->tpl_vars['i'] = $__foreach_data_0_saved_local_item;

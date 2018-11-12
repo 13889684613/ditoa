@@ -1,0 +1,27 @@
+<meta charset="utf-8" />
+<title>{{$pageTitle}}</title>
+
+<table border="1">
+	<tr>
+		<td>#</td>
+		<td>编辑人</td>
+		<td>所属部门</td>
+		<td>职务</td>
+		<td>编辑时间</td>
+		<td>编辑备注</td>
+	</tr>
+	{{foreach item=i name=data from=$data}}
+	<tr>
+		<td>{{$i.sn}}</td>
+		<td>{{$i.editor}}</td>
+		<td>{{$i.office}}</td>
+		<td>{{$i.post}}</td>
+		<td>{{$i.logTime}}</td>
+		<td>{{$i.logContent}}</td>
+	</tr>
+	{{/foreach}}
+	
+</table>
+<div class="pagebox">
+	{{$page}}
+</div>
