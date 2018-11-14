@@ -15,6 +15,10 @@
 	include("oa.static.php");							//静态数据
 	include("public/library/smarty/Smarty.class.php");  //smarty 核心文件
 	include("oa.smarty.php");		                    //smarty 模板引擎配置文件
+	//用户身份验证文件
+	if(!strstr($_SERVER["QUERY_STRING"],'login')){
+		include("oa.safe.php");								
+	}
 	
 	/***数据库设置START***/
 	
