@@ -15,18 +15,14 @@
 	include("oa.static.php");							//静态数据
 	include("public/library/smarty/Smarty.class.php");  //smarty 核心文件
 	include("oa.smarty.php");		                    //smarty 模板引擎配置文件
-	//用户身份验证文件
-	if(!strstr($_SERVER["QUERY_STRING"],'login')){
-		include("oa.safe.php");								
-	}
 	
 	/***数据库设置START***/
 	
-	$DB_HOST = '127.0.0.1';//主机名
+	$DB_HOST = 'localhost:8889';//主机名
 	
 	$DB_USER = 'root';//用户
 	
-	$DB_PWD = '123456';//密码
+	$DB_PWD = '123';//密码
 	
 	$DB_NAME = 'ditoa';//数据库名称
 	
@@ -123,5 +119,10 @@
 
 	//异常提示，用于所有程序报错
 	define('ERRORTIPS','网络异常，请稍候再试！');
+
+	//用户身份验证文件
+	if(!strstr($_SERVER["QUERY_STRING"],'login')){
+		include("oa.safe.php");								
+	}
 
 ?>

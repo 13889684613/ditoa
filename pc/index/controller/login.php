@@ -63,14 +63,14 @@
 		}
 
 		//登录
-		$pwd = 'dit'.$usrPwd.'2018';
-		$L = $db->get_one($table,'where tel="'.$usrName.'" and loginPwd="'.$pwd.'"','staffId,officeId,groupId,isUpdatePwd,loginTimes,trueQuitDate');
+		$pwd = md5('dit'.$usrPwd.'2018');
+		$L = $db->get_one($table,'where tel="'.$usrName.'" and loginPwd="'.$pwd.'"','staffId,officeId,groupId,isUpdatePwd,loginTimes,trueQuitDate,status');
 		if($L){
 
 			//员工离职状态 
-			if($S['trueQuitDate']!=''){
-				$quitDate = strtotime($S['trueQuitDate']);
-				if(time()>=$quitDate){
+			if($L['trueQuitDate']!=''){
+				$quitDate = strtotime($L['trueQuitDate']);
+				if(time()>=$quitDate||$L['status']==2){
 					TipsRefreshResturn('您已离职，登录帐号已关闭','index.php?_f=login');
 				}
 			}
@@ -103,7 +103,7 @@
 			$db->update($table,$val,'where staffId='.$L['staffId'].'');
 
 			//页面跳转
-			if($L['isUpdatePwd'] == 1){
+			if($L['isUpdatePwd'] == 0){
 				RefreshResturn('index.php?_f=set-password');
 			}else{
 				RefreshResturn('index.php?_f=index');

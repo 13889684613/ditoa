@@ -376,8 +376,13 @@ class DB
 		return true;  
     }
 
-    public function Count($table, $where="") {  
-       $row = $this->get_one($table,$where,"count(*) AS num"); 
+    public function Count($table, $where="",$debug=0) {  
+       if($debug == 1){
+       		$row = $this->get_one($table,$where,"count(*) AS num",1); 
+       }else{
+       		$row = $this->get_one($table,$where,"count(*) AS num"); 
+       }
+       
        return $row['num'];  
     }
 
