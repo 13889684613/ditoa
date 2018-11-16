@@ -28,7 +28,7 @@
 		}
 
 		//变更登录密码
-		$newPwd = 'dit'.$pwd.'2018';
+		$newPwd = md5('dit'.$pwd.'2018');
 		$val['loginPwd'] = $newPwd;
 		$val['isUpdatePwd'] = 1;
 		$result = $db->update($table,$val,'where staffId='.$common_staffId.'');

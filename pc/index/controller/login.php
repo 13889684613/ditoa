@@ -9,7 +9,7 @@
 	$act = $_REQUEST['act'];
 	$table = PRFIX.'staff';	
 	$where = '';
-
+	
 	//自动登录 begin
 	if($_COOKIE['cache_staffId']!=''){
 
