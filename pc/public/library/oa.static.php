@@ -222,4 +222,23 @@
 
 	}
 
+	//审批状态
+	function static_checkStatus($key=''){
+
+		$status = array(
+			'0' => '待审批',
+			'1' => '审批中',
+			'2' => '已批准',
+			'3' => '已拒绝',
+			'4' => '作废'
+		);
+
+		if($key == ''){
+			return $status;
+		}else{
+			return $status[$key];
+		}
+
+	}
+
 ?>

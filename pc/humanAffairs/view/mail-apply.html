@@ -1,0 +1,56 @@
+<meta charset="utf-8" />
+<title>{{$pageTitle}}</title>
+
+<form method="get">
+	<input type="hidden" name="_f" value="mail-apply">
+	<select name="s_office">
+		<option value=""{{if $s_office==0}} selected=true{{/if}}>所属部门</option>
+		{{foreach item=o name=office from=$office}}
+		<option value="{{$o.officeId}}"{{if $s_office==$o.officeId}} selected=true{{/if}}>{{$o.officeName}}</option>
+		{{/foreach}}
+	</select>
+	<select name="s_group">
+		<option value=""{{if $s_group==0}} selected=true{{/if}}>所属工作组</option>
+		{{foreach item=g name=group from=$group}}
+		<option value="{{$g.groupId}}"{{if $s_group==$g.groupId}} selected=true{{/if}}>{{$o.groupName}}</option>
+		{{/foreach}}
+	</select>
+	<input type="text" name="s_name" value="{{$s_name}}" placeholder="申请人">
+	<input type="submit" value="检索">
+</form>
+
+<table border="1">
+	<tr>
+		<td>#</td>
+		<td>申请人</td>
+		<td>部门</td>
+		<td>工作组</td>
+		<td>邮箱账户</td>
+		<td>初始密码</td>
+		<td>申请时间</td>
+		<td>审批状态</td>
+		<td>审批意见</td>
+		<td>操作</td>
+	</tr>
+	{{foreach item=i name=data from=$data}}
+	<tr>
+		<td>{{$i.sn}}</td>
+		<td>{{$i.applyUsr}}</td>
+		<td>{{$i.office}}</td>
+		<td>{{$i.group}}</td>
+		<td>{{$i.mailName}}</td>
+		<td>{{$i.initialPassword}}</td>
+		<td>{{$i.applyTime}}</td>
+		<td>{{$i.checkStatus}}</td>
+		<td>{{$i.checkInfo}}</td>
+		<td>
+			<a href="?_f=mail-apply&act=remove&page={{$curPage}}&id={{$i.mailApplyId}}{{$track}}">删除</a>
+			<a href="?_f=mail-apply-set&act=edit&page={{$curPage}}&id={{$i.mailApplyId}}{{$track}}">修改</a>
+		</td>
+	</tr>
+	{{/foreach}}
+	
+</table>
+<div class="pagebox">
+	{{$page}}
+</div>
