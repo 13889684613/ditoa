@@ -28,6 +28,30 @@
 
 	}
 
+	//审批各业务类型DB数据表与字段
+	function static_checkTable($key){
+
+		$table = array(
+			'1' => array(PRFIX.'leaveapply_check','leaveApplyId'),
+			'2' => array(PRFIX.'businesstravelapply_check','btApplyId'),
+			'3' => array(PRFIX.'overtimeapply_check','overtimeApplyId'),
+			'4' => array(PRFIX.'appendsignapply_check','appendSignApplyId'),
+			'5' => array(PRFIX.'carrepairapply_check','carRepairApplyId'),
+			'6' => array(PRFIX.'officetoolapply_check','otApplyId'),
+			'7' => array(PRFIX.'officetool_transfer_check','transferId'),
+			'8' => array(PRFIX.'quitapply_check','quitApplyId'),
+			'9' => array(PRFIX.'mailapply_check','mailApplyId'),
+			'10' => array(PRFIX.'staff_appraise_check','appraiseId')
+		);
+
+		if($key == ''){
+			return $table;
+		}else{
+			return $table[$key];
+		}
+
+	}
+
 	//性别
 	function static_sex($key=''){
 		$sexArray = array(

@@ -13,16 +13,17 @@
 	include("oa.db.php");			 					//DB操作
 	include("oa.function.php");		 					//常用函数库
 	include("oa.static.php");							//静态数据
+	include('oa.library.php');							//常用DB操作
 	include("public/library/smarty/Smarty.class.php");  //smarty 核心文件
 	include("oa.smarty.php");		                    //smarty 模板引擎配置文件
 	
 	/***数据库设置START***/
 	
-	$DB_HOST = '127.0.0.1';//主机名
+	$DB_HOST = 'localhost:8889';//主机名
 	
 	$DB_USER = 'root';//用户
 	
-	$DB_PWD = '123456';//密码
+	$DB_PWD = '123';//密码
 	
 	$DB_NAME = 'ditoa';//数据库名称
 	

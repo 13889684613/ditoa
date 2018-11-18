@@ -1,7 +1,7 @@
 <?php
 
 	//# Mr.Z
-	//# 2018-11-16
+	//# 2018-11-18
 	//# 邮箱申请
 
 	//分页类
@@ -48,42 +48,53 @@
 	$sn = $curPage * $length - $length;	//序号
 
 	//拉取邮箱申请数据
-	$field = 'mailApplyId,applyUsrId,mailName,initialPassword,applyTime,checkStatus';
+	$field = 'mailApplyId,applyUsrId,mailName,initialPassword,applyTime,checkStatus,curCheckLevel';
 	$data = $db->get_some($table,$page->firstcount,$length,'order by applyTime desc',$where,$field);
 	foreach ($data as $key => $value) {
 		++ $sn;
 		$data[$key]['sn'] = $sn;
 		//申请人
-		$S = $db->get_one(PRFIX.'staff','where staffId='.$data[$key]['mailApplyId'].'','staffName,officeId,groupId');
+		$S = $db->get_one(PRFIX.'staff','where staffId='.$data[$key]['applyUsrId'].'','staffName,officeId,groupId');
 		$data[$key]['applyUsr'] = $S['staffName'];
 		//部门
 		$O = $db->get_one(PRFIX.'office','where officeId='.$S['officeId'].'','officeName');
-		$data[$key]['office'] = $S['officeName'];
+		$data[$key]['office'] = $O['officeName'];
 		//工作组
 		$G = $db->get_one(PRFIX.'group','where groupId='.$S['groupId'].'','groupName');
-		$data[$key]['group'] = $S['groupName'];
+		$data[$key]['group'] = $G['groupName'];
 		//初始密码
 		if($data[$key]['initialPassword']==''){
 			$data[$key]['initialPassword'] = '待设置';
 		}
+		//审批状态
+		$checkStatus = $data[$key]['checkStatus'];
+		$data[$key]['checkStatus'] = static_checkStatus($data[$key]['checkStatus']);
+		//审批意见
+		$checkInfo = '暂无';
+		if($checkStatus == 2||$checkStatus == 3||$checkStatus == 4){
+			$check = $db->get_one(PRFIX.'mailapply_check','where mailApplyId='.$data[$key]['mailApplyId'].' and checkLevel='.$data[$key]['curCheckLevel'].'','remark');
+			if($check['remark']!=''){
+				$checkInfo = $check['remark'];
+			}
+		}
+		$data[$key]['checkInfo'] = $checkInfo;
+		//是否存在审批
+		$validate = isExistsCheckProcess(9,$data[$key]['mailApplyId']);
+		if($validate){
+			$data[$key]['isCheck'] = 1;
+		}else{
+			$data[$key]['isCheck'] = 0;
+		}
+
 	}
 	
 	//数据绑定
 	$smarty->assign('pageTitle',$pageTitle);
-	$smarty->assign('company',$company);
+	$smarty->assign('group',$group);
 	$smarty->assign('office',$office);
-	$smarty->assign('role',$role);
-	$smarty->assign('post',$post);
-	$smarty->assign('status',$status);
-	$smarty->assign('s_company',$s_company);
 	$smarty->assign('s_office',$s_office);
-	$smarty->assign('s_role',$s_role);
-	$smarty->assign('s_post',$s_post);
-	$smarty->assign('s_status',$s_status);
-	$smarty->assign('s_begintime',$s_begintime);
-	$smarty->assign('s_overtime',$s_overtime);
+	$smarty->assign('s_group',$s_group);
 	$smarty->assign('s_name',$s_name);
-	$smarty->assign('s_idno',$s_idno);
 	$smarty->assign('data',$data);
 	$smarty->assign('page',$page->show_link(1));
 	$smarty->assign('curPage',$curPage);
@@ -94,9 +105,15 @@
 
 	//删除
 	if($act == 'remove'){
-		echo $url;exit;
 		$id = getVal('id',1,'get');
-		$result = $db->delete($table,'where staffId='.$id.'');
+
+		//验证是否已审批
+		$validate = isExistsCheckProcess(9,$id);
+		if($validate){
+			ErrorResturn('此条申请已经过审批，不能删除');
+		}
+
+		$result = $db->delete($table,'where mailApplyId='.$id.'');
 		if($result){
 			RefreshResturn($url);
 		}else{

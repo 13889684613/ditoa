@@ -1,0 +1,18 @@
+<title>{{$pageTitle}}</title>
+
+<form method="post">
+
+	<input type="hidden" name="page" value="{{$page}}" />
+	<input type="hidden" name="s_office" value="{{$s_office}}" />
+	<input type="hidden" name="s_group" value="{{$s_group}}" />
+	<input type="hidden" name="s_name" value="{{$s_name}}" />
+	<input type="hidden" name="id" value="{{$id}}" />
+	<input type="hidden" name="act" value="{{$action}}" />
+
+	<input type="text" name="mailName" placeholder="邮箱帐号" value="{{$i.mailName}}" /><br />
+
+	<textarea name="reason" placeholder="申请原因">{{$i.reason}}</textarea>
+
+	<input type="submit" value="保存" />
+
+</form>

@@ -12,7 +12,7 @@
 	<select name="s_group">
 		<option value=""{{if $s_group==0}} selected=true{{/if}}>所属工作组</option>
 		{{foreach item=g name=group from=$group}}
-		<option value="{{$g.groupId}}"{{if $s_group==$g.groupId}} selected=true{{/if}}>{{$o.groupName}}</option>
+		<option value="{{$g.groupId}}"{{if $s_group==$g.groupId}} selected=true{{/if}}>{{$g.groupName}}</option>
 		{{/foreach}}
 	</select>
 	<input type="text" name="s_name" value="{{$s_name}}" placeholder="申请人">
@@ -44,8 +44,13 @@
 		<td>{{$i.checkStatus}}</td>
 		<td>{{$i.checkInfo}}</td>
 		<td>
+			{{if $i.isCheck==0}}
 			<a href="?_f=mail-apply&act=remove&page={{$curPage}}&id={{$i.mailApplyId}}{{$track}}">删除</a>
 			<a href="?_f=mail-apply-set&act=edit&page={{$curPage}}&id={{$i.mailApplyId}}{{$track}}">修改</a>
+			{{else}}
+			<a href="?_f=mail-apply-info&page={{$curPage}}&id={{$i.mailApplyId}}{{$track}}">查看</a>
+			{{/if}}
+
 		</td>
 	</tr>
 	{{/foreach}}

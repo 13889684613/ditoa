@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-11-15 22:12:03
+/* Smarty version 3.1.29, created on 2018-11-17 13:50:14
   from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/index/view/index.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5bed7eb35a0e50_03555031',
+  'unifunc' => 'content_5befac16970a97_63028062',
   'file_dependency' => 
   array (
     'c3f837d1d6618db41a36db209cd6b70db8746e4f' => 
     array (
       0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/index/view/index.html',
-      1 => 1542291122,
+      1 => 1542291129,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5bed7eb35a0e50_03555031 ($_smarty_tpl) {
+function content_5befac16970a97_63028062 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
