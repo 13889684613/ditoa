@@ -29,19 +29,19 @@
 	}
 
 	//审批各业务类型DB数据表与字段
-	function static_checkTable($key){
+	function static_checkTable($key=''){
 
 		$table = array(
-			'1' => array(PRFIX.'leaveapply_check','leaveApplyId'),
-			'2' => array(PRFIX.'businesstravelapply_check','btApplyId'),
-			'3' => array(PRFIX.'overtimeapply_check','overtimeApplyId'),
-			'4' => array(PRFIX.'appendsignapply_check','appendSignApplyId'),
-			'5' => array(PRFIX.'carrepairapply_check','carRepairApplyId'),
-			'6' => array(PRFIX.'officetoolapply_check','otApplyId'),
-			'7' => array(PRFIX.'officetool_transfer_check','transferId'),
-			'8' => array(PRFIX.'quitapply_check','quitApplyId'),
-			'9' => array(PRFIX.'mailapply_check','mailApplyId'),
-			'10' => array(PRFIX.'staff_appraise_check','appraiseId')
+			'1' => array(PRFIX.'leaveapply_check','leaveApplyId',PRFIX.'leaveapply'),
+			'2' => array(PRFIX.'businesstravelapply_check','btApplyId',PRFIX.'businesstravelapply'),
+			'3' => array(PRFIX.'overtimeapply_check','overtimeApplyId',PRFIX.'overtimeapply'),
+			'4' => array(PRFIX.'appendsignapply_check','appendSignApplyId',PRFIX.'appendsignapply'),
+			'5' => array(PRFIX.'carrepairapply_check','carRepairApplyId',PRFIX.'carrepairapply'),
+			'6' => array(PRFIX.'officetoolapply_check','otApplyId',PRFIX.'officetoolapply'),
+			'7' => array(PRFIX.'officetool_transfer_check','transferId',PRFIX.'officetool_transfer'),
+			'8' => array(PRFIX.'quitapply_check','quitApplyId',PRFIX.'quitapply'),
+			'9' => array(PRFIX.'mailapply_check','mailApplyId',PRFIX.'mailapply'),
+			'10' => array(PRFIX.'staff_appraise_check','appraiseId',PRFIX.'staff_appraise')
 		);
 
 		if($key == ''){
@@ -261,6 +261,23 @@
 			return $status;
 		}else{
 			return $status[$key];
+		}
+
+	}
+
+	//审批结果
+	function static_checkResult($key=''){
+
+		$result = array(
+			'1' => '已批准',
+			'2' => '已拒绝',
+			'3' => '作废'
+		);
+
+		if($key == ''){
+			return $result;
+		}else{
+			return $result[$key];
 		}
 
 	}

@@ -20,8 +20,10 @@
 		<td>{{$i.group}}</td>
 		<td>{{$i.checkProcess}}</td>
 		<td>
+			{{if $i.isOpt}}
 			<a href="?_f=checkProcess-custom&act=remove&page={{$curPage}}&id={{$i.checkProcessId}}{{$track}}">删除</a>
 			<a href="?_f=checkProcess-custom-set&act=edit&page={{$curPage}}&id={{$i.checkProcessId}}{{$track}}">修改</a>
+			{{/if}}
 		</td>
 	</tr>
 	{{/foreach}}

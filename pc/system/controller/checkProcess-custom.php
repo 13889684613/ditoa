@@ -50,6 +50,16 @@
 	foreach ($data as $key => $value) {
 		$checkProcess = '';
 		++ $sn;
+		//是否可删除或修改 begin
+		$table = static_checkTable($data[$key]['checkCategory']);
+		$tableName = $table[2];
+		$check = $db->get_one($tableName,'where checkCategory=2 and checkProcessId='.$data[$key]['checkProcessId'].'');
+		if($check){
+			$data[$key]['isOpt'] = false;
+		}else{
+			$data[$key]['isOpt'] = true;
+		}
+		//是否可删除或修改 over
 		$data[$key]['sn'] = $sn;
 		$data[$key]['checkCategory'] = static_checkType($data[$key]['checkCategory']);
 		//办事处
@@ -68,6 +78,7 @@
 		$checkProcess = $R['checkRoleName'].$checkProcess;
 		$data[$key]['checkProcess'] = $checkProcess;
 	}
+
 	
 	//数据绑定
 	$smarty->assign('pageTitle',$pageTitle);

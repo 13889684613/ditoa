@@ -16,8 +16,10 @@
 		<td>{{$i.checkLevel}}级</td>
 		<td>{{$i.checkProcess}}</td>
 		<td>
+			{{if $i.isOpt}}
 			<a href="?_f=checkProcess-default&act=remove&page={{$curPage}}&id={{$i.defaultCheckProcessId}}{{$track}}">删除</a>
 			<a href="?_f=checkProcess-default-set&act=edit&page={{$curPage}}&id={{$i.defaultCheckProcessId}}{{$track}}">修改</a>
+			{{/if}}
 		</td>
 	</tr>
 	{{/foreach}}

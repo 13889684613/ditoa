@@ -45,10 +45,12 @@
 	if($act == 'addSave'){
 
 		//验证是否已存在同类型的发起者审批流程
-		$validate = $db->get_one($table,'where beginRole='.$beginRole.' and checkCategory='.$category.'','defaultCheckProcessId');
-		if($validate){
-			ErrorResturn('该发起者审批流程已制定，请重新选择发起者');
-		}
+		// $validate = $db->get_one($table,'where beginRole='.$beginRole.' and checkCategory='.$category.'','defaultCheckProcessId');
+		// if($validate){
+		// 	ErrorResturn('该发起者审批流程已制定，请重新选择发起者');
+		// }
+
+		//2018-11-24，可建立重复的审批流程，如已有审批数据产生，审批流不能再修改或删除，只能重建
 
 		//审批级别
 		$checkLevel = count(array_filter($role));
@@ -118,10 +120,10 @@
 		$s_role = getVal('s_role',2,'');
 
 		//验证是否已存在同类型的发起者审批流程
-		$validate = $db->get_one($table,'where beginRole='.$beginRole.' and checkCategory='.$category.' and defaultCheckProcessId<>'.$defaultCheckProcessId.'','defaultCheckProcessId');
-		if($validate){
-			ErrorResturn('该发起者审批流程已制定，请重新选择发起者');
-		}
+		// $validate = $db->get_one($table,'where beginRole='.$beginRole.' and checkCategory='.$category.' and defaultCheckProcessId<>'.$defaultCheckProcessId.'','defaultCheckProcessId');
+		// if($validate){
+		// 	ErrorResturn('该发起者审批流程已制定，请重新选择发起者');
+		// }
 
 		//审批级别
 		$checkLevel = count(array_filter($role));

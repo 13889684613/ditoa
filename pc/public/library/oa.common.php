@@ -19,11 +19,11 @@
 	
 	/***数据库设置START***/
 	
-	$DB_HOST = '127.0.0.1';//主机名
+	$DB_HOST = 'localhost:8889';//主机名
 	
 	$DB_USER = 'root';//用户
 	
-	$DB_PWD = '123456';//密码
+	$DB_PWD = '123';//密码
 	
 	$DB_NAME = 'ditoa';//数据库名称
 	

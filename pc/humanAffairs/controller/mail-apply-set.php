@@ -52,6 +52,9 @@
 		}
 
 		$val['applyUsrId'] = $common_staffId;
+		$val['applyUsrRole'] = $common_checkRole;
+		$val['applyUsrOffice'] = $common_office;
+		$val['applyUsrGroup'] = $common_group;
 		$val['mailName'] = $mailName;
 		$val['reason'] = $reason;
 		$val['applyTime'] = date('Y-m-d H:i:s');
@@ -62,9 +65,11 @@
 		$checkOffice = 0;
 		$checkGroup = 0;
 		$checkRole = 0;
+		$checkCategory = 0;
+		$checkProcessId = 0;
 
 		//如定义了自定义审批流遵循自定义审批流
-		$custom = $db->get_one(PRFIX.'checkprocess','where checkCategory=9 and officeId='.$common_office.' and groupId='.$common_group.' and beginRole='.$common_checkRole.'','checkProcessId');
+		$custom = $db->get_one(PRFIX.'checkprocess','where checkCategory=9 and officeId='.$common_office.' and groupId='.$common_group.' and beginRole='.$common_checkRole.' order by createTime desc limit 1','checkProcessId');
 		if($custom){
 
 			//查询审批流程
@@ -74,11 +79,13 @@
 				$checkOffice = $check['officeId'];
 				$checkGroup = $check['groupId'];
 				$checkRole = $check['roleId'];
+				$checkCategory = 2;
+				$checkProcessId = $custom['checkProcessId'];
 			}
 
 		}else{
 			//默认审批流
-			$default = $db->get_one(PRFIX.'default_checkprocess','where checkCategory=9 and beginRole='.$common_checkRole.'','defaultCheckProcessId');
+			$default = $db->get_one(PRFIX.'default_checkprocess','where checkCategory=9 and beginRole='.$common_checkRole.' order by createTime desc limit 1','defaultCheckProcessId');
 			if($default){
 
 				//查询审批流程
@@ -88,6 +95,8 @@
 					$checkOffice = $common_office;
 					$checkGroup = $common_group;
 					$checkRole = $check['roleId'];
+					$checkCategory = 1;
+					$checkProcessId = $default['defaultCheckProcessId'];
 				}
 			}
 		}
@@ -98,6 +107,8 @@
 		$val['curCheckOffice'] = $checkOffice;
 		$val['curCheckGroup'] = $checkGroup;
 		$val['curCheckRole'] = $checkRole;
+		$val['checkCategory'] = $checkCategory;
+		$val['checkProcessId'] = $checkProcessId;
 
 		$result = $db->insert($table,$val);
 		if($result){
@@ -137,7 +148,7 @@
 
 		$result = $db->update($table,$val,'where mailApplyId='.$id.'');
 		if($result){
-			TipsRefreshResturn('操作成功','human-affairsl.php?_f=mail-apply&page='.$page.'&s_office='.$s_office.'&s_group='.$s_group.'&s_name='.$s_name.'');
+			TipsRefreshResturn('操作成功','human-affairs.php?_f=mail-apply&page='.$page.'&s_office='.$s_office.'&s_group='.$s_group.'&s_name='.$s_name.'');
 		}else{
 			ErrorResturn(ERRORTIPS);
 		}

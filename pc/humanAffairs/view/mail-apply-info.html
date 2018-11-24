@@ -8,20 +8,18 @@
 
 审批详情：<br />
 审批进度轴：<br />
-<table>
+<table border="1">
 	<tr>
 		<td>角色</td>
 		<td>人员</td>
-		<td>部门</td>
 		<td>状态</td>
 		<td>时间</td>
 	</tr>
 	{{foreach item=p name=process from=$process}}
 	<tr>
 		<td>{{$p.role}}</td>
-		<td>{{$p.usr}}</td>
-		<td>{{$p.deparment}}</td>
-		<td>{{$p.status}}</td>
+		<td>{{$p.staff}}</td>
+		<td>{{$p.result}}</td>
 		<td>{{$p.time}}</td>
 	</tr>
 	{{/foreach}}
@@ -37,7 +35,7 @@
 		<td>审批人</td>
 		<td>审批时间</td>
 	</tr>
-	{{foreach item=c name=data from=$data}}
+	{{foreach item=c name=check from=$check}}
 	<tr>
 		<td>{{$c.level}}</td>
 		<td>{{$c.role}}</td>
