@@ -1,15 +1,15 @@
 <?php
 
 	//# Mr.Z
-	//# 2018-11-18
-	//# 邮箱申请
+	//# 2018-11-28
+	//# 邮箱申请审批
 
 	//分页类
 	include_once(PUBLICPATH.'oa.page.php');
 
 	//当前页面公共配置
-	$pageTitle = '邮箱申请';
-	$router = '?_f=mail-apply';
+	$pageTitle = '邮箱申请审批';
+	$router = '?_f=mail-apply-check';
 	$curPage = $_REQUEST['page'];
 	$act = $_REQUEST['act'];
 	$table = PRFIX.'mailapply';
@@ -20,11 +20,16 @@
 
 	//系统角色
 	$group = $db->get_all(PRFIX.'group','order by rank desc,createTime desc','groupId,groupName');
+
+	//状态
+	$status = static_checkStatus();
 	
 	//检索
 	$s_office = getVal('s_office',1,'');
 	$s_group = getVal('s_group',1,'');
 	$s_name = getVal('s_name',2,'');
+	$s_status = getVal('s_status',1,'');
+	$s_time = getVal('s_time',2,'');
 
 	if($s_office!=0){
 		$where .= ' and applyUsrOffice='.$s_office.'';
@@ -37,6 +42,19 @@
 	if($s_name!=''){
 		$where .= ' and applyUsrId in(select staffId from '.PRFIX.'staff where staffName like "%'.$s_name.'%")';
 		$track .= '&s_name='.$s_name.'';
+	}
+	if($s_status!=0){
+		$where .= ' and checkStatus='.$s_status.'';
+		$track .= '&s_status='.$s_status.'';
+	}
+	if($s_time!=''){
+		$where .= ' and applyTime like "%'.$s_time.'%"';
+		$track .= '&s_time='.$s_time.'';
+	}
+
+	//默认显示待审批与审批中的数据
+	if($s_status == 0){
+		$where .= ' and (checkStatus=0 or checkStatus=1)';
 	}
 
 	//页面分页配置
@@ -69,19 +87,14 @@
 		//审批意见
 		$checkInfo = '暂无';
 		if($checkStatus == 2||$checkStatus == 3||$checkStatus == 4){
-			$check = $db->get_one(PRFIX.'mailapply_check','where mailApplyId='.$data[$key]['mailApplyId'].' and checkLevel='.$data[$key]['curCheckLevel'].'','remark');
+			$check = $db->get_one(PRFIX.'mailapply_check','where mailApplyId='.$data[$key]['mailApplyId'].' and checkLevel='.$data[$key]['curCheckLevel'].'','remark,checkUsr');
 			if($check['remark']!=''){
 				$checkInfo = $check['remark'];
+				$checkUsr = getStaffName($check['checkUsr']);
 			}
 		}
 		$data[$key]['checkInfo'] = $checkInfo;
-		//是否存在审批
-		$validate = isExistsCheckProcess(9,$data[$key]['mailApplyId']);
-		if($validate){
-			$data[$key]['isCheck'] = 1;
-		}else{
-			$data[$key]['isCheck'] = 0;
-		}
+		$data[$key]['checkUsr'] = $checkUsr;
 
 	}
 	
@@ -96,26 +109,5 @@
 	$smarty->assign('page',$page->show_link(1));
 	$smarty->assign('curPage',$curPage);
 	$smarty->assign('track',$track);
-
-	//操作返回地址
-	$url = $router.$track;
-
-	//删除
-	if($act == 'remove'){
-		$id = getVal('id',1,'get');
-
-		//验证是否已审批
-		$validate = isExistsCheckProcess(9,$id);
-		if($validate){
-			ErrorResturn('此条申请已经过审批，不能删除');
-		}
-
-		$result = $db->delete($table,'where mailApplyId='.$id.'');
-		if($result){
-			RefreshResturn($url);
-		}else{
-			ErrorResturn(ERRORTIPS);
-		}
-	}
 
 ?>

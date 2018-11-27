@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-11-24 19:52:42
+/* Smarty version 3.1.29, created on 2018-11-28 06:40:34
   from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/humanAffairs/view/mail-apply-info.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5bf93b8a7213d4_28120956',
+  'unifunc' => 'content_5bfdc7e2a6afc4_36035987',
   'file_dependency' => 
   array (
     '97ed9fd79a9f60e4b0e2b2a967d87a98a3b90409' => 
     array (
       0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/humanAffairs/view/mail-apply-info.html',
-      1 => 1543060361,
+      1 => 1543358433,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5bf93b8a7213d4_28120956 ($_smarty_tpl) {
+function content_5bfdc7e2a6afc4_36035987 ($_smarty_tpl) {
 ?>
 <meta charset="utf-8" />
 <title><?php echo $_smarty_tpl->tpl_vars['pageTitle']->value;?>
@@ -34,6 +34,8 @@ function content_5bf93b8a7213d4_28120956 ($_smarty_tpl) {
 <br />
 邮箱帐号：<?php echo $_smarty_tpl->tpl_vars['i']->value['mailName'];?>
 &nbsp;申请事由：<?php echo $_smarty_tpl->tpl_vars['i']->value['reason'];?>
+<br />
+审批状态：<?php echo $_smarty_tpl->tpl_vars['i']->value['checkStatus'];?>
 <br /><br />
 
 审批详情：<br />

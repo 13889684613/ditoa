@@ -22,7 +22,7 @@
 	//记录列表页检索条件over
 
 	//拉取申请详情信息
-	$data = $db->get_one($table,'where mailApplyId='.$mailApplyId.'','applyUsrId,applyUsrRole,applyUsrOffice,applyUsrGroup,mailName,reason,applyTime,checkCategory,checkProcessId');
+	$data = $db->get_one($table,'where mailApplyId='.$mailApplyId.'','applyUsrId,applyUsrRole,applyUsrOffice,applyUsrGroup,mailName,reason,applyTime,checkCategory,checkProcessId,checkStatus');
 	if($data){
 
 		$staffInfo = getStaffInfo($data['applyUsrId']);
@@ -34,6 +34,7 @@
 
 		$data['office'] = getOfficeName($officeId);
 		$data['group'] = getGroupName($groupId);
+		$data['checkStatus'] = static_checkStatus($data['checkStatus']);
 
 	}
 
