@@ -1,0 +1,71 @@
+<meta charset="utf-8" />
+<title>{{$pageTitle}}</title>
+
+申请详情：<br />
+<img src="{{$i.photo}}" />&nbsp;申请人：{{$i.applyName}}<br />
+所属部门：{{$i.office}}&nbsp;所属工作组：{{$i.group}}<br />
+邮箱帐号：{{$i.mailName}}&nbsp;申请事由：{{$i.reason}}<br />
+{{if $i.checkStatus == 0 or $i.checkStatus = 1}}
+审批状态：{{$i.checkStatusText}}
+{{else}}
+<form method="post">
+	拒绝原因：<input type="text" name="reason" />
+	<input type="hidden" name="act" value="refuse" />
+	<input type="submit" value="提交" />
+</form>
+<form method="post">
+	通过：
+	{{if $checkLevel==0 or $checkLevel==$nextCheckLevel}}
+	<input type="text" name="pwd" placeholder="初始密码" />
+	{{/if}}
+	<input type="hidden" name="act" value="agree" />
+	<input type="submit" value="提交" />
+</form>
+<form method="post">
+	作废原因：<input type="text" name="reason" />
+	<input type="hidden" name="act" value="cancel" />
+	<input type="submit" value="提交" />
+</form>
+{{/if}}
+<br /><br />
+审批详情：<br />
+审批进度轴：<br />
+<table border="1">
+	<tr>
+		<td>角色</td>
+		<td>人员</td>
+		<td>状态</td>
+		<td>时间</td>
+	</tr>
+	{{foreach item=p name=process from=$process}}
+	<tr>
+		<td>{{$p.role}}</td>
+		<td>{{$p.staff}}</td>
+		<td>{{$p.result}}</td>
+		<td>{{$p.time}}</td>
+	</tr>
+	{{/foreach}}
+</table>
+{{if $isCheck == 1}}
+审批记录表格：<br />
+<table>
+	<tr>
+		<td>审批级别</td>
+		<td>审批角色</td>
+		<td>审批状态</td>
+		<td>审批意见</td>
+		<td>审批人</td>
+		<td>审批时间</td>
+	</tr>
+	{{foreach item=c name=check from=$check}}
+	<tr>
+		<td>{{$c.level}}</td>
+		<td>{{$c.role}}</td>
+		<td>{{$c.status}}</td>
+		<td>{{$c.remark}}</td>
+		<td>{{$c.checkUsr}}</td>
+		<td>{{$c.time}}</td>
+	</tr>
+	{{/foreach}}
+</table>
+{{/if}}

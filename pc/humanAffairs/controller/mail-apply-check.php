@@ -57,6 +57,8 @@
 		$where .= ' and (checkStatus=0 or checkStatus=1)';
 	}
 
+	$where = 'where 1=1'.$where;
+
 	//页面分页配置
 	$total = $db->Count($table,$where);
 	$length = 5;
@@ -85,7 +87,7 @@
 		$checkStatus = $data[$key]['checkStatus'];
 		$data[$key]['checkStatus'] = static_checkStatus($checkStatus);
 		//审批意见
-		$checkInfo = '暂无';
+		$checkInfo = '暂无'; $checkUsr = '待审批';
 		if($checkStatus == 2||$checkStatus == 3||$checkStatus == 4){
 			$check = $db->get_one(PRFIX.'mailapply_check','where mailApplyId='.$data[$key]['mailApplyId'].' and checkLevel='.$data[$key]['curCheckLevel'].'','remark,checkUsr');
 			if($check['remark']!=''){
@@ -93,18 +95,26 @@
 				$checkUsr = getStaffName($check['checkUsr']);
 			}
 		}
+
 		$data[$key]['checkInfo'] = $checkInfo;
 		$data[$key]['checkUsr'] = $checkUsr;
-
+		if($checkStatus == 0||$checkStatus == 1){
+			$data[$key]['isCheck'] = 0;
+		}else{
+			$data[$key]['isCheck'] = 1;
+		}
 	}
 	
 	//数据绑定
 	$smarty->assign('pageTitle',$pageTitle);
 	$smarty->assign('group',$group);
 	$smarty->assign('office',$office);
+	$smarty->assign('status',$status);
 	$smarty->assign('s_office',$s_office);
 	$smarty->assign('s_group',$s_group);
+	$smarty->assign('s_status',$s_status);
 	$smarty->assign('s_name',$s_name);
+	$smarty->assign('s_time',$s_time);
 	$smarty->assign('data',$data);
 	$smarty->assign('page',$page->show_link(1));
 	$smarty->assign('curPage',$curPage);
