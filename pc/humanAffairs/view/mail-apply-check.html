@@ -2,7 +2,7 @@
 <title>{{$pageTitle}}</title>
 
 <form method="get">
-	<input type="hidden" name="_f" value="mail-apply">
+	<input type="hidden" name="_f" value="mail-apply-check">
 	<select name="s_office">
 		<option value=""{{if $s_office==0}} selected=true{{/if}}>所属部门</option>
 		{{foreach item=o name=office from=$office}}

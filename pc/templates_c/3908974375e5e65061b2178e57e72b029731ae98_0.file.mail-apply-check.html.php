@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-11-28 19:11:00
+/* Smarty version 3.1.29, created on 2018-12-01 08:53:24
   from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/humanAffairs/view/mail-apply-check.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5bfe77c4d9e2b9_39186133',
+  'unifunc' => 'content_5c01db84013506_65769505',
   'file_dependency' => 
   array (
     '3908974375e5e65061b2178e57e72b029731ae98' => 
     array (
       0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/humanAffairs/view/mail-apply-check.html',
-      1 => 1543403350,
+      1 => 1543625593,
       2 => 'file',
     ),
   ),
@@ -19,14 +19,14 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5bfe77c4d9e2b9_39186133 ($_smarty_tpl) {
+function content_5c01db84013506_65769505 ($_smarty_tpl) {
 ?>
 <meta charset="utf-8" />
 <title><?php echo $_smarty_tpl->tpl_vars['pageTitle']->value;?>
 </title>
 
 <form method="get">
-	<input type="hidden" name="_f" value="mail-apply">
+	<input type="hidden" name="_f" value="mail-apply-check">
 	<select name="s_office">
 		<option value=""<?php if ($_smarty_tpl->tpl_vars['s_office']->value == 0) {?> selected=true<?php }?>>所属部门</option>
 		<?php

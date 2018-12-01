@@ -5,25 +5,53 @@
 <img src="{{$i.photo}}" />&nbsp;申请人：{{$i.applyName}}<br />
 所属部门：{{$i.office}}&nbsp;所属工作组：{{$i.group}}<br />
 邮箱帐号：{{$i.mailName}}&nbsp;申请事由：{{$i.reason}}<br />
-{{if $i.checkStatus == 0 or $i.checkStatus = 1}}
 审批状态：{{$i.checkStatusText}}
-{{else}}
-<form method="post">
-	拒绝原因：<input type="text" name="reason" />
+{{if $reason!=''}}
+<br />原因：{{$reason}}
+{{/if}}
+{{if $formList}}
+<form>
+	拒绝原因：
+	<input type="text" name="reason" />
 	<input type="hidden" name="act" value="refuse" />
+	<input type="hidden" name="_f" value="mail-apply-check-info">
+	<input type="hidden" name="page" value="{{$page}}">
+	<input type="hidden" name="id" value="{{$id}}">
+	<input type="hidden" name="s_office" value="{{$s_office}}">
+	<input type="hidden" name="s_group" value="{{$s_group}}">
+	<input type="hidden" name="s_status" value="{{$s_status}}">
+	<input type="hidden" name="s_name" value="{{$s_name}}">
+	<input type="hidden" name="s_time" value="{{$s_time}}">
 	<input type="submit" value="提交" />
 </form>
-<form method="post">
+<form>
 	通过：
-	{{if $checkLevel==0 or $checkLevel==$nextCheckLevel}}
+	{{if $checkLevel==0 or $checkLevel==$i.curCheckLevel}}
 	<input type="text" name="pwd" placeholder="初始密码" />
 	{{/if}}
 	<input type="hidden" name="act" value="agree" />
+	<input type="hidden" name="_f" value="mail-apply-check-info">
+	<input type="hidden" name="page" value="{{$page}}">
+	<input type="hidden" name="id" value="{{$id}}">
+	<input type="hidden" name="s_office" value="{{$s_office}}">
+	<input type="hidden" name="s_group" value="{{$s_group}}">
+	<input type="hidden" name="s_status" value="{{$s_status}}">
+	<input type="hidden" name="s_name" value="{{$s_name}}">
+	<input type="hidden" name="s_time" value="{{$s_time}}">
 	<input type="submit" value="提交" />
 </form>
-<form method="post">
-	作废原因：<input type="text" name="reason" />
+<form>
+	作废原因：
+	<input type="text" name="reason" />
 	<input type="hidden" name="act" value="cancel" />
+	<input type="hidden" name="_f" value="mail-apply-check-info">
+	<input type="hidden" name="page" value="{{$page}}">
+	<input type="hidden" name="id" value="{{$id}}">
+	<input type="hidden" name="s_office" value="{{$s_office}}">
+	<input type="hidden" name="s_group" value="{{$s_group}}">
+	<input type="hidden" name="s_status" value="{{$s_status}}">
+	<input type="hidden" name="s_name" value="{{$s_name}}">
+	<input type="hidden" name="s_time" value="{{$s_time}}">
 	<input type="submit" value="提交" />
 </form>
 {{/if}}
@@ -46,9 +74,9 @@
 	</tr>
 	{{/foreach}}
 </table>
-{{if $isCheck == 1}}
+{{if count($check)>0}}
 审批记录表格：<br />
-<table>
+<table border="1">
 	<tr>
 		<td>审批级别</td>
 		<td>审批角色</td>
@@ -59,12 +87,12 @@
 	</tr>
 	{{foreach item=c name=check from=$check}}
 	<tr>
-		<td>{{$c.level}}</td>
+		<td>{{$c.checkLevel}}</td>
 		<td>{{$c.role}}</td>
-		<td>{{$c.status}}</td>
+		<td>{{$c.result}}</td>
 		<td>{{$c.remark}}</td>
 		<td>{{$c.checkUsr}}</td>
-		<td>{{$c.time}}</td>
+		<td>{{$c.checkTime}}</td>
 	</tr>
 	{{/foreach}}
 </table>

@@ -93,7 +93,7 @@
 	if($act == 'remove'){
 		$id = getVal('id',1,'get');
 		//删除审批流主表
-		$result = $db->	delete($table,'where checkProcessId='.$id.'');
+		$result = $db->delete(PRFIX.'checkprocess','where checkProcessId='.$id.'');
 		if($result){
 			//删除审批流明细表
 			$db->delete($detailTable,'where checkProcessId='.$id.'');
