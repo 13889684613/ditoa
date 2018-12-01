@@ -1,13 +1,13 @@
 <?php
 
 	//# Mr.Z
-	//# 2018-11-18
-	//# 提交邮箱申请
+	//# 2018-12-1
+	//# 提交离职申请
 
 	//当前页面公共配置
-	$pageTitle = '提交邮箱申请';
+	$pageTitle = '提交离职申请';
 	$act = $_REQUEST['act'];
-	$table = PRFIX.'mailapply';	
+	$table = PRFIX.'quitapply';	
 	$where = '';
 
 	//记录列表页检索条件begin
@@ -17,23 +17,23 @@
 	//记录列表页检索条件over
 
 	//获取值 begin
-	$mailName = getVal('mailName',2,'');
+	$quitdate = getVal('quitdate',2,'');
 	$reason = getVal('reason',2,'');
 	//获取值 over
 
 	//验证
 	if($act == 'addSave'||$act == 'editSave'){
-		if($mailName == ''){
-			ErrorResturn('请填写邮箱帐号');
-		}
-		if(stringLen($mailName)>50){
-			ErrorResturn('邮箱帐号长度不能超过50个字符');
-		}
 		if($reason == ''){
-			ErrorResturn('请填写申请原因');
+			ErrorResturn('请填写离职原因');
 		}
 		if(stringLen($reason)>100){
-			ErrorResturn('申请原因长度不能超过100个字符');
+			ErrorResturn('离职原因长度不能超过100个字符');
+		}
+		if($quitdate == ''){
+			ErrorResturn('请填写离职日期');
+		}
+		if(!isdate($quitdate)){
+			ErrorResturn('请填写正确的离职日期');
 		}
 	}
 
@@ -45,22 +45,16 @@
 	//创建保存
 	if($act == 'addSave'){
 
-		//验证邮箱帐号名是否存在
-		$validate = $db->get_one($table,'where mailName="'.$mailName.'"','mailApplyId');
-		if($validate){
-			ErrorResturn('邮箱帐号已存在，请重新填写邮箱帐号');
-		}
-
 		$val['applyUsrId'] = $common_staffId;
 		$val['applyUsrRole'] = $common_checkRole;
 		$val['applyUsrOffice'] = $common_office;
 		$val['applyUsrGroup'] = $common_group;
-		$val['mailName'] = $mailName;
+		$val['quitDate'] = $quitdate;
 		$val['reason'] = $reason;
 		$val['applyTime'] = date('Y-m-d H:i:s');
 
 		//初始化审批流信息 begin
-		$checkInfo = originCheckProcess(9);
+		$checkInfo = originCheckProcess(8);
 		$checkStatus = $checkInfo[0];
 		$checkOffice = $checkInfo[1];
 		$checkGroup = $checkInfo[2];
@@ -79,7 +73,7 @@
 
 		$result = $db->insert($table,$val);
 		if($result){
-			TipsRefreshResturn('提交成功','human-affairs.php?_f=mail-apply');
+			TipsRefreshResturn('提交成功','human-affairs.php?_f=quit-apply');
 		}else{
 			ErrorResturn(ERRORTIPS);
 		}
@@ -95,12 +89,12 @@
 		$page = getVal('page',2,'');
 
 		//验证是否已审批
-		$validate = isExistsCheckProcess(9,$id);
+		$validate = isExistsCheckProcess(8,$id);
 		if($validate){
 			ErrorResturn('此条申请已经过审批，不能再修改');
 		}
 
-		$data = $db->get_one($table,'where mailApplyId='.$id.'','mailName,reason');
+		$data = $db->get_one($table,'where quitApplyId='.$id.'','quitDate,reason');
 
 	}
 
@@ -110,12 +104,12 @@
 		$id = getVal('id',1,'');
 		$page = getVal('page',2,'');
 
-		$val['mailName'] = $mailName;
+		$val['quitDate'] = $quitdate;
 		$val['reason'] = $reason;
 
-		$result = $db->update($table,$val,'where mailApplyId='.$id.'');
+		$result = $db->update($table,$val,'where quitApplyId='.$id.'');
 		if($result){
-			TipsRefreshResturn('操作成功','human-affairs.php?_f=mail-apply&page='.$page.'&s_office='.$s_office.'&s_group='.$s_group.'&s_name='.$s_name.'');
+			TipsRefreshResturn('操作成功','human-affairs.php?_f=quit-apply&page='.$page.'&s_office='.$s_office.'&s_group='.$s_group.'&s_name='.$s_name.'');
 		}else{
 			ErrorResturn(ERRORTIPS);
 		}

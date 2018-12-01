@@ -1,18 +1,18 @@
 <?php
 
 	//# Mr.Z
-	//# 2018-11-28
-	//# 邮箱审批详情
+	//# 2018-12-1
+	//# 离职审批详情
 
 	//当前页面公共配置
-	$pageTitle = '邮箱审批详情';
+	$pageTitle = '离职审批详情';
 	$page = $_REQUEST['page'];
-	$table = PRFIX.'mailapply';	
+	$table = PRFIX.'quitapply';	
 	$act = $_REQUEST['act'];
 	$where = '';
 
-	$mailApplyId = getVal('id',1,'');
-	if($mailApplyId == 0){
+	$quitApplyId = getVal('id',1,'');
+	if($quitApplyId == 0){
 		exit;
 	}
 
@@ -25,7 +25,7 @@
 	//记录列表页检索条件over
 
 	//拉取申请详情信息
-	$data = $db->get_one($table,'where mailApplyId='.$mailApplyId.'','applyUsrId,applyUsrRole,applyUsrOffice,applyUsrGroup,mailName,reason,applyTime,checkCategory,checkProcessId,checkStatus,curCheckLevel,curCheckOffice,curCheckGroup,curCheckRole');
+	$data = $db->get_one($table,'where quitApplyId='.$quitApplyId.'','applyUsrId,applyUsrRole,applyUsrOffice,applyUsrGroup,quitDate,reason,applyTime,checkCategory,checkProcessId,checkStatus,curCheckLevel,curCheckOffice,curCheckGroup,curCheckRole');
 	if($data){
 
 		$staffInfo = getStaffInfo($data['applyUsrId']);
@@ -41,12 +41,12 @@
 
 		$nextCheckLevel = $data['curCheckLevel'] + 1;
 
-		if($data['checkStatus'] == 3||$data['checkStatus'] == 4){
+		if($data['checkStatus'] == 2||$data['checkStatus'] == 3||$data['checkStatus'] == 4){
 
 			//拉取拒绝或作废原因
-			$R = $db->get_one(PRFIX.'mailapply_check','where mailApplyId='.$mailApplyId.' order by mailCheckId desc limit 1','remark');
+			$R = $db->get_one(PRFIX.'quitapply_check','where quitApplyId='.$quitApplyId.' order by qaCheckId desc limit 1','remark');
 			if($R){
-				$reason = $R['remark'];
+				$remark = $R['remark'];
 			}
 
 		}
@@ -77,9 +77,9 @@
 		$apply[0] = $data['applyUsrRole'];		//申请用户角色
 		$apply[1] = $staffInfo[0];				//申请人姓名
 		$apply[2] = $data['applyTime'];			//申请时间
-		$apply[3] = $mailApplyId;				//申请id
+		$apply[3] = $quitApplyId;				//申请id
 
-		$line = getCheckLine($apply,$data['checkCategory'],$data['checkProcessId'],9);
+		$line = getCheckLine($apply,$data['checkCategory'],$data['checkProcessId'],8);
 		$checkLevel = $line[0];
 		$processs = $line[1];
 	}
@@ -89,7 +89,7 @@
 	//拉取审批进度轴 over
 
 	//拉取审批记录表格
-	$check = getCheckTable($mailApplyId,9);
+	$check = getCheckTable($quitApplyId,8);
 
 	//数据绑定
 	$smarty->assign('pageTitle',$pageTitle);
@@ -101,26 +101,37 @@
 	$smarty->assign('i',$data);
 	$smarty->assign('process',$processs);	//进度轴
 	$smarty->assign('check',$check);		//表格
-	$smarty->assign('id',$mailApplyId);
+	$smarty->assign('id',$quitApplyId);
 	$smarty->assign('page',$page);
 	$smarty->assign('check',$check);
-	$smarty->assign('reason',$reason);
+	$smarty->assign('remark',$remark);
 	$smarty->assign('checkLevel',$checkLevel);
 	$smarty->assign('formList',$formList);
 
-	$url = 'human-affairs.php?_f=mail-apply-check-info&id='.$mailApplyId.'';
+	$url = 'human-affairs.php?_f=quit-apply-check-info&id='.$quitApplyId.'';
 
 	//审批结果 - 通过
 	if($act == 'agree'){
+
+		//通过祝贺语，可填项
+		$remark = getVal('remark',2,'');
+		if($remark!=''){
+			if(stringLen($remark)>100){
+				ErrorResturn('祝贺语长度不能超过100个字符');
+			}
+		}else{
+			$remark = '';
+		}
 		
-		$val['mailApplyId'] = $mailApplyId;
+		$val['quitApplyId'] = $quitApplyId;
 		$val['checkLevel'] = $data['curCheckLevel'];
 		$val['checkUsr'] = $common_staffId;
 		$val['checkRole'] = $common_checkRole;
 		$val['checkResult'] = 1;
+		$val['remark'] = $remark;
 		$val['checkTime'] = date('Y-m-d H:i:s');
 
-		$result = $db->insert(PRFIX.'mailapply_check',$val);
+		$result = $db->insert(PRFIX.'quitapply_check',$val);
 		if($result){
 
 			$apply = array();
@@ -128,31 +139,18 @@
 			//checkLevel为0时不需要审批，=curCheckLevel时为最后一个人审批
 			//满足以上两个条件时视为审批完成
 			if($checkLevel == 0||$checkLevel == $data['curCheckLevel']){
-				//更新邮箱申请表初始密码
-				$initialPassword = getVal('pwd',2,'');
-
-				if($initialPassword == ''){
-					ErrorResturn('请设置初始登录密码');
-				}
-				if(stringLen($initialPassword)>50){
-					ErrorResturn('初始登录密码长度不能超过50个字符');
-				}
-
-				$apply['initialPassword'] = $initialPassword;
 				$apply['checkStatus'] = 2;	//已批准
-
 			}else{
 				$apply['checkStatus'] = 1;	//审批中
 				$apply['curCheckLevel'] = $nextCheckLevel;
-				
+
 				//找出下一个审批人员的部门、工作组、角色
 				$nextCheckInfo = getNextCheckInfo($data['checkCategory'],$data['checkProcessId'],$nextCheckLevel);
-
 				$apply['curCheckOffice'] = $nextCheckInfo[0];
 				$apply['curCheckGroup'] = $nextCheckInfo[1];
 				$apply['curCheckRole'] = $nextCheckInfo[2];
 			}
-			$db->update(PRFIX.'mailapply',$apply,'where mailApplyId='.$mailApplyId.'');
+			$db->update(PRFIX.'quitapply',$apply,'where quitApplyId='.$quitApplyId.'');
 
 			RefreshResturn($url);
 
@@ -167,7 +165,7 @@
 
 		$reason = getVal('reason',2,'');
 
-		$val['mailApplyId'] = $mailApplyId;
+		$val['quitApplyId'] = $quitApplyId;
 		$val['checkLevel'] = $data['curCheckLevel'];
 		$val['checkUsr'] = $common_staffId;
 		$val['checkRole'] = $common_checkRole;
@@ -175,7 +173,7 @@
 		$val['remark'] = $reason;
 		$val['checkTime'] = date('Y-m-d H:i:s');
 
-		$result = $db->insert(PRFIX.'mailapply_check',$val);
+		$result = $db->insert(PRFIX.'quitapply_check',$val);
 		if($result){
 
 			$apply = array();
@@ -183,7 +181,7 @@
 			//更新申请表状态
 			$apply['checkStatus'] = 3;		//已拒绝
 
-			$db->update($table,$apply,'where mailApplyId='.$mailApplyId.'');
+			$db->update($table,$apply,'where quitApplyId='.$quitApplyId.'');
 
 			RefreshResturn($url);
 		}else{
@@ -197,7 +195,7 @@
 
 		$reason = getVal('reason',2,'');
 
-		$val['mailApplyId'] = $mailApplyId;
+		$val['quitApplyId'] = $quitApplyId;
 		$val['checkLevel'] = $data['curCheckLevel'];
 		$val['checkUsr'] = $common_staffId;
 		$val['checkRole'] = $common_checkRole;
@@ -205,7 +203,7 @@
 		$val['remark'] = $reason;
 		$val['checkTime'] = date('Y-m-d H:i:s');
 
-		$result = $db->insert(PRFIX.'mailapply_check',$val);
+		$result = $db->insert(PRFIX.'quitapply_check',$val);
 		if($result){
 
 			$apply = array();
@@ -213,7 +211,7 @@
 			//更新申请表状态
 			$apply['checkStatus'] = 4;		//已作废
 
-			$db->update($table,$apply,'where mailApplyId='.$mailApplyId.'');
+			$db->update($table,$apply,'where quitApplyId='.$quitApplyId.'');
 
 			RefreshResturn($url);
 		}else{

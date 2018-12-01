@@ -4,9 +4,71 @@
 	//# 2018-12-01
 	//# 常用DB操作函数库
 
+	//审批业务提交申请时初始化审批流
+	//checkCategory:1,请假 2,出差 3,加班 4,补卡 5,车辆维修 6,办公备品  7,办公备品调转部门 8,离职 9,邮箱申请 10,转正
+	//返回值 -- array -- 0:审批状态 1:审批部门 2:审批工作组 3:审批角色 4:审批类型（1:默认审批流 2:自定义审批流） 5:审批流id
+	//此方法在带有审批流业务模块中提交申请时使用
+	function originCheckProcess($checkCategory){
+
+		global $db;
+		global $common_office;
+		global $common_group;
+		global $common_checkRole;
+
+		$checkStatus = 2;	//默认不需要审批，不审批情况下，视为直接审批通过
+		$checkOffice = 0;
+		$checkGroup = 0;
+		$checkRole = 0;
+		$checkCategory = 0;
+		$checkProcessId = 0;
+
+		//如定义了自定义审批流遵循自定义审批流
+		$custom = $db->get_one(PRFIX.'checkprocess','where checkCategory='.$checkCategory.' and officeId='.$common_office.' and groupId='.$common_group.' and beginRole='.$common_checkRole.' order by createTime desc limit 1','checkProcessId');
+		if($custom){
+
+			//查询审批流程
+			$check = $db->get_one(PRFIX.'checkprocess_detail','where checkProcessId='.$custom['checkProcessId'].' order by checkLevel asc limit 1','officeId,groupId,roleId');
+			if($check){
+				$checkStatus = 0;	//待审批
+				$checkOffice = $check['officeId'];
+				$checkGroup = $check['groupId'];
+				$checkRole = $check['roleId'];
+				$checkCategory = 2;
+				$checkProcessId = $custom['checkProcessId'];
+			}
+
+		}else{
+			//默认审批流
+			$default = $db->get_one(PRFIX.'default_checkprocess','where checkCategory=9 and beginRole='.$common_checkRole.' order by createTime desc limit 1','defaultCheckProcessId');
+			if($default){
+
+				//查询审批流程
+				$check = $db->get_one(PRFIX.'default_checkprocess_detail','where checkProcessId='.$default['defaultCheckProcessId'].' order by checkLevel asc limit 1','roleId');
+				if($check){
+					$checkStatus = 0;	//待审批
+					$checkOffice = $common_office;
+					$checkGroup = $common_group;
+					$checkRole = $check['roleId'];
+					$checkCategory = 1;
+					$checkProcessId = $default['defaultCheckProcessId'];
+				}
+			}
+		}
+
+		$val[0] = $checkStatus;
+		$val[1] = $checkOffice;
+		$val[2] = $checkGroup;
+		$val[3] = $checkRole;
+		$val[4] = $checkCategory;
+		$val[5] = $checkProcessId;
+
+		return $val;
+
+	}
+
 	//验证是否存在审批流
 	//checkCategory:审批业务类型id
-	//checkCategory:1,请假 2,出差 3,加班 4,补卡 5,车辆维修 6,办公备品  7,办公备品调转部门 8,离职 9,邮箱申请 10,转正
+	//checkCategory:1,请假 2,出差 3,加班 4,补卡 5,车辆维修 6,办公备品 7,办公备品调转部门 8,离职 9,邮箱申请 10,转正
 	//applyId:业务申请id
 	//此方法在执行删除或编辑审批业务申请时调用
 	function isExistsCheckProcess($checkCategory,$applyId){
@@ -64,11 +126,12 @@
 
 	//拉取审批进度轴，详细页面调用
 	//applyInfo -- array,0:申请用户角色 1:申请人姓名 2:提交时间
-	//checkCategory -- 审批流类型
+	//checkCategory -- 审批流类型 1:默认审批流 2:自定义审批流
 	//checkProcessId -- 审批流id
+	//businessType -- 审批流业务类型 1,请假 2,出差 3,加班 4,补卡 5,车辆维修 6,办公备品 7,办公备品调转部门 8,离职 9,邮箱申请 10,转正
 	//checkLevel -- 审批总级别，固定返回值，重要，执行后续业务用
 	//processs -- 返回时间轴信息
-	function getCheckLine($applyInfo,$checkCategory,$checkProcessId){
+	function getCheckLine($applyInfo,$checkCategory,$checkProcessId,$bussinessType){
 
 		global $db;
 		$checkLevel = 0;	
@@ -99,7 +162,7 @@
 					$customs[1] = $custom[$c]['roleId'];
 					$customs[2] = $custom[$c]['officeId'];
 					$customs[3] = $custom[$c]['groupId'];
-					$result = getCheckResult($applyInfo[3],9,$customs);
+					$result = getCheckResult($applyInfo[3],$bussinessType,$customs);
 					$processs[$p]['staff'] = $result[0];
 					$processs[$p]['result'] = $result[1];
 					$processs[$p]['time'] = $result[2];
@@ -126,7 +189,7 @@
 					$defaults[1] = $default[$c]['roleId'];
 					$defaults[2] = 0;
 					$defaults[3] = 0;
-					$result = getCheckResult($applyInfo[3],9,$defaults);
+					$result = getCheckResult($applyInfo[3],$bussinessType,$defaults);
 					$processs[$p]['staff'] = $result[0];
 					$processs[$p]['result'] = $result[1];
 					$processs[$p]['time'] = $result[2];
