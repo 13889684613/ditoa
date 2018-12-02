@@ -282,4 +282,22 @@
 
 	}
 
+	//员工考核
+	function static_staffCheck($key=''){
+
+		$result = array(
+			'1' => '审批中',
+			'2' => '延长试用期',
+			'3' => '正式录用',
+			'4' => '不再录用'
+		);
+
+		if($key == ''){
+			return $result;
+		}else{
+			return $result[$key];
+		}
+
+	}
+
 ?>

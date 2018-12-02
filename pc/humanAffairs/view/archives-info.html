@@ -1,0 +1,77 @@
+<title>{{$pageTitle}}</title>
+
+<form method="post">
+
+	<input type="hidden" name="page" value="{{$page}}" />
+	<input type="hidden" name="s_company" value="{{$s_company}}" />
+	<input type="hidden" name="s_office" value="{{$s_office}}" />
+	<input type="hidden" name="s_post" value="{{$s_post}}" />
+	<input type="hidden" name="s_status" value="{{$s_status}}" />
+	<input type="hidden" name="s_begintime" value="{{$s_begintime}}" />
+	<input type="hidden" name="s_overtime" value="{{$s_overtime}}" />
+	<input type="hidden" name="s_name" value="{{$s_name}}" />
+	<input type="hidden" name="id" value="{{$id}}" />
+
+	<div style="margin-bottom: 30px;">
+		{{$i.staffName}}&nbsp;&nbsp;创建时间：{{$i.createTime}}
+	</div>
+
+	<div style="margin-bottom: 30px;">
+		试用期：
+		{{if $i.try!=''}}
+		{{$i.try}}
+		{{/if}}
+		<br />
+		转正：
+		{{if count($i.turn)>0}}
+		考核人：{{$i.turn[2]}}<br />
+		考核时间：{{$i.turn[1]}}<br />
+		考核结果：{{$i.turn[0]}}
+		{{/if}}
+		<br />
+		合同签订：
+		{{if $i.contract!=''}}
+		{{$i.contract}}
+		{{/if}}
+		<br />
+		离职：
+		{{if $i.quit!=''}}
+		{{$i.quit}}
+		{{/if}}
+		<br />
+		DTI与您一起成长
+	</div>
+
+	<div style="line-height:25px;">
+
+		员工基本资料：<br />
+
+		{{if $i.photo!=''}}
+		<img src="upload/images/staff/head/{{$i.photo}}" />
+		<br />
+		{{/if}}
+
+		所属企业：{{$i.company}}&nbsp;&nbsp;&nbsp;&nbsp;所属部门：{{$i.office}}&nbsp;&nbsp;&nbsp;&nbsp;所属工作组：{{$i.group}}<br />
+		真实姓名：{{$i.staffName}}&nbsp;&nbsp;&nbsp;&nbsp;性别：{{$i.sex}}&nbsp;&nbsp;&nbsp;&nbsp;职务：{{$i.post}}<br />
+		身份证号：{{$i.idNumber}}&nbsp;&nbsp;&nbsp;&nbsp;出生日期：{{$i.birthDate}}&nbsp;&nbsp;&nbsp;&nbsp;农历：{{$i.lunar}}<br />
+		手机号：{{$i.tel}}&nbsp;&nbsp;&nbsp;&nbsp;座机号：{{$i.phone}}&nbsp;&nbsp;&nbsp;&nbsp;邮箱：{{$i.email}}<br />
+		联系地址：{{$i.address}}&nbsp;&nbsp;&nbsp;&nbsp;毕业学校：{{$i.school}}&nbsp;&nbsp;&nbsp;&nbsp;学历：{{$i.education}}<br />
+		所学专业：{{$i.major}}&nbsp;&nbsp;&nbsp;&nbsp;户口所在地：{{$i.registerAddress}}&nbsp;&nbsp;&nbsp;&nbsp;户口性质：{{$i.registerNature}}<br />
+		政治面貌：{{$i.politicalType}}&nbsp;&nbsp;&nbsp;&nbsp;民族：{{$i.nation}}&nbsp;&nbsp;&nbsp;&nbsp;身高：{{$i.height}}cm<br />
+		体重：{{$i.weight}}KG&nbsp;&nbsp;&nbsp;&nbsp;血型：{{$i.bloods}}&nbsp;&nbsp;&nbsp;&nbsp;婚姻状况：{{$i.marital}}<br />
+		首次参加工作时间：{{$i.firstWorkDate}}&nbsp;&nbsp;&nbsp;&nbsp;原单位解除合同日：{{$i.quitDate}}&nbsp;&nbsp;&nbsp;&nbsp;中国银行卡号：{{$i.cnBankAccount}}<br />
+		公交线路单程车费：{{$i.busFee}}&nbsp;&nbsp;&nbsp;&nbsp;
+		{{if $otherPower[0] == 1}}
+		背景调查：{{$i.background}}&nbsp;&nbsp;&nbsp;&nbsp;
+		{{/if}}
+		<br />
+		微信激活：{{$i.wechat}}
+		{{if $i.wechatActivate == 1}}
+		&nbsp;&nbsp;&nbsp;&nbsp;激活时间：{{$i.activateTime}}
+		{{/if}}
+
+
+	</div>
+
+
+</form>

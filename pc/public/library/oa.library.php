@@ -314,6 +314,24 @@
 
 	}
 
+	//通过公司ID拉取公司名称
+	function getCompanyName($companyId){
+
+		$companyName = '';
+		if($companyId!=''&&$companyId!=0&&is_numeric($companyId)){
+
+			//拉取企业名称
+			global $db;
+			$C = $db->get_one(PRFIX.'company','where companyId='.$companyId.'','cnName');
+			if($C){
+				$companyName = $C['cnName'];
+			}
+
+		}
+		return $companyName;
+
+	}
+
 	//通过部门ID拉取部门名称
 	function getOfficeName($officeId){
 
