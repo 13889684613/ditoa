@@ -1,14 +1,14 @@
 <?php
 
 	//# Mr.Z
-	//# 2018-12-02
-	//# 员工档案-教育与工作经历
+	//# 2018-12-05
+	//# 员工档案-离职信息
 
 	//当前页面公共配置
-	$pageTitle = '教育与工作经历';
+	$pageTitle = '离职信息';
 	$act = $_REQUEST['act'];
 	$page = $_REQUEST['page'];
-	$table = PRFIX.'staff_resume';	
+	$table = PRFIX.'staff';	
 	$where = '';
 
 	//员工id
@@ -26,16 +26,13 @@
 	$s_begintime = getVal('s_begintime',2,'');
 	$s_overtime = getVal('s_overtime',2,'');
 	$s_category = getVal('s_category',1,'');	//离职类型，离职人员页面传参
-	$nav = getVal('nav',2,'');					//nav == quit时显示离职信息
+	$nav = getVal('nav',1,'');					//nav == quit时显示离职信息
 	//记录列表页检索条件over
 
-	$fileds = 'beginDate,overDate,workUnit,postName,remark';
-	$data = $db->get_all($table,'where staffId='.$id.'',$fileds);
-	for($e=0;$e<count($data);$e++){
-		$data[$e]['workTime'] = $data[$e]['beginDate'].'至'.$data[$e]['overDate'];
-		if($data[$e]['remark'] == ''){
-			$data[$e]['remark'] = '无';
-		}
+	$fileds = 'trueQuitDate,quitTable,staffName';
+	$data = $db->get_one($table,'where staffId='.$id.'',$fileds);
+	if($data){
+		$data['quitTable'] = 'upload/file/staff/'.$data['quitTable'];
 	}
 
 	//数据绑定
@@ -47,9 +44,10 @@
 	$smarty->assign('s_begintime',$s_begintime);
 	$smarty->assign('s_overtime',$s_overtime);
 	$smarty->assign('s_name',$s_name);
-	$smarty->assign('data',$data);
+	$smarty->assign('i',$data);
 	$smarty->assign('id',$id);
 	$smarty->assign('page',$page);
 	$smarty->assign('s_category',$s_category);
 	$smarty->assign('nav',$nav);
+
 ?>

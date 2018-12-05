@@ -300,4 +300,18 @@
 
 	}
 
+	//离职类型
+	function static_quit($key=''){
+		$quitArray = array(
+			'1' => '转正未通过',
+			'2' => '正常离职'
+		);
+
+		if($key == ''){
+			return $quitArray;
+		}else{
+			return $quitArray[$key];
+		}
+	}
+
 ?>

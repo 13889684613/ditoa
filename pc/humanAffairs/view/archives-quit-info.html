@@ -14,15 +14,9 @@
 	<input type="hidden" name="nav" value="{{$nav}}" />
 	<input type="hidden" name="s_category" value="{{$s_category}}" />
 
-	入职时间：{{$i.joinDate}}<br />
+	实际离职日期：{{$i.trueQuitDate}}<br />
 
-	试用期：{{$i.try}}<br />
-
-	面试人员：{{$i.interviewer}}<br />
-
-	期望工资：{{$i.expectedSalary}}元/月<br />
-
-	试用期工资：{{$i.trySalary}}元/月
+	离职申请表：<a href="{{$i.quitTable}}" target="_blank">已上传：离职申请-{{$i.staffName}}.pdf</a>
 
 
 </form>

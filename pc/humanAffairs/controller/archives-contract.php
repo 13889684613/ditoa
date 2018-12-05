@@ -25,6 +25,8 @@
 	$s_name = getVal('s_name',2,'');
 	$s_begintime = getVal('s_begintime',2,'');
 	$s_overtime = getVal('s_overtime',2,'');
+	$s_category = getVal('s_category',1,'');	//离职类型，离职人员页面传参
+	$nav = getVal('nav',2,'');					//nav == quit时显示离职信息
 	//记录列表页检索条件over
 
 	$data = $db->get_all($table,'where staffId='.$id.'','companyId,contractNo,beginDate,overDate');
@@ -45,5 +47,7 @@
 	$smarty->assign('data',$data);
 	$smarty->assign('id',$id);
 	$smarty->assign('page',$page);
+	$smarty->assign('s_category',$s_category);
+	$smarty->assign('nav',$nav);
 
 ?>

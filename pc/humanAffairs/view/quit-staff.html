@@ -1,0 +1,59 @@
+<meta charset="utf-8" />
+<title>{{$pageTitle}}</title>
+
+<form method="get">
+	<input type="hidden" name="_f" value="quit-staff">
+	<select name="s_company">
+		<option value=""{{if $s_company==0}} selected=true{{/if}}>所属公司</option>
+		{{foreach item=c name=company from=$company}}
+		<option value="{{$c.companyId}}"{{if $s_company==$c.companyId}} selected=true{{/if}}>{{$c.cnName}}</option>
+		{{/foreach}}
+	</select>
+	<select name="s_office">
+		<option value=""{{if $s_office==0}} selected=true{{/if}}>所属部门</option>
+		{{foreach item=o name=office from=$office}}
+		<option value="{{$o.officeId}}"{{if $s_office==$o.officeId}} selected=true{{/if}}>{{$o.officeName}}</option>
+		{{/foreach}}
+	</select>
+	<select name="s_category">
+		<option value=""{{if $s_category==""}} selected="true"{{/if}}>离职类型</option>
+		{{foreach $quitCategory as $key=>$value}}
+		<option value="{{$key}}"{{if $key==$s_category}} selected="true"{{/if}}>{{$value}}</option>
+		{{/foreach}}
+	</select>
+	<input type="text" name="s_name" value="{{$s_name}}" placeholder="员工姓名">
+	<input type="submit" value="检索">
+</form>
+
+<table border="1">
+	<tr>
+		<td>#</td>
+		<td>员工姓名</td>
+		<td>所属企业</td>
+		<td>所属部门</td>
+		<td>职务</td>
+		<td>手机号码</td>
+		<td>实际离职日期</td>
+		<td>离职类型</td>
+		<td>操作</td>
+	</tr>
+	{{foreach item=i name=data from=$data}}
+	<tr>
+		<td>{{$i.sn}}</td>
+		<td>{{$i.staffName}}</td>
+		<td>{{$i.company}}</td>
+		<td>{{$i.office}}</td>
+		<td>{{$i.post}}</td>
+		<td>{{$i.tel}}</td>
+		<td>{{$i.trueQuitDate}}</td>
+		<td>{{$i.quitCategory}}</td>
+		<td>
+			<a href="?_f=archives-quit-info&nav=quit&page={{$curPage}}&id={{$i.staffId}}{{$track}}">查看</a>
+		</td>
+	</tr>
+	{{/foreach}}
+</table>
+
+<div class="pagebox">
+	{{$page}}
+</div>
