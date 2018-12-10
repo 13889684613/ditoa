@@ -1,0 +1,34 @@
+<title>{{$pageTitle}}</title>
+
+<form method="post" enctype="multipart/form-data">
+
+	<input type="hidden" name="page" value="{{$page}}" />
+	<input type="hidden" name="id" value="{{$id}}" />
+	<input type="hidden" name="s_name" value="{{$s_company}}" />
+	<input type="hidden" name="s_name" value="{{$s_name}}" />
+	<input type="hidden" name="act" value="{{$action}}" />
+
+	<select name="company">
+		<option value=""{{if $i.companyId==0}} selected=true{{/if}}>所属企业</option>
+		{{foreach item=c name=company from=$company}}
+		<option value="{{$c.companyId}}"{{if $c.companyId==$i.companyId}} selected=true{{/if}}>{{$c.cnName}}</option>
+		{{/foreach}}
+	</select>
+
+	<input type="text" name="cerName" placeholder="证件名称" value="{{$i.cerName}}" /><br />
+
+	{{if $i.cerImg!=''}}
+	<a href="upload/file/cer/{{$i.cerImg}}" target="_blank">已上传文件</a>
+	<input type="hidden" name="old" value="upload/file/cer/{{$i.cerImg}}">
+	{{/if}}
+	<input type="file" name="photo[]" value="上传证件照片" /><br />
+
+	<input type="text" name="overDate" placeholder="证件到期日" value="{{$i.overDate}}" /><br />
+
+	<input type="text" name="remark" placeholder="备注" value="{{$i.remark}}" /><br />
+	
+	<input type="text" name="rank" placeholder="显示排序" value="{{$rank}}" /><br />
+
+	<input type="submit" value="保存" />
+
+</form>

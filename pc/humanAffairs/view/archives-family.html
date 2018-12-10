@@ -1,0 +1,40 @@
+<title>{{$pageTitle}}</title>
+
+<form method="post">
+
+	<input type="hidden" name="page" value="{{$page}}" />
+	<input type="hidden" name="s_company" value="{{$s_company}}" />
+	<input type="hidden" name="s_office" value="{{$s_office}}" />
+	<input type="hidden" name="s_post" value="{{$s_post}}" />
+	<input type="hidden" name="s_status" value="{{$s_status}}" />
+	<input type="hidden" name="s_begintime" value="{{$s_begintime}}" />
+	<input type="hidden" name="s_overtime" value="{{$s_overtime}}" />
+	<input type="hidden" name="s_name" value="{{$s_name}}" />
+	<input type="hidden" name="id" value="{{$id}}" />
+	<input type="hidden" name="nav" value="{{$nav}}" />
+	<input type="hidden" name="s_category" value="{{$s_category}}" />
+
+	<table border="1">
+		<tr>
+			<td>#</td>
+			<td>姓名</td>
+			<td>性别</td>
+			<td>年龄</td>
+			<td>与本人关系</td>
+			<td>联系电话</td>
+			<td>工作单位</td>
+		</tr>
+		{{foreach item=i name=data from=$data}}
+		<tr>
+			<td>{{$smarty.foreach.data.iteration}}</td>
+			<td>{{$i.familyName}}</td>
+			<td>{{$i.sex}}</td>
+			<td>{{$i.age}}</td>
+			<td>{{$i.relation}}</td>
+			<td>{{$i.telphone}}</td>
+			<td>{{$i.workUnit}}</td>
+		</tr>
+		{{/foreach}}
+	</table>
+
+</form>

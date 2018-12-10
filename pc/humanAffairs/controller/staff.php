@@ -157,7 +157,6 @@
 
 	//删除
 	if($act == 'remove'){
-		echo $url;exit;
 		$id = getVal('id',1,'get');
 		$result = $db->delete($table,'where staffId='.$id.'');
 		if($result){

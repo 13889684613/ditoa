@@ -64,6 +64,7 @@
 				$menuGeneralAffairs =explode(',',$menuPower[6]);			//综合事务管理
 				$menuSystem =explode(',',$menuPower[7]);					//系统运维管理	
 				$menuSignPower = explode(',',$menuPower[8]);				//考勤管理
+				$otherPower = explode(',',$menuPower[9]);					//其它权限，0:背景调查
 			}
 
 			//系统消息

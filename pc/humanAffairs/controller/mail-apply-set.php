@@ -59,49 +59,16 @@
 		$val['reason'] = $reason;
 		$val['applyTime'] = date('Y-m-d H:i:s');
 
-		//审批流 begin
+		//初始化审批流信息 begin
+		$checkInfo = originCheckProcess(9);
+		$checkStatus = $checkInfo[0];
+		$checkOffice = $checkInfo[1];
+		$checkGroup = $checkInfo[2];
+		$checkRole = $checkInfo[3];
+		$checkCategory = $checkInfo[4];
+		$checkProcessId = $checkInfo[5];
+		//初始化审批流信息 over
 
-		$checkStatus = 2;	//默认不需要审批，不审批情况下，视为直接审批通过
-		$checkOffice = 0;
-		$checkGroup = 0;
-		$checkRole = 0;
-		$checkCategory = 0;
-		$checkProcessId = 0;
-
-		//如定义了自定义审批流遵循自定义审批流
-		$custom = $db->get_one(PRFIX.'checkprocess','where checkCategory=9 and officeId='.$common_office.' and groupId='.$common_group.' and beginRole='.$common_checkRole.' order by createTime desc limit 1','checkProcessId');
-		if($custom){
-
-			//查询审批流程
-			$check = $db->get_one(PRFIX.'checkprocess_detail','where checkProcessId='.$custom['checkProcessId'].' order by checkLevel asc limit 1','officeId,groupId,roleId');
-			if($check){
-				$checkStatus = 0;	//审批通过
-				$checkOffice = $check['officeId'];
-				$checkGroup = $check['groupId'];
-				$checkRole = $check['roleId'];
-				$checkCategory = 2;
-				$checkProcessId = $custom['checkProcessId'];
-			}
-
-		}else{
-			//默认审批流
-			$default = $db->get_one(PRFIX.'default_checkprocess','where checkCategory=9 and beginRole='.$common_checkRole.' order by createTime desc limit 1','defaultCheckProcessId');
-			if($default){
-
-				//查询审批流程
-				$check = $db->get_one(PRFIX.'default_checkprocess_detail','where checkProcessId='.$default['defaultCheckProcessId'].' order by checkLevel asc limit 1','roleId');
-				if($check){
-					$checkStatus = 0;	//审批通过
-					$checkOffice = $common_office;
-					$checkGroup = $common_group;
-					$checkRole = $check['roleId'];
-					$checkCategory = 1;
-					$checkProcessId = $default['defaultCheckProcessId'];
-				}
-			}
-		}
-
-		//审批流 over
 		$val['checkStatus'] = $checkStatus;
 		$val['curCheckLevel'] = 1;
 		$val['curCheckOffice'] = $checkOffice;

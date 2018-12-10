@@ -1,0 +1,42 @@
+<meta charset="utf-8" />
+<title>{{$pageTitle}}</title>
+
+<form method="get">
+	<input type="hidden" name="_f" value="certificate">
+	<select name="s_company">
+		<option value=""{{if $s_company==0}} selected=true{{/if}}>所属企业</option>
+		{{foreach item=c name=company from=$company}}
+		<option value="{{$c.companyId}}"{{if $s_company==$c.companyId}} selected=true{{/if}}>{{$c.cnName}}</option>
+		{{/foreach}}
+	</select>
+	<input type="text" name="s_name" value="{{$s_name}}" placeholder="证件名称">
+	<input type="submit" value="检索">
+</form>
+
+<table border="1">
+	<tr>
+		<td>#</td>
+		<td>证件名称</td>
+		<td>所属企业</td>
+		<td>到期日期</td>
+		<td>创建时间</td>
+		<td>操作</td>
+	</tr>
+	{{foreach item=i name=data from=$data}}
+	<tr>
+		<td>{{$i.sn}}</td>
+		<td>{{$i.cerName}}</td>
+		<td>{{$i.company}}</td>
+		<td>{{$i.overDate}}</td>
+		<td>{{$i.createTime}}</td>
+		<td>
+			<input id="rank{{$i.cerId}}" name="rank{{$i.cerId}}" class="m-wrap" type="text" size="5" style="width:30px;height: 9px;margin: 0;" value="{{$i.rank}}"/><a href="javascript:void(0);" onclick="javascript:location.href='?_f=certificate&act=updateRank&page={{$curPage}}&id={{$i.cerId}}{{$track}}&rank='+document.getElementById('rank{{$i.cerId}}').value;">保存</a>
+			<a href="?_f=certificate&act=remove&page={{$curPage}}&id={{$i.cerId}}{{$track}}">删除</a>
+			<a href="?_f=certificate-set&act=edit&page={{$curPage}}&id={{$i.cerId}}{{$track}}">修改</a>
+		</td>
+	</tr>
+	{{/foreach}}
+</table>
+<div class="pagebox">
+	{{$page}}
+</div>

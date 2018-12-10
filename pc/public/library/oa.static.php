@@ -282,4 +282,35 @@
 
 	}
 
+	//员工考核结果
+	function static_staffCheck($key=''){
+
+		$result = array(
+			'1' => '延长试用期',
+			'2' => '正式录用',
+			'3' => '不再录用'
+		);
+
+		if($key == ''){
+			return $result;
+		}else{
+			return $result[$key];
+		}
+
+	}
+
+	//离职类型
+	function static_quit($key=''){
+		$quitArray = array(
+			'1' => '转正未通过',
+			'2' => '正常离职'
+		);
+
+		if($key == ''){
+			return $quitArray;
+		}else{
+			return $quitArray[$key];
+		}
+	}
+
 ?>

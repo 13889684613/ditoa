@@ -27,11 +27,11 @@
 	$s_name = getVal('s_name',2,'');
 
 	if($s_office!=0){
-		$where .= ' and applyUsrId in(select staffId from '.PRFIX.'staff where officeId='.$s_office.')';
+		$where .= ' and applyUsrOffice='.$s_office.'';
 		$track .= '&s_office='.$s_office.'';
 	}
 	if($s_group!=0){
-		$where .= ' and applyUsrId in(select staffId from '.PRFIX.'staff where s_group='.$s_group.')';
+		$where .= ' and applyUsrGroup='.$s_group.'';
 		$track .= '&s_group='.$s_group.'';
 	}
 	if($s_name!=''){
@@ -48,27 +48,24 @@
 	$sn = $curPage * $length - $length;	//序号
 
 	//拉取邮箱申请数据
-	$field = 'mailApplyId,applyUsrId,mailName,initialPassword,applyTime,checkStatus,curCheckLevel';
+	$field = 'mailApplyId,applyUsrId,mailName,initialPassword,applyTime,checkStatus,curCheckLevel,applyUsrOffice,applyUsrGroup';
 	$data = $db->get_some($table,$page->firstcount,$length,'order by applyTime desc',$where,$field);
 	foreach ($data as $key => $value) {
 		++ $sn;
 		$data[$key]['sn'] = $sn;
 		//申请人
-		$S = $db->get_one(PRFIX.'staff','where staffId='.$data[$key]['applyUsrId'].'','staffName,officeId,groupId');
-		$data[$key]['applyUsr'] = $S['staffName'];
+		$data[$key]['applyUsr'] = getStaffName($data[$key]['applyUsrId']);
 		//部门
-		$O = $db->get_one(PRFIX.'office','where officeId='.$S['officeId'].'','officeName');
-		$data[$key]['office'] = $O['officeName'];
+		$data[$key]['office'] = getOfficeName($data[$key]['applyUsrOffice']);
 		//工作组
-		$G = $db->get_one(PRFIX.'group','where groupId='.$S['groupId'].'','groupName');
-		$data[$key]['group'] = $G['groupName'];
+		$data[$key]['group'] = getGroupName($data[$key]['applyUsrGroup']);
 		//初始密码
 		if($data[$key]['initialPassword']==''){
 			$data[$key]['initialPassword'] = '待设置';
 		}
 		//审批状态
 		$checkStatus = $data[$key]['checkStatus'];
-		$data[$key]['checkStatus'] = static_checkStatus($data[$key]['checkStatus']);
+		$data[$key]['checkStatus'] = static_checkStatus($checkStatus);
 		//审批意见
 		$checkInfo = '暂无';
 		if($checkStatus == 2||$checkStatus == 3||$checkStatus == 4){

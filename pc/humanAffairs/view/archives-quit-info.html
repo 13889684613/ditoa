@@ -1,0 +1,22 @@
+<title>{{$pageTitle}}</title>
+
+<form method="post">
+
+	<input type="hidden" name="page" value="{{$page}}" />
+	<input type="hidden" name="s_company" value="{{$s_company}}" />
+	<input type="hidden" name="s_office" value="{{$s_office}}" />
+	<input type="hidden" name="s_post" value="{{$s_post}}" />
+	<input type="hidden" name="s_status" value="{{$s_status}}" />
+	<input type="hidden" name="s_begintime" value="{{$s_begintime}}" />
+	<input type="hidden" name="s_overtime" value="{{$s_overtime}}" />
+	<input type="hidden" name="s_name" value="{{$s_name}}" />
+	<input type="hidden" name="id" value="{{$id}}" />
+	<input type="hidden" name="nav" value="{{$nav}}" />
+	<input type="hidden" name="s_category" value="{{$s_category}}" />
+
+	实际离职日期：{{$i.trueQuitDate}}<br />
+
+	离职申请表：<a href="{{$i.quitTable}}" target="_blank">已上传：离职申请-{{$i.staffName}}.pdf</a>
+
+
+</form>

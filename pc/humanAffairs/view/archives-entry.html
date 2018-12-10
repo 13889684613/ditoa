@@ -1,0 +1,28 @@
+<title>{{$pageTitle}}</title>
+
+<form method="post">
+
+	<input type="hidden" name="page" value="{{$page}}" />
+	<input type="hidden" name="s_company" value="{{$s_company}}" />
+	<input type="hidden" name="s_office" value="{{$s_office}}" />
+	<input type="hidden" name="s_post" value="{{$s_post}}" />
+	<input type="hidden" name="s_status" value="{{$s_status}}" />
+	<input type="hidden" name="s_begintime" value="{{$s_begintime}}" />
+	<input type="hidden" name="s_overtime" value="{{$s_overtime}}" />
+	<input type="hidden" name="s_name" value="{{$s_name}}" />
+	<input type="hidden" name="id" value="{{$id}}" />
+	<input type="hidden" name="nav" value="{{$nav}}" />
+	<input type="hidden" name="s_category" value="{{$s_category}}" />
+
+	入职时间：{{$i.joinDate}}<br />
+
+	试用期：{{$i.try}}<br />
+
+	面试人员：{{$i.interviewer}}<br />
+
+	期望工资：{{$i.expectedSalary}}元/月<br />
+
+	试用期工资：{{$i.trySalary}}元/月
+
+
+</form>

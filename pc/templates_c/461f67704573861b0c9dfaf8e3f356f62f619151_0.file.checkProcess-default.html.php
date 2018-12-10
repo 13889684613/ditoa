@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-11-18 10:48:24
+/* Smarty version 3.1.29, created on 2018-12-01 09:38:44
   from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/system/view/checkProcess-default.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5bf0d2f8b43e38_92047803',
+  'unifunc' => 'content_5c01e62418c010_59612917',
   'file_dependency' => 
   array (
     '461f67704573861b0c9dfaf8e3f356f62f619151' => 
     array (
       0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/system/view/checkProcess-default.html',
-      1 => 1541238897,
+      1 => 1543057551,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5bf0d2f8b43e38_92047803 ($_smarty_tpl) {
+function content_5c01e62418c010_59612917 ($_smarty_tpl) {
 ?>
 <meta charset="utf-8" />
 <title><?php echo $_smarty_tpl->tpl_vars['pageTitle']->value;?>
@@ -55,6 +55,7 @@ $__foreach_data_0_saved_local_item = $_smarty_tpl->tpl_vars['i'];
 		<td><?php echo $_smarty_tpl->tpl_vars['i']->value['checkProcess'];?>
 </td>
 		<td>
+			<?php if ($_smarty_tpl->tpl_vars['i']->value['isOpt']) {?>
 			<a href="?_f=checkProcess-default&act=remove&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
 &id=<?php echo $_smarty_tpl->tpl_vars['i']->value['defaultCheckProcessId'];
 echo $_smarty_tpl->tpl_vars['track']->value;?>
@@ -63,6 +64,7 @@ echo $_smarty_tpl->tpl_vars['track']->value;?>
 &id=<?php echo $_smarty_tpl->tpl_vars['i']->value['defaultCheckProcessId'];
 echo $_smarty_tpl->tpl_vars['track']->value;?>
 ">修改</a>
+			<?php }?>
 		</td>
 	</tr>
 	<?php

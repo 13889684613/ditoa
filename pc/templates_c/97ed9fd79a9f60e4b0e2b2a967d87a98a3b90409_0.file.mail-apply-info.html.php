@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-11-24 19:52:42
+/* Smarty version 3.1.29, created on 2018-12-01 09:22:09
   from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/humanAffairs/view/mail-apply-info.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5bf93b8a7213d4_28120956',
+  'unifunc' => 'content_5c01e241d04e08_86439265',
   'file_dependency' => 
   array (
     '97ed9fd79a9f60e4b0e2b2a967d87a98a3b90409' => 
     array (
       0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/humanAffairs/view/mail-apply-info.html',
-      1 => 1543060361,
+      1 => 1543627285,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5bf93b8a7213d4_28120956 ($_smarty_tpl) {
+function content_5c01e241d04e08_86439265 ($_smarty_tpl) {
 ?>
 <meta charset="utf-8" />
 <title><?php echo $_smarty_tpl->tpl_vars['pageTitle']->value;?>
@@ -34,6 +34,13 @@ function content_5bf93b8a7213d4_28120956 ($_smarty_tpl) {
 <br />
 邮箱帐号：<?php echo $_smarty_tpl->tpl_vars['i']->value['mailName'];?>
 &nbsp;申请事由：<?php echo $_smarty_tpl->tpl_vars['i']->value['reason'];?>
+<br />
+审批状态：<?php echo $_smarty_tpl->tpl_vars['i']->value['checkStatus'];?>
+
+<?php if ($_smarty_tpl->tpl_vars['reason']->value != '') {?>
+<br />原因：<?php echo $_smarty_tpl->tpl_vars['reason']->value;?>
+
+<?php }?>
 <br /><br />
 
 审批详情：<br />
@@ -75,9 +82,9 @@ $_smarty_tpl->tpl_vars['p'] = $__foreach_process_0_saved_item;
 }
 ?>
 </table>
-<?php if ($_smarty_tpl->tpl_vars['isCheck']->value == 1) {?>
+<?php if (count($_smarty_tpl->tpl_vars['check']->value) > 0) {?>
 审批记录表格：<br />
-<table>
+<table border="1">
 	<tr>
 		<td>审批级别</td>
 		<td>审批角色</td>
@@ -99,17 +106,17 @@ $_smarty_tpl->tpl_vars['c']->_loop = true;
 $__foreach_check_1_saved_local_item = $_smarty_tpl->tpl_vars['c'];
 ?>
 	<tr>
-		<td><?php echo $_smarty_tpl->tpl_vars['c']->value['level'];?>
+		<td><?php echo $_smarty_tpl->tpl_vars['c']->value['checkLevel'];?>
 </td>
 		<td><?php echo $_smarty_tpl->tpl_vars['c']->value['role'];?>
 </td>
-		<td><?php echo $_smarty_tpl->tpl_vars['c']->value['status'];?>
+		<td><?php echo $_smarty_tpl->tpl_vars['c']->value['result'];?>
 </td>
 		<td><?php echo $_smarty_tpl->tpl_vars['c']->value['remark'];?>
 </td>
 		<td><?php echo $_smarty_tpl->tpl_vars['c']->value['checkUsr'];?>
 </td>
-		<td><?php echo $_smarty_tpl->tpl_vars['c']->value['time'];?>
+		<td><?php echo $_smarty_tpl->tpl_vars['c']->value['checkTime'];?>
 </td>
 	</tr>
 	<?php

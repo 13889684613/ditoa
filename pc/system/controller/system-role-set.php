@@ -89,9 +89,12 @@
 	$m53 = getVal('m53',1,'');
 	$signPower = $m49.','.$m50.','.$m51.','.$m52.','.$m53;	//考勤管理
 
+	$m54 = getVal('m54',1,'');	//背景调查
+	$otherPower = $m54;
+
 	//完整权限配置
 	$power = $orgPower.'|'.$humanAffairsPower.'|'.$leavePower.'|'.$businessTravelPower.'|'.$carPower.'|'.$officeToolPower.'|'.$generalAffairsPower.'|';
-	$power .= $systemPower.'|'.$signPower;
+	$power .= $systemPower.'|'.$signPower.'|'.$otherPower;
 
 	//获取值 over
 
@@ -159,6 +162,7 @@
 			$data['generalAffairsPower'] =explode(',',$power[6]);	//综合事务管理
 			$data['systemPower'] =explode(',',$power[7]);			//系统运维管理	
 			$data['signPower'] = explode(',',$power[8]);			//考勤管理
+			$data['otherPower'] = explode(',',$power[9]);			//其它权限
 			$rank = $data['rank'];
 		}
 

@@ -1,0 +1,56 @@
+<title>{{$pageTitle}}</title>
+
+<form method="post">
+
+	<input type="hidden" name="page" value="{{$page}}" />
+	<input type="hidden" name="s_company" value="{{$s_company}}" />
+	<input type="hidden" name="s_office" value="{{$s_office}}" />
+	<input type="hidden" name="s_post" value="{{$s_post}}" />
+	<input type="hidden" name="s_status" value="{{$s_status}}" />
+	<input type="hidden" name="s_begintime" value="{{$s_begintime}}" />
+	<input type="hidden" name="s_overtime" value="{{$s_overtime}}" />
+	<input type="hidden" name="s_name" value="{{$s_name}}" />
+	<input type="hidden" name="id" value="{{$id}}" />
+	<input type="hidden" name="nav" value="{{$nav}}" />
+	<input type="hidden" name="s_category" value="{{$s_category}}" />
+
+	身份证证文件：
+	{{if $i.idFile==''}}
+	未上传
+	{{else}}
+	<a href="{{$i.idFile}}" target="_blank">已上传</a>
+	{{/if}}
+	<br />
+
+	学历证书：
+	{{if $i.eduFile==''}}
+	未上传
+	{{else}}
+	<a href="{{$i.eduFile}}" target="_blank">已上传</a>
+	{{/if}}
+	<br />
+
+	户口本：
+	{{if $i.registerFile==''}}
+	未上传
+	{{else}}
+	<a href="{{$i.registerFile}}" target="_blank">已上传</a>
+	{{/if}}
+	<br />
+
+	体检报告：
+	{{if $i.reportFile==''}}
+	未上传
+	{{else}}
+	<a href="{{$i.reportFile}}" target="_blank">已上传</a>
+	{{/if}}
+	<br />
+
+	其他资质证件：<br />
+	{{foreach item=o name=others from=$others}}
+	<a href="{{$o.attachFile}}" target="_blank">{{$o.attachName}}</a><br />
+	{{/foreach}}
+
+
+
+</form>
