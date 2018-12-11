@@ -313,4 +313,21 @@
 		}
 	}
 
+	//考核评级
+	function static_checkLevel($score){
+
+		if($score>136){
+			$level = 'A';
+		}elseif($score>=111&&$score<=136){
+			$level = 'B';
+		}elseif($score>=84&&$score<=110){
+			$level = 'C';
+		}elseif($score<84){
+			$level = 'D';
+		}
+
+		return $level;
+
+	}
+
 ?>

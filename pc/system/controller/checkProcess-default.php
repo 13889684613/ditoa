@@ -81,10 +81,10 @@
 	if($act == 'remove'){
 		$id = getVal('id',1,'get');
 		//删除审批流主表
-		$result = $db->	delete($table,'where defaultCheckProcessId='.$id.'');
+		$result = $db->delete(PRFIX.'default_checkprocess','where defaultCheckProcessId='.$id.'');
 		if($result){
 			//删除审批流明细表
-			$db->delete($detailTable,'where checkProcessId='.$id.'');
+			$db->delete(PRFIX.'default_checkprocess_detail','where checkProcessId='.$id.'');
 			RefreshResturn($url);
 		}else{
 			ErrorResturn(ERRORTIPS);

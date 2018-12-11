@@ -19,7 +19,7 @@
 	
 	/***数据库设置START***/
 	
-	$DB_HOST = 'localhost';//主机名
+	$DB_HOST = '127.0.0.1';//主机名
 	
 	$DB_USER = 'root';//用户
 	

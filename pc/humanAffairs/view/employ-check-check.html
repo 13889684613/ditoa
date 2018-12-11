@@ -1,0 +1,62 @@
+<meta charset="utf-8" />
+<title>{{$pageTitle}}</title>
+
+<form method="get">
+	<input type="hidden" name="_f" value="archives">
+	<select name="s_company">
+		<option value=""{{if $s_company==0}} selected=true{{/if}}>所属公司</option>
+		{{foreach item=c name=company from=$company}}
+		<option value="{{$c.companyId}}"{{if $s_company==$c.companyId}} selected=true{{/if}}>{{$c.cnName}}</option>
+		{{/foreach}}
+	</select>
+	<select name="s_office">
+		<option value=""{{if $s_office==0}} selected=true{{/if}}>所属部门</option>
+		{{foreach item=o name=office from=$office}}
+		<option value="{{$o.officeId}}"{{if $s_office==$o.officeId}} selected=true{{/if}}>{{$o.officeName}}</option>
+		{{/foreach}}
+	</select>
+	<input type="text" name="s_name" value="{{$s_name}}" placeholder="试用人员">
+	<input type="submit" value="检索">
+</form>
+
+<table border="1">
+	<tr>
+		<td>#</td>
+		<td>试用人员</td>
+		<td>所属部门</td>
+		<td>所属工作组</td>
+		<td>试用期</td>
+		<td>考核人员</td>
+		<td>考核结果</td>
+		<td>审批状态</td>
+		<td>审批意见</td>
+		<td>审批人</td>
+		<td>审批时间</td>
+		<td>操作</td>
+	</tr>
+	{{foreach item=i name=data from=$data}}
+	<tr>
+		<td>{{$i.sn}}</td>
+		<td>{{$i.staffName}}</td>
+		<td>{{$i.office}}</td>
+		<td>{{$i.group}}</td>
+		<td>{{$i.date}}</td>
+		<td>{{$i.appraiseUsr}}</td>
+		<td>{{$i.appraiseResult}}</td>
+		<td>{{$i.checkStatus}}</td>
+		<td>{{$i.checkResult}}</td>
+		<td>{{$i.checkUsr}}</td>
+		<td>{{$i.checkTime}}</td>
+		<td>
+			{{if $i.checkStatus == 2}}
+			<a href="?_f=employ-check-check-info&page={{$curPage}}&id={{$i.appraiseId}}{{$track}}">查看</a>
+			{{else}}
+			<a href="?_f=employ-check-check-set&page={{$curPage}}&id={{$i.appraiseId}}{{$track}}">审批</a>
+			{{/if}}
+		</td>
+	</tr>
+	{{/foreach}}
+</table>
+<div class="pagebox">
+	{{$page}}
+</div>

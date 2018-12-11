@@ -87,7 +87,7 @@
 
 	if($appraiseId != 0){
 		$fields = 'staffRole,staffOffice,staffGroup,morality,moralityScore,attitude,attitudeScore,business,businessScore,efficiency,efficiencyScore,achievement,achievementScore,late,earlyRetreat,sickLeave,eventLeave,absenteeism,score';
-		$A = $db->get_one(PRFIX.'staff_appraise','where appraiseId='.$appraiseId.'','');
+		$A = $db->get_one(PRFIX.'staff_appraise','where appraiseId='.$appraiseId.'',$fields);
 		if($A){
 			$officeId = $A['staffOffice'];
 			$groupId = $A['staffGroup'];
@@ -151,19 +151,19 @@
 	//验证
 	if($act == 'save'){
 
-		if($rjgx == 0||$xzx == 0||$grxy == 0||$score_pd == 0){
+		if($rjgx == 0||$xzx == 0||$grxy == 0){
 			ErrorResturn('请完善个人品德得分');
 		}
-		if($xiaolv == 0||$taidu == 0||$zyzs == 0||$score_td == 0){
+		if($xiaolv == 0||$taidu == 0||$zyzs == 0){
 			ErrorResturn('请完善勤务态度得分');
 		}
-		if($zrg == 0||$mudi == 0||$shunxu == 0||$score_nl == 0){
+		if($zrg == 0||$mudi == 0||$shunxu == 0){
 			ErrorResturn('请完善业务能力得分');
 		}
-		if($speed == 0||$chengji == 0||$heli == 0||$btef == 0||$score_xl == 0){
+		if($speed == 0||$chengji == 0||$heli == 0||$btef == 0){
 			ErrorResturn('请完善工作效率得分');
 		}
-		if($yaoqiu == 0||$zongjie == 0||$shulian == 0||$score_yj == 0){
+		if($yaoqiu == 0||$zongjie == 0||$shulian == 0){
 			ErrorResturn('请完善业绩得分');
 		}
 
@@ -173,7 +173,7 @@
 		$efficiency = $speed.','.$chengji.','.$heli.','.$btef;	//工作效率
 		$achievement = $yaoqiu.','.$zongjie.','.$shulian;		//业绩
 
-		$val['appraiseUsr'] = $_SESSION['cache_staffId'];		//考核者
+		$val['appraiseUsr'] = $common_staffId;					//考核者
 		$val['morality'] = $morality;
 		$val['moralityScore'] = $score_pd;
 		$val['attitude'] = $attitude;
@@ -199,12 +199,24 @@
 			$val['staffOffice'] = $officeId;
 			$val['staffGroup'] = $groupId;
 
+			//初始化审批流信息 begin
+			$checkInfo = originCheckProcess(10);
+			$checkStatus = $checkInfo[0];
+			$checkOffice = $checkInfo[1];
+			$checkGroup = $checkInfo[2];
+			$checkRole = $checkInfo[3];
+			$checkCategory = $checkInfo[4];
+			$checkProcessId = $checkInfo[5];
+			//初始化审批流信息 over
+
 			//审批数据 begin
 			$val['checkStatus'] = $checkStatus;
-			$val['curCheckLevel'] = $curCheckLevel;
-			$val['curCheckOffice'] = $curCheckOffice;
-			$val['curCheckGroup'] = $curCheckGroup;
-			$val['curCheckRole'] = $curCheckRole;
+			$val['curCheckLevel'] = 1;
+			$val['curCheckOffice'] = $checkOffice;
+			$val['curCheckGroup'] = $checkGroup;
+			$val['curCheckRole'] = $checkRole;
+			$val['checkCategory'] = $checkCategory;
+			$val['checkProcessId'] = $checkProcessId;
 			//审批数据 over
 
 			$result = $db->insert(PRFIX.'staff_appraise',$val);
@@ -216,8 +228,8 @@
 		if(!$result){
 			ErrorResturn(ERRORTIPS);
 		}else{
-			$appraiseId = $db->get_lastId();
-			TipsRefreshResturn('考核成功','?_f=employ-check-info&id='.$appraiseId.'');
+			$dataId = $db->get_lastId();
+			TipsRefreshResturn('考核成功','?_f=employ-check-info&id='.$dataId.'');
 		}
 
 	}
@@ -228,7 +240,8 @@
 	$smarty->assign('s_group',$s_group);
 	$smarty->assign('s_name',$s_name);
 	$smarty->assign('i',$data);
-	$smarty->assign('id',$id);
+	$smarty->assign('id',$appraiseId);
 	$smarty->assign('page',$page);
+	$smarty->assign('s',$staffId);
 
 ?>

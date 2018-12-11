@@ -8,7 +8,7 @@
 	//checkCategory:1,请假 2,出差 3,加班 4,补卡 5,车辆维修 6,办公备品  7,办公备品调转部门 8,离职 9,邮箱申请 10,转正
 	//返回值 -- array -- 0:审批状态 1:审批部门 2:审批工作组 3:审批角色 4:审批类型（1:默认审批流 2:自定义审批流） 5:审批流id
 	//此方法在带有审批流业务模块中提交申请时使用
-	function originCheckProcess($checkCategory){
+	function originCheckProcess($categoryPara){
 
 		global $db;
 		global $common_office;
@@ -23,7 +23,7 @@
 		$checkProcessId = 0;
 
 		//如定义了自定义审批流遵循自定义审批流
-		$custom = $db->get_one(PRFIX.'checkprocess','where checkCategory='.$checkCategory.' and officeId='.$common_office.' and groupId='.$common_group.' and beginRole='.$common_checkRole.' order by createTime desc limit 1','checkProcessId');
+		$custom = $db->get_one(PRFIX.'checkprocess','where checkCategory='.$categoryPara.' and officeId='.$common_office.' and groupId='.$common_group.' and beginRole='.$common_checkRole.' order by createTime desc limit 1','checkProcessId');
 		if($custom){
 
 			//查询审批流程
@@ -39,7 +39,7 @@
 
 		}else{
 			//默认审批流
-			$default = $db->get_one(PRFIX.'default_checkprocess','where checkCategory=9 and beginRole='.$common_checkRole.' order by createTime desc limit 1','defaultCheckProcessId');
+			$default = $db->get_one(PRFIX.'default_checkprocess','where checkCategory='.$categoryPara.' and beginRole='.$common_checkRole.' order by createTime desc limit 1','defaultCheckProcessId');
 			if($default){
 
 				//查询审批流程
