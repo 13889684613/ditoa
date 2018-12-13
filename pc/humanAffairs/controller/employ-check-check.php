@@ -66,9 +66,11 @@
 
 		//考核结果 begin
 		if($data[$key]['checkStatus'] == 2){
-			$result = $db->get_one(PRFIX.'staff_appraise_check','where appraiseId='.$check['appraiseId'].' order by checkId desc limit 1','result');
-			$data[$key]['appraiseResult'] = static_staffCheck($data[$key]['result']);
+			$data[$key]['isSp'] = 1;
+			$result = $db->get_one(PRFIX.'staff_appraise_check','where appraiseId='.$data[$key]['appraiseId'].' order by checkId desc limit 1','checkResult');
+			$data[$key]['appraiseResult'] = static_staffCheck($result['checkResult']);
 		}else{
+			$data[$key]['isSp'] = 0;
 			$data[$key]['appraiseResult'] = '待考核';
 		}
 		//考核结果 over
@@ -88,10 +90,10 @@
 		//审批状态 over
 
 		//审批人/审批时间/审批意见 begin
-		$check = $db->get_one(PRFIX.'staff_appraise_check','where appraiseId='.$check['appraiseId'].' order by checkId desc limit 1','checkUsr,result,checkTime');
+		$check = $db->get_one(PRFIX.'staff_appraise_check','where appraiseId='.$data[$key]['appraiseId'].' order by checkId desc limit 1','checkUsr,checkResult,checkTime');
 		if($check){
 			$data[$key]['checkUsr'] = getStaffName($check['checkUsr']);
-			$data[$key]['checkResult'] = static_staffCheck($check[$key]['result']);
+			$data[$key]['checkResult'] = static_staffCheck($check['checkResult']);
 			$data[$key]['checkTime'] = $check['checkTime'];
 		}else{
 			$data[$key]['checkUsr'] = '-';
@@ -99,6 +101,7 @@
 			$data[$key]['checkTime'] = '-';
 		}
 		//审批人/审批时间/审批意见 over
+
 	}
 	
 	//数据绑定

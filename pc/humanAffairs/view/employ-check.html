@@ -44,7 +44,9 @@
 			<a href="?_f=employ-check-set&page={{$curPage}}&s={{$i.staffId}}{{$track}}">考核</a>
 			{{else}}
 			<a href="?_f=employ-check-info&page={{$curPage}}&id={{$i.appraiseId}}&s={{$i.staffId}}{{$track}}">查看</a>
+			{{if $i.isSp == 0}}
 			<a href="?_f=employ-check-set&page={{$curPage}}&id={{$i.appraiseId}}&s={{$i.staffId}}{{$track}}">重新考核</a>
+			{{/if}}
 			{{/if}}
 		</td>
 	</tr>

@@ -57,7 +57,7 @@
 		$where .= ' and (checkStatus=0 or checkStatus=1)';
 	}
 
-	//普通员工
+	//普通员工,curCheckOffice/curCheckGroup为0时为总经办与总经理
 	if($common_category == 0){
 		$where .= ' and (curCheckOffice='.$common_office.' or curCheckOffice=0) and (curCheckGroup='.$common_group.' or curCheckGroup=0) and curCheckRole='.$common_checkRole.'';
 	}

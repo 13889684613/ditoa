@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-13 18:49:13
-  from "F:\website\ditoaCoder\ditoa\pc\humanAffairs\view\employ-check-info.html" */
+/* Smarty version 3.1.29, created on 2018-12-13 18:51:25
+  from "F:\website\ditoaCoder\ditoa\pc\humanAffairs\view\employ-check-check-set.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c123929c54947_76663336',
+  'unifunc' => 'content_5c1239ad370f12_63027765',
   'file_dependency' => 
   array (
-    '2ea1a0cd7531b84ea8f72a4be4b1b699cede8a07' => 
+    '959d283ee980cee7e0a9ad0c28a985fa26dc116b' => 
     array (
-      0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\humanAffairs\\view\\employ-check-info.html',
-      1 => 1544697587,
+      0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\humanAffairs\\view\\employ-check-check-set.html',
+      1 => 1544698282,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5c123929c54947_76663336 ($_smarty_tpl) {
+function content_5c1239ad370f12_63027765 ($_smarty_tpl) {
 ?>
 <title><?php echo $_smarty_tpl->tpl_vars['pageTitle']->value;?>
 </title>
@@ -33,69 +33,21 @@ function content_5c123929c54947_76663336 ($_smarty_tpl) {
 所属部门：<?php echo $_smarty_tpl->tpl_vars['i']->value['office'];?>
 <br />
 所属工作组：<?php echo $_smarty_tpl->tpl_vars['i']->value['group'];?>
-<br />
-状态：<?php echo $_smarty_tpl->tpl_vars['i']->value['status'];?>
 <br /><br />
 
+<?php if ($_smarty_tpl->tpl_vars['i']->value['checkStatus'] != 2) {?>
 转正考核：<br />
-审批进度轴：<br />
-<table border="1">
-	<tr>
-		<td>角色</td>
-		<td>人员</td>
-		<td>状态</td>
-		<td>时间</td>
-	</tr>
-	<?php
-$_from = $_smarty_tpl->tpl_vars['process']->value;
-if (!is_array($_from) && !is_object($_from)) {
-settype($_from, 'array');
-}
-$__foreach_process_0_saved_item = isset($_smarty_tpl->tpl_vars['p']) ? $_smarty_tpl->tpl_vars['p'] : false;
-$_smarty_tpl->tpl_vars['p'] = new Smarty_Variable();
-$_smarty_tpl->tpl_vars['p']->_loop = false;
-foreach ($_from as $_smarty_tpl->tpl_vars['p']->value) {
-$_smarty_tpl->tpl_vars['p']->_loop = true;
-$__foreach_process_0_saved_local_item = $_smarty_tpl->tpl_vars['p'];
-?>
-	<tr>
-		<td><?php echo $_smarty_tpl->tpl_vars['p']->value['role'];?>
-</td>
-		<td><?php echo $_smarty_tpl->tpl_vars['p']->value['staff'];?>
-</td>
-		<td><?php echo $_smarty_tpl->tpl_vars['p']->value['result'];?>
-</td>
-		<td><?php echo $_smarty_tpl->tpl_vars['p']->value['time'];?>
-</td>
-	</tr>
-	<?php
-$_smarty_tpl->tpl_vars['p'] = $__foreach_process_0_saved_local_item;
-}
-if ($__foreach_process_0_saved_item) {
-$_smarty_tpl->tpl_vars['p'] = $__foreach_process_0_saved_item;
-}
-?>
-</table>
+<form method="post">
+不再录用：<input type="text" name="quitDate" placeholder="请设置离职时间" /><br /><br />
+延长试用期：<input type="text" name="beginDate" placeholder="开始时间" />&nbsp;-&nbsp;<input type="text" name="overDate" placeholder="结束时间" /><br /><br />
+正式录用：<input type="text" name="remark" placeholder="录用情况（选填）"><br />
+<input type="hidden" name="act" value="checkPost" />
+<!-- 1延长试用期 2正式录用 3不再录用 -->
+<input type="hidden" name="result" value="3">
+<input type="submit" value="提交" />
+<?php }?>
 
 <br /><br />
-<?php if ($_smarty_tpl->tpl_vars['i']->value['checkStatus'] == 2) {?>
-考核结果：<br />
-<?php if ($_smarty_tpl->tpl_vars['i']->value['checkResult'] == 2) {?>
-正式录用：恭喜你 <?php echo $_smarty_tpl->tpl_vars['i']->value['staffName'];?>
-  通过转正考核，欢迎加入DIT大家庭 “工作认真负责，欢迎你的加入”。
-<?php }
-if ($_smarty_tpl->tpl_vars['i']->value['checkResult'] == 3) {?>
-不再录用： <?php echo $_smarty_tpl->tpl_vars['i']->value['staffName'];?>
-，很遗憾通知您，您没有通过公司的考核，离职日期为<?php echo $_smarty_tpl->tpl_vars['i']->value['quitDate'];?>
-。
-<?php }
-if ($_smarty_tpl->tpl_vars['i']->value['checkResult'] == 1) {?>
-延长试用期： <?php echo $_smarty_tpl->tpl_vars['i']->value['staffName'];?>
-，根据你试用期的表现，公司经再三考虑，决定延长试用期至<?php echo $_smarty_tpl->tpl_vars['i']->value['tryOverDate'];?>
-，请继续努力，加油！
-<?php }?>
-<br /><br />
-<?php }?>
 员工转正考核表：<br />
 
 考核结果：<?php echo $_smarty_tpl->tpl_vars['i']->value['scoreLevel'];?>
@@ -308,52 +260,5 @@ if ($_smarty_tpl->tpl_vars['i']->value['checkResult'] == 1) {?>
 病假：<input type="text" name="bingjia" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['sickLeave'];?>
 " readonly="true"/>天&nbsp;事假：<input type="text" name="shijia" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['eventLeave'];?>
 " />天&nbsp;旷工：<input type="text" name="kuanggong"value="<?php echo $_smarty_tpl->tpl_vars['i']->value['absenteeism'];?>
-" readonly="true"/>天<br />
-<?php if (count($_smarty_tpl->tpl_vars['check']->value) > 0) {?>
-审批记录表格：<br />
-<table border="1">
-	<tr>
-		<td>审批级别</td>
-		<td>审批角色</td>
-		<td>审批状态</td>
-		<td>审批意见</td>
-		<td>审批人</td>
-		<td>审批时间</td>
-	</tr>
-	<?php
-$_from = $_smarty_tpl->tpl_vars['check']->value;
-if (!is_array($_from) && !is_object($_from)) {
-settype($_from, 'array');
-}
-$__foreach_check_1_saved_item = isset($_smarty_tpl->tpl_vars['c']) ? $_smarty_tpl->tpl_vars['c'] : false;
-$_smarty_tpl->tpl_vars['c'] = new Smarty_Variable();
-$_smarty_tpl->tpl_vars['c']->_loop = false;
-foreach ($_from as $_smarty_tpl->tpl_vars['c']->value) {
-$_smarty_tpl->tpl_vars['c']->_loop = true;
-$__foreach_check_1_saved_local_item = $_smarty_tpl->tpl_vars['c'];
-?>
-	<tr>
-		<td><?php echo $_smarty_tpl->tpl_vars['c']->value['checkLevel'];?>
-</td>
-		<td><?php echo $_smarty_tpl->tpl_vars['c']->value['role'];?>
-</td>
-		<td><?php echo $_smarty_tpl->tpl_vars['c']->value['result'];?>
-</td>
-		<td><?php echo $_smarty_tpl->tpl_vars['c']->value['remark'];?>
-</td>
-		<td><?php echo $_smarty_tpl->tpl_vars['c']->value['checkUsr'];?>
-</td>
-		<td><?php echo $_smarty_tpl->tpl_vars['c']->value['checkTime'];?>
-</td>
-	</tr>
-	<?php
-$_smarty_tpl->tpl_vars['c'] = $__foreach_check_1_saved_local_item;
-}
-if ($__foreach_check_1_saved_item) {
-$_smarty_tpl->tpl_vars['c'] = $__foreach_check_1_saved_item;
-}
-?>
-</table>
-<?php }
-}
+" readonly="true"/>天<br /><?php }
 }

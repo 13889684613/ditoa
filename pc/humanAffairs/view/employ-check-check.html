@@ -48,8 +48,9 @@
 		<td>{{$i.checkUsr}}</td>
 		<td>{{$i.checkTime}}</td>
 		<td>
-			{{if $i.checkStatus == 2}}
-			<a href="?_f=employ-check-check-info&page={{$curPage}}&id={{$i.appraiseId}}{{$track}}">查看</a>
+			{{if $i.isSp == 1}}
+			<!-- 详情页面sign为check时左侧导航当前选中设置为转正考核审批 -->
+			<a href="?_f=employ-check-info&sign=check&page={{$curPage}}&id={{$i.appraiseId}}&s={{$i.staffId}}{{$track}}">查看</a>
 			{{else}}
 			<a href="?_f=employ-check-check-set&page={{$curPage}}&id={{$i.appraiseId}}{{$track}}">审批</a>
 			{{/if}}

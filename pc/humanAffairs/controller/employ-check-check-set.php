@@ -1,11 +1,11 @@
 <?php
 
 	//# Mr.Z
-	//# 2018-12-11
-	//# 转正考核详情
+	//# 2018-12-13
+	//# 转正考核审批
 
 	//当前页面公共配置
-	$pageTitle = '转正考核详情';
+	$pageTitle = '转正考核审批';
 	$act = $_REQUEST['act'];
 	$page = $_REQUEST['page'];
 	$where = '';
@@ -22,7 +22,7 @@
 
 	//获取用户数据 begin
 
-	$fields = 'staffId,staffRole,staffOffice,staffGroup,morality,moralityScore,attitude,attitudeScore,business,businessScore,efficiency,efficiencyScore,achievement,achievementScore,late,earlyRetreat,sickLeave,eventLeave,absenteeism,score,checkStatus,checkCategory,checkProcessId,appraiseUsr,appraiseUsrRole,appraiseTime';
+	$fields = 'staffId,staffRole,staffOffice,staffGroup,morality,moralityScore,attitude,attitudeScore,business,businessScore,efficiency,efficiencyScore,achievement,achievementScore,late,earlyRetreat,sickLeave,eventLeave,absenteeism,score,checkStatus,checkCategory,checkProcessId,curCheckLevel';
 	$A = $db->get_one(PRFIX.'staff_appraise','where appraiseId='.$appraiseId.'',$fields);
 	if($A){
 
@@ -96,13 +96,9 @@
 			$status = '审批中';
 		}elseif($data['checkStatus'] == 2){	//审批完成
 			//查询审批结果
-			$R = $db->get_one(PRFIX.'staff_appraise_check','where appraiseId='.$appraiseId.' order by checkId desc limit 1','checkResult,remark,beginDate,overDate,quitDate');
+			$R = $db->get_one(PRFIX.'staff_appraise_check','where appraiseId='.$appraiseId.' order by checkId desc limit 1','result');
 			if($R){
-				$data['checkResult'] = $R['checkResult'];
-				$status = static_staffCheck($R['checkResult']);
-				$data['remark'] = $R['remark'];
-				$data['quitDate'] = $R['quitDate'];
-				$data['tryOverDate'] = $R['beginDate'].'至'.$R['overDate'];
+				$status = static_staffCheck($R['result']);
 			}
 		}
 
@@ -115,56 +111,96 @@
 
 	//获取用户数据 over
 
-	//拉取审批进度轴 begin
+	//获取审批级别 begin
 	$checkLevel = 0;
 
 	//获取审批信息 begin
 	if($data['checkCategory']!=0){
 
-		//业务发起信息传参 begin
+		//业务发起信息传参
 		$apply[0] = $data['staffRole'];			//申请用户角色
 		$apply[1] = $data['staffName'];			//申请人姓名
 		$apply[2] = '';							//申请时间，转正考核无申请时间
 		$apply[3] = $appraiseId;				//申请id
-		//业务发起信息传参 over
 
-		//考核者信息传参 begin
-		$apply[4] = getStaffName($A['appraiseUsr']);			//考核者姓名
-		$apply[5] = getCheckRoleName($A['appraiseUsrRole']);	//考核者角色
-		$apply[6] = $A['appraiseTime'];							//考核时间
-		//考核者信息传参 over
+		$line = getCheckLine($apply,$data['checkCategory'],$data['checkProcessId']);
+		$checkLevel = $line[0];
 
-		$line = getCheckLine($apply,$data['checkCategory'],$data['checkProcessId'],10);
-		$checkLevel = $line[0];		//审批总级别
-		$processs = $line[1];
-		for ($e=0; $e < count($processs); $e++) { 
-			if($processs[$e]['status']!=''){
-				$processs[$e]['result'] = static_staffCheck($processs[$e]['status']);
-				if($processs[$e]['status'] == 1){
-					//延长试用期
-					$check = $db->get_one(PRFIX.'staff_appraise_check','where appraiseId='.$appraiseId.' and checkResult=1 order by checkId desc limit 1','beginDate,overDate');
-					$processs[$e]['text'] = $check['beginDate'].'至'.$check['overDate'];
-				}elseif($processs[$e]['status'] == 2){
-					//正式录用
-					$check = $db->get_one(PRFIX.'staff_appraise_check','where appraiseId='.$appraiseId.' and checkResult=2 order by checkId desc limit 1','remark');
-					$processs[$e]['text'] = $check['remark'];
-				}elseif($processs[$e]['status'] = 3){
-					//不再录用
-					$check = $db->get_one(PRFIX.'staff_appraise_check','where appraiseId='.$appraiseId.' and checkResult=3 order by checkId desc limit 1','quitDate');
-					$processs[$e]['text'] = '离职日期：'.$check['quitDate'];
-				}
-				$processs[$e]['result'] = $processs[$e]['result'].'/'.$processs[$e]['text'];
+	}
+	//获取审批级别 over
+
+	//考核 begin
+	if($act == 'checkPost'){
+
+		$val = array();
+
+		$result = getVal('result',1,'');
+		if($result == 0){
+			ErrorResturn('请选择考核结果!');
+		}
+		if($result == 1){
+			$beginDate = getVal('beginDate',2,'');
+			$overDate = getVal('overDate',2,'');
+			if($beginDate == ''||$overDate == ''){
+				ErrorResturn('请设置延长试用期有效期！');
 			}
+			if(!isdate($beginDate)||!isdate($overDate)){
+				ErrorResturn('请正确设置延长试用期有效期的时间！');
+			}
+			$val['beginDate'] = $beginDate;
+			$val['overDate'] = $overDate;
+		}
+		if($result == 2){
+			$remark = getVal('remark',2,'');
+			$val['remark'] = $remark;
+		}
+		if($result == 3){
+			$quitDate = getVal('quitDate',2,'');
+			if($quitDate == ''){
+				ErrorResturn('请填写离职时间！');
+			}
+			$val['quitDate'] = $quitDate;
+		}
+
+		$val['appraiseId'] = $appraiseId;
+		$val['checkLevel'] = $A['curCheckLevel'];
+		$val['checkUsr'] = $common_staffId;
+		$val['checkRole'] = $common_checkRole;
+		$val['checkResult'] = $result;
+		$val['checkTime'] = date('Y-m-d H:i:s');
+
+		$R = $db->insert(PRFIX.'staff_appraise_check',$val);
+		if($R){
+
+			//更新员工考核表数据
+			$apply = array();
+
+			//checkLevel为0时不需要审批，=curCheckLevel时为最后一个人审批
+			//满足以上两个条件时视为审批完成
+			if($checkLevel == 0||$checkLevel == $A['curCheckLevel']||$result==1||$result==3){
+				$apply['checkStatus'] = 2;	//审批完成
+			}else{
+				$apply['checkStatus'] = 1;	//审批中
+				$nextCheckLevel = $A['curCheckLevel'] + 1;
+				$apply['curCheckLevel'] = $nextCheckLevel;
+				
+				//找出下一个审批人员的部门、工作组、角色
+				$nextCheckInfo = getNextCheckInfo($data['checkCategory'],$data['checkProcessId'],$nextCheckLevel);
+
+				$apply['curCheckOffice'] = $nextCheckInfo[0];
+				$apply['curCheckGroup'] = $nextCheckInfo[1];
+				$apply['curCheckRole'] = $nextCheckInfo[2];
+			}
+			$db->update(PRFIX.'staff_appraise',$apply,'where appraiseId='.$appraiseId.'');
+
+			RefreshResturn('?_f=employ-check-info&sign=check&id='.$appraiseId.'');
+
+		}else{
+			ErrorResturn(ERRORTIPS);
 		}
 
 	}
-
-	//获取审批信息 over
-
-	//拉取审批进度轴 over
-
-	//拉取审批记录表格
-	$check = getCheckTable($appraiseId,10);
+	//考核 over
 
 	//数据绑定
 	$smarty->assign('pageTitle',$pageTitle);
@@ -173,8 +209,6 @@
 	$smarty->assign('s_name',$s_name);
 	$smarty->assign('i',$data);
 	$smarty->assign('id',$appraiseId);
-	$smarty->assign('process',$processs);
-	$smarty->assign('check',$check);
 	$smarty->assign('page',$page);
 
 ?>

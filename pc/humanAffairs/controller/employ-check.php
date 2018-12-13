@@ -40,7 +40,8 @@
 	}
 	
 	//category=0为普通员工，1为系统管理员
-	$where = 'where category=0'.$where;
+	$where = 'where 1=1'.$where;		//测试条件，切换正式需删除
+	// $where = 'where category=0'.$where;
 
 	//页面分页配置
 	$total = $db->Count($table,$where);
@@ -77,21 +78,36 @@
 			$data[$key]['date'] = '-';
 		}
 		//考核结果与考核人员
-		$check = $db->get_one(PRFIX.'staff_appraise','appraiseId,appraiseUsr','where staffId='.$data[$key]['staffId'].'');
+		$data[$key]['isCheck'] = 0;
+		$data[$key]['isSp'] = 0;
+		$data[$key]['appraiseId'] = '';
+
+		$check = $db->get_one(PRFIX.'staff_appraise','where staffId='.$data[$key]['staffId'].'','appraiseId,appraiseUsr,checkStatus');
 		if($check){
+			$data[$key]['isCheck'] = 1;
+			$data[$key]['appraiseId'] = $check['appraiseId'];
 			$data[$key]['checkUsr'] = getStaffName($data[$key]['staffId']);
-			//考核结果 
-			$result = $db->get_one(PRFIX.'staff_appraise_check','result','where appraiseId='.$check['appraiseId'].'');
-			if($result){
-				$data[$key]['result'] = static_staffCheck($data[$key]['result']);
-			}else{
+
+			if($check['checkStatus'] == 0){
 				$data[$key]['result'] = '待考核';
+			}elseif($check['checkStatus'] == 1){
+				$data[$key]['result'] = '审批中';
+				$data[$key]['isSp'] = 1;
+			}elseif($check['checkStatus'] == 2){
+				$data[$key]['isSp'] = 1;
+				//考核结果 
+				$result = $db->get_one(PRFIX.'staff_appraise_check','where appraiseId='.$check['appraiseId'].' order by checkId desc limit 1','checkResult');
+				if($result){
+					$data[$key]['result'] = static_staffCheck($result['checkResult']);
+				}
 			}
 		}else{
 			$data[$key]['checkUsr'] = '-';
 			$data[$key]['result'] = '-';
 		}
 	}
+
+	// var_dump($data);exit;
 	
 	//数据绑定
 	$smarty->assign('pageTitle',$pageTitle);

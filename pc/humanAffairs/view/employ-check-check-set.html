@@ -4,42 +4,21 @@
 申请人：{{$i.staffName}}<br />
 试用期：{{$i.try}}<br />
 所属部门：{{$i.office}}<br />
-所属工作组：{{$i.group}}<br />
-状态：{{$i.status}}<br /><br />
+所属工作组：{{$i.group}}<br /><br />
 
+{{if $i.checkStatus != 2}}
 转正考核：<br />
-审批进度轴：<br />
-<table border="1">
-	<tr>
-		<td>角色</td>
-		<td>人员</td>
-		<td>状态</td>
-		<td>时间</td>
-	</tr>
-	{{foreach item=p name=process from=$process}}
-	<tr>
-		<td>{{$p.role}}</td>
-		<td>{{$p.staff}}</td>
-		<td>{{$p.result}}</td>
-		<td>{{$p.time}}</td>
-	</tr>
-	{{/foreach}}
-</table>
+<form method="post">
+不再录用：<input type="text" name="quitDate" placeholder="请设置离职时间" /><br /><br />
+延长试用期：<input type="text" name="beginDate" placeholder="开始时间" />&nbsp;-&nbsp;<input type="text" name="overDate" placeholder="结束时间" /><br /><br />
+正式录用：<input type="text" name="remark" placeholder="录用情况（选填）"><br />
+<input type="hidden" name="act" value="checkPost" />
+<!-- 1延长试用期 2正式录用 3不再录用 -->
+<input type="hidden" name="result" value="3">
+<input type="submit" value="提交" />
+{{/if}}
 
 <br /><br />
-{{if $i.checkStatus == 2}}
-考核结果：<br />
-{{if $i.checkResult == 2}}
-正式录用：恭喜你 {{$i.staffName}}  通过转正考核，欢迎加入DIT大家庭 “工作认真负责，欢迎你的加入”。
-{{/if}}
-{{if $i.checkResult == 3}}
-不再录用： {{$i.staffName}}，很遗憾通知您，您没有通过公司的考核，离职日期为{{$i.quitDate}}。
-{{/if}}
-{{if $i.checkResult == 1}}
-延长试用期： {{$i.staffName}}，根据你试用期的表现，公司经再三考虑，决定延长试用期至{{$i.tryOverDate}}，请继续努力，加油！
-{{/if}}
-<br /><br />
-{{/if}}
 员工转正考核表：<br />
 
 考核结果：{{$i.scoreLevel}}（考核标准：A.136分以上    B.136分-110分    C.110分-84分    D.84分以下）
@@ -241,26 +220,3 @@
 考勤情况：<br />
 迟到：<input type="text" name="cidao" value="{{$i.late}}" readonly="true" />次&nbsp;早退：<input type="text" name="zaotui" value="{{$i.earlyRetreat}}" readonly="true"/>次&nbsp;<br />
 病假：<input type="text" name="bingjia" value="{{$i.sickLeave}}" readonly="true"/>天&nbsp;事假：<input type="text" name="shijia" value="{{$i.eventLeave}}" />天&nbsp;旷工：<input type="text" name="kuanggong"value="{{$i.absenteeism}}" readonly="true"/>天<br />
-{{if count($check)>0}}
-审批记录表格：<br />
-<table border="1">
-	<tr>
-		<td>审批级别</td>
-		<td>审批角色</td>
-		<td>审批状态</td>
-		<td>审批意见</td>
-		<td>审批人</td>
-		<td>审批时间</td>
-	</tr>
-	{{foreach item=c name=check from=$check}}
-	<tr>
-		<td>{{$c.checkLevel}}</td>
-		<td>{{$c.role}}</td>
-		<td>{{$c.result}}</td>
-		<td>{{$c.remark}}</td>
-		<td>{{$c.checkUsr}}</td>
-		<td>{{$c.checkTime}}</td>
-	</tr>
-	{{/foreach}}
-</table>
-{{/if}}

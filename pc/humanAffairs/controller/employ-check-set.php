@@ -174,6 +174,7 @@
 		$achievement = $yaoqiu.','.$zongjie.','.$shulian;		//业绩
 
 		$val['appraiseUsr'] = $common_staffId;					//考核者
+		$val['appraiseUsrRole'] = $common_checkRole;			//考核者角色
 		$val['morality'] = $morality;
 		$val['moralityScore'] = $score_pd;
 		$val['attitude'] = $attitude;
@@ -222,13 +223,18 @@
 			$result = $db->insert(PRFIX.'staff_appraise',$val);
 
 		}else{
-			$result = $db->insert(PRFIX.'staff_appraise',$val,'where appraiseId='.$appraiseId.'');
+			$result = $db->update(PRFIX.'staff_appraise',$val,'where appraiseId='.$appraiseId.'');
 		}
 
 		if(!$result){
 			ErrorResturn(ERRORTIPS);
 		}else{
-			$dataId = $db->get_lastId();
+			if($appraiseId == 0){
+				$dataId = $db->get_lastId();
+			}else{
+				$dataId = $appraiseId;
+			}
+			
 			TipsRefreshResturn('考核成功','?_f=employ-check-info&id='.$dataId.'');
 		}
 

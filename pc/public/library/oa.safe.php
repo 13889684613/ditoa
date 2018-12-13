@@ -27,11 +27,11 @@
 					TipsRefreshResturn('您已离职，登录帐号已关闭','index.php?_f=login');
 				}
 			}
-			$common_staffName = $commons['staffName'];	//员工姓名
-			$common_office = $commons['officeId'];		//员工所属部门
-			$common_group = $commons['groupId'];		//员工所属工作组
-			$common_category = $commons['category'];	//系统级角色 1系统管理员 0普通员工
-			$common_checkRole = $commons['checkRoleId'];//审批角色id
+			$common_staffName = $commons['staffName'];		//员工姓名
+			$common_office = $commons['officeId'];			//员工所属部门
+			$common_group = $commons['groupId'];			//员工所属工作组
+			$common_category = $commons['category'];		//系统级角色 1系统管理员 0普通员工
+			$common_checkRole = $commons['checkRoleId'];	//审批角色id
 
 			//获取办事处名称
 			$getOffice = $db->get_one(PRFIX.'office','where officeId='.$commons['officeId'].'','officeName');
@@ -49,7 +49,7 @@
 				TipsRefreshResturn('您所属的工作组不存在，请重新登录','index.php?_f=login');
 			}
 
-			//获取权限信息
+			//获取权限信息 begin
 			$getPower = $db->get_one(PRFIX.'sysrole','where sysRoleId='.$commons['sysRoleId'].'','power');
 			if(!$getPower){
 				TipsRefreshResturn('帐号权限异常，请重新登录','index.php?_f=login');
@@ -66,6 +66,11 @@
 				$menuSignPower = explode(',',$menuPower[8]);				//考勤管理
 				$otherPower = explode(',',$menuPower[9]);					//其它权限，0:背景调查
 			}
+			//获取权限信息 over
+
+			//工作接管权限合并 begin
+			// 待完善
+			//工作接管权限合并 over
 
 			//系统消息
 			$msgWhere = 'where (receiverRole=0';

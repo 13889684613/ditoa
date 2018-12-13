@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-09 14:56:33
+/* Smarty version 3.1.29, created on 2018-12-13 14:21:31
   from "F:\website\ditoaCoder\ditoa\pc\humanAffairs\view\employ-check.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c0cbca1a0b5e6_11001156',
+  'unifunc' => 'content_5c11fa6b3af528_28150814',
   'file_dependency' => 
   array (
     'b7b306ca5f9642776c9c2ba1eee0ff622390c2fb' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\humanAffairs\\view\\employ-check.html',
-      1 => 1544338589,
+      1 => 1544682090,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5c0cbca1a0b5e6_11001156 ($_smarty_tpl) {
+function content_5c11fa6b3af528_28150814 ($_smarty_tpl) {
 ?>
 <meta charset="utf-8" />
 <title><?php echo $_smarty_tpl->tpl_vars['pageTitle']->value;?>
@@ -132,11 +132,13 @@ echo $_smarty_tpl->tpl_vars['track']->value;?>
 &s=<?php echo $_smarty_tpl->tpl_vars['i']->value['staffId'];
 echo $_smarty_tpl->tpl_vars['track']->value;?>
 ">查看</a>
+			<?php if ($_smarty_tpl->tpl_vars['i']->value['isSp'] == 0) {?>
 			<a href="?_f=employ-check-set&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
 &id=<?php echo $_smarty_tpl->tpl_vars['i']->value['appraiseId'];?>
 &s=<?php echo $_smarty_tpl->tpl_vars['i']->value['staffId'];
 echo $_smarty_tpl->tpl_vars['track']->value;?>
 ">重新考核</a>
+			<?php }?>
 			<?php }?>
 		</td>
 	</tr>

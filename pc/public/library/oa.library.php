@@ -134,17 +134,27 @@
 	function getCheckLine($applyInfo,$checkCategory,$checkProcessId,$bussinessType){
 
 		global $db;
-		$checkLevel = 0;	
+		$checkLevel = 0; $cusor = 0;  //20181213 add
 
 		//获取发起信息 begin
 		$beginRole = getCheckRoleName($applyInfo[0]);
 		$beginStaff = $applyInfo[1];
 		$beginTime = $applyInfo[2];
-		$processs[0]['role'] = $beginRole;
-		$processs[0]['staff'] = $beginStaff;
-		$processs[0]['result'] = '发起';
-		$processs[0]['time'] = $beginTime;
+		$processs[$cusor]['role'] = $beginRole;
+		$processs[$cusor]['staff'] = $beginStaff;
+		$processs[$cusor]['result'] = '发起';
+		$processs[$cusor]['time'] = $beginTime;
 		//获取发起信息 over
+
+		//转正考核者信息 begin
+		if($bussinessType == 10){
+			++ $cusor;
+			$processs[$cusor]['role'] = $applyInfo[5];	//考核者角色
+			$processs[$cusor]['staff'] = $applyInfo[4];	//考核者姓名
+			$processs[$cusor]['result'] = '已考核';	
+			$processs[$cusor]['time'] = $applyInfo[6];	//考核时间
+		}
+		//转正考核者信息 over
 
 		//自定义审批流
 		if($checkCategory == 2){
@@ -154,7 +164,7 @@
 				//自定义审批流
 				$custom = $db->get_all(PRFIX.'checkprocess_detail','where checkProcessId='.$process['checkProcessId'].' order by checkLevel asc','checkLevel,roleId,officeId,groupId');
 				for($c=0;$c<count($custom);$c++){
-					$p = $c+1;
+					$p = $cusor+1;	//20181213 update
 					$processs[$p]['role'] = getCheckRoleName($custom[$c]['roleId']);				//审批角色
 					
 					//获得审批人员、结果、时间
@@ -166,7 +176,7 @@
 					$processs[$p]['staff'] = $result[0];
 					$processs[$p]['result'] = $result[1];
 					$processs[$p]['time'] = $result[2];
-					
+					++ $cusor;	//20181213 add
 				}
 			}
 
@@ -180,7 +190,7 @@
 				//默认审批流
 				$default = $db->get_all(PRFIX.'default_checkprocess_detail','where checkProcessId='.$process['defaultCheckProcessId'].' order by checkLevel asc','checkLevel,roleId');
 				for($c=0;$c<count($default);$c++){
-					$p = $c+1;
+					$p = $cusor+1;	//20181213 update
 					//审批角色
 					$processs[$p]['role'] = getCheckRoleName($default[$c]['roleId']);
 
@@ -193,6 +203,8 @@
 					$processs[$p]['staff'] = $result[0];
 					$processs[$p]['result'] = $result[1];
 					$processs[$p]['time'] = $result[2];
+					$processs[$p]['status'] = $result[3];	//转正审批流程用	20181213 add
+					++ $cusor; //20181213 add
 				}
 
 			}
@@ -225,6 +237,7 @@
 		$ci = $db->get_one($D[0],'where '.$D[1].'='.$applyId.' and checkLevel='.$checkLevel.'','checkUsr,checkResult,checkTime');
 		if($ci){
 			$staffName = getStaffName($ci['checkUsr']);			//审批人员
+			$status = $ci['checkResult'];						//审批结果状态，转正审批流程会用到	20181213 add
 			$result = static_checkResult($ci['checkResult']);	//审批结果
 			$time = $ci['checkTime'];							//审批时间 
 		}else{
@@ -238,12 +251,14 @@
 				$staffName = $staff['staffName'];
 				$result = '';
 				$time = '';
+				$status = '';
 			}
 		}
 
 		$val[0] = $staffName;
 		$val[1] = $result;
 		$val[2] = $time;
+		$val[3] = $status;	//转正流程会用到,20181213 add
 
 		return $val;
 
@@ -263,7 +278,15 @@
 		$check = $db->get_all($tableName,'where '.$fieldName.'='.$applyId.'','checkLevel,checkUsr,checkRole,checkResult,remark,checkTime');
 		for($e=0;$e<count($check);$e++){
 			$check[$e]['role'] = getCheckRoleName($check[$e]['checkRole']);
-			$check[$e]['result'] = static_checkResult($check[$e]['checkResult']);
+			//20181213 udpate
+			if($category == 10){
+				//转正审批流程特殊处理
+				$check[$e]['result'] = '已审批';
+				$check[$e]['remark'] = static_staffCheck($check[$e]['checkResult']);
+			}else{
+				//其它审批流程
+				$check[$e]['result'] = static_checkResult($check[$e]['checkResult']);
+			}
 			$check[$e]['checkUsr'] = getStaffName($check[$e]['checkUsr']);
 		}
 
