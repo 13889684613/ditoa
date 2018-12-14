@@ -19,23 +19,38 @@
 	//验证
 	if($act == 'updatePost'){
 		if($oldPwd == ''){
-			ErrorResturn('请填写原密码');
+			$data['status'] = 'fail';
+			$data['message'] = '请填写原密码';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if($newPwd == ''){
-			ErrorResturn('请填写新密码');
+			$data['status'] = 'fail';
+			$data['message'] = '请填写新密码';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if($enterPwd == ''){
-			ErrorResturn('请再次填写新密码');
+			$data['status'] = 'fail';
+			$data['message'] = '请再次填写新密码';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if($newPwd!=$enterPwd){
-			ErrorResturn('两次密码填写不一致，请重新填写');
+			$data['status'] = 'fail';
+			$data['message'] = '两次密码填写不一致，请重新填写';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 
 		//验证原密码正确性begin
 		$oldPwd = md5('dit'.$oldPwd.'2018');
 		$right = $db->get_one($table,'where staffId='.$common_staffId.' and loginPwd="'.$oldPwd.'"','staffId');
 		if(!$right){
-			ErrorResturn('请填写正确的当前密码');
+			$data['status'] = 'fail';
+			$data['message'] = '请填写正确的当前密码';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		//验证原密码正确性over
 
@@ -44,10 +59,14 @@
 		$val['loginPwd'] = $newPwd;
 		$result = $db->update($table,$val,'where staffId='.$common_staffId.'');
 		if($result){
-			TipsRefreshResturn('新密码设置成功，请重新登录','index.php?_f=login');
+			$data['status'] = 'success';
+			$data['message'] = '新密码设置成功，请重新登录';
 		}else{
-			ErrorResturn(ERRORTIPS);
+			$data['status'] = 'fail';
+			$data['message'] = ERRORTIPS;
 		}
+		$returnJson = json_encode($data);
+		echo $returnJson; exit;
 	}
 
 	//数据绑定

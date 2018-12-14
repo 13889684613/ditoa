@@ -134,7 +134,7 @@ var t;
 function popAlert(txt) {
 $('.popAlert').remove();
 clearTimeout(t);
-var html = '<div class = "popAlert"><img src="../../public/html/images/popAlertIcon.png" alt="" class = "popAlertIcon" /><p class = "popAlertText">'+txt+'</p></div>';
+var html = '<div class = "popAlert"><img src="public/html/images/popAlertIcon.png" alt="" class = "popAlertIcon" /><p class = "popAlertText">'+txt+'</p></div>';
 $('body').append(html);
 $('.popAlert').show(); 
 t = setTimeout(function(){

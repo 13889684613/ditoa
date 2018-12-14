@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-14 21:35:47
+/* Smarty version 3.1.29, created on 2018-12-14 22:24:17
   from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/index/view/update-password.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c13b1b31852f0_56883318',
+  'unifunc' => 'content_5c13bd113ef446_52528435',
   'file_dependency' => 
   array (
     '34e5813f4e01c4f1b1382232d0f92665db5eaab5' => 
     array (
       0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/index/view/update-password.html',
-      1 => 1544794544,
+      1 => 1544797068,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c13b1b31852f0_56883318 ($_smarty_tpl) {
+function content_5c13bd113ef446_52528435 ($_smarty_tpl) {
 ?>
 <!-- 
 	# 出差申请
@@ -42,7 +42,7 @@ function content_5c13b1b31852f0_56883318 ($_smarty_tpl) {
 	<link rel="stylesheet" href="public/html/css/oa.common.css" />
 	<link rel="stylesheet" href="public/html/css/oa.jquery-ui.min.css" />
 	<link rel="stylesheet" href="public/html/css/oa.jquery.multiselect.css" />
-	<link rel="stylesheet" href="businessTravel/view/css/businessTravel-apply.css" />
+	<link rel="stylesheet" href="index/view/css/update-password.css" />
 </head>
 <body>
 
@@ -74,45 +74,23 @@ function content_5c13b1b31852f0_56883318 ($_smarty_tpl) {
 				<!-- 内容区 开始 -->
 				<div class = "rightContent">
 					<div class = "staffInfoForm contentForm clearfix">
-						<form action="" class = "clearfix">
+						<form id="pwdForm" class = "clearfix" method="post">
+							<input type="hidden" name="act" value="updatePost">
 							<div class = "addApply clearfix">
 								<p class = "addApplyTitle">密码设置</p>
 								<!-- <a href="##" class = "goSeeStandard">查看差旅标准</a> -->
 								<div class = "formsBox clearfix">
-									<div class = "form w360">
-										<p class = "formTitle">出差时间<span>*</span></p>
-										<input type="text" placeholder="出差时间" name = "beginDate" class = "formInput startForm dataInput datepicker" style="vertical-align:middle;" autocomplete="off"/>
-										<span style = "color: #aaa;">~</span>
-										<input type="text" placeholder="出差时间" name = "overDate" class = "formInput endForm dataInput datepicker" style="vertical-align:middle;" autocomplete="off"/>
-										<p class = "allDay">共计：<span>0</span>天</p>
-									</div>
 									<div class = "form">
-										<p class = "formTitle">出差行程<span>*</span><span class="tipsIcon"><span class = "tips">请概要描述申请出差的行程安排</span></span></p>
-										<input type="text" name = "trip" placeholder = "请输入" class = "formInput tripForm" autocomplete="off" />
+										<p class = "formTitle">设置新密码<span>*</span></p>
+										<input type="password" placeholder="请设置新密码" name = "newPwd" class = "formInput" style="vertical-align:middle;" autocomplete="off"/>
 									</div>
 									<div class = "form mR0">
-										<p class = "formTitle">工作接管人<span>*</span></p>
-										<div class = "formInput formSelect">请选择工作接管人</div>
-										<ul class = "formSelectList">
-											<li class = "default">请选择工作接管人</li>
-											<li>1</li>
-											<li>2</li>
-											<li>3</li>
-										</ul>
-										<input type="hidden" name = "receiverUsr" class = "receiverUsrForm"/>
-									</div>
-								</div>
-							</div>
-							<div class = "other clearfix">
-								<p class = "addApplyTitle">其他</p>
-								<div class = "formsBox clearfix">
-									<div class = "form">
-										<p class = "formTitle">出差目的地及事由<span>*</span></p>
-										<textarea name="reason" placeholder="请输入出差目的地及事由" class = "formInput reasonInput"></textarea>
+										<p class = "formTitle">确认新密码<span>*</span></p>
+										<input type="password" name = "enterPwd" placeholder = "请再次填写新密码" class = "formInput tripForm" autocomplete="off" />
 									</div>
 									<div class = "form">
-										<p class = "formTitle">备注</p>
-										<textarea name="remark" placeholder="请输入" class = "formInput remarkInput"></textarea>
+										<p class = "formTitle">原密码<span>*</span></p>
+										<input type="password" placeholder="请填写当前密码" name = "oldPwd" class = "formInput" style="vertical-align:middle;" autocomplete="off"/>
 									</div>
 								</div>
 							</div>
@@ -153,7 +131,10 @@ function content_5c13b1b31852f0_56883318 ($_smarty_tpl) {
  type="text/javascript" src="public/html/js/plugin/jquery.mCustomScrollbar.concat.min.js"><?php echo '</script'; ?>
 >
 	<?php echo '<script'; ?>
- type="text/javascript" src="businessTravel/view/js/businessTravel-apply.js" ><?php echo '</script'; ?>
+ type="text/javascript" src="public/html/js/jquery.form.min.js" ><?php echo '</script'; ?>
+>
+	<?php echo '<script'; ?>
+ type="text/javascript" src="index/view/js/update-password.js" ><?php echo '</script'; ?>
 >
 </body>
 </html><?php }
