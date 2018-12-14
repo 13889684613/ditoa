@@ -1,0 +1,243 @@
+/* 
+    # 录入实际使用花费
+    # Bowen
+    # 2018-11-20  
+*/
+
+.contentForm {
+    width: 100%;
+    background-color: #f0f1f7;
+    padding-bottom: 0;
+}
+
+.realInfo {
+    width: 100%;
+    height: auto;
+    padding: 30px 0 100px;
+    background-color: #fff;
+    border-radius: 3px;
+    margin-top: 30px;
+}
+
+.addApplyTitle {
+    padding-left: 29px;
+    font-size: 20px;
+    color: #07196c;
+    background: url(../../../public/html/images/formTitle.jpg) no-repeat left center;
+    margin: 0;
+}
+
+.infoLists {
+    width: 100%;
+    padding: 0 2.5%;
+    margin-top: 20px;
+    margin-bottom: 28px;  
+}
+
+.listBox {
+    width: 100%;
+    height: 105px;
+    border-radius: 3px;
+    background-color: #f6f6fa;
+    padding: 20px 2.8%;
+    margin-bottom: 10px;
+}
+
+.listNum {
+    float: left;
+    width: 36px;
+    height: 100%;
+    line-height: 65px;
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+    background: url(../images/numIcon.png) no-repeat center;
+    margin-right: 1%;
+}
+
+.form {
+    float: left;
+    width: 12%;
+    margin-bottom: 0;
+    margin-right: 3%;
+}
+
+.form.project {
+    width: 16%;
+}
+
+.form input {
+    background-color: #fff;
+}
+
+.addBtn {
+    float: right;
+    width: 60px;
+    height: 100%;
+    background: url(../images/add_btn_icon.png) no-repeat center;
+    cursor: pointer;
+}
+
+.removeBtn {
+    float: right;
+    width: 60px;
+    height: 100%;
+    background: url(../images/remove_btn_icon.png) no-repeat center;
+    cursor: pointer;
+}
+
+.resultBox {
+    height: 70px;
+    margin: 0 2.5%;
+    padding: 14px 2.5%;
+    background-color: #fdf3f2;
+}
+
+.result {
+    float: left;
+    height: 100%;
+    line-height: 42px;
+    font-size: 16px;
+    color: #444;
+    margin-right: 4%;
+}
+
+.result span {
+    font-weight: bold;
+}
+
+.resulTax{
+    float: left;
+    display: block;
+    width: 12%;
+    height: 42px;
+    border: 1px solid #e8e8e8;
+    border-radius: 3px;
+    background-color: #fff;
+    padding: 0 10px;
+    margin: 0 5px;
+    line-height: 40px;
+}
+
+
+.resulTax::-webkit-input-placeholder{ 
+	color: #aaa; 
+} 
+
+.resulTax::-webkit-input-placeholder{ 
+	color: #aaa; 
+} 
+
+.resulTax::-moz-placeholder{ 
+	color: #aaa; 
+} 
+
+.resulTax:-ms-input-placeholder{
+	color: #aaa; 
+}
+
+.mR0 {
+    margin-right: 0;
+}
+
+.resultAll {
+    float: right;
+    font-size: 18px;
+    color: #444;
+    font-weight: bold;
+    line-height: 40px;
+    position: relative;
+}
+
+.resultAll span {
+    position: relative;
+    top:3px;
+    font-size: 40px;
+    color: #d71e2d;
+}
+
+.quitApplyMeaasge1 .rowQuit div.lable {
+    width: 136px;
+}
+
+.rowQuit a {
+    color: #4d76cc;
+    text-decoration: underline;
+}
+
+/* 2018-11-30 新增 start */
+.turnGreen {
+    width: 90px;
+    height: 90px;
+    background: url(../../../public/html/images/isOk_Icon.png) no-repeat center;
+}
+/* 2018-11-30 新增 end */
+
+@media (min-width: 1200px) and (max-width: 1550px) {
+    
+    .form {
+        width: 14%; 
+    }
+
+    .result input {
+        width: 14%; 
+    }
+
+    .formInput::-webkit-input-placeholder,textarea::-webkit-input-placeholder { 
+        color: #aaa; 
+        font-size: 12px;
+    } 
+    
+    .formInput::-webkit-input-placeholder,textarea::-webkit-input-placeholder { 
+        color: #aaa; 
+        font-size: 12px;
+    } 
+    
+    .formInput::-moz-placeholder,textarea::-moz-placeholder { 
+        color: #aaa; 
+        font-size: 12px;
+    } 
+    
+    .formInput:-ms-input-placeholder,textarea:-ms-input-placeholder {
+        color: #aaa; 
+        font-size: 12px;
+    }
+
+}
+
+@media (min-width: 1200px) and (max-width: 1300px) {
+	
+    .quitApplyMeaasge1 .rowQuit div.message{
+		width: 130px;
+		padding-right: 10px;
+    }
+    
+}
+
+
+@media (min-width: 1300px) and (max-width: 1440px) {
+	
+    .quitApplyMeaasge1 .rowQuit div.message{
+		width: 147px;
+		padding-right: 10px;
+    }
+    
+}
+
+@media (min-width: 1440px) and (max-width: 1550px) {
+	
+    .quitApplyMeaasge1 .rowQuit div.message{
+		width: 170px;
+		padding-right: 10px;
+    }
+    
+}
+
+@media (min-width: 1550px) and (max-width: 1680px) {
+	
+    .quitApplyMeaasge1 .rowQuit div.message{
+		width: 232px;
+		padding-right: 10px;
+    }
+    
+}

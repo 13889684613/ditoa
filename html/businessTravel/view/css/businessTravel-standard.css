@@ -1,0 +1,148 @@
+.businessBox{
+	width: 1200px;
+	margin: 0 auto;
+	background: #fff;
+	padding-top: 64px;
+	border-radius: 3px;
+	padding-bottom: 137px;
+	margin-top: 53px;
+}
+
+.margin-bottom-100{
+	margin-bottom: 100px;
+}
+
+.backgroundf6{
+	background: #f6f6fa;
+}
+
+.backgroundfff{
+	background: #fff;
+}
+
+
+.businessBox-inner{
+	width: 1000px;
+	margin: 0 auto;
+	height: auto;
+}
+
+.businessBox-inner h1{
+	margin: 0;
+	text-align: center;
+	font-size: 24px;
+	color: #222;
+	font-weight: bold;
+	margin-bottom: 57px;
+}
+
+.travelTypeBox{
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	padding-bottom: 17px;
+	border-bottom: 1px solid #ddd;
+	margin-bottom: 30px;
+}
+
+.travelType{
+	float: left;
+}
+
+.travelType-plane{
+	width: 116px;
+	margin-left: 30px;
+}
+
+.travelType .imageBox{
+	width: 100%;
+	text-align: center;
+	height: 99px;
+}
+
+.travelType .imageBox img{
+	display: inline-block;
+}
+
+.travelType .text{
+	width: 100%;
+	text-align: center;
+	font-size: 14px;
+	color: #222;
+}
+
+.travelType-train{
+	width: 160px;
+	margin-left: 72px;
+}
+
+.travelType-car{
+	width: 102px;
+	margin-left: 72px;
+}
+
+.travelType-ship{
+	width: 100px;
+	margin-left: 99px;
+}
+
+.travelType-house{
+	width: 210px;
+	margin-left: 39px;
+}
+
+.standardBox h2{
+	margin: 0;
+	font-size: 18px;
+	font-weight: bold;
+	color: #2e333c;
+	text-indent: 15px;
+	margin-bottom: 18px;
+	position: relative;
+}
+
+.standardBox h2:after{
+	display: block;
+	width: 4px;
+	height: 18px;
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 2px;
+	background: #d71e2d;
+}
+
+.travelStandardTable{
+	border-bottom: 1px solid #ddd;
+	margin-bottom: 20px;
+	border-color: #ddd;
+}
+
+.travelStandardTable td{
+	height: 49px;
+	font-size: 14px;
+	text-align: center;
+	color: #222;
+}
+.color3e4855{
+	color: #3e4855!important;
+	font-size: 15px!important;
+}
+
+.backgroundEff1f6{
+	background: #eff1f6;
+}
+
+.travelStandardTableTips{
+	font-size: 14px;
+	color: #666;
+	margin-bottom: 66px;
+}
+
+.freeStandard p{
+	color: #666;
+	font-size: 14px;
+}
+.travelStandardTable,.travelStandardTable td{
+	border: 1px solid #ddd;
+}

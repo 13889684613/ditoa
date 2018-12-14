@@ -1,0 +1,198 @@
+/* 
+    # 假期申请
+    # Bowen
+    # 2018-11-16  
+*/
+
+.popAlert {
+    width: 260px;
+}
+
+.contentForm {
+    width: 100%;
+    border: 1px solid #e4e5ed;
+    background-color: #fff;
+    padding-bottom: 155px;
+}
+
+.holidayForm {
+    width: 780px;
+    margin: 70px auto 0;
+}
+
+.holidaySelect {
+    float: left;
+    width: 300px;
+}
+
+.uploadFile {
+    display: none;
+    float: left;
+    width: 150px;
+    height: 42px;
+    position: relative;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.uploadFile .uploadBtn{
+    width: 100%;
+    height: 100%;
+    line-height: 42px;
+    text-align: center;
+    font-size: 13px;
+    color: #fff;
+    background-color: #012989;
+    cursor: pointer;
+    margin: 0;
+    border-radius: 3px;
+    z-index: 200;
+}
+
+.uploadFile input[type="file"] {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    font-size: 100px;
+    cursor: pointer;
+}
+
+.showFileName {
+    display: none;
+    float: left;
+    width: 286px;
+    margin-top: 10px;
+    margin-left: 23px;
+    padding-left: 30px;
+    font-size: 14px;
+    color: #999;
+    background: url(../../../public/html/images/upload_ok.png) no-repeat left center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.tips {
+    display: none;
+    font-size: 13px;
+    color: #999;
+    position: absolute;
+    top: 80px;
+    left: 0;
+}
+
+.mbottom40 {
+    margin-bottom: 40px!important;
+}
+
+.dataInput {
+    width: 160px;
+    margin-right: 19px;
+}
+
+.holidayTimeBox span {
+    padding: 0 13px;
+    color: #aaa;
+}
+
+.holidayTimeBox .formTitle span{
+    color: red;
+    padding: 0 4px;
+}
+
+.timeForm {
+    width: 150px;
+}
+
+.add {
+    /* width: 42px;
+    height: 42px; */
+    cursor: pointer;
+    margin-top: 24px;
+    /* margin-left: 12px; */
+}
+
+.tableBox {
+    display: none;
+    margin-top: 40px;
+}
+
+.tableBox .total{
+    width: 710px;
+    text-align: right;
+    font-size: 15px;
+    color: #444;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.tableBox .total span{
+    font-size: 15px;
+    color: #444;
+}
+
+.tableBox table {
+    width: 709px;
+    border:1px solid #e8e8e8;
+}
+
+.tableBox th {
+    height: 55px;
+    text-align: center;
+    background-color: #eaedf4;
+    font-size: 15px;
+    color: #3e4855;
+}
+
+.tableBox tr {
+    height: 54px;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.tableBox td {
+    font-size: 14px;
+    color: #444;
+    text-align: center;
+}
+
+.editButton {
+    width: 39px;
+    height: 100%;
+    line-height: 26px;
+    cursor: pointer;
+    margin: 0 auto;
+}
+
+.editButton img {
+    display: block;
+    margin: 0 auto;
+}
+
+.holidayReasonBox {
+    margin-top: 40px;
+}
+
+.holidayReason {
+    width: 710px;
+    height: 130px;
+    padding-top: 5px;
+    line-height: 2;
+}
+
+.allDay,.allHour{
+    padding:0;
+}
+
+/* 2018-11-30 新增 start*/
+.rightTxt {
+    display: block;
+    padding-top: 70px;
+    font-size: 14px;
+    color: #999;
+}
+/* 2018-11-30 新增 end*/

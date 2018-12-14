@@ -1,0 +1,217 @@
+/* 
+    # 办公备品申请
+	# lfl
+	# 2018-11-26
+*/
+
+.architectureContent{
+	width: 100%;
+}
+.infoTitle{
+	font-size: 20px;
+	color: #07196c;
+	position: relative;
+}
+.infoTitle:after{
+	content: '';
+	display: block;
+	width: 6px;
+	height: 22px;
+	background-color: #d71e2d;
+	position: absolute;
+	top: 2px;
+	left: -38px;
+}
+.contentRightContent{
+	background-color: #fff;
+	padding: 27px 38px 54px 38px;
+}
+.choseStyle{
+	background-color: #e4f0fe;
+}
+.choseStyle input{
+	border: 1px solid #e8e8e8;
+	border-radius: 3px;
+	height: 30px;
+	line-height: 28px;
+	padding-left: 5px;
+}
+.InputLb,.InputNa{
+	width: 140px;
+	background: url(../images/input-down.jpg) no-repeat 92% 50% #fff;
+	cursor: pointer;
+}
+.InputXh{
+	width: 120px;
+}
+.InputNm{
+	width: 90px;
+	padding-left: 0 !important;
+}
+.InputDw{
+	width: 80px;
+	padding-left: 0 !important;
+}
+.InputTr{
+	width: 180px;
+}
+
+input::-webkit-input-placeholder{ 
+	color: #aaa; 
+	font-size: 13px;
+} 
+
+input::-webkit-input-placeholder{ 
+	color: #aaa; 
+	font-size: 13px;
+} 
+
+input::-moz-placeholder{ 
+	color: #aaa; 
+	font-size: 13px;
+} 
+
+input:-ms-input-placeholder{
+	color: #aaa; 
+	font-size: 13px;
+}
+.retrievalsInputNavBox{
+	 display: none; 
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.retrievalsInputNav{
+	/*position: absolute;
+	top: 55px;*/
+	/*left: 0;*/
+	position: relative;
+	background-color: #fff;
+	z-index: 10;
+	width: 240px;
+	box-shadow: 0 0 20px #e9e9e9;
+	margin-top: 55px;
+	/*display: none;*/
+}
+.tableBox .retrievalsInputNav .mCS-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{
+	width: 8px !important;
+}
+.retrievalsInputNav:after{
+	content: '';
+	display: block;
+	position: absolute;
+	width: 11px;
+	height: 8px;
+	background: url(../images/navTop.jpg) no-repeat;
+	top: -8px;
+	left: 17px;
+}
+.retrievalsInputNav li{
+	height: 45px;
+	line-height: 45px;
+	font-size: 13px;
+	color: #888888;
+	border-radius: 5px;
+	cursor: pointer;
+	padding-left: 13px;
+}
+.retrievalsInputNav li:hover{
+	background-color: #f4f5f9;
+}
+.retrievalsInput .datepicker{
+	width: 160px;
+	background: url(../../../public/html/images/data_icon.png) no-repeat 92% 50% #fbfbfd;
+}
+.retrievalsInputTime{
+	width: 418px;
+}
+.queryButton,.clearButton{
+	width: 140px;
+	height: 42px;
+	line-height: 42px;
+	color: #fff;
+	font-size: 14px;
+	text-align: center;
+	border-radius: 3px;
+	cursor: pointer;
+	margin-top: 68px;
+}
+.queryButton{
+	background-color: #012989;
+	margin-right: 15px;
+}
+.clearButton{
+	background-color: #b9bdc6;
+}
+.retrievalsInputBoxsEnd{
+	width: 334px;
+}
+.retrievalsInputBoxsStar{
+	width: 358px;
+}
+.retrievalBox{
+	margin-bottom: 42px;
+}
+.tdInput{
+	position: relative;
+}
+.tableBox{
+	overflow-x: inherit;
+}
+.table1{
+	width: auto;
+}
+.addButton img{
+	cursor: pointer;
+}
+
+.del{
+	cursor: pointer;
+}
+
+/* 2018-11-30 新增 start*/
+.rightTxt {
+    display: block;
+    padding-top: 70px;
+    font-size: 14px;
+    color: #999;
+}
+/* 2018-11-30 新增 end*/
+
+@media (min-width: 1200px) and (max-width: 1550px) {
+	.contentRightContent {
+		padding: 27px 20px 54px 20px;
+	}
+
+	.infoTitle:after {
+		left: -20px;
+	}
+
+	.InputLb {
+		width: 130px;
+	}
+
+	.InputNa {
+		width: 130px;
+	}
+
+	.InputXh {
+		width: 75px;
+	}
+
+	.InputNm {
+		width: 75px;
+	}
+
+	.InputDw {
+		width: 40px;
+	}
+
+	.InputTr {
+		width: 180px;
+	}
+
+	/*.choseStyle input{
+		padding-left: 5px;
+	}*/
+}

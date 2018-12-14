@@ -1,0 +1,103 @@
+.opinion span {
+    display: block;
+    width: 60px;
+    text-align: center;
+    position: relative;
+    margin-left: 8px;
+}
+
+.opinion span.refuse:after {
+    display: block;
+    content: '';
+    width: 10px;
+    height: 10px;
+    background-color: #e53631;
+    background: url(../../../public/html/images/jujue.png) no-repeat;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    left: -6px;
+}
+
+.opinion span.agree:after {
+    display: block;
+    content: '';
+    width: 10px;
+    height: 10px;
+    background-color: #7ace4c;
+    background: url(../../../public/html/images/tongguo.png) no-repeat;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    left: -6px;
+}
+
+.opinion span.nothing:after {
+    display: block;
+    content: '';
+    width: 10px;
+    height: 10px;
+    background-color: #c8ced9;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    left: -6px;
+    background: url(../../../public/html/images/lizhi.png) no-repeat;
+}
+
+.popTic{
+	display: none;
+}
+
+.marginBottom43{
+	margin-bottom: 43px;
+}
+
+.valueMust{
+	color: #e53631;
+	font-size: 18px;
+}
+
+input::-webkit-input-placeholder {
+	color: #aaaaaa;
+}
+
+input::-moz-placeholder {
+	/* Mozilla Firefox 19+ */
+	color: #aaaaaa;
+}
+
+input:-moz-placeholder {
+	/* Mozilla Firefox 4 to 18 */
+	color: #aaaaaa;
+}
+
+input:-ms-input-placeholder {
+	/* Internet Explorer 10-11 */
+	color: #aaaaaa;
+}
+
+.quitApplyMeaasge1 .rowQuit div.lable {
+    width: 136px;
+}
+
+
+@media (min-width: 1250px) and (max-width: 1550px) {
+    .quitApplyMeaasge1 .rowQuit div.message{
+		width: 146px;
+		padding-right: 30px;
+    }
+    .quitApplyMeaasge1 .rowQuit div.lable{
+        width: 124px;
+    }
+}
+
+.marginTop50{
+	margin-top: 36px;
+}

@@ -1,0 +1,191 @@
+/* 
+    # 发布企业动态
+	# Bowen
+	# 2018-11-22
+*/
+
+.contentForm {
+    width: 100%;
+    background-color: #f6f6fa;
+    padding-bottom: 0;
+}
+
+.addApplyTitle {
+    padding-left: 29px;
+    font-size: 20px;
+    color: #07196c;
+    background: url(../../../public/html/images/formTitle.jpg) no-repeat left center;
+    margin: 0;
+    margin-bottom: 38px;
+}
+
+.newsBox {
+    width: 100%;
+    padding: 25px 0 110px;
+    background-color: #fff;
+    margin-bottom: 32px;
+    border-radius: 5px;
+}
+
+.newsContent {
+    width: 100%;
+    height: auto;
+    padding:0 2.5%;
+}
+
+.titleBox {
+    margin-bottom: 40px;
+}
+
+.formTitle {
+    float: left;
+    height: 42px;
+    line-height: 42px;
+    margin-right: 15px;
+    font-size: 16px;
+}
+
+.titleInput {
+    float: left;
+    width: 500px;
+}
+
+.publishTo {
+    width: 326px;
+    margin-top: 26px;
+}
+
+.publishTitle{
+    float: left;
+    line-height: 38px;
+    font-size: 16px;
+    color: #222;
+    margin-right: 20px;
+    margin-bottom: 0;
+}
+
+.publishToBtns  {
+    float: right;
+}
+
+.pulishBtn {
+    float: left;
+    width: 97px;
+    height: 38px;
+    line-height: 36px;
+    border: 1px solid #e8e8e8;
+    text-align: center;
+    color: #666666;
+    background-color: #fbfbfd;
+    cursor: pointer;
+}
+
+.pulishBtn.on {
+    color: #fff;
+    background-color: #012989;
+}
+
+.pulishBtn.left {
+    border-top-left-radius: 19px;
+    border-bottom-left-radius: 19px;
+}
+
+.pulishBtn.right {
+    border-top-right-radius: 19px;
+    border-bottom-right-radius: 19px;
+}
+
+.selectBox {
+    display: none;
+    max-width: 900px;
+    margin-top: 40px;   
+}
+
+.selectBox .selectBoxTitle {
+    font-size: 14px;
+    color: #666666;
+}
+
+.selectBox .list {
+    width: 100%;
+    height: 100%;
+    padding: 22px 4% 0;
+    background-color: #f6f6fa;
+    border: 1px solid #e8e8e8;
+    border-radius: 3px;
+}
+
+.selectBox .list .select {
+    float: left;
+    width: 25%;
+    margin-bottom: 22px;
+    padding-left: 24px;
+    background: url(../images/check_icon.png) no-repeat left center;
+    cursor: pointer;
+}
+
+.selectBox .list .select.on {
+    background: url(../images/checked_icon.png) no-repeat left center;
+}
+
+.coupleBack {
+    width: 326px;
+    margin-top: 40px;
+}
+
+.coupleBackBox {
+    display: none;
+    margin-top: 30px;
+}
+
+.coupleBackList {
+    width: 100%;
+    padding: 20px 0;
+    padding-left: 1.5%;
+    padding-right: 3%;
+    background-color: #f6f6fa;
+    margin-bottom: 10px;
+    border-radius: 3px;
+}
+
+.formBox {
+    width: auto;
+    padding: 0;
+    margin-right: 60px;
+}
+
+.coupleBackTitle {
+    margin-bottom: 5px;
+}
+
+.coupleBackTitleInput {
+    width: 230px;
+    background-color: #fff;
+}
+
+.coupleBackDetailInput {
+    width: 450px;
+    background-color: #fff;
+}
+
+.addBtn {
+    float: right;
+    width: 60px;
+    height: 50px;
+    background: url(../images/add_btn_icon.png) no-repeat center;
+    cursor: pointer;
+    margin-top: 9px;
+}
+
+.removeBtn {
+    float: right;
+    width: 60px;
+    height: 50px;
+    background: url(../images/remove_btn_icon.png) no-repeat center;
+    cursor: pointer;
+    margin-top: 9px;
+}
+
+.popAlert {
+    z-index: 1000!important;
+}

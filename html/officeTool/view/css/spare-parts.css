@@ -1,0 +1,307 @@
+/* 
+    # 分配备品
+    # lfl
+    # 2018-11-27
+*/
+
+.contentForm {
+    width: 100%;
+    background-color: #f5f5f9;
+    padding-bottom: 0;
+}
+
+.realInfo {
+    width: 100%;
+    height: auto;
+    padding: 10px 0 2px;
+    background-color: #fff;
+    border-radius: 3px;
+    margin-top: 30px;
+    display: none;
+}
+
+.addApplyTitle {
+    padding-left: 29px;
+    font-size: 20px;
+    color: #07196c;
+    background: url(../../../public/html/images/formTitle.jpg) no-repeat left center;
+    margin: 0;
+}
+
+.infoLists {
+    width: 100%;
+    padding: 0 2.5%;
+    margin-top: 20px;
+    margin-bottom: 28px;  
+}
+
+.listBox {
+    width: 100%;
+    height: 127px;
+    border-radius: 3px;
+    background-color: #f6f6fa;
+    padding: 20px 2.8%;
+    margin-bottom: 10px;
+}
+
+.formText{
+	font-size: 14px;
+    color: #888;
+    margin-top: 22px;
+}
+
+.formTextNumber{
+	margin-top: 5px;
+}
+.listNum {
+    float: left;
+    width: 36px;
+    height: 100%;
+    line-height: 90px;
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+    background: url(../images/numIcon.png) no-repeat center;
+    margin-right: 1.7%;
+}
+
+.form {
+    float: left;
+    width: 11.2%;
+    margin-bottom: 0;
+}
+
+.form.projectA {
+    width: 25.15%;
+    margin-right: 1.41%;
+}
+.form.projectA input{
+	cursor: pointer;	
+	 background: url(../images/input-down.jpg) no-repeat 92% 50% #fbfbfd;
+}
+.form.projectB {
+    width: 14.61%;
+    margin-top: -4px;
+}
+.form input {
+    background-color: #fff;
+}
+.retrievalsInputNavBox{
+	display: none;
+	position: absolute;
+	top: 31px;
+	left: 0px;
+}
+.retrievalsInputNav{
+	/*position: absolute;
+	top: 55px;*/
+	/*left: 0;*/
+	position: relative;
+	background-color: #fff;
+	z-index: 10;
+	width: 240px;
+	box-shadow: 0 0 20px #e9e9e9;
+	margin-top: 55px;
+	/*display: none;*/
+}
+.formBtnsBox{
+	display: none;
+}
+/*.retrievalsInputNav:after{
+	content: '';
+	display: block;
+	position: absolute;
+	width: 11px;
+	height: 8px;
+	background: url(../images/navTop.jpg) no-repeat;
+	top: -8px;
+	left: 17px;
+}*/
+.retrievalsInputNav li{
+	height: 45px;
+	line-height: 45px;
+	font-size: 13px;
+	color: #888888;
+	border-radius: 5px;
+	cursor: pointer;
+	padding-left: 13px;
+}
+.retrievalsInputNav li:hover{
+	background-color: #f4f5f9;
+}
+.addBtn {
+    float: right;
+    width: 60px;
+    height: 100%;
+    background: url(../images/add_btn_icon.png) no-repeat center;
+    cursor: pointer;
+}
+
+.removeBtn {
+    float: right;
+    width: 60px;
+    height: 100%;
+    background: url(../images/remove_btn_icon.png) no-repeat center;
+    cursor: pointer;
+}
+
+.resultBox {
+    height: 70px;
+    margin: 0 2.5%;
+    padding: 14px 2.5%;
+    background-color: #fdf3f2;
+}
+
+.result {
+    float: left;
+    height: 100%;
+    line-height: 42px;
+    font-size: 16px;
+    color: #444;
+    margin-right: 4%;
+}
+
+.result span {
+    font-weight: bold;
+}
+
+.resulTax{
+    float: left;
+    display: block;
+    width: 12%;
+    height: 42px;
+    border: 1px solid #e8e8e8;
+    border-radius: 3px;
+    background-color: #fff;
+    padding: 0 10px;
+    margin: 0 5px;
+    line-height: 40px;
+}
+
+
+.resulTax::-webkit-input-placeholder{ 
+	color: #aaa; 
+} 
+
+.resulTax::-webkit-input-placeholder{ 
+	color: #aaa; 
+} 
+
+.resulTax::-moz-placeholder{ 
+	color: #aaa; 
+} 
+
+.resulTax:-ms-input-placeholder{
+	color: #aaa; 
+}
+
+.mR0 {
+    margin-right: 0;
+}
+
+.resultAll {
+    float: right;
+    font-size: 18px;
+    color: #444;
+    font-weight: bold;
+    line-height: 40px;
+}
+
+.resultAll span {
+    font-size: 40px;
+    color: #d71e2d;
+}
+
+.quitApplyMeaasge1 .rowQuit div.lable {
+    width: 136px;
+}
+
+.rowQuit a {
+    color: #4d76cc;
+    text-decoration: underline;
+}
+.tableBoxFather{
+	margin-top: 40px;
+}
+.tableBox{
+	margin-bottom: 0;
+}
+
+.operation{
+    display:block;
+    width:40px;
+    height:30px;
+    margin:0 auto;
+    cursor: pointer;
+}
+
+@media (min-width: 1200px) and (max-width: 1550px) {
+
+    .form {
+        width: 11%; 
+    }
+
+    .result input {
+        width: 14%; 
+    }
+
+    .formInput::-webkit-input-placeholder,textarea::-webkit-input-placeholder { 
+        color: #aaa; 
+        font-size: 12px;
+    } 
+    
+    .formInput::-webkit-input-placeholder,textarea::-webkit-input-placeholder { 
+        color: #aaa; 
+        font-size: 12px;
+    } 
+    
+    .formInput::-moz-placeholder,textarea::-moz-placeholder { 
+        color: #aaa; 
+        font-size: 12px;
+    } 
+    
+    .formInput:-ms-input-placeholder,textarea:-ms-input-placeholder {
+        color: #aaa; 
+        font-size: 12px;
+    }
+
+}
+
+
+
+@media (min-width: 1200px) and (max-width: 1300px) {
+	
+    .quitApplyMeaasge1 .rowQuit div.message{
+		width: 130px;
+		padding-right: 10px;
+    }
+    
+}
+
+
+@media (min-width: 1300px) and (max-width: 1440px) {
+	
+    .quitApplyMeaasge1 .rowQuit div.message{
+		width: 147px;
+		padding-right: 10px;
+    }
+    
+}
+
+@media (min-width: 1440px) and (max-width: 1550px) {
+	
+    .quitApplyMeaasge1 .rowQuit div.message{
+		width: 170px;
+		padding-right: 10px;
+    }
+    
+}
+
+@media (min-width: 1550px) and (max-width: 1680px) {
+	
+    .quitApplyMeaasge1 .rowQuit div.message{
+		width: 232px;
+		padding-right: 10px;
+    }
+    
+}

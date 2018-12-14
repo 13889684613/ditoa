@@ -1,0 +1,64 @@
+/* 
+    # 提交离职申请
+    # Bowen
+    # 2018-11-15  
+*/
+
+.dimissionForm {
+    width: 100%;
+    height: 550px;
+}
+
+.dimissionBox {
+    width: 500px;
+    height: 330px;
+    margin: 80px auto 0;
+}
+
+.dimissionReasonTitle, .dimissionDateTitle {
+    font-size: 14px;
+    color: #222;
+}
+
+.dimissionReasonTitle span, .dimissionDateTitle span {
+    color: #e53631;
+}
+
+.dimissionReason {
+    height: 100px;
+    padding-top: 5px;
+    line-height: 2;
+}
+
+.dimissionInfo {
+    font-size: 13px;
+    color: #666;
+    margin-top: 10px;
+    margin-bottom: 60px;
+    line-height: 1.8;
+}
+
+.dimissionInfo a {
+    color: #5083fb;
+}
+
+.staffInfoForm .quitDateForm {
+    background: #fbfbfd url(../../../public/html/images/data_icon.png) no-repeat 468px center;
+}
+
+
+/* 2018-11-30 新增 start*/
+.rightTxt {
+    display: block;
+    padding-top: 70px;
+    font-size: 14px;
+    color: #999;
+}
+/* 2018-11-30 新增 end*/
+
+@media (min-width: 1200px) and (max-width: 1400px) {
+	.contentRightBox{
+        padding: 0;
+        padding-top: 40px;
+    }   
+}

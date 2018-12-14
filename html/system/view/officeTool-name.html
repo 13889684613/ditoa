@@ -1,0 +1,34 @@
+<meta charset="utf-8" />
+<title>{{$pageTitle}}</title>
+
+<table border="1">
+	<tr>
+		<td>#</td>
+		<td>所属备品类别</td>
+		<td>备品名称</td>
+		<td>名称编号</td>
+		<td>生成编号</td>
+		<td>排序</td>
+		<td>操作</td>
+	</tr>
+	{{foreach item=i name=data from=$data}}
+	<tr>
+		<td>{{$i.sn}}</td>
+		<td>{{$i.toolCategory}}</td>
+		<td>{{$i.toolName}}</td>
+		<td>{{$i.toolCode}}</td>
+		<td>{{$i.isFixedAssets}}</td>
+		<td>
+			<input id="rank{{$i.nameId}}" name="rank{{$i.nameId}}" class="m-wrap" type="text" size="5" style="width:30px;height: 9px;margin: 0;" value="{{$i.rank}}"/><a href="javascript:void(0);" onclick="javascript:location.href='?_f=officeTool-name&act=updateRank&page={{$curPage}}&id={{$i.nameId}}{{$track}}&rank='+document.getElementById('rank{{$i.nameId}}').value;">保存</a>
+		</td>
+		<td>
+			<a href="?_f=officeTool-name&act=remove&page={{$curPage}}&id={{$i.nameId}}{{$track}}">删除</a>
+			<a href="?_f=officeTool-name-set&act=edit&page={{$curPage}}&id={{$i.nameId}}{{$track}}">修改</a>
+		</td>
+	</tr>
+	{{/foreach}}
+	
+</table>
+<div class="pagebox">
+	{{$page}}
+</div>

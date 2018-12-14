@@ -1,0 +1,237 @@
+.popTic{
+	display: none;
+}
+
+.margin-bottom-40{
+	margin-bottom: 40px;
+}
+
+.official-assessment-box{
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	padding-top: 36px;
+	background: #fff;
+}
+
+.official-inner{
+	width: 93.3%;
+	margin: 0 auto;
+	height: auto;
+	overflow: hidden;
+	padding-bottom: 76px;
+}
+
+.official-assessment-h1{
+	position: relative;
+	font-size: 18px;
+	color: #222;
+	text-indent: 18px;
+	margin: 0;
+	margin-bottom: 8px;
+	height: 20px;
+	line-height: 20px;
+    border-left: 4px solid #d71e2d;
+}
+
+
+/*.official-assessment-h1:after{
+	display: block;
+	width: 4px;
+	height: 18px;
+	content: '';
+	background: #d71e2d;
+	position: absolute;
+	left: 0;
+	top: 0;
+}*/
+
+.official-assessment-choose-table th{
+	height: 54px;
+	line-height: 54px;
+	font-size: 15px;
+	color: #3e4855;
+	font-weight: bold;
+	background: #eaedf4;
+}
+
+.official-assessment-choose-table td{
+	height: 54px;
+	/*line-height: 54px;*/
+	font-size: 14px;
+}
+
+.official-assessment-choose-table tr{
+	border: 1px solid #ddd;
+	border-top: 0;
+	
+}
+
+.left34{
+	position: relative;
+	left: 34px;
+	display: inline-block;
+	width: 100%;
+}
+
+@media (min-width: 1250px) and (max-width: 1500px) {
+	.left34{
+		width: 80%;
+	}
+}
+
+.radioBox-official-assessment{
+	width: 17px;
+	height: 17px;
+	cursor: pointer;
+	
+}
+
+.middle-radioBox-official-assessment{
+	position: relative;
+	left: 28px;
+}
+
+.radioBox-official-assessment-normal{
+	background: url(../images/radio-normal.png) no-repeat;
+}
+
+.radioBox-official-assessment-active{
+	background: url(../images/radio-active.png) no-repeat;
+}
+
+.totalScoreBox{
+	width: 100%;
+	height: 54px;
+	line-height: 54px;
+	text-align: right;
+	font-size: 16px;
+	color: #222;
+	background: #fbfbfd;
+	border: 1px solid #ddd;
+	border-top: 0;
+}
+
+.totalScoreBox2{
+	width: 100%;
+	height: 70px;
+	line-height: 70px;
+	text-align: right;
+	font-size: 18px;
+	color: #444;
+	font-weight: bold;
+	background: #fdf3f2;
+}
+
+.totalScore,.totalScore2{
+	float: right;
+	margin-right: 22px;
+}
+
+.totalScoreBox .totalScore .score{
+	display: inline-block;
+	/*width: 40px;*/
+	text-align: center;
+}
+
+.totalScoreBox2 .totalScore2 .score2{
+	display: inline-block;
+	min-width: 40px;
+	text-align: center;
+}
+
+.formBox-official-assessment{
+	width: 100%;
+	height: auto;
+	padding: 33px 0;
+	background: #fff;
+	border: 1px solid #ddd;
+	margin-bottom: 35px;
+	
+}
+
+.formBox-official-assessment table{
+	margin-left: 30px;
+}
+
+.formBox-official-assessment table td{
+	font-size: 14px;
+	color: #222;
+	
+}
+
+.formBox-official-assessment table td input{
+	width: 208px;
+	height: 40px;
+	background: #fbfbfd;
+	border: 1px solid #ddd;
+	margin-left: 16px;
+	text-indent: 10px;
+	border-radius: 3px;
+	margin-bottom: 27px;
+	vertical-align: top;
+	line-height: 38px;
+}
+
+.formBox-official-assessment table td span{
+	display: inline-block;
+	height: 40px;
+	line-height: 38px;
+}
+
+@media (min-width: 1280px) and (max-width: 1500px) {
+	.formBox-official-assessment table td input{
+		width: 180px;
+	}
+}
+
+.buttonGroup2-bottom{
+	overflow: hidden;
+	margin-bottom: 55px;
+	margin-top: 32px;
+}
+
+.buttonGroup2-bottom div{
+	float: left;
+	width: 150px;
+	height: 45px;
+	text-align: center;
+	line-height: 45px;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+.button-back-bottom{
+	background: #d4d9e1;
+	font-size: 16px;
+	color: #012989;
+	margin-right: 28px;
+}
+
+.button-feedback-bottom{
+	background: #012989;
+	color: #fff;
+	font-size: 16px;
+}
+
+input::-webkit-input-placeholder,textarea::-webkit-input-placeholder { 
+	color: #aaa; 
+} 
+
+input::-webkit-input-placeholder,textarea::-webkit-input-placeholder { 
+	color: #aaa; 
+} 
+
+input::-moz-placeholder,textarea::-moz-placeholder { 
+	color: #aaa; 
+} 
+
+input:-ms-input-placeholder,textarea:-ms-input-placeholder {
+	color: #aaa; 
+}
+
+.scoreRed{
+	color: #d71e2d;
+	font-size: 30px;
+	font-weight: bold;
+}

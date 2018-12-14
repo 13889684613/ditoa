@@ -1,0 +1,28 @@
+/*切换begin*/
+.tabButtonBox{
+	border-bottom: 1px solid #dedfe0;
+	margin-top: 43px;
+	padding-bottom: 15px;
+	font-size: 16px;
+	height: 38px;
+}
+.tabButton{
+	height: 38px;
+	color: #474e5d;
+	width: 92px;
+	text-align: center;
+}
+.tabButton.on{
+	font-size: 18px;
+	color: #012989;
+	font-weight: bold;
+	border-bottom: 2px solid #012989;
+}
+/*切换end*/
+.architectureContent {
+	width: 100%;
+}
+html,body{
+	min-height: 100%;
+	height: 100%;
+}

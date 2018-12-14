@@ -1,0 +1,24 @@
+<title>{{$pageTitle}}</title>
+
+		<ul>
+			{{foreach item=i name=data from=$data}}
+			<li>
+				<div>{{$i.sn}}</div>
+				<div>{{$i.sysRoleName}}</div>
+				<div>{{$i.createTime}}</div>
+				<div>
+					<input id="rank{{$i.sysRoleId}}" name="rank{{$i.sysRoleId}}" class="m-wrap" type="text" size="5" style="width:30px;height: 9px;margin: 0;" value="{{$i.rank}}"/>
+					<a href="javascript:void(0);" onclick="javascript:location.href='?_f=system-role&act=updateRank&page={{$curPage}}&id={{$i.sysRoleId}}{{$track}}&rank='+document.getElementById('rank{{$i.sysRoleId}}').value;">保存</a>
+				</div>
+				<div>
+					<a href="?_f=system-role&act=remove&page={{$curPage}}&id={{$i.sysRoleId}}{{$track}}">删除</a>
+					<a href="?_f=system-role-set&act=edit&page={{$curPage}}&id={{$i.sysRoleId}}{{$track}}">修改</a>
+				</div>
+			</li>
+			{{/foreach}}
+			
+		</ul>
+		<div class="pagebox">
+			{{$page}}
+		</div>
+	</div>

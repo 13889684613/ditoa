@@ -1,0 +1,367 @@
+.retrievalBox {
+	height: auto;
+}
+
+
+/*检索*/
+
+.retrievalsForm {
+	padding-left: 2%;
+}
+
+.retrievalsInputBoxs_a {
+	width: 20%;
+}
+
+.retrievalsInput {
+	margin-bottom: 27px;
+	position: relative;
+}
+
+.retrievalsInput input {
+	width: 210px;
+	height: 42px;
+	border: 1px solid #e8e8e8;
+	padding-left: 10px;
+	border-radius: 3px;
+	color: #222222;
+	font-size: 14px;
+	margin-left: 0px;
+	line-height: 38px;
+	background: #fbfbfd;
+}
+
+.retrievalTitle {
+	margin-bottom: 24px;
+}
+
+.retrievalsInput .choseInput {
+	cursor: pointer;
+	background: url(../images/input-down.jpg) no-repeat 92% 50% #fbfbfd;
+}
+
+.retrievalsInput label {
+	width: 64px;
+	font-weight: 500;
+	display: block;
+	position: relative;
+	text-align: left;
+}
+
+.retrievalsInput label.title {
+	width: 92px;
+}
+
+.retrievalsInput.retrievalsInputX label:after {
+	display: block;
+	content: '*';
+	position: absolute;
+	right: 0px;
+	top: -5px;
+	color: #e53631;
+	font-size: 18px;
+}
+
+.retrievalsInputNavBox {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 79px;
+}
+
+.retrievalsInputNav {
+	/*position: absolute;
+	top: 55px;*/
+	/*left: 0;*/
+	position: relative;
+	background-color: #fff;
+	z-index: 10;
+	width: 240px;
+	box-shadow: 0 0 20px #e9e9e9;
+	margin-top: 55px;
+	/*display: none;*/
+}
+
+.retrievalsInputNav:after {
+	content: '';
+	display: block;
+	position: absolute;
+	width: 11px;
+	height: 8px;
+	background: url(../images/navTop.jpg) no-repeat;
+	top: -8px;
+	left: 17px;
+}
+
+.retrievalsInputNav li {
+	height: 45px;
+	line-height: 45px;
+	font-size: 13px;
+	color: #888888;
+	border-radius: 5px;
+	cursor: pointer;
+	padding-left: 13px;
+}
+
+.retrievalsInputNav li:hover {
+	background-color: #f4f5f9;
+}
+
+.retrievalsInput .datepicker {
+	width: 210px;
+	background: url(../../../public/html/images/data_icon.png) no-repeat 92% 50% #fbfbfd;
+}
+
+.retrievalsInputTime {
+	width: 418px;
+}
+
+.queryButton,
+.clearButton {
+	width: 140px;
+	height: 42px;
+	line-height: 42px;
+	color: #fff;
+	font-size: 14px;
+	text-align: center;
+	border-radius: 3px;
+	cursor: pointer;
+	margin-top:24px;
+}
+
+.queryButton {
+	background-color: #012989;
+	margin-right: 15px;
+}
+
+.clearButton {
+	background-color: #b9bdc6;
+}
+
+.retrievalsInputBoxsEnd {
+	width: 334px;
+}
+
+.retrievalsInputBoxsStar {
+	width: 358px;
+}
+
+.retrievalBox {
+	margin-bottom: 30px;
+}
+
+
+/*检索end*/
+
+
+/*表格begin*/
+
+
+/*表格begin*/
+
+.table1Fixed {
+	width: 147px;
+}
+
+.tictable {
+	margin-left: 5px;
+	cursor: pointer;
+}
+
+.soonEnpire {
+	color: #e53631;
+}
+
+.sortTic {
+	position: absolute;
+	top: -37px;
+	left: -122px;
+}
+
+.sortTicL {
+	/*right: 7px;*/
+	left: 26px;
+}
+
+.table1 td {
+	position: relative;
+}
+
+.sortTic:after {
+	display: block;
+	content: '';
+	width: 11px;
+	height: 6px;
+	position: absolute;
+	left: 147px;
+	right: 0;
+	margin: 0 auto;
+	top: 42px;
+	background: url(../images/tdicon.png) no-repeat;
+}
+
+.editBox {
+	width: 40px;
+}
+
+.editButtonL {
+	border: none;
+}
+
+.normal {
+	display: block;
+	width: 55px;
+	height: 28px;
+	line-height: 28px;
+	background-color: #f4f8f9;
+	text-align: center;
+	font-size: 12px;
+	color: #79909b;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+.quit {
+	display: block;
+	width: 55px;
+	height: 28px;
+	line-height: 28px;
+	background-color: #fcebea;
+	text-align: center;
+	font-size: 12px;
+	color: #e53631;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+.compassionateLeave {
+	display: block;
+	width: 55px;
+	height: 28px;
+	line-height: 28px;
+	background-color: #fcf3cf;
+	text-align: center;
+	font-size: 12px;
+	color: #fc6d22;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+.table1 {
+	width: 100%;
+}
+
+.table1Fixed {
+	width: 9%;
+}
+
+.tableBox {
+	width: 91.07%;
+	float: right;
+}
+
+
+/*表格end*/
+
+
+/*表格end*/
+
+
+/*切换begin*/
+
+.tabButtonBox {
+	border-bottom: 1px solid #dedfe0;
+	margin-top: 13px;
+	padding-bottom: 15px;
+	font-size: 16px;
+	height: 38px;
+	margin-bottom: 24px;
+}
+
+.tabButton {
+	height: 38px;
+	color: #474e5d;
+	width: 112px;
+	text-align: center;
+	margin-right: 18px;
+	line-height: 30px;
+}
+
+.tabButton.on {
+	font-size: 18px;
+	color: #012989;
+	font-weight: bold;
+	border-bottom: 2px solid #012989;
+}
+
+
+/*切换end*/
+
+.returnButton {
+	width: 150px;
+	height: 45px;
+	text-align: center;
+	line-height: 45px;
+	font-size: 16px;
+	color: #07196c;
+	background-color: #d4d9e1;
+	border-radius: 3px;
+}
+.contentRight{
+	padding-bottom: 117px;
+}
+.page {
+	position: relative;
+}
+
+.returnButton {
+	position: absolute;
+	top: -10px;
+	left: 0;
+}
+
+.retrievalsInputBoxs_b {
+	width: 20%;
+}
+
+.retrievalsInputBoxs_c {
+	width: 16%;
+}
+
+.marginB64 {
+	margin-bottom: 64px;
+}
+
+@media (min-width: 1250px) and (max-width: 1730px) {
+	.retrievalsInputBoxs_a {
+		width: 25%;
+	}
+	.retrievalsInputBoxs_b {
+		width: 25%;
+	}
+	.retrievalBox.marginB64 .queryButton,.retrievalBox.marginB64 .clearButton{
+		margin-top: 0;
+	}
+	/*.queryButton, .clearButton{
+		width: 126px;
+	}
+	.retrievalsInput .datepicker{
+		width: 116px;
+	}
+	.retrievalsInput input{
+		width: 182px;
+	}
+	.retrievalsInputTime{
+		width: 350px;
+	}*/
+}
+
+.contentRightBox {
+	background-color: transparent;
+}
+.tableBoxFather{
+	
+}
+.tableBox{
+	overflow-x: hidden;
+}

@@ -1,0 +1,133 @@
+.architectureContent{
+	margin-left: 1.2%;
+	background-color: #fff;
+	width: 80%;
+	padding-bottom: 60px;
+}
+input::-webkit-input-placeholder {
+	color: #aaaaaa;
+}
+
+input::-moz-placeholder {
+	/* Mozilla Firefox 19+ */
+	color: #aaaaaa;
+}
+
+input:-moz-placeholder {
+	/* Mozilla Firefox 4 to 18 */
+	color: #aaaaaa;
+}
+
+input:-ms-input-placeholder {
+	/* Internet Explorer 10-11 */
+	color: #aaaaaa;
+}
+/*搜索*/
+.retrievalBox{
+	padding-top: 37px;
+}
+.retrievalTxt{
+	/*font-size: 16px;*/
+}
+.retrievalInput{
+	width: 400px;
+	position: relative;
+}
+.search{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin: auto 0;
+	right: 14px;
+}
+.retrievalBox{
+	height: auto;
+	margin-bottom: 24px;
+}
+.tableBoxFather{
+	padding-left: 27px;
+	padding-right: 27px;
+}
+.table1{
+	width: 1136px;
+	min-height: 360px;
+}
+.paddingLeft27{
+	padding-left: 27px;
+}
+.normal{
+	display: block;
+	width: 55px;
+	height: 28px;
+	line-height: 28px;
+	background-color: #f4f8f9;
+	text-align: center;
+	font-size: 12px;
+	color: #79909b;
+	border-radius: 3px;
+	cursor: pointer;
+}
+.compassionateLeaveSup{
+	margin-top: -9px;
+}
+.quitBox span{
+	color: #999;
+}
+.quitBox .quit{
+	display:block;
+	width: 55px;
+	height: 28px;
+	line-height: 28px;
+	background-color: #fcebea;
+	text-align: center;
+	font-size: 12px;
+	color: #e53631;
+	border-radius: 3px;
+	cursor: pointer;
+}
+.compassionateLeave{
+	display: block;
+	width: 55px;
+	height: 28px;
+	line-height: 28px;
+	background-color: #fcf3cf;
+	text-align: center;
+	font-size: 12px;
+	color: #fc6d22;
+	border-radius: 3px;
+	cursor: pointer;
+	margin-bottom: 10px;
+}
+.compassionateLeaveTime,.compassionateLeaveSup{
+	font-size: 12px;
+	color: #666;
+	display: block;
+	text-align: center;
+	margin-bottom: 10px;
+}
+.table1 td{
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.page{
+	padding-right: 27px;
+}
+.choseImage{
+	position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+@media (min-width: 1250px) and (max-width: 1550px) {
+	.treeNavBox{
+		width: 25%;
+	}
+	.architectureContent {
+	    margin-left: 1.2%;
+	    background-color: #fff;
+	    width: 73.8%;
+	    padding-bottom: 60px;
+	}
+}

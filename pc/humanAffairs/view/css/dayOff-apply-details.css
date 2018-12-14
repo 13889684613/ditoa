@@ -1,0 +1,15 @@
+.readMore{
+	cursor: pointer;
+	color: #5083fb;
+	margin-left: 24px;
+	text-decoration: underline;
+}
+
+.readMore:hover{
+	color: #2161f7;
+	text-decoration: underline!important;
+}
+
+.marginTop50{
+	margin-top: 50px;
+}

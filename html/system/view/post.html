@@ -1,0 +1,24 @@
+<title>{{$pageTitle}}</title>
+
+		<ul>
+			{{foreach item=i name=data from=$data}}
+			<li>
+				<div>{{$i.sn}}</div>
+				<div>{{$i.postName}}</div>
+				<div>{{$i.createTime}}</div>
+				<div>
+					<input id="rank{{$i.postId}}" name="rank{{$i.postId}}" class="m-wrap" type="text" size="5" style="width:30px;height: 9px;margin: 0;" value="{{$i.rank}}"/>
+					<a href="javascript:void(0);" onclick="javascript:location.href='?_f=post&act=updateRank&page={{$curPage}}&id={{$i.postId}}{{$track}}&rank='+document.getElementById('rank{{$i.postId}}').value;">保存</a>
+				</div>
+				<div>
+					<a href="?_f=post&act=remove&page={{$curPage}}&id={{$i.postId}}{{$track}}">删除</a>
+					<a href="?_f=post-set&act=edit&page={{$curPage}}&id={{$i.postId}}{{$track}}">修改</a>
+				</div>
+			</li>
+			{{/foreach}}
+			
+		</ul>
+		<div class="pagebox">
+			{{$page}}
+		</div>
+	</div>

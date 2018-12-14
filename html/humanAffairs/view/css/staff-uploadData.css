@@ -1,0 +1,194 @@
+/* 
+    # 资料上传
+    # Bowen
+    # 2018-11-14  
+*/
+
+
+.dataContent {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    padding:40px 0 0 45px;
+    background-color: #fff;
+    padding-bottom: 40px;
+}
+
+.uploadBox {
+    margin-bottom: 50px;
+}
+
+.uploadInfoBox {
+    float: left;
+    width: 490px;
+    height: 65px;
+}
+
+.uploadInfoTitle {
+    font-size: 16px;
+    color: #222;
+    margin: 10px 0 5px 0;
+    /* font-weight: 600; */
+}
+
+.uploadInfoTitle span {
+    color: #e53631;
+}
+
+.uploadInfo {
+    font-size: 14px;
+    color: #999;
+    margin: 0;
+}
+
+.uploadBtnBox {
+    float: left;
+    width: 150px;
+    height: 65px;
+    position: relative;
+    cursor: pointer;    
+}
+
+.uploadBtnBox img{
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}
+
+.uploadBtnBox .uploadBtnTxt {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    font-size: 14px;
+    color: #ced4e0;
+    text-align: center;
+    margin: 0;
+    cursor: pointer;
+    z-index: 49;
+}
+
+.inputFile {
+    /* display: none!important; */
+    width: 100%;
+    height: 100%;
+    position: absolute; 
+    top: 0;
+    right: 0;
+    opacity: 0;  
+    filter: alpha(opacity=0);
+    cursor: pointer;
+    z-index: 200;
+    font-size: 100px;
+}
+
+.showFileName {
+    display: none;
+    float: left;
+    width: 290px;
+    margin-top: 21px;
+    margin-left: 23px;
+    padding-left: 30px;
+    font-size: 14px;
+    color: #999;
+    background: url(../../../public/html/images/upload_ok.png) no-repeat left center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* 其他 */
+
+.uploadOtherInfoBox {
+    margin-bottom: 20px;
+}
+
+.uploadOtherInfoBox p{
+    float: left;
+    margin: 0;
+}
+
+.uploadOtherInfoBox .uploadInfoTitle {
+    margin-right: 20px;
+}
+
+.uploadOtherBox .setUploadFileTitle {
+    float: left;
+    width: 400px;
+    height: 42px;
+    line-height: 40px;
+    border: 1px solid #e8e8e8;
+    border-radius: 3px;
+    background-color: #fbfbfd;
+    padding: 0 10px;
+    margin-top: 12px;
+    margin-right: 90px;
+    color:#999;
+}
+
+.uploadOtherBox .placeholder{
+    color: #aaa;
+}
+
+.uploadOtherBox .setUploadFileTitle::-webkit-input-placeholder{ 
+	color: #aaa; 
+} 
+
+.uploadOtherBox .setUploadFileTitle::-webkit-input-placeholder{ 
+	color: #aaa; 
+} 
+
+.uploadOtherBox .setUploadFileTitle::-moz-placeholder{ 
+	color: #aaa; 
+} 
+
+.uploadOtherBox .setUploadFileTitle:-ms-input-placeholder{
+	color: #aaa; 
+}
+
+.uploadOtherBox .add,.uploadOtherBox .remove {
+    float: left;
+    margin-top: 10px;
+    margin-left: 23px;
+    cursor: pointer;
+}
+
+.uploadOtherBox .showFileName {
+    width: 225px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+@media (min-width: 1200px) and (max-width: 1400px) {
+    .showFileName{
+        width: 302px;
+    }
+    .uploadOtherBox .showFileName{
+        width: 237px;
+    }
+}
+
+@media (min-width: 1400px) and (max-width: 1550px) {
+    .showFileName{
+        width: 315px;
+    }
+    .uploadOtherBox .showFileName{
+        width: 251px;
+    }
+}
+
+@media (min-width: 1550px) and (max-width: 1920px) {
+    .showFileName{
+        width: 490px;
+    }
+    .uploadOtherBox .showFileName{
+        width: 425px;
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1400px) {
+	.contentRightBox{
+        padding: 0;
+        padding-top: 40px;
+    }   
+}

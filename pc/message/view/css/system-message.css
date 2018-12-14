@@ -1,0 +1,38 @@
+.downloadAddButtonL {
+    background:  #012989;
+    padding-left: 0px;
+    margin-right: 0px;
+    text-align: center;
+}
+.unread .read{
+	position: relative;
+}
+.unread .read:after{
+	display: block;
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    left: -14px;
+    background: url(../../../public/html/images/jujue.png) no-repeat;
+}
+.messageTips{
+	color: #666666;
+	font-size: 14px;
+	height: 45px;
+	line-height: 79px;
+}
+.architectureContent {
+	width: 100%;
+}
+.table1{
+	color: #666;
+	width: 1487.19px;
+}
+.table1 .unread{
+	color: #222;
+}
