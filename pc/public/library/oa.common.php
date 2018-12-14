@@ -1,7 +1,6 @@
 <?php header("Content-type:text/html;charset=utf-8");?>
 <?php session_start();?>
 <?php ob_start();?>
-<!DOCTYPE html>
 <?php
 
 	// ini_set('display_errors',1);            //错误信息 
@@ -125,5 +124,7 @@
 	if(!strstr($_SERVER["QUERY_STRING"],'login')){
 		include("oa.safe.php");								
 	}
+
+	$smarty->assign('COPYRIGHT','©&nbsp;2019&nbsp;大连国际货运有限公司，All Right Reserved');
 
 ?>

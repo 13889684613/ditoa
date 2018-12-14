@@ -1,8 +1,0 @@
-#smarty :smarty核心文件
-
-#oa.common.php：全局配置文件（定义全局变量操作此文件）
-#oa.db.php：数据库操作文件
-#oa.function.php :常用函数库
-#oa.page.php ：分页操作文件
-#oa.security.php ：用户验证文件
-#oa.smarty.php ：smarty配置文件

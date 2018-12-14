@@ -33,9 +33,9 @@
 	//企业动态与活动 over
 
 	//数据绑定
+	$smarty->assign('pageTitle',$pageTitle);
 	$smarty->assign('messageContent',$messageContent);
 	$smarty->assign('news',$news);
 	$smarty->assign('actives',$actives);
-
 
 ?>

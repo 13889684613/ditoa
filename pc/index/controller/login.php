@@ -15,15 +15,8 @@
 
 		$staffId = decrypt($_COOKIE['cache_staffId'],'dit');
 		//跳转页面
-		$S = $db->get_one($table,'wehre staffId='.$staffId.'','isUpdatePwd,trueQuitDate');
+		$S = $db->get_one($table,'where staffId='.$staffId.' and status<>2','isUpdatePwd');
 		if($S){
-			//员工离职状态 
-			if($S['trueQuitDate']!=''){
-				$quitDate = strtotime($S['trueQuitDate']);
-				if(time()>=$quitDate){
-					TipsRefreshResturn('您已离职，登录帐号已关闭','index.php?_f=login');
-				}
-			}
 			//合法用户
 			if($S['isUpdatePwd'] == 1){
 				RefreshResturn('index.php?_f=index');
@@ -56,24 +49,23 @@
 
 		//验证
 		if($usrName == ''){
-			ErrorResturn('请填写您的手机号');
+			$data['status'] = 'fail';
+			$data['message'] = '请填写您的手机号';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if($usrPwd == ''){
-			ErrorResturn('请填写登录密码');
+			$data['status'] = 'fail';
+			$data['message'] = '请填写登录密码';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 
 		//登录
 		$pwd = md5('dit'.$usrPwd.'2018');
-		$L = $db->get_one($table,'where tel="'.$usrName.'" and loginPwd="'.$pwd.'"','staffId,officeId,groupId,isUpdatePwd,loginTimes,trueQuitDate,status');
+		$fields = 'staffId,officeId,groupId,isUpdatePwd,loginTimes,trueQuitDate,status';
+		$L = $db->get_one($table,'where tel="'.$usrName.'" and loginPwd="'.$pwd.'" and status<>2',$fields);
 		if($L){
-
-			//员工离职状态 
-			if($L['trueQuitDate']!=''){
-				$quitDate = strtotime($L['trueQuitDate']);
-				if(time()>=$quitDate||$L['status']==2){
-					TipsRefreshResturn('您已离职，登录帐号已关闭','index.php?_f=login');
-				}
-			}
 
 			//登录成功 begin
 
@@ -83,13 +75,19 @@
 			//核实部门准确性
 			$O = $db->get_one(PRFIX.'office','where officeId='.$L['officeId'].'','officeName');
 			if(!$O){
-				ErrorResturn('您的所属部门不存在，请联系管理员');
+				$data['status'] = 'fail';
+				$data['message'] = '您的所属部门不存在，请联系管理员';
+				$returnJson = json_encode($data);
+				echo $returnJson; exit;
 			}
 
 			//核实工作组准确性
 			$G = $db->get_one(PRFIX.'group','where groupId='.$L['groupId'].'','groupName');
 			if(!$G){
-				ErrorResturn('您的所属工作组不存在，请联系管理员');
+				$data['status'] = 'fail';
+				$data['message'] = '您的所属工作组不存在，请联系管理员';
+				$returnJson = json_encode($data);
+				echo $returnJson; exit;
 			}
 
 			if($autoLogin == 1){
@@ -104,17 +102,25 @@
 
 			//页面跳转
 			if($L['isUpdatePwd'] == 0){
-				RefreshResturn('index.php?_f=set-password');
+				$url = 'index.php?_f=set-password';
 			}else{
-				RefreshResturn('index.php?_f=index');
+				$url = 'index.php?_f=index';
 			}
+
+			$data['status'] = 'success';
+			$data['message'] = '';
+			$data['url'] = $url;
+			$returnJson = json_encode($data);
 
 			//登录成功 over
 
 		}else{
 			//登录失败
-			ErrorResturn('请填写正确的手机号与密码');
+			$data['status'] = 'fail';
+			$data['message'] = '请填写正确的手机号与密码';
 		}
+		$returnJson = json_encode($data);
+		echo $returnJson; exit;
 
 	}
 

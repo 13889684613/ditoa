@@ -1,6 +1,0 @@
-  # header.php：公共头部文件
-  # footer.php：公共底部文件
-  # menu.php：公共侧边导航文件
-  #css: 通用样式表文件
-  #images : 通用图片文件夹
-  #js： 通用脚本文件夹

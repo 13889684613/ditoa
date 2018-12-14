@@ -2,7 +2,7 @@
 
 	//# Mr.Z
 	//# 2018-11-15
-	//# 用户身份鉴权/公共信息拉取
+	//# 用户身份鉴权/公共信息拉取/公共头部/左侧菜单
 
 	//SESSION过期业务处理
 	if(trim($_SESSION['cache_staffId'])==''){
@@ -18,7 +18,7 @@
 	}else{
 		$common_staffId = decrypt($_SESSION['cache_staffId'],'dit');	//用户id
 
-		$commons = $db->get_one(PRFIX.'staff','where staffId='.$common_staffId.'','staffName,officeId,groupId,category,sysRoleId,checkRoleId,trueQuitDate,status');
+		$commons = $db->get_one(PRFIX.'staff','where staffId='.$common_staffId.'','staffName,officeId,groupId,category,sysRoleId,checkRoleId,trueQuitDate,status,photo');
 		if($commons){
 			//员工离职
 			if($commons['trueQuitDate']!=''){
@@ -32,6 +32,7 @@
 			$common_group = $commons['groupId'];			//员工所属工作组
 			$common_category = $commons['category'];		//系统级角色 1系统管理员 0普通员工
 			$common_checkRole = $commons['checkRoleId'];	//审批角色id
+			$common_head = 'upload/images/straff/head/'.$commons['photo'];
 
 			//获取办事处名称
 			$getOffice = $db->get_one(PRFIX.'office','where officeId='.$commons['officeId'].'','officeName');
@@ -88,10 +89,133 @@
 			$smarty->assign('common_officeName',$common_officeName);
 			$smarty->assign('common_groupName',$common_groupName);
 			$smarty->assign('common_noRead',$common_noRead);
+			$smarty->assign('common_head',$common_head);
+
+			//左侧菜单绑定
+			$smarty->assign('menuOrg',$menuOrg);
+			$smarty->assign('menuHumanAffairs',$menuHumanAffairs);
+			$smarty->assign('menuLeave',$menuLeave);
+			$smarty->assign('menuBusinessTravel',$menuBusinessTravel);
+			$smarty->assign('menuCar',$menuCar);
+			$smarty->assign('menuOfficeTool',$menuOfficeTool);
+			$smarty->assign('menuGeneralAffairs',$menuGeneralAffairs);
+			$smarty->assign('menuSystem',$menuSystem);
+			$smarty->assign('menuSignPower',$menuSignPower);
+			$smarty->assign('otherPower',$otherPower);
 
 		}else{
 			TipsRefreshResturn('帐号异常，请重新登录','index.php?_f=login');
 		}
 	}
+
+	//公共头部 begin
+
+	$act = getVal('act',2,'');
+	$QUERY_STRING = $_SERVER['QUERY_STRING'];		//url para
+
+	//退出登录
+	if($act == 'quitPost'){
+		//清除session
+		$_SESSION['cache_staffId'] = '';
+		unset($_SESSION['cache_staffId']);
+		session_destroy();
+
+		//清除cookies
+		$_COOKIE['cache_staffId'] = '';
+		setcookie('cache_staffId','');
+		RefreshResturn('index.php?_f=login');
+	}
+
+	//数据绑定
+	$smarty->assign('QUERY_STRING',$QUERY_STRING);
+
+	//公共头部 over
+
+	//左侧菜单 begin
+
+	$_prfix = basename($_SERVER['PHP_SELF']);
+	$_file = getVal('_f',2,'');
+
+	$indexPrfix = 'index.php';
+	$orgPrfix = 'org.php';
+	$humanPrfix = 'human-affairs.php';
+	$leavePrfix = 'leave.php';
+	$businessPrfix = 'business-travel.php';
+	$carPrfix = 'car.php';
+	$officePrfix = 'office-tool.php';
+	$generalPrfix = 'general-affairs.php';
+	$systemPrfix = 'system.php';
+	$signPrfix = 'sign.php';
+	$messagePrfix = 'message.php';
+
+	//首页menu
+	if($_prfix == $indexPrfix && $_file == 'index' ){
+		$indexMenu = ' on';
+	}
+
+	//DIT组织架构menu
+	if($_prfix == $orgPrfix ){
+		$orgMenu = ' on';
+	}
+
+	//人事管理menu
+	if($_prfix == $humanPrfix ){
+		$humanMenu = ' on';
+	}
+
+	//请假管理menu
+	if($_prfix == $leavePrfix ){
+		$leaveMenu = ' on';
+	}
+
+	//出差管理menu
+	if($_prfix == $businessPrfix ){
+		$businessMenu = ' on';
+	}
+
+	//车辆管理menu
+	if($_prfix == $carPrfix ){
+		$carMenu = ' on';
+	}
+
+	//办公备品管理menu
+	if($_prfix == $officePrfix ){
+		$officeMenu = ' on';
+	}
+
+	//综合事务管理menu
+	if($_prfix == $generalPrfix ){
+		$generalMenu = ' on';
+	}
+
+	//系统运维管理menu
+	if($_prfix == $systemPrfix ){
+		$systemMenu = ' on';
+	}
+
+	//考勤管理menu
+	if($_prfix == $signPrfix ){
+		$signMenu = ' on';
+	}
+
+	//系统消息menu
+	if($_prfix == $messagePrfix ){
+		$messageMenu = ' on';
+	}
+
+	//数据绑定
+	$smarty->assign('indexMenu',$indexMenu);
+	$smarty->assign('orgMenu',$orgMenu);
+	$smarty->assign('humanMenu',$humanMenu);
+	$smarty->assign('leaveMenu',$leaveMenu);
+	$smarty->assign('businessMenu',$businessMenu);
+	$smarty->assign('carMenu',$carMenu);
+	$smarty->assign('officeMenu',$officeMenu);
+	$smarty->assign('generalMenu',$generalMenu);
+	$smarty->assign('systemMenu',$systemMenu);
+	$smarty->assign('signMenu',$signMenu);
+	$smarty->assign('messageMenu',$messageMenu);
+
+	//左侧菜单 over
 
 ?>

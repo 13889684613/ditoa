@@ -1,117 +1,131 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-13 19:39:56
+/* Smarty version 3.1.29, created on 2018-12-14 15:25:14
   from "F:\website\ditoaCoder\ditoa\pc\index\view\index.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c12450c4c6a51_90751727',
+  'unifunc' => 'content_5c135ada86b225_44290051',
   'file_dependency' => 
   array (
     'd4b9b3ff6ddc6dc96ab3c4af64b80c09e6e169f5' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\index\\view\\index.html',
-      1 => 1544701184,
+      1 => 1544772107,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
+    'file:public/html/head.html' => 1,
+    'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c12450c4c6a51_90751727 ($_smarty_tpl) {
+function content_5c135ada86b225_44290051 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-	<title><?php echo $_smarty_tpl->tpl_vars['pageTitle']->value;?>
+
+	<head>
+		<title><?php echo $_smarty_tpl->tpl_vars['pageTitle']->value;?>
 </title>
-</head>
-<body>
-	管理菜单：<br />
-	--- DIT组织架构：
-	企业信息管理、
-	办事处、
-	工作组管理、
-	企业组织架构
-	<br />
-	--- 人事管理：
-	企业资质证件、
-	员工管理、
-	员工档案管理、
-	离职员工、
-	转正考核、
-	转正考核审批、
-	离职申请、
-	离职申请审批、
-	企业规章制度、
-	邮箱申请、
-	邮箱审批
-	<br />
-	--- 请假管理：
-	申请假期、
-	请假管理、
-	假期审批、
-	假期统计
-	<br />
-	--- 出差管理：
-	出差申请、
-	出差审批
-	<br />
-	--- 车辆管理：
-	车辆信息管理、
-	车辆行驶记录、
-	车辆行驶统计、
-	车辆维修管理、
-	车辆维修审批、
-	车辆维修费用管理<br />
-	--- 办公备品管理：
-	办公备品管理、
-	办公备品审批、
-	办公备品入库管理、
-	办公备品分配记录、
-	办公备品出库管理、
-	办公备品使用统计、
-	办公备品盘点、
-	办公备品调转部门、
-	调转部门审批、
-	办公备品统计
-	<br />
-	--- 综合事务管理：
-	企业规章制度管理、
-	企业动态管理、
-	企业资质证件管理
-	<br />
-	--- 系统运维管理：
-	系统角色权限设置、
-	审批角色权限设置、
-	自定义审批流程设置、
-	默认审批流程设置、
-	职务管理、
-	请假类型管理、
-	备品类别管理、
-	备品名称管理
-	<br />
-	--- 考勤管理：
-	考勤时间管理、
-	打卡记录、
-	打卡统计、
-	每日打卡记录、
-	打卡时间
-	<br />
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+		<link rel="stylesheet" href="public/html/css/oa.base.css" />
+		<link rel="stylesheet" href="public/html/css/oa.bootstrap.min.css" />
+		<link rel="stylesheet" href="public/html/css/plugin/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" href="public/html/css/oa.jquery-ui.min.css" />
+		<link rel="stylesheet" href="public/html/css/oa.jquery.multiselect.css" />
+		<link rel="stylesheet" href="public/html/css/oa.common.css" />
+		<link rel="stylesheet" href="index/view/css/index.css" />
+	</head>
 
-	<br /><br />
-	<?php if ($_smarty_tpl->tpl_vars['messageContent']->value != '') {?>
-	系统消息：<?php echo $_smarty_tpl->tpl_vars['messageContent']->value;?>
+	<body>
+		<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:public/html/head.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
 
-	<?php }?>
-	友情提示：<?php echo $_smarty_tpl->tpl_vars['common_staffName']->value;?>
- ，欢迎您回来，祝你开心每一天！
-	快捷方式：<a href="">请假申请</a>&nbsp;<a href="">我的档案</a>&nbsp;<a href="">企业规章制度</a><a href="">组织架构</a>&nbsp;<a href="">系统消息<?php if ($_smarty_tpl->tpl_vars['common_noRead']->value > 0) {?>（<?php echo $_smarty_tpl->tpl_vars['common_noRead']->value;?>
-）<?php }?></a><br />
-	企业动态：更多
-	<table>
-		<?php
+
+		<!--内容 begin-->
+		<div class="container-fluid row">
+			<!--内容区左侧导航 begin-->
+			<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:public/html/menu.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
+			<!--内容区左侧导航end-->
+			<!--内容区右侧begin-->
+			<div class="contentRight col-lg-10 row">
+				<div class="contentRightInfo">
+					<?php if ($_smarty_tpl->tpl_vars['messageContent']->value != '') {?>
+					<div class="contentTic">
+						系统消息：<?php echo $_smarty_tpl->tpl_vars['messageContent']->value;?>
+
+						<img src="images/close-tic.png" alt="" />
+					</div>
+					<?php }?>
+					<div class="contentHand clearfix">
+						<div class="contentHandLeft pull-left"><img src="<?php echo $_smarty_tpl->tpl_vars['common_head']->value;?>
+" alt="" /></div>
+						<div class="contentHandRight pull-left">
+							<div class="contentHandRightTop"><?php echo $_smarty_tpl->tpl_vars['common_staffName']->value;?>
+ ，欢迎您回来，祝你开心每一天！</div>
+							<div class="contentHandRightBottom"><?php echo $_smarty_tpl->tpl_vars['common_officeName']->value;?>
+ - <?php echo $_smarty_tpl->tpl_vars['common_groupName']->value;?>
+</div>
+						</div>
+					</div>
+				</div>
+				<!--内容区begin-->
+				<div class="contentRightBox">
+					<div class="contentRightContent">
+						<!--快捷方式begin-->
+						<div class="contentRightContentTitle">快捷方式</div>
+						<div class="quickFunction clearfix">
+							<a href="">
+								<div class="quickFunctionBox pull-left">
+									<div class="quickFunctionPart">
+										<img src="index/view/images/index-icon-a.jpg" alt="" />假期申请
+									</div>
+								</div>
+							</a>
+							<a href="">
+								<div class="quickFunctionBox pull-left">
+									<div class="quickFunctionPart">
+										<img src="index/view/images/index-icon-b.jpg" alt="" />我的档案
+									</div>
+								</div>
+							</a>
+							<a href="">
+								<div class="quickFunctionBox pull-left">
+									<div class="quickFunctionPart">
+										<img src="index/view/images/index-icon-c.jpg" alt="" />企业规章制度
+									</div>
+								</div>
+							</a>
+							<a href="">
+								<div class="quickFunctionBox pull-left">
+									<div class="quickFunctionPart">
+										<img src="index/view/images/index-icon-d.jpg" alt="" />组织架构
+									</div>
+								</div>
+							</a>
+							<a href="">
+								<div class="quickFunctionBox pull-left marginRight0">
+									<div class="quickFunctionPart">
+										<img src="index/view/images/index-icon-e.jpg" alt="" />系统消息<?php if ($_smarty_tpl->tpl_vars['common_noRead']->value > 0) {?> <span class="quickFunctionPartNum"><?php echo $_smarty_tpl->tpl_vars['common_noRead']->value;?>
+</span><?php }?>
+									</div>
+								</div>
+							</a>
+						</div>
+						<!--快捷方式end-->
+						<!--企业动态 企业活动 begin-->
+						<div class="dynamicsActiveBox clearfix">
+							<!--动态begin-->
+							<div class="dynamicsActivePart pull-left">
+								<div class="dynamicsActivePartTitle">企业动态 <a href="javascript:void(0);"><img src="index/view/images/right.png" alt="" /></a></div>
+								<div class='ul'>
+									<?php
 $_from = $_smarty_tpl->tpl_vars['news']->value;
 if (!is_array($_from) && !is_object($_from)) {
 settype($_from, 'array');
@@ -123,24 +137,32 @@ foreach ($_from as $_smarty_tpl->tpl_vars['n']->value) {
 $_smarty_tpl->tpl_vars['n']->_loop = true;
 $__foreach_news_0_saved_local_item = $_smarty_tpl->tpl_vars['n'];
 ?>
-		<tr>
-			<td><a href="general-affairs.php?_f=news-info&i=<?php echo $_smarty_tpl->tpl_vars['n']->value['newsId'];?>
-"><?php echo $_smarty_tpl->tpl_vars['n']->value['title'];?>
-</a></td>
-			<td><?php echo $_smarty_tpl->tpl_vars['n']->value['newsTime'];?>
-</td>
-		</tr>
-		<?php
+									<a href="general-affairs.php?_f=news-info&i=<?php echo $_smarty_tpl->tpl_vars['n']->value['newsId'];?>
+">
+										<div class="li clearfix">
+											<div class="liL pull-left">
+												<?php echo $_smarty_tpl->tpl_vars['n']->value['title'];?>
+
+											</div>
+											<div class="liR pull-right"><?php echo $_smarty_tpl->tpl_vars['n']->value['newsTime'];?>
+</div>
+										</div>
+									</a>
+									<?php
 $_smarty_tpl->tpl_vars['n'] = $__foreach_news_0_saved_local_item;
 }
 if ($__foreach_news_0_saved_item) {
 $_smarty_tpl->tpl_vars['n'] = $__foreach_news_0_saved_item;
 }
 ?>
-	</table><br />
-	企业活动：更多
-	<table>
-		<?php
+								</div>
+							</div>
+							<!--动态end-->
+							<!--活动begin-->
+							<div class="dynamicsActivePart pull-right">
+								<div class="dynamicsActivePartTitle">企业活动 <a href="javascript:void(0);"><img src="index/view/images/right.png" alt="" /></a></div>
+								<div class='ul'>
+									<?php
 $_from = $_smarty_tpl->tpl_vars['actives']->value;
 if (!is_array($_from) && !is_object($_from)) {
 settype($_from, 'array');
@@ -152,21 +174,64 @@ foreach ($_from as $_smarty_tpl->tpl_vars['a']->value) {
 $_smarty_tpl->tpl_vars['a']->_loop = true;
 $__foreach_actives_1_saved_local_item = $_smarty_tpl->tpl_vars['a'];
 ?>
-		<tr>
-			<td><a href="general-affairs.php?_f=actives-info&i=<?php echo $_smarty_tpl->tpl_vars['a']->value['newsId'];?>
-"><?php echo $_smarty_tpl->tpl_vars['a']->value['title'];?>
-</a></td>
-			<td><?php echo $_smarty_tpl->tpl_vars['a']->value['newsTime'];?>
-</td>
-		</tr>
-		<?php
+									<a href="general-affairs.php?_f=actives-info&i=<?php echo $_smarty_tpl->tpl_vars['a']->value['newsId'];?>
+">
+										<div class="li clearfix">
+											<div class="liL pull-left">
+												<?php echo $_smarty_tpl->tpl_vars['a']->value['title'];?>
+
+											</div>
+											<div class="liR pull-right"><?php echo $_smarty_tpl->tpl_vars['a']->value['newsTime'];?>
+</div>
+										</div>
+									</a>
+									<?php
 $_smarty_tpl->tpl_vars['a'] = $__foreach_actives_1_saved_local_item;
 }
 if ($__foreach_actives_1_saved_item) {
 $_smarty_tpl->tpl_vars['a'] = $__foreach_actives_1_saved_item;
 }
 ?>
-	</table>
-</body>
+								</div>
+							</div>
+							<!--活动end-->
+						</div>
+						<!--企业动态 企业活动 end-->
+					</div>
+				</div>
+				<!--内容区end-->
+			</div>
+			<!--内容区右侧end-->
+		</div>
+		<!--内容 end-->
+		<?php echo '<script'; ?>
+ type="text/javascript" src="public/html/js/plugin/oa.jquery-1.11.3.min.js"><?php echo '</script'; ?>
+>
+		<?php echo '<script'; ?>
+ type="text/javascript" src="public/html/js/plugin/oa.jquery.placeholder.min.js"><?php echo '</script'; ?>
+>
+		<?php echo '<script'; ?>
+ type="text/javascript" src="public/html/js/plugin/oa.respond.js"><?php echo '</script'; ?>
+>
+		<?php echo '<script'; ?>
+ type="text/javascript" src="public/html/js/plugin/oa.bootstrap.min.js"><?php echo '</script'; ?>
+>
+		<?php echo '<script'; ?>
+ type="text/javascript" src="public/html/js/plugin/jquery.mCustomScrollbar.concat.min.js"><?php echo '</script'; ?>
+>
+		<?php echo '<script'; ?>
+ type="text/javascript" src="public/html/js/plugin/oa.jquery-ui.min.js"><?php echo '</script'; ?>
+>
+		<?php echo '<script'; ?>
+ type="text/javascript" src="public/html/js/plugin/oa.jquery.multiselect.js"><?php echo '</script'; ?>
+>
+		<?php echo '<script'; ?>
+ type="text/javascript" src="public/html/js/oa.common.js"><?php echo '</script'; ?>
+>
+		<?php echo '<script'; ?>
+ type="text/javascript" src="index/view/js/index.js" ><?php echo '</script'; ?>
+>
+	</body>
+
 </html><?php }
 }

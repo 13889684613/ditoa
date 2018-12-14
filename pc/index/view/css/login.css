@@ -1,0 +1,134 @@
+.header {
+	background: url(../images/sign-in.jpg) no-repeat center;
+	height: 128px;
+	width: 100%;
+}
+
+.content {
+	width: 100%;
+	height: 601px;
+	background: url(../images/sign-in-bg.jpg) no-repeat center;
+}
+
+.contentBox {
+	width: 1150px;
+	margin: 0 auto;
+	padding-top: 57px;
+}
+
+.contentPart {
+	width: 420px;
+	height: 490px;
+	border-radius: 8px;
+	background-color: #fff;
+}
+
+.loginTitle {
+	text-align: center;
+	font-size: 24px;
+	color: #05114b;
+	padding-top: 46px;
+	margin-bottom: 30px;
+	font-weight: bold;
+}
+
+.loginContent {
+	width: 320px;
+	margin: 0 auto;
+}
+.loginInput{
+	position: relative;
+}
+.loginInput label {
+	font-size: 16px;
+	color: #222222;
+	width: 100%;
+	margin-bottom: 10px;
+	font-weight: 500;
+}
+
+.loginInput input {
+	width: 100%;
+	height: 45px;
+	border: 1px solid #dddddd;
+	border-radius: 3px;
+	padding-left: 17px;
+	line-height: 40px;
+	font-size: 14px;
+}
+
+.loginInput input::-moz-placeholder {
+	color: red;
+}
+
+.marginB40 {
+	margin-bottom: 40px;
+}
+
+.loginFor {
+	font-size: 14px;
+	color: #666;
+	margin-top: 13px;
+	margin-bottom: 54px;
+	cursor: pointer;
+	background: url(../images/login.jpg) no-repeat 0 50%;
+	padding-left: 22px;
+}
+
+.loginFor.on {
+	background: url(../images/login-active.jpg) no-repeat 0 50%;
+}
+
+.loginFor img {
+	margin-right: 5px;
+}
+
+.submit {
+	width: 100%;
+	height: 50px;
+	background-color: #080c65;
+	text-align: center;
+	line-height: 50px;
+	color: #fff;
+	font-size: 16px;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+.wrongText {
+	font-size: 13px;
+	color: #e53631;
+	display: none;
+	margin-top: 8px;
+	position: absolute;
+	bottom: -20px;
+}
+
+input::-webkit-input-placeholder {
+	color: #b9bbb8;
+}
+
+input::-moz-placeholder {
+	/* Mozilla Firefox 19+ */
+	color: #b9bbb8;
+}
+
+input:-moz-placeholder {
+	/* Mozilla Firefox 4 to 18 */
+	color: #b9bbb8;
+}
+
+input:-ms-input-placeholder {
+	/* Internet Explorer 10-11 */
+	color: #b9bbb8;
+}
+.placeholder{
+	color: #b9bbb8;
+	line-height: 40px;
+}
+.copyright{
+	font-size: 14px;
+	text-align: center;
+	color: #888888;
+	margin-top: 113px;
+}

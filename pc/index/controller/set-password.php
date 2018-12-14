@@ -18,13 +18,22 @@
 	//验证
 	if($act == 'setPost'){
 		if($pwd == ''){
-			ErrorResturn('请设置密码');
+			$data['status'] = 'fail';
+			$data['message'] = '请设置密码';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if($enterPwd == ''){
-			ErrorResturn('请再次填写密码');
+			$data['status'] = 'fail';
+			$data['message'] = '请再次填写密码';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if($pwd!=$enterPwd){
-			ErrorResturn('两次密码填写不一致，请重新填写');
+			$data['status'] = 'fail';
+			$data['message'] = '两次密码填写不一致，请重新填写';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 
 		//变更登录密码
@@ -33,10 +42,15 @@
 		$val['isUpdatePwd'] = 1;
 		$result = $db->update($table,$val,'where staffId='.$common_staffId.'');
 		if($result){
-			RefreshResturn('index.php?_f=index');
+			$data['status'] = 'success';
+			$data['message'] = '';
 		}else{
-			ErrorResturn(ERRORTIPS);
+			$data['status'] = 'fail';
+			$data['message'] = ERRORTIPS;
 		}
+		$returnJson = json_encode($data);
+		echo $returnJson; exit;
+
 	}
 
 	//数据绑定
