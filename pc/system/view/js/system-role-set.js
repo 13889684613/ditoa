@@ -124,7 +124,17 @@ $(function(){
             popAlert('请选择权限');
             return false;
         }
-        $('form').submit();
+        $('#setForm').ajaxSubmit({
+            type:'post',
+            success:function(data){
+                data = $.parseJSON(data);
+                if(data.status == 'success'){
+                    location.href = data.url;
+                }else{
+                    popAlert(data.message); //弹出错误信息
+                }
+            }
+        })
     })   
 })
 

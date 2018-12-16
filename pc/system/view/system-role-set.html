@@ -1,80 +1,353 @@
-<title>{{$pageTitle}}</title>
+<!-- 
+	# 新增系统角色
+	# Bowen
+	# 2018-11-23
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+	<title>{{$pageTitle}}</title>
+	<link rel="stylesheet" href="public/html/css/oa.base.css" />
+	<link rel="stylesheet" href="public/html/css/oa.bootstrap.min.css" />
+	<link rel="stylesheet" href="public/html/css/plugin/jquery.mCustomScrollbar.min.css">
+	<link rel="stylesheet" href="public/html/css/oa.common.css" />
+	<link rel="stylesheet" href="public/html/css/oa.jquery-ui.min.css" />
+	<link rel="stylesheet" href="public/html/css/oa.jquery.multiselect.css" />
+	<link rel="stylesheet" href="system/view/css/system-role-set.css" />
+</head>
+<body>
 
-<form method="post">
-<input type="hidden" name="page" value="{{$page}}" />
-<input type="hidden" name="s_roleName" value="{{$s_roleName}}" />
-<input type="hidden" name="id" value="{{$id}}" />
-<input type="hidden" name="act" value="{{$action}}" />
-<input type="text" name="roleName" placeholder="系统角色名称" value="{{$i.sysRoleName}}" /><br />
-<input type="text" name="rank" value="{{$rank}}" placeholder="排序" /><br />
+	<!--头部 begin-->
+	{{include file='public/html/head.html'}}
+	<!--头部 end-->
 
-<input type="checkbox" name="m1" value="1"{{if $i.orgPower[0]==1}} checked{{/if}}>企业信息管理<br />
-<input type="checkbox" name="m2" value="1"{{if $i.orgPower[1]==1}} checked{{/if}}>办事处<br />
-<input type="checkbox" name="m3" value="1"{{if $i.orgPower[2]==1}} checked{{/if}}>工作组<br />
-<input type="checkbox" name="m4" value="1"{{if $i.orgPower[3]==1}} checked{{/if}}>企业组织架构<br /><br />
+	<!--内容 begin-->
+	<div class="container-fluid row">
+		<!--内容区左侧导航 begin-->
+		{{include file='public/html/menu.html'}}
+		<!--内容区左侧导航end-->
+		<!--内容区右侧begin-->
+		<div class="contentRight col-lg-10 row">
+			<!--内容区导航begin-->
+			<div class="contentRightNav clearfix">
+				<div class="contentRightNavLeft pull-left">
+					<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="?_f=system-role&page={{$page}}&s_name={{$s_name}}">系统角色管理</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">系统角色权限设置</span></div>
+					<div class="contentRightNavBottom"><span class="name">系统角色权限设置</span></div>
+				</div>
+			</div>
+			<!--内容区导航end-->
+			<!--内容区begin-->
+			<div class="contentRightBox">
+				<!-- 内容区 开始 -->
+				<div class = "rightContent">
+					<div class = "staffInfoForm contentForm clearfix">
+						<form id="setForm" method="post" class = "clearfix">
+							<input type="hidden" name="page" value="{{$page}}" />
+							<input type="hidden" name="s_roleName" value="{{$s_roleName}}" />
+							<input type="hidden" name="id" value="{{$id}}" />
+							<input type="hidden" name="act" value="{{$action}}" />
+							<div class = "roleInfo">
+								<p class = "addApplyTitle mB26">请填写系统角色信息</p>
+								<div class = "roleUserInfo clearfix">
+									<div class = "form userName clearfix">
+										<p class = "formTitle">系统角色名称</p>
+										<input type="text" name = "roleName" value="{{$i.sysRoleName}}" placeholder = "请输入" class = "formInput nameInput" autocomplete="off"/>
+									</div>
+									<div class = "form setNum clearfix">
+										<p class = "formTitle">设置排序</p>
+										<input type="number" name = "rank" value="{{$rank}}" placeholder = "0" class = "formInput numInput" autocomplete="off"/>
+										<span class="tipsIcon"><span class = "tips">数字越大，排序越靠前</span></span>
+									</div>
+									
+								</div>
+								<div class = "roleUserInfo clearfix">
+									<div class = "form setNum clearfix">		
+										<p class = "formTitle">默认角色</p>
+										<div class = "checkBox clearfix">
+											<div class = "checkBtn mRight50"{{if $i.isDefault==1}} on{{/if}}>是</div>
+											<div class = "checkBtn"{{if $i.isDefault==0}} on{{/if}}>否</div>
+										</div>
+										<input type="hidden" name = "default" value="{{$i.isDefault}}" class = "formInput sexForm"/>
+									</div>
+								</div>
+							</div>
+							<div class = "roleSet clearfix">
+								<p class = "addApplyTitle">系统角色权限设置</p>
+								<!--树导航begin-->
+								<div class="treeNavBox pull-left">
+									<div class="treeNavBoxTitle">系统权限</div>
+									<div class="treeNavContent">
+										<div class="treeNavContentBox">
+											<div class="treeNavContentBoxPart{{if in_array('1',$i.orgPower)}} on{{/if}}">
+												<span class="treeNavContentBoxPartImageNew{{if in_array('1',$i.orgPower)}} on{{/if}}"><span{{if in_array('1',$i.orgPower)}} class="on"{{/if}} data-id="01"></span>DIT组织架构</span>
+												<ul{{if in_array('1',$i.orgPower)}} class="on"{{/if}}>
+													<li{{if $i.orgPower[0]==1}} class="on"{{/if}} data-id="02">企业信息管理</li>
+													<li{{if $i.orgPower[1]==1}} class="on"{{/if}} data-id="03">办事处管理</li>
+													<li{{if $i.orgPower[2]==1}} class="on"{{/if}} data-id="04">工作组管理</li>
+													<li{{if $i.orgPower[3]==1}} class="on"{{/if}} data-id="05">企业组织架构</li>
+												</ul>
+											</div>
+											<div class="treeNavContentBoxPart{{if in_array('1',$i.humanAffairsPower)}} on{{/if}}">
+												<span class="treeNavContentBoxPartImageNew{{if in_array('1',$i.humanAffairsPower)}} on{{/if}}"><span{{if in_array('1',$i.humanAffairsPower)}} class="on"{{/if}} data-id="06"></span>人事管理</span>
+												<ul{{if in_array('1',$i.humanAffairsPower)}} class="on"{{/if}}>
+													<li{{if $i.humanAffairsPower[0]==1}} class="on"{{/if}} data-id="07">企业资质证件</li>
+													<li{{if $i.humanAffairsPower[1]==1}} class="on"{{/if}} data-id="08">员工管理</li>
+													<li{{if $i.humanAffairsPower[2]==1}} class="on"{{/if}} data-id="09">员工档案管理</li>
+													<li{{if $i.humanAffairsPower[3]==1}} class="on"{{/if}} data-id="10">离职员工</li>
+													<li{{if $i.humanAffairsPower[4]==1}} class="on"{{/if}} data-id="11">转正考核</li>
+													<li{{if $i.humanAffairsPower[5]==1}} class="on"{{/if}} data-id="12">转正考核审批</li>
+													<li{{if $i.humanAffairsPower[6]==1}} class="on"{{/if}} data-id="13">离职申请</li>
+													<li{{if $i.humanAffairsPower[7]==1}} class="on"{{/if}} data-id="14">离职申请审批</li>
+													<li{{if $i.humanAffairsPower[8]==1}} class="on"{{/if}} data-id="15">企业规章制度</li>
+													<li{{if $i.humanAffairsPower[9]==1}} class="on"{{/if}} data-id="16">邮箱申请</li>
+													<li{{if $i.humanAffairsPower[10]==1}} class="on"{{/if}} data-id="17">邮箱审批</li>
+												</ul>
+											</div>
+											<div class="treeNavContentBoxPart{{if in_array('1',$i.leavePower)}} on{{/if}}">
+												<span class="treeNavContentBoxPartImageNew{{if in_array('1',$i.leavePower)}} on{{/if}}"><span{{if in_array('1',$i.leavePower)}} class="on"{{/if}} data-id="18"></span>请假管理</span>
+												<ul{{if in_array('1',$i.leavePower)}} class="on"{{/if}}>
+													<li{{if $i.leavePower[0]==1}} class="on"{{/if}} data-id="19">申请假期</li>
+													<li{{if $i.leavePower[1]==1}} class="on"{{/if}} data-id="20">请假管理</li>
+													<li{{if $i.leavePower[2]==1}} class="on"{{/if}} data-id="21">假期审批</li>
+													<li{{if $i.leavePower[3]==1}} class="on"{{/if}} data-id="22">假期统计</li>
+												</ul>
+											</div>
+											<div class="treeNavContentBoxPart{{if in_array('1',$i.businessTravelPower)}} on{{/if}}">
+												<span class="treeNavContentBoxPartImageNew{{if in_array('1',$i.businessTravelPower)}} on{{/if}}"><span{{if in_array('1',$i.businessTravelPower)}} class="on"{{/if}} data-id="23"></span>出差管理</span>
+												<ul{{if in_array('1',$i.businessTravelPower)}} class="on"{{/if}}>
+													<li{{if $i.businessTravelPower[0]==1}} class="on"{{/if}} data-id="24">出差申请</li>
+													<li{{if $i.businessTravelPower[1]==1}} class="on"{{/if}} data-id="25">出差审批</li>
+												</ul>
+											</div>
+											<div class="treeNavContentBoxPart{{if in_array('1',$i.carPower)}} on{{/if}}">
+												<span class="treeNavContentBoxPartImageNew{{if in_array('1',$i.carPower)}} on{{/if}}"><span{{if in_array('1',$i.carPower)}} class="on"{{/if}} data-id="26"></span>车辆管理</span>
+												<ul{{if in_array('1',$i.carPower)}} class="on"{{/if}}>
+													<li{{if $i.carPower[0]==1}} class="on"{{/if}} data-id="27">车辆信息管理</li>
+													<li{{if $i.carPower[1]==1}} class="on"{{/if}} data-id="28">车辆行驶记录</li>
+													<li{{if $i.carPower[2]==1}} class="on"{{/if}} data-id="29">车辆行驶统计</li>
+													<li{{if $i.carPower[3]==1}} class="on"{{/if}} data-id="30">车辆维修管理</li>
+													<li{{if $i.carPower[4]==1}} class="on"{{/if}} data-id="31">车辆维修审批</li>
+													<li{{if $i.carPower[5]==1}} class="on"{{/if}} data-id="32">车辆维修费用管理</li>
+												</ul>
+											</div>
+											<div class="treeNavContentBoxPart{{if in_array('1',$i.officeToolPower)}} on{{/if}}">
+												<span class="treeNavContentBoxPartImageNew{{if in_array('1',$i.officeToolPower)}} on{{/if}}"><span{{if in_array('1',$i.officeToolPower)}} class="on"{{/if}} data-id="33"></span>办公备品管理</span>
+												<ul{{if in_array('1',$i.officeToolPower)}} class="on"{{/if}}>
+													<li{{if $i.officeToolPower[0]==1}} class="on"{{/if}} data-id="34">办公备品管理</li>
+													<li{{if $i.officeToolPower[1]==1}} class="on"{{/if}} data-id="35">办公备品审批</li>
+													<li{{if $i.officeToolPower[2]==1}} class="on"{{/if}} data-id="36">办公备品入库管理</li>
+													<li{{if $i.officeToolPower[3]==1}} class="on"{{/if}} data-id="37">办公备品分配记录</li>
+													<li{{if $i.officeToolPower[4]==1}} class="on"{{/if}} data-id="38">办公备品出库管理</li>
+													<li{{if $i.officeToolPower[5]==1}} class="on"{{/if}} data-id="39">办公备品使用统计</li>
+													<li{{if $i.officeToolPower[6]==1}} class="on"{{/if}} data-id="40">办公备品盘点</li>
+													<li{{if $i.officeToolPower[7]==1}} class="on"{{/if}} data-id="41">办公备品调转部门</li>
+													<li{{if $i.officeToolPower[8]==1}} class="on"{{/if}} data-id="42">调转部门审批</li>
+													<li{{if $i.officeToolPower[9]==1}} class="on"{{/if}} data-id="43">办公备品统计</li>
+												</ul>
+											</div>
+											<div class="treeNavContentBoxPart{{if in_array('1',$i.generalAffairsPower)}} on{{/if}}">
+												<span class="treeNavContentBoxPartImageNew{{if in_array('1',$i.generalAffairsPower)}} on{{/if}}"><span{{if in_array('1',$i.generalAffairsPower)}} class="on"{{/if}} data-id="44"></span>综合事务管理</span>
+												<ul{{if in_array('1',$i.generalAffairsPower)}} class="on"{{/if}}>
+													<li{{if $i.generalAffairsPower[0]==1}} class="on"{{/if}} data-id="45">企业规章制度管理</li>
+													<li{{if $i.generalAffairsPower[0]==1}} class="on"{{/if}} data-id="46">企业动态管理</li>
+													<li{{if $i.generalAffairsPower[0]==1}} class="on"{{/if}} data-id="47">企业资质证件管理</li>
+												</ul>
+											</div>
+											<div class="treeNavContentBoxPart{{if in_array('1',$i.systemPower)}} on{{/if}}">
+												<span class="treeNavContentBoxPartImageNew{{if in_array('1',$i.systemPower)}} on{{/if}}"><span{{if in_array('1',$i.systemPower)}} class="on"{{/if}} data-id="48"></span>系统运维管理</span>
+												<ul{{if in_array('1',$i.systemPower)}} class="on"{{/if}}>
+													<li{{if $i.systemPower[0]==1}} class="on"{{/if}} data-id="49">系统角色权限设置</li>
+													<li{{if $i.systemPower[1]==1}} class="on"{{/if}} data-id="50">审批角色权限设置</li>
+													<li{{if $i.systemPower[2]==1}} class="on"{{/if}} data-id="51">自定义审批流程设置</li>
+													<li{{if $i.systemPower[3]==1}} class="on"{{/if}} data-id="52">默认审批流程设置</li>
+													<li{{if $i.systemPower[4]==1}} class="on"{{/if}} data-id="53">职务管理</li>
+													<li{{if $i.systemPower[5]==1}} class="on"{{/if}} data-id="54">请假类型管理</li>
+													<li{{if $i.systemPower[6]==1}} class="on"{{/if}} data-id="55">备品类别管理</li>
+													<li{{if $i.systemPower[7]==1}} class="on"{{/if}} data-id="56">备品名称管理</li>
+												</ul>
+											</div>
+											<div class="treeNavContentBoxPart{{if in_array('1',$i.signPower)}} on{{/if}}">
+												<span class="treeNavContentBoxPartImageNew{{if in_array('1',$i.signPower)}} on{{/if}}"><span{{if in_array('1',$i.signPower)}} class="on"{{/if}} data-id="57"></span>考勤管理</span>
+												<ul{{if in_array('1',$i.signPower)}} class="on"{{/if}}>
+													<li{{if $i.signPower[0]==1}} class="on"{{/if}} data-id="58">考勤时间管理</li>
+													<li{{if $i.signPower[1]==1}} class="on"{{/if}} data-id="59">打卡记录</li>
+													<li{{if $i.signPower[2]==1}} class="on"{{/if}} data-id="60">打卡统计</li>
+													<li{{if $i.signPower[3]==1}} class="on"{{/if}} data-id="61">每日打卡记录</li>
+													<li{{if $i.signPower[4]==1}} class="on"{{/if}} data-id="62">打卡时间</li>
+												</ul>
+											</div>
+											<div class="treeNavContentBoxPart{{if in_array('1',$i.otherPower)}} on{{/if}}">
+												<span class="treeNavContentBoxPartImageNew{{if in_array('1',$i.otherPower)}} on{{/if}}"><span{{if in_array('1',$i.otherPower)}} class="on"{{/if}} data-id="63"></span>其它权限</span>
+												<ul{{if in_array('1',$i.otherPower)}} class="on"{{/if}}>
+													<li{{if $i.otherPower[0]==1}} class="on"{{/if}} data-id="64">查看背景调查</li>	
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!--树导航end-->
+								<!-- clone 树导航 start -->
+								<div class="treeNavBoxClone pull-right">
+									<div class="treeNavBoxTitleClone">已分配情况</div>
 
-<input type="checkbox" name="m5" value="1"{{if $i.humanAffairsPower[0]==1}} checked{{/if}}>企业资质证件<br />
-<input type="checkbox" name="m6" value="1"{{if $i.humanAffairsPower[1]==1}} checked{{/if}}>员工管理<br />
-<input type="checkbox" name="m7" value="1"{{if $i.humanAffairsPower[2]==1}} checked{{/if}}>员工档案管理<br />
-<input type="checkbox" name="m8" value="1"{{if $i.humanAffairsPower[3]==1}} checked{{/if}}>离职员工<br />
-<input type="checkbox" name="m9" value="1"{{if $i.humanAffairsPower[4]==1}} checked{{/if}}>转正考核<br />
-<input type="checkbox" name="m10" value="1"{{if $i.humanAffairsPower[5]==1}} checked{{/if}}>转正考核审批<br />
-<input type="checkbox" name="m11" value="1"{{if $i.humanAffairsPower[6]==1}} checked{{/if}}>离职申请<br />
-<input type="checkbox" name="m12" value="1"{{if $i.humanAffairsPower[7]==1}} checked{{/if}}>离职申请审批<br />
-<input type="checkbox" name="m13" value="1"{{if $i.humanAffairsPower[8]==1}} checked{{/if}}>企业规章制度<br />
-<input type="checkbox" name="m14" value="1"{{if $i.humanAffairsPower[9]==1}} checked{{/if}}>邮箱申请<br />
-<input type="checkbox" name="m15" value="1"{{if $i.humanAffairsPower[10]==1}} checked{{/if}}>邮箱审批<br /><br />
+									<div class="treeNavContentClone"{{if $id!=0}} style="display: block;"{{/if}}>
+										<div class="treeNavContentBoxClone">
+											<div class="treeNavContentBoxPartClone">
+												<span class="treeNavContentBoxPartImageNewClone{{if in_array('1',$orgPower)}} on{{/if}}"{{if in_array('1',$orgPower)}} style="display: inline;"{{/if}}>
+													<span class="cloneItem{{if in_array('1',$orgPower)}} on{{/if}}" data-id="01"{{if in_array('1',$orgPower)}} style="display: inline-block;"{{/if}}></span>DIT组织架构
+												</span>
+												<ul{{if in_array('1',$orgPower)}} class="on" style="display: block;"{{/if}}>
+													<li class="cloneItem{{if $i.orgPower[0]==1}} on{{/if}}" data-id="02"{{if $i.orgPower[0]==1}} style="display: list-item;"{{/if}}>企业信息管理</li>
+													<li class="cloneItem{{if $i.orgPower[1]==1}} on{{/if}}" data-id="03"{{if $i.orgPower[1]==1}} style="display: list-item;"{{/if}}>办事处管理</li>
+													<li class="cloneItem{{if $i.orgPower[2]==1}} on{{/if}}" data-id="04"{{if $i.orgPower[2]==1}} style="display: list-item;"{{/if}}>工作组管理</li>
+													<li class="cloneItem{{if $i.orgPower[3]==1}} on{{/if}}" data-id="05"{{if $i.orgPower[3]==1}} style="display: list-item;"{{/if}}>企业组织架构</li>
+												</ul>
+											</div>
+											<div class="treeNavContentBoxPartClone">
+												<span class="treeNavContentBoxPartImageNewClone{{if in_array('1',$humanAffairsPower)}} on{{/if}}" {{if in_array('1',$humanAffairsPower)}} style="display: inline;"{{/if}}>
+													<span class="cloneItem{{if in_array('1',$humanAffairsPower)}} on{{/if}}" data-id="06"{{if in_array('1',$humanAffairsPower)}} style="display: inline-block;"{{/if}}></span>人事管理
+												</span>
+												<ul{{if in_array('1',$humanAffairsPower)}} class="on" style="display: block;"{{/if}}>
+													<li class="cloneItem{{if $i.humanAffairsPower[0]==1}} on{{/if}}" data-id="07"{{if $i.humanAffairsPower[0]==1}} style="display: list-item;"{{/if}}>企业资质证件</li>
+													<li class="cloneItem{{if $i.humanAffairsPower[1]==1}} on{{/if}}" data-id="08"{{if $i.humanAffairsPower[1]==1}} style="display: list-item;"{{/if}}>员工管理</li>
+													<li class="cloneItem{{if $i.humanAffairsPower[2]==1}} on{{/if}}" data-id="09"{{if $i.humanAffairsPower[2]==1}} style="display: list-item;"{{/if}}>员工档案管理</li>
+													<li class="cloneItem{{if $i.humanAffairsPower[3]==1}} on{{/if}}" data-id="10"{{if $i.humanAffairsPower[3]==1}} style="display: list-item;"{{/if}}>离职员工</li>
+													<li class="cloneItem{{if $i.humanAffairsPower[4]==1}} on{{/if}}" data-id="11"{{if $i.humanAffairsPower[4]==1}} style="display: list-item;"{{/if}}>转正考核</li>
+													<li class="cloneItem{{if $i.humanAffairsPower[5]==1}} on{{/if}}" data-id="12"{{if $i.humanAffairsPower[5]==1}} style="display: list-item;"{{/if}}>转正考核审批</li>
+													<li class="cloneItem{{if $i.humanAffairsPower[6]==1}} on{{/if}}" data-id="13"{{if $i.humanAffairsPower[6]==1}} style="display: list-item;"{{/if}}>企业规章制度</li>
+													<li class="cloneItem{{if $i.humanAffairsPower[7]==1}} on{{/if}}" data-id="14"{{if $i.humanAffairsPower[7]==1}} style="display: list-item;"{{/if}}>邮箱申请</li>
+													<li class="cloneItem{{if $i.humanAffairsPower[8]==1}} on{{/if}}" data-id="15"{{if $i.humanAffairsPower[8]==1}} style="display: list-item;"{{/if}}>邮箱审批</li>
+												</ul>
+											</div>
+											<div class="treeNavContentBoxPartClone">
+												<span class="treeNavContentBoxPartImageNewClone{{if in_array('1',$leavePower)}} on{{/if}}"{{if in_array('1',$leavePower)}} style="display: inline;"{{/if}}>
+													<span class="cloneItem{{if in_array('1',$leavePower)}} on{{/if}}" data-id="16"{{if in_array('1',$leavePower)}} style="display: inline-block;"{{/if}}></span>请假管理
+												</span>
+												<ul{{if in_array('1',$leavePower)}} class="on" style="display: block;"{{/if}}>
+													<li class="cloneItem{{if $i.leavePower[0]==1}} on{{/if}}" data-id="17"{{if $i.leavePower[0]==1}} style="display: list-item;"{{/if}}>申请假期</li>
+													<li class="cloneItem{{if $i.leavePower[1]==1}} on{{/if}}" data-id="18"{{if $i.leavePower[1]==1}} style="display: list-item;"{{/if}}>请假管理</li>
+													<li class="cloneItem{{if $i.leavePower[2]==1}} on{{/if}}" data-id="19"{{if $i.leavePower[2]==1}} style="display: list-item;"{{/if}}>假期审批</li>
+													<li class="cloneItem{{if $i.leavePower[3]==1}} on{{/if}}" data-id="20"{{if $i.leavePower[3]==1}} style="display: list-item;"{{/if}}>假期统计</li>
+												</ul>
+											</div>
+											<div class="treeNavContentBoxPartClone">
+												<span class="treeNavContentBoxPartImageNewClone{{if in_array('1',$businessTravelPower)}} on{{/if}}" {{if in_array('1',$businessTravelPower)}} style="display: inline;"{{/if}}>
+													<span class="cloneItem{{if in_array('1',$businessTravelPower)}} on{{/if}}" data-id="21"{{if in_array('1',$businessTravelPower)}} style="display: inline-block;"{{/if}}></span>出差管理
+												</span>
+												<ul{{if in_array('1',$businessTravelPower)}} class="on" style="display: block;"{{/if}}>
+													<li class="cloneItem{{if $i.businessTravelPower[0]==1}} on{{/if}}" data-id="22"{{if $i.businessTravelPower[0]==1}} style="display: list-item;"{{/if}}>出差申请</li>
+													<li class="cloneItem{{if $i.businessTravelPower[1]==1}} on{{/if}}" data-id="23"{{if $i.businessTravelPower[1]==1}} style="display: list-item;"{{/if}}>出差审批</li>
+												</ul>
+											</div>
+												
+											<div class="treeNavContentBoxPartClone">
+												<span class="treeNavContentBoxPartImageNewClone{{if in_array('1',$carPower)}} on{{/if}}"{{if in_array('1',$carPower)}} style="display: inline;"{{/if}}>
+													<span class="cloneItem{{if in_array('1',$carPower)}} on{{/if}}" data-id="24"{{if in_array('1',$carPower)}} style="display: inline-block;"{{/if}}></span>车辆管理
+												</span>
+												<ul{{if in_array('1',$carPower)}} class="on" style="display: block;"{{/if}}>
+													<li class="cloneItem{{if $i.carPower[0]==1}} on{{/if}}" data-id="25"{{if $i.carPower[0]==1}} style="display: list-item;"{{/if}}>车辆信息管理</li>
+													<li class="cloneItem{{if $i.carPower[1]==1}} on{{/if}}" data-id="26"{{if $i.carPower[1]==1}} style="display: list-item;"{{/if}}>车辆行驶记录</li>
+													<li class="cloneItem{{if $i.carPower[2]==1}} on{{/if}}" data-id="27"{{if $i.carPower[2]==1}} style="display: list-item;"{{/if}}>车辆行驶统计</li>
+													<li class="cloneItem{{if $i.carPower[3]==1}} on{{/if}}" data-id="28"{{if $i.carPower[3]==1}} style="display: list-item;"{{/if}}>车辆维修管理</li>
+													<li class="cloneItem{{if $i.carPower[4]==1}} on{{/if}}" data-id="29"{{if $i.carPower[4]==1}} style="display: list-item;"{{/if}}>车辆维修费用管理</li>
+												</ul>
+											</div>
+											<div class="treeNavContentBoxPartClone">
+												<span class="treeNavContentBoxPartImageNewClone{{if in_array('1',$officeToolPower)}} on{{/if}}"{{if in_array('1',$officeToolPower)}} style="display: inline;"{{/if}}>
+													<span class="cloneItem{{if in_array('1',$officeToolPower)}} on{{/if}}" data-id="30"{{if in_array('1',$officeToolPower)}} style="display: inline-block;"{{/if}}></span>办公备品管理
+												</span>
+												<ul{{if in_array('1',$officeToolPower)}} class="on" style="display: block;"{{/if}}>
+													<li class="cloneItem{{if $i.officeToolPower[0]==1}} on{{/if}}" data-id="31"{{if $i.officeToolPower[0]==1}} style="display: list-item;"{{/if}}>办公备品管理</li>
+													<li class="cloneItem{{if $i.officeToolPower[1]==1}} on{{/if}}" data-id="32"{{if $i.officeToolPower[1]==1}} style="display: list-item;"{{/if}}>办公备品审批</li>
+													<li class="cloneItem{{if $i.officeToolPower[2]==1}} on{{/if}}" data-id="33"{{if $i.officeToolPower[2]==1}} style="display: list-item;"{{/if}}>办公备品入库管理</li>
+													<li class="cloneItem{{if $i.officeToolPower[3]==1}} on{{/if}}" data-id="34"{{if $i.officeToolPower[3]==1}} style="display: list-item;"{{/if}}>办公备品分配记录</li>
+													<li class="cloneItem{{if $i.officeToolPower[4]==1}} on{{/if}}" data-id="35"{{if $i.officeToolPower[4]==1}} style="display: list-item;"{{/if}}>办公备品出库管理</li>
+													<li class="cloneItem{{if $i.officeToolPower[5]==1}} on{{/if}}" data-id="31"{{if $i.officeToolPower[5]==1}} style="display: list-item;"{{/if}}>办公备品使用统计</li>
+													<li class="cloneItem{{if $i.officeToolPower[6]==1}} on{{/if}}" data-id="36"{{if $i.officeToolPower[6]==1}} style="display: list-item;"{{/if}}>办公备品盘点</li>
+													<li class="cloneItem{{if $i.officeToolPower[7]==1}} on{{/if}}" data-id="37"{{if $i.officeToolPower[7]==1}} style="display: list-item;"{{/if}}>办公备品调转部门</li>
+													<li class="cloneItem{{if $i.officeToolPower[8]==1}} on{{/if}}" data-id="38"{{if $i.officeToolPower[8]==1}} style="display: list-item;"{{/if}}>调转部门审批</li>			
+													<li class="cloneItem{{if $i.officeToolPower[9]==1}} on{{/if}}" data-id="39"{{if $i.officeToolPower[9]==1}} style="display: list-item;"{{/if}}>办公备品统计</li>
+												</ul>
+											</div>
+											<div class="treeNavContentBoxPartClone">
+												<span class="treeNavContentBoxPartImageNewClone{{if in_array('1',$generalAffairsPower)}} on{{/if}}"{{if in_array('1',$generalAffairsPower)}} style="display: inline;"{{/if}}>
+													<span class="cloneItem{{if in_array('1',$generalAffairsPower)}} on{{/if}}" data-id="40"{{if in_array('1',$generalAffairsPower)}} style="display: inline-block;"{{/if}}></span>综合事务管理
+												</span>
+												<ul{{if in_array('1',$generalAffairsPower)}} class="on" style="display: block;"{{/if}}>
+													<li class="cloneItem{{if $i.generalAffairsPower[0]==1}} on{{/if}}" data-id="41"{{if $i.generalAffairsPower[0]==1}} style="display: list-item;"{{/if}}>企业规章制度管理</li>
+													<li class="cloneItem{{if $i.generalAffairsPower[1]==1}} on{{/if}}" data-id="42"{{if $i.generalAffairsPower[1]==1}} style="display: list-item;"{{/if}}>企业动态管理</li>
+													<li class="cloneItem{{if $i.generalAffairsPower[2]==1}} on{{/if}}" data-id="43"{{if $i.generalAffairsPower[2]==1}} style="display: list-item;"{{/if}}>企业资质证件管理</li>
+												</ul>
+											</div>
+											<div class="treeNavContentBoxPartClone">
+												<span class="treeNavContentBoxPartImageNewClone{{if in_array('1',$systemPower)}} on{{/if}}"{{if in_array('1',$systemPower)}} style="display: inline;"{{/if}}>
+													<span class="cloneItem{{if in_array('1',$systemPower)}} on{{/if}}" data-id="44"{{if in_array('1',$systemPower)}} style="display: inline-block;"{{/if}}></span>系统运维管理
+												</span>
+												<ul{{if in_array('1',$systemPower)}} class="on" style="display: block;"{{/if}}>
+													<li class="cloneItem{{if $i.systemPower[0]==1}} on{{/if}}" data-id="45"{{if $i.systemPower[0]==1}} style="display: list-item;"{{/if}}>系统角色权限设置</li>
+													<li class="cloneItem{{if $i.systemPower[1]==1}} on{{/if}}" data-id="46"{{if $i.systemPower[1]==1}} style="display: list-item;"{{/if}}>自定义审批流程设置</li>
+													<li class="cloneItem{{if $i.systemPower[3]==1}} on{{/if}}" data-id="47"{{if $i.systemPower[2]==1}} style="display: list-item;"{{/if}}>审批角色权限设置</li>
+													<li class="cloneItem{{if $i.systemPower[2]==1}} on{{/if}}" data-id="48"{{if $i.systemPower[3]==1}} style="display: list-item;"{{/if}}>默认审批流程设置</li>
+													<li class="cloneItem{{if $i.systemPower[4]==1}} on{{/if}}" data-id="49"{{if $i.systemPower[4]==1}} style="display: list-item;"{{/if}}>职务管理</li>
+													<li class="cloneItem{{if $i.systemPower[5]==1}} on{{/if}}" data-id="50"{{if $i.systemPower[5]==1}} style="display: list-item;"{{/if}}>请假类型管理</li>
+													<li class="cloneItem{{if $i.systemPower[6]==1}} on{{/if}}" data-id="51"{{if $i.systemPower[6]==1}} style="display: list-item;"{{/if}}>备品类别管理</li>
+													<li class="cloneItem{{if $i.systemPower[7]==1}} on{{/if}}" data-id="52"{{if $i.systemPower[7]==1}} style="display: list-item;"{{/if}}>自定义审批流程设置</li>
+													<li class="cloneItem{{if $i.systemPower[8]==1}} on{{/if}}" data-id="53"{{if $i.systemPower[8]==1}} style="display: list-item;"{{/if}}>备品名称管理</li>
+												</ul>
+											</div>
+											<div class="treeNavContentBoxPartClone">
+												<span class="treeNavContentBoxPartImageNewClone{{if in_array('1',$signPower)}} on{{/if}}"{{if in_array('1',$signPower)}} style="display: inline;"{{/if}}>
+													<span class="cloneItem{{if in_array('1',$signPower)}} on{{/if}}" data-id="54"{{if in_array('1',$signPower)}} style="display: inline-block;"{{/if}}></span>考勤管理
+												</span>
+												<ul{{if in_array('1',$signPower)}} class="on" style="display: block;"{{/if}}>
+													<li class="cloneItem{{if $i.signPower[0]==1}} on{{/if}}" data-id="55"{{if $i.signPower[0]==1}} style="display: list-item;"{{/if}}>考勤时间管理</li>
+													<li class="cloneItem{{if $i.signPower[1]==1}} on{{/if}}" data-id="56"{{if $i.signPower[1]==1}} style="display: list-item;"{{/if}}>打卡记录</li>
+													<li class="cloneItem{{if $i.signPower[2]==1}} on{{/if}}" data-id="57"{{if $i.signPower[2]==1}} style="display: list-item;"{{/if}}>打卡统计</li>
+													<li class="cloneItem{{if $i.signPower[3]==1}} on{{/if}}" data-id="58"{{if $i.signPower[3]==1}} style="display: list-item;"{{/if}}>每日打卡记录</li>
+													<li class="cloneItem{{if $i.signPower[4]==1}} on{{/if}}" data-id="59"{{if $i.signPower[4]==1}} style="display: list-item;"{{/if}}>打卡时间</li>
+												</ul>
+											</div>
+											<div class="treeNavContentBoxPartClone">
+												<span class="treeNavContentBoxPartImageNewClone{{if in_array('1',$otherPower)}} on{{/if}}"{{if in_array('1',$otherPower)}} style="display: inline;"{{/if}}>
+													<span class="cloneItem{{if in_array('1',$otherPower)}} on{{/if}}" data-id="60"{{if in_array('1',$otherPower)}} style="display: inline-block;"{{/if}}></span>其它权限
+												</span>
+												<ul{{if in_array('1',$otherPower)}} class="on" style="display: block;"{{/if}}>
+													<li class="cloneItem{{if $i.otherPower[0]==1}} on{{/if}}" data-id="61"{{if $i.otherPower[0]==1}} style="display: list-item;"{{/if}}>查看背景调查</li>
+												</ul>
+											</div>
+										</div>	
+									</div>
+								</div>
+								<!-- clone 树导航 end -->
+								<div class = "centerPic"><img src="system/view/images/select_noSelect.png" alt=""></div>
+							</div>
+						</form>
+					</div>
+					<div class = "formBtnsBox clearfix">
+						<div class = "formBtn formBtnSave">保存</div>
+						<div class = "formBtn formBtnCancel">取消</div>
+					</div>
+				</div>
+				<!-- 内容区 结束 -->
+			</div>
+			<!--内容区end-->
+		</div>
+		<!--内容区右侧end-->
+	</div>
+	<!--内容 end-->
 
-<input type="checkbox" name="m16" value="1"{{if $i.leavePower[0]==1}} checked{{/if}}>申请假期<br />
-<input type="checkbox" name="m17" value="1"{{if $i.leavePower[1]==1}} checked{{/if}}>请假管理<br />
-<input type="checkbox" name="m18" value="1"{{if $i.leavePower[2]==1}} checked{{/if}}>假期审批<br />
-<input type="checkbox" name="m19" value="1"{{if $i.leavePower[3]==1}} checked{{/if}}>假期统计<br /><br />
+	<script type="text/javascript" src="public/html/js/plugin/oa.jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="public/html/js/plugin/oa.respond.js"></script>
+	<script type="text/javascript" src="public/html/js/plugin/oa.bootstrap.min.js"></script>
+	<script type="text/javascript" src="public/html/js/plugin/oa.jquery.placeholder.min.js"></script>
+	<script type="text/javascript" src="public/html/js/oa.common.js" ></script>
+	<script type="text/javascript" src="public/html/js/plugin/oa.jquery-ui.min.js" ></script>
+	<script type="text/javascript" src="public/html/js/plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script type="text/javascript" src="public/html/js/jquery.form.min.js" ></script>
+	<script type="text/javascript" src="system/view/js/system-role-set.js" ></script>
 
-<input type="checkbox" name="m20" value="1"{{if $i.businessTravelPower[0]==1}} checked{{/if}}>出差申请<br />
-<input type="checkbox" name="m21" value="1"{{if $i.businessTravelPower[1]==1}} checked{{/if}}>出差审批<br /><br />
-
-<input type="checkbox" name="m22" value="1"{{if $i.carPower[0]==1}} checked{{/if}}>车辆信息管理<br />
-<input type="checkbox" name="m23" value="1"{{if $i.carPower[1]==1}} checked{{/if}}>车辆行驶记录<br />
-<input type="checkbox" name="m24" value="1"{{if $i.carPower[2]==1}} checked{{/if}}>车辆行驶统计<br />
-<input type="checkbox" name="m25" value="1"{{if $i.carPower[3]==1}} checked{{/if}}>车辆维修管理<br />
-<input type="checkbox" name="m26" value="1"{{if $i.carPower[4]==1}} checked{{/if}}>车辆维修审批<br />
-<input type="checkbox" name="m27" value="1"{{if $i.carPower[5]==1}} checked{{/if}}>车辆维修费用管理<br /><br />
-
-<input type="checkbox" name="m28" value="1"{{if $i.officeToolPower[0]==1}} checked{{/if}}>办公备品管理<br />
-<input type="checkbox" name="m29" value="1"{{if $i.officeToolPower[1]==1}} checked{{/if}}>办公备品审批<br />
-<input type="checkbox" name="m30" value="1"{{if $i.officeToolPower[2]==1}} checked{{/if}}>办公备品入库管理<br />
-<input type="checkbox" name="m31" value="1"{{if $i.officeToolPower[3]==1}} checked{{/if}}>办公备品分配记录<br />
-<input type="checkbox" name="m32" value="1"{{if $i.officeToolPower[4]==1}} checked{{/if}}>办公备品出库管理<br />
-<input type="checkbox" name="m33" value="1"{{if $i.officeToolPower[5]==1}} checked{{/if}}>办公备品使用统计<br />
-<input type="checkbox" name="m34" value="1"{{if $i.officeToolPower[6]==1}} checked{{/if}}>办公备品盘点<br />
-<input type="checkbox" name="m35" value="1"{{if $i.officeToolPower[7]==1}} checked{{/if}}>办公备品调转部门<br />
-<input type="checkbox" name="m36" value="1"{{if $i.officeToolPower[8]==1}} checked{{/if}}>调转部门审批<br />
-<input type="checkbox" name="m37" value="1"{{if $i.officeToolPower[9]==1}} checked{{/if}}>办公备品统计<br /><br />
-
-<input type="checkbox" name="m38" value="1"{{if $i.generalAffairsPower[0]==1}} checked{{/if}}>企业规章制度管理<br />
-<input type="checkbox" name="m39" value="1"{{if $i.generalAffairsPower[1]==1}} checked{{/if}}>企业动态管理<br />
-<input type="checkbox" name="m40" value="1"{{if $i.generalAffairsPower[2]==1}} checked{{/if}}>企业资质证件管理<br /><br />
-
-<input type="checkbox" name="m41" value="1"{{if $i.systemPower[0]==1}} checked{{/if}}>系统角色权限设置<br />
-<input type="checkbox" name="m42" value="1"{{if $i.systemPower[1]==1}} checked{{/if}}>审批角色权限设置<br />
-<input type="checkbox" name="m43" value="1"{{if $i.systemPower[2]==1}} checked{{/if}}>自定义审批流程设置<br />
-<input type="checkbox" name="m44" value="1"{{if $i.systemPower[3]==1}} checked{{/if}}>默认审批流程设置<br />
-<input type="checkbox" name="m45" value="1"{{if $i.systemPower[4]==1}} checked{{/if}}>职务管理<br />
-<input type="checkbox" name="m46" value="1"{{if $i.systemPower[5]==1}} checked{{/if}}>请假类型管理<br />
-<input type="checkbox" name="m47" value="1"{{if $i.systemPower[6]==1}} checked{{/if}}>备品类别管理<br />
-<input type="checkbox" name="m48" value="1"{{if $i.systemPower[7]==1}} checked{{/if}}>备品名称管理<br /><br />
-
-<input type="checkbox" name="m49" value="1"{{if $i.signPower[0]==1}} checked{{/if}}>考勤时间管理<br />
-<input type="checkbox" name="m50" value="1"{{if $i.signPower[1]==1}} checked{{/if}}>打卡记录<br />
-<input type="checkbox" name="m51" value="1"{{if $i.signPower[2]==1}} checked{{/if}}>打卡统计<br />
-<input type="checkbox" name="m52" value="1"{{if $i.signPower[3]==1}} checked{{/if}}>每日打卡记录<br />
-<input type="checkbox" name="m53" value="1"{{if $i.signPower[4]==1}} checked{{/if}}>打卡时间<br /><br />
-
-<input type="checkbox" name="m54" value="1"{{if $i.otherPower[0]==1}} checked{{/if}}>员工背景调查<br /><br />
-
-系统用户默认角色：
-<input type="radio" name="default" value="1"{{if $i.isDefault==1}} checked="true"{{/if}}>是
-<input type="radio" name="default" value="0"{{if $i.isDefault==0}} checked="true"{{/if}}>否
-
-<input type="submit" value="保存" />
-</form>
+</body>
+</html>

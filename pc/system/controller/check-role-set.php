@@ -19,10 +19,16 @@
 	//验证
 	if($act == 'addSave'||$act == 'editSave'){
 		if($roleName == ''){
-			ErrorResturn('请设置角色名称');
+			$data['status'] = 'fail';
+			$data['message'] = '请设置角色名称';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if(stringLen($roleName)>50){
-			ErrorResturn('角色名称长度不能超过50个字符');
+			$data['status'] = 'fail';
+			$data['message'] = '角色名称长度不能超过50个字符';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 	}
 
@@ -37,7 +43,10 @@
 		//验证名称是否已存在
 		$validate = $db->get_one($table,'where checkRoleName="'.$roleName.'"','checkRoleId');
 		if($validate){
-			ErrorResturn('角色名称已存在，请重新填写');
+			$data['status'] = 'fail';
+			$data['message'] = '角色名称已存在，请重新填写';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 
 		$val['checkRoleName'] = $roleName;
@@ -47,10 +56,15 @@
 
 		$result = $db->insert($table,$val);
 		if($result){
-			TipsRefreshResturn('操作成功','system.php?_f=check-role');
+			$data['status'] = 'success';
+			$data['message'] = '操作成功';
+			$data['url'] = 'system.php?_f=check-role';
 		}else{
-			ErrorResturn(ERRORTIPS);
+			$data['status'] = 'fail';
+			$data['message'] = ERRORTIPS;
 		}
+		$returnJson = json_encode($data);
+		echo $returnJson; exit;
 
 	}
 
@@ -61,7 +75,7 @@
 
 		$checkRoleId = getVal('id',1,'');
 		$page = getVal('page',2,'');
-		$s_roleName = getVal('s_roleName',2,'');
+		$s_name = getVal('s_name',2,'');
 
 		$data = $db->get_one($table,'where checkRoleId='.$checkRoleId.'','checkRoleName,rank,isDefault');
 		if($data){
@@ -75,12 +89,15 @@
 
 		$checkRoleId = getVal('id',1,'');
 		$page = getVal('page',2,'');
-		$s_roleName = getVal('s_roleName',2,'');
+		$s_name = getVal('s_name',2,'');
 
 		//验证名称是否已存在
 		$validate = $db->get_one($table,'where checkRoleName="'.$roleName.'" and checkRoleId<>'.$checkRoleId.'','checkRoleId');
 		if($validate){
-			ErrorResturn('角色名称已存在，请重新填写');
+			$data['status'] = 'fail';
+			$data['message'] = '角色名称已存在，请重新填写';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 
 		$val['checkRoleName'] = $roleName;
@@ -90,10 +107,15 @@
 
 		$result = $db->update($table,$val,'where checkRoleId='.$checkRoleId.'');
 		if($result){
-			TipsRefreshResturn('操作成功','system.php?_f=check-role&page='.$page.'&s_roleName='.$s_roleName.'');
+			$data['status'] = 'success';
+			$data['message'] = '操作成功';
+			$data['url'] = 'system.php?_f=check-role&page='.$page.'&s_name='.$s_name.'';
 		}else{
-			ErrorResturn(ERRORTIPS);
+			$data['status'] = 'fail';
+			$data['message'] = ERRORTIPS;
 		}
+		$returnJson = json_encode($data);
+		echo $returnJson; exit;
 
 	}
 
@@ -102,7 +124,7 @@
 	$smarty->assign('i',$data);
 	$smarty->assign('id',$checkRoleId);
 	$smarty->assign('page',$page);
-	$smarty->assign('s_roleName',$s_roleName);
+	$smarty->assign('s_name',$s_name);
 	$smarty->assign('action',$action);
 	$smarty->assign('rank',$rank);
 

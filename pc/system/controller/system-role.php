@@ -16,12 +16,10 @@
 	$where = '';
 
 	//检索
-	if($act == 'searchPost'){
-		$s_roleName = getVal('s_roleName',2,'');
-		if($s_roleName!=''){
-			$where .= 'where sysRoleName like "%'.$s_roleName.'%"';
-			$track .= '&s_roleName='.$s_roleName.'';
-		}
+	$s_name = getVal('s_name',2,'');
+	if($s_name!=''){
+		$where .= 'where sysRoleName like "%'.$s_name.'%"';
+		$track .= '&s_name='.$s_name.'';
 	}
 
 	//页面分页配置
@@ -41,6 +39,7 @@
 
 	//数据绑定
 	$smarty->assign('pageTitle',$pageTitle);
+	$smarty->assign('s_name',$s_name);
 	$smarty->assign('data',$data);
 	$smarty->assign('page',$page->show_link(1));
 	$smarty->assign('curPage',$curPage);

@@ -55,7 +55,14 @@
 			if(!$getPower){
 				TipsRefreshResturn('帐号权限异常，请重新登录','index.php?_f=login');
 			}else{
-				$menuPower = explode('|',$getPower['power']);				//完整权限
+				if($common_category == 1){
+					//系统管理员拥有所有权限
+					$common_power = '1,1,1,1|1,1,1,1,1,1,1,1,1,1,1|1,1,1,1|1,1|1,1,1,1,1,1|1,1,1,1,1,1,1,1,1,1|1,1,1|1,1,1,1,1,1,1,1|1,1,1,1,1';
+					$menuPower = explode('|', $common_power);
+				}else{
+					$menuPower = explode('|',$getPower['power']);				//完整权限
+				}
+				
 				$menuOrg = explode(',',$menuPower[0]);						//DIT组织架构
 				$menuHumanAffairs = explode(',',$menuPower[1]);				//人事管理
 				$menuLeave = explode(',',$menuPower[2]);					//请假管理
@@ -131,7 +138,7 @@
 
 	//公共头部 over
 
-	//左侧菜单 begin
+	//左侧菜单展开与折叠 begin
 
 	$_prfix = basename($_SERVER['PHP_SELF']);
 	$_file = getVal('_f',2,'');
@@ -189,7 +196,17 @@
 	}
 
 	//系统运维管理menu
-	if($_prfix == $systemPrfix ){
+	$systemMenus = false;
+	//系统角色
+	if($_file == 'system-role' || $_file == 'system-role-set'){
+		$roleMenu = 1; $systemMenus = true;
+	}
+	//审批角色
+	if($_file == 'check-role' || $_file == 'check-role-set'){
+		$checkRoleMenu = 1; $systemMenus = true;
+	}
+
+	if($_prfix == $systemPrfix && $systemMenus ){
 		$systemMenu = ' on';
 	}
 
@@ -212,10 +229,14 @@
 	$smarty->assign('carMenu',$carMenu);
 	$smarty->assign('officeMenu',$officeMenu);
 	$smarty->assign('generalMenu',$generalMenu);
+
 	$smarty->assign('systemMenu',$systemMenu);
+	$smarty->assign('roleMenu',$roleMenu);
+	$smarty->assign('checkRoleMenu',$checkRoleMenu);
+
 	$smarty->assign('signMenu',$signMenu);
 	$smarty->assign('messageMenu',$messageMenu);
 
-	//左侧菜单 over
+	//左侧菜单展开与折叠 over
 
 ?>

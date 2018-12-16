@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-14 21:02:47
+/* Smarty version 3.1.29, created on 2018-12-16 16:46:10
   from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/public/html/menu.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c13a9f7337f21_62645475',
+  'unifunc' => 'content_5c1610d22c2f32_78226819',
   'file_dependency' => 
   array (
     'b516f726c6de581da32a39f198d2e5e5d090c403' => 
     array (
       0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/public/html/menu.html',
-      1 => 1544791776,
+      1 => 1544949968,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5c13a9f7337f21_62645475 ($_smarty_tpl) {
+function content_5c1610d22c2f32_78226819 ($_smarty_tpl) {
 ?>
 			<div class="contentLeftNav col-lg-2 row">
 				<div class="contentLeftNavListTop col-lg-12">
@@ -289,12 +289,12 @@ function content_5c13a9f7337f21_62645475 ($_smarty_tpl) {
 						<div class="contentNavListText"><img src="public/html/images/nav-image-j.png" alt="" class="navLogo" />系统运维管理</div>
 						<ul class="contentNavListMore">
 							<?php if ($_smarty_tpl->tpl_vars['menuSystem']->value[0] == 1) {?>
-							<li>
-								<a href="">系统角色权限设置</a>
+							<li<?php if ($_smarty_tpl->tpl_vars['roleMenu']->value == 1) {?> class="active"<?php }?>>
+								<a href="system.php?_f=system-role">系统角色权限设置</a>
 							</li>
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuSystem']->value[1] == 1) {?>
-							<li>
+							<li<?php if ($_smarty_tpl->tpl_vars['checkRoleMenu']->value == 1) {?> class="active"<?php }?>>
 								<a href="">审批角色权限设置</a>
 							</li>
 							<?php }?>

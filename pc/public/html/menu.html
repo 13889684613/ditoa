@@ -257,12 +257,12 @@
 						<div class="contentNavListText"><img src="public/html/images/nav-image-j.png" alt="" class="navLogo" />系统运维管理</div>
 						<ul class="contentNavListMore">
 							{{if $menuSystem[0] == 1}}
-							<li>
-								<a href="">系统角色权限设置</a>
+							<li{{if $roleMenu==1}} class="active"{{/if}}>
+								<a href="system.php?_f=system-role">系统角色权限设置</a>
 							</li>
 							{{/if}}
 							{{if $menuSystem[1] == 1}}
-							<li>
+							<li{{if $checkRoleMenu==1}} class="active"{{/if}}>
 								<a href="">审批角色权限设置</a>
 							</li>
 							{{/if}}

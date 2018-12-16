@@ -1,0 +1,47 @@
+
+input::-webkit-input-placeholder {
+	color: #aaaaaa;
+}
+
+input::-moz-placeholder {
+	/* Mozilla Firefox 19+ */
+	color: #aaaaaa;
+}
+
+input:-moz-placeholder {
+	/* Mozilla Firefox 4 to 18 */
+	color: #aaaaaa;
+}
+
+input:-ms-input-placeholder {
+	/* Internet Explorer 10-11 */
+	color: #aaaaaa;
+}
+
+.table1Fixed{
+	width: 9%;
+}
+.tableBox{
+	width: 91.07%;
+	float: right;
+}
+
+.sortInput{
+	line-height: 28px;
+}
+.sortTic{
+	left: -54px;
+}
+@media (min-width: 1250px) and (max-width: 1550px) {
+	.retrievaButton{
+		width: 120px;
+	}
+	.table1Fixed{
+		width: 11%;
+	}
+	.tableBox{
+		width: 89.07%;
+		float: right;
+	}
+}
+

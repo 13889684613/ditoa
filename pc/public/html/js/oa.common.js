@@ -123,7 +123,7 @@ $(function(){
 
 //删除提示
 function tic(a,b,c,d){
-var html = $('<div class="popTic"><div class="popTicBox"><div class="popTicTitle">'+a+'<img src="../../public/html/images/close.png" alt="" /></div><div class="popTicContent">'+b+'</div><div class="popTicButtonBox clearfix"><div class="popTicButton popTicButtonL pull-left">'+c+'</div><div class="popTicButton popTicButtonR pull-right"><a>'+d+'</a></div></div></div><div class="popTicMask"></div></div>')
+var html = $('<div class="popTic"><div class="popTicBox"><div class="popTicTitle">'+a+'<img src="public/html/images/close.png" alt="" /></div><div class="popTicContent">'+b+'</div><div class="popTicButtonBox clearfix"><div class="popTicButton popTicButtonL pull-left">'+c+'</div><div class="popTicButton popTicButtonR pull-right"><a>'+d+'</a></div></div></div><div class="popTicMask"></div></div>')
 $('body').append(html);
 $('input,textarea').placeholder();
 }

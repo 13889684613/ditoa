@@ -101,13 +101,22 @@
 	//验证
 	if($act == 'addSave'||$act == 'editSave'){
 		if($roleName == ''){
-			ErrorResturn('请设置角色名称');
+			$data['status'] = 'fail';
+			$data['message'] = '请设置角色名称';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if(stringLen($roleName)>50){
-			ErrorResturn('角色名称长度不能超过50个字符');
+			$data['status'] = 'fail';
+			$data['message'] = '角色名称长度不能超过50个字符';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if(!strstr($power,'1')){
-			ErrorResturn('请为角色分配权限');
+			$data['status'] = 'fail';
+			$data['message'] = '请为角色分配权限';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 	}
 
@@ -123,7 +132,10 @@
 		//验证名称是否已存在
 		$validate = $db->get_one($table,'where sysRoleName="'.$roleName.'"','sysRoleId');
 		if($validate){
-			ErrorResturn('角色名称已存在，请重新填写');
+			$data['status'] = 'fail';
+			$data['message'] = '角色名称已存在，请重新填写';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 
 		$val['sysRoleName'] = $roleName;
@@ -134,10 +146,15 @@
 
 		$result = $db->insert($table,$val);
 		if($result){
-			TipsRefreshResturn('操作成功','system.php?_f=system-role');
+			$data['status'] = 'success';
+			$data['message'] = '操作成功';
+			$data['url'] = 'system.php?_f=system-role';
 		}else{
-			ErrorResturn(ERRORTIPS);
+			$data['status'] = 'fail';
+			$data['message'] = ERRORTIPS;
 		}
+		$returnJson = json_encode($data);
+		echo $returnJson; exit;
 
 	}
 
@@ -148,7 +165,7 @@
 
 		$sysRoleId = getVal('id',1,'');
 		$page = getVal('page',2,'');
-		$s_roleName = getVal('s_roleName',2,'');
+		$s_name = getVal('s_name',2,'');
 
 		$data = $db->get_one($table,'where sysRoleId='.$sysRoleId.'','sysRoleName,power,rank,isDefault');
 		if($data){
@@ -173,12 +190,15 @@
 
 		$sysRoleId = getVal('id',1,'');
 		$page = getVal('page',2,'');
-		$s_roleName = getVal('s_roleName',2,'');
+		$s_name = getVal('s_name',2,'');
 
 		//验证名称是否已存在
 		$validate = $db->get_one($table,'where sysRoleName="'.$roleName.'" and sysRoleId<>'.$sysRoleId.'','sysRoleId');
 		if($validate){
-			ErrorResturn('角色名称已存在，请重新填写');
+			$data['status'] = 'fail';
+			$data['message'] = '角色名称已存在，请重新填写';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 
 		$val['sysRoleName'] = $roleName;
@@ -189,10 +209,15 @@
 
 		$result = $db->update($table,$val,'where sysRoleId='.$sysRoleId.'');
 		if($result){
-			TipsRefreshResturn('操作成功','system.php?_f=system-role&page='.$page.'&s_roleName='.$s_roleName.'');
+			$data['status'] = 'success';
+			$data['message'] = '操作成功';
+			$data['url'] = 'system.php?_f=system-role&page='.$page.'&s_name='.$s_name.'';
 		}else{
-			ErrorResturn(ERRORTIPS);
+			$data['status'] = 'fail';
+			$data['message'] = ERRORTIPS;
 		}
+		$returnJson = json_encode($data);
+		echo $returnJson; exit;
 
 	}
 
@@ -201,7 +226,7 @@
 	$smarty->assign('i',$data);
 	$smarty->assign('id',$sysRoleId);
 	$smarty->assign('page',$page);
-	$smarty->assign('s_roleName',$s_roleName);
+	$smarty->assign('s_name',$s_name);
 	$smarty->assign('action',$action);
 	$smarty->assign('rank',$rank);
 

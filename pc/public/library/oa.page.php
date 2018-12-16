@@ -47,7 +47,7 @@ class page_link{
         if(!empty($style)){
 
             //$pagenav = '<div class="next-page">';
-            $url=$this->get_new_url();
+            $url = $this->get_new_url();
 
             //如果多于一页：
             if($this->lastpg >1){
@@ -81,19 +81,33 @@ class page_link{
                         $ks=1;$js=$this->lastpg;
                     }
                 }
-                
-                $pagenav .= '<a href="'.$url.'='.$prePage.'" class="prav">上一页</a>';
+
+                $pagenav .= '<div class="pageBox pull-right">';
+                $pagenav .= '<div class="pagePart pull-left clearfix">';
+                $pagenav .= '<div class="pagePartIndex pageButton pull-left"><a href="'.$url.'=1">首页</a></div>';        
+
+                $pagenav .= '<div class="pagePartPrev pageButton pull-left"><a href="'.$url.'='.$prePage.'">上一页</a></div>';
 
                 for($pagei=$ks;$pagei<=$js;$pagei++){
                     if((int)$pagei==(int)$this->page){
-                        $pagenav .= '<a href="'.$url.'='.$pagei.'" class="active">'.$pagei.'</a>';
+                        $pagenav .= '<div class="pageNumber pageButton pull-left active"><a href="'.$url.'='.$pagei.'">'.$pagei.'</a></div>';
                     }else{
-                        $pagenav .= '<a href="'.$url.'='.$pagei.'">'.$pagei.'</a>';
+                        $pagenav .= '<div class="pageNumber pageButton pull-left"><a href="'.$url.'='.$pagei.'">'.$pagei.'</a></div>';
                     }
                 }
+                $pagenav .= '</div>';
 
-                $pagenav .= '<a href="'.$url.'='.$nextPage.'" class="prav">下一页</a>';
-                $pagenav .= '当前'.$this->page.'/'.$this->lastpg.'页 共'.$this->total.'条</div>';
+                $pagenav .= '<div class="pagePart pull-left marginLeft24 clearfix">';
+
+                $pagenav .= '<div class="pagePartNext pageButton pull-left"><a href="'.$url.'='.$nextPage.'">下一页</a></div>';
+                $pagenav .= '<div class="pagePartNext pageButton pull-left"><a href="'.$url.'='.$this->lastpg.'">末页</a></div>';
+                $pagenav .= '</div>';
+
+                $pagenav .= '<div class="pageText pull-left">跳转到第</div>';
+                $pagenav .= '<div class="pageInput pull-left"><input type="text" id="jump" name="jump" value="'.$this->page.'" />页</div>';
+                $pagenav .= '<div class="pageButtonSure pull-left"><a href="javascript:void(0);" onclick="javascript:location.href=\''.$url.'=\'+document.getElementById(\'jump\').value;">确定</a></div>';
+
+                $pagenav .= '</div>';
 
                 // $prepg=$this->page-1; //上一页
                 // $nextpg=($this->page==$this->lastpg ? 0 : $this->page+1); //下一页
