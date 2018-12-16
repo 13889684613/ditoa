@@ -23,19 +23,34 @@
 	//验证
 	if($act == 'addSave'||$act == 'editSave'){
 		if($typeName == ''){
-			ErrorResturn('请设置假期类型名称');
+			$data['status'] = 'fail';
+			$data['message'] = '请设置假期类型名称';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if(stringLen($typeName)>50){
-			ErrorResturn('假期类型名称长度不能超过50个字符');
+			$data['status'] = 'fail';
+			$data['message'] = '假期类型名称长度不能超过50个字符';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if($dayNumber == 0){
-			ErrorResturn('请设置假期天数');
+			$data['status'] = 'fail';
+			$data['message'] = '请设置假期天数';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if($remark == ''){
-			ErrorResturn('请设置假期说明');
+			$data['status'] = 'fail';
+			$data['message'] = '请设置假期说明';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if(stringLen($remark)>100){
-			ErrorResturn('假期说明长度不能超过100个字符');
+			$data['status'] = 'fail';
+			$data['message'] = '假期说明长度不能超过100个字符';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 	}
 
@@ -50,7 +65,10 @@
 		//验证名称是否已存在
 		$validate = $db->get_one($table,'where typeName="'.$typeName.'"','leaveTypeId');
 		if($validate){
-			ErrorResturn('假期名称已存在，请重新填写');
+			$data['status'] = 'fail';
+			$data['message'] = '假期名称已存在，请重新填写';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 
 		$val['typeName'] = $typeName;
@@ -64,10 +82,15 @@
 
 		$result = $db->insert($table,$val);
 		if($result){
-			TipsRefreshResturn('操作成功','system.php?_f=leave-type');
+			$data['status'] = 'success';
+			$data['message'] = '操作成功';
+			$data['url'] = 'system.php?_f=leave-type';
 		}else{
-			ErrorResturn(ERRORTIPS);
+			$data['status'] = 'fail';
+			$data['message'] = ERRORTIPS;
 		}
+		$returnJson = json_encode($data);
+		echo $returnJson; exit;
 
 	}
 
@@ -78,7 +101,7 @@
 
 		$leaveTypeId = getVal('id',1,'');
 		$page = getVal('page',2,'');
-		$s_typeName = getVal('s_typeName',2,'');
+		$s_name = getVal('s_name',2,'');
 
 		$data = $db->get_one($table,'where leaveTypeId='.$leaveTypeId.'','typeName,dayNumber,annualLeave,isSameSetting,isAttach,rank,remark');
 		if($data){
@@ -92,12 +115,15 @@
 
 		$leaveTypeId = getVal('id',1,'');
 		$page = getVal('page',2,'');
-		$s_typeName = getVal('s_typeName',2,'');
+		$s_name = getVal('s_name',2,'');
 
 		//验证名称是否已存在
 		$validate = $db->get_one($table,'where typeName="'.$postName.'" and leaveTypeId<>'.$leaveTypeId.'','leaveTypeId');
 		if($validate){
-			ErrorResturn('假期名称已存在，请重新填写');
+			$data['status'] = 'fail';
+			$data['message'] = '假期名称已存在，请重新填写';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 
 		$val['typeName'] = $typeName;
@@ -110,10 +136,15 @@
 
 		$result = $db->update($table,$val,'where leaveTypeId='.$leaveTypeId.'');
 		if($result){
-			TipsRefreshResturn('操作成功','system.php?_f=leave-type&page='.$page.'&s_typeName='.$s_typeName.'');
+			$data['status'] = 'success';
+			$data['message'] = '操作成功';
+			$data['url'] = 'system.php?_f=leave-type&page='.$page.'&s_name='.$s_name.'';
 		}else{
-			ErrorResturn(ERRORTIPS);
+			$data['status'] = 'fail';
+			$data['message'] = ERRORTIPS;
 		}
+		$returnJson = json_encode($data);
+		echo $returnJson; exit;
 
 	}
 
@@ -122,7 +153,7 @@
 	$smarty->assign('i',$data);
 	$smarty->assign('id',$leaveTypeId);
 	$smarty->assign('page',$page);
-	$smarty->assign('s_typeName',$s_typeName);
+	$smarty->assign('s_name',$s_name);
 	$smarty->assign('action',$action);
 	$smarty->assign('rank',$rank);
 

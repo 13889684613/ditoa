@@ -79,13 +79,13 @@ $(function() {
 		var choseInputBm = $('.choseInputBm').attr('data-type');
 		var choseInputJs = $('.choseInputJs').attr('data-type');
 		if(choseInputLc == 0) {
-			popAlert('设置审批流程信息')
+			popAlert('请选择审批流程类别')
 		} else if(choseInputQy == 0) {
-			popAlert('所属企业')
+			popAlert('请选择所属办事处')
 		} else if(choseInputBm == 0) {
-			popAlert('所属部门')
+			popAlert('请选择所属工作组')
 		} else if(choseInputJs == 0) {
-			popAlert('审批角色')
+			popAlert('请选择发起审批角色')
 		} else {
 			$('.approvalInformationBox').show()
 			//			$('form').submit();
@@ -106,7 +106,7 @@ $(function() {
 		$('.InputBm').each(function() {
 			var workHourFeeInput = $(this).attr('data-type');
 			if(workHourFeeInput == 0) {
-				popAlert('请选择所属部门');
+				popAlert('请选择所属工作组');
 				$(this).focus();
 				hold = false;
 				return false;
@@ -115,7 +115,7 @@ $(function() {
 		$('.InputQy').each(function() {
 			var workHourFeeInput = $(this).attr('data-type');
 			if(workHourFeeInput == 0) {
-				popAlert('请选择所属企业');
+				popAlert('请选择所属办事处');
 				$(this).focus();
 				hold = false;
 				return false;
@@ -159,13 +159,13 @@ $(function() {
 		var choseInputBm = $('.choseInputBm').attr('data-type');
 		var choseInputJs = $('.choseInputJs').attr('data-type');
 		if(choseInputLc == 0) {
-			popAlert('设置审批流程信息')
+			popAlert('请选择审批流程类别')
 		} else if(choseInputQy == 0) {
-			popAlert('所属企业')
+			popAlert('请选择所属办事处')
 		} else if(choseInputBm == 0) {
-			popAlert('所属部门')
+			popAlert('请选择所属工作组')
 		} else if(choseInputJs == 0) {
-			popAlert('审批角色')
+			popAlert('请选择发起审批角色')
 		} else {
 			$('.approvalInformationBox').show()
 			//			$('form').submit();
@@ -186,7 +186,7 @@ $(function() {
 		$('.InputBm').each(function() {
 			var workHourFeeInput = $(this).attr('data-type');
 			if(workHourFeeInput == 0) {
-				popAlert('请选择所属部门');
+				popAlert('请选择所属工作组');
 				$(this).focus();
 				hold = false;
 				return false;
@@ -195,7 +195,7 @@ $(function() {
 		$('.InputQy').each(function() {
 			var workHourFeeInput = $(this).attr('data-type');
 			if(workHourFeeInput == 0) {
-				popAlert('请选择所属企业');
+				popAlert('请选择所属办事处');
 				$(this).focus();
 				hold = false;
 				return false;

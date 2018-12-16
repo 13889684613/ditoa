@@ -205,6 +205,30 @@
 	if($_file == 'check-role' || $_file == 'check-role-set'){
 		$checkRoleMenu = 1; $systemMenus = true;
 	}
+	//自定义审批流程设置
+	if($_file == 'checkProcess-custom' || $_file == 'checkProcess-custom-set'){
+		$checkProcessMenu = 1; $systemMenus = true;
+	}
+	//默认审批流程设置
+	if($_file == 'checkProcess-default' || $_file == 'checkProcess-default-set'){
+		$checkProcessDefaultMenu = 1; $systemMenus = true;
+	}
+	//职务管理
+	if($_file == 'post' || $_file == 'post-set'){
+		$postMenu = 1; $systemMenus = true;
+	}
+	//请假类型管理
+	if($_file == 'leave-type' || $_file == 'leave-type-set'){
+		$leaveTypeMenu = 1; $systemMenus = true;
+	}
+	//备品类别管理
+	if($_file == 'officeTool-type' || $_file == 'officeTool-type-set'){
+		$officeToolTypeMenu = 1; $systemMenus = true;
+	}
+	//备品名称管理
+	if($_file == 'officeTool-name' || $_file == 'officeTool-name-set'){
+		$officeToolNameMenu = 1; $systemMenus = true;
+	}
 
 	if($_prfix == $systemPrfix && $systemMenus ){
 		$systemMenu = ' on';
@@ -230,9 +254,16 @@
 	$smarty->assign('officeMenu',$officeMenu);
 	$smarty->assign('generalMenu',$generalMenu);
 
+	//系统运维管理
 	$smarty->assign('systemMenu',$systemMenu);
 	$smarty->assign('roleMenu',$roleMenu);
 	$smarty->assign('checkRoleMenu',$checkRoleMenu);
+	$smarty->assign('checkProcessMenu',$checkProcessMenu);
+	$smarty->assign('checkProcessDefaultMenu',$checkProcessDefaultMenu);
+	$smarty->assign('postMenu',$postMenu);
+	$smarty->assign('leaveTypeMenu',$leaveTypeMenu);
+	$smarty->assign('officeToolTypeMenu',$officeToolTypeMenu);
+	$smarty->assign('officeToolNameMenu',$officeToolNameMenu);
 
 	$smarty->assign('signMenu',$signMenu);
 	$smarty->assign('messageMenu',$messageMenu);

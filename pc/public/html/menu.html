@@ -263,37 +263,37 @@
 							{{/if}}
 							{{if $menuSystem[1] == 1}}
 							<li{{if $checkRoleMenu==1}} class="active"{{/if}}>
-								<a href="">审批角色权限设置</a>
+								<a href="system.php?_f=check-role">审批角色权限设置</a>
 							</li>
 							{{/if}}
 							{{if $menuSystem[2] == 1}}
-							<li>
-								<a href="">自定义审批流程设置</a>
+							<li{{if $checkProcessMenu==1}} class="active"{{/if}}>
+								<a href="system.php?_f=checkProcess-custom">自定义审批流程设置</a>
 							</li>
 							{{/if}}
 							{{if $menuSystem[3] == 1}}
-							<li>
-								<a href="">默认审批流程设置</a>
+							<li{{if $checkProcessDefaultMenu==1}} class="active"{{/if}}>
+								<a href="system.php?_f=checkProcess-default">默认审批流程设置</a>
 							</li>
 							{{/if}}
 							{{if $menuSystem[4] == 1}}
-							<li>
-								<a href="">职务管理</a>
+							<li{{if $postMenu==1}} class="active"{{/if}}>
+								<a href="system.php?_f=post">职务管理</a>
 							</li>
 							{{/if}}
 							{{if $menuSystem[5] == 1}}
-							<li>
-								<a href="">请假类型管理</a>
+							<li{{if $leaveTypeMenu==1}} class="active"{{/if}}>
+								<a href="system.php?_f=leave-type">请假类型管理</a>
 							</li>
 							{{/if}}
 							{{if $menuSystem[6] == 1}}
-							<li>
-								<a href="">备品类别管理</a>
+							<li{{if $officeToolTypeMenu==1}} class="active"{{/if}}>
+								<a href="system.php?_f=officeTool-type">备品类别管理</a>
 							</li>
 							{{/if}}
 							{{if $menuSystem[7] == 1}}
-							<li>
-								<a href="">备品名称管理</a>
+							<li{{if $officeToolNameMenu==1}} class="active"{{/if}}>
+								<a href="system.php?_f=officeTool-name">备品名称管理</a>
 							</li>
 							{{/if}}
 						</ul>

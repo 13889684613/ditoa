@@ -1,0 +1,362 @@
+/* 
+    # 新增系统角色
+	# Bowen
+	# 2018-11-23
+*/
+
+.contentForm {
+    width: 100%;
+    background-color: #f6f6fa;
+    padding-bottom: 0;
+}
+
+.addApplyTitle {
+    padding-left: 29px;
+    font-size: 20px;
+    color: #07196c;
+    background: url(../../../public/html/images/formTitle.jpg) no-repeat left center;
+    margin: 0;
+    margin-bottom: 38px;
+}
+
+.mB26 {
+    margin-bottom: 26px!important;
+}
+
+.roleInfo {
+    width: 100%;
+    padding: 25px 0 34px;
+    background-color: #fff;
+    margin-bottom: 40px;
+    border-radius: 5px;
+}
+
+.roleUserInfo {
+    width: 100%;
+    padding: 0 2%;
+}
+
+.form {
+    float: left;
+    margin-bottom: 0;
+}
+
+.formTitle {
+    float: left;
+    margin-bottom: 0;
+    height: 42px;
+    line-height: 42px;
+    margin-right: 14px; 
+}
+
+.formInput {
+    float: left;
+}
+
+.userName {
+    margin-right: 70px;
+}
+
+.userName .formInput {
+    width: 360px;
+}
+
+.setNum .formInput {
+    width: 120px;
+    line-height: 42px;
+    padding-right: 0;
+}
+
+.tipsIcon {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    background: url(../../../public/html/images/form_tipsIcon.png) no-repeat center;
+    cursor: pointer;
+    margin-left: 7px;
+    margin-top: 12px;
+}
+
+.tips {
+    display: none;
+    position: absolute;
+    top: -60px;
+    left: -92px;
+    width: 200px;
+    height: 42px;
+    line-height: 40px;
+    border-radius: 3px;
+    border: 1px solid #f3dbdb;
+    background-color: #fce8e8;
+    font-size: 14px;
+    color: #d71e2d;
+    text-align: center;
+}
+
+.tips:after {
+    display: block;
+    content: '';
+    width: 13px;
+    height: 7px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    bottom: -7px;
+    background: url(../images/tipsDownIcon.png) no-repeat;
+}
+
+.roleSet {
+    width: 100%;
+    padding: 25px 0 47px;
+    background-color: #fff;
+    border-radius: 5px;
+    position: relative;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.treeNavBox {
+    width: 50%;
+    border-right: 1px dashed #bbb;
+    padding-left: 50px;
+}
+
+.treeNavBoxClone {
+    width: 49.9%;
+    padding-left: 14%;
+}
+
+.treeNavBoxTitle{
+    background: #fff;
+    color: #222222;
+    font-size: 18px;
+    font-weight: bold;
+    height: 40px;
+    line-height: 40px;
+}
+
+.treeNavBoxTitleClone {
+    background: #fff;
+    color: #222222;
+    font-size: 18px;
+    font-weight: bold;
+    height: 40px;
+    line-height: 40px;
+}
+
+.treeNavContent {
+    padding-top: 28px;
+}
+
+.treeNavContentClone {
+    display: none;
+    padding-top: 28px;
+    background: url(../images/tree-d.jpg) repeat-y 40px 0;
+}
+
+
+.treeNavContentBoxClone {
+    padding-left: 48px;
+}
+
+.treeNavContentBoxPart {
+    margin-bottom: 23px;
+}
+
+.treeNavContentBoxPartClone ul {
+    overflow: hidden;
+    position: relative;
+}
+
+.treeNavContentBoxPartClone ul:after {
+    display: block;
+    content: '';
+    width: 1px;
+    height: 97%;
+    background: url(../images/tree-d.jpg) repeat-y;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.treeNavContentBoxPartClone {
+    margin-bottom: 23px;
+}
+
+.treeNavContentBoxPartImageNew {
+    background: none;
+    padding-left: 0;
+    color: #333;
+    height: 20px;
+    position: relative;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.treeNavContentBoxPartImageNewClone {
+    background: none;
+    padding-left: 0;
+    color: #333;
+    height: 20px;
+    position: relative;
+    font-size: 15px;
+    display: none;
+}
+
+.treeNavContentBoxPartImageNew span{
+    display: inline-block;
+    width: 50px;
+    height: 20px;
+    background: url(../images/check_icon.png) no-repeat center;
+    vertical-align: top;
+}
+
+.treeNavContentBoxPartImageNewClone span{
+    display: inline-block;
+    width: 50px;
+    height: 20px;
+    background: url(../images/check_icon.png) no-repeat center;
+    vertical-align: top;
+}
+
+.treeNavContentBoxPartImageNew.on {
+    background: none;
+    padding-left: 0;
+    color: #333;
+    height: 20px;
+    position: relative;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.treeNavContentBoxPartImageNewClone.on {
+    background: none;
+    padding-left: 0;
+    color: #333;
+    height: 20px;
+    position: relative;
+    font-size: 15px;
+}
+
+.treeNavContentBoxPartImageNew span.on {
+    background: url(../images/checked_icon.png) no-repeat center;
+}
+
+.treeNavContentBoxPartImageNewClone span.on {
+    background: url(../images/checked_icon.png) no-repeat center;
+}
+
+.treeNavContentBoxPartImageNew:after {
+    display: block;
+    content: '';
+    background: url(../images/tree-show.jpg) no-repeat;
+    width: 11px;
+    height: 11px;
+    position: absolute;
+    left: -13px;
+    top: 3px;
+}
+
+.treeNavContentBoxPartImageNewClone:after {
+    display: block;
+    content: '';
+    background: url(../images/tree-show.jpg) no-repeat;
+    width: 11px;
+    height: 11px;
+    position: absolute;
+    left: -13px;
+    top: 3px;
+}
+
+.treeNavContentBoxPartImageNew.on:after {
+    display: block;
+    content: '';
+    background: url(../images/tree-hide.jpg) no-repeat;
+    width: 11px;
+    height: 11px;
+    position: absolute;
+    left: -13px;
+    top: 3px;
+}
+
+.treeNavContentBoxPartImageNewClone.on:after {
+    display: block;
+    content: '';
+    background: url(../images/tree-hide.jpg) no-repeat;
+    width: 11px;
+    height: 11px;
+    position: absolute;
+    left: -13px;
+    top: 3px;
+}
+
+.treeNavContentBoxPart ul {
+    margin-left: 32px;
+    padding-left: 0;
+}
+
+.treeNavContentBoxPartClone ul {
+    margin-left: 32px;
+    padding-left: 0;
+    display: block;
+}
+
+
+.treeNavContentBoxPart ul li {
+    background: url(../images/check_icon.png) no-repeat 0 50%;
+    padding-left: 50px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #666;
+}
+
+.treeNavContentBoxPart ul li.on {
+    background: url(../images/checked_icon.png) no-repeat 0 50%;
+}
+
+.treeNavContentBoxPartClone ul li {
+    position: relative;
+    background: url(../images/check_icon.png) no-repeat 0 50%;
+    padding-left: 50px;
+    font-size: 14px;
+    color: #666;
+    margin-top: 20px;
+}
+
+.treeNavContentBoxPartClone ul li.on {
+    position: relative;
+    background: url(../images/checked_icon.png) no-repeat 0 50%;
+    padding-left: 50px;
+    font-size: 14px;
+    color: #666;
+    margin-top: 20px;
+}
+
+.treeNavContentBoxPart ul li:hover {
+    color: #222;
+}
+
+.treeNavContentBoxPart ul li:after {
+    display: none;
+}
+
+.cloneItem {
+    display: none;
+}
+
+.centerPic {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 140px;
+    height: 108px;
+    margin-left: -70px;
+    margin-top: -54px;
+}
+
+@media (min-width: 1280px) and (max-width: 1550px) {
+    
+}

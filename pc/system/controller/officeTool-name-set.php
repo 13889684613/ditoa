@@ -24,19 +24,34 @@
 	//验证
 	if($act == 'addSave'||$act == 'editSave'){
 		if($category == 0){
-			ErrorResturn('请选择备品类别');
+			$data['status'] = 'fail';
+			$data['message'] = '请选择备品类别';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if($toolName == ''){
-			ErrorResturn('请设置备品名称');
+			$data['status'] = 'fail';
+			$data['message'] = '请设置备品名称';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if(stringLen($toolName)>50){
-			ErrorResturn('备品名称长度不能超过50个字符');
+			$data['status'] = 'fail';
+			$data['message'] = '备品名称长度不能超过50个字符';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if($toolCode == ''){
-			ErrorResturn('请设置备品编号');
+			$data['status'] = 'fail';
+			$data['message'] = '请设置备品编号';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if(stringLen($toolCode)>50){
-			ErrorResturn('备品编号长度不能超过50个字符');
+			$data['status'] = 'fail';
+			$data['message'] = '备品编号长度不能超过50个字符';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 	}
 
@@ -51,11 +66,17 @@
 		//验证名称与编号是否已存在
 		$validate = $db->get_one($table,'where categoryId='.$category.' and toolName="'.$toolName.'"','nameId');
 		if($validate){
-			ErrorResturn('备品名称已存在，请重新填写');
+			$data['status'] = 'fail';
+			$data['message'] = '备品名称已存在，请重新填写';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		$validate = $db->get_one($table,'where categoryId='.$category.' and toolCode="'.$toolCode.'"','categoryId');
 		if($validate){
-			ErrorResturn('备品编号已存在，请重新填写');
+			$data['status'] = 'fail';
+			$data['message'] = '备品编号已存在，请重新填写';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 
 		$val['categoryId'] = $category;
@@ -67,10 +88,15 @@
 
 		$result = $db->insert($table,$val);
 		if($result){
-			TipsRefreshResturn('操作成功','system.php?_f=officeTool-name');
+			$data['status'] = 'success';
+			$data['message'] = '操作成功';
+			$data['url'] = 'system.php?_f=officeTool-name';
 		}else{
-			ErrorResturn(ERRORTIPS);
+			$data['status'] = 'fail';
+			$data['message'] = ERRORTIPS;
 		}
+		$returnJson = json_encode($data);
+		echo $returnJson; exit;
 
 	}
 
@@ -102,11 +128,17 @@
 		//验证名称与编号是否已存在
 		$validate = $db->get_one($table,'where categoryId='.$category.' and toolName="'.$toolName.'" and nameId<>'.$categoryId.'','nameId');
 		if($validate){
-			ErrorResturn('备品名称已存在，请重新填写');
+			$data['status'] = 'fail';
+			$data['message'] = '备品名称已存在，请重新填写';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		$validate = $db->get_one($table,'where categoryId='.$category.' and toolCode="'.$toolCode.'" and nameId<>'.$categoryId.'','nameId');
 		if($validate){
-			ErrorResturn('备品编号已存在，请重新填写');
+			$data['status'] = 'fail';
+			$data['message'] = '备品编号已存在，请重新填写';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 
 		$val['categoryId'] = $category;
@@ -118,10 +150,15 @@
 
 		$result = $db->update($table,$val,'where nameId='.$nameId.'');
 		if($result){
-			TipsRefreshResturn('操作成功','system.php?_f=officeTool-name&page='.$page.'&s_name='.$s_name.'&s_category='.$s_category.'');
+			$data['status'] = 'success';
+			$data['message'] = '操作成功';
+			$data['url'] = 'system.php?_f=officeTool-name&page='.$page.'&s_name='.$s_name.'&s_category='.$s_category.'';
 		}else{
-			ErrorResturn(ERRORTIPS);
+			$data['status'] = 'fail';
+			$data['message'] = ERRORTIPS;
 		}
+		$returnJson = json_encode($data);
+		echo $returnJson; exit;
 
 	}
 

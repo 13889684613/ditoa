@@ -43,9 +43,10 @@
 	$smarty->assign('data',$data);
 	$smarty->assign('page',$page->show_link(1));
 	$smarty->assign('curPage',$curPage);
+	$smarty->assign('track',$track);
 
 	//操作返回地址
-	$url = $router.$track;
+	$url = $router.'&page='.$curPage.''.$track;
 
 	//删除
 	if($act == 'remove'){

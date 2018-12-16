@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-16 21:34:37
-  from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/system/view/post.html" */
+/* Smarty version 3.1.29, created on 2018-12-16 22:16:50
+  from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/system/view/leave-type.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c16546d0e6d59_28930727',
+  'unifunc' => 'content_5c165e526c16b9_15649028',
   'file_dependency' => 
   array (
-    '1e63a91a9b9cb51d6919a9a42204c43351c62d6c' => 
+    '371e1357352917e1716164205c746e1a74f0d80f' => 
     array (
-      0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/system/view/post.html',
-      1 => 1544966819,
+      0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/system/view/leave-type.html',
+      1 => 1544968589,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c16546d0e6d59_28930727 ($_smarty_tpl) {
+function content_5c165e526c16b9_15649028 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -36,7 +36,7 @@ function content_5c16546d0e6d59_28930727 ($_smarty_tpl) {
 		<link rel="stylesheet" href="public/html/css/oa.bootstrap.min.css" />
 		<link rel="stylesheet" href="public/html/css/plugin/jquery.mCustomScrollbar.min.css" />
 		<link rel="stylesheet" href="public/html/css/oa.common.css" />
-		<link rel="stylesheet" href="system/view/css/post.css" />
+		<link rel="stylesheet" href="system/view/css/leave-type.css" />
 	</head>
 
 	<body>
@@ -58,8 +58,8 @@ function content_5c16546d0e6d59_28930727 ($_smarty_tpl) {
 				<!--内容区导航begin-->
 				<div class="contentRightNav clearfix">
 					<div class="contentRightNavLeft pull-left">
-						<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">职务管理</span></div>
-						<div class="contentRightNavBottom"><span class="name">职务管理</span><span class="time"></span></div>
+						<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">请假类型管理</span></div>
+						<div class="contentRightNavBottom"><span class="name">请假类型管理</span><span class="time"></span></div>
 					</div>
 				</div>
 				<!--内容区导航end-->
@@ -68,13 +68,13 @@ function content_5c16546d0e6d59_28930727 ($_smarty_tpl) {
 					<div class="contentRightContent">
 						<!--检索begin-->
 						<form id="searchForm" name="searchForm" method="get">
-							<input type="hidden" name="_f" value="post">
+							<input type="hidden" name="_f" value="leave-type">
 							<div class="retrievalBox">
 								<div class="retrievalTitle">快速检索</div>
 								<div class="retrievalInputBox clearfix">
-									<div class="retrievalTxt pull-left">职务名称</div>
+									<div class="retrievalTxt pull-left">类型名称</div>
 									<div class="retrievalInput pull-left"><input type="text" name="s_name" value="<?php echo $_smarty_tpl->tpl_vars['s_name']->value;?>
-" placeholder="请填写职务名称" /></div>
+" placeholder="请填写类型名称" /></div>
 									<div class="retrievaButtonBox pull-left clearfix">
 										<div class="retrievaButton retrievaButtonL pull-left">
 											<a href="javascript:void(0);" onclick="document.getElementById('searchForm').submit();">查询</a>
@@ -87,7 +87,7 @@ function content_5c16546d0e6d59_28930727 ($_smarty_tpl) {
 						<!--检索end-->
 						<!--新增 导出数据按钮 begin-->
 						<div class="downloadAddButtonBox clearfix">
-							<a href="?_f=post-set&act=add"><div class="downloadAddButton downloadAddButtonL pull-left">新增</div></a>
+							<a href="?_f=leave-type-set&act=add"><div class="downloadAddButton downloadAddButtonL pull-left">新增</div></a>
 							<!-- <a href="">
 								<div class="downloadAddButton downloadAddButtonR pull-left">导出数据</div>
 							</a> -->
@@ -115,14 +115,14 @@ $__foreach_data_0_saved_local_item = $_smarty_tpl->tpl_vars['i'];
 										<td class="borderRight1">
 											<div class="editBox center-block clearfix">
 												<div class="editButton editButtonL pull-left text-center">
-													<a href="?_f=post-set&act=edit&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
-&id=<?php echo $_smarty_tpl->tpl_vars['i']->value['postId'];
+													<a href="?_f=leave-type-set&act=edit&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
+&id=<?php echo $_smarty_tpl->tpl_vars['i']->value['leaveTypeId'];
 echo $_smarty_tpl->tpl_vars['track']->value;?>
 "><img src="public/html/images/edit.jpg" alt="" /></a>
 												</div>
 												<div class="editButton editButtonR pull-left text-center">
-													<a href="?_f=post&act=remove&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
-&id=<?php echo $_smarty_tpl->tpl_vars['i']->value['postId'];
+													<a href="?_f=leave-type&act=remove&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
+&id=<?php echo $_smarty_tpl->tpl_vars['i']->value['leaveTypeId'];
 echo $_smarty_tpl->tpl_vars['track']->value;?>
 " onclick="return confirm('确认要删除？');"><img src="public/html/images/del.jpg" alt="" /></a>
 												</div>
@@ -141,9 +141,13 @@ $_smarty_tpl->tpl_vars['i'] = $__foreach_data_0_saved_item;
 								<table class="table1 table1Content">
 									<tr>
 										<th width="70" class="paddingLeft12"><span>#</span></th>
-										<th width="254"><span>职务名称</span></th>
-										<th width="259"><span>创建时间</span></th>
-										<th width="118" colspan="2" class="paddingLeft40">
+										<th width="200"><span>类型名称</span></th>
+										<th width="200"><span>假期天数</span></th>
+										<th width="200"><span>年假否</span></th>
+										<th width="200"><span>固定天数假期</span></th>
+										<th width="200"><span>需要上传附件</span></th>
+										<th width="200"><span>创建时间</span></th>
+										<th width="150" colspan="2" class="paddingLeft40">
 											<span class="sortText">排序<img src="system/view/images/tictable.png" alt="" /></span>
 											<div class="sortTic">
 												数字越大，排序越靠前
@@ -165,21 +169,29 @@ $__foreach_data_1_saved_local_item = $_smarty_tpl->tpl_vars['i'];
 									<tr class="backgroundFFF">
 										<td class="paddingLeft12"><span><?php echo $_smarty_tpl->tpl_vars['i']->value['sn'];?>
 </span></td>
-										<td width="254"><span><?php echo $_smarty_tpl->tpl_vars['i']->value['postName'];?>
+										<td width="200"><span><?php echo $_smarty_tpl->tpl_vars['i']->value['typeName'];?>
 </span></td>
-										<td width="259"><span><?php echo $_smarty_tpl->tpl_vars['i']->value['createTime'];?>
+										<td width="200"><span><?php echo $_smarty_tpl->tpl_vars['i']->value['dayNumber'];?>
+天</span></td>
+										<td width="200"><span><?php echo $_smarty_tpl->tpl_vars['i']->value['annualLeave'];?>
 </span></td>
-										<td width="118" class="paddingLeft40">
-											<span><input type="text" id="rank<?php echo $_smarty_tpl->tpl_vars['i']->value['postId'];?>
-" name="rank<?php echo $_smarty_tpl->tpl_vars['i']->value['postId'];?>
+										<td width="200"><span><?php echo $_smarty_tpl->tpl_vars['i']->value['isSameSetting'];?>
+</span></td>
+										<td width="200"><span><?php echo $_smarty_tpl->tpl_vars['i']->value['isAttach'];?>
+</span></td>
+										<td width="200"><span><?php echo $_smarty_tpl->tpl_vars['i']->value['createTime'];?>
+</span></td>
+										<td width="150" class="paddingLeft40">
+											<span><input type="text" id="rank<?php echo $_smarty_tpl->tpl_vars['i']->value['leaveTypeId'];?>
+" name="rank<?php echo $_smarty_tpl->tpl_vars['i']->value['leaveTypeId'];?>
 " class="sortInput" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['rank'];?>
 "/></span>
 										</td>
-										<td style="padding-left:10px;">
-											<a href="javascript:void(0);" onclick="javascript:location.href='?_f=post&act=updateRank&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
-&id=<?php echo $_smarty_tpl->tpl_vars['i']->value['postId'];
+										<td width="500">
+											<a href="javascript:void(0);" onclick="javascript:location.href='?_f=leave-type&act=updateRank&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
+&id=<?php echo $_smarty_tpl->tpl_vars['i']->value['leaveTypeId'];
 echo $_smarty_tpl->tpl_vars['track']->value;?>
-&rank='+document.getElementById('rank<?php echo $_smarty_tpl->tpl_vars['i']->value['postId'];?>
+&rank='+document.getElementById('rank<?php echo $_smarty_tpl->tpl_vars['i']->value['leaveTypeId'];?>
 ').value;"><span class="tableSureButton">确定</span></a>
 										</td>
 									</tr>
@@ -229,7 +241,7 @@ $_smarty_tpl->tpl_vars['i'] = $__foreach_data_1_saved_item;
  type="text/javascript" src="public/html/js/jquery.form.min.js" ><?php echo '</script'; ?>
 >
 		<?php echo '<script'; ?>
- type="text/javascript" src="system/view/js/post.js"><?php echo '</script'; ?>
+ type="text/javascript" src="system/view/js/leave-type.js"><?php echo '</script'; ?>
 >
 	</body>
 

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-16 21:34:40
-  from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/system/view/post-set.html" */
+/* Smarty version 3.1.29, created on 2018-12-16 22:16:08
+  from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/system/view/leave-type-set.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c165470a8a529_50205311',
+  'unifunc' => 'content_5c165e28d20a10_67552358',
   'file_dependency' => 
   array (
-    '79bb77d4dc75c7554d42d38567a050d23eaa3e8d' => 
+    'eb647330362f4f944f8a0b863a73b162d386b15e' => 
     array (
-      0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/system/view/post-set.html',
-      1 => 1544967068,
+      0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/system/view/leave-type-set.html',
+      1 => 1544969767,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c165470a8a529_50205311 ($_smarty_tpl) {
+function content_5c165e28d20a10_67552358 ($_smarty_tpl) {
 ?>
 <!-- 
 	# 新增系统角色
@@ -42,7 +42,7 @@ function content_5c165470a8a529_50205311 ($_smarty_tpl) {
 	<link rel="stylesheet" href="public/html/css/oa.common.css" />
 	<link rel="stylesheet" href="public/html/css/oa.jquery-ui.min.css" />
 	<link rel="stylesheet" href="public/html/css/oa.jquery.multiselect.css" />
-	<link rel="stylesheet" href="system/view/css/post-set.css" />
+	<link rel="stylesheet" href="system/view/css/leave-type-set.css" />
 </head>
 <body>
 
@@ -64,10 +64,10 @@ function content_5c165470a8a529_50205311 ($_smarty_tpl) {
 			<!--内容区导航begin-->
 			<div class="contentRightNav clearfix">
 				<div class="contentRightNavLeft pull-left">
-					<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="?_f=post&page=<?php echo $_smarty_tpl->tpl_vars['page']->value;?>
+					<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="?_f=leave-type&page=<?php echo $_smarty_tpl->tpl_vars['page']->value;?>
 &s_name=<?php echo $_smarty_tpl->tpl_vars['s_name']->value;?>
-">职务管理</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">职务设置</span></div>
-					<div class="contentRightNavBottom"><span class="name">职务设置</span></div>
+">请假类型管理</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">请假类型设置</span></div>
+					<div class="contentRightNavBottom"><span class="name">请假类型设置</span></div>
 				</div>
 			</div>
 			<!--内容区导航end-->
@@ -86,20 +86,64 @@ function content_5c165470a8a529_50205311 ($_smarty_tpl) {
 							<input type="hidden" name="act" value="<?php echo $_smarty_tpl->tpl_vars['action']->value;?>
 " />
 							<div class = "roleInfo">
-								<p class = "addApplyTitle mB26">请填写职务信息</p>
+								<p class = "addApplyTitle mB26">请填写请假类型信息</p>
 								<div class = "roleUserInfo clearfix">
 									<div class = "form userName clearfix">
-										<p class = "formTitle">职务名称</p>
-										<input type="text" name = "postName" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['postName'];?>
-" placeholder = "请输入" class = "formInput nameInput" autocomplete="off"/>
+										<p class = "formTitle">假期类型名称</p>
+										<input type="text" name = "typeName" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['typeName'];?>
+" placeholder = "请填写假期类型名称" class = "formInput nameInput" autocomplete="off"/>
 									</div>
 									<div class = "form setNum clearfix">
+										<p class = "formTitle">假期天数</p>
+										<input type="number" name = "day" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['dayNumber'];?>
+" placeholder = "0" class = "formInput dayInput" autocomplete="off"/>天
+									</div>
+								</div>
+								<div class = "roleUserInfo clearfix">
+									<div class = "form setNum clearfix">		
+										<p class = "formTitle">是否为年假</p>
+										<div class = "checkBox clearfix">
+											<div class = "checkBtn mRight50"<?php if ($_smarty_tpl->tpl_vars['i']->value['annualLeave'] == 1) {?> on<?php }?>>是</div>
+											<div class = "checkBtn"<?php if ($_smarty_tpl->tpl_vars['i']->value['annualLeave'] == 0) {?> on<?php }?>>否</div>
+										</div>
+										<input type="hidden" name = "annualLeave" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['annualLeave'];?>
+" class = "formInput annualForm"/>
+										<span class="tipsIcon"><span class = "tips">如为年休假一年仅能休一次，以年为单位</span></span>
+									</div>
+									<div class = "form setNum clearfix">		
+										<p class = "formTitle">是否需要上传附件</p>
+										<div class = "checkBox clearfix">
+											<div class = "checkBtn mRight50"<?php if ($_smarty_tpl->tpl_vars['i']->value['isAttach'] == 1) {?> on<?php }?>>是</div>
+											<div class = "checkBtn"<?php if ($_smarty_tpl->tpl_vars['i']->value['isAttach'] == 0) {?> on<?php }?>>否</div>
+										</div>
+										<input type="hidden" name = "isAttach" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['isAttach'];?>
+" class = "formInput attachForm"/>
+									</div>
+								</div>
+								<div class = "roleUserInfo clearfix">
+									<div class = "form setNum clearfix">		
+										<p class = "formTitle">是否为固定天数假期</p>
+										<div class = "checkBox clearfix">
+											<div class = "checkBtn mRight50"<?php if ($_smarty_tpl->tpl_vars['i']->value['isSameSetting'] == 1) {?> on<?php }?>>是</div>
+											<div class = "checkBtn"<?php if ($_smarty_tpl->tpl_vars['i']->value['isSameSetting'] == 0) {?> on<?php }?>>否</div>
+										</div>
+										<input type="hidden" name = "isSameSetting" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['isSameSetting'];?>
+" class = "formInput sameForm"/>
+										<span class="tipsIcon"><span class = "tips">固定天数假期针对某一员工可再调整</span></span>
+									</div>
+									<div class = "form setNum clearfix">		
 										<p class = "formTitle">设置排序</p>
 										<input type="number" name = "rank" value="<?php echo $_smarty_tpl->tpl_vars['rank']->value;?>
-" placeholder = "0" class = "formInput numInput" autocomplete="off"/>
+" placeholder = "0" class = "formInput rankInput" autocomplete="off"/>
 										<span class="tipsIcon"><span class = "tips">数字越大，排序越靠前</span></span>
 									</div>
-									
+								</div>
+								<div class = "roleUserInfo clearfix">
+									<div class = "form userName clearfix">
+										<p class = "formTitle">假期说明</p>
+										<textarea name="remark" placeholder="请填写假期说明" class="formInput modifyRemarkInput"><?php echo $_smarty_tpl->tpl_vars['i']->value['remark'];?>
+</textarea>
+									</div>
 								</div>
 							</div>
 						</form>
@@ -142,7 +186,7 @@ function content_5c165470a8a529_50205311 ($_smarty_tpl) {
  type="text/javascript" src="public/html/js/jquery.form.min.js" ><?php echo '</script'; ?>
 >
 	<?php echo '<script'; ?>
- type="text/javascript" src="system/view/js/post-set.js" ><?php echo '</script'; ?>
+ type="text/javascript" src="system/view/js/leave-type-set.js" ><?php echo '</script'; ?>
 >
 
 </body>

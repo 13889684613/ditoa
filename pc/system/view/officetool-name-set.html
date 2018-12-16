@@ -1,0 +1,121 @@
+<!-- 
+	# 新增系统角色
+	# Bowen
+	# 2018-11-23
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+	<title>{{$pageTitle}}</title>
+	<link rel="stylesheet" href="public/html/css/oa.base.css" />
+	<link rel="stylesheet" href="public/html/css/oa.bootstrap.min.css" />
+	<link rel="stylesheet" href="public/html/css/plugin/jquery.mCustomScrollbar.min.css">
+	<link rel="stylesheet" href="public/html/css/oa.common.css" />
+	<link rel="stylesheet" href="public/html/css/oa.jquery-ui.min.css" />
+	<link rel="stylesheet" href="public/html/css/oa.jquery.multiselect.css" />
+	<link rel="stylesheet" href="system/view/css/officeTool-name-set.css" />
+</head>
+<body>
+
+	<!--头部 begin-->
+	{{include file='public/html/head.html'}}
+	<!--头部 end-->
+
+	<!--内容 begin-->
+	<div class="container-fluid row">
+		<!--内容区左侧导航 begin-->
+		{{include file='public/html/menu.html'}}
+		<!--内容区左侧导航end-->
+		<!--内容区右侧begin-->
+		<div class="contentRight col-lg-10 row">
+			<!--内容区导航begin-->
+			<div class="contentRightNav clearfix">
+				<div class="contentRightNavLeft pull-left">
+					<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="?_f=officeTool-name-set&page={{$page}}&s_name={{$s_name}}&s_category={{$s_category}}">备品名称管理</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">备品名称设置</span></div>
+					<div class="contentRightNavBottom"><span class="name">备品名称设置</span></div>
+				</div>
+			</div>
+			<!--内容区导航end-->
+			<!--内容区begin-->
+			<div class="contentRightBox">
+				<!-- 内容区 开始 -->
+				<div class = "rightContent">
+					<div class = "staffInfoForm contentForm clearfix">
+						<form id="setForm" method="post" class = "clearfix">
+							<input type="hidden" name="page" value="{{$page}}" />
+							<input type="hidden" name="s_category" value="{{$s_category}}" />
+							<input type="hidden" name="s_name" value="{{$s_name}}" />
+							<input type="hidden" name="id" value="{{$id}}" />
+							<input type="hidden" name="act" value="{{$action}}" />
+							<div class = "roleInfo">
+								<p class = "addApplyTitle mB26">备品名称信息</p>
+								<div class = "roleUserInfo clearfix">
+									<div class = "form setNum clearfix">
+										<p class = "formTitle">备品编号</p>
+										<input type="text" name = "toolCode" value="{{$i.toolCode}}" placeholder = "请填写备品编号" class = "formInput codeInput" autocomplete="off"/>
+									</div>
+									<div class = "form userName clearfix">
+										<p class = "formTitle">备品名称</p>
+										<input type="text" name = "toolName" value="{{$i.toolName}}" placeholder = "请填写备品名称" class = "formInput nameInput" autocomplete="off"/>
+									</div>
+								</div>
+								<div class = "roleUserInfo clearfix">
+									<div class = "form setNum clearfix">		
+										<p class = "formTitle">备品类别</p>
+										<input type="text" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputBm categoryForm" placeholder="请选择" name="category" value="{{$i.categoryId}}" data-type='0' />
+										<div class="retrievalsInputNavBox">
+											<ul class="retrievalsInputNav">
+												<li data-type = "0">请选择</li>
+												{{foreach item=c name=categorys from=$categorys}}
+												<li data-type='{{$c.categoryId}}'>{{$c.categoryName}}</li>
+												{{/foreach}}
+											</ul>
+										</div>
+									</div>
+									<div class = "form setNum clearfix">		
+										<p class = "formTitle">生成备品编号</p>
+										<div class = "checkBox clearfix">
+											<div class = "checkBtn mRight50"{{if $i.isFixedAssets==1}} on{{/if}}>是</div>
+											<div class = "checkBtn"{{if $i.isFixedAssets==0}} on{{/if}}>否</div>
+										</div>
+										<input type="hidden" name = "createNumber" value="{{$i.isFixedAssets}}" class = "formInput createForm"/>
+									</div>
+								</div>
+								<div class = "roleUserInfo clearfix">
+									<div class = "form setNum clearfix">		
+										<p class = "formTitle">设置排序</p>
+										<input type="number" name = "rank" value="{{$rank}}" placeholder = "0" class = "formInput rankInput" autocomplete="off"/>
+										<span class="tipsIcon"><span class = "tips">数字越大，排序越靠前</span></span>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class = "formBtnsBox clearfix">
+						<div class = "formBtn formBtnSave">保存</div>
+						<div class = "formBtn formBtnCancel">取消</div>
+					</div>
+				</div>
+				<!-- 内容区 结束 -->
+			</div>
+			<!--内容区end-->
+		</div>
+		<!--内容区右侧end-->
+	</div>
+	<!--内容 end-->
+
+	<script type="text/javascript" src="public/html/js/plugin/oa.jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="public/html/js/plugin/oa.respond.js"></script>
+	<script type="text/javascript" src="public/html/js/plugin/oa.bootstrap.min.js"></script>
+	<script type="text/javascript" src="public/html/js/plugin/oa.jquery.placeholder.min.js"></script>
+	<script type="text/javascript" src="public/html/js/oa.common.js" ></script>
+	<script type="text/javascript" src="public/html/js/plugin/oa.jquery-ui.min.js" ></script>
+	<script type="text/javascript" src="public/html/js/plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script type="text/javascript" src="public/html/js/jquery.form.min.js" ></script>
+	<script type="text/javascript" src="system/view/js/officeTool-name-set.js" ></script>
+
+</body>
+</html>

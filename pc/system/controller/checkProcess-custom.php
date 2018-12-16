@@ -17,25 +17,33 @@
 	$roleTable = PRFIX.'checkrole';				//审批角色表
 	$where = '';
 
+	//所属部门
+	$offices = $db->get_all(PRFIX.'office','order by rank desc,createTime desc','officeId,officeName');
+
+	//审批角色
+	$roles = $db->get_all(PRFIX.'checkrole','order by rank desc,createTime desc','checkRoleId,checkRoleName');
+
+	//类别
+	$categorys = static_checkType();
+
 	//检索
-	if($act == 'searchPost'){
-		$s_type = getVal('s_type',1,'');
-		$s_role = getVal('s_role',1,'');
-		$s_office = getVal('s_office',1,'');
-		if($s_type!=0){
-			$where .= ' and checkCategory='.$s_type.'';
-			$track .= '&s_type='.$s_type.'';
-		}
-		if($s_role!=0){
-			$where .= ' and (beginRole='.$s_role.' or checkProcessId in(select checkProcessId from '.$detailTable.' where roleId='.$s_role.'))';
-			$track .= '&s_role='.$s_role.'';
-		}
-		if($s_office!=0){
-			$where .= ' and (officeId='.$s_office.' or officeId in(select officeId from '.$detailTable.' where officeId='.$s_office.'))';
-			$track .= '&s_office='.$s_office.'';
-		}
-		$where = 'where 1=1'.$where;
+	
+	$s_type = getVal('s_type',1,'');
+	$s_role = getVal('s_role',1,'');
+	$s_office = getVal('s_office',1,'');
+	if($s_type!=0){
+		$where .= ' and checkCategory='.$s_type.'';
+		$track .= '&s_type='.$s_type.'';
 	}
+	if($s_role!=0){
+		$where .= ' and (beginRole='.$s_role.' or checkProcessId in(select checkProcessId from '.$detailTable.' where roleId='.$s_role.'))';
+		$track .= '&s_role='.$s_role.'';
+	}
+	if($s_office!=0){
+		$where .= ' and (officeId='.$s_office.' or officeId in(select officeId from '.$detailTable.' where officeId='.$s_office.'))';
+		$track .= '&s_office='.$s_office.'';
+	}
+	$where = 'where 1=1'.$where;
 
 	//页面分页配置
 	$total = $db->Count($table,$where);
@@ -46,7 +54,7 @@
 	$sn = $curPage * $length - $length;	//序号
 
 	//拉取数据
-	$data = $db->get_some($table,$page->firstcount,$length,'order by createTime desc',$where,'checkProcessId,checkCategory,officeId,groupId,beginRole,checkLevel');
+	$data = $db->get_some($table,$page->firstcount,$length,'order by createTime desc',$where,'checkProcessId,checkCategory,officeId,groupId,beginRole,checkLevel,createTime');
 	foreach ($data as $key => $value) {
 		$checkProcess = '';
 		++ $sn;
@@ -85,9 +93,15 @@
 	$smarty->assign('data',$data);
 	$smarty->assign('page',$page->show_link(1));
 	$smarty->assign('curPage',$curPage);
+	$smarty->assign('offices',$offices);
+	$smarty->assign('roles',$roles);
+	$smarty->assign('categorys',$categorys);
+	$smarty->assign('s_type',$s_type);
+	$smarty->assign('s_role',$s_role);
+	$smarty->assign('s_office',$s_office);
 
 	//操作返回地址
-	$url = $router.$track;
+	$url = $router.'&page='.$curPage.''.$track;
 
 	//删除
 	if($act == 'remove'){

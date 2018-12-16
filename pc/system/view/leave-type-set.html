@@ -1,0 +1,132 @@
+<!-- 
+	# 新增系统角色
+	# Bowen
+	# 2018-11-23
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+	<title>{{$pageTitle}}</title>
+	<link rel="stylesheet" href="public/html/css/oa.base.css" />
+	<link rel="stylesheet" href="public/html/css/oa.bootstrap.min.css" />
+	<link rel="stylesheet" href="public/html/css/plugin/jquery.mCustomScrollbar.min.css">
+	<link rel="stylesheet" href="public/html/css/oa.common.css" />
+	<link rel="stylesheet" href="public/html/css/oa.jquery-ui.min.css" />
+	<link rel="stylesheet" href="public/html/css/oa.jquery.multiselect.css" />
+	<link rel="stylesheet" href="system/view/css/leave-type-set.css" />
+</head>
+<body>
+
+	<!--头部 begin-->
+	{{include file='public/html/head.html'}}
+	<!--头部 end-->
+
+	<!--内容 begin-->
+	<div class="container-fluid row">
+		<!--内容区左侧导航 begin-->
+		{{include file='public/html/menu.html'}}
+		<!--内容区左侧导航end-->
+		<!--内容区右侧begin-->
+		<div class="contentRight col-lg-10 row">
+			<!--内容区导航begin-->
+			<div class="contentRightNav clearfix">
+				<div class="contentRightNavLeft pull-left">
+					<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="?_f=leave-type&page={{$page}}&s_name={{$s_name}}">请假类型管理</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">请假类型设置</span></div>
+					<div class="contentRightNavBottom"><span class="name">请假类型设置</span></div>
+				</div>
+			</div>
+			<!--内容区导航end-->
+			<!--内容区begin-->
+			<div class="contentRightBox">
+				<!-- 内容区 开始 -->
+				<div class = "rightContent">
+					<div class = "staffInfoForm contentForm clearfix">
+						<form id="setForm" method="post" class = "clearfix">
+							<input type="hidden" name="page" value="{{$page}}" />
+							<input type="hidden" name="s_name" value="{{$s_name}}" />
+							<input type="hidden" name="id" value="{{$id}}" />
+							<input type="hidden" name="act" value="{{$action}}" />
+							<div class = "roleInfo">
+								<p class = "addApplyTitle mB26">请填写请假类型信息</p>
+								<div class = "roleUserInfo clearfix">
+									<div class = "form userName clearfix">
+										<p class = "formTitle">假期类型名称</p>
+										<input type="text" name = "typeName" value="{{$i.typeName}}" placeholder = "请填写假期类型名称" class = "formInput nameInput" autocomplete="off"/>
+									</div>
+									<div class = "form setNum clearfix">
+										<p class = "formTitle">假期天数</p>
+										<input type="number" name = "day" value="{{$i.dayNumber}}" placeholder = "0" class = "formInput dayInput" autocomplete="off"/>天
+									</div>
+								</div>
+								<div class = "roleUserInfo clearfix">
+									<div class = "form setNum clearfix">		
+										<p class = "formTitle">是否为年假</p>
+										<div class = "checkBox clearfix">
+											<div class = "checkBtn mRight50"{{if $i.annualLeave==1}} on{{/if}}>是</div>
+											<div class = "checkBtn"{{if $i.annualLeave==0}} on{{/if}}>否</div>
+										</div>
+										<input type="hidden" name = "annualLeave" value="{{$i.annualLeave}}" class = "formInput annualForm"/>
+										<span class="tipsIcon"><span class = "tips">如为年休假一年仅能休一次，以年为单位</span></span>
+									</div>
+									<div class = "form setNum clearfix">		
+										<p class = "formTitle">是否需要上传附件</p>
+										<div class = "checkBox clearfix">
+											<div class = "checkBtn mRight50"{{if $i.isAttach==1}} on{{/if}}>是</div>
+											<div class = "checkBtn"{{if $i.isAttach==0}} on{{/if}}>否</div>
+										</div>
+										<input type="hidden" name = "isAttach" value="{{$i.isAttach}}" class = "formInput attachForm"/>
+									</div>
+								</div>
+								<div class = "roleUserInfo clearfix">
+									<div class = "form setNum clearfix">		
+										<p class = "formTitle">是否为固定天数假期</p>
+										<div class = "checkBox clearfix">
+											<div class = "checkBtn mRight50"{{if $i.isSameSetting==1}} on{{/if}}>是</div>
+											<div class = "checkBtn"{{if $i.isSameSetting==0}} on{{/if}}>否</div>
+										</div>
+										<input type="hidden" name = "isSameSetting" value="{{$i.isSameSetting}}" class = "formInput sameForm"/>
+										<span class="tipsIcon"><span class = "tips">固定天数假期针对某一员工可再调整</span></span>
+									</div>
+									<div class = "form setNum clearfix">		
+										<p class = "formTitle">设置排序</p>
+										<input type="number" name = "rank" value="{{$rank}}" placeholder = "0" class = "formInput rankInput" autocomplete="off"/>
+										<span class="tipsIcon"><span class = "tips">数字越大，排序越靠前</span></span>
+									</div>
+								</div>
+								<div class = "roleUserInfo clearfix">
+									<div class = "form userName clearfix">
+										<p class = "formTitle">假期说明</p>
+										<textarea name="remark" placeholder="请填写假期说明" class="formInput modifyRemarkInput">{{$i.remark}}</textarea>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class = "formBtnsBox clearfix">
+						<div class = "formBtn formBtnSave">保存</div>
+						<div class = "formBtn formBtnCancel">取消</div>
+					</div>
+				</div>
+				<!-- 内容区 结束 -->
+			</div>
+			<!--内容区end-->
+		</div>
+		<!--内容区右侧end-->
+	</div>
+	<!--内容 end-->
+
+	<script type="text/javascript" src="public/html/js/plugin/oa.jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="public/html/js/plugin/oa.respond.js"></script>
+	<script type="text/javascript" src="public/html/js/plugin/oa.bootstrap.min.js"></script>
+	<script type="text/javascript" src="public/html/js/plugin/oa.jquery.placeholder.min.js"></script>
+	<script type="text/javascript" src="public/html/js/oa.common.js" ></script>
+	<script type="text/javascript" src="public/html/js/plugin/oa.jquery-ui.min.js" ></script>
+	<script type="text/javascript" src="public/html/js/plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script type="text/javascript" src="public/html/js/jquery.form.min.js" ></script>
+	<script type="text/javascript" src="system/view/js/leave-type-set.js" ></script>
+
+</body>
+</html>

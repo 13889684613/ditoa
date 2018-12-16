@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-16 21:34:40
-  from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/system/view/post-set.html" */
+/* Smarty version 3.1.29, created on 2018-12-16 23:35:41
+  from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/system/view/officeTool-name-set.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c165470a8a529_50205311',
+  'unifunc' => 'content_5c1670cd2b49c8_12878706',
   'file_dependency' => 
   array (
-    '79bb77d4dc75c7554d42d38567a050d23eaa3e8d' => 
+    'cdd1446e938d24f07fc45978df41f74e34292e28' => 
     array (
-      0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/system/view/post-set.html',
-      1 => 1544967068,
+      0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/system/view/officeTool-name-set.html',
+      1 => 1544974539,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c165470a8a529_50205311 ($_smarty_tpl) {
+function content_5c1670cd2b49c8_12878706 ($_smarty_tpl) {
 ?>
 <!-- 
 	# 新增系统角色
@@ -42,7 +42,7 @@ function content_5c165470a8a529_50205311 ($_smarty_tpl) {
 	<link rel="stylesheet" href="public/html/css/oa.common.css" />
 	<link rel="stylesheet" href="public/html/css/oa.jquery-ui.min.css" />
 	<link rel="stylesheet" href="public/html/css/oa.jquery.multiselect.css" />
-	<link rel="stylesheet" href="system/view/css/post-set.css" />
+	<link rel="stylesheet" href="system/view/css/officeTool-name-set.css" />
 </head>
 <body>
 
@@ -64,10 +64,11 @@ function content_5c165470a8a529_50205311 ($_smarty_tpl) {
 			<!--内容区导航begin-->
 			<div class="contentRightNav clearfix">
 				<div class="contentRightNavLeft pull-left">
-					<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="?_f=post&page=<?php echo $_smarty_tpl->tpl_vars['page']->value;?>
+					<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="?_f=officeTool-name-set&page=<?php echo $_smarty_tpl->tpl_vars['page']->value;?>
 &s_name=<?php echo $_smarty_tpl->tpl_vars['s_name']->value;?>
-">职务管理</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">职务设置</span></div>
-					<div class="contentRightNavBottom"><span class="name">职务设置</span></div>
+&s_category=<?php echo $_smarty_tpl->tpl_vars['s_category']->value;?>
+">备品名称管理</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">备品名称设置</span></div>
+					<div class="contentRightNavBottom"><span class="name">备品名称设置</span></div>
 				</div>
 			</div>
 			<!--内容区导航end-->
@@ -79,6 +80,8 @@ function content_5c165470a8a529_50205311 ($_smarty_tpl) {
 						<form id="setForm" method="post" class = "clearfix">
 							<input type="hidden" name="page" value="<?php echo $_smarty_tpl->tpl_vars['page']->value;?>
 " />
+							<input type="hidden" name="s_category" value="<?php echo $_smarty_tpl->tpl_vars['s_category']->value;?>
+" />
 							<input type="hidden" name="s_name" value="<?php echo $_smarty_tpl->tpl_vars['s_name']->value;?>
 " />
 							<input type="hidden" name="id" value="<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
@@ -86,20 +89,69 @@ function content_5c165470a8a529_50205311 ($_smarty_tpl) {
 							<input type="hidden" name="act" value="<?php echo $_smarty_tpl->tpl_vars['action']->value;?>
 " />
 							<div class = "roleInfo">
-								<p class = "addApplyTitle mB26">请填写职务信息</p>
+								<p class = "addApplyTitle mB26">备品名称信息</p>
 								<div class = "roleUserInfo clearfix">
-									<div class = "form userName clearfix">
-										<p class = "formTitle">职务名称</p>
-										<input type="text" name = "postName" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['postName'];?>
-" placeholder = "请输入" class = "formInput nameInput" autocomplete="off"/>
-									</div>
 									<div class = "form setNum clearfix">
+										<p class = "formTitle">备品编号</p>
+										<input type="text" name = "toolCode" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['toolCode'];?>
+" placeholder = "请填写备品编号" class = "formInput codeInput" autocomplete="off"/>
+									</div>
+									<div class = "form userName clearfix">
+										<p class = "formTitle">备品名称</p>
+										<input type="text" name = "toolName" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['toolName'];?>
+" placeholder = "请填写备品名称" class = "formInput nameInput" autocomplete="off"/>
+									</div>
+								</div>
+								<div class = "roleUserInfo clearfix">
+									<div class = "form setNum clearfix">		
+										<p class = "formTitle">备品类别</p>
+										<input type="text" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputBm categoryForm" placeholder="请选择" name="category" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['categoryId'];?>
+" data-type='0' />
+										<div class="retrievalsInputNavBox">
+											<ul class="retrievalsInputNav">
+												<li data-type = "0">请选择</li>
+												<?php
+$_from = $_smarty_tpl->tpl_vars['categorys']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$__foreach_categorys_0_saved_item = isset($_smarty_tpl->tpl_vars['c']) ? $_smarty_tpl->tpl_vars['c'] : false;
+$_smarty_tpl->tpl_vars['c'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['c']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['c']->value) {
+$_smarty_tpl->tpl_vars['c']->_loop = true;
+$__foreach_categorys_0_saved_local_item = $_smarty_tpl->tpl_vars['c'];
+?>
+												<li data-type='<?php echo $_smarty_tpl->tpl_vars['c']->value['categoryId'];?>
+'><?php echo $_smarty_tpl->tpl_vars['c']->value['categoryName'];?>
+</li>
+												<?php
+$_smarty_tpl->tpl_vars['c'] = $__foreach_categorys_0_saved_local_item;
+}
+if ($__foreach_categorys_0_saved_item) {
+$_smarty_tpl->tpl_vars['c'] = $__foreach_categorys_0_saved_item;
+}
+?>
+											</ul>
+										</div>
+									</div>
+									<div class = "form setNum clearfix">		
+										<p class = "formTitle">生成备品编号</p>
+										<div class = "checkBox clearfix">
+											<div class = "checkBtn mRight50"<?php if ($_smarty_tpl->tpl_vars['i']->value['isFixedAssets'] == 1) {?> on<?php }?>>是</div>
+											<div class = "checkBtn"<?php if ($_smarty_tpl->tpl_vars['i']->value['isFixedAssets'] == 0) {?> on<?php }?>>否</div>
+										</div>
+										<input type="hidden" name = "createNumber" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['isFixedAssets'];?>
+" class = "formInput createForm"/>
+									</div>
+								</div>
+								<div class = "roleUserInfo clearfix">
+									<div class = "form setNum clearfix">		
 										<p class = "formTitle">设置排序</p>
 										<input type="number" name = "rank" value="<?php echo $_smarty_tpl->tpl_vars['rank']->value;?>
-" placeholder = "0" class = "formInput numInput" autocomplete="off"/>
+" placeholder = "0" class = "formInput rankInput" autocomplete="off"/>
 										<span class="tipsIcon"><span class = "tips">数字越大，排序越靠前</span></span>
 									</div>
-									
 								</div>
 							</div>
 						</form>
@@ -142,7 +194,7 @@ function content_5c165470a8a529_50205311 ($_smarty_tpl) {
  type="text/javascript" src="public/html/js/jquery.form.min.js" ><?php echo '</script'; ?>
 >
 	<?php echo '<script'; ?>
- type="text/javascript" src="system/view/js/post-set.js" ><?php echo '</script'; ?>
+ type="text/javascript" src="system/view/js/officeTool-name-set.js" ><?php echo '</script'; ?>
 >
 
 </body>

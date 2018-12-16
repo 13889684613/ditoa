@@ -16,19 +16,21 @@
 	$where = '';
 
 	//检索
-	if($act == 'searchPost'){
-		$s_category = getVal('s_category',1,'');
-		$s_name = getVal('s_name',2,'');
-		if($s_category!=0){
-			$where .= ' and categoryId='.$s_category.'';
-			$track .= '&s_category='.$s_category.'';
-		}
-		if($s_name!=''){
-			$where .= ' and toolName like "%'.$s_name.'%"';
-			$track .= '&s_name='.$s_name.'';
-		}
-		$where = 'where 1=1'.$where;
+
+	//备品类别
+	$categorys = $db->get_all(PRFIX.'officetool_category','order by rank desc,createTime desc','categoryId,categoryName');
+	
+	$s_category = getVal('s_category',1,'');
+	$s_name = getVal('s_name',2,'');
+	if($s_category!=0){
+		$where .= ' and categoryId='.$s_category.'';
+		$track .= '&s_category='.$s_category.'';
 	}
+	if($s_name!=''){
+		$where .= ' and toolName like "%'.$s_name.'%"';
+		$track .= '&s_name='.$s_name.'';
+	}
+	$where = 'where 1=1'.$where;
 
 	//页面分页配置
 	$total = $db->Count($table,$where);
@@ -61,9 +63,12 @@
 	$smarty->assign('data',$data);
 	$smarty->assign('page',$page->show_link(1));
 	$smarty->assign('curPage',$curPage);
+	$smarty->assign('categorys',$categorys);
+	$smarty->assign('s_category',$s_category);
+	$smarty->assign('s_name',$s_name);
 
 	//操作返回地址
-	$url = $router.$track;
+	$url = $router.'&page='.$curPage.''.$track;
 
 	//删除
 	if($act == 'remove'){

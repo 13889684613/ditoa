@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-16 16:46:10
+/* Smarty version 3.1.29, created on 2018-12-16 21:13:16
   from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/public/html/menu.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c1610d22c2f32_78226819',
+  'unifunc' => 'content_5c164f6ceac6d6_09370409',
   'file_dependency' => 
   array (
     'b516f726c6de581da32a39f198d2e5e5d090c403' => 
     array (
       0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/public/html/menu.html',
-      1 => 1544949968,
+      1 => 1544965788,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5c1610d22c2f32_78226819 ($_smarty_tpl) {
+function content_5c164f6ceac6d6_09370409 ($_smarty_tpl) {
 ?>
 			<div class="contentLeftNav col-lg-2 row">
 				<div class="contentLeftNavListTop col-lg-12">
@@ -295,37 +295,37 @@ function content_5c1610d22c2f32_78226819 ($_smarty_tpl) {
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuSystem']->value[1] == 1) {?>
 							<li<?php if ($_smarty_tpl->tpl_vars['checkRoleMenu']->value == 1) {?> class="active"<?php }?>>
-								<a href="">审批角色权限设置</a>
+								<a href="system.php?_f=check-role">审批角色权限设置</a>
 							</li>
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuSystem']->value[2] == 1) {?>
-							<li>
-								<a href="">自定义审批流程设置</a>
+							<li<?php if ($_smarty_tpl->tpl_vars['checkProcessMenu']->value == 1) {?> class="active"<?php }?>>
+								<a href="system.php?_f=checkProcess-custom">自定义审批流程设置</a>
 							</li>
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuSystem']->value[3] == 1) {?>
-							<li>
-								<a href="">默认审批流程设置</a>
+							<li<?php if ($_smarty_tpl->tpl_vars['checkProcessDefaultMenu']->value == 1) {?> class="active"<?php }?>>
+								<a href="system.php?_f=checkProcess-default">默认审批流程设置</a>
 							</li>
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuSystem']->value[4] == 1) {?>
-							<li>
-								<a href="">职务管理</a>
+							<li<?php if ($_smarty_tpl->tpl_vars['postMenu']->value == 1) {?> class="active"<?php }?>>
+								<a href="system.php?_f=post">职务管理</a>
 							</li>
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuSystem']->value[5] == 1) {?>
-							<li>
-								<a href="">请假类型管理</a>
+							<li<?php if ($_smarty_tpl->tpl_vars['leaveTypeMenu']->value == 1) {?> class="active"<?php }?>>
+								<a href="system.php?_f=leave-type">请假类型管理</a>
 							</li>
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuSystem']->value[6] == 1) {?>
-							<li>
-								<a href="">备品类别管理</a>
+							<li<?php if ($_smarty_tpl->tpl_vars['officeToolTypeMenu']->value == 1) {?> class="active"<?php }?>>
+								<a href="system.php?_f=officeTool-type">备品类别管理</a>
 							</li>
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuSystem']->value[7] == 1) {?>
-							<li>
-								<a href="">备品名称管理</a>
+							<li<?php if ($_smarty_tpl->tpl_vars['officeToolNameMenu']->value == 1) {?> class="active"<?php }?>>
+								<a href="system.php?_f=officeTool-name">备品名称管理</a>
 							</li>
 							<?php }?>
 						</ul>

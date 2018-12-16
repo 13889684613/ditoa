@@ -37,19 +37,34 @@
 	//验证
 	if($act == 'addSave'||$act == 'editSave'){
 		if($category == 0){
-			ErrorResturn('请选择审批流程类别');
+			$data['status'] = 'fail';
+			$data['message'] = '请选择审批流程类别';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if($beginOffice == 0){
-			ErrorResturn('请选择发起办事处');
+			$data['status'] = 'fail';
+			$data['message'] = '请选择发起办事处';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if($beginGroup == 0){
-			ErrorResturn('请选择发起工作组');
+			$data['status'] = 'fail';
+			$data['message'] = '请选择发起工作组';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if($beginRole == 0){
-			ErrorResturn('请选择发起审批角色');
+			$data['status'] = 'fail';
+			$data['message'] = '请选择发起审批角色';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}	
 		if(count(array_filter($office))==0||count(array_filter($group))==0||count(array_filter($role))==0){
-			ErrorResturn('请完善审批流程');
+			$data['status'] = 'fail';
+			$data['message'] = '请完善审批流程';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 	}
 
@@ -102,16 +117,25 @@
 					//删除当前审批流所有数据
 					$db->delete($detailTable,'where checkProcessId='.$checkProcessId.''); //清除流程明细表
 					$db->delete($table,'where checkProcessId='.$checkProcessId.'');//清除主表
-					ErrorResturn(ERRORTIPS);
+					$data['status'] = 'fail';
+					$data['message'] = ERRORTIPS;
+					$returnJson = json_encode($data);
+					echo $returnJson; exit;
 				}
 
 			}
 
-			TipsRefreshResturn('操作成功','system.php?_f=checkProcess-custom');
+			$data['status'] = 'success';
+			$data['message'] = '操作成功';
+			$data['url'] = 'system.php?_f=checkProcess-custom';
 
 		}else{
-			ErrorResturn(ERRORTIPS);
+			$data['status'] = 'fail';
+			$data['message'] = ERRORTIPS;
 		}
+
+		$returnJson = json_encode($data);
+		echo $returnJson; exit;
 
 	}
 
@@ -178,15 +202,24 @@
 				$res = $db->insert($detailTable,$process);
 				if(!$res){
 					$db->delete($detailTable,'where checkProcessId='.$id.''); //清除流程明细表
-					ErrorResturn(ERRORTIPS);
+					$data['status'] = 'fail';
+					$data['message'] = ERRORTIPS;
+					$returnJson = json_encode($data);
+					echo $returnJson; exit;
 				}
 
 			}
 
-			TipsRefreshResturn('操作成功','system.php?_f=checkProcess-custom&page='.$page.'&s_type='.$s_type.'&s_role='.$s_role.'&s_office='.$s_office.'');
+			$data['status'] = 'success';
+			$data['message'] = '操作成功';
+			$data['url'] = 'system.php?_f=checkProcess-custom&page='.$page.'&s_type='.$s_type.'&s_role='.$s_role.'&s_office='.$s_office.'';
+
 		}else{
-			ErrorResturn(ERRORTIPS);
+			$data['status'] = 'fail';
+			$data['message'] = ERRORTIPS;
 		}
+		$returnJson = json_encode($data);
+		echo $returnJson; exit;
 
 	}
 
@@ -205,30 +238,4 @@
 	$smarty->assign('action',$action);
 	$smarty->assign('rank',$rank);
 
-	//选择办事处工作组数据联动 ajax begin
-	if($act == 'getGroup'){
-
-		$officeId = getVal('officeId',1,'');
-		if($officeId == 0){
-			$data['status'] = 'fail';
-			$data['message'] = '缺少办事处数据凭证！';
-			$returnJson = json_encode($data);
-			echo $returnJson; exit;
-		}
-
-		$group = $db->get_all(PRFIX.'group','where officeId='.$officeId.' order by rank desc,createTime desc','groupId,groupName');
-		if($group){
-			$data['status'] = 'success';
-			$data['message'] = '';
-			$data['data'] = $group;
-		}else{
-			$data['status'] = 'fail';
-			$data['message'] = ERRORTIPS;
-		}
-
-		$returnJson = json_encode($data);
-		echo $returnJson; exit;
-
-	}
-	//选择办事处工作组数据联动 ajax over
 ?>

@@ -1,0 +1,263 @@
+<!-- 
+	# 创建自定义审批流程
+	# lfl
+	# 2018-11-24
+-->
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+		<title>{{$pageTitle}}</title>
+		<link rel="stylesheet" href="public/html/css/oa.base.css" />
+		<link rel="stylesheet" href="public/html/css/oa.bootstrap.min.css" />
+		<link rel="stylesheet" href="public/html/css/plugin/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" href="public/html/css/oa.jquery-ui.min.css" />
+		<link rel="stylesheet" href="public/html/css/oa.jquery.multiselect.css" />
+		<link rel="stylesheet" href="public/html/css/oa.common.css" />
+		<link rel="stylesheet" href="system/view/css/checkProcess-custom-set.css" />
+	</head>
+
+	<body>
+		<!--头部 begin-->
+		{{include file='public/html/head.html'}}
+		<!--头部 end-->
+
+		<!--内容 begin-->
+		<div class="container-fluid row">
+			<!--内容区左侧导航 begin-->
+			{{include file='public/html/menu.html'}}
+			<!--内容区左侧导航end-->
+			<!--内容区右侧begin-->
+			<div class="contentRight col-lg-10 row">
+				<!--内容区导航begin-->
+				<div class="contentRightNav clearfix">
+					<div class="contentRightNavLeft pull-left">
+						<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="?_f=checkProcess-custom&page={{$curPage}}{{$track}}">自定义审批流程管理</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">自定义审批流程设置</span></div>
+						<div class="contentRightNavBottom"><span class="name">自定义审批流程设置</span></div>
+					</div>
+				</div>
+				<!--内容区导航end-->
+				<!--内容区begin-->
+				<div class="contentRightBox">
+					<div class="contentRightContent">
+						<form method="post" class="clearfix">
+						<input type="hidden" name="page" value="{{$page}}" />
+						<input type="hidden" name="s_type" value="{{$s_type}}" />
+						<input type="hidden" name="s_role" value="{{$s_role}}" />
+						<input type="hidden" name="s_office" value="{{$s_office}}" />
+						<input type="hidden" name="id" value="{{$id}}" />
+						<input type="hidden" name="act" value="{{$action}}" />
+						<div class="retrievalBox">
+							<div class="retrievalTitle">设置审批流程信息</div>
+							<div class="retrievalsForm">
+								<div class="retrievalsInputBoxs mediaWidthChange clearfix pull-left">
+									<div class="retrievalsInputContent">
+										<div class="retrievalsInput firstIn">
+											<label class="lable_w">审批流程类别<span class="must">*</span></label>
+											<input type="text" readonly="readonly" onfocus="this.blur()" class="choseInput choseInputLc" placeholder="请选择" name="category" value="{{$i.checkCategory}}" data-type='0' />
+											<div class="retrievalsInputNavBox">
+												<ul class="retrievalsInputNav">
+													<li data-type='0'>请选择</li>
+													{{foreach $categorys as $key=>$value}}
+													<li data-type = "{{$key}}">{{$value}}</li>
+													{{/foreach}}
+												</ul>
+											</div>
+										</div>
+										<div class="retrievalsInput  firstIn">
+											<label class="lable_w">发起审批角色<span class="must">*</span></label>
+											<input type="text" readonly="readonly" onfocus="this.blur()" class="choseInput choseInputJs" placeholder="请选择" name="beginRole" value="{{$i.beginRole}}" data-type='0' />
+											<div class="retrievalsInputNavBox">
+												<ul class="retrievalsInputNav">
+													<li data-type='0'>请选择</li>
+													{{foreach item=r name=roles from=$roles}}
+													<li data-type='{{$r.checkRoleId}}'>{{$r.checkRoleName}}</li>
+													{{/foreach}}
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="retrievalsInputBoxs clearfix pull-left">
+									<div class="retrievalsInputContent">
+										<div class="retrievalsInput">
+											<label>办事处<span class="must">*</span></label>
+											<input type="text" readonly="readonly" onfocus="this.blur()" class="choseInput choseInputQy" placeholder="请选择" name="beginOffice" value="{{$i.officeId}}" data-type='0' />
+											<div class="retrievalsInputNavBox">
+												<ul class="retrievalsInputNav">
+													<li data-type='0'>请选择</li>
+													{{foreach item=o name=offices from=$offices}}
+													<li data-type='{{$o.officeId}}'>{{$o.officeName}}</li>
+													{{/foreach}}
+												</ul>
+											</div>
+										</div>
+										<div class="retrievalsInput clearfix">
+											<div class="queryButton pull-left">确定</div>
+										</div>
+									</div>
+								</div>
+								<div class="retrievalsInputBoxs clearfix pull-left">
+									<div class="retrievalsInputContent">
+										<div class="retrievalsInput">
+											<label>工作组<span class="must">*</span></label>
+											<input type="text" readonly="readonly" onfocus="this.blur()" class="choseInput choseInputBm" placeholder="请选择" value="{{$i.groupId}}" data-type='0' name="beginGroup" />
+											<div class="retrievalsInputNavBox">
+												<ul class="retrievalsInputNav">
+													<li data-type='0'>请选择</li>
+													{{foreach item=g name=groups from=$groups}}
+													<li data-type='{{$g.groupId}}'>{{$g.groupName}}</li>
+													{{/foreach}}
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="approvalInformationBox">
+							<!--审批信息begin-->
+							<div class="approval-informationBox">
+								<div class="approval-information">
+									<div class="approval-informationTitle">设置审批信息</div>
+									<table class="Stable">
+										{{if $action=='addSave'}}
+										<tr>
+											<td width="84" class="td1 text-center">
+												<span class="center-block">01</span>
+											</td>
+											<td class="td2" width="392">
+												<div class="StableTd clearfix">
+													<div class="StableTdL pull-left">所属办事处<span class="must">*</span></div>
+													<div class="StableTdR pull-left"><input type="text" data-type='0' onfocus="this.blur()" readonly="readonly" class="InputQy" placeholder="请选择" name="office[]"/>
+														<div class="retrievalsInputNavBox">
+															<ul class="retrievalsInputNav">
+																<li data-type='0'>请选择</li>
+																{{foreach item=o name=offices from=$offices}}
+																<li data-type='{{$o.officeId}}'>{{$o.officeName}}</li>
+																{{/foreach}}
+															</ul>
+														</div>
+													</div>
+												</div>
+											</td>
+											<td class="td3" width="398">
+												<div class="StableTd clearfix">
+													<div class="StableTdL pull-left">所属工作组<span class="must">*</span></div>
+													<div class="StableTdR pull-left"><input type="text" data-type='0' onfocus="this.blur()" readonly="readonly" class="InputBm" placeholder="请选择" name="group[]" />
+														<div class="retrievalsInputNavBox">
+															<ul class="retrievalsInputNav">
+																<li data-type='0'>请选择</li>
+																{{foreach item=g name=groups from=$groups}}
+																<li data-type='{{$g.groupId}}'>{{$g.groupName}}</li>
+																{{/foreach}}
+															</ul>
+														</div>
+													</div>
+												</div>
+											</td>
+											<td class="td4" width="633">
+												<div class="StableTd clearfix">
+													<div class="StableTdL pull-left">所属角色<span class="must">*</span></div>
+													<div class="StableTdR pull-left"><input type="text" data-type='0' onfocus="this.blur()" readonly="readonly" class="InputJs" placeholder="请选择" name="role[]" />
+														<div class="retrievalsInputNavBox">
+															<ul class="retrievalsInputNav">
+																<li data-type='0'>请选择</li>
+																{{foreach item=r name=roles from=$roles}}
+																<li data-type='{{$r.checkRoleId}}'>{{$r.checkRoleName}}</li>
+																{{/foreach}}
+															</ul>
+														</div>
+													</div>
+												</div>
+											</td>
+										</tr>
+										{{/if}}
+										{{foreach item=p name=process from=$i.process}}
+										<tr>
+											<td width="84" class="td1 text-center">
+												<span class="center-block">{{$smarty.foreach.process.iteration}}</span>
+											</td>
+											<td class="td2" width="392">
+												<div class="StableTd clearfix">
+													<div class="StableTdL pull-left">所属办事处<span class="must">*</span></div>
+													<div class="StableTdR pull-left"><input type="text" data-type='0' onfocus="this.blur()" readonly="readonly" class="InputQy" placeholder="请选择" name="office[]" value="{{$p.officeId}}" />
+														<div class="retrievalsInputNavBox">
+															<ul class="retrievalsInputNav">
+																<li data-type='0'>请选择</li>
+																{{foreach item=o name=offices from=$offices}}
+																<li data-type='{{$o.officeId}}'>{{$o.officeName}}</li>
+																{{/foreach}}
+															</ul>
+														</div>
+													</div>
+												</div>
+											</td>
+											<td class="td3" width="398">
+												<div class="StableTd clearfix">
+													<div class="StableTdL pull-left">所属工作组<span class="must">*</span></div>
+													<div class="StableTdR pull-left"><input type="text" data-type='0' onfocus="this.blur()" readonly="readonly" class="InputBm" placeholder="请选择" name="group[]" value="{{$p.groupId}}" />
+														<div class="retrievalsInputNavBox">
+															<ul class="retrievalsInputNav">
+																<li data-type='0'>请选择</li>
+																{{foreach item=g name=groups from=$groups}}
+																<li data-type='{{$g.groupId}}'>{{$g.groupName}}</li>
+																{{/foreach}}
+															</ul>
+														</div>
+													</div>
+												</div>
+											</td>
+											<td class="td4" width="633">
+												<div class="StableTd clearfix">
+													<div class="StableTdL pull-left">所属角色<span class="must">*</span></div>
+													<div class="StableTdR pull-left"><input type="text" data-type='0' onfocus="this.blur()" readonly="readonly" class="InputJs" placeholder="请选择" name="role[]" value="{{$p.roleId}}" />
+														<div class="retrievalsInputNavBox">
+															<ul class="retrievalsInputNav">
+																<li data-type='0'>请选择</li>
+																{{foreach item=r name=roles from=$roles}}
+																<li data-type='{{$r.checkRoleId}}'>{{$r.checkRoleName}}</li>
+																{{/foreach}}
+															</ul>
+														</div>
+													</div>
+												</div>
+											</td>
+										</tr>
+										{{/foreach}}
+									</table>
+								</div>
+							</div>
+							<!--审批信息end-->
+							<div class="addInformationBox">
+								<img src="system/view/images/sqBt.jpg" alt="" />
+							</div>
+							<div class="formBtnsBox clearfix">
+								<div class="formBtn formBtnSave">提交审批流程</div>
+								<div class="formBtn formBtnCancel">返回</div>
+							</div>
+						</div>
+						</form>
+					</div>
+				</div>
+				<!--内容区end-->
+			</div>
+			<!--内容区右侧end-->
+		</div>
+		<!--内容 end-->
+		<script type="text/javascript" src="public/html/js/plugin/oa.jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="public/html/js/plugin/oa.respond.js"></script>
+		<script type="text/javascript" src="public/html/js/plugin/oa.bootstrap.min.js"></script>
+		<script type="text/javascript" src="public/html/js/plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="public/html/js/plugin/oa.jquery-ui.min.js"></script>
+		<script type="text/javascript" src="public/html/js/plugin/oa.jquery.multiselect.js"></script>
+		<script type="text/javascript" src="public/html/js/plugin/oa.jquery.placeholder.min.js"></script>
+		<script type="text/javascript" src="public/html/js/oa.common.js"></script>
+		<script type="text/javascript" src="public/html/js/jquery.form.min.js" ></script>
+		<script type="text/javascript" src="system/view/js/checkProcess-custom-set.js"></script>
+	</body>
+
+</html>
