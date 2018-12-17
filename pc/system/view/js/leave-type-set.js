@@ -11,7 +11,7 @@ $(function(){
 
     //显示隐藏tips
     $('.tipsIcon').mouseenter(function() {
-        $('.tips').show();
+        $(this).find('.tips').show();
     })
 
     $('.tipsIcon').mouseleave(function() {

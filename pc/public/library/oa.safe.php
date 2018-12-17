@@ -160,10 +160,28 @@
 		$indexMenu = ' on';
 	}
 
-	//DIT组织架构menu
-	if($_prfix == $orgPrfix ){
+	//DIT组织架构menu begin
+	$orgMenus = false;
+	//企业信息管理
+	if($_file == 'company' || $_file == 'company-set'){
+		$companyMenu = 1; $orgMenus = true;
+	}
+	//办事处管理
+	if($_file == 'office' || $_file == 'office-set'){
+		$officeMenu = 1; $orgMenus = true;
+	}
+	//工作组管理
+	if($_file == 'group' || $_file == 'group-set'){
+		$groupMenu = 1; $orgMenus = true;
+	}
+	//工作组管理
+	if($_file == 'org'){
+		$orgsMenu = 1; $orgMenus = true;
+	}
+	if($_prfix == $orgPrfix && $orgMenus){
 		$orgMenu = ' on';
 	}
+	//DIT组织架构menu over
 
 	//人事管理menu
 	if($_prfix == $humanPrfix ){
@@ -191,11 +209,22 @@
 	}
 
 	//综合事务管理menu
-	if($_prfix == $generalPrfix ){
+
+	$generalMenus = false;
+	//企业规章制度管理
+	if($_file == 'rules' || $_file == 'rules-set'){
+		$rulesMenu = 1; $generalMenus = true;
+	}
+	//企业资质证件管理
+	if($_file == 'certificate' || $_file == 'certificate-set'){
+		$certificateMenu = 1; $generalMenus = true;
+	}
+
+	if($_prfix == $generalPrfix && $generalMenus ){
 		$generalMenu = ' on';
 	}
 
-	//系统运维管理menu
+	//系统运维管理menu begin
 	$systemMenus = false;
 	//系统角色
 	if($_file == 'system-role' || $_file == 'system-role-set'){
@@ -233,6 +262,7 @@
 	if($_prfix == $systemPrfix && $systemMenus ){
 		$systemMenu = ' on';
 	}
+	//系统运维管理menu over
 
 	//考勤管理menu
 	if($_prfix == $signPrfix ){
@@ -244,15 +274,26 @@
 		$messageMenu = ' on';
 	}
 
-	//数据绑定
+	//左侧菜单数据绑定 begin
 	$smarty->assign('indexMenu',$indexMenu);
+
+	//DIT组织架构
 	$smarty->assign('orgMenu',$orgMenu);
+	$smarty->assign('companyMenu',$companyMenu);
+	$smarty->assign('officeMenu',$officeMenu);
+	$smarty->assign('groupMenu',$groupMenu);
+	$smarty->assign('orgsMenu',$orgsMenu);
+
 	$smarty->assign('humanMenu',$humanMenu);
 	$smarty->assign('leaveMenu',$leaveMenu);
 	$smarty->assign('businessMenu',$businessMenu);
 	$smarty->assign('carMenu',$carMenu);
 	$smarty->assign('officeMenu',$officeMenu);
+
+	//综合事务管理
 	$smarty->assign('generalMenu',$generalMenu);
+	$smarty->assign('rulesMenu',$rulesMenu);
+	$smarty->assign('certificateMenu',$certificateMenu);
 
 	//系统运维管理
 	$smarty->assign('systemMenu',$systemMenu);
@@ -267,6 +308,7 @@
 
 	$smarty->assign('signMenu',$signMenu);
 	$smarty->assign('messageMenu',$messageMenu);
+	//左侧菜单数据绑定 over
 
 	//左侧菜单展开与折叠 over
 

@@ -19,20 +19,18 @@
 	//所属部门
 	$offices = $db->get_all(PRFIX.'office','order by rank desc,createTime desc','officeId,officeName');
 
-	if($act == 'searchPost'){
-		$s_office = getVal('s_office',1,'');
-		$s_name = getVal('s_name',2,'');
-		if($s_office!=0){
-			$where .= ' and officeId='.$s_office.'';
-			$track .= '&s_office='.$s_office.'';
-		}
-		if($s_name!=''){
-			$where .= ' and groupName like "%'.$s_name.'%"';
-			$track .= '&s_name='.$s_name.'';
-		}
-		$where = 'where 1=1'.$where;
+	$s_office = getVal('s_office',1,'');
+	$s_name = getVal('s_name',2,'');
+	if($s_office!=0){
+		$where .= ' and officeId='.$s_office.'';
+		$track .= '&s_office='.$s_office.'';
 	}
-
+	if($s_name!=''){
+		$where .= ' and groupName like "%'.$s_name.'%"';
+		$track .= '&s_name='.$s_name.'';
+	}
+	$where = 'where 1=1'.$where;
+	
 	//页面分页配置
 	$total = $db->Count($table,$where);
 	$length = 5;
@@ -61,7 +59,7 @@
 	$smarty->assign('curPage',$curPage);
 
 	//操作返回地址
-	$url = $router.$track;
+	$url = $router.'&page='.$curPage.''.$track;
 
 	//删除
 	if($act == 'remove'){

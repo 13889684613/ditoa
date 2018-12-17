@@ -63,12 +63,12 @@
 									</div>
 									
 								</div>
-								<div class = "roleUserInfo clearfix">
+								<div class = "roleUserInfo mT26 clearfix">
 									<div class = "form setNum clearfix">		
-										<p class = "formTitle">默认角色</p>
-										<div class = "checkBox clearfix">
-											<div class = "checkBtn mRight50{{if $i.isDefault==1}} on{{/if}}">是</div>
-											<div class = "checkBtn{{if $i.isDefault==0}} on{{/if}}">否</div>
+										<p class = "formTitle mR40">默认角色</p>
+										<div class = "checkBox pull-left mT10 clearfix">
+											<div class = "checkBtn mRight50{{if $i.isDefault==1}} on{{/if}}" data-type="1">是</div>
+											<div class = "checkBtn{{if $i.isDefault==0}} on{{/if}}" data-type="0">否</div>
 										</div>
 										<input type="hidden" name = "default" value="{{$i.isDefault}}" class = "formInput sexForm"/>
 									</div>

@@ -508,6 +508,13 @@
 .editButtonL{
 	border-right: 1px solid #e4e6ed;
 }
+
+.editButtonL a{
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
 .borderRight1{
 	/*border-right: 1px solid #e8e8e8;*/
 }

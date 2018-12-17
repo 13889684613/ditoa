@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>{{$pageTitle}}</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+		<link rel="stylesheet" href="public/html/css/oa.base.css" />
+		<link rel="stylesheet" href="public/html/css/oa.bootstrap.min.css" />
+		<link rel="stylesheet" href="public/html/css/plugin/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" href="public/html/css/oa.common.css" />
+		<link rel="stylesheet" href="org/view/css/org.css" />
+	</head>
+
+	<body>
+		<!--头部 begin-->
+		{{include file='public/html/head.html'}}
+		<!--头部 end-->
+
+		<!--内容 begin-->
+		<div class="container-fluid row">
+			<!--内容区左侧导航 begin-->
+			{{include file='public/html/menu.html'}}
+			<!--内容区左侧导航end-->
+			<!--内容区右侧begin-->
+			<div class="contentRight col-lg-10 row">
+				<!--内容区导航begin-->
+				<div class="contentRightNav clearfix">
+					<div class="contentRightNavLeft pull-left">
+						<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">企业组织架构</span></div>
+						<div class="contentRightNavBottom"><span class="name">企业组织架构</span><span class="time"></span></div>
+					</div>
+				</div>
+				<!--内容区导航end-->
+				<!--内容区begin-->
+				<div class="contentRightBox">
+					<div class="contentRightContent clearfix">
+						<!--树导航begin-->
+						<div class="treeNavBox pull-left">
+							<div class="treeNavBoxTitle">DIT组织架构</div>
+							<div class="treeNavContent">
+								<div class="treeNavContentBox">
+									{{foreach item=o name=offices from=$offices}}
+									<div class="treeNavContentBoxPart{{if $officeId==$o.officeId}} on{{/if}}">
+										<span class="treeNavContentBoxPartImage{{if $officeId==$o.officeId}} on{{/if}}">{{$o.officeName}} （{{$o.number}}）</span>
+										<ul>
+											{{foreach item=g name=groups from=$o.groups}}
+											<a href="?_f=org&o={{$o.officeId}}&g={{$g.groupId}}">
+												<li{{if $groupId==$g.groupId}} class="active"{{/if}}> {{$g.groupName}} （{{$g.number}}）</li>
+											</a>
+											{{/foreach}}
+										</ul>
+									</div>
+									{{/foreach}}
+								</div>
+							</div>
+						</div>
+						<!--树导航end-->
+
+						<div class="architectureContent pull-left">
+							<!--检索begin-->
+							<form method="get">
+							<input type="hidden" name="_f" value="org">
+							<input type="hidden" name="o" value="{{$officeId}}">
+							<input type="hidden" name="g" value="{{$groupId}}">
+							<div class="retrievalBox">
+								<div class="retrievalInputBox clearfix">
+									<div class="retrievalTxt pull-left">员工姓名：</div>
+									<div class="retrievalInput pull-left"><input type="text" name="s_name" value="{{$s_name}}" placeholder="搜索当前组织员工" />
+										<a href="javascript:void(0);" onclick="document.getElementById('searchForm').submit();"><img src="org/view/images/search.jpg" class="search" alt="" /></a>
+									</div>
+								</div>
+							</div>
+							<!--检索end-->
+							<!--表格begin-->
+							<div class="clearfix tableBoxFather">
+								<div class="tableBox clearfix">
+									<table class="table1 table1Content">
+										<tr style="height: 54px;">
+											<th class="paddingLeft27" width="106"><span>员工姓名</span></th>
+											<th width="152"><span>隶属公司</span></th>
+											<th width="154"><span>职务</span></th>
+											<th width="155"><span>座机</span></th>
+											<th width="120"><span>手机号码</span></th>
+											<th width="120"><span>电子邮箱</span></th>
+											<th class="text-center" width="244"><span>状态</span></th>
+										</tr>
+										{{foreach item=i name=data from=$data}}
+										<tr{{if $i%2==1}} class="backgroundFFF"{{else}}class="backgroundfb"{{/if}}>
+											<td class="paddingLeft27"><span>{{$i.staffName}}</span></td>
+											<td><span>{{$i.company}}</span></td>
+											<td><span>{{$i.post}}</span></td>
+											<td><span>{{$i.phone}}</span></td>
+											<td><span>{{$i.tel}}</span></td>
+											<td><span>{{$i.email}}</span></td>
+											<td class="text-center">{{$i.status}}</td>
+										</tr>
+										{{foreachelse}}
+										<tr class="backgroundFFF">
+											<td colspan="7" rowspan="5">
+												{{if $TIP == 2}}
+												<img src="org/view/images/choseImage.jpg" class="choseImage" alt="" />
+												{{/if}}
+												{{if $TIP == 1}}
+												<img src="org/view/images/choseImage.jpg" class="choseImage" alt="" />
+												{{/if}}
+											</td>
+										</tr>
+										{{/foreach}}
+									</table>
+								</div>
+							</div>
+							<!--表格end-->
+							<!--分页begin-->
+						<div class="page clearfix">
+							{{$page}}
+						</div>
+						<!--分页end-->
+						</div>
+					</div>
+				</div>
+				<!--内容区end-->
+			</div>
+			<!--内容区右侧end-->
+		</div>
+		<!--内容 end-->
+		<script type="text/javascript" src="public/html/js/plugin/oa.jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="public/html/js/plugin/oa.jquery.placeholder.min.js" ></script>
+		<script type="text/javascript" src="public/html/js/plugin/oa.respond.js"></script>
+		<script type="text/javascript" src="public/html/js/plugin/oa.bootstrap.min.js"></script>
+		<script type="text/javascript" src="public/html/js/plugin/jquery.mCustomScrollbar.concat.min.js" ></script>
+		<script type="text/javascript" src="public/html/js/oa.common.js"></script>
+		<script type="text/javascript" src="public/html/js/jquery.form.min.js" ></script>
+		<script type="text/javascript" src="org/view/js/org.js"></script>
+	</body>
+
+</html>

@@ -23,44 +23,81 @@
 	$workOverTime = getVal('workOverTime',2,'');
 	$workCoordinate = getVal('workCoordinate',2,'');
 	$workRange = getVal('workRange',1,'');
+	$workAddress = getVal('workAddress',2,'');
 
 	//验证
 	if($act == 'addSave'||$act == 'editSave'){
 		if($office == 0){
-			ErrorResturn('请选择所属部门');
+			$data['status'] = 'fail';
+			$data['message'] = '请选择所属部门';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if($groupName == ''){
-			ErrorResturn('请填写工作组名称');
+			$data['status'] = 'fail';
+			$data['message'] = '请填写工作组名称';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if(stringLen($groupName)>50){
-			ErrorResturn('工作组名称长度不能超过50个字符');
+			$data['status'] = 'fail';
+			$data['message'] = '工作组名称长度不能超过50个字符';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if($phone == ''){
-			ErrorResturn('请填写联系电话');
+			$data['status'] = 'fail';
+			$data['message'] = '请填写联系电话';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if(stringLen($phone)>50){
-			ErrorResturn('联系电话长度不能超过50个字符');
+			$data['status'] = 'fail';
+			$data['message'] = '联系电话长度不能超过50个字符';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
-		if(count($week) == 0){
-			ErrorResturn('请选择工作日');
+		if($week == ''){
+			$data['status'] = 'fail';
+			$data['message'] = '请选择工作日';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if($workBeginTime == ''){
-			ErrorResturn('请填写上班时间');
+			$data['status'] = 'fail';
+			$data['message'] = '请填写上班时间';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if(!preg_match("/^([0-1]\d|2[0-4]):([0-5]\d)$/",$workBeginTime)){
-			ErrorResturn('请填写正确的上班时间格式');
+			$data['status'] = 'fail';
+			$data['message'] = '请填写正确的上班时间格式';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if($workOverTime == ''){
-			ErrorResturn('请填写下班时间');
+			$data['status'] = 'fail';
+			$data['message'] = '请填写下班时间';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if(!preg_match("/^([0-1]\d|2[0-4]):([0-5]\d)$/",$workOverTime)){
-			ErrorResturn('请填写正确的下班时间格式');
+			$data['status'] = 'fail';
+			$data['message'] = '请填写正确的下班时间格式';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if(stringLen($workOverTime)>10){
-			ErrorResturn('下班时间长度不能超过10个字符');
+			$data['status'] = 'fail';
+			$data['message'] = '下班时间长度不能超过10个字符';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if($workRange == 0){
-			ErrorResturn('请选择打卡有效范围');
+			$data['status'] = 'fail';
+			$data['message'] = '请选择打卡有效范围';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 	}
 
@@ -70,6 +107,8 @@
 	//创建初始化数据
 	if($act == 'add'){
 		$action = 'addSave';
+		$workBeginTime = '08:00';
+		$workOverTime = '17:00';
 	}
 
 	//创建保存
@@ -78,7 +117,10 @@
 		//验证工作组是否已存在
 		$validate = $db->get_one($table,'where officeId='.$office.' and groupName="'.$groupName.'"','groupId');
 		if($validate){
-			ErrorResturn('工作组已存在，请重新填写');
+			$data['status'] = 'fail';
+			$data['message'] = '工作组已存在，请重新填写';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;	
 		}
 
 		$val['officeId'] = $office;
@@ -94,10 +136,15 @@
 
 		$result = $db->insert($table,$val);
 		if($result){
-			TipsRefreshResturn('操作成功','org.php?_f=group');
+			$data['status'] = 'success';
+			$data['message'] = '操作成功';
+			$data['url'] = 'org.php?_f=group';
 		}else{
-			ErrorResturn(ERRORTIPS);
+			$data['status'] = 'fail';
+			$data['message'] = ERRORTIPS;
 		}
+		$returnJson = json_encode($data);
+		echo $returnJson; exit;	
 
 	}
 
@@ -115,6 +162,8 @@
 		if($data){
 			$data['workWeek'] = explode(',',$data['workWeek']);
 			$rank = $data['rank'];
+			$workBeginTime = $data['workBeginTime'];
+			$workOverTime = $data['workOverTime'];
 		}
 
 	}
@@ -130,7 +179,10 @@
 		//验证工作组是否已存在
 		$validate = $db->get_one($table,'where officeId='.$office.' and groupName="'.$groupName.'" and groupId<>'.$id.'','groupId');
 		if($validate){
-			ErrorResturn('工作组已存在，请重新填写');
+			$data['status'] = 'fail';
+			$data['message'] = '工作组已存在，请重新填写';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;	
 		}
 
 		$val['officeId'] = $office;
@@ -146,10 +198,15 @@
 
 		$result = $db->update($table,$val,'where groupId='.$id.'');
 		if($result){
-			TipsRefreshResturn('操作成功','org.php?_f=group&page='.$page.'&s_name='.$s_name.'&s_office='.$s_office.'');
+			$data['status'] = 'success';
+			$data['message'] = '操作成功';
+			$data['url'] = 'org.php?_f=group&page='.$page.'&s_name='.$s_name.'&s_office='.$s_office.'';
 		}else{
-			ErrorResturn(ERRORTIPS);
+			$data['status'] = 'fail';
+			$data['message'] = ERRORTIPS;
 		}
+		$returnJson = json_encode($data);
+		echo $returnJson; exit;	
 
 	}
 
@@ -163,35 +220,7 @@
 	$smarty->assign('s_office',$s_office);
 	$smarty->assign('action',$action);
 	$smarty->assign('rank',$rank);
+	$smarty->assign('workBeginTime',$workBeginTime);
+	$smarty->assign('workOverTime',$workOverTime);
 
-	//根据所属部门给考勤设置赋值 ajax begin
-
-	if($act == 'getSign'){
-
-		$officeId = getVal('officeId',1,'');
-		if($officeId == 0){
-			$data['status'] = 'fail';
-			$data['message'] = '缺少办事处数据凭证！';
-			$returnJson = json_encode($data);
-			echo $returnJson; exit;
-		}
-
-		$office = $db->get_one(PRFIX.'office','where officeId='.$officeId.'','workWeek,workBeginTime,workOverTime,workCoordinate,workRange');
-		if($office){
-			$data['status'] = 'success';
-			$data['message'] = '';
-			$data['data'] = $office;
-		}else{
-			$data['status'] = 'fail';
-			$data['message'] = ERRORTIPS;
-		}
-		$returnJson = json_encode($data);
-		echo $returnJson; exit;
-
-	}
-
-	//根据所属部门给考勤设置赋值 ajax over
-
-
-	
 ?>

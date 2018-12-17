@@ -51,94 +51,184 @@
 	//验证
 	if($act == 'addSave'||$act == 'editSave'){
 		if($cnName == ''){
-			ErrorResturn('请填写企业中文名称');
+			$data['status'] = 'fail';
+			$data['message'] = '请填写企业中文名称';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if(stringLen($cnName)>60){
-			ErrorResturn('企业中文名称长度不能超过60个字符');
+			$data['status'] = 'fail';
+			$data['message'] = '企业中文名称长度不能超过60个字符';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if($enName == ''){
-			ErrorResturn('请填写企业英文名称');
+			$data['status'] = 'fail';
+			$data['message'] = '请填写企业英文名称';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if(stringLen($enName)>100){
-			ErrorResturn('企业英文名称长度不能超过100个字符');
+			$data['status'] = 'fail';
+			$data['message'] = '企业英文名称长度不能超过100个字符';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if($cnAddress == ''){
-			ErrorResturn('请填写企业注册地址');
+			$data['status'] = 'fail';
+			$data['message'] = '请填写企业注册地址';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if(stringLen($cnAddress)>60){
-			ErrorResturn('企业注册地址长度不能超过60个字符');
+			$data['status'] = 'fail';
+			$data['message'] = '企业注册地址长度不能超过60个字符';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if($enAddress == ''){
-			ErrorResturn('请填写企业英文注册地址');
+			$data['status'] = 'fail';
+			$data['message'] = '请填写企业英文注册地址';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if(stringLen($enAddress)>100){
-			ErrorResturn('企业英文注册地址长度不能超过100个字符');
+			$data['status'] = 'fail';
+			$data['message'] = '企业英文注册地址长度不能超过100个字符';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if($cnOfficeAddress == ''){
-			ErrorResturn('请填写办公地址');
+			$data['status'] = 'fail';
+			$data['message'] = '请填写办公地址';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if(stringLen($cnOfficeAddress)>60){
-			ErrorResturn('办公地址长度不能超过60个字符');
+			$data['status'] = 'fail';
+			$data['message'] = '办公地址长度不能超过60个字符';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if($enOfficeAddress == ''){
-			ErrorResturn('请填写英文办公地址');
+			$data['status'] = 'fail';
+			$data['message'] = '请填写英文办公地址';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if(stringLen($enOfficeAddress)>100){
-			ErrorResturn('英文办公地址长度不能超过100个字符');
+			$data['status'] = 'fail';
+			$data['message'] = '英文办公地址长度不能超过100个字符';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if($zipCode == ''){
-			ErrorResturn('请填写邮编');
+			$data['status'] = 'fail';
+			$data['message'] = '请填写邮编';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if(stringLen($zipCode)>50){
-			ErrorResturn('邮编长度不能超过50个字符');
+			$data['status'] = 'fail';
+			$data['message'] = '邮编长度不能超过50个字符';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if($phone == ''){
-			ErrorResturn('请填写联系电话');
+			$data['status'] = 'fail';
+			$data['message'] = '请填写联系电话';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if(stringLen($phone)>50){
-			ErrorResturn('联系电话长度不能超过50个字符');
+			$data['status'] = 'fail';
+			$data['message'] = '联系电话长度不能超过50个字符';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if($fax == ''){
-			ErrorResturn('请填写传真');
+			$data['status'] = 'fail';
+			$data['message'] = '请填写传真';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if(stringLen($fax)>50){
-			ErrorResturn('传真长度不能超过50个字符');
+			$data['status'] = 'fail';
+			$data['message'] = '传真长度不能超过50个字符';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if($cnBank == ''){
-			ErrorResturn('请填写企业开户行');
+			$data['status'] = 'fail';
+			$data['message'] = '请填写企业开户行';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if(stringLen($cnBank)>50){
-			ErrorResturn('企业开户行长度不能超过50个字符');
+			$data['status'] = 'fail';
+			$data['message'] = '企业开户行长度不能超过50个字符';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if($enBank == ''){
-			ErrorResturn('请填写企业开户行英文名称');
+			$data['status'] = 'fail';
+			$data['message'] = '请填写企业开户行英文名称';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if(stringLen($enBank)>100){
-			ErrorResturn('企业开户行英文名称长度不能超过100个字符');
+			$data['status'] = 'fail';
+			$data['message'] = '企业开户行英文名称长度不能超过100个字符';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if($cnBankAddress == ''){
-			ErrorResturn('请填写企业开户行地址');
+			$data['status'] = 'fail';
+			$data['message'] = '请填写企业开户行地址';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if(stringLen($cnBankAddress)>60){
-			ErrorResturn('企业开户行地址长度不能超过60个字符');
+			$data['status'] = 'fail';
+			$data['message'] = '企业开户行地址长度不能超过60个字符';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if($enBankAddress == ''){
-			ErrorResturn('请填写企业开户行英文地址');
+			$data['status'] = 'fail';
+			$data['message'] = '请填写企业开户行英文地址';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if(stringLen($enBankAddress)>100){
-			ErrorResturn('企业开户行英文地址长度不能超过100个字符');
+			$data['status'] = 'fail';
+			$data['message'] = '企业开户行英文地址长度不能超过100个字符';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if($bankAccount == ''){
-			ErrorResturn('请填写企业开户行银行帐号');
+			$data['status'] = 'fail';
+			$data['message'] = '请填写企业开户行银行帐号';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if(stringLen($bankAccount)>50){
-			ErrorResturn('企业开户行银行帐号长度不能超过50个字符');
+			$data['status'] = 'fail';
+			$data['message'] = '企业开户行银行帐号长度不能超过50个字符';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if($createDate == ''){
-			ErrorResturn('请填写企业成立日期');
+			$data['status'] = 'fail';
+			$data['message'] = '请填写企业成立日期';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if(!isdate($createDate)){
-			ErrorResturn('请填写正确的企业成立日期');
+			$data['status'] = 'fail';
+			$data['message'] = '请填写正确的企业成立日期';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 	}
 
@@ -153,7 +243,10 @@
 		//验证企业是否已存在
 		$validate = $db->get_one($table,'where cnName="'.$cnName.'" or enName="'.$enName.'"','companyId');
 		if($validate){
-			ErrorResturn('企业已存在，请重新填写');
+			$data['status'] = 'fail';
+			$data['message'] = '企业已存在，请重新填写';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 
 		$val['cnName'] = $cnName;
@@ -202,10 +295,15 @@
 				$db->insert(PRFIX.'company_other',$other);
 			}
 
-			TipsRefreshResturn('操作成功','org.php?_f=company');
+			$data['status'] = 'success';
+			$data['message'] = '操作成功';
+			$data['url'] = 'org.php?_f=company';
 		}else{
-			ErrorResturn(ERRORTIPS);
+			$data['status'] = 'fail';
+			$data['message'] = ERRORTIPS;
 		}
+		$returnJson = json_encode($data);
+		echo $returnJson; exit;
 
 	}
 
@@ -233,7 +331,10 @@
 		//验证名称是否已存在
 		$validate = $db->get_one($table,'where (cnName="'.$cnName.'" or enName="'.$enName.'") and companyId<>'.$id.'','companyId');
 		if($validate){
-			ErrorResturn('企业已存在，请重新填写');
+			$data['status'] = 'fail';
+			$data['message'] = '企业已存在，请重新填写';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 
 		$val['cnName'] = $cnName;
@@ -283,10 +384,15 @@
 				$db->insert(PRFIX.'company_other',$other);
 			}
 
-			TipsRefreshResturn('操作成功','org.php?_f=company&page='.$page.'&s_name='.$s_name.'');
+			$data['status'] = 'success';
+			$data['message'] = '操作成功';
+			$data['url'] = 'org.php?_f=company&page='.$page.'&s_name='.$s_name.'';
 		}else{
-			ErrorResturn(ERRORTIPS);
+			$data['status'] = 'fail';
+			$data['message'] = ERRORTIPS;
 		}
+		$returnJson = json_encode($data);
+		echo $returnJson; exit;
 
 	}
 

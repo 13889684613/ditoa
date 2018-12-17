@@ -63,12 +63,12 @@
 									</div>
 									
 								</div>
-								<div class = "roleUserInfo clearfix">
+								<div class = "roleUserInfo mT26 clearfix">
 									<div class = "form setNum clearfix">		
-										<p class = "formTitle">默认角色</p>
-										<div class = "checkBox clearfix">
-											<div class = "checkBtn mRight50"{{if $i.isDefault==1}} on{{/if}}>是</div>
-											<div class = "checkBtn"{{if $i.isDefault==0}} on{{/if}}>否</div>
+										<p class = "formTitle mR40">默认角色</p>
+										<div class = "checkBox pull-left mT10 clearfix">
+											<div class = "checkBtn mRight50" data-type="1" {{if $i.isDefault==1}} on{{/if}}>是</div>
+											<div class = "checkBtn" data-type="0" {{if $i.isDefault==0}} on{{/if}}>否</div>
 										</div>
 										<input type="hidden" name = "default" value="{{$i.isDefault}}" class = "formInput sexForm"/>
 									</div>
@@ -85,104 +85,158 @@
 												<span class="treeNavContentBoxPartImageNew{{if in_array('1',$i.orgPower)}} on{{/if}}"><span{{if in_array('1',$i.orgPower)}} class="on"{{/if}} data-id="01"></span>DIT组织架构</span>
 												<ul{{if in_array('1',$i.orgPower)}} class="on"{{/if}}>
 													<li{{if $i.orgPower[0]==1}} class="on"{{/if}} data-id="02">企业信息管理</li>
+													<input type="hidden" value="0" class="treeHidden" name="m1"/>
 													<li{{if $i.orgPower[1]==1}} class="on"{{/if}} data-id="03">办事处管理</li>
+													<input type="hidden" value="0" class="treeHidden" name="m2"/>
 													<li{{if $i.orgPower[2]==1}} class="on"{{/if}} data-id="04">工作组管理</li>
+													<input type="hidden" value="0" class="treeHidden" name="m3"/>
 													<li{{if $i.orgPower[3]==1}} class="on"{{/if}} data-id="05">企业组织架构</li>
+													<input type="hidden" value="0" class="treeHidden" name="m4"/>
 												</ul>
 											</div>
 											<div class="treeNavContentBoxPart{{if in_array('1',$i.humanAffairsPower)}} on{{/if}}">
 												<span class="treeNavContentBoxPartImageNew{{if in_array('1',$i.humanAffairsPower)}} on{{/if}}"><span{{if in_array('1',$i.humanAffairsPower)}} class="on"{{/if}} data-id="06"></span>人事管理</span>
 												<ul{{if in_array('1',$i.humanAffairsPower)}} class="on"{{/if}}>
 													<li{{if $i.humanAffairsPower[0]==1}} class="on"{{/if}} data-id="07">企业资质证件</li>
+													<input type="hidden" value="0" class="treeHidden" name="m5"/>
 													<li{{if $i.humanAffairsPower[1]==1}} class="on"{{/if}} data-id="08">员工管理</li>
+													<input type="hidden" value="0" class="treeHidden" name="m6"/>
 													<li{{if $i.humanAffairsPower[2]==1}} class="on"{{/if}} data-id="09">员工档案管理</li>
+													<input type="hidden" value="0" class="treeHidden" name="m7"/>
 													<li{{if $i.humanAffairsPower[3]==1}} class="on"{{/if}} data-id="10">离职员工</li>
+													<input type="hidden" value="0" class="treeHidden" name="m8"/>
 													<li{{if $i.humanAffairsPower[4]==1}} class="on"{{/if}} data-id="11">转正考核</li>
+													<input type="hidden" value="0" class="treeHidden" name="m9"/>
 													<li{{if $i.humanAffairsPower[5]==1}} class="on"{{/if}} data-id="12">转正考核审批</li>
+													<input type="hidden" value="0" class="treeHidden" name="m10"/>
 													<li{{if $i.humanAffairsPower[6]==1}} class="on"{{/if}} data-id="13">离职申请</li>
+													<input type="hidden" value="0" class="treeHidden" name="m11"/>
 													<li{{if $i.humanAffairsPower[7]==1}} class="on"{{/if}} data-id="14">离职申请审批</li>
+													<input type="hidden" value="0" class="treeHidden" name="m12"/>
 													<li{{if $i.humanAffairsPower[8]==1}} class="on"{{/if}} data-id="15">企业规章制度</li>
+													<input type="hidden" value="0" class="treeHidden" name="m13"/>
 													<li{{if $i.humanAffairsPower[9]==1}} class="on"{{/if}} data-id="16">邮箱申请</li>
+													<input type="hidden" value="0" class="treeHidden" name="m14"/>
 													<li{{if $i.humanAffairsPower[10]==1}} class="on"{{/if}} data-id="17">邮箱审批</li>
+													<input type="hidden" value="0" class="treeHidden" name="m15"/>
 												</ul>
 											</div>
 											<div class="treeNavContentBoxPart{{if in_array('1',$i.leavePower)}} on{{/if}}">
 												<span class="treeNavContentBoxPartImageNew{{if in_array('1',$i.leavePower)}} on{{/if}}"><span{{if in_array('1',$i.leavePower)}} class="on"{{/if}} data-id="18"></span>请假管理</span>
 												<ul{{if in_array('1',$i.leavePower)}} class="on"{{/if}}>
 													<li{{if $i.leavePower[0]==1}} class="on"{{/if}} data-id="19">申请假期</li>
+													<input type="hidden" value="0" class="treeHidden" name="m16"/>
 													<li{{if $i.leavePower[1]==1}} class="on"{{/if}} data-id="20">请假管理</li>
+													<input type="hidden" value="0" class="treeHidden" name="m17"/>
 													<li{{if $i.leavePower[2]==1}} class="on"{{/if}} data-id="21">假期审批</li>
+													<input type="hidden" value="0" class="treeHidden" name="m18"/>
 													<li{{if $i.leavePower[3]==1}} class="on"{{/if}} data-id="22">假期统计</li>
+													<input type="hidden" value="0" class="treeHidden" name="m19"/>
 												</ul>
 											</div>
 											<div class="treeNavContentBoxPart{{if in_array('1',$i.businessTravelPower)}} on{{/if}}">
 												<span class="treeNavContentBoxPartImageNew{{if in_array('1',$i.businessTravelPower)}} on{{/if}}"><span{{if in_array('1',$i.businessTravelPower)}} class="on"{{/if}} data-id="23"></span>出差管理</span>
 												<ul{{if in_array('1',$i.businessTravelPower)}} class="on"{{/if}}>
 													<li{{if $i.businessTravelPower[0]==1}} class="on"{{/if}} data-id="24">出差申请</li>
+													<input type="hidden" value="0" class="treeHidden" name="m20"/>
 													<li{{if $i.businessTravelPower[1]==1}} class="on"{{/if}} data-id="25">出差审批</li>
+													<input type="hidden" value="0" class="treeHidden" name="m21"/>
 												</ul>
 											</div>
 											<div class="treeNavContentBoxPart{{if in_array('1',$i.carPower)}} on{{/if}}">
 												<span class="treeNavContentBoxPartImageNew{{if in_array('1',$i.carPower)}} on{{/if}}"><span{{if in_array('1',$i.carPower)}} class="on"{{/if}} data-id="26"></span>车辆管理</span>
 												<ul{{if in_array('1',$i.carPower)}} class="on"{{/if}}>
 													<li{{if $i.carPower[0]==1}} class="on"{{/if}} data-id="27">车辆信息管理</li>
+													<input type="hidden" value="0" class="treeHidden" name="m22"/>
 													<li{{if $i.carPower[1]==1}} class="on"{{/if}} data-id="28">车辆行驶记录</li>
+													<input type="hidden" value="0" class="treeHidden" name="m23"/>
 													<li{{if $i.carPower[2]==1}} class="on"{{/if}} data-id="29">车辆行驶统计</li>
+													<input type="hidden" value="0" class="treeHidden" name="m24"/>
 													<li{{if $i.carPower[3]==1}} class="on"{{/if}} data-id="30">车辆维修管理</li>
+													<input type="hidden" value="0" class="treeHidden" name="m25"/>
 													<li{{if $i.carPower[4]==1}} class="on"{{/if}} data-id="31">车辆维修审批</li>
+													<input type="hidden" value="0" class="treeHidden" name="m26"/>
 													<li{{if $i.carPower[5]==1}} class="on"{{/if}} data-id="32">车辆维修费用管理</li>
+													<input type="hidden" value="0" class="treeHidden" name="m27"/>
 												</ul>
 											</div>
 											<div class="treeNavContentBoxPart{{if in_array('1',$i.officeToolPower)}} on{{/if}}">
 												<span class="treeNavContentBoxPartImageNew{{if in_array('1',$i.officeToolPower)}} on{{/if}}"><span{{if in_array('1',$i.officeToolPower)}} class="on"{{/if}} data-id="33"></span>办公备品管理</span>
 												<ul{{if in_array('1',$i.officeToolPower)}} class="on"{{/if}}>
 													<li{{if $i.officeToolPower[0]==1}} class="on"{{/if}} data-id="34">办公备品管理</li>
+													<input type="hidden" value="0" class="treeHidden" name="m28"/>
 													<li{{if $i.officeToolPower[1]==1}} class="on"{{/if}} data-id="35">办公备品审批</li>
+													<input type="hidden" value="0" class="treeHidden" name="m29"/>
 													<li{{if $i.officeToolPower[2]==1}} class="on"{{/if}} data-id="36">办公备品入库管理</li>
+													<input type="hidden" value="0" class="treeHidden" name="m30"/>
 													<li{{if $i.officeToolPower[3]==1}} class="on"{{/if}} data-id="37">办公备品分配记录</li>
+													<input type="hidden" value="0" class="treeHidden" name="m31"/>
 													<li{{if $i.officeToolPower[4]==1}} class="on"{{/if}} data-id="38">办公备品出库管理</li>
+													<input type="hidden" value="0" class="treeHidden" name="m32"/>
 													<li{{if $i.officeToolPower[5]==1}} class="on"{{/if}} data-id="39">办公备品使用统计</li>
+													<input type="hidden" value="0" class="treeHidden" name="m33"/>
 													<li{{if $i.officeToolPower[6]==1}} class="on"{{/if}} data-id="40">办公备品盘点</li>
+													<input type="hidden" value="0" class="treeHidden" name="m34"/>
 													<li{{if $i.officeToolPower[7]==1}} class="on"{{/if}} data-id="41">办公备品调转部门</li>
+													<input type="hidden" value="0" class="treeHidden" name="m35"/>
 													<li{{if $i.officeToolPower[8]==1}} class="on"{{/if}} data-id="42">调转部门审批</li>
+													<input type="hidden" value="0" class="treeHidden" name="m36"/>
 													<li{{if $i.officeToolPower[9]==1}} class="on"{{/if}} data-id="43">办公备品统计</li>
+													<input type="hidden" value="0" class="treeHidden" name="m37"/>
 												</ul>
 											</div>
 											<div class="treeNavContentBoxPart{{if in_array('1',$i.generalAffairsPower)}} on{{/if}}">
 												<span class="treeNavContentBoxPartImageNew{{if in_array('1',$i.generalAffairsPower)}} on{{/if}}"><span{{if in_array('1',$i.generalAffairsPower)}} class="on"{{/if}} data-id="44"></span>综合事务管理</span>
 												<ul{{if in_array('1',$i.generalAffairsPower)}} class="on"{{/if}}>
 													<li{{if $i.generalAffairsPower[0]==1}} class="on"{{/if}} data-id="45">企业规章制度管理</li>
+													<input type="hidden" value="0" class="treeHidden" name="m38"/>
 													<li{{if $i.generalAffairsPower[0]==1}} class="on"{{/if}} data-id="46">企业动态管理</li>
+													<input type="hidden" value="0" class="treeHidden" name="m39"/>
 													<li{{if $i.generalAffairsPower[0]==1}} class="on"{{/if}} data-id="47">企业资质证件管理</li>
+													<input type="hidden" value="0" class="treeHidden" name="m40"/>
 												</ul>
 											</div>
 											<div class="treeNavContentBoxPart{{if in_array('1',$i.systemPower)}} on{{/if}}">
 												<span class="treeNavContentBoxPartImageNew{{if in_array('1',$i.systemPower)}} on{{/if}}"><span{{if in_array('1',$i.systemPower)}} class="on"{{/if}} data-id="48"></span>系统运维管理</span>
 												<ul{{if in_array('1',$i.systemPower)}} class="on"{{/if}}>
 													<li{{if $i.systemPower[0]==1}} class="on"{{/if}} data-id="49">系统角色权限设置</li>
+													<input type="hidden" value="0" class="treeHidden" name="m41"/>
 													<li{{if $i.systemPower[1]==1}} class="on"{{/if}} data-id="50">审批角色权限设置</li>
+													<input type="hidden" value="0" class="treeHidden" name="m42"/>
 													<li{{if $i.systemPower[2]==1}} class="on"{{/if}} data-id="51">自定义审批流程设置</li>
+													<input type="hidden" value="0" class="treeHidden" name="m43"/>
 													<li{{if $i.systemPower[3]==1}} class="on"{{/if}} data-id="52">默认审批流程设置</li>
+													<input type="hidden" value="0" class="treeHidden" name="m44"/>
 													<li{{if $i.systemPower[4]==1}} class="on"{{/if}} data-id="53">职务管理</li>
+													<input type="hidden" value="0" class="treeHidden" name="m45"/>
 													<li{{if $i.systemPower[5]==1}} class="on"{{/if}} data-id="54">请假类型管理</li>
+													<input type="hidden" value="0" class="treeHidden" name="m46"/>
 													<li{{if $i.systemPower[6]==1}} class="on"{{/if}} data-id="55">备品类别管理</li>
+													<input type="hidden" value="0" class="treeHidden" name="m47"/>
 													<li{{if $i.systemPower[7]==1}} class="on"{{/if}} data-id="56">备品名称管理</li>
+													<input type="hidden" value="0" class="treeHidden" name="m48"/>
 												</ul>
 											</div>
 											<div class="treeNavContentBoxPart{{if in_array('1',$i.signPower)}} on{{/if}}">
 												<span class="treeNavContentBoxPartImageNew{{if in_array('1',$i.signPower)}} on{{/if}}"><span{{if in_array('1',$i.signPower)}} class="on"{{/if}} data-id="57"></span>考勤管理</span>
 												<ul{{if in_array('1',$i.signPower)}} class="on"{{/if}}>
 													<li{{if $i.signPower[0]==1}} class="on"{{/if}} data-id="58">考勤时间管理</li>
+													<input type="hidden" value="0" class="treeHidden" name="m49"/>
 													<li{{if $i.signPower[1]==1}} class="on"{{/if}} data-id="59">打卡记录</li>
+													<input type="hidden" value="0" class="treeHidden" name="m50"/>
 													<li{{if $i.signPower[2]==1}} class="on"{{/if}} data-id="60">打卡统计</li>
+													<input type="hidden" value="0" class="treeHidden" name="m51"/>
 													<li{{if $i.signPower[3]==1}} class="on"{{/if}} data-id="61">每日打卡记录</li>
+													<input type="hidden" value="0" class="treeHidden" name="m52"/>
 													<li{{if $i.signPower[4]==1}} class="on"{{/if}} data-id="62">打卡时间</li>
+													<input type="hidden" value="0" class="treeHidden" name="m53"/>
 												</ul>
 											</div>
 											<div class="treeNavContentBoxPart{{if in_array('1',$i.otherPower)}} on{{/if}}">
 												<span class="treeNavContentBoxPartImageNew{{if in_array('1',$i.otherPower)}} on{{/if}}"><span{{if in_array('1',$i.otherPower)}} class="on"{{/if}} data-id="63"></span>其它权限</span>
 												<ul{{if in_array('1',$i.otherPower)}} class="on"{{/if}}>
 													<li{{if $i.otherPower[0]==1}} class="on"{{/if}} data-id="64">查看背景调查</li>	
+													<input type="hidden" value="0" class="treeHidden" name="m54"/>
 												</ul>
 											</div>
 										</div>

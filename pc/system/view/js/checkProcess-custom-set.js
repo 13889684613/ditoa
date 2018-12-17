@@ -35,10 +35,38 @@ $(function() {
 	$('body').click(function() {
 		$('.retrievalsInputNavBox').hide();
 	})
+//	var text1 = '';
+//	var text1Id = '';
 	$('body').delegate('.retrievalsInputNav li', 'click', function() {
-		$(this).parents('.retrievalsInput').find('input').val($(this).text()).attr('data-type', '1')
-		$(this).parents('.StableTdR').find('input').val($(this).text()).attr('data-type', '1')
-		$('.retrievalsInputNavBox').hide()
+		var type = $(this).attr('data-type');
+		var _this = $(this);
+//		text1 = $(this).text();
+//		text1Id = $(this).attr('data-type');
+		$(this).parents('.retrievalsInput').find('.choseInput').val($(this).text()).attr('data-type',$(this).attr('data-type'))
+		$(this).parents('.StableTdR').find('.choseInput').val($(this).text()).attr('data-type',$(this).attr('data-type'))
+		$('.retrievalsInputNavBox').hide();
+		$(this).parent().find('.selectVal').val($(this).attr('data-type'));
+		if($(this).parents('.retrievalsInputNav').hasClass('selectLinkage') || $(this).parents('td').hasClass('selectLinkage')){
+			$(this).parents('.retrievalsInputBoxs').next().find('.retrievalsInputNav .li').remove();
+			$(this).parents('td').next().find('.retrievalsInputNav .li').remove();
+			$(this).parents('.retrievalsInputBoxs').next().find('.choseInputBm').val('').attr('data-type','0');
+			$(this).parents('td').next().find('.InputBm').val('').attr('data-type','0');
+			$.ajax({
+				type:"get",
+				url:"http://192.168.1.137:5555/ajax.php?act=getGroup&officeId="+type,
+				async:true,
+				dataType: 'json',
+				success:function(data){
+					if(data.status == 'success'){
+					for (var i = 0; i < data.data.length; i++) {
+						var html = $('<li class="li" data-type="'+data.data[i].groupId+'">'+data.data[i].groupName+'</li>');
+						_this.parents('.retrievalsInputBoxs').next().find('.mCSB_container').append(html)
+						_this.parents('td').next().find('.mCSB_container').append(html)
+					}
+				}
+				}
+			});
+		}
 	})
 
 	$(".startForm").datepicker({
@@ -87,7 +115,9 @@ $(function() {
 		} else if(choseInputJs == 0) {
 			popAlert('请选择发起审批角色')
 		} else {
-			$('.approvalInformationBox').show()
+			$('.approvalInformationBox').show();
+			$('.approvalInformationBox .InputQy').eq(0).val($('.choseInputQy').val()).attr('data-type',$('.choseInputQy').attr('data-type'));
+			$('.approvalInformationBox .InputBm').eq(0).val($('.choseInputBm').val()).attr('data-type',$('.choseInputBm').attr('data-type'));
 			//			$('form').submit();
 		}
 	})
@@ -146,8 +176,10 @@ $(function() {
 			} else {
 				i = y + 1;
 			}
-			var html = $('<div class="approval-information"><div class="approval-informationTitle">设置审批信息</div><table class="Stable"><tr><td width="84" class="td1 text-center"><span class="center-block">' + i + '</span></td><td class="td2" width="392"><div class="StableTd clearfix"><div class="StableTdL pull-left">所属企业<span class="must">*</span></div><div class="StableTdR pull-left"><input type="text" data-type="0" readonly="readonly" onfocus="this.blur()" class="InputQy" placeholder="请选择" /><div class="retrievalsInputNavBox"><ul class="retrievalsInputNav"><li>大连国际货运有限公司1</li><li>大连国际货运有限公司2</li><li>大连国际货运有限公司3</li><li>大连国际货运有限公司4</li><li>大连国际货运有限公司5</li><li>大连国际货运有限公司6</li></ul></div></div></div></td><td class="td3" width="398"><div class="StableTd clearfix"><div class="StableTdL pull-left">所属部门<span class="must">*</span></div><div class="StableTdR pull-left"><input type="text" readonly="readonly" onfocus="this.blur()" class="InputBm" data-type="0" placeholder="请选择" /><div class="retrievalsInputNavBox"><ul class="retrievalsInputNav"><li>大连国际货运有限公司1</li><li>大连国际货运有限公司2</li><li>大连国际货运有限公司3</li><li>大连国际货运有限公司4</li><li>大连国际货运有限公司5</li><li>大连国际货运有限公司6</li></ul></div></div></div></td><td class="td4" width="633"><div class="StableTd clearfix"><div class="StableTdL pull-left">所属角色<span class="must">*</span></div><div class="StableTdR pull-left"><input type="text" readonly="readonly" onfocus="this.blur()" class="InputJs" data-type="0" placeholder="请选择" /><div class="retrievalsInputNavBox"><ul class="retrievalsInputNav"><li>大连国际货运有限公司1</li><li>大连国际货运有限公司2</li><li>大连国际货运有限公司3</li><li>大连国际货运有限公司4</li><li>大连国际货运有限公司5</li><li>大连国际货运有限公司6</li></ul></div></div><div class="Sdel"><img src="images/del.jpg" alt="" /></div></div></td></tr></table></div>')
+//			var html = $('<div class="approval-information"><div class="approval-informationTitle">设置审批信息</div><table class="Stable"><tr><td width="84" class="td1 text-center"><span class="center-block">' + i + '</span></td><td class="td2" width="392"><div class="StableTd clearfix"><div class="StableTdL pull-left">所属企业<span class="must">*</span></div><div class="StableTdR pull-left"><input type="text" data-type="0" readonly="readonly" onfocus="this.blur()" class="InputQy" placeholder="请选择" /><div class="retrievalsInputNavBox"><ul class="retrievalsInputNav"><li>大连国际货运有限公司1</li><li>大连国际货运有限公司2</li><li>大连国际货运有限公司3</li><li>大连国际货运有限公司4</li><li>大连国际货运有限公司5</li><li>大连国际货运有限公司6</li></ul></div></div></div></td><td class="td3" width="398"><div class="StableTd clearfix"><div class="StableTdL pull-left">所属部门<span class="must">*</span></div><div class="StableTdR pull-left"><input type="text" readonly="readonly" onfocus="this.blur()" class="InputBm" data-type="0" placeholder="请选择" /><div class="retrievalsInputNavBox"><ul class="retrievalsInputNav"><li>大连国际货运有限公司1</li><li>大连国际货运有限公司2</li><li>大连国际货运有限公司3</li><li>大连国际货运有限公司4</li><li>大连国际货运有限公司5</li><li>大连国际货运有限公司6</li></ul></div></div></div></td><td class="td4" width="633"><div class="StableTd clearfix"><div class="StableTdL pull-left">所属角色<span class="must">*</span></div><div class="StableTdR pull-left"><input type="text" readonly="readonly" onfocus="this.blur()" class="InputJs" data-type="0" placeholder="请选择" /><div class="retrievalsInputNavBox"><ul class="retrievalsInputNav"><li>大连国际货运有限公司1</li><li>大连国际货运有限公司2</li><li>大连国际货运有限公司3</li><li>大连国际货运有限公司4</li><li>大连国际货运有限公司5</li><li>大连国际货运有限公司6</li></ul></div></div><div class="Sdel"><img src="images/del.jpg" alt="" /></div></div></td></tr></table></div>')
+			var html = $('.approval-informationBox .approval-information').eq($('.approval-informationBox .approval-information').length - 1).clone();
 			$('.approval-informationBox').append(html);
+			$('.approval-informationBox .approval-information').eq($('.approval-informationBox .approval-information').length - 1).find('.Stable tr').eq(0).find('td').eq(0).find('span').text(i);
 			$('input').placeholder();
 		}
 	})

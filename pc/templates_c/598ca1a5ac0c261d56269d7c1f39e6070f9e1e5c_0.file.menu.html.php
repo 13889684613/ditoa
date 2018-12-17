@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-14 16:51:20
+/* Smarty version 3.1.29, created on 2018-12-17 16:34:22
   from "F:\website\ditoaCoder\ditoa\pc\public\html\menu.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c136f08d7f560_11109778',
+  'unifunc' => 'content_5c175f8ee099f9_52561395',
   'file_dependency' => 
   array (
     '598ca1a5ac0c261d56269d7c1f39e6070f9e1e5c' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\public\\html\\menu.html',
-      1 => 1544777480,
+      1 => 1545035659,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5c136f08d7f560_11109778 ($_smarty_tpl) {
+function content_5c175f8ee099f9_52561395 ($_smarty_tpl) {
 ?>
 			<div class="contentLeftNav col-lg-2 row">
 				<div class="contentLeftNavListTop col-lg-12">
@@ -33,23 +33,23 @@ function content_5c136f08d7f560_11109778 ($_smarty_tpl) {
 						<div class="contentNavListText"><img src="public/html/images/nav-image-b.png" alt="" class="navLogo" />DIT组织架构</div>
 						<ul class="contentNavListMore">
 							<?php if ($_smarty_tpl->tpl_vars['menuOrg']->value[0] == 1) {?>
-							<li>
-								<a href="">企业信息管理</a>
+							<li<?php if ($_smarty_tpl->tpl_vars['companyMenu']->value == 1) {?> class="active"<?php }?>>
+								<a href="org.php?_f=company">企业信息管理</a>
 							</li>
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuOrg']->value[1] == 1) {?>
-							<li class="active">
-								<a href="">办事处管理</a>
+							<li<?php if ($_smarty_tpl->tpl_vars['officeMenu']->value == 1) {?> class="active"<?php }?>>
+								<a href="org.php?_f=office">办事处管理</a>
 							</li>
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuOrg']->value[2] == 1) {?>
-							<li>
-								<a href="">工作组管理</a>
+							<li<?php if ($_smarty_tpl->tpl_vars['groupMenu']->value == 1) {?> class="active"<?php }?>>
+								<a href="org.php?_f=group">工作组管理</a>
 							</li>
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuOrg']->value[3] == 1) {?>
-							<li>
-								<a href="">企业组织架构</a>
+							<li<?php if ($_smarty_tpl->tpl_vars['orgsMenu']->value == 1) {?> class="active"<?php }?>>
+								<a href="org.php?_f=org">企业组织架构</a>
 							</li>
 							<?php }?>
 						</ul>
@@ -266,8 +266,8 @@ function content_5c136f08d7f560_11109778 ($_smarty_tpl) {
 						<div class="contentNavListText"><img src="public/html/images/nav-image-h.png" alt="" class="navLogo" />综合事务管理</div>
 						<ul class="contentNavListMore">
 							<?php if ($_smarty_tpl->tpl_vars['menuGeneralAffairs']->value[0] == 1) {?>
-							<li>
-								<a href="">企业规章制度管理</a>
+							<li<?php if ($_smarty_tpl->tpl_vars['rulesMenu']->value == 1) {?> class="active"<?php }?>>
+								<a href="general-affairs.php?_f=rules">企业规章制度管理</a>
 							</li>
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuGeneralAffairs']->value[1] == 1) {?>
@@ -276,8 +276,8 @@ function content_5c136f08d7f560_11109778 ($_smarty_tpl) {
 							</li>
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuGeneralAffairs']->value[2] == 1) {?>
-							<li>
-								<a href="">企业资质证件管理</a>
+							<li<?php if ($_smarty_tpl->tpl_vars['certificateMenu']->value == 1) {?> class="active"<?php }?>>
+								<a href="general-affairs.php?_f=certificate">企业资质证件管理</a>
 							</li>
 							<?php }?>
 						</ul>
@@ -289,43 +289,43 @@ function content_5c136f08d7f560_11109778 ($_smarty_tpl) {
 						<div class="contentNavListText"><img src="public/html/images/nav-image-j.png" alt="" class="navLogo" />系统运维管理</div>
 						<ul class="contentNavListMore">
 							<?php if ($_smarty_tpl->tpl_vars['menuSystem']->value[0] == 1) {?>
-							<li>
-								<a href="">系统角色权限设置</a>
+							<li<?php if ($_smarty_tpl->tpl_vars['roleMenu']->value == 1) {?> class="active"<?php }?>>
+								<a href="system.php?_f=system-role">系统角色权限设置</a>
 							</li>
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuSystem']->value[1] == 1) {?>
-							<li>
-								<a href="">审批角色权限设置</a>
+							<li<?php if ($_smarty_tpl->tpl_vars['checkRoleMenu']->value == 1) {?> class="active"<?php }?>>
+								<a href="system.php?_f=check-role">审批角色权限设置</a>
 							</li>
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuSystem']->value[2] == 1) {?>
-							<li>
-								<a href="">自定义审批流程设置</a>
+							<li<?php if ($_smarty_tpl->tpl_vars['checkProcessMenu']->value == 1) {?> class="active"<?php }?>>
+								<a href="system.php?_f=checkProcess-custom">自定义审批流程设置</a>
 							</li>
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuSystem']->value[3] == 1) {?>
-							<li>
-								<a href="">默认审批流程设置</a>
+							<li<?php if ($_smarty_tpl->tpl_vars['checkProcessDefaultMenu']->value == 1) {?> class="active"<?php }?>>
+								<a href="system.php?_f=checkProcess-default">默认审批流程设置</a>
 							</li>
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuSystem']->value[4] == 1) {?>
-							<li>
-								<a href="">职务管理</a>
+							<li<?php if ($_smarty_tpl->tpl_vars['postMenu']->value == 1) {?> class="active"<?php }?>>
+								<a href="system.php?_f=post">职务管理</a>
 							</li>
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuSystem']->value[5] == 1) {?>
-							<li>
-								<a href="">请假类型管理</a>
+							<li<?php if ($_smarty_tpl->tpl_vars['leaveTypeMenu']->value == 1) {?> class="active"<?php }?>>
+								<a href="system.php?_f=leave-type">请假类型管理</a>
 							</li>
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuSystem']->value[6] == 1) {?>
-							<li>
-								<a href="">备品类别管理</a>
+							<li<?php if ($_smarty_tpl->tpl_vars['officeToolTypeMenu']->value == 1) {?> class="active"<?php }?>>
+								<a href="system.php?_f=officeTool-type">备品类别管理</a>
 							</li>
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuSystem']->value[7] == 1) {?>
-							<li>
-								<a href="">备品名称管理</a>
+							<li<?php if ($_smarty_tpl->tpl_vars['officeToolNameMenu']->value == 1) {?> class="active"<?php }?>>
+								<a href="system.php?_f=officeTool-name">备品名称管理</a>
 							</li>
 							<?php }?>
 						</ul>
@@ -366,7 +366,7 @@ function content_5c136f08d7f560_11109778 ($_smarty_tpl) {
 					<?php }?>
 					<div class="contentNavList col-md-12 row<?php echo $_smarty_tpl->tpl_vars['messageMenu']->value;?>
 ">
-						<div class="contentNavListText"><img src="public/html/images/nav-image-i.png" alt="" class="navLogo" />系统消息</div>
+						<div class="contentNavListText"><img src="public/html/images/nav-image-k.png" alt="" class="navLogo" />系统消息</div>
 						<ul class="contentNavListMore">
 							<li>
 								<a href="">系统消息</a>

@@ -22,10 +22,16 @@
 	//验证
 	if($act == 'addSave'||$act == 'editSave'){
 		if($title == ''){
-			ErrorResturn('请填写规章制度名称');
+			$data['status'] = 'fail';
+			$data['message'] = '请填写规章制度名称';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if(stringLen($title)>100){
-			ErrorResturn('规章制度名称长度需在100字以内');
+			$data['status'] = 'fail';
+			$data['message'] = '规章制度名称长度需在100字以内';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 	}
 
@@ -67,7 +73,10 @@
 		}
 
 		if($attach == ''){
-			ErrorResturn('请上传制度文件！');
+			$data['status'] = 'fail';
+			$data['message'] = '请上传制度文件！';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 
 		$val['title'] = $title;
@@ -77,10 +86,15 @@
 
 		$result = $db->insert($table,$val);
 		if($result){
-			TipsRefreshResturn('操作成功','general-affairs.php?_f=rules');
+			$data['status'] = 'success';
+			$data['message'] = '操作成功';
+			$data['url'] = 'general-affairs.php?_f=rules';
 		}else{
-			ErrorResturn(ERRORTIPS);
+			$data['status'] = 'fail';
+			$data['message'] = ERRORTIPS;
 		}
+		$returnJson = json_encode($data);
+		echo $returnJson; exit;
 
 	}
 
@@ -145,11 +159,15 @@
 
 		$result = $db->update($table,$val,'where rulesId='.$id.'');
 		if($result){
-			$url .= 'general-affairs.php?_f=rules&page='.$page.'&s_name='.$s_name.'';
-			TipsRefreshResturn('操作成功',$url);
+			$data['status'] = 'success';
+			$data['message'] = '操作成功';
+			$data['url'] = 'general-affairs.php?_f=rules&page='.$page.'&s_name='.$s_name.'';
 		}else{
-			ErrorResturn(ERRORTIPS);
+			$data['status'] = 'fail';
+			$data['message'] = ERRORTIPS;
 		}
+		$returnJson = json_encode($data);
+		echo $returnJson; exit;
 
 	}
 

@@ -57,9 +57,6 @@ $(function(){
 		scrollInertia: 0,
     });
     
-    $('.formBtnCancel').click(function(){
-        location.reload();
-    })
 	$('.headerhoner').dotdotdot();
 	$('input').placeholder();
 	
@@ -102,7 +99,7 @@ $(function(){
 		if(!$(this).hasClass('on')) {
 			$(this).parent().find('.checkBtn').removeClass('on'); 
 			$(this).addClass('on');
-			$(this).parent().next('.formInput').val($(this).text());
+			$(this).parent().next('.formInput').val($(this).data('type'));
 		}
 	})
 	$('input').placeholder();
@@ -114,7 +111,7 @@ $(function(){
 	});
 
 	$('.formBtnCancel').click(function(){
-		location.reload();
+		history.go(-1);
 	})
 })
 

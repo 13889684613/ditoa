@@ -33,6 +33,7 @@ $(function(){
         var id = $(this).data('id');
         if($(this).hasClass('on')){
             $(this).removeClass('on').parents('.treeNavContentBoxPart').find('ul li').removeClass('on');
+            $(this).parents('.treeNavContentBoxPart').find('input').val('0');
             $('.cloneItem').each(function(){
                 if($(this).data('id') == id) {
                     $(this).hide().removeClass('on');
@@ -44,9 +45,11 @@ $(function(){
                 }
             })
 		}else{
-            $(this).addClass('on').parents('.treeNavContentBoxPart').addClass('on');
-            $(this).addClass('on').parents('.treeNavContentBoxPart').find('.treeNavContentBoxPartImageNew').addClass('on');
-            $(this).addClass('on').parents('.treeNavContentBoxPart').find('ul li').addClass('on');
+            $(this).addClass('on')
+            $(this).parents('.treeNavContentBoxPart').addClass('on');
+            $(this).parents('.treeNavContentBoxPart').find('.treeNavContentBoxPartImageNew').addClass('on');
+            $(this).parents('.treeNavContentBoxPart').find('ul li').addClass('on');
+            $(this).parents('.treeNavContentBoxPart').find('input').val('1');
             $('.cloneItem').each(function(){
                 if($(this).data('id') == id) {
                     $(this).show().addClass('on');
@@ -72,6 +75,7 @@ $(function(){
             $('.cloneItem').each(function(){
                 if($(this).data('id') == id) {
                     $(this).hide().removeClass('on');
+                    $(this).next('input').val('0');
                     if($(this).parent().find('.on').length == 0){
                         $(this).parent().hide().removeClass('on');
                         $(this).parent().prev('.treeNavContentBoxPartImageNewClone').hide().removeClass('on');
@@ -84,6 +88,7 @@ $(function(){
             })
 		}else{
             $(this).addClass('on');
+            $(this).next('input').val('1');
             if(!spanDiv.hasClass('on')) {
                 spanDiv.addClass('on');
             }

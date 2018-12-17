@@ -16,12 +16,10 @@
 	$where = '';
 
 	//检索
-	if($act == 'searchPost'){
-		$s_name = getVal('s_name',2,'');
-		if($s_name!=''){
-			$where .= 'where officeName like "%'.$s_name.'%"';
-			$track .= '&s_name='.$s_name.'';
-		}
+	$s_name = getVal('s_name',2,'');
+	if($s_name!=''){
+		$where .= 'where officeName like "%'.$s_name.'%"';
+		$track .= '&s_name='.$s_name.'';
 	}
 
 	//页面分页配置
@@ -45,9 +43,11 @@
 	$smarty->assign('data',$data);
 	$smarty->assign('page',$page->show_link(1));
 	$smarty->assign('curPage',$curPage);
+	$smarty->assign('s_name',$s_name);
+	$smarty->assign('track',$track);
 
 	//操作返回地址
-	$url = $router.$track;
+	$url = $router.'&page='.$curPage.''.$track;
 
 	//删除
 	if($act == 'remove'){

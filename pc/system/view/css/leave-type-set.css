@@ -39,6 +39,7 @@
 .form {
     float: left;
     margin-bottom: 0;
+    line-height: 42px;
 }
 
 .formTitle {
@@ -360,3 +361,25 @@
 @media (min-width: 1280px) and (max-width: 1550px) {
     
 }
+
+.mT0{
+    margin-top: 0px!important;
+}
+
+.mT26 {
+    margin-top: 26px!important;
+}
+
+.w528{
+    width: 528px!important;
+}
+
+.w300{
+    width: 300px!important;
+}
+
+.tips.w300{
+    left: -141px!important;
+}
+
+

@@ -1,0 +1,221 @@
+/* 
+    # 企业详情编辑
+	# Bowen
+	# 2018-11-21
+*/
+
+.contentForm {
+    width: 100%;
+    background-color: #f6f6fa;
+    padding-bottom: 0;
+}
+
+.addApplyTitle {
+    padding-left: 29px;
+    font-size: 20px;
+    color: #07196c;
+    background: url(/public/html/images/formTitle.jpg) no-repeat left center;
+    margin: 0;
+    margin-bottom: 38px;
+}
+
+.infoBox {
+    width: 100%;
+    padding: 25px 0 40px;
+    background-color: #fff;
+    margin-bottom: 32px;
+    border-radius: 5px;
+}
+
+.companyInfo {
+    padding-bottom: 0;
+}
+
+.businessScope .form {
+    margin-bottom: 0;
+}
+
+.businessScope textarea {
+    width: 500px;
+    height: 110px;
+    line-height: 2;
+    padding-top: 5px;
+}
+
+.formAllBox {
+    width: 100%;
+    height: auto;
+    padding-left: 1.5%;
+    padding-right: 3%;
+}
+
+.formBox {
+    padding-top: 0;
+}
+
+.formBox.w42 {
+    width: 42%;
+}
+
+.formBox.w35 {
+    width: 35%;
+}
+
+.formBox.w23 {
+    width: 23%;
+}
+
+.formBox.w42 .form {
+    width: 64%;
+}
+
+.formBox.w35 .form {
+    width: 69%;
+}
+
+.formBox.w23 .form {
+    width: 94%;
+}
+
+.form {
+    margin-bottom: 32px;
+}
+
+.formInput {
+    width: 100%;
+}
+
+.tips {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    font-size: 14px;
+    color: #999;
+}
+
+.otherAllbox {
+    margin-left: 1.5%;
+    margin-right: 3%;
+}
+
+.otherForm {
+    width: 100%;
+    background-color: #f6f6fa;
+    padding: 30px 0;
+    padding-left: 2%;
+    padding-right: 4%;
+    margin-bottom: 10px;
+}
+
+.otherFormBox {
+    float: left;
+    margin-top: 4px;
+}
+
+.otherFormBox p {
+    width: 10%;
+    height: 100%;
+    float: left;
+    line-height: 42px;
+    font-size: 14px;
+    color: #222222;
+    margin: 0;
+}
+
+.otherFormBox input {
+    float: left;
+    width: 100px;
+    height: 42px;
+    line-height: 40px;
+    border: 1px solid #e8e8e8;
+    border-radius: 3px;
+    font-size: 14px;
+    padding: 0 10px;
+}
+
+.otherFormBox input::-webkit-input-placeholder{ 
+	color: #aaa; 
+} 
+
+.otherFormBox input::-webkit-input-placeholder{ 
+	color: #aaa; 
+} 
+
+.otherFormBox input::-moz-placeholder{ 
+	color: #aaa; 
+} 
+
+.otherFormBox input:-ms-input-placeholder{
+	color: #aaa; 
+}
+
+.otherFormBox.w28 {
+    width: 320px;
+    margin-right: 5%;
+}
+
+.otherFormBox.w28 p {
+    width: 13%;
+}
+
+.otherFormBox.w28 input {
+    width: 86%;
+}
+
+.otherFormBox.w33 {
+    width: 470px;
+}
+
+.otherFormBox.w33 p {
+    width: 15%;
+}
+
+.otherFormBox.w33 input {
+    width: 84%;
+}
+
+.formBtnsBox {
+    margin-top: 0;
+}
+
+.addBtn {
+    float: right;
+    width: 60px;
+    height: 50px;
+    background: url(/org/view/images/add_btn_icon.png) no-repeat center;
+    cursor: pointer;
+}
+
+.removeBtn {
+    float: right;
+    width: 60px;
+    height: 50px;
+    background: url(/org/view/images/remove_btn_icon.png) no-repeat center;
+    cursor: pointer;
+}
+
+/* 2018-11-30 新增 start*/
+.rightTxt {
+    display: block;
+    padding-top: 70px;
+    font-size: 14px;
+    color: #999;
+}
+/* 2018-11-30 新增 end*/
+
+@media (min-width: 1200px) and (max-width: 1420px) {
+    .otherFormBox.w28 {
+        width: 320px;
+        margin-right: 2%;
+    }
+    .otherFormBox.w28 p {
+        width: 10%;
+    }
+    
+    .otherFormBox.w28 input {
+        width: 89%;
+    }
+    .otherFormBox.w33 {
+        width: 400px;
+    }
+}

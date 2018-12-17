@@ -29,19 +29,34 @@
 	//验证
 	if($act == 'addSave'||$act == 'editSave'){
 		if($company == 0){
-			ErrorResturn('请选择所属企业');
+			$data['status'] = 'fail';
+			$data['message'] = '请选择所属企业';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if($cerName == ''){
-			ErrorResturn('请填写证件名称');
+			$data['status'] = 'fail';
+			$data['message'] = '请填写证件名称';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if(stringLen($cerName)>50){
-			ErrorResturn('证件名称长度需在50字以内');
+			$data['status'] = 'fail';
+			$data['message'] = '证件名称长度需在50字以内';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if($overDate == ''){
-			ErrorResturn('请填写证件到期日');
+			$data['status'] = 'fail';
+			$data['message'] = '请填写证件到期日';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if(!isdate($overDate)){
-			ErrorResturn('请填写正确的证件到期日');
+			$data['status'] = 'fail';
+			$data['message'] = '请填写正确的证件到期日';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 	}
 
@@ -83,7 +98,10 @@
 		}
 
 		if($cerImg == ''){
-			ErrorResturn('请上传证件文件！');
+			$data['status'] = 'fail';
+			$data['message'] = '请上传证件文件！';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 
 		$val['companyId'] = $company;
@@ -96,10 +114,15 @@
 
 		$result = $db->insert($table,$val);
 		if($result){
-			TipsRefreshResturn('操作成功','general-affairs.php?_f=certificate');
+			$data['status'] = 'success';
+			$data['message'] = '操作成功';
+			$data['url'] = 'general-affairs.php?_f=certificate';
 		}else{
-			ErrorResturn(ERRORTIPS);
+			$data['status'] = 'fail';
+			$data['message'] = ERRORTIPS;
 		}
+		$returnJson = json_encode($data);
+		echo $returnJson; exit;
 
 	}
 
@@ -167,11 +190,15 @@
 
 		$result = $db->update($table,$val,'where cerId='.$id.'');
 		if($result){
-			$url .= 'general-affairs.php?_f=certificate&page='.$page.'&s_company='.$s_company.'&s_name='.$s_name.'';
-			TipsRefreshResturn('操作成功',$url);
+			$data['status'] = 'success';
+			$data['message'] = '操作成功';
+			$data['url'] = 'general-affairs.php?_f=certificate&page='.$page.'&s_company='.$s_company.'&s_name='.$s_name.'';
 		}else{
-			ErrorResturn(ERRORTIPS);
+			$data['status'] = 'fail';
+			$data['message'] = ERRORTIPS;
 		}
+		$returnJson = json_encode($data);
+		echo $returnJson; exit;
 
 	}
 

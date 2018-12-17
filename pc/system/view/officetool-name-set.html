@@ -62,9 +62,10 @@
 										<input type="text" name = "toolName" value="{{$i.toolName}}" placeholder = "请填写备品名称" class = "formInput nameInput" autocomplete="off"/>
 									</div>
 								</div>
-								<div class = "roleUserInfo clearfix">
-									<div class = "form setNum clearfix">		
-										<p class = "formTitle">备品类别</p>
+								<div class = "roleUserInfo mT26 clearfix">
+									<div class = "retrievalsInput pull-left mR40 clearfix">
+										<label class="lable_w">备品类别</label>		
+										<!-- <p class = "formTitle">备品类别</p> -->
 										<input type="text" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputBm categoryForm" placeholder="请选择" name="category" value="{{$i.categoryId}}" data-type='0' />
 										<div class="retrievalsInputNavBox">
 											<ul class="retrievalsInputNav">
@@ -72,14 +73,16 @@
 												{{foreach item=c name=categorys from=$categorys}}
 												<li data-type='{{$c.categoryId}}'>{{$c.categoryName}}</li>
 												{{/foreach}}
+
+												<input type="hidden" class="selectVal" value="" autocomplete="off">
 											</ul>
 										</div>
 									</div>
 									<div class = "form setNum clearfix">		
 										<p class = "formTitle">生成备品编号</p>
-										<div class = "checkBox clearfix">
-											<div class = "checkBtn mRight50"{{if $i.isFixedAssets==1}} on{{/if}}>是</div>
-											<div class = "checkBtn"{{if $i.isFixedAssets==0}} on{{/if}}>否</div>
+										<div class = "checkBox pull-left mT10 clearfix">
+											<div class = "checkBtn mRight50"{{if $i.isFixedAssets==1}} on{{/if}} data-type="1">是</div>
+											<div class = "checkBtn"{{if $i.isFixedAssets==0}} on{{/if}} data-tyoe="0">否</div>
 										</div>
 										<input type="hidden" name = "createNumber" value="{{$i.isFixedAssets}}" class = "formInput createForm"/>
 									</div>

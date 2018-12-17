@@ -244,3 +244,6 @@
 	}
 }
 							
+.mCS-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{
+	width: 8px;
+}
