@@ -67,8 +67,8 @@
 									<div class = "form setNum clearfix">		
 										<p class = "formTitle mR40">默认角色</p>
 										<div class = "checkBox pull-left mT10 clearfix">
-											<div class = "checkBtn mRight50" data-type="1" {{if $i.isDefault==1}} on{{/if}}>是</div>
-											<div class = "checkBtn" data-type="0" {{if $i.isDefault==0}} on{{/if}}>否</div>
+											<div class = "checkBtn mRight50{{if $i.isDefault==1}} on{{/if}}" data-type="1">是</div>
+											<div class = "checkBtn{{if $i.isDefault==0}} on{{/if}}" data-type="0">否</div>
 										</div>
 										<input type="hidden" name = "default" value="{{$i.isDefault}}" class = "formInput sexForm"/>
 									</div>
@@ -85,158 +85,166 @@
 												<span class="treeNavContentBoxPartImageNew{{if in_array('1',$i.orgPower)}} on{{/if}}"><span{{if in_array('1',$i.orgPower)}} class="on"{{/if}} data-id="01"></span>DIT组织架构</span>
 												<ul{{if in_array('1',$i.orgPower)}} class="on"{{/if}}>
 													<li{{if $i.orgPower[0]==1}} class="on"{{/if}} data-id="02">企业信息管理</li>
-													<input type="hidden" value="0" class="treeHidden" name="m1"/>
+													<input type="hidden" value="{{$i.orgPower[0]}}" class="treeHidden" name="m1"/>
 													<li{{if $i.orgPower[1]==1}} class="on"{{/if}} data-id="03">办事处管理</li>
-													<input type="hidden" value="0" class="treeHidden" name="m2"/>
+													<input type="hidden" value="{{$i.orgPower[1]}}" class="treeHidden" name="m2"/>
 													<li{{if $i.orgPower[2]==1}} class="on"{{/if}} data-id="04">工作组管理</li>
-													<input type="hidden" value="0" class="treeHidden" name="m3"/>
+													<input type="hidden" value="{{$i.orgPower[2]}}" class="treeHidden" name="m3"/>
 													<li{{if $i.orgPower[3]==1}} class="on"{{/if}} data-id="05">企业组织架构</li>
-													<input type="hidden" value="0" class="treeHidden" name="m4"/>
+													<input type="hidden" value="{{$i.orgPower[3]}}" class="treeHidden" name="m4"/>
 												</ul>
 											</div>
 											<div class="treeNavContentBoxPart{{if in_array('1',$i.humanAffairsPower)}} on{{/if}}">
 												<span class="treeNavContentBoxPartImageNew{{if in_array('1',$i.humanAffairsPower)}} on{{/if}}"><span{{if in_array('1',$i.humanAffairsPower)}} class="on"{{/if}} data-id="06"></span>人事管理</span>
 												<ul{{if in_array('1',$i.humanAffairsPower)}} class="on"{{/if}}>
 													<li{{if $i.humanAffairsPower[0]==1}} class="on"{{/if}} data-id="07">企业资质证件</li>
-													<input type="hidden" value="0" class="treeHidden" name="m5"/>
+													<input type="hidden" value="{{$i.humanAffairsPower[0]}}" class="treeHidden" name="m5"/>
 													<li{{if $i.humanAffairsPower[1]==1}} class="on"{{/if}} data-id="08">员工管理</li>
-													<input type="hidden" value="0" class="treeHidden" name="m6"/>
+													<input type="hidden" value="{{$i.humanAffairsPower[1]}}" class="treeHidden" name="m6"/>
 													<li{{if $i.humanAffairsPower[2]==1}} class="on"{{/if}} data-id="09">员工档案管理</li>
-													<input type="hidden" value="0" class="treeHidden" name="m7"/>
+													<input type="hidden" value="{{$i.humanAffairsPower[2]}}" class="treeHidden" name="m7"/>
 													<li{{if $i.humanAffairsPower[3]==1}} class="on"{{/if}} data-id="10">离职员工</li>
-													<input type="hidden" value="0" class="treeHidden" name="m8"/>
+													<input type="hidden" value="{{$i.humanAffairsPower[3]}}" class="treeHidden" name="m8"/>
 													<li{{if $i.humanAffairsPower[4]==1}} class="on"{{/if}} data-id="11">转正考核</li>
-													<input type="hidden" value="0" class="treeHidden" name="m9"/>
+													<input type="hidden" value="{{$i.humanAffairsPower[4]}}" class="treeHidden" name="m9"/>
 													<li{{if $i.humanAffairsPower[5]==1}} class="on"{{/if}} data-id="12">转正考核审批</li>
-													<input type="hidden" value="0" class="treeHidden" name="m10"/>
+													<input type="hidden" value="{{$i.humanAffairsPower[5]}}" class="treeHidden" name="m10"/>
 													<li{{if $i.humanAffairsPower[6]==1}} class="on"{{/if}} data-id="13">离职申请</li>
-													<input type="hidden" value="0" class="treeHidden" name="m11"/>
+													<input type="hidden" value="{{$i.humanAffairsPower[6]}}" class="treeHidden" name="m11"/>
 													<li{{if $i.humanAffairsPower[7]==1}} class="on"{{/if}} data-id="14">离职申请审批</li>
-													<input type="hidden" value="0" class="treeHidden" name="m12"/>
+													<input type="hidden" value="{{$i.humanAffairsPower[7]}}" class="treeHidden" name="m12"/>
 													<li{{if $i.humanAffairsPower[8]==1}} class="on"{{/if}} data-id="15">企业规章制度</li>
-													<input type="hidden" value="0" class="treeHidden" name="m13"/>
+													<input type="hidden" value="{{$i.humanAffairsPower[8]}}" class="treeHidden" name="m13"/>
 													<li{{if $i.humanAffairsPower[9]==1}} class="on"{{/if}} data-id="16">邮箱申请</li>
-													<input type="hidden" value="0" class="treeHidden" name="m14"/>
+													<input type="hidden" value="{{$i.humanAffairsPower[9]}}" class="treeHidden" name="m14"/>
 													<li{{if $i.humanAffairsPower[10]==1}} class="on"{{/if}} data-id="17">邮箱审批</li>
-													<input type="hidden" value="0" class="treeHidden" name="m15"/>
+													<input type="hidden" value="{{$i.humanAffairsPower[10]}}" class="treeHidden" name="m15"/>
 												</ul>
 											</div>
 											<div class="treeNavContentBoxPart{{if in_array('1',$i.leavePower)}} on{{/if}}">
 												<span class="treeNavContentBoxPartImageNew{{if in_array('1',$i.leavePower)}} on{{/if}}"><span{{if in_array('1',$i.leavePower)}} class="on"{{/if}} data-id="18"></span>请假管理</span>
 												<ul{{if in_array('1',$i.leavePower)}} class="on"{{/if}}>
 													<li{{if $i.leavePower[0]==1}} class="on"{{/if}} data-id="19">申请假期</li>
-													<input type="hidden" value="0" class="treeHidden" name="m16"/>
+													<input type="hidden" value="{{$i.leavePower[0]}}" class="treeHidden" name="m16"/>
 													<li{{if $i.leavePower[1]==1}} class="on"{{/if}} data-id="20">请假管理</li>
-													<input type="hidden" value="0" class="treeHidden" name="m17"/>
+													<input type="hidden" value="{{$i.leavePower[1]}}" class="treeHidden" name="m17"/>
 													<li{{if $i.leavePower[2]==1}} class="on"{{/if}} data-id="21">假期审批</li>
-													<input type="hidden" value="0" class="treeHidden" name="m18"/>
+													<input type="hidden" value="{{$i.leavePower[2]}}" class="treeHidden" name="m18"/>
 													<li{{if $i.leavePower[3]==1}} class="on"{{/if}} data-id="22">假期统计</li>
-													<input type="hidden" value="0" class="treeHidden" name="m19"/>
+													<input type="hidden" value="{{$i.leavePower[3]}}" class="treeHidden" name="m19"/>
 												</ul>
 											</div>
 											<div class="treeNavContentBoxPart{{if in_array('1',$i.businessTravelPower)}} on{{/if}}">
 												<span class="treeNavContentBoxPartImageNew{{if in_array('1',$i.businessTravelPower)}} on{{/if}}"><span{{if in_array('1',$i.businessTravelPower)}} class="on"{{/if}} data-id="23"></span>出差管理</span>
 												<ul{{if in_array('1',$i.businessTravelPower)}} class="on"{{/if}}>
 													<li{{if $i.businessTravelPower[0]==1}} class="on"{{/if}} data-id="24">出差申请</li>
-													<input type="hidden" value="0" class="treeHidden" name="m20"/>
+													<input type="hidden" value="{{$i.businessTravelPower[0]}}" class="treeHidden" name="m20"/>
 													<li{{if $i.businessTravelPower[1]==1}} class="on"{{/if}} data-id="25">出差审批</li>
-													<input type="hidden" value="0" class="treeHidden" name="m21"/>
+													<input type="hidden" value="{{$i.businessTravelPower[1]}}" class="treeHidden" name="m21"/>
 												</ul>
 											</div>
 											<div class="treeNavContentBoxPart{{if in_array('1',$i.carPower)}} on{{/if}}">
 												<span class="treeNavContentBoxPartImageNew{{if in_array('1',$i.carPower)}} on{{/if}}"><span{{if in_array('1',$i.carPower)}} class="on"{{/if}} data-id="26"></span>车辆管理</span>
 												<ul{{if in_array('1',$i.carPower)}} class="on"{{/if}}>
 													<li{{if $i.carPower[0]==1}} class="on"{{/if}} data-id="27">车辆信息管理</li>
-													<input type="hidden" value="0" class="treeHidden" name="m22"/>
+													<input type="hidden" value="{{$i.carPower[0]}}" class="treeHidden" name="m22"/>
 													<li{{if $i.carPower[1]==1}} class="on"{{/if}} data-id="28">车辆行驶记录</li>
-													<input type="hidden" value="0" class="treeHidden" name="m23"/>
+													<input type="hidden" value="{{$i.carPower[1]}}" class="treeHidden" name="m23"/>
 													<li{{if $i.carPower[2]==1}} class="on"{{/if}} data-id="29">车辆行驶统计</li>
-													<input type="hidden" value="0" class="treeHidden" name="m24"/>
+													<input type="hidden" value="{{$i.carPower[2]}}" class="treeHidden" name="m24"/>
 													<li{{if $i.carPower[3]==1}} class="on"{{/if}} data-id="30">车辆维修管理</li>
-													<input type="hidden" value="0" class="treeHidden" name="m25"/>
+													<input type="hidden" value="{{$i.carPower[3]}}" class="treeHidden" name="m25"/>
 													<li{{if $i.carPower[4]==1}} class="on"{{/if}} data-id="31">车辆维修审批</li>
-													<input type="hidden" value="0" class="treeHidden" name="m26"/>
+													<input type="hidden" value="{{$i.carPower[4]}}" class="treeHidden" name="m26"/>
 													<li{{if $i.carPower[5]==1}} class="on"{{/if}} data-id="32">车辆维修费用管理</li>
-													<input type="hidden" value="0" class="treeHidden" name="m27"/>
+													<input type="hidden" value="{{$i.carPower[5]}}" class="treeHidden" name="m27"/>
 												</ul>
 											</div>
 											<div class="treeNavContentBoxPart{{if in_array('1',$i.officeToolPower)}} on{{/if}}">
 												<span class="treeNavContentBoxPartImageNew{{if in_array('1',$i.officeToolPower)}} on{{/if}}"><span{{if in_array('1',$i.officeToolPower)}} class="on"{{/if}} data-id="33"></span>办公备品管理</span>
 												<ul{{if in_array('1',$i.officeToolPower)}} class="on"{{/if}}>
 													<li{{if $i.officeToolPower[0]==1}} class="on"{{/if}} data-id="34">办公备品管理</li>
-													<input type="hidden" value="0" class="treeHidden" name="m28"/>
+													<input type="hidden" value="{{$i.officeToolPower[0]}}" class="treeHidden" name="m28"/>
 													<li{{if $i.officeToolPower[1]==1}} class="on"{{/if}} data-id="35">办公备品审批</li>
-													<input type="hidden" value="0" class="treeHidden" name="m29"/>
+													<input type="hidden" value="{{$i.officeToolPower[1]}}" class="treeHidden" name="m29"/>
 													<li{{if $i.officeToolPower[2]==1}} class="on"{{/if}} data-id="36">办公备品入库管理</li>
-													<input type="hidden" value="0" class="treeHidden" name="m30"/>
+													<input type="hidden" value="{{$i.officeToolPower[2]}}" class="treeHidden" name="m30"/>
 													<li{{if $i.officeToolPower[3]==1}} class="on"{{/if}} data-id="37">办公备品分配记录</li>
-													<input type="hidden" value="0" class="treeHidden" name="m31"/>
+													<input type="hidden" value="{{$i.officeToolPower[3]}}" class="treeHidden" name="m31"/>
 													<li{{if $i.officeToolPower[4]==1}} class="on"{{/if}} data-id="38">办公备品出库管理</li>
-													<input type="hidden" value="0" class="treeHidden" name="m32"/>
+													<input type="hidden" value="{{$i.officeToolPower[4]}}" class="treeHidden" name="m32"/>
 													<li{{if $i.officeToolPower[5]==1}} class="on"{{/if}} data-id="39">办公备品使用统计</li>
-													<input type="hidden" value="0" class="treeHidden" name="m33"/>
+													<input type="hidden" value="{{$i.officeToolPower[5]}}" class="treeHidden" name="m33"/>
 													<li{{if $i.officeToolPower[6]==1}} class="on"{{/if}} data-id="40">办公备品盘点</li>
-													<input type="hidden" value="0" class="treeHidden" name="m34"/>
+													<input type="hidden" value="{{$i.officeToolPower[6]}}" class="treeHidden" name="m34"/>
 													<li{{if $i.officeToolPower[7]==1}} class="on"{{/if}} data-id="41">办公备品调转部门</li>
-													<input type="hidden" value="0" class="treeHidden" name="m35"/>
+													<input type="hidden" value="{{$i.officeToolPower[7]}}" class="treeHidden" name="m35"/>
 													<li{{if $i.officeToolPower[8]==1}} class="on"{{/if}} data-id="42">调转部门审批</li>
-													<input type="hidden" value="0" class="treeHidden" name="m36"/>
+													<input type="hidden" value="{{$i.officeToolPower[8]}}" class="treeHidden" name="m36"/>
 													<li{{if $i.officeToolPower[9]==1}} class="on"{{/if}} data-id="43">办公备品统计</li>
-													<input type="hidden" value="0" class="treeHidden" name="m37"/>
+													<input type="hidden" value="{{$i.officeToolPower[9]}}" class="treeHidden" name="m37"/>
 												</ul>
 											</div>
 											<div class="treeNavContentBoxPart{{if in_array('1',$i.generalAffairsPower)}} on{{/if}}">
 												<span class="treeNavContentBoxPartImageNew{{if in_array('1',$i.generalAffairsPower)}} on{{/if}}"><span{{if in_array('1',$i.generalAffairsPower)}} class="on"{{/if}} data-id="44"></span>综合事务管理</span>
 												<ul{{if in_array('1',$i.generalAffairsPower)}} class="on"{{/if}}>
 													<li{{if $i.generalAffairsPower[0]==1}} class="on"{{/if}} data-id="45">企业规章制度管理</li>
-													<input type="hidden" value="0" class="treeHidden" name="m38"/>
+													<input type="hidden" value="{{$i.generalAffairsPower[0]}}" class="treeHidden" name="m38"/>
 													<li{{if $i.generalAffairsPower[0]==1}} class="on"{{/if}} data-id="46">企业动态管理</li>
-													<input type="hidden" value="0" class="treeHidden" name="m39"/>
+													<input type="hidden" value="{{$i.generalAffairsPower[1]}}" class="treeHidden" name="m39"/>
 													<li{{if $i.generalAffairsPower[0]==1}} class="on"{{/if}} data-id="47">企业资质证件管理</li>
-													<input type="hidden" value="0" class="treeHidden" name="m40"/>
+													<input type="hidden" value="{{$i.generalAffairsPower[2]}}" class="treeHidden" name="m40"/>
 												</ul>
 											</div>
 											<div class="treeNavContentBoxPart{{if in_array('1',$i.systemPower)}} on{{/if}}">
 												<span class="treeNavContentBoxPartImageNew{{if in_array('1',$i.systemPower)}} on{{/if}}"><span{{if in_array('1',$i.systemPower)}} class="on"{{/if}} data-id="48"></span>系统运维管理</span>
 												<ul{{if in_array('1',$i.systemPower)}} class="on"{{/if}}>
 													<li{{if $i.systemPower[0]==1}} class="on"{{/if}} data-id="49">系统角色权限设置</li>
-													<input type="hidden" value="0" class="treeHidden" name="m41"/>
+													<input type="hidden" value="{{$i.systemPower[0]}}" class="treeHidden" name="m41"/>
 													<li{{if $i.systemPower[1]==1}} class="on"{{/if}} data-id="50">审批角色权限设置</li>
-													<input type="hidden" value="0" class="treeHidden" name="m42"/>
+													<input type="hidden" value="{{$i.systemPower[1]}}" class="treeHidden" name="m42"/>
 													<li{{if $i.systemPower[2]==1}} class="on"{{/if}} data-id="51">自定义审批流程设置</li>
-													<input type="hidden" value="0" class="treeHidden" name="m43"/>
+													<input type="hidden" value="{{$i.systemPower[2]}}" class="treeHidden" name="m43"/>
 													<li{{if $i.systemPower[3]==1}} class="on"{{/if}} data-id="52">默认审批流程设置</li>
-													<input type="hidden" value="0" class="treeHidden" name="m44"/>
+													<input type="hidden" value="{{$i.systemPower[3]}}" class="treeHidden" name="m44"/>
 													<li{{if $i.systemPower[4]==1}} class="on"{{/if}} data-id="53">职务管理</li>
-													<input type="hidden" value="0" class="treeHidden" name="m45"/>
+													<input type="hidden" value="{{$i.systemPower[4]}}" class="treeHidden" name="m45"/>
 													<li{{if $i.systemPower[5]==1}} class="on"{{/if}} data-id="54">请假类型管理</li>
-													<input type="hidden" value="0" class="treeHidden" name="m46"/>
+													<input type="hidden" value="{{$i.systemPower[5]}}" class="treeHidden" name="m46"/>
 													<li{{if $i.systemPower[6]==1}} class="on"{{/if}} data-id="55">备品类别管理</li>
-													<input type="hidden" value="0" class="treeHidden" name="m47"/>
+													<input type="hidden" value="{{$i.systemPower[6]}}" class="treeHidden" name="m47"/>
 													<li{{if $i.systemPower[7]==1}} class="on"{{/if}} data-id="56">备品名称管理</li>
-													<input type="hidden" value="0" class="treeHidden" name="m48"/>
+													<input type="hidden" value="{{$i.systemPower[7]}}" class="treeHidden" name="m48"/>
 												</ul>
 											</div>
 											<div class="treeNavContentBoxPart{{if in_array('1',$i.signPower)}} on{{/if}}">
 												<span class="treeNavContentBoxPartImageNew{{if in_array('1',$i.signPower)}} on{{/if}}"><span{{if in_array('1',$i.signPower)}} class="on"{{/if}} data-id="57"></span>考勤管理</span>
 												<ul{{if in_array('1',$i.signPower)}} class="on"{{/if}}>
 													<li{{if $i.signPower[0]==1}} class="on"{{/if}} data-id="58">考勤时间管理</li>
-													<input type="hidden" value="0" class="treeHidden" name="m49"/>
+													<input type="hidden" value="{{$i.signPower[0]}}" class="treeHidden" name="m49"/>
 													<li{{if $i.signPower[1]==1}} class="on"{{/if}} data-id="59">打卡记录</li>
-													<input type="hidden" value="0" class="treeHidden" name="m50"/>
+													<input type="hidden" value="{{$i.signPower[1]}}" class="treeHidden" name="m50"/>
 													<li{{if $i.signPower[2]==1}} class="on"{{/if}} data-id="60">打卡统计</li>
-													<input type="hidden" value="0" class="treeHidden" name="m51"/>
+													<input type="hidden" value="{{$i.signPower[2]}}" class="treeHidden" name="m51"/>
 													<li{{if $i.signPower[3]==1}} class="on"{{/if}} data-id="61">每日打卡记录</li>
-													<input type="hidden" value="0" class="treeHidden" name="m52"/>
+													<input type="hidden" value="{{$i.signPower[3]}}" class="treeHidden" name="m52"/>
 													<li{{if $i.signPower[4]==1}} class="on"{{/if}} data-id="62">打卡时间</li>
-													<input type="hidden" value="0" class="treeHidden" name="m53"/>
+													<input type="hidden" value="{{$i.signPower[4]}}" class="treeHidden" name="m53"/>
 												</ul>
 											</div>
 											<div class="treeNavContentBoxPart{{if in_array('1',$i.otherPower)}} on{{/if}}">
 												<span class="treeNavContentBoxPartImageNew{{if in_array('1',$i.otherPower)}} on{{/if}}"><span{{if in_array('1',$i.otherPower)}} class="on"{{/if}} data-id="63"></span>其它权限</span>
 												<ul{{if in_array('1',$i.otherPower)}} class="on"{{/if}}>
-													<li{{if $i.otherPower[0]==1}} class="on"{{/if}} data-id="64">查看背景调查</li>	
-													<input type="hidden" value="0" class="treeHidden" name="m54"/>
+													<li{{if $i.otherPower[0]==1}} class="on"{{/if}} data-id="64">查看背景调查</li>
+													<input type="hidden" value="{{$i.otherPower[0]}}" class="treeHidden" name="m54"/>
+													<li{{if $i.otherPower[1]==1}} class="on"{{/if}} data-id="65">合同信息</li>
+													<input type="hidden" value="{{$i.otherPower[1]}}" class="treeHidden" name="m55"/>
+													<li{{if $i.otherPower[2]==1}} class="on"{{/if}} data-id="66">假期设置</li>
+													<input type="hidden" value="{{$i.otherPower[2]}}" class="treeHidden" name="m56"/>
+													<li{{if $i.otherPower[3]==1}} class="on"{{/if}} data-id="67">账号设置</li>
+													<input type="hidden" value="{{$i.otherPower[3]}}" class="treeHidden" name="m57"/>
+													<li{{if $i.otherPower[4]==1}} class="on"{{/if}} data-id="68">编辑记录</li>
+													<input type="hidden" value="{{$i.otherPower[4]}}" class="treeHidden" name="m58"/>
 												</ul>
 											</div>
 										</div>
@@ -250,10 +258,10 @@
 									<div class="treeNavContentClone"{{if $id!=0}} style="display: block;"{{/if}}>
 										<div class="treeNavContentBoxClone">
 											<div class="treeNavContentBoxPartClone">
-												<span class="treeNavContentBoxPartImageNewClone{{if in_array('1',$orgPower)}} on{{/if}}"{{if in_array('1',$orgPower)}} style="display: inline;"{{/if}}>
-													<span class="cloneItem{{if in_array('1',$orgPower)}} on{{/if}}" data-id="01"{{if in_array('1',$orgPower)}} style="display: inline-block;"{{/if}}></span>DIT组织架构
+												<span class="treeNavContentBoxPartImageNewClone{{if in_array('1',$i.orgPower)}} on{{/if}}"{{if in_array('1',$i.orgPower)}} style="display: inline;"{{/if}}>
+													<span class="cloneItem{{if in_array('1',$i.orgPower)}} on{{/if}}" data-id="01"{{if in_array('1',$i.orgPower)}} style="display: inline-block;"{{/if}}></span>DIT组织架构
 												</span>
-												<ul{{if in_array('1',$orgPower)}} class="on" style="display: block;"{{/if}}>
+												<ul{{if in_array('1',$i.orgPower)}} class="on" style="display: block;"{{/if}}>
 													<li class="cloneItem{{if $i.orgPower[0]==1}} on{{/if}}" data-id="02"{{if $i.orgPower[0]==1}} style="display: list-item;"{{/if}}>企业信息管理</li>
 													<li class="cloneItem{{if $i.orgPower[1]==1}} on{{/if}}" data-id="03"{{if $i.orgPower[1]==1}} style="display: list-item;"{{/if}}>办事处管理</li>
 													<li class="cloneItem{{if $i.orgPower[2]==1}} on{{/if}}" data-id="04"{{if $i.orgPower[2]==1}} style="display: list-item;"{{/if}}>工作组管理</li>
@@ -261,115 +269,121 @@
 												</ul>
 											</div>
 											<div class="treeNavContentBoxPartClone">
-												<span class="treeNavContentBoxPartImageNewClone{{if in_array('1',$humanAffairsPower)}} on{{/if}}" {{if in_array('1',$humanAffairsPower)}} style="display: inline;"{{/if}}>
-													<span class="cloneItem{{if in_array('1',$humanAffairsPower)}} on{{/if}}" data-id="06"{{if in_array('1',$humanAffairsPower)}} style="display: inline-block;"{{/if}}></span>人事管理
+												<span class="treeNavContentBoxPartImageNewClone{{if in_array('1',$i.humanAffairsPower)}} on{{/if}}" {{if in_array('1',$i.humanAffairsPower)}} style="display: inline;"{{/if}}>
+													<span class="cloneItem{{if in_array('1',$i.humanAffairsPower)}} on{{/if}}" data-id="06"{{if in_array('1',$i.humanAffairsPower)}} style="display: inline-block;"{{/if}}></span>人事管理
 												</span>
-												<ul{{if in_array('1',$humanAffairsPower)}} class="on" style="display: block;"{{/if}}>
+												<ul{{if in_array('1',$i.humanAffairsPower)}} class="on" style="display: block;"{{/if}}>
 													<li class="cloneItem{{if $i.humanAffairsPower[0]==1}} on{{/if}}" data-id="07"{{if $i.humanAffairsPower[0]==1}} style="display: list-item;"{{/if}}>企业资质证件</li>
 													<li class="cloneItem{{if $i.humanAffairsPower[1]==1}} on{{/if}}" data-id="08"{{if $i.humanAffairsPower[1]==1}} style="display: list-item;"{{/if}}>员工管理</li>
 													<li class="cloneItem{{if $i.humanAffairsPower[2]==1}} on{{/if}}" data-id="09"{{if $i.humanAffairsPower[2]==1}} style="display: list-item;"{{/if}}>员工档案管理</li>
 													<li class="cloneItem{{if $i.humanAffairsPower[3]==1}} on{{/if}}" data-id="10"{{if $i.humanAffairsPower[3]==1}} style="display: list-item;"{{/if}}>离职员工</li>
 													<li class="cloneItem{{if $i.humanAffairsPower[4]==1}} on{{/if}}" data-id="11"{{if $i.humanAffairsPower[4]==1}} style="display: list-item;"{{/if}}>转正考核</li>
 													<li class="cloneItem{{if $i.humanAffairsPower[5]==1}} on{{/if}}" data-id="12"{{if $i.humanAffairsPower[5]==1}} style="display: list-item;"{{/if}}>转正考核审批</li>
-													<li class="cloneItem{{if $i.humanAffairsPower[6]==1}} on{{/if}}" data-id="13"{{if $i.humanAffairsPower[6]==1}} style="display: list-item;"{{/if}}>企业规章制度</li>
-													<li class="cloneItem{{if $i.humanAffairsPower[7]==1}} on{{/if}}" data-id="14"{{if $i.humanAffairsPower[7]==1}} style="display: list-item;"{{/if}}>邮箱申请</li>
-													<li class="cloneItem{{if $i.humanAffairsPower[8]==1}} on{{/if}}" data-id="15"{{if $i.humanAffairsPower[8]==1}} style="display: list-item;"{{/if}}>邮箱审批</li>
+													<li class="cloneItem{{if $i.humanAffairsPower[6]==1}} on{{/if}}" data-id="13"{{if $i.humanAffairsPower[6]==1}} style="display: list-item;"{{/if}}>离职申请</li>
+													<li class="cloneItem{{if $i.humanAffairsPower[7]==1}} on{{/if}}" data-id="14"{{if $i.humanAffairsPower[7]==1}} style="display: list-item;"{{/if}}>离职申请审批</li>
+													<li class="cloneItem{{if $i.humanAffairsPower[8]==1}} on{{/if}}" data-id="15"{{if $i.humanAffairsPower[8]==1}} style="display: list-item;"{{/if}}>企业规章制度</li>
+													<li class="cloneItem{{if $i.humanAffairsPower[9]==1}} on{{/if}}" data-id="16"{{if $i.humanAffairsPower[9]==1}} style="display: list-item;"{{/if}}>邮箱申请</li>
+													<li class="cloneItem{{if $i.humanAffairsPower[10]==1}} on{{/if}}" data-id="17"{{if $i.humanAffairsPower[10]==1}} style="display: list-item;"{{/if}}>邮箱审批</li>
 												</ul>
 											</div>
 											<div class="treeNavContentBoxPartClone">
-												<span class="treeNavContentBoxPartImageNewClone{{if in_array('1',$leavePower)}} on{{/if}}"{{if in_array('1',$leavePower)}} style="display: inline;"{{/if}}>
-													<span class="cloneItem{{if in_array('1',$leavePower)}} on{{/if}}" data-id="16"{{if in_array('1',$leavePower)}} style="display: inline-block;"{{/if}}></span>请假管理
+												<span class="treeNavContentBoxPartImageNewClone{{if in_array('1',$i.leavePower)}} on{{/if}}"{{if in_array('1',$i.leavePower)}} style="display: inline;"{{/if}}>
+													<span class="cloneItem{{if in_array('1',$i.leavePower)}} on{{/if}}" data-id="18"{{if in_array('1',$i.leavePower)}} style="display: inline-block;"{{/if}}></span>请假管理
 												</span>
-												<ul{{if in_array('1',$leavePower)}} class="on" style="display: block;"{{/if}}>
-													<li class="cloneItem{{if $i.leavePower[0]==1}} on{{/if}}" data-id="17"{{if $i.leavePower[0]==1}} style="display: list-item;"{{/if}}>申请假期</li>
-													<li class="cloneItem{{if $i.leavePower[1]==1}} on{{/if}}" data-id="18"{{if $i.leavePower[1]==1}} style="display: list-item;"{{/if}}>请假管理</li>
-													<li class="cloneItem{{if $i.leavePower[2]==1}} on{{/if}}" data-id="19"{{if $i.leavePower[2]==1}} style="display: list-item;"{{/if}}>假期审批</li>
-													<li class="cloneItem{{if $i.leavePower[3]==1}} on{{/if}}" data-id="20"{{if $i.leavePower[3]==1}} style="display: list-item;"{{/if}}>假期统计</li>
+												<ul{{if in_array('1',$i.leavePower)}} class="on" style="display: block;"{{/if}}>
+													<li class="cloneItem{{if $i.leavePower[0]==1}} on{{/if}}" data-id="19"{{if $i.leavePower[0]==1}} style="display: list-item;"{{/if}}>申请假期</li>
+													<li class="cloneItem{{if $i.leavePower[1]==1}} on{{/if}}" data-id="20"{{if $i.leavePower[1]==1}} style="display: list-item;"{{/if}}>请假管理</li>
+													<li class="cloneItem{{if $i.leavePower[2]==1}} on{{/if}}" data-id="21"{{if $i.leavePower[2]==1}} style="display: list-item;"{{/if}}>假期审批</li>
+													<li class="cloneItem{{if $i.leavePower[3]==1}} on{{/if}}" data-id="22"{{if $i.leavePower[3]==1}} style="display: list-item;"{{/if}}>假期统计</li>
 												</ul>
 											</div>
 											<div class="treeNavContentBoxPartClone">
-												<span class="treeNavContentBoxPartImageNewClone{{if in_array('1',$businessTravelPower)}} on{{/if}}" {{if in_array('1',$businessTravelPower)}} style="display: inline;"{{/if}}>
-													<span class="cloneItem{{if in_array('1',$businessTravelPower)}} on{{/if}}" data-id="21"{{if in_array('1',$businessTravelPower)}} style="display: inline-block;"{{/if}}></span>出差管理
+												<span class="treeNavContentBoxPartImageNewClone{{if in_array('1',$i.businessTravelPower)}} on{{/if}}" {{if in_array('1',$i.businessTravelPower)}} style="display: inline;"{{/if}}>
+													<span class="cloneItem{{if in_array('1',$i.businessTravelPower)}} on{{/if}}" data-id="23"{{if in_array('1',$i.businessTravelPower)}} style="display: inline-block;"{{/if}}></span>出差管理
 												</span>
-												<ul{{if in_array('1',$businessTravelPower)}} class="on" style="display: block;"{{/if}}>
-													<li class="cloneItem{{if $i.businessTravelPower[0]==1}} on{{/if}}" data-id="22"{{if $i.businessTravelPower[0]==1}} style="display: list-item;"{{/if}}>出差申请</li>
-													<li class="cloneItem{{if $i.businessTravelPower[1]==1}} on{{/if}}" data-id="23"{{if $i.businessTravelPower[1]==1}} style="display: list-item;"{{/if}}>出差审批</li>
+												<ul{{if in_array('1',$i.businessTravelPower)}} class="on" style="display: block;"{{/if}}>
+													<li class="cloneItem{{if $i.businessTravelPower[0]==1}} on{{/if}}" data-id="24"{{if $i.businessTravelPower[0]==1}} style="display: list-item;"{{/if}}>出差申请</li>
+													<li class="cloneItem{{if $i.businessTravelPower[1]==1}} on{{/if}}" data-id="25"{{if $i.businessTravelPower[1]==1}} style="display: list-item;"{{/if}}>出差审批</li>
 												</ul>
 											</div>
 												
 											<div class="treeNavContentBoxPartClone">
-												<span class="treeNavContentBoxPartImageNewClone{{if in_array('1',$carPower)}} on{{/if}}"{{if in_array('1',$carPower)}} style="display: inline;"{{/if}}>
-													<span class="cloneItem{{if in_array('1',$carPower)}} on{{/if}}" data-id="24"{{if in_array('1',$carPower)}} style="display: inline-block;"{{/if}}></span>车辆管理
+												<span class="treeNavContentBoxPartImageNewClone{{if in_array('1',$i.carPower)}} on{{/if}}"{{if in_array('1',$i.carPower)}} style="display: inline;"{{/if}}>
+													<span class="cloneItem{{if in_array('1',$i.carPower)}} on{{/if}}" data-id="26"{{if in_array('1',$i.carPower)}} style="display: inline-block;"{{/if}}></span>车辆管理
 												</span>
-												<ul{{if in_array('1',$carPower)}} class="on" style="display: block;"{{/if}}>
-													<li class="cloneItem{{if $i.carPower[0]==1}} on{{/if}}" data-id="25"{{if $i.carPower[0]==1}} style="display: list-item;"{{/if}}>车辆信息管理</li>
-													<li class="cloneItem{{if $i.carPower[1]==1}} on{{/if}}" data-id="26"{{if $i.carPower[1]==1}} style="display: list-item;"{{/if}}>车辆行驶记录</li>
-													<li class="cloneItem{{if $i.carPower[2]==1}} on{{/if}}" data-id="27"{{if $i.carPower[2]==1}} style="display: list-item;"{{/if}}>车辆行驶统计</li>
-													<li class="cloneItem{{if $i.carPower[3]==1}} on{{/if}}" data-id="28"{{if $i.carPower[3]==1}} style="display: list-item;"{{/if}}>车辆维修管理</li>
-													<li class="cloneItem{{if $i.carPower[4]==1}} on{{/if}}" data-id="29"{{if $i.carPower[4]==1}} style="display: list-item;"{{/if}}>车辆维修费用管理</li>
+												<ul{{if in_array('1',$i.carPower)}} class="on" style="display: block;"{{/if}}>
+													<li class="cloneItem{{if $i.carPower[0]==1}} on{{/if}}" data-id="27"{{if $i.carPower[0]==1}} style="display: list-item;"{{/if}}>车辆信息管理</li>
+													<li class="cloneItem{{if $i.carPower[1]==1}} on{{/if}}" data-id="28"{{if $i.carPower[1]==1}} style="display: list-item;"{{/if}}>车辆行驶记录</li>
+													<li class="cloneItem{{if $i.carPower[2]==1}} on{{/if}}" data-id="29"{{if $i.carPower[2]==1}} style="display: list-item;"{{/if}}>车辆行驶统计</li>
+													<li class="cloneItem{{if $i.carPower[3]==1}} on{{/if}}" data-id="30"{{if $i.carPower[3]==1}} style="display: list-item;"{{/if}}>车辆维修管理</li>
+													<li class="cloneItem{{if $i.carPower[4]==1}} on{{/if}}" data-id="31"{{if $i.carPower[4]==1}} style="display: list-item;"{{/if}}>车辆维修审批</li>
+													<li class="cloneItem{{if $i.carPower[5]==1}} on{{/if}}" data-id="32"{{if $i.carPower[5]==1}} style="display: list-item;"{{/if}}>车辆维修费用管理</li>
 												</ul>
 											</div>
 											<div class="treeNavContentBoxPartClone">
-												<span class="treeNavContentBoxPartImageNewClone{{if in_array('1',$officeToolPower)}} on{{/if}}"{{if in_array('1',$officeToolPower)}} style="display: inline;"{{/if}}>
-													<span class="cloneItem{{if in_array('1',$officeToolPower)}} on{{/if}}" data-id="30"{{if in_array('1',$officeToolPower)}} style="display: inline-block;"{{/if}}></span>办公备品管理
+												<span class="treeNavContentBoxPartImageNewClone{{if in_array('1',$i.officeToolPower)}} on{{/if}}"{{if in_array('1',$i.officeToolPower)}} style="display: inline;"{{/if}}>
+													<span class="cloneItem{{if in_array('1',$i.officeToolPower)}} on{{/if}}" data-id="33"{{if in_array('1',$i.officeToolPower)}} style="display: inline-block;"{{/if}}></span>办公备品管理
 												</span>
-												<ul{{if in_array('1',$officeToolPower)}} class="on" style="display: block;"{{/if}}>
-													<li class="cloneItem{{if $i.officeToolPower[0]==1}} on{{/if}}" data-id="31"{{if $i.officeToolPower[0]==1}} style="display: list-item;"{{/if}}>办公备品管理</li>
-													<li class="cloneItem{{if $i.officeToolPower[1]==1}} on{{/if}}" data-id="32"{{if $i.officeToolPower[1]==1}} style="display: list-item;"{{/if}}>办公备品审批</li>
-													<li class="cloneItem{{if $i.officeToolPower[2]==1}} on{{/if}}" data-id="33"{{if $i.officeToolPower[2]==1}} style="display: list-item;"{{/if}}>办公备品入库管理</li>
-													<li class="cloneItem{{if $i.officeToolPower[3]==1}} on{{/if}}" data-id="34"{{if $i.officeToolPower[3]==1}} style="display: list-item;"{{/if}}>办公备品分配记录</li>
-													<li class="cloneItem{{if $i.officeToolPower[4]==1}} on{{/if}}" data-id="35"{{if $i.officeToolPower[4]==1}} style="display: list-item;"{{/if}}>办公备品出库管理</li>
-													<li class="cloneItem{{if $i.officeToolPower[5]==1}} on{{/if}}" data-id="31"{{if $i.officeToolPower[5]==1}} style="display: list-item;"{{/if}}>办公备品使用统计</li>
-													<li class="cloneItem{{if $i.officeToolPower[6]==1}} on{{/if}}" data-id="36"{{if $i.officeToolPower[6]==1}} style="display: list-item;"{{/if}}>办公备品盘点</li>
-													<li class="cloneItem{{if $i.officeToolPower[7]==1}} on{{/if}}" data-id="37"{{if $i.officeToolPower[7]==1}} style="display: list-item;"{{/if}}>办公备品调转部门</li>
-													<li class="cloneItem{{if $i.officeToolPower[8]==1}} on{{/if}}" data-id="38"{{if $i.officeToolPower[8]==1}} style="display: list-item;"{{/if}}>调转部门审批</li>			
-													<li class="cloneItem{{if $i.officeToolPower[9]==1}} on{{/if}}" data-id="39"{{if $i.officeToolPower[9]==1}} style="display: list-item;"{{/if}}>办公备品统计</li>
+												<ul{{if in_array('1',$i.officeToolPower)}} class="on" style="display: block;"{{/if}}>
+													<li class="cloneItem{{if $i.officeToolPower[0]==1}} on{{/if}}" data-id="34"{{if $i.officeToolPower[0]==1}} style="display: list-item;"{{/if}}>办公备品管理</li>
+													<li class="cloneItem{{if $i.officeToolPower[1]==1}} on{{/if}}" data-id="35"{{if $i.officeToolPower[1]==1}} style="display: list-item;"{{/if}}>办公备品审批</li>
+													<li class="cloneItem{{if $i.officeToolPower[2]==1}} on{{/if}}" data-id="36"{{if $i.officeToolPower[2]==1}} style="display: list-item;"{{/if}}>办公备品入库管理</li>
+													<li class="cloneItem{{if $i.officeToolPower[3]==1}} on{{/if}}" data-id="37"{{if $i.officeToolPower[3]==1}} style="display: list-item;"{{/if}}>办公备品分配记录</li>
+													<li class="cloneItem{{if $i.officeToolPower[4]==1}} on{{/if}}" data-id="38"{{if $i.officeToolPower[4]==1}} style="display: list-item;"{{/if}}>办公备品出库管理</li>
+													<li class="cloneItem{{if $i.officeToolPower[5]==1}} on{{/if}}" data-id="39"{{if $i.officeToolPower[5]==1}} style="display: list-item;"{{/if}}>办公备品使用统计</li>
+													<li class="cloneItem{{if $i.officeToolPower[6]==1}} on{{/if}}" data-id="40"{{if $i.officeToolPower[6]==1}} style="display: list-item;"{{/if}}>办公备品盘点</li>
+													<li class="cloneItem{{if $i.officeToolPower[7]==1}} on{{/if}}" data-id="41"{{if $i.officeToolPower[7]==1}} style="display: list-item;"{{/if}}>办公备品调转部门</li>
+													<li class="cloneItem{{if $i.officeToolPower[8]==1}} on{{/if}}" data-id="42"{{if $i.officeToolPower[8]==1}} style="display: list-item;"{{/if}}>调转部门审批</li>			
+													<li class="cloneItem{{if $i.officeToolPower[9]==1}} on{{/if}}" data-id="43"{{if $i.officeToolPower[9]==1}} style="display: list-item;"{{/if}}>办公备品统计</li>
 												</ul>
 											</div>
 											<div class="treeNavContentBoxPartClone">
-												<span class="treeNavContentBoxPartImageNewClone{{if in_array('1',$generalAffairsPower)}} on{{/if}}"{{if in_array('1',$generalAffairsPower)}} style="display: inline;"{{/if}}>
-													<span class="cloneItem{{if in_array('1',$generalAffairsPower)}} on{{/if}}" data-id="40"{{if in_array('1',$generalAffairsPower)}} style="display: inline-block;"{{/if}}></span>综合事务管理
+												<span class="treeNavContentBoxPartImageNewClone{{if in_array('1',$i.generalAffairsPower)}} on{{/if}}"{{if in_array('1',$i.generalAffairsPower)}} style="display: inline;"{{/if}}>
+													<span class="cloneItem{{if in_array('1',$i.generalAffairsPower)}} on{{/if}}" data-id="44"{{if in_array('1',$i.generalAffairsPower)}} style="display: inline-block;"{{/if}}></span>综合事务管理
 												</span>
-												<ul{{if in_array('1',$generalAffairsPower)}} class="on" style="display: block;"{{/if}}>
-													<li class="cloneItem{{if $i.generalAffairsPower[0]==1}} on{{/if}}" data-id="41"{{if $i.generalAffairsPower[0]==1}} style="display: list-item;"{{/if}}>企业规章制度管理</li>
-													<li class="cloneItem{{if $i.generalAffairsPower[1]==1}} on{{/if}}" data-id="42"{{if $i.generalAffairsPower[1]==1}} style="display: list-item;"{{/if}}>企业动态管理</li>
-													<li class="cloneItem{{if $i.generalAffairsPower[2]==1}} on{{/if}}" data-id="43"{{if $i.generalAffairsPower[2]==1}} style="display: list-item;"{{/if}}>企业资质证件管理</li>
+												<ul{{if in_array('1',$i.generalAffairsPower)}} class="on" style="display: block;"{{/if}}>
+													<li class="cloneItem{{if $i.generalAffairsPower[0]==1}} on{{/if}}" data-id="45"{{if $i.generalAffairsPower[0]==1}} style="display: list-item;"{{/if}}>企业规章制度管理</li>
+													<li class="cloneItem{{if $i.generalAffairsPower[1]==1}} on{{/if}}" data-id="46"{{if $i.generalAffairsPower[1]==1}} style="display: list-item;"{{/if}}>企业动态管理</li>
+													<li class="cloneItem{{if $i.generalAffairsPower[2]==1}} on{{/if}}" data-id="47"{{if $i.generalAffairsPower[2]==1}} style="display: list-item;"{{/if}}>企业资质证件管理</li>
 												</ul>
 											</div>
 											<div class="treeNavContentBoxPartClone">
-												<span class="treeNavContentBoxPartImageNewClone{{if in_array('1',$systemPower)}} on{{/if}}"{{if in_array('1',$systemPower)}} style="display: inline;"{{/if}}>
-													<span class="cloneItem{{if in_array('1',$systemPower)}} on{{/if}}" data-id="44"{{if in_array('1',$systemPower)}} style="display: inline-block;"{{/if}}></span>系统运维管理
+												<span class="treeNavContentBoxPartImageNewClone{{if in_array('1',$i.systemPower)}} on{{/if}}"{{if in_array('1',$i.systemPower)}} style="display: inline;"{{/if}}>
+													<span class="cloneItem{{if in_array('1',$i.systemPower)}} on{{/if}}" data-id="48"{{if in_array('1',$i.systemPower)}} style="display: inline-block;"{{/if}}></span>系统运维管理
 												</span>
-												<ul{{if in_array('1',$systemPower)}} class="on" style="display: block;"{{/if}}>
-													<li class="cloneItem{{if $i.systemPower[0]==1}} on{{/if}}" data-id="45"{{if $i.systemPower[0]==1}} style="display: list-item;"{{/if}}>系统角色权限设置</li>
-													<li class="cloneItem{{if $i.systemPower[1]==1}} on{{/if}}" data-id="46"{{if $i.systemPower[1]==1}} style="display: list-item;"{{/if}}>自定义审批流程设置</li>
-													<li class="cloneItem{{if $i.systemPower[3]==1}} on{{/if}}" data-id="47"{{if $i.systemPower[2]==1}} style="display: list-item;"{{/if}}>审批角色权限设置</li>
-													<li class="cloneItem{{if $i.systemPower[2]==1}} on{{/if}}" data-id="48"{{if $i.systemPower[3]==1}} style="display: list-item;"{{/if}}>默认审批流程设置</li>
-													<li class="cloneItem{{if $i.systemPower[4]==1}} on{{/if}}" data-id="49"{{if $i.systemPower[4]==1}} style="display: list-item;"{{/if}}>职务管理</li>
-													<li class="cloneItem{{if $i.systemPower[5]==1}} on{{/if}}" data-id="50"{{if $i.systemPower[5]==1}} style="display: list-item;"{{/if}}>请假类型管理</li>
-													<li class="cloneItem{{if $i.systemPower[6]==1}} on{{/if}}" data-id="51"{{if $i.systemPower[6]==1}} style="display: list-item;"{{/if}}>备品类别管理</li>
-													<li class="cloneItem{{if $i.systemPower[7]==1}} on{{/if}}" data-id="52"{{if $i.systemPower[7]==1}} style="display: list-item;"{{/if}}>自定义审批流程设置</li>
-													<li class="cloneItem{{if $i.systemPower[8]==1}} on{{/if}}" data-id="53"{{if $i.systemPower[8]==1}} style="display: list-item;"{{/if}}>备品名称管理</li>
+												<ul{{if in_array('1',$i.systemPower)}} class="on" style="display: block;"{{/if}}>
+													<li class="cloneItem{{if $i.systemPower[0]==1}} on{{/if}}" data-id="49"{{if $i.systemPower[0]==1}} style="display: list-item;"{{/if}}>系统角色权限设置</li>
+													<li class="cloneItem{{if $i.systemPower[1]==1}} on{{/if}}" data-id="50"{{if $i.systemPower[1]==1}} style="display: list-item;"{{/if}}>审批角色权限设置</li>
+													<li class="cloneItem{{if $i.systemPower[2]==1}} on{{/if}}" data-id="51"{{if $i.systemPower[2]==1}} style="display: list-item;"{{/if}}>自定义审批流程设置</li>
+													<li class="cloneItem{{if $i.systemPower[3]==1}} on{{/if}}" data-id="52"{{if $i.systemPower[3]==1}} style="display: list-item;"{{/if}}>默认审批流程设置</li>
+													<li class="cloneItem{{if $i.systemPower[4]==1}} on{{/if}}" data-id="53"{{if $i.systemPower[4]==1}} style="display: list-item;"{{/if}}>职务管理</li>
+													<li class="cloneItem{{if $i.systemPower[5]==1}} on{{/if}}" data-id="54"{{if $i.systemPower[5]==1}} style="display: list-item;"{{/if}}>请假类型管理</li>
+													<li class="cloneItem{{if $i.systemPower[6]==1}} on{{/if}}" data-id="55"{{if $i.systemPower[6]==1}} style="display: list-item;"{{/if}}>备品类别管理</li>
+													<li class="cloneItem{{if $i.systemPower[7]==1}} on{{/if}}" data-id="56"{{if $i.systemPower[7]==1}} style="display: list-item;"{{/if}}>备品名称管理</li>
 												</ul>
 											</div>
 											<div class="treeNavContentBoxPartClone">
-												<span class="treeNavContentBoxPartImageNewClone{{if in_array('1',$signPower)}} on{{/if}}"{{if in_array('1',$signPower)}} style="display: inline;"{{/if}}>
-													<span class="cloneItem{{if in_array('1',$signPower)}} on{{/if}}" data-id="54"{{if in_array('1',$signPower)}} style="display: inline-block;"{{/if}}></span>考勤管理
+												<span class="treeNavContentBoxPartImageNewClone{{if in_array('1',$i.signPower)}} on{{/if}}"{{if in_array('1',$i.signPower)}} style="display: inline;"{{/if}}>
+													<span class="cloneItem{{if in_array('1',$i.signPower)}} on{{/if}}" data-id="57"{{if in_array('1',$i.signPower)}} style="display: inline-block;"{{/if}}></span>考勤管理
 												</span>
-												<ul{{if in_array('1',$signPower)}} class="on" style="display: block;"{{/if}}>
-													<li class="cloneItem{{if $i.signPower[0]==1}} on{{/if}}" data-id="55"{{if $i.signPower[0]==1}} style="display: list-item;"{{/if}}>考勤时间管理</li>
-													<li class="cloneItem{{if $i.signPower[1]==1}} on{{/if}}" data-id="56"{{if $i.signPower[1]==1}} style="display: list-item;"{{/if}}>打卡记录</li>
-													<li class="cloneItem{{if $i.signPower[2]==1}} on{{/if}}" data-id="57"{{if $i.signPower[2]==1}} style="display: list-item;"{{/if}}>打卡统计</li>
-													<li class="cloneItem{{if $i.signPower[3]==1}} on{{/if}}" data-id="58"{{if $i.signPower[3]==1}} style="display: list-item;"{{/if}}>每日打卡记录</li>
-													<li class="cloneItem{{if $i.signPower[4]==1}} on{{/if}}" data-id="59"{{if $i.signPower[4]==1}} style="display: list-item;"{{/if}}>打卡时间</li>
+												<ul{{if in_array('1',$i.signPower)}} class="on" style="display: block;"{{/if}}>
+													<li class="cloneItem{{if $i.signPower[0]==1}} on{{/if}}" data-id="58"{{if $i.signPower[0]==1}} style="display: list-item;"{{/if}}>考勤时间管理</li>
+													<li class="cloneItem{{if $i.signPower[1]==1}} on{{/if}}" data-id="59"{{if $i.signPower[1]==1}} style="display: list-item;"{{/if}}>打卡记录</li>
+													<li class="cloneItem{{if $i.signPower[2]==1}} on{{/if}}" data-id="60"{{if $i.signPower[2]==1}} style="display: list-item;"{{/if}}>打卡统计</li>
+													<li class="cloneItem{{if $i.signPower[3]==1}} on{{/if}}" data-id="61"{{if $i.signPower[3]==1}} style="display: list-item;"{{/if}}>每日打卡记录</li>
+													<li class="cloneItem{{if $i.signPower[4]==1}} on{{/if}}" data-id="62"{{if $i.signPower[4]==1}} style="display: list-item;"{{/if}}>打卡时间</li>
 												</ul>
 											</div>
 											<div class="treeNavContentBoxPartClone">
-												<span class="treeNavContentBoxPartImageNewClone{{if in_array('1',$otherPower)}} on{{/if}}"{{if in_array('1',$otherPower)}} style="display: inline;"{{/if}}>
-													<span class="cloneItem{{if in_array('1',$otherPower)}} on{{/if}}" data-id="60"{{if in_array('1',$otherPower)}} style="display: inline-block;"{{/if}}></span>其它权限
+												<span class="treeNavContentBoxPartImageNewClone{{if in_array('1',$i.otherPower)}} on{{/if}}"{{if in_array('1',$i.otherPower)}} style="display: inline;"{{/if}}>
+													<span class="cloneItem{{if in_array('1',$i.otherPower)}} on{{/if}}" data-id="63"{{if in_array('1',$i.otherPower)}} style="display: inline-block;"{{/if}}></span>其它权限
 												</span>
-												<ul{{if in_array('1',$otherPower)}} class="on" style="display: block;"{{/if}}>
-													<li class="cloneItem{{if $i.otherPower[0]==1}} on{{/if}}" data-id="61"{{if $i.otherPower[0]==1}} style="display: list-item;"{{/if}}>查看背景调查</li>
+												<ul{{if in_array('1',$i.otherPower)}} class="on" style="display: block;"{{/if}}>
+													<li class="cloneItem{{if $i.otherPower[0]==1}} on{{/if}}" data-id="64"{{if $i.otherPower[0]==1}} style="display: list-item;"{{/if}}>查看背景调查</li>
+													<li class="cloneItem{{if $i.otherPower[1]==1}} on{{/if}}" data-id="65"{{if $i.otherPower[1]==1}} style="display: list-item;"{{/if}}>合同信息</li>
+													<li class="cloneItem{{if $i.otherPower[2]==1}} on{{/if}}" data-id="66"{{if $i.otherPower[2]==1}} style="display: list-item;"{{/if}}>假期设置</li>
+													<li class="cloneItem{{if $i.otherPower[3]==1}} on{{/if}}" data-id="67"{{if $i.otherPower[3]==1}} style="display: list-item;"{{/if}}>账号设置</li>
+													<li class="cloneItem{{if $i.otherPower[4]==1}} on{{/if}}" data-id="68"{{if $i.otherPower[4]==1}} style="display: list-item;"{{/if}}>编辑记录</li>
 												</ul>
 											</div>
 										</div>	

@@ -27,6 +27,8 @@
 	$s_idno = getVal('s_idno',2,'');
 	$s_begintime = getVal('s_begintime',2,'');
 	$s_overtime = getVal('s_overtime',2,'');
+	$track = '&page='.$page.'&id='.$id.'&s_company='.$s_company.'&s_office='.$s_office.'&s_role='.$s_role.'&s_post='.$s_post.'&s_status='.$s_status.'';
+	$track .= '&s_name='.$s_name.'&s_idno='.$s_idno.'&s_begintime='.$s_begintime.'&s_overtime='.$s_overtime.'';
 	//记录列表页检索条件over
 
 	//获取值 begin
@@ -41,25 +43,44 @@
 	//验证
 	if($act == 'editSave'){
 		if($joinDate == ''){
-			ErrorResturn('请填写入职日期');
+			$data['status'] = 'fail';
+			$data['message'] = '请填写入职日期';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;	
 		}
 		if(!isdate($joinDate)){
-			ErrorResturn('请填写正确的入职日期');
+			$data['status'] = 'fail';
+			$data['message'] = '请填写正确的入职日期';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;	
 		}
 		if($tryBeginDate == ''){
-			ErrorResturn('请填写试用期开始日期');
+			$data['status'] = 'fail';
+			$data['message'] = '请填写试用期开始日期';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;	
 		}
 		if(!isdate($tryBeginDate)){
-			ErrorResturn('请填写正确的试用期开始日期');
+			$data['status'] = 'fail';
+			$data['message'] = '请填写正确的试用期开始日期';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;	
 		}
 		if($tryOverDate == ''){
-			ErrorResturn('请填写试用期截止日期');
+			$data['status'] = 'fail';
+			$data['message'] = '请填写试用期截止日期';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;	
 		}
 		if(!isdate($tryOverDate)){
-			ErrorResturn('请填写正确的试用期截止日期');
+			$data['status'] = 'fail';
+			$data['message'] = '请填写正确的试用期截止日期';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;	
 		}
 	}
 
+	$isSet = 0;
 	$fileds = 'joinDate,tryBeginDate,tryOverDate,interviewer,expectedSalary,trySalary';
 	$data = $db->get_one($table,'where staffId='.$id.'',$fileds);
 	if($data['joinDate']!=''){
@@ -72,10 +93,16 @@
 		if($isSet == 1){
 			$updateRemark = getVal('updateRemark',2,'');
 			if($updateRemark == ''){
-				ErrorResturn('修改员工资料需标明修改内容');
+				$data['status'] = 'fail';
+				$data['message'] = '修改员工资料需标明修改内容';
+				$returnJson = json_encode($data);
+				echo $returnJson; exit;	
 			}
 			if(stringLen($updateRemark)>100){
-				ErrorResturn('修改备注内容长度不能超过100个字');
+				$data['status'] = 'fail';
+				$data['message'] = '修改备注内容长度不能超过100个字';
+				$returnJson = json_encode($data);
+				echo $returnJson; exit;
 			}
 		}
 
@@ -90,23 +117,28 @@
 		if($result){
 
 			//记录修改内容 
-			$_COOKIE['usrId'] = 1;	//测试
+			// $_COOKIE['usrId'] = 1;	//测试
 
 			$record['staffId'] = $id;
-			$record['editUsr'] = $_COOKIE['usrId'];
+			$record['editUsr'] = $common_staffId;
 			$record['logContent'] = $updateRemark;
 			$record['logTime'] = date('Y-m-d H:i:s');
 
 			$db->insert(PRFIX.'staff_editlog',$record);
 
-			$url = 'human-affairs.php?_f=staff-entry&page='.$page.'&id='.$id.'&s_company='.$s_company.'&s_office='.$s_office.'&s_role='.$s_role.'&s_post='.$s_post.'';
+			$url = '?_f=staff-entry&page='.$page.'&id='.$id.'&s_company='.$s_company.'&s_office='.$s_office.'&s_role='.$s_role.'&s_post='.$s_post.'';
 			$url .= '&s_status='.$s_status.'&s_begintime='.$s_begintime.'&s_overtime='.$s_overtime.'&s_name='.$s_name.'&s_idno='.$s_idno.'';
 
-			TipsRefreshResturn('操作成功',$url);
+			$data['status'] = 'success';
+			$data['message'] = '操作成功';
+			$data['url'] = $url;
 
 		}else{
-			ErrorResturn(ERRORTIPS);
+			$data['status'] = 'fail';
+			$data['message'] = ERRORTIPS;
 		}
+		$returnJson = json_encode($data);
+		echo $returnJson; exit;	
 
 	}
 
@@ -125,5 +157,6 @@
 	$smarty->assign('id',$id);
 	$smarty->assign('page',$page);
 	$smarty->assign('isSet',$isSet);
+	$smarty->assign('track',$track);
 
 ?>

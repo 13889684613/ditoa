@@ -423,6 +423,17 @@
     /* display: none; */
 }
 
+.retrievalsInputNav:after{
+	content: '';
+	display: block;
+	position: absolute;
+	width: 11px;
+	height: 8px;
+	background: url(../images/navTop.jpg) no-repeat;
+	top: -8px;
+	left: 17px;
+}
+
 .retrievalsInputNav li {
     height: 45px;
     line-height: 45px;
@@ -431,6 +442,10 @@
     border-radius: 5px;
     cursor: pointer;
     padding-left: 13px;
+}
+
+.retrievalsInputNav li:hover{
+	background-color: #f4f5f9;
 }
 
 @media (max-width: 1730px) and (min-width: 1200px){

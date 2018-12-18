@@ -1,0 +1,93 @@
+/* 
+    # 家庭主要成员页面
+    # Bowen
+    # 2018-11-14  
+*/
+
+
+.staffFamilyForm {
+    /* min-height: 700px; */
+    /* background-color: #fff; */
+}
+
+.staffFamilyContent {
+    width: 990px;
+    margin: 0 auto;
+    padding-top: 50px;
+    /* background-color: #fff;  */
+}
+
+.staffFamilyInfo {
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.familyAge {
+    position: absolute;
+    top: 50px;
+    left: 208px;
+    font-size: 14px;
+    color: #888;
+}
+
+.staffInfoForm .formInput.familyNameForm {
+    float: left;
+    width: 98px;
+    margin-right: 14px;
+}
+
+.staffInfoForm .width80 {
+    float: left;
+    width: 78px;
+    margin-right: 14px;
+    margin-bottom: 0;
+}
+
+.staffInfoForm .width80 .formInput.formSelect {
+    background: #fbfbfd url(public/html/images/form_Select_Open.png) no-repeat 55px center;
+}
+
+.staffInfoForm .formSelectList {
+    width: 80px;
+    top:54px;
+}
+
+.staffInfoForm .formInput.birthDateForm {
+    float: left;
+    width: 178px;
+    margin-right: 14px;
+    background: #fbfbfd url(public/html/images/data_icon.png) no-repeat 145px center;
+}
+
+.staffInfoForm .formInput.relationForm {
+    float: left;
+    width: 98px;
+    margin-right: 14px;
+}
+
+.staffInfoForm .formInput.telphoneForm {
+    float: left;
+    width: 148px;
+    margin-right: 14px;
+}
+
+.staffInfoForm .formInput.workUnitForm {
+    float: left;
+    width: 248px;
+    margin-right: 14px;
+}
+
+.add, .remove {
+    width: 42px;
+    height: 42px;
+    cursor: pointer;
+}
+
+
+
+@media (min-width: 1200px) and (max-width: 1400px) {
+	.contentRightBox{
+        padding: 0;
+        padding-top: 40px;
+    }   
+}

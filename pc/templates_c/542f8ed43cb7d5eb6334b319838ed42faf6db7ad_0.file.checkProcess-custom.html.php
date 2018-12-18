@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-17 14:37:48
+/* Smarty version 3.1.29, created on 2018-12-18 10:23:14
   from "F:\website\ditoaCoder\ditoa\pc\system\view\checkProcess-custom.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c17443cc66b06_11819533',
+  'unifunc' => 'content_5c185a12b05391_11952884',
   'file_dependency' => 
   array (
     '542f8ed43cb7d5eb6334b319838ed42faf6db7ad' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\system\\view\\checkProcess-custom.html',
-      1 => 1545028536,
+      1 => 1545099778,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c17443cc66b06_11819533 ($_smarty_tpl) {
+function content_5c185a12b05391_11952884 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -110,6 +110,7 @@ if ($__foreach_value_0_saved_key) {
 $_smarty_tpl->tpl_vars['key'] = $__foreach_value_0_saved_key;
 }
 ?>
+														<input type="hidden" class="selectVal" value="" />
 													</ul>
 												</div>
 											</div>
@@ -146,6 +147,7 @@ if ($__foreach_roles_1_saved_item) {
 $_smarty_tpl->tpl_vars['r'] = $__foreach_roles_1_saved_item;
 }
 ?>
+														<input type="hidden" class="selectVal" value="" />
 													</ul>
 												</div>
 											</div>
@@ -182,6 +184,7 @@ if ($__foreach_offices_2_saved_item) {
 $_smarty_tpl->tpl_vars['o'] = $__foreach_offices_2_saved_item;
 }
 ?>
+														<input type="hidden" class="selectVal" value="" />
 													</ul>
 												</div>
 											</div>
@@ -234,10 +237,11 @@ echo $_smarty_tpl->tpl_vars['track']->value;?>
 "><img src="public/html/images/edit.jpg" alt="" /></a>
 											</div>
 											<div class="editButton editButtonR pull-left text-center">
-												<a href="?_f=checkProcess-custom&act=remove&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
+												<img src="public/html/images/del.jpg" alt="" />
+												<input type="hidden" value="?_f=checkProcess-custom&act=remove&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
 &id=<?php echo $_smarty_tpl->tpl_vars['i']->value['checkProcessId'];
 echo $_smarty_tpl->tpl_vars['track']->value;?>
-"><img src="public/html/images/del.jpg" alt="" /></a>
+"/>
 											</div>
 											<?php }?>
 										</div>

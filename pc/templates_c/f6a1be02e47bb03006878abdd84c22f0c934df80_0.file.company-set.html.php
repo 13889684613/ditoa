@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-17 12:16:24
+/* Smarty version 3.1.29, created on 2018-12-18 14:21:25
   from "F:\website\ditoaCoder\ditoa\pc\org\view\company-set.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c1723189b98b1_93401069',
+  'unifunc' => 'content_5c1891e5348e52_35182650',
   'file_dependency' => 
   array (
     'f6a1be02e47bb03006878abdd84c22f0c934df80' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\org\\view\\company-set.html',
-      1 => 1545020178,
+      1 => 1545114080,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c1723189b98b1_93401069 ($_smarty_tpl) {
+function content_5c1891e5348e52_35182650 ($_smarty_tpl) {
 ?>
 <!-- 
 	# 企业详情编辑
@@ -286,7 +286,7 @@ function content_5c1723189b98b1_93401069 ($_smarty_tpl) {
 										<textarea name="business" placeholder="请输入" class = "formInput businessInput"><?php echo $_smarty_tpl->tpl_vars['i']->value['business'];?>
 </textarea>
 									</div>
-									<div class = "form">
+									<div class = "form w300 mT30">
 										<p class = "formTitle">企业成立日期<span>*</span></p>
 										<input type="text" name = "createDate" placeholder="请选择企业成立日期" class = "formInput createDateForm dataInput datepicker" autocomplete="off" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['createDate'];?>
 "/>

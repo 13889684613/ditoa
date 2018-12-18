@@ -55,6 +55,7 @@
 														{{foreach $categorys as $key=>$value}}
 														<li data-type = "{{$key}}">{{$value}}</li>
 														{{/foreach}}
+														<input type="hidden" class="selectVal" value="" />
 													</ul>
 												</div>
 											</div>
@@ -71,6 +72,7 @@
 														{{foreach item=r name=roles from=$roles}}
 														<li data-type='{{$r.checkRoleId}}'>{{$r.checkRoleName}}</li>
 														{{/foreach}}
+														<input type="hidden" class="selectVal" value="" />
 													</ul>
 												</div>
 											</div>
@@ -87,6 +89,7 @@
 														{{foreach item=o name=offices from=$offices}}
 														<li data-type='{{$o.officeId}}'>{{$o.officeName}}</li>
 														{{/foreach}}
+														<input type="hidden" class="selectVal" value="" />
 													</ul>
 												</div>
 											</div>
@@ -125,7 +128,8 @@
 												<a href="?_f=checkProcess-custom-set&act=edit&page={{$curPage}}&id={{$i.checkProcessId}}{{$track}}"><img src="public/html/images/edit.jpg" alt="" /></a>
 											</div>
 											<div class="editButton editButtonR pull-left text-center">
-												<a href="?_f=checkProcess-custom&act=remove&page={{$curPage}}&id={{$i.checkProcessId}}{{$track}}"><img src="public/html/images/del.jpg" alt="" /></a>
+												<img src="public/html/images/del.jpg" alt="" />
+												<input type="hidden" value="?_f=checkProcess-custom&act=remove&page={{$curPage}}&id={{$i.checkProcessId}}{{$track}}"/>
 											</div>
 											{{/if}}
 										</div>

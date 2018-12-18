@@ -90,7 +90,11 @@
 	$signPower = $m49.','.$m50.','.$m51.','.$m52.','.$m53;	//考勤管理
 
 	$m54 = getVal('m54',1,'');	//背景调查
-	$otherPower = $m54;
+	$m55 = getVal('m55',1,'');	//合同信息
+	$m56 = getVal('m56',1,'');	//假期设置
+	$m57 = getVal('m57',1,'');	//账号设置
+	$m58 = getVal('m58',1,'');	//编辑记录
+	$otherPower = $m54.','.$m55.','.$m56.','.$m57.','.$m58;
 
 	//完整权限配置
 	$power = $orgPower.'|'.$humanAffairsPower.'|'.$leavePower.'|'.$businessTravelPower.'|'.$carPower.'|'.$officeToolPower.'|'.$generalAffairsPower.'|';

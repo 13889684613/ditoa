@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-17 09:08:44
+/* Smarty version 3.1.29, created on 2018-12-18 10:28:06
   from "F:\website\ditoaCoder\ditoa\pc\system\view\leave-type.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c16f71c84e8e8_48824031',
+  'unifunc' => 'content_5c185b36ea4255_80376004',
   'file_dependency' => 
   array (
     '2347deb10e30af191d280a2c38937162b7d8f829' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\system\\view\\leave-type.html',
-      1 => 1545008745,
+      1 => 1545100039,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c16f71c84e8e8_48824031 ($_smarty_tpl) {
+function content_5c185b36ea4255_80376004 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -121,10 +121,11 @@ echo $_smarty_tpl->tpl_vars['track']->value;?>
 "><img src="public/html/images/edit.jpg" alt="" /></a>
 												</div>
 												<div class="editButton editButtonR pull-left text-center">
-													<a href="?_f=leave-type&act=remove&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
+													<img src="public/html/images/del.jpg" alt="" />
+													<input type="hidden" value="?_f=leave-type&act=remove&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
 &id=<?php echo $_smarty_tpl->tpl_vars['i']->value['leaveTypeId'];
 echo $_smarty_tpl->tpl_vars['track']->value;?>
-" onclick="return confirm('确认要删除？');"><img src="public/html/images/del.jpg" alt="" /></a>
+"/>
 												</div>
 											</div>
 										</td>

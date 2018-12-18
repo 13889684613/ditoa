@@ -1,8 +1,5 @@
 $(function(){
-	var height = $('.contentRight').height();
-	if(height > 818){
-		$('.contentLeftNav').css('height',height+119)
-	}
+   $('.contentLeftNav').append($('<div class="contentLeftNavMak"></div>'))
 	$('.retrievalsInputNav').mCustomScrollbar({
 		axis: "y",
 		theme: "dark",
@@ -14,7 +11,8 @@ $(function(){
 		}else{
 			$(this).parents('.retrievalsInput').find('input').val($(this).text()).attr('data-type', '0')
 		}
-		$('.retrievalsInputNavBox').hide()
+		$('.retrievalsInputNavBox').hide();
+		$(this).parent().find('.selectVal').val($(this).attr('data-type'));
 	})
 	for (var i = 0; i < $('.retrievalsInputNav li').length; i++) {
 		$('.retrievalsInputNav li').eq(i).attr('title',$('.retrievalsInputNav li').eq(i).text())
@@ -85,12 +83,12 @@ $(function(){
 		var txt = $(this).text();
 		if($(this).hasClass('default')){
 			$(this).parents('.form').find('.formSelect').removeClass('on').text(txt).css('color','#aaa');
-			$(this).parents('.form').find('input[type="hidden"]').val(txt);
+			$(this).parents('.form').find('input[type="hidden"]').val($(this).data('type'));
 			$(this).parents('.formSelectList').hide();
 			return false;
 		}
 		$(this).parents('.form').find('.formSelect').removeClass('on').text(txt).css('color','#222');
-		$(this).parents('.form').find('input[type="hidden"]').val(txt);
+		$(this).parents('.form').find('input[type="hidden"]').val($(this).data('type'));
 		$(this).parents('.formSelectList').hide();
 	})
 
@@ -119,8 +117,8 @@ $(function(){
 
 
 //删除提示
-function tic(a,b,c,d){
-var html = $('<div class="popTic"><div class="popTicBox"><div class="popTicTitle">'+a+'<img src="public/html/images/close.png" alt="" /></div><div class="popTicContent">'+b+'</div><div class="popTicButtonBox clearfix"><div class="popTicButton popTicButtonL pull-left">'+c+'</div><div class="popTicButton popTicButtonR pull-right"><a>'+d+'</a></div></div></div><div class="popTicMask"></div></div>')
+function tic(a,b,c,d,e){
+var html = $('<div class="popTic"><div class="popTicBox"><div class="popTicTitle">'+a+'<img src="public/html/images/close.png" alt="" /></div><div class="popTicContent">'+b+'</div><div class="popTicButtonBox clearfix"><div class="popTicButton popTicButtonL pull-left"><a href="'+e+'">'+c+'</a></div><div class="popTicButton popTicButtonR pull-right"><a>'+d+'</a></div></div></div><div class="popTicMask"></div></div>')
 $('body').append(html);
 $('input,textarea').placeholder();
 }
@@ -128,15 +126,23 @@ $('input,textarea').placeholder();
 
 // 表单提交错误弹框
 var t;
-function popAlert(txt) {
-$('.popAlert').remove();
-clearTimeout(t);
-var html = '<div class = "popAlert"><img src="public/html/images/popAlertIcon.png" alt="" class = "popAlertIcon" /><p class = "popAlertText">'+txt+'</p></div>';
-$('body').append(html);
-$('.popAlert').show(); 
-t = setTimeout(function(){
-	$('.popAlert').hide(); 
-},2000);
+function popAlert(txt,url) {
+	$('.popAlert').remove();
+	clearTimeout(t);
+	var html = '<div class = "popAlert"><img src="public/html/images/popAlertIcon.png" alt="" class = "popAlertIcon" /><p class = "popAlertText">'+txt+'</p></div><div class="popMask"><div>';
+	$('body').append(html);
+	$('.popAlert').show(); 
+	$('.popMask').show();
+	if (typeof(url) == "undefined") {
+		t = setTimeout(function(){
+			$('.popAlert').hide(); 
+			$('.popMask').hide();
+		},2000);
+	}else{
+		t = setTimeout(function(){
+			location.href= url;
+		},3000);
+	}
 }
 
 function stopBubble(e) { 

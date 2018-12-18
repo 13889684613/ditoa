@@ -35,13 +35,13 @@
 						<div class="contentNavListText"><img src="public/html/images/nav-image-c.png" alt="" class="navLogo" />人事管理</div>
 						<ul class="contentNavListMore">
 							{{if $menuHumanAffairs[0] == 1}}
-							<li>
-								<a href="">企业资质证件</a>
+							<li{{if $cerMenu==1}} class="active"{{/if}}>
+								<a href="human-affairs.php?_f=certificate">企业资质证件</a>
 							</li>
 							{{/if}}
 							{{if $menuHumanAffairs[1] == 1}}
-							<li>
-								<a href="">员工管理</a>
+							<li{{if $staffMenu==1}} class="active"{{/if}}>
+								<a href="human-affairs.php?_f=staff">员工管理</a>
 							</li>
 							{{/if}}
 							{{if $menuHumanAffairs[2] == 1}}
@@ -75,8 +75,8 @@
 							</li>
 							{{/if}}
 							{{if $menuHumanAffairs[8] == 1}}
-							<li>
-								<a href="">企业规章制度</a>
+							<li{{if $ruleMenu==1}} class="active"{{/if}}>
+								<a href="human-affairs.php?_f=rules">企业规章制度</a>
 							</li>
 							{{/if}}
 							{{if $menuHumanAffairs[9] == 1}}

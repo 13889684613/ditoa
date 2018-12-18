@@ -25,7 +25,7 @@ $(function(){
     var i = 0;
     $('.add').click(function(){
         i++;
-        var html = '<div class="staffFamilyInfo clearfix"><input type="text"name="familyName"placeholder="姓名"class="formInput familyNameForm"autocomplete="off"/><div class="form width80"><div class="formInput formSelect">性别</div><ul class="formSelectList"><li class="default">性别</li><li>男</li><li>女</li></ul><input type="hidden"name="sex"class="formInput sexForm"/></div><input type="text"name="birthDate"placeholder="请选择出生日期"class="formInput birthDateForm dataInput datepicker'+i+'"autocomplete="off"/><input type="text"name="relation"placeholder="与本人关系"class="formInput relationForm"autocomplete="off"/><input type="text"name="telphone"placeholder="联系电话"class="formInput telphoneForm"autocomplete="off"/><input type="text"name="workUnit"placeholder="工作单位"class="formInput workUnitForm"autocomplete="off"/><img src="../../public/html/images/input_remove.png"alt=""class="remove"><p class="familyAge">年龄：<span>0</span></p></div>';
+        var html = '<div class="staffFamilyInfo clearfix"><input type="hidden" name="familyId[]" value="0" /><input type="text"name="familyName[]" placeholder="姓名"class="formInput familyNameForm"autocomplete="off"/><div class="form width80"><div class="formInput formSelect">性别</div><ul class="formSelectList"><li class="default">性别</li><li>男</li><li>女</li></ul><input type="hidden"name="sex[]"class="formInput sexForm"/></div><input type="text" name="birthDate[]" placeholder="请选择出生日期"class="formInput birthDateForm dataInput datepicker'+i+'"autocomplete="off"/><input type="text" name="relation[]" placeholder="与本人关系"class="formInput relationForm"autocomplete="off"/><input type="text" name="telphone[]" placeholder="联系电话"class="formInput telphoneForm"autocomplete="off"/><input type="text"name="workUnit[]"placeholder="工作单位"class="formInput workUnitForm"autocomplete="off"/><img src="public/html/images/input_remove.png"alt=""class="remove"><p class="familyAge">年龄：<span>0</span></p></div>';
         $('.staffFamilyContent').append(html);
         $(".datepicker"+i).datepicker({
             inline: true,
@@ -184,10 +184,30 @@ $(function(){
                     $('.modifyRemarkInput').focus();
                     return false;
                 }else{
-                    $('form').submit(); 
+                   $('#familyFrom').ajaxSubmit({
+                        type:'post',
+                        success:function(data){
+                            data = $.parseJSON(data);
+                            if(data.status == 'success'){
+                                location.href = data.url;
+                            }else{
+                                popAlert(data.message); //弹出错误信息
+                            }
+                        }
+                    })
                 }
             }else{
-                $('form').submit();
+               $('#familyFrom').ajaxSubmit({
+                    type:'post',
+                    success:function(data){
+                        data = $.parseJSON(data);
+                        if(data.status == 'success'){
+                            location.href = data.url;
+                        }else{
+                            popAlert(data.message); //弹出错误信息
+                        }
+                    }
+                })
             }
         }
         // $('input.formInput').each(function() {

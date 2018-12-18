@@ -46,7 +46,8 @@ $(function(){
         var modifyRemarkInput = $('.modifyRemarkInput').val();      //请输入修改备注信息
         
 
-        var phone = zoneNumInput + landLineInput;  //座机号
+        // var phone = zoneNumInput + landLineInput;  //座机号
+        var phone = landLineInput;
         var regex = /^(\w)+(\.\w+)*@(\w)+((\.[A-Za-z]{2,3}){1,3})$/;
         var pReg = /^1\d{10}$/;
 
@@ -58,10 +59,10 @@ $(function(){
             popAlert('请选择部门名称');
             return false;
         } 
-        if(preview == "" || preview == undefined) {
-            popAlert('请上传照片');
-            return false;
-        }
+        // if(preview == "" || preview == undefined) {
+        //     popAlert('请上传照片');
+        //     return false;
+        // }
         if(groupId == "" || groupId == "请选择所属小组") {
             popAlert('请选择所属小组');
             return false;
@@ -94,16 +95,16 @@ $(function(){
             popAlert('请选择性别');
             return false;
         }
-        if(zoneNumInput == "") {
-            popAlert('请输入区号');
-            $('.zoneNumInput').focus();
-            return false;
-        }
-        if(isNaN(zoneNumInput)) {
-            popAlert('区号需为数字');
-            $('.zoneNumInput').focus();
-            return false;
-        }
+        // if(zoneNumInput == "") {
+        //     popAlert('请输入区号');
+        //     $('.zoneNumInput').focus();
+        //     return false;
+        // }
+        // if(isNaN(zoneNumInput)) {
+        //     popAlert('区号需为数字');
+        //     $('.zoneNumInput').focus();
+        //     return false;
+        // }
         if(landLineInput == "") {
             popAlert('请输入座机号');
             $('.landLineInput').focus();
@@ -114,25 +115,29 @@ $(function(){
             $('.landLineInput').focus();
             return false;
         }
-        if(phone.length > 50) {
-            popAlert('座机号长度需在11个字符以内');
-            $('.zoneNumInput').focus();
-            return false;
+        if(phone!=""){
+            if(phone.length > 50) {
+                popAlert('座机号长度需在11个字符以内');
+                $('.zoneNumInput').focus();
+                return false;
+            }
         }
-        if(extensionNumInput == "") {
-            popAlert('请输入分机号');
-            $('.extensionNumInput').focus();
-            return false;
-        }
-        if(isNaN(extensionNumInput)) {
-            popAlert('分机号需为数字');
-            $('.extensionNumInput').focus();
-            return false;
-        }
-        if(extensionNumInput.length > 20) {
-            popAlert('分机号长度需在20个字符以内');
-            $('.extensionNumInput').focus();
-            return false;
+        if(extensionNumInput!=""){
+            if(extensionNumInput == "") {
+                popAlert('请输入分机号');
+                $('.extensionNumInput').focus();
+                return false;
+            }
+            if(isNaN(extensionNumInput)) {
+                popAlert('分机号需为数字');
+                $('.extensionNumInput').focus();
+                return false;
+            }
+            if(extensionNumInput.length > 20) {
+                popAlert('分机号长度需在20个字符以内');
+                $('.extensionNumInput').focus();
+                return false;
+            }
         }
         if(idForm == "") {
             popAlert('请输入身份证号');
@@ -148,15 +153,17 @@ $(function(){
             popAlert('请选择出生日期');
             return false;
         }
-        if(emailForm == "") {
-            popAlert('请输入邮箱地址');
-            $('.emailForm').focus();
-            return false;
-        }
-        if(!regex.test(emailForm)) {
-            popAlert('请输入正确的邮箱地址');
-            $('.emailForm').focus();
-            return false;
+        // if(emailForm == "") {
+        //     popAlert('请输入邮箱地址');
+        //     $('.emailForm').focus();
+        //     return false;
+        // }
+        if(emailForm!=""){
+            if(!regex.test(emailForm)) {
+                popAlert('请输入正确的邮箱地址');
+                $('.emailForm').focus();
+                return false;
+            }
         }
         if(addressForm == "") {
             popAlert('请输入联系地址');
@@ -254,8 +261,17 @@ $(function(){
             return false;
         }
         
-
-        $('form').submit();
+        $('#staffForm').ajaxSubmit({
+            type:'post',
+            success:function(data){
+                data = $.parseJSON(data);
+                if(data.status == 'success'){
+                    location.href = data.url;
+                }else{
+                    popAlert(data.message); //弹出错误信息
+                }
+            }
+        })
     })
 
 })

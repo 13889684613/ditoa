@@ -35,7 +35,8 @@ $(function(){
 	})
 	
 	$('.editButtonR').click(function(){
-		tic('确定删除企业吗？','删除后无法恢复！请谨慎操作！','确定删除','取消')
+		var link = $(this).find('input[type="hidden"]').val();
+		tic('确定删除企业吗？','删除后无法恢复！请谨慎操作！','确定删除','取消',link);
 	})
 	
 	$('body').delegate('.popTicButtonL,.popTicButtonR,.popTicTitle img,.popTicMask','click',function(){

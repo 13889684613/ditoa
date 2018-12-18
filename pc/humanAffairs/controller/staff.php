@@ -95,9 +95,35 @@
 	foreach ($data as $key => $value) {
 		++ $sn;
 		$data[$key]['sn'] = $sn;
+		$data[$key]['isFill'] = 1;	//是否需要补充更多资料
+
 		//系统角色
 		$r = $db->get_one(PRFIX.'sysrole','where sysRoleId='.$data[$key]['sysRoleId'].'','sysRoleName');
-		$data[$key]['role'] = $r['sysRoleName'];
+		if($r){
+			$data[$key]['role'] = $r['sysRoleName'];
+		}else{
+			$data[$key]['isFill'] = 0;
+			$data[$key]['role'] ='待分配';
+		}
+
+		//家庭主要成员
+		$family = $db->get_one(PRFIX.'staff_family','where staffId='.$data[$key]['staffId'].'','familyId');
+		if(!$family){
+			$data[$key]['isFill'] = 0;
+		}
+
+		//教育与工作经历
+		$work = $db->get_one(PRFIX.'staff_resume','where staffId='.$data[$key]['staffId'].'','resumeId');
+		if(!$work){
+			$data[$key]['isFill'] = 0;
+		}
+
+		//资料上传
+		$attach = $db->get_one(PRFIX.'staff_attach','where staffId='.$data[$key]['staffId'].'','attachId');
+		if(!$attach){
+			$data[$key]['isFill'] = 0;
+		}
+		
 		//隶属公司 begin
 		if($data[$key]['companyId'] == 0){
 			$data[$key]['company'] = '待指定';
@@ -120,10 +146,17 @@
 		//座机
 		$data[$key]['phone'] = $data[$key]['phone'].'-'.$data[$key]['extensionNumber'];
 		//合同
+		$data[$key]['expire'] = 0;
 		if($data[$key]['contractBeginDate'] == ''){
 			$data[$key]['contract'] = '待签订';
+			$data[$key]['isFill'] = 0;
 		}else{
 			$data[$key]['contract'] = $data[$key]['contractBeginDate'].'至'.$data[$key]['contractOverDate'];
+			$dayNum = (strtotime($data[$key]['contractOverDate']) - strtotime(date('Y-m-d')))/86400;
+			//合同到期前30天提醒
+			if($dayNum<=30){
+				$data[$key]['expire'] = 1;
+			}
 		}
 		//状态
 		$data[$key]['status'] = static_staffStatus($data[$key]['status']);
@@ -153,7 +186,7 @@
 	$smarty->assign('track',$track);
 
 	//操作返回地址
-	$url = $router.$track;
+	$url = $router.'&page='.$curPage.''.$track;
 
 	//删除
 	if($act == 'remove'){

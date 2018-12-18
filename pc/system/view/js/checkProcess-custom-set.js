@@ -19,7 +19,8 @@ $(function() {
 	})
 
 	$('.editButtonR').click(function() {
-		tic('确定删除企业吗？', '删除后无法恢复！请谨慎操作！', '确定删除', '取消')
+		var link = $(this).find('input[type="hidden"]').val();
+		tic('确定删除企业吗？','删除后无法恢复！请谨慎操作！','确定删除','取消',link);
 	})
 
 	$('body').delegate('.popTicButtonL,.popTicButtonR,.popTicTitle img,.popTicMask', 'click', function() {
@@ -102,6 +103,7 @@ $(function() {
 	});
 	var hold = false;
 	$('.queryButton').click(function() {
+		$('.contentLeftNav').css('heigth','100%');
 		var choseInputLc = $('.choseInputLc').attr('data-type');
 		var choseInputQy = $('.choseInputQy').attr('data-type');
 		var choseInputBm = $('.choseInputBm').attr('data-type');
@@ -180,6 +182,7 @@ $(function() {
 			var html = $('.approval-informationBox .approval-information').eq($('.approval-informationBox .approval-information').length - 1).clone();
 			$('.approval-informationBox').append(html);
 			$('.approval-informationBox .approval-information').eq($('.approval-informationBox .approval-information').length - 1).find('.Stable tr').eq(0).find('td').eq(0).find('span').text(i);
+			$('.approval-informationBox .approval-information').eq($('.approval-informationBox .approval-information').length - 1).find('.td4 .StableTd').eq(0).append($('<div class="Sdel"><img src="system/view/images/del.jpg" alt="" /></div>'))
 			$('input').placeholder();
 		}
 	})
@@ -243,7 +246,7 @@ $(function() {
 	$('body').delegate('.Sdel', 'click', function() {
 		$this = $(this);
 		tic('确定删除吗？', '删除后无法恢复！请谨慎操作！', '确定删除', '取消');
-		$('.popTicButtonL a').attr('href','javascript:;');
+		 $('.popTicButtonL a').attr('href','javascript:;');
 	})
 	$('body').delegate('.popTicButtonL','click',function(){
 		$this.parents('.approval-information').remove();

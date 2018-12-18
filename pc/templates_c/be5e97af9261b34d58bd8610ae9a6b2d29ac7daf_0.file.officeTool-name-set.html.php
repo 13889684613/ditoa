@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-17 17:30:05
+/* Smarty version 3.1.29, created on 2018-12-18 10:34:10
   from "F:\website\ditoaCoder\ditoa\pc\system\view\officeTool-name-set.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c176c9d55f571_52479427',
+  'unifunc' => 'content_5c185ca287f180_54135156',
   'file_dependency' => 
   array (
     'be5e97af9261b34d58bd8610ae9a6b2d29ac7daf' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\system\\view\\officeTool-name-set.html',
-      1 => 1545039004,
+      1 => 1545098615,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c176c9d55f571_52479427 ($_smarty_tpl) {
+function content_5c185ca287f180_54135156 ($_smarty_tpl) {
 ?>
 <!-- 
 	# 新增系统角色
@@ -133,7 +133,6 @@ if ($__foreach_categorys_0_saved_item) {
 $_smarty_tpl->tpl_vars['c'] = $__foreach_categorys_0_saved_item;
 }
 ?>
-
 												<input type="hidden" class="selectVal" value="" autocomplete="off">
 											</ul>
 										</div>

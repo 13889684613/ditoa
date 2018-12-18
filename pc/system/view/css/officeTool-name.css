@@ -293,3 +293,14 @@
 		float: right;
 	}
 }
+@media (min-width: 1250px) and (max-width: 1440px) {
+	.retrievaButtonL {
+		margin-left: 0;
+	}
+	.retrievalsInput{
+		width: 300px;
+	}
+	.retrievalBox{
+		padding-bottom: 30px;
+	}
+}

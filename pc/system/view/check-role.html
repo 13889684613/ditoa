@@ -17,13 +17,12 @@
 		<!--头部 begin-->
 		{{include file='public/html/head.html'}}
 		<!--头部 end-->
-
 		<!--内容 begin-->
 		<div class="container-fluid row">
 			<!--内容区左侧导航 begin-->
 			{{include file='public/html/menu.html'}}
 			<!--内容区左侧导航end-->
-			<!--内容区右侧begin-->
+				<!--内容区右侧begin-->
 			<div class="contentRight col-lg-10 row">
 				<!--内容区导航begin-->
 				<div class="contentRightNav clearfix">
@@ -76,7 +75,8 @@
 													<a href="?_f=check-role-set&act=edit&page={{$curPage}}&id={{$i.checkRoleId}}{{$track}}"><img src="public/html/images/edit.jpg" alt="" /></a>
 												</div>
 												<div class="editButton editButtonR pull-left text-center">
-													<a href="?_f=check-role&act=remove&page={{$curPage}}&id={{$i.checkRoleId}}{{$track}}" onclick="return confirm('确认要删除？');"><img src="public/html/images/del.jpg" alt="" /></a>
+													<img src="public/html/images/del.jpg" alt="" />
+													<input type="hidden" value="?_f=check-role&act=remove&page={{$curPage}}&id={{$i.checkRoleId}}{{$track}}" />
 												</div>
 											</div>
 										</td>

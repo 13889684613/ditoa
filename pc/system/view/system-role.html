@@ -76,7 +76,8 @@
 													<a href="?_f=system-role-set&act=edit&page={{$curPage}}&id={{$i.sysRoleId}}{{$track}}"><img src="public/html/images/edit.jpg" alt="" /></a>
 												</div>
 												<div class="editButton editButtonR pull-left text-center">
-													<a href="?_f=system-role&act=remove&page={{$curPage}}&id={{$i.sysRoleId}}{{$track}}" onclick="return confirm('确认要删除？');"><img src="public/html/images/del.jpg" alt="" /></a>
+													<img src="public/html/images/del.jpg" alt="" />
+													<input type="hidden" value="?_f=system-role&act=remove&page={{$curPage}}&id={{$i.sysRoleId}}{{$track}}"/>
 												</div>
 											</div>
 										</td>

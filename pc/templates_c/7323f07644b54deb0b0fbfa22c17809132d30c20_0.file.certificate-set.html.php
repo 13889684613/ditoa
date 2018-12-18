@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-17 17:32:46
+/* Smarty version 3.1.29, created on 2018-12-18 16:19:47
   from "F:\website\ditoaCoder\ditoa\pc\generalAffairs\view\certificate-set.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c176d3ea8a1a9_97325641',
+  'unifunc' => 'content_5c18ada346a5e6_44140547',
   'file_dependency' => 
   array (
     '7323f07644b54deb0b0fbfa22c17809132d30c20' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\generalAffairs\\view\\certificate-set.html',
-      1 => 1545039162,
+      1 => 1545121177,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c176d3ea8a1a9_97325641 ($_smarty_tpl) {
+function content_5c18ada346a5e6_44140547 ($_smarty_tpl) {
 ?>
 <!-- 
 	# 企业资质证件
@@ -91,8 +91,10 @@ function content_5c176d3ea8a1a9_97325641 ($_smarty_tpl) {
 							<div class = "roleInfo">
 								<p class = "addApplyTitle mB26">资质证件信息</p>
 								<div class = "roleUserInfo clearfix">
-									<div class = "form userName clearfix">
-										<p class = "formTitle">所属企业<span>*</span></p>
+									<!-- <div class = "form userName clearfix"> -->
+									<div class = "retrievalsInput pull-left mR40 clearfix">
+										<label class="lable_w">备品类别<span class="must">*</span></label>		
+										<!-- <p class = "formTitle">所属企业<span>*</span></p> -->
 										<input type="text" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputBm companyInput" placeholder="请选择" name="company" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['companyId'];?>
 " data-type='0' />
 										<div class="retrievalsInputNavBox">
@@ -120,6 +122,7 @@ if ($__foreach_company_0_saved_item) {
 $_smarty_tpl->tpl_vars['c'] = $__foreach_company_0_saved_item;
 }
 ?>
+												<input type="hidden" class="selectVal" value="" autocomplete="off">
 											</ul>
 										</div>
 									</div>
@@ -143,14 +146,16 @@ $_smarty_tpl->tpl_vars['c'] = $__foreach_company_0_saved_item;
 										<div class = "showFileName">已选择：<span></span></div>
 										<?php }?>
 									</div>
-									<div class = "form">
+								</div>
+								<div class = "roleUserInfo mT26 clearfix">
+									<div class = "form userName clearfix">
 										<p class = "formTitle">证件到期日期<span>*</span></p>
 										<input type="text" name = "overDate" placeholder="请选择证件到期日期" class = "formInput overDateForm dataInput datepicker" autocomplete="off" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['overDate'];?>
 "/>
 									</div>
 								</div>
 								<div class = "roleUserInfo mT26 clearfix">
-									<div class = "form">
+									<div class = "form userName clearfix">
 										<p class = "formTitle">备注</p>
 										<textarea name="remark" placeholder="备注内容" class = "formInput remarkInput"><?php echo $_smarty_tpl->tpl_vars['i']->value['remark'];?>
 </textarea>
@@ -205,7 +210,20 @@ $_smarty_tpl->tpl_vars['c'] = $__foreach_company_0_saved_item;
 	<?php echo '<script'; ?>
  type="text/javascript" src="generalAffairs/view/js/certificate-set.js" ><?php echo '</script'; ?>
 >
-
+	<?php echo '<script'; ?>
+>
+		$(".datepicker").datepicker({
+			inline: true,
+			showOtherMonths: true,
+			selectOtherMonths: true,
+			changeMonth: true,
+			changeYear: true,
+			yearRange: "1950:2050",
+			dateFormat: 'yy-mm-dd'
+		});
+		
+	<?php echo '</script'; ?>
+>
 </body>
 </html><?php }
 }

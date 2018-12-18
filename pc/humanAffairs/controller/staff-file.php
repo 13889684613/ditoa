@@ -27,6 +27,8 @@
 	$s_idno = getVal('s_idno',2,'');
 	$s_begintime = getVal('s_begintime',2,'');
 	$s_overtime = getVal('s_overtime',2,'');
+	$track = '&page='.$page.'&id='.$id.'&s_company='.$s_company.'&s_office='.$s_office.'&s_role='.$s_role.'&s_post='.$s_post.'&s_status='.$s_status.'';
+	$track .= '&s_name='.$s_name.'&s_idno='.$s_idno.'&s_begintime='.$s_begintime.'&s_overtime='.$s_overtime.'';
 	//记录列表页检索条件over
 
 	//获取值 begin
@@ -35,18 +37,7 @@
 	//获取值 over
 
 	//验证
-	if($act == 'editSave'){
-		if($insuranceOverDate!=''){
-			if(!isdate($insuranceOverDate)){
-				ErrorResturn('请填写正确的保险缴纳日期');
-			}
-		}
-		if($fundOverDate!=''){
-			if(!isdate($fundOverDate)){
-				ErrorResturn('请填写正确的公积金缴纳日期');
-			}
-		}
-	}
+	$isSet = 0;
 
 	//身份证证文件
 	$idFile = '';
@@ -86,10 +77,16 @@
 		if($isSet == 1){
 			$updateRemark = getVal('updateRemark',2,'');
 			if($updateRemark == ''){
-				ErrorResturn('修改员工资料需标明修改内容');
+				$data['status'] = 'fail';
+				$data['message'] = '修改员工资料需标明修改内容';
+				$returnJson = json_encode($data);
+				echo $returnJson; exit;	
 			}
 			if(stringLen($updateRemark)>100){
-				ErrorResturn('修改备注内容长度不能超过100个字');
+				$data['status'] = 'fail';
+				$data['message'] = '修改备注内容长度不能超过100个字';
+				$returnJson = json_encode($data);
+				echo $returnJson; exit;	
 			}
 		}
 
@@ -125,19 +122,31 @@
 				}
 
 				if($key == 0 && $idFile == '' && $id_file == ''){
-					ErrorResturn('请上传身份证正反面文件');
+					$data['status'] = 'fail';
+					$data['message'] = '请上传身份证正反面文件';
+					$returnJson = json_encode($data);
+					echo $returnJson; exit;
 				}
 
 				if($key == 1 && $eduFile == '' && $edu_file == ''){
-					ErrorResturn('请上传学历证书文件');
+					$data['status'] = 'fail';
+					$data['message'] = '请上传学历证书文件';
+					$returnJson = json_encode($data);
+					echo $returnJson; exit;
 				}
 
 				if($key == 2 && $registerFile == '' && $register_file == ''){
-					ErrorResturn('请上传户口本文件');
+					$data['status'] = 'fail';
+					$data['message'] = '请上传户口本文件';
+					$returnJson = json_encode($data);
+					echo $returnJson; exit;
 				}
 
 				if($key == 3 && $reportFile == '' && $report_file == ''){
-					ErrorResturn('请上传体检报告');
+					$data['status'] = 'fail';
+					$data['message'] = '请上传体检报告';
+					$returnJson = json_encode($data);
+					echo $returnJson; exit;
 				}
 
 				if($key > 3){
@@ -252,10 +261,10 @@
 			//更新资料文件数据 over
 
 			//记录修改内容 
-			$_COOKIE['usrId'] = 1;	//测试
+			// $_COOKIE['usrId'] = 1;	//测试
 
 			$record['staffId'] = $id;
-			$record['editUsr'] = $_COOKIE['usrId'];
+			$record['editUsr'] = $common_staffId;
 			$record['logContent'] = $updateRemark;
 			$record['logTime'] = date('Y-m-d H:i:s');
 
@@ -264,7 +273,11 @@
 			$url = 'human-affairs.php?_f=staff-file&page='.$page.'&id='.$id.'&s_company='.$s_company.'&s_office='.$s_office.'&s_role='.$s_role.'&s_post='.$s_post.'';
 			$url .= '&s_status='.$s_status.'&s_begintime='.$s_begintime.'&s_overtime='.$s_overtime.'&s_name='.$s_name.'&s_idno='.$s_idno.'';
 
-			TipsRefreshResturn('操作成功',$url);
+			$data['status'] = 'success';
+			$data['message'] = '操作成功';
+			$data['url'] = $url;
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;	
 
 		}
 
@@ -290,5 +303,6 @@
 	$smarty->assign('id',$id);
 	$smarty->assign('page',$page);
 	$smarty->assign('isSet',$isSet);
+	$smarty->assign('track',$track);
 
 ?>

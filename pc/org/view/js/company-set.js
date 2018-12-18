@@ -12,8 +12,9 @@ $(function(){
 
     //添加维修列表
     $('.addBtn').click(function(){
+        var length = $('.otherAllbox').length;
         var html = '<div class="otherForm clearfix"><div class="otherFormBox titleForm w28 clearfix"><p>标题</p><input type="text"name="title[]" placeholder="请输入信息标题"class="otherInput otherTitleInput"/></div><div class="otherFormBox infoForm w33 clearfix"><p>信息内容</p><input type="text" name="content[]" placeholder="请输入内容"class="otherInput otherContentInput"/></div><div class="removeBtn"></div></div>';
-        $('.otherAllbox').append(html);
+        $('.otherAllbox').eq(length-1).append(html);
         $('input').placeholder();
     })
 

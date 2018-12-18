@@ -32,7 +32,7 @@
 			$common_group = $commons['groupId'];			//员工所属工作组
 			$common_category = $commons['category'];		//系统级角色 1系统管理员 0普通员工
 			$common_checkRole = $commons['checkRoleId'];	//审批角色id
-			$common_head = 'upload/images/straff/head/'.$commons['photo'];
+			$common_head = 'upload/images/staff/head/'.$commons['photo'];
 
 			//获取办事处名称
 			$getOffice = $db->get_one(PRFIX.'office','where officeId='.$commons['officeId'].'','officeName');
@@ -57,7 +57,7 @@
 			}else{
 				if($common_category == 1){
 					//系统管理员拥有所有权限
-					$common_power = '1,1,1,1|1,1,1,1,1,1,1,1,1,1,1|1,1,1,1|1,1|1,1,1,1,1,1|1,1,1,1,1,1,1,1,1,1|1,1,1|1,1,1,1,1,1,1,1|1,1,1,1,1';
+					$common_power = '1,1,1,1|1,1,1,1,1,1,1,1,1,1,1|1,1,1,1|1,1|1,1,1,1,1,1|1,1,1,1,1,1,1,1,1,1|1,1,1|1,1,1,1,1,1,1,1|1,1,1,1,1|1,1,1,1,1';
 					$menuPower = explode('|', $common_power);
 				}else{
 					$menuPower = explode('|',$getPower['power']);				//完整权限
@@ -72,7 +72,7 @@
 				$menuGeneralAffairs =explode(',',$menuPower[6]);			//综合事务管理
 				$menuSystem =explode(',',$menuPower[7]);					//系统运维管理	
 				$menuSignPower = explode(',',$menuPower[8]);				//考勤管理
-				$otherPower = explode(',',$menuPower[9]);					//其它权限，0:背景调查
+				$otherPower = explode(',',$menuPower[9]);					//其它权限 员工信息 0:背景调查查看 1:合同信息 2:假期设置 3:账号设置 4:编辑记录
 			}
 			//获取权限信息 over
 
@@ -184,7 +184,21 @@
 	//DIT组织架构menu over
 
 	//人事管理menu
-	if($_prfix == $humanPrfix ){
+	$humanMenus = false;
+	//企业资质证件
+	if($_file == 'certificate'){
+		$cerMenu = 1; $humanMenus = true;
+	}
+	//员工管理
+	if($_file == 'staff' || $_file == 'staff-information' || $_file == 'staff-family' || $_file == 'staff-education' || $_file == 'staff-welfare'){
+		$staffMenu = 1; $humanMenus = true;
+	}
+	//企业规章制度
+	if($_file == 'rules'){
+		$ruleMenu = 1; $humanMenus = true;
+	}
+
+	if($_prfix == $humanPrfix && $humanMenus ){
 		$humanMenu = ' on';
 	}
 
@@ -284,7 +298,12 @@
 	$smarty->assign('groupMenu',$groupMenu);
 	$smarty->assign('orgsMenu',$orgsMenu);
 
+	//人事管理
 	$smarty->assign('humanMenu',$humanMenu);
+	$smarty->assign('cerMenu',$cerMenu);
+	$smarty->assign('ruleMenu',$ruleMenu);
+	$smarty->assign('staffMenu',$staffMenu);
+
 	$smarty->assign('leaveMenu',$leaveMenu);
 	$smarty->assign('businessMenu',$businessMenu);
 	$smarty->assign('carMenu',$carMenu);

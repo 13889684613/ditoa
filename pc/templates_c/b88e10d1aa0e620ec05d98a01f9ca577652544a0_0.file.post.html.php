@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-17 09:38:48
+/* Smarty version 3.1.29, created on 2018-12-18 10:25:14
   from "F:\website\ditoaCoder\ditoa\pc\system\view\post.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c16fe28eeba74_62707097',
+  'unifunc' => 'content_5c185a8ab0bcf5_09898050',
   'file_dependency' => 
   array (
     'b88e10d1aa0e620ec05d98a01f9ca577652544a0' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\system\\view\\post.html',
-      1 => 1545008745,
+      1 => 1545099912,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c16fe28eeba74_62707097 ($_smarty_tpl) {
+function content_5c185a8ab0bcf5_09898050 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -121,10 +121,11 @@ echo $_smarty_tpl->tpl_vars['track']->value;?>
 "><img src="public/html/images/edit.jpg" alt="" /></a>
 												</div>
 												<div class="editButton editButtonR pull-left text-center">
-													<a href="?_f=post&act=remove&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
+													<img src="public/html/images/del.jpg" alt="" />
+													<input type="hidden" value="?_f=post&act=remove&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
 &id=<?php echo $_smarty_tpl->tpl_vars['i']->value['postId'];
 echo $_smarty_tpl->tpl_vars['track']->value;?>
-" onclick="return confirm('确认要删除？');"><img src="public/html/images/del.jpg" alt="" /></a>
+"/>
 												</div>
 											</div>
 										</td>

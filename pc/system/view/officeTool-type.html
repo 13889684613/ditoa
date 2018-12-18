@@ -43,9 +43,9 @@
 								<div class="retrievalTitle">快速检索</div>
 								<div class="retrievalInputBox clearfix">
 									<div class="retrievalTxt pull-left">类别名称</div>
-									<div class="retrievalInput pull-left"><input type="text" name="s_name" value="{{$s_name}}" placeholder="请填写类别名称" /></div>
+									<div class="retrievalsInput pull-left"><input type="text" name="s_name" value="{{$s_name}}" placeholder="请填写类别名称" /></div>
 									<div class="retrievalTxt pull-left">类别编号</div>
-									<div class="retrievalInput pull-left"><input type="text" name="s_code" value="{{$s_code}}" placeholder="请填写类别编号" /></div>
+									<div class="retrievalsInput pull-left"><input type="text" name="s_code" value="{{$s_code}}" placeholder="请填写类别编号" /></div>
 									<div class="retrievaButtonBox pull-left clearfix">
 										<div class="retrievaButton retrievaButtonL pull-left">
 											<a href="javascript:void(0);" onclick="document.getElementById('searchForm').submit();">查询</a>
@@ -78,7 +78,8 @@
 													<a href="?_f=officeTool-type-set&act=edit&page={{$curPage}}&id={{$i.categoryId}}{{$track}}"><img src="public/html/images/edit.jpg" alt="" /></a>
 												</div>
 												<div class="editButton editButtonR pull-left text-center">
-													<a href="?_f=officeTool-type&act=remove&page={{$curPage}}&id={{$i.categoryId}}{{$track}}" onclick="return confirm('确认要删除？');"><img src="public/html/images/del.jpg" alt="" /></a>
+													<img src="public/html/images/del.jpg" alt="" />
+													<input type="hidden" value="?_f=officeTool-type&act=remove&page={{$curPage}}&id={{$i.categoryId}}{{$track}}"/>
 												</div>
 											</div>
 										</td>

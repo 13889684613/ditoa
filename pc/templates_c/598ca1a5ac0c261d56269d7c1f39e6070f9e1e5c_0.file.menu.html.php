@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-17 16:34:22
+/* Smarty version 3.1.29, created on 2018-12-18 11:10:53
   from "F:\website\ditoaCoder\ditoa\pc\public\html\menu.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c175f8ee099f9_52561395',
+  'unifunc' => 'content_5c18653d673e55_95010383',
   'file_dependency' => 
   array (
     '598ca1a5ac0c261d56269d7c1f39e6070f9e1e5c' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\public\\html\\menu.html',
-      1 => 1545035659,
+      1 => 1545102262,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5c175f8ee099f9_52561395 ($_smarty_tpl) {
+function content_5c18653d673e55_95010383 ($_smarty_tpl) {
 ?>
 			<div class="contentLeftNav col-lg-2 row">
 				<div class="contentLeftNavListTop col-lg-12">
@@ -61,13 +61,13 @@ function content_5c175f8ee099f9_52561395 ($_smarty_tpl) {
 						<div class="contentNavListText"><img src="public/html/images/nav-image-c.png" alt="" class="navLogo" />人事管理</div>
 						<ul class="contentNavListMore">
 							<?php if ($_smarty_tpl->tpl_vars['menuHumanAffairs']->value[0] == 1) {?>
-							<li>
-								<a href="">企业资质证件</a>
+							<li<?php if ($_smarty_tpl->tpl_vars['cerMenu']->value == 1) {?> class="active"<?php }?>>
+								<a href="human-affairs.php?_f=certificate">企业资质证件</a>
 							</li>
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuHumanAffairs']->value[1] == 1) {?>
-							<li>
-								<a href="">员工管理</a>
+							<li<?php if ($_smarty_tpl->tpl_vars['staffMenu']->value == 1) {?> class="active"<?php }?>>
+								<a href="human-affairs.php?_f=staff">员工管理</a>
 							</li>
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuHumanAffairs']->value[2] == 1) {?>
@@ -101,8 +101,8 @@ function content_5c175f8ee099f9_52561395 ($_smarty_tpl) {
 							</li>
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuHumanAffairs']->value[8] == 1) {?>
-							<li>
-								<a href="">企业规章制度</a>
+							<li<?php if ($_smarty_tpl->tpl_vars['ruleMenu']->value == 1) {?> class="active"<?php }?>>
+								<a href="human-affairs.php?_f=rules">企业规章制度</a>
 							</li>
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuHumanAffairs']->value[9] == 1) {?>

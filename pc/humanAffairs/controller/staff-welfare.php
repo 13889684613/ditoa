@@ -31,6 +31,8 @@
 	$s_idno = getVal('s_idno',2,'');
 	$s_begintime = getVal('s_begintime',2,'');
 	$s_overtime = getVal('s_overtime',2,'');
+	$track = '&page='.$page.'&id='.$id.'&s_company='.$s_company.'&s_office='.$s_office.'&s_role='.$s_role.'&s_post='.$s_post.'&s_status='.$s_status.'';
+	$track .= '&s_name='.$s_name.'&s_idno='.$s_idno.'&s_begintime='.$s_begintime.'&s_overtime='.$s_overtime.'';
 	//记录列表页检索条件over
 
 	//获取值 begin
@@ -46,16 +48,23 @@
 	if($act == 'editSave'){
 		if($insuranceOverDate!=''){
 			if(!isdate($insuranceOverDate)){
-				ErrorResturn('请填写正确的保险缴纳日期');
+				$data['status'] = 'fail';
+				$data['message'] = '请填写正确的保险缴纳日期';
+				$returnJson = json_encode($data);
+				echo $returnJson; exit;	
 			}
 		}
 		if($fundOverDate!=''){
 			if(!isdate($fundOverDate)){
-				ErrorResturn('请填写正确的公积金缴纳日期');
+				$data['status'] = 'fail';
+				$data['message'] = '请填写正确的公积金缴纳日期';
+				$returnJson = json_encode($data);
+				echo $returnJson; exit;	
 			}
 		}
 	}
 
+	$isSet = 0;
 	$fileds = 'insuranceNo,insuranceStatus,insuranceOverDate,fundNo,fundStatus,fundOverDate';
 	$data = $db->get_one($table,'where staffId='.$id.'',$fileds);
 	if($data['insuranceNo']!=''||$data['fundNo']!=''){
@@ -68,10 +77,16 @@
 		if($isSet == 1){
 			$updateRemark = getVal('updateRemark',2,'');
 			if($updateRemark == ''){
-				ErrorResturn('修改员工资料需标明修改内容');
+				$data['status'] = 'fail';
+				$data['message'] = '修改员工资料需标明修改内容';
+				$returnJson = json_encode($data);
+				echo $returnJson; exit;	
 			}
 			if(stringLen($updateRemark)>100){
-				ErrorResturn('修改备注内容长度不能超过100个字');
+				$data['status'] = 'fail';
+				$data['message'] = '修改备注内容长度不能超过100个字';
+				$returnJson = json_encode($data);
+				echo $returnJson; exit;		
 			}
 		}
 
@@ -102,11 +117,18 @@
 			$url = 'human-affairs.php?_f=staff-welfare&page='.$page.'&id='.$id.'&s_company='.$s_company.'&s_office='.$s_office.'&s_role='.$s_role.'&s_post='.$s_post.'';
 			$url .= '&s_status='.$s_status.'&s_begintime='.$s_begintime.'&s_overtime='.$s_overtime.'&s_name='.$s_name.'&s_idno='.$s_idno.'';
 
-			TipsRefreshResturn('操作成功',$url);
+			$data['status'] = 'success';
+			$data['message'] = '操作成功';
+			$data['url'] = $url;
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;	
 
 		}else{
-			ErrorResturn(ERRORTIPS);
+			$data['status'] = 'fail';
+			$data['message'] = ERRORTIPS;
 		}
+		$returnJson = json_encode($data);
+		echo $returnJson; exit;	
 
 	}
 
@@ -127,5 +149,6 @@
 	$smarty->assign('page',$page);
 	$smarty->assign('action',$action);
 	$smarty->assign('isSet',$isSet);
+	$smarty->assign('track',$track);
 
 ?>

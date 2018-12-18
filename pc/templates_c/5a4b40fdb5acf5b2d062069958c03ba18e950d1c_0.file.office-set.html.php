@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-17 14:25:56
+/* Smarty version 3.1.29, created on 2018-12-18 16:37:07
   from "F:\website\ditoaCoder\ditoa\pc\org\view\office-set.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c1741747d2696_13165722',
+  'unifunc' => 'content_5c18b1b372b665_72091329',
   'file_dependency' => 
   array (
     '5a4b40fdb5acf5b2d062069958c03ba18e950d1c' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\org\\view\\office-set.html',
-      1 => 1545027947,
+      1 => 1545122217,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c1741747d2696_13165722 ($_smarty_tpl) {
+function content_5c18b1b372b665_72091329 ($_smarty_tpl) {
 ?>
 <!-- 
 	# 企业详情编辑
@@ -94,7 +94,7 @@ function content_5c1741747d2696_13165722 ($_smarty_tpl) {
 								<input type="hidden" name="act" value="<?php echo $_smarty_tpl->tpl_vars['action']->value;?>
 " />
 								<div class="infoBox infoBoxOne">
-									<p class="addApplyTitle">企业信息</p>
+									<p class="addApplyTitle">办事处信息</p>
 									<div class="formAllBox clearfix">
 										<div class="formBox w33">
 											<div class="form">
@@ -170,14 +170,14 @@ function content_5c1741747d2696_13165722 ($_smarty_tpl) {
 											</div>
 											<div class="form form192">
 												<p class="formTitle">有效范围<span>*</span></p>
-												<div class="formInput formSelect">请选择有效范围</div>
+												<div class="formInput formSelect" id="formSelect">请选择有效范围</div>
 												<ul class="formSelectList">
 													<li class="default">请选择有效范围</li>
-													<li>100米</li>
-													<li>300米</li>
-													<li>500米</li>
-													<li>800米</li>
-													<li>1000米</li>
+													<li data-type="100">100米</li>
+													<li data-type="300">300米</li>
+													<li data-type="500">500米</li>
+													<li data-type="800">800米</li>
+													<li data-type="1000">1000米</li>
 												</ul>
 												<input type="hidden" name="workRange" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['workRange'];?>
 " /><!--有效范围，仅传数字-->

@@ -27,6 +27,8 @@
 	$s_idno = getVal('s_idno',2,'');
 	$s_begintime = getVal('s_begintime',2,'');
 	$s_overtime = getVal('s_overtime',2,'');
+	$track = '&page='.$page.'&id='.$id.'&s_company='.$s_company.'&s_office='.$s_office.'&s_role='.$s_role.'&s_post='.$s_post.'&s_status='.$s_status.'';
+	$track .= '&s_name='.$s_name.'&s_idno='.$s_idno.'&s_begintime='.$s_begintime.'&s_overtime='.$s_overtime.'';
 	//记录列表页检索条件over
 
 	//获取值 begin
@@ -41,7 +43,10 @@
 	//验证
 	if($act == 'editSave'){
 		if(count(array_filter($beginDate))==0||count(array_filter($overDate))==0||count(array_filter($workUnit))==0||count(array_filter($postName))==0){
-			ErrorResturn('请完善家庭成员信息');
+			$data['status'] = 'fail';
+			$data['message'] = '请完善教育与工作经历信息';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;	
 		}
 	}
 
@@ -55,10 +60,16 @@
 		if($dataCount>0){
 			$updateRemark = getVal('updateRemark',2,'');
 			if($updateRemark == ''){
-				ErrorResturn('修改员工资料需标明修改内容');
+				$data['status'] = 'fail';
+				$data['message'] = '修改员工资料需标明修改内容';
+				$returnJson = json_encode($data);
+				echo $returnJson; exit;	
 			}
 			if(stringLen($updateRemark)>100){
-				ErrorResturn('修改备注内容长度不能超过100个字');
+				$data['status'] = 'fail';
+				$data['message'] = '修改备注内容长度不能超过100个字';
+				$returnJson = json_encode($data);
+				echo $returnJson; exit;
 			}
 		}
 
@@ -91,17 +102,20 @@
 				}
 				
 				if(!$result){
-					ErrorResturn(ERRORTIPS);
+					$data['status'] = 'fail';
+					$data['message'] = ERRORTIPS;
+					$returnJson = json_encode($data);
+					echo $returnJson; exit;
 				}
 			}
 
 		}
 
 		//记录修改内容 
-		$_COOKIE['usrId'] = 1;	//测试
+		// $_COOKIE['usrId'] = 1;	//测试
 
 		$record['staffId'] = $id;
-		$record['editUsr'] = $_COOKIE['usrId'];
+		$record['editUsr'] = $common_staffId;
 		$record['logContent'] = $updateRemark;
 		$record['logTime'] = date('Y-m-d H:i:s');
 
@@ -110,7 +124,11 @@
 		$url = 'human-affairs.php?_f=staff-education&page='.$page.'&id='.$id.'&s_company='.$s_company.'&s_office='.$s_office.'&s_role='.$s_role.'&s_post='.$s_post.'';
 		$url .= '&s_status='.$s_status.'&s_begintime='.$s_begintime.'&s_overtime='.$s_overtime.'&s_name='.$s_name.'&s_idno='.$s_idno.'';
 
-		TipsRefreshResturn('操作成功',$url);
+		$data['status'] = 'success';
+		$data['message'] = '操作成功';
+		$data['url'] = $url;
+		$returnJson = json_encode($data);
+		echo $returnJson; exit;	
 
 	}
 
@@ -129,5 +147,6 @@
 	$smarty->assign('dataCount',$dataCount);
 	$smarty->assign('id',$id);
 	$smarty->assign('page',$page);
-
+	$smarty->assign('track',$track);
+	
 ?>

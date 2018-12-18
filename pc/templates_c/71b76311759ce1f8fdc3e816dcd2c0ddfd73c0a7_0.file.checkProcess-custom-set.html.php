@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-17 16:43:21
+/* Smarty version 3.1.29, created on 2018-12-18 11:51:32
   from "F:\website\ditoaCoder\ditoa\pc\system\view\checkProcess-custom-set.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c1761a92fc8b3_23959216',
+  'unifunc' => 'content_5c186ec40b9479_88323407',
   'file_dependency' => 
   array (
     '71b76311759ce1f8fdc3e816dcd2c0ddfd73c0a7' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\system\\view\\checkProcess-custom-set.html',
-      1 => 1545036195,
+      1 => 1545105089,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c1761a92fc8b3_23959216 ($_smarty_tpl) {
+function content_5c186ec40b9479_88323407 ($_smarty_tpl) {
 ?>
 <!-- 
 	# 创建自定义审批流程
@@ -46,7 +46,7 @@ function content_5c1761a92fc8b3_23959216 ($_smarty_tpl) {
 		<link rel="stylesheet" href="system/view/css/checkProcess-custom-set.css" />
 	</head>
 
-	<body>
+	<body class="clearfix">
 		<!--头部 begin-->
 		<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:public/html/head.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>

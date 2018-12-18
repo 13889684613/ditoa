@@ -76,7 +76,8 @@
 													<a href="?_f=leave-type-set&act=edit&page={{$curPage}}&id={{$i.leaveTypeId}}{{$track}}"><img src="public/html/images/edit.jpg" alt="" /></a>
 												</div>
 												<div class="editButton editButtonR pull-left text-center">
-													<a href="?_f=leave-type&act=remove&page={{$curPage}}&id={{$i.leaveTypeId}}{{$track}}" onclick="return confirm('确认要删除？');"><img src="public/html/images/del.jpg" alt="" /></a>
+													<img src="public/html/images/del.jpg" alt="" />
+													<input type="hidden" value="?_f=leave-type&act=remove&page={{$curPage}}&id={{$i.leaveTypeId}}{{$track}}"/>
 												</div>
 											</div>
 										</td>

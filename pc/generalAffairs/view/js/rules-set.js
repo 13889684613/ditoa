@@ -18,6 +18,14 @@ $(function(){
         $('.tips').hide();
     })
 
+    $(".uploadFile").on("change","input[type='file']",function(e){
+        var filePath=$(this).val();
+        var arr=filePath.split('\\');
+        var fileName=arr[arr.length-1];
+        $(this).parents('.form').find('.showFileName').show();
+        $(this).parents('.form').find(".showFileName span").text(fileName);
+    })
+
     // 提交表单
     $('.formBtnSave').click(function() {
         var nameInput = $('.nameInput').val();
@@ -37,7 +45,8 @@ $(function(){
             success:function(data){
                 data = $.parseJSON(data);
                 if(data.status == 'success'){
-                    location.href = data.url;
+                    popAlert(data.message,data.url);
+                    // location.href = data.url;
                 }else{
                     popAlert(data.message); //弹出错误信息
                 }

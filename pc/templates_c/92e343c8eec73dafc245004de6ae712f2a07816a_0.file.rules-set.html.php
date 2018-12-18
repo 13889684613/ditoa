@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-17 16:55:24
+/* Smarty version 3.1.29, created on 2018-12-18 14:39:00
   from "F:\website\ditoaCoder\ditoa\pc\generalAffairs\view\rules-set.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c17647ca10724_72389405',
+  'unifunc' => 'content_5c189604019920_91566783',
   'file_dependency' => 
   array (
     '92e343c8eec73dafc245004de6ae712f2a07816a' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\generalAffairs\\view\\rules-set.html',
-      1 => 1545036878,
+      1 => 1545115138,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c17647ca10724_72389405 ($_smarty_tpl) {
+function content_5c189604019920_91566783 ($_smarty_tpl) {
 ?>
 <!-- 
 	# 企业规章制度
@@ -96,7 +96,7 @@ function content_5c17647ca10724_72389405 ($_smarty_tpl) {
 									<div class = "form userName clearfix">
 										<p class = "formTitle">制度文件</p>
 										<div class = "uploadFile">
-											<div class = "uploadBtn">上传病历文件</div>
+											<div class = "uploadBtn">上传文件</div>
 											<input type="file" name="attach[]" value = ' ' class = "uploadInput" />
 										</div>
 										<?php if ($_smarty_tpl->tpl_vars['i']->value['attach'] != '') {?>

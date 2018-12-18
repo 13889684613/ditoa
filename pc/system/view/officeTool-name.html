@@ -39,40 +39,48 @@
 						<!--检索begin-->
 						<form id="searchForm" name="searchForm" method="get">
 							<input type="hidden" name="_f" value="officeTool-name">
-							<div class="retrievalBox">
+							<div class="retrievalBox clearfix">
 								<div class="retrievalTitle">快速检索</div>
-								<div class="retrievalsInputBoxs clearfix pull-left">
-									<div class="retrievalsInputContent">
-										<div class="retrievalsInput">
-											<label>备品类别</label>
-											<input type="text" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputBm" placeholder="请选择" name="s_category" value="{{$s_category}}" data-type='0' />
-											<div class="retrievalsInputNavBox">
-												<ul class="retrievalsInputNav">
-													<li data-type = "0">请选择</li>
-													{{foreach item=c name=categorys from=$categorys}}
-													<li data-type='{{$c.categoryId}}'>{{$c.categoryName}}</li>
-													{{/foreach}}
-												</ul>
+								<div class="retrievalsForm">
+									<form action="" method="get" class="clearfix">
+										<input type="hidden" name="_f" value="checkProcess-custom">
+										<div class="retrievalsInputBoxs clearfix pull-left">
+											<div class="retrievalsInputContent">
+												<div class="retrievalsInput">
+													<label>备品类别</label>
+													<input type="text" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputBm" placeholder="请选择" name="s_category" value="" data-type='0' />
+													<div class="retrievalsInputNavBox">
+														<ul class="retrievalsInputNav">
+															<li data-type="0">请选择</li>
+															{{foreach item=c name=categorys from=$categorys}}
+															<li data-type='{{$c.categoryId}}'>{{$c.categoryName}}</li>
+															{{/foreach}}
+															<input type="hidden" class="selectVal" value="{{$s_category}}" />
+														</ul>
+													</div>
+												</div>
 											</div>
 										</div>
-									</div>
-								</div>
-								<div class="retrievalInputBox clearfix">
-									<div class="retrievalTxt pull-left">备品名称</div>
-									<div class="retrievalInput pull-left"><input type="text" name="s_name" value="{{$s_name}}" placeholder="请填写类别名称" /></div>
-									<div class="retrievaButtonBox pull-left clearfix">
-										<div class="retrievaButton retrievaButtonL pull-left">
-											<a href="javascript:void(0);" onclick="document.getElementById('searchForm').submit();">查询</a>
+										<div class="retrievalInputBox clearfix">
+											<div class="retrievalTxt pull-left">备品名称</div>
+											<div class="retrievalsInput pull-left"><input type="text" name="s_name" value="{{$s_name}}" placeholder="请填写类别名称" /></div>
+											<div class="retrievaButtonBox pull-left clearfix">
+												<div class="retrievaButton retrievaButtonL pull-left">
+													<a href="javascript:void(0);" onclick="document.getElementById('searchForm').submit();">查询</a>
+												</div>
+												<div class="retrievaButton retrievaButtonR pull-left">清空</div>
+											</div>
 										</div>
-										<div class="retrievaButton retrievaButtonR pull-left">清空</div>
-									</div>
+									</form>
 								</div>
 							</div>
 						</form>
 						<!--检索end-->
 						<!--新增 导出数据按钮 begin-->
 						<div class="downloadAddButtonBox clearfix">
-							<a href="?_f=officeTool-name-set&act=add"><div class="downloadAddButton downloadAddButtonL pull-left">新增</div></a>
+							<a href="?_f=officeTool-name-set&act=add">
+								<div class="downloadAddButton downloadAddButtonL pull-left">新增</div>
+							</a>
 							<!-- <a href="">
 								<div class="downloadAddButton downloadAddButtonR pull-left">导出数据</div>
 							</a> -->
@@ -81,24 +89,25 @@
 						<!--表格begin-->
 						<div class="clearfix tableBoxFather">
 							<table class="table1 table1Fixed">
-									<tr>
-										<th width='133' class="text-center borderRight1"><span>操作</span></th>
-									</tr>
-									{{foreach item=i name=data from=$data}}
-									<tr{{if $i%2==1}} class="backgroundFFF"{{/if}}>
-										<td class="borderRight1">
-											<div class="editBox center-block clearfix">
-												<div class="editButton editButtonL pull-left text-center">
-													<a href="?_f=officeTool-name-set&act=edit&page={{$curPage}}&id={{$i.nameId}}{{$track}}"><img src="public/html/images/edit.jpg" alt="" /></a>
-												</div>
-												<div class="editButton editButtonR pull-left text-center">
-													<a href="?_f=officeTool-name&act=remove&page={{$curPage}}&id={{$i.nameId}}{{$track}}" onclick="return confirm('确认要删除？');"><img src="public/html/images/del.jpg" alt="" /></a>
-												</div>
+								<tr>
+									<th width='133' class="text-center borderRight1"><span>操作</span></th>
+								</tr>
+								{{foreach item=i name=data from=$data}}
+								<tr{{if $i%2==1}} class="backgroundFFF" {{/if}}>
+									<td class="borderRight1">
+										<div class="editBox center-block clearfix">
+											<div class="editButton editButtonL pull-left text-center">
+												<a href="?_f=officeTool-name-set&act=edit&page={{$curPage}}&id={{$i.nameId}}{{$track}}"><img src="public/html/images/edit.jpg" alt="" /></a>
 											</div>
-										</td>
+											<div class="editButton editButtonR pull-left text-center">
+												<img src="public/html/images/del.jpg" alt="" />
+												<input type="hidden" value="?_f=officeTool-name&act=remove&page={{$curPage}}&id={{$i.nameId}}{{$track}}">
+											</div>
+										</div>
+									</td>
 									</tr>
 									{{/foreach}}
-								</table>
+							</table>
 							<div class="tableBox clearfix">
 								<table class="table1 table1Content">
 									<tr>
@@ -149,9 +158,9 @@
 		<script type="text/javascript" src="public/html/js/plugin/oa.jquery.placeholder.min.js"></script>
 		<script type="text/javascript" src="public/html/js/plugin/oa.respond.js"></script>
 		<script type="text/javascript" src="public/html/js/plugin/oa.bootstrap.min.js"></script>
-		<script type="text/javascript" src="public/html/js/plugin/jquery.mCustomScrollbar.concat.min.js" ></script>
+		<script type="text/javascript" src="public/html/js/plugin/jquery.mCustomScrollbar.concat.min.js"></script>
 		<script type="text/javascript" src="public/html/js/oa.common.js"></script>
-		<script type="text/javascript" src="public/html/js/jquery.form.min.js" ></script>
+		<script type="text/javascript" src="public/html/js/jquery.form.min.js"></script>
 		<script type="text/javascript" src="system/view/js/officeTool-name.js"></script>
 	</body>
 

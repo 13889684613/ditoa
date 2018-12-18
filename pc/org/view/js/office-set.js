@@ -9,7 +9,9 @@ $(function() {
 		$('.map').hide();
 
 	})
-
+	if($('input[name="workRange"]').val() != ''){
+		$('#formSelect').text($('input[name="workRange"]').val()+'米')
+	}
 	$('.addressForm').click(function() {
 		$('.map').show();
 	})
@@ -65,18 +67,23 @@ $(function() {
 	})
 	//选择部门、工作组
 	$('.workingDay').delegate('.workingDayBox', 'click', function() {
+		var week = '';
+		$('input[name="week"]').val('');
 		var idx = $(this).index();
 		if($(this).hasClass('on')) {
 			$(this).removeClass('on');
-			//          if($(this).hasClass('selectSector')) {
 			$('.groupBox').eq(idx).hide();
-			//          }
 		} else {
 			$(this).addClass('on');
-			//          if($(this).hasClass('selectSector') && !$('.pulishBtn.sector').hasClass('on')) {
-			//              $('.groupBox').eq(idx).show();
-			//          }
 		}
+		
+		for (var i = 0; i < $('.workingDayBox').length; i++) {
+			if($('.workingDayBox').eq(i).hasClass('on')){
+				week+=(i+1)+','
+				$('input[name="week"]').val(week);
+			}
+		}
+		
 	})
 	// 提交表单
 	$('.formBtnSave').click(function() {
@@ -223,6 +230,8 @@ function select(e) {
 	latitude = e.poi.location.lat;
 	address = e.poi.name;
 	addressInfo = e.poi.district + e.poi.name;
+	$('input[name="workAddress"]').val(addressInfo);
+	$('input[name="workCoordinate"]').val(longitude+','+latitude);
 }
 var toolBar = new AMap.ToolBar({
 	visible: true
@@ -245,8 +254,8 @@ var clickEventListener = map.on('click', function(e) {
 			latitude = lat;
 			address = e.regeocode.pois[0].name;
 			addressInfo = e.regeocode.formatted_address;
-			//						$('.foreAddress').text(e.regeocode.pois[0].name);
-			//						$('.foreAddressInfo').text(e.regeocode.formatted_address)
+			$('input[name="workAddress"]').val(addressInfo);
+			$('input[name="workCoordinate"]').val(longitude+','+latitude);
 		}
 	});
 });
