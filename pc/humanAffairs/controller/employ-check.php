@@ -40,8 +40,8 @@
 	}
 	
 	//category=0为普通员工，1为系统管理员
-	$where = 'where 1=1'.$where;		//测试条件，切换正式需删除
-	// $where = 'where category=0'.$where;
+	// $where = 'where 1=1'.$where;		//测试条件，切换正式需删除
+	$where = 'where category=0 and status=0'.$where;
 
 	//页面分页配置
 	$total = $db->Count($table,$where);

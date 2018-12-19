@@ -308,12 +308,12 @@
 
 		//存头像图
 		if($photo!=''){
-			$path = '/upload/images/staff/head/';
+			$path = 'upload/images/staff/head/';
 			$fileName = date("YmdHis");
 			$photo = saveImg($path,$fileName,$photo);
 		}else{
 			$data['status'] = 'fail';
-			$data['message'] = '请上传照片';
+			$data['message'] = '请上传照片！';
 			$returnJson = json_encode($data);
 			echo $returnJson; exit;
 		}

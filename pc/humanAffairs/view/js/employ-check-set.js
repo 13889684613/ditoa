@@ -59,7 +59,18 @@ $(function(){
 		}else if(!testVal.test(absenteeism)){
 			popAlert('输入旷工天数')
 		}else{
-			$('.scoreForm').submit();
+			$('#checkForm').ajaxSubmit({
+                type:'post',
+                success:function(data){
+                    data = $.parseJSON(data);
+                    if(data.status == 'success'){
+                        // location.href = data.url;
+                        popAlert(data.message,data.url);
+                    }else{
+                        popAlert(data.message); //弹出错误信息
+                    }
+                }
+            })
 		}
 	});
 	

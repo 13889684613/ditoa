@@ -37,8 +37,35 @@
 	$fileds = 'joinDate,tryBeginDate,tryOverDate,interviewer,expectedSalary,trySalary';
 	$data = $db->get_one($table,'where staffId='.$id.'',$fileds);
 	if($data){
-		$data['joinDate'] = date('Y年m月d日',strtotime($data['joinDate']));
-		$data['try'] = date('Y年m月d日',strtotime($data['tryBeginDate'])).' - '.date('Y年m月d日',strtotime($data['tryOverDate']));
+		
+		if($data['joinDate'] == ''){
+			$data['joinDate'] = '未设置';
+		}else{
+			$data['joinDate'] = date('Y年m月d日',strtotime($data['joinDate']));
+		}
+
+		if($data['tryBeginDate'] == ''){
+			$data['try'] = '未设置';
+		}else{
+			$data['try'] = date('Y年m月d日',strtotime($data['tryBeginDate'])).' - '.date('Y年m月d日',strtotime($data['tryOverDate']));
+		}
+
+		if($data['interviewer'] == ''){
+			$data['interviewer'] = '未填写';
+		}
+
+		if($data['expectedSalary'] == 0){
+			$data['expectedSalary'] = '未填写';
+		}else{
+			$data['expectedSalary'] = $data['expectedSalary'].'元';
+		}
+
+		if($data['trySalary'] == 0){
+			$data['trySalary'] = '未填写';
+		}else{
+			$data['trySalary'] = $data['trySalary'].'元';
+		}
+		
 	}
 
 	//数据绑定

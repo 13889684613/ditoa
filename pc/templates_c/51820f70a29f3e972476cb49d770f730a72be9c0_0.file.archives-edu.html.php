@@ -1,16 +1,16 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-19 21:31:51
-  from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/humanAffairs/view/archives-file.html" */
+/* Smarty version 3.1.29, created on 2018-12-19 21:21:56
+  from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/humanAffairs/view/archives-edu.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c1a484723ed77_14529939',
+  'unifunc' => 'content_5c1a45f4a8df11_57377170',
   'file_dependency' => 
   array (
-    '94d5c1266b162bfd5829108ab7d9a5ae670df77d' => 
+    '51820f70a29f3e972476cb49d770f730a72be9c0' => 
     array (
-      0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/humanAffairs/view/archives-file.html',
+      0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/humanAffairs/view/archives-edu.html',
       1 => 1545221122,
       2 => 'file',
     ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/archives.html' => 1,
   ),
 ),false)) {
-function content_5c1a484723ed77_14529939 ($_smarty_tpl) {
+function content_5c1a45f4a8df11_57377170 ($_smarty_tpl) {
 ?>
 <!--
 	作者：sxh
@@ -42,7 +42,7 @@ function content_5c1a484723ed77_14529939 ($_smarty_tpl) {
 		<link rel="stylesheet" href="public/html/css/oa.bootstrap.min.css" />
 		<link rel="stylesheet" href="public/html/css/plugin/jquery.mCustomScrollbar.min.css" />
 		<link rel="stylesheet" href="public/html/css/oa.common.css" />
-		<link rel="stylesheet" href="humanAffairs/view/css/archives-file.css" />
+		<link rel="stylesheet" href="humanAffairs/view/css/archives-edu.css" />
 	</head>
 
 	<body>
@@ -86,7 +86,7 @@ function content_5c1a484723ed77_14529939 ($_smarty_tpl) {
 ">员工基本资料</a></li>
 									<li><a href="human-affairs.php?_f=archives-family<?php echo $_smarty_tpl->tpl_vars['track']->value;?>
 ">家庭主要成员</a></li>
-									<li class = "width12"><a href="human-affairs.php?_f=archives-edu<?php echo $_smarty_tpl->tpl_vars['track']->value;?>
+									<li class = "width12 active"><a href="human-affairs.php?_f=archives-edu<?php echo $_smarty_tpl->tpl_vars['track']->value;?>
 ">教育与工作经历</a></li>
 									<li><a href="human-affairs.php?_f=archives-welfare<?php echo $_smarty_tpl->tpl_vars['track']->value;?>
 ">社保与公积金</a></li>
@@ -96,9 +96,9 @@ function content_5c1a484723ed77_14529939 ($_smarty_tpl) {
 ">合同信息</a></li>
 									<li><a href="human-affairs.php?_f=archives-leave<?php echo $_smarty_tpl->tpl_vars['track']->value;?>
 ">假期信息</a></li>
-									<!-- <li><a href="human-affairs.php?_f=archives-officetool<?php echo $_smarty_tpl->tpl_vars['track']->value;?>
+									<!-- <li><a href="human-affairs.php?_f=archives-officeTool<?php echo $_smarty_tpl->tpl_vars['track']->value;?>
 ">备品分配</a></li>	 -->
-									<li class="active"><a href="human-affairs.php?_f=archives-file<?php echo $_smarty_tpl->tpl_vars['track']->value;?>
+									<li><a href="human-affairs.php?_f=archives-file<?php echo $_smarty_tpl->tpl_vars['track']->value;?>
 ">资料上传</a></li>
 									<?php if ($_smarty_tpl->tpl_vars['nav']->value == 'quit') {?>
 									<li><a href="human-affairs.php?_f=archives-quit<?php echo $_smarty_tpl->tpl_vars['track']->value;?>
@@ -109,84 +109,58 @@ function content_5c1a484723ed77_14529939 ($_smarty_tpl) {
 							
 							<div></div>
 							<div class="quitApplyPart1 margin-bottom-165">
-								<ul class="staff-ul1 staff-ul">
-									<li>
-										<span class="staff-text">身份证正反面：</span>
-										<span class="staff-info">
-											<?php if ($_smarty_tpl->tpl_vars['i']->value['idFile'] == '') {?>
-											未上传
-											<?php } else { ?>
-											<a href="<?php echo $_smarty_tpl->tpl_vars['i']->value['idFile'];?>
-" target="_blank"><?php echo $_smarty_tpl->tpl_vars['a']->value['staffName'];?>
--身份证文件</a>
-											<?php }?>
-										</span>
-									</li>
-									<li>
-										<span class="staff-text">学历证书：</span>
-										<span class="staff-info">
-											<?php if ($_smarty_tpl->tpl_vars['i']->value['eduFile'] == '') {?>
-											未上传
-											<?php } else { ?>
-											<a href="<?php echo $_smarty_tpl->tpl_vars['i']->value['eduFile'];?>
-" target="_blank"><?php echo $_smarty_tpl->tpl_vars['a']->value['staffName'];?>
--学历证书</a>
-											<?php }?>
-										</span>
-									</li>
-									<li>
-										<span class="staff-text">户口本：</span>
-										<span class="staff-info">
-											<?php if ($_smarty_tpl->tpl_vars['i']->value['registerFile'] == '') {?>
-											未上传
-											<?php } else { ?>
-											<a href="<?php echo $_smarty_tpl->tpl_vars['i']->value['registerFile'];?>
-" target="_blank"><?php echo $_smarty_tpl->tpl_vars['a']->value['staffName'];?>
--户口本</a>
-											<?php }?>
-										</span>
-									</li>
-									<li>
-										<span class="staff-text">体检报告：</span>
-										<span class="staff-info">
-											<?php if ($_smarty_tpl->tpl_vars['i']->value['reportFile'] == '') {?>
-											未上传
-											<?php } else { ?>
-											<a href="<?php echo $_smarty_tpl->tpl_vars['i']->value['reportFile'];?>
-" target="_blank"><?php echo $_smarty_tpl->tpl_vars['a']->value['staffName'];?>
--体检报告</a>
-											<?php }?>
-										</span>
-									</li>
-									<?php
-$_from = $_smarty_tpl->tpl_vars['others']->value;
+								<div class="clearfix tableBoxFather">
+									<div class="tableBox clearfix">
+										<table class="table1 table1Content">
+											<tr>
+												<th width="70" class="paddingLeft12"><span>#</span></th>
+												<th width="100"><span>时间</span></th>
+												<th width="100"><span>所在单位</span></th>
+												<th width="100"><span>职务</span></th>
+												<th width="300"><span>备注</span></th>
+											</tr>
+											<?php
+$_from = $_smarty_tpl->tpl_vars['data']->value;
 if (!is_array($_from) && !is_object($_from)) {
 settype($_from, 'array');
 }
-$__foreach_others_0_saved_item = isset($_smarty_tpl->tpl_vars['o']) ? $_smarty_tpl->tpl_vars['o'] : false;
-$_smarty_tpl->tpl_vars['o'] = new Smarty_Variable();
-$_smarty_tpl->tpl_vars['o']->_loop = false;
-foreach ($_from as $_smarty_tpl->tpl_vars['o']->value) {
-$_smarty_tpl->tpl_vars['o']->_loop = true;
-$__foreach_others_0_saved_local_item = $_smarty_tpl->tpl_vars['o'];
+$__foreach_data_0_saved = isset($_smarty_tpl->tpl_vars['__smarty_foreach_data']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_data'] : false;
+$__foreach_data_0_saved_item = isset($_smarty_tpl->tpl_vars['i']) ? $_smarty_tpl->tpl_vars['i'] : false;
+$_smarty_tpl->tpl_vars['i'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['__smarty_foreach_data'] = new Smarty_Variable(array('iteration' => 0));
+$_smarty_tpl->tpl_vars['i']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
+$_smarty_tpl->tpl_vars['i']->_loop = true;
+$_smarty_tpl->tpl_vars['__smarty_foreach_data']->value['iteration']++;
+$__foreach_data_0_saved_local_item = $_smarty_tpl->tpl_vars['i'];
 ?>
-									<li>
-										<span class="staff-text"><?php echo $_smarty_tpl->tpl_vars['o']->value['attachName'];?>
-：</span>
-										<span class="staff-info"><a href="<?php echo $_smarty_tpl->tpl_vars['o']->value['attachFile'];?>
-" target="_blank"><?php echo $_smarty_tpl->tpl_vars['a']->value['staffName'];?>
--<?php echo $_smarty_tpl->tpl_vars['o']->value['attachName'];?>
-</a></span>
-									</li>
-									<?php
-$_smarty_tpl->tpl_vars['o'] = $__foreach_others_0_saved_local_item;
+											<tr<?php if ($_smarty_tpl->tpl_vars['i']->value%2 == 1) {?> class="backgroundFFF"<?php }?>>
+												<td class="paddingLeft12"><span><?php echo (isset($_smarty_tpl->tpl_vars['__smarty_foreach_data']->value['iteration']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_data']->value['iteration'] : null);?>
+</span></td>
+												<td><span><?php echo $_smarty_tpl->tpl_vars['i']->value['workTime'];?>
+</span></td>
+												<td><span><?php echo $_smarty_tpl->tpl_vars['i']->value['workUnit'];?>
+</span></td>
+												<td><span><?php echo $_smarty_tpl->tpl_vars['i']->value['postName'];?>
+</span></td>
+												<td><span><?php echo $_smarty_tpl->tpl_vars['i']->value['remark'];?>
+</span></td>
+											</tr>
+											<?php
+$_smarty_tpl->tpl_vars['i'] = $__foreach_data_0_saved_local_item;
 }
-if ($__foreach_others_0_saved_item) {
-$_smarty_tpl->tpl_vars['o'] = $__foreach_others_0_saved_item;
+if ($__foreach_data_0_saved) {
+$_smarty_tpl->tpl_vars['__smarty_foreach_data'] = $__foreach_data_0_saved;
+}
+if ($__foreach_data_0_saved_item) {
+$_smarty_tpl->tpl_vars['i'] = $__foreach_data_0_saved_item;
 }
 ?>
-								</ul>
+										</table>
+									</div>
+								</div>
 							</div>
+
 						</div>
 						<!--离职申请详情内容 End-->
 					</div>

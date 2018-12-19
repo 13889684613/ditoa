@@ -105,15 +105,17 @@ $(function(){
         //     $('.zoneNumInput').focus();
         //     return false;
         // }
-        if(landLineInput == "") {
-            popAlert('请输入座机号');
-            $('.landLineInput').focus();
-            return false;
-        }
-        if(isNaN(landLineInput)) {
-            popAlert('座机号需为数字');
-            $('.landLineInput').focus();
-            return false;
+        // if(landLineInput == "") {
+        //     popAlert('请输入座机号');
+        //     $('.landLineInput').focus();
+        //     return false;
+        // }
+        if(landLineInput!=''){
+            if(isNaN(landLineInput)) {
+                popAlert('座机号需为数字');
+                $('.landLineInput').focus();
+                return false;
+            }
         }
         if(phone!=""){
             if(phone.length > 50) {

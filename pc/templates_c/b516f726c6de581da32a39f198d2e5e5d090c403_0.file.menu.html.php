@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-16 21:13:16
+/* Smarty version 3.1.29, created on 2018-12-19 21:53:05
   from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/public/html/menu.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c164f6ceac6d6_09370409',
+  'unifunc' => 'content_5c1a4d41e31d30_18327690',
   'file_dependency' => 
   array (
     'b516f726c6de581da32a39f198d2e5e5d090c403' => 
     array (
       0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/public/html/menu.html',
-      1 => 1544965788,
+      1 => 1545227267,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5c164f6ceac6d6_09370409 ($_smarty_tpl) {
+function content_5c1a4d41e31d30_18327690 ($_smarty_tpl) {
 ?>
 			<div class="contentLeftNav col-lg-2 row">
 				<div class="contentLeftNavListTop col-lg-12">
@@ -33,23 +33,23 @@ function content_5c164f6ceac6d6_09370409 ($_smarty_tpl) {
 						<div class="contentNavListText"><img src="public/html/images/nav-image-b.png" alt="" class="navLogo" />DIT组织架构</div>
 						<ul class="contentNavListMore">
 							<?php if ($_smarty_tpl->tpl_vars['menuOrg']->value[0] == 1) {?>
-							<li>
-								<a href="">企业信息管理</a>
+							<li<?php if ($_smarty_tpl->tpl_vars['companyMenu']->value == 1) {?> class="active"<?php }?>>
+								<a href="org.php?_f=company">企业信息管理</a>
 							</li>
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuOrg']->value[1] == 1) {?>
-							<li class="active">
-								<a href="">办事处管理</a>
+							<li<?php if ($_smarty_tpl->tpl_vars['officeMenu']->value == 1) {?> class="active"<?php }?>>
+								<a href="org.php?_f=office">办事处管理</a>
 							</li>
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuOrg']->value[2] == 1) {?>
-							<li>
-								<a href="">工作组管理</a>
+							<li<?php if ($_smarty_tpl->tpl_vars['groupMenu']->value == 1) {?> class="active"<?php }?>>
+								<a href="org.php?_f=group">工作组管理</a>
 							</li>
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuOrg']->value[3] == 1) {?>
-							<li>
-								<a href="">企业组织架构</a>
+							<li<?php if ($_smarty_tpl->tpl_vars['orgsMenu']->value == 1) {?> class="active"<?php }?>>
+								<a href="org.php?_f=org">企业组织架构</a>
 							</li>
 							<?php }?>
 						</ul>
@@ -61,59 +61,59 @@ function content_5c164f6ceac6d6_09370409 ($_smarty_tpl) {
 						<div class="contentNavListText"><img src="public/html/images/nav-image-c.png" alt="" class="navLogo" />人事管理</div>
 						<ul class="contentNavListMore">
 							<?php if ($_smarty_tpl->tpl_vars['menuHumanAffairs']->value[0] == 1) {?>
-							<li>
-								<a href="">企业资质证件</a>
+							<li<?php if ($_smarty_tpl->tpl_vars['cerMenu']->value == 1) {?> class="active"<?php }?>>
+								<a href="human-affairs.php?_f=certificate">企业资质证件</a>
 							</li>
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuHumanAffairs']->value[1] == 1) {?>
-							<li>
-								<a href="">员工管理</a>
+							<li<?php if ($_smarty_tpl->tpl_vars['staffMenu']->value == 1) {?> class="active"<?php }?>>
+								<a href="human-affairs.php?_f=staff">员工管理</a>
 							</li>
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuHumanAffairs']->value[2] == 1) {?>
-							<li>
-								<a href="">员工档案管理</a>
+							<li<?php if ($_smarty_tpl->tpl_vars['archivesMenu']->value == 1) {?> class="active"<?php }?>>
+								<a href="human-affairs.php?_f=archives">员工档案管理</a>
 							</li>
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuHumanAffairs']->value[3] == 1) {?>
-							<li>
-								<a href="">离职员工</a>
+							<li<?php if ($_smarty_tpl->tpl_vars['quitStaffMenu']->value == 1) {?> class="active"<?php }?>>
+								<a href="human-affairs.php?_f=quit-staff">离职员工</a>
 							</li>
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuHumanAffairs']->value[4] == 1) {?>
-							<li>
-								<a href="">转正考核</a>
+							<li<?php if ($_smarty_tpl->tpl_vars['employCheckMenu']->value == 1) {?> class="active"<?php }?>>
+								<a href="human-affairs.php?_f=employ-check">转正考核</a>
 							</li>
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuHumanAffairs']->value[5] == 1) {?>
-							<li>
-								<a href="">转正考核审批</a>
+							<li<?php if ($_smarty_tpl->tpl_vars['employCheckCheckMenu']->value == 1) {?> class="active"<?php }?>>
+								<a href="human-affairs.php?_f=employ-check-check">转正考核审批</a>
 							</li>
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuHumanAffairs']->value[6] == 1) {?>
-							<li>
+							<!-- <li>
 								<a href="">离职申请</a>
-							</li>
+							</li> -->
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuHumanAffairs']->value[7] == 1) {?>
-							<li>
+							<!-- <li>
 								<a href="">离职申请审批</a>
-							</li>
+							</li> -->
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuHumanAffairs']->value[8] == 1) {?>
-							<li>
-								<a href="">企业规章制度</a>
+							<li<?php if ($_smarty_tpl->tpl_vars['rMenu']->value == 1) {?> class="active"<?php }?>>
+								<a href="human-affairs.php?_f=rules">企业规章制度</a>
 							</li>
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuHumanAffairs']->value[9] == 1) {?>
-							<li>
+							<!-- <li>
 								<a href="">邮箱申请</a>
-							</li>
+							</li> -->
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuHumanAffairs']->value[10] == 1) {?>
-							<li>
+							<!-- <li>
 								<a href="">邮箱审批</a>
-							</li>
+							</li> -->
 							<?php }?>
 						</ul>
 					</div>
@@ -266,8 +266,8 @@ function content_5c164f6ceac6d6_09370409 ($_smarty_tpl) {
 						<div class="contentNavListText"><img src="public/html/images/nav-image-h.png" alt="" class="navLogo" />综合事务管理</div>
 						<ul class="contentNavListMore">
 							<?php if ($_smarty_tpl->tpl_vars['menuGeneralAffairs']->value[0] == 1) {?>
-							<li>
-								<a href="">企业规章制度管理</a>
+							<li<?php if ($_smarty_tpl->tpl_vars['rulesMenu']->value == 1) {?> class="active"<?php }?>>
+								<a href="general-affairs.php?_f=rules">企业规章制度管理</a>
 							</li>
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuGeneralAffairs']->value[1] == 1) {?>
@@ -276,8 +276,8 @@ function content_5c164f6ceac6d6_09370409 ($_smarty_tpl) {
 							</li>
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuGeneralAffairs']->value[2] == 1) {?>
-							<li>
-								<a href="">企业资质证件管理</a>
+							<li<?php if ($_smarty_tpl->tpl_vars['certificateMenu']->value == 1) {?> class="active"<?php }?>>
+								<a href="general-affairs.php?_f=certificate">企业资质证件管理</a>
 							</li>
 							<?php }?>
 						</ul>
@@ -366,7 +366,7 @@ function content_5c164f6ceac6d6_09370409 ($_smarty_tpl) {
 					<?php }?>
 					<div class="contentNavList col-md-12 row<?php echo $_smarty_tpl->tpl_vars['messageMenu']->value;?>
 ">
-						<div class="contentNavListText"><img src="public/html/images/nav-image-i.png" alt="" class="navLogo" />系统消息</div>
+						<div class="contentNavListText"><img src="public/html/images/nav-image-k.png" alt="" class="navLogo" />系统消息</div>
 						<ul class="contentNavListMore">
 							<li>
 								<a href="">系统消息</a>

@@ -19,7 +19,10 @@
 	//获取值 begin
 	$staffId = getVal('s',1,'');			//被考核员工id
 	if($staffId == 0){
-		ErrorResturn('参数缺失！');
+		$data['status'] = 'fail';
+		$data['message'] = '参数缺失！';
+		$returnJson = json_encode($data);
+		echo $returnJson; exit;	
 	}
 
 	$appraiseId = getVal('id',1,'');		//考核记录id
@@ -28,21 +31,18 @@
 	$rjgx = getVal('rjgx',1,'');			//人际关系
 	$xzx = getVal('xzx',1,'');				//协作性
 	$grxy = getVal('grxy',1,'');			//个人修养
-	$score_pd = getVal('score_pd',1,'');	//得分
 	//个人品德 over
 
 	//勤务态度 begin
 	$xiaolv = getVal('xiaolv',1,'');			//严格遵守工作制度，有效利用工作时间
 	$taidu = getVal('taidu',1,'');				//对新工作持积极态度
 	$zyzs = getVal('zyzs',1,'');				//忠于职守，坚守岗位
-	$score_td = getVal('score_td',1,'');		//得分
 	//勤务态度 over
 
 	//业务能力 begin
 	$zrg = getVal('zrg',1,'');					//以主人公精神与同事同心协力努力工作
 	$mudi = getVal('mudi',1,'');				//正确认识工作目的，正确处理业务
 	$shunxu = getVal('shunxu',1,'');			//不打乱工作秩序，不妨碍他人工作
-	$score_nl = getVal('score_nl',1,'');		//得分
 	//业务能力 over
 
 	//工作效率 begin
@@ -50,14 +50,12 @@
 	$chengji = getVal('chengji',1,'');			//业务处置得当，经常保持良好成绩
 	$heli = getVal('heli',1,'');				//工作方法合理，时间和经费的使用十分有效
 	$btef = getVal('btef',1,'');				//工作中没有半途而废，不了了之和造成后遗症的现象
-	$score_xl = getVal('score_xl',1,'');		//得分
 	//工作效率 over
 
 	//业绩 begin
 	$yaoqiu = getVal('yaoqiu',1,'');			//工作成果达到预期目的或计划要求
 	$zongjie = getVal('zongjie',1,'');			//工作总结和汇报准确真实
 	$shulian = getVal('shulian',1,'');			//工作中熟练程度和技能提高较快
-	$score_yj = getVal('score_yj',1,'');		//得分
 	//业绩 over
 
 	//考勤情况 begin
@@ -152,19 +150,34 @@
 	if($act == 'save'){
 
 		if($rjgx == 0||$xzx == 0||$grxy == 0){
-			ErrorResturn('请完善个人品德得分');
+			$data['status'] = 'fail';
+			$data['message'] = '请完善个人品德得分';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;	
 		}
 		if($xiaolv == 0||$taidu == 0||$zyzs == 0){
-			ErrorResturn('请完善勤务态度得分');
+			$data['status'] = 'fail';
+			$data['message'] = '请完善勤务态度得分';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;	
 		}
 		if($zrg == 0||$mudi == 0||$shunxu == 0){
-			ErrorResturn('请完善业务能力得分');
+			$data['status'] = 'fail';
+			$data['message'] = '请完善业务能力得分';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;	
 		}
 		if($speed == 0||$chengji == 0||$heli == 0||$btef == 0){
-			ErrorResturn('请完善工作效率得分');
+			$data['status'] = 'fail';
+			$data['message'] = '请完善工作效率得分';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if($yaoqiu == 0||$zongjie == 0||$shulian == 0){
-			ErrorResturn('请完善业绩得分');
+			$data['status'] = 'fail';
+			$data['message'] = '请完善业绩得分';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 
 		$morality = $rjgx.','.$xzx.','.$grxy;					//个人品德
@@ -173,18 +186,24 @@
 		$efficiency = $speed.','.$chengji.','.$heli.','.$btef;	//工作效率
 		$achievement = $yaoqiu.','.$zongjie.','.$shulian;		//业绩
 
+		$moralityScore = $rjgx+$xzx+$grxy;
+		$attitudeScore = $xiaolv+$taidu+$zyzs;
+		$businessScore = $zrg+$mudi+$shunxu;
+		$efficiencyScore = $speed+$chengji+$heli+$btef;
+		$achievementScore = $yaoqiu+$zongjie+$shulian;
+
 		$val['appraiseUsr'] = $common_staffId;					//考核者
 		$val['appraiseUsrRole'] = $common_checkRole;			//考核者角色
 		$val['morality'] = $morality;
-		$val['moralityScore'] = $score_pd;
+		$val['moralityScore'] = $moralityScore;
 		$val['attitude'] = $attitude;
-		$val['attitudeScore'] = $score_td;
+		$val['attitudeScore'] = $attitudeScore;
 		$val['business'] = $business;
-		$val['businessScore'] = $score_nl;
+		$val['businessScore'] = $businessScore;
 		$val['efficiency'] = $efficiency;
-		$val['efficiencyScore'] = $score_xl;
+		$val['efficiencyScore'] = $efficiencyScore;
 		$val['achievement'] = $achievement;
-		$val['achievementScore'] = $score_yj;
+		$val['achievementScore'] = $achievementScore;
 		$val['late'] = $cidao;
 		$val['earlyRetreat'] = $zaotui;
 		$val['sickLeave'] = $bingjia;
@@ -227,15 +246,23 @@
 		}
 
 		if(!$result){
-			ErrorResturn(ERRORTIPS);
+			$data['status'] = 'fail';
+			$data['message'] = ERRORTIPS;
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}else{
 			if($appraiseId == 0){
 				$dataId = $db->get_lastId();
 			}else{
 				$dataId = $appraiseId;
 			}
-			
-			TipsRefreshResturn('考核成功','?_f=employ-check-info&id='.$dataId.'');
+
+			$data['status'] = 'success';
+			$data['message'] = '考核成功';
+			$data['url'] = '?_f=employ-check-info&id='.$dataId.'';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;	
+
 		}
 
 	}

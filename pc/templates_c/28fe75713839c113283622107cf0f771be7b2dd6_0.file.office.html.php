@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-19 20:10:14
-  from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/humanAffairs/view/certificate.html" */
+/* Smarty version 3.1.29, created on 2018-12-19 20:13:09
+  from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/org/view/office.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c1a35264e5302_21534316',
+  'unifunc' => 'content_5c1a35d52859e0_11986281',
   'file_dependency' => 
   array (
-    'bf6448d0a7f4adf11ae09e004f83c3b39dbff099' => 
+    '28fe75713839c113283622107cf0f771be7b2dd6' => 
     array (
-      0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/humanAffairs/view/certificate.html',
-      1 => 1545221122,
+      0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/org/view/office.html',
+      1 => 1545051960,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c1a35264e5302_21534316 ($_smarty_tpl) {
+function content_5c1a35d52859e0_11986281 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -36,7 +36,7 @@ function content_5c1a35264e5302_21534316 ($_smarty_tpl) {
 		<link rel="stylesheet" href="public/html/css/oa.bootstrap.min.css" />
 		<link rel="stylesheet" href="public/html/css/plugin/jquery.mCustomScrollbar.min.css" />
 		<link rel="stylesheet" href="public/html/css/oa.common.css" />
-		<link rel="stylesheet" href="generalAffairs/view/css/certificate.css" />
+		<link rel="stylesheet" href="org/view/css/office.css" />
 	</head>
 
 	<body>
@@ -58,8 +58,8 @@ function content_5c1a35264e5302_21534316 ($_smarty_tpl) {
 				<!--内容区导航begin-->
 				<div class="contentRightNav clearfix">
 					<div class="contentRightNavLeft pull-left">
-						<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">企业资质证件</span></div>
-						<div class="contentRightNavBottom"><span class="name">企业资质证件</span><span class="time"></span></div>
+						<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">办事处管理</span></div>
+						<div class="contentRightNavBottom"><span class="name">办事处管理</span><span class="time"></span></div>
 					</div>
 				</div>
 				<!--内容区导航end-->
@@ -68,46 +68,13 @@ function content_5c1a35264e5302_21534316 ($_smarty_tpl) {
 					<div class="contentRightContent">
 						<!--检索begin-->
 						<form id="searchForm" name="searchForm" method="get">
-						<input type="hidden" name="_f" value="certificate">
+						<input type="hidden" name="_f" value="office">
 						<div class="retrievalBox">
 							<div class="retrievalTitle">快速检索</div>
 							<div class="retrievalInputBox clearfix">
-								<div class="retrievalTxt pull-left">所属企业</div>
-								<div class="retrievalInput pull-left">
-									<label>所属企业</label>
-									<input type="text" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputBm" placeholder="请选择" name="s_company" value="<?php echo $_smarty_tpl->tpl_vars['s_company']->value;?>
-" data-type='0' />
-									<div class="retrievalsInputNavBox">
-										<ul class="retrievalsInputNav">
-											<li data-type = "0">请选择</li>
-											<?php
-$_from = $_smarty_tpl->tpl_vars['company']->value;
-if (!is_array($_from) && !is_object($_from)) {
-settype($_from, 'array');
-}
-$__foreach_company_0_saved_item = isset($_smarty_tpl->tpl_vars['c']) ? $_smarty_tpl->tpl_vars['c'] : false;
-$_smarty_tpl->tpl_vars['c'] = new Smarty_Variable();
-$_smarty_tpl->tpl_vars['c']->_loop = false;
-foreach ($_from as $_smarty_tpl->tpl_vars['c']->value) {
-$_smarty_tpl->tpl_vars['c']->_loop = true;
-$__foreach_company_0_saved_local_item = $_smarty_tpl->tpl_vars['c'];
-?>
-											<li data-type = "<?php echo $_smarty_tpl->tpl_vars['c']->value['companyId'];?>
-"><?php echo $_smarty_tpl->tpl_vars['c']->value['cnName'];?>
-</li>
-											<?php
-$_smarty_tpl->tpl_vars['c'] = $__foreach_company_0_saved_local_item;
-}
-if ($__foreach_company_0_saved_item) {
-$_smarty_tpl->tpl_vars['c'] = $__foreach_company_0_saved_item;
-}
-?>
-										</ul>
-									</div>
-								</div>
-								<div class="retrievalTxt pull-left">证件名称</div>
+								<div class="retrievalTxt pull-left">办事处名称</div>
 								<div class="retrievalInput pull-left"><input type="text" name="s_name" value="<?php echo $_smarty_tpl->tpl_vars['s_name']->value;?>
-" placeholder="请输入证件名称" /></div>
+" placeholder="请输入办事处名称" /></div>
 								<div class="retrievaButtonBox pull-left clearfix">
 									<div class="retrievaButton retrievaButtonL pull-left">
 										<a href="javascript:void(0);" onclick="document.getElementById('searchForm').submit();">查询</a>
@@ -118,11 +85,73 @@ $_smarty_tpl->tpl_vars['c'] = $__foreach_company_0_saved_item;
 						</div>
 						</form>
 						<!--检索end-->
+						<!--新增 导出数据按钮 begin-->
+						<div class="downloadAddButtonBox clearfix">
+							<a href="?_f=office-set&act=add"><div class="downloadAddButton downloadAddButtonL pull-left">新增</div></a>
+							<!-- <a href="">
+								<div class="downloadAddButton downloadAddButtonR pull-left">导出数据</div>
+							</a> -->
+						</div>
+						<!--新增 导出数据按钮 end-->
 						<!--表格begin-->
 						<div class="clearfix tableBoxFather">
 							<table class="table1 table1Fixed">
 									<tr>
 										<th width='133' class="text-center borderRight1"><span>操作</span></th>
+									</tr>
+									<?php
+$_from = $_smarty_tpl->tpl_vars['data']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$__foreach_data_0_saved_item = isset($_smarty_tpl->tpl_vars['i']) ? $_smarty_tpl->tpl_vars['i'] : false;
+$_smarty_tpl->tpl_vars['i'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['i']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
+$_smarty_tpl->tpl_vars['i']->_loop = true;
+$__foreach_data_0_saved_local_item = $_smarty_tpl->tpl_vars['i'];
+?>
+									<tr<?php if ($_smarty_tpl->tpl_vars['i']->value%2 == 1) {?> class="backgroundFFF"<?php }?>>
+										<td class="borderRight1">
+											<div class="editBox center-block clearfix">
+												<div class="editButton editButtonL pull-left text-center">
+													<a href="?_f=office-set&act=edit&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
+&id=<?php echo $_smarty_tpl->tpl_vars['i']->value['officeId'];
+echo $_smarty_tpl->tpl_vars['track']->value;?>
+"><img src="public/html/images/edit.jpg" alt="" /></a>
+												</div>
+												<div class="editButton editButtonR pull-left text-center">
+													<a href="?_f=office&act=remove&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
+&id=<?php echo $_smarty_tpl->tpl_vars['i']->value['officeId'];
+echo $_smarty_tpl->tpl_vars['track']->value;?>
+" onclick="return confirm('确认要删除？');"><img src="public/html/images/del.jpg" alt="" /></a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<?php
+$_smarty_tpl->tpl_vars['i'] = $__foreach_data_0_saved_local_item;
+}
+if ($__foreach_data_0_saved_item) {
+$_smarty_tpl->tpl_vars['i'] = $__foreach_data_0_saved_item;
+}
+?>
+								</table>
+							<div class="tableBox clearfix">
+								<table class="table1 table1Content">
+									<tr>
+										<th width="70" class="paddingLeft12"><span>#</span></th>
+										<th width="150"><span>部门编号</span></th>
+										<th width="200"><span>部门名称</span></th>
+										<th width="99" class="text-center"><span>联系电话</span></th>
+										<th width="158" class="text-center"><span>传真</span></th>
+										<th width="155" class="text-center"><span>详细地址</span></th>
+										<th width="300" colspan="2" class="paddingLeft40">
+											<span class="sortText">排序<img src="public/html/images/tictable.png" alt="" /></span>
+											<div class="sortTic">
+												排序号越大，排序越靠前
+											</div>
+										</th>
 									</tr>
 									<?php
 $_from = $_smarty_tpl->tpl_vars['data']->value;
@@ -137,13 +166,28 @@ $_smarty_tpl->tpl_vars['i']->_loop = true;
 $__foreach_data_1_saved_local_item = $_smarty_tpl->tpl_vars['i'];
 ?>
 									<tr<?php if ($_smarty_tpl->tpl_vars['i']->value%2 == 1) {?> class="backgroundFFF"<?php }?>>
-										<td class="borderRight1">
-											<div class="editBox center-block clearfix">
-												<div class="editButton editButtonZ pull-left text-center">
-													<a href="upload/file/cer/<?php echo $_smarty_tpl->tpl_vars['i']->value['cerImg'];?>
-" target="_blank"><img src="public/html/images/bj.jpg" alt="" /></a>
-												</div>
-											</div>
+										<td class="paddingLeft12"><span><?php echo $_smarty_tpl->tpl_vars['i']->value['sn'];?>
+</span></td>
+										<td width="150"><span><?php echo $_smarty_tpl->tpl_vars['i']->value['officeCode'];?>
+</span></td>
+										<td width="200"><span><?php echo $_smarty_tpl->tpl_vars['i']->value['officeName'];?>
+</span></td>
+										<td class="text-center"><span><?php echo $_smarty_tpl->tpl_vars['i']->value['phone'];?>
+</span></td>
+										<td class="text-center"><span><?php echo $_smarty_tpl->tpl_vars['i']->value['fax'];?>
+</span></td>
+										<td class="text-center"><span><?php echo $_smarty_tpl->tpl_vars['i']->value['address'];?>
+</span></td>
+										<td width="150" style="padding-left:75px;"><span><input type="text" id="rank<?php echo $_smarty_tpl->tpl_vars['i']->value['officeId'];?>
+" name="rank<?php echo $_smarty_tpl->tpl_vars['i']->value['officeId'];?>
+" class="sortInput" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['rank'];?>
+"/></span></td>
+										<td>
+											<a href="javascript:void(0);" onclick="javascript:location.href='?_f=office&act=updateRank&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
+&id=<?php echo $_smarty_tpl->tpl_vars['i']->value['officeId'];
+echo $_smarty_tpl->tpl_vars['track']->value;?>
+&rank='+document.getElementById('rank<?php echo $_smarty_tpl->tpl_vars['i']->value['officeId'];?>
+').value;"><span class="tableSureButton">确定</span></a>
 										</td>
 									</tr>
 									<?php
@@ -151,44 +195,6 @@ $_smarty_tpl->tpl_vars['i'] = $__foreach_data_1_saved_local_item;
 }
 if ($__foreach_data_1_saved_item) {
 $_smarty_tpl->tpl_vars['i'] = $__foreach_data_1_saved_item;
-}
-?>
-								</table>
-							<div class="tableBox clearfix">
-								<table class="table1 table1Content">
-									<tr>
-										<th width="70" class="paddingLeft12"><span>#</span></th>
-										<th width="200"><span>企业名称</span></th>
-										<th width="200"><span>证件名称</span></th>
-										<th width="500"><span>创建时间</span></th>
-									</tr>
-									<?php
-$_from = $_smarty_tpl->tpl_vars['data']->value;
-if (!is_array($_from) && !is_object($_from)) {
-settype($_from, 'array');
-}
-$__foreach_data_2_saved_item = isset($_smarty_tpl->tpl_vars['i']) ? $_smarty_tpl->tpl_vars['i'] : false;
-$_smarty_tpl->tpl_vars['i'] = new Smarty_Variable();
-$_smarty_tpl->tpl_vars['i']->_loop = false;
-foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
-$_smarty_tpl->tpl_vars['i']->_loop = true;
-$__foreach_data_2_saved_local_item = $_smarty_tpl->tpl_vars['i'];
-?>
-									<tr<?php if ($_smarty_tpl->tpl_vars['i']->value%2 == 1) {?> class="backgroundFFF"<?php }?>>
-										<td class="paddingLeft12"><span><?php echo $_smarty_tpl->tpl_vars['i']->value['sn'];?>
-</span></td>
-										<td><span><?php echo $_smarty_tpl->tpl_vars['i']->value['company'];?>
-</span></td>
-										<td><span><?php echo $_smarty_tpl->tpl_vars['i']->value['cerName'];?>
-</span></td>	
-										<td><span><?php echo $_smarty_tpl->tpl_vars['i']->value['createTime'];?>
-</span></td>
-									</tr>
-									<?php
-$_smarty_tpl->tpl_vars['i'] = $__foreach_data_2_saved_local_item;
-}
-if ($__foreach_data_2_saved_item) {
-$_smarty_tpl->tpl_vars['i'] = $__foreach_data_2_saved_item;
 }
 ?>
 								</table>
@@ -230,7 +236,7 @@ $_smarty_tpl->tpl_vars['i'] = $__foreach_data_2_saved_item;
  type="text/javascript" src="public/html/js/jquery.form.min.js" ><?php echo '</script'; ?>
 >
 		<?php echo '<script'; ?>
- type="text/javascript" src="generalAffairs/view/js/certificate.js"><?php echo '</script'; ?>
+ type="text/javascript" src="org/view/js/office.js"><?php echo '</script'; ?>
 >
 	</body>
 

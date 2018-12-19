@@ -50,29 +50,29 @@
 							</li>
 							{{/if}}
 							{{if $menuHumanAffairs[3] == 1}}
-							<li>
-								<a href="">离职员工</a>
+							<li{{if $quitStaffMenu==1}} class="active"{{/if}}>
+								<a href="human-affairs.php?_f=quit-staff">离职员工</a>
 							</li>
 							{{/if}}
 							{{if $menuHumanAffairs[4] == 1}}
-							<li>
-								<a href="">转正考核</a>
+							<li{{if $employCheckMenu==1}} class="active"{{/if}}>
+								<a href="human-affairs.php?_f=employ-check">转正考核</a>
 							</li>
 							{{/if}}
 							{{if $menuHumanAffairs[5] == 1}}
-							<li>
-								<a href="">转正考核审批</a>
+							<li{{if $employCheckCheckMenu==1}} class="active"{{/if}}>
+								<a href="human-affairs.php?_f=employ-check-check">转正考核审批</a>
 							</li>
 							{{/if}}
 							{{if $menuHumanAffairs[6] == 1}}
-							<li>
+							<!-- <li>
 								<a href="">离职申请</a>
-							</li>
+							</li> -->
 							{{/if}}
 							{{if $menuHumanAffairs[7] == 1}}
-							<li>
+							<!-- <li>
 								<a href="">离职申请审批</a>
-							</li>
+							</li> -->
 							{{/if}}
 							{{if $menuHumanAffairs[8] == 1}}
 							<li{{if $rMenu == 1}} class="active"{{/if}}>
@@ -80,14 +80,14 @@
 							</li>
 							{{/if}}
 							{{if $menuHumanAffairs[9] == 1}}
-							<li>
+							<!-- <li>
 								<a href="">邮箱申请</a>
-							</li>
+							</li> -->
 							{{/if}}
 							{{if $menuHumanAffairs[10] == 1}}
-							<li>
+							<!-- <li>
 								<a href="">邮箱审批</a>
-							</li>
+							</li> -->
 							{{/if}}
 						</ul>
 					</div>

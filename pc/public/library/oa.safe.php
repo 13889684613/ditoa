@@ -198,6 +198,18 @@
 	if($_nav!='quit'&&($_file=='archives'||$_file=='archives-info'||$_file=='archives-family'||$_file=='archives-edu'||$_file=='archives-welfare'||$_file=='archives-entry'||$_file=='archives-contract'||$_file=='archives-leave'||$_file=='archives-file')){
 		$archivesMenu = 1; $humanMenus = true;
 	}
+	//离职员工
+	if($_file=='quit-staff'||$_file=='archives-quit'||($_nav=='quit'&&($_file=='archives-info'||$_file=='archives-family'||$_file=='archives-edu'||$_file=='archives-welfare'||$_file=='archives-entry'||$_file=='archives-contract'||$_file=='archives-leave'||$_file=='archives-file'))){
+		$quitStaffMenu = 1; $humanMenus = true;
+	}
+	//转正考核
+	if($_file == 'employ-check'||$_file == 'employ-check-set'||$_file == 'employ-check-info'){
+		$employCheckMenu = 1; $humanMenus = true;
+	}
+	//转正考核审批
+	if($_file == 'employ-check-check'||$_file == 'employ-check-check-set'||$_file == 'employ-check-check-info'){
+		$employCheckCheckMenu = 1; $humanMenus = true;
+	}
 
 	//企业规章制度
 	if($_file == 'rules'){
@@ -310,6 +322,7 @@
 	$smarty->assign('ruleMenu',$ruleMenu);
 	$smarty->assign('staffMenu',$staffMenu);
 	$smarty->assign('archivesMenu',$archivesMenu);
+	$smarty->assign('quitStaffMenu',$quitStaffMenu);
 
 	$smarty->assign('leaveMenu',$leaveMenu);
 	$smarty->assign('businessMenu',$businessMenu);

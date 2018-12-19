@@ -37,10 +37,39 @@
 	$fileds = 'insuranceNo,insuranceStatus,insuranceOverDate,fundNo,fundStatus,fundOverDate';
 	$data = $db->get_one($table,'where staffId='.$id.'',$fileds);
 	if($data){
-		$data['insuranceStatus'] = static_Trusteeship($data['insuranceStatus']);
-		$data['fundStatus'] = static_Trusteeship($data['fundStatus']);
-		$data['fundOverDate'] = date('Y年m月d日',strtotime($data['fundOverDate']));
-		$data['insuranceOverDate'] = date('Y年m月d日',strtotime($data['insuranceOverDate']));
+
+		if($data['insuranceNo'] == ''){
+			$data['insuranceNo'] = '未填写';
+		}
+
+		if($data['fundNo'] == ''){
+			$data['fundNo'] = '未填写';
+		}
+
+		if($data['insuranceStatus'] == 0){
+			$data['insuranceStatus'] = '未填写';
+		}else{
+			$data['insuranceStatus'] = static_Trusteeship($data['insuranceStatus']);
+		}
+
+		if($data['fundStatus'] == 0){
+			$data['fundStatus'] = '未填写';
+		}else{
+			$data['fundStatus'] = static_Trusteeship($data['fundStatus']);
+		}
+
+		if($data['fundOverDate'] == ''){
+			$data['fundOverDate'] = '未填写';
+		}else{
+			$data['fundOverDate'] = date('Y年m月d日',strtotime($data['fundOverDate']));
+		}
+
+		if($data['insuranceOverDate'] == ''){
+			$data['insuranceOverDate'] = '未填写';
+		}else{
+			$data['insuranceOverDate'] = date('Y年m月d日',strtotime($data['insuranceOverDate']));
+		}
+
 	}
 
 	//数据绑定

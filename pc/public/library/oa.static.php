@@ -219,7 +219,7 @@
 	function static_Trusteeship($key=''){
 		$status = array(
 			'1' => '托管',
-			'0' => '非托管'
+			'2' => '非托管'
 		);
 
 		if($key == ''){
