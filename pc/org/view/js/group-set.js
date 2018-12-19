@@ -24,9 +24,39 @@ $(function() {
 		$('.retrievalsInputNavBox').hide();
 	})
 	$('body').delegate('.retrievalsInputNav li', 'click', function() {
-		$(this).parents('.retrievalsInput').find('input').val($(this).text()).attr('data-type', '1')
-		$(this).parents('.StableTdR').find('input').val($(this).text()).attr('data-type', '1')
-		$('.retrievalsInputNavBox').hide()
+		var arr = [];
+		var type = $(this).attr('data-type');
+		if($(this).parents('.retrievalsInputNav').hasClass('retrievalsInputNavSelsct')) {
+			$.ajax({
+				type: "get",
+				url: "ajax.php?act=getSign&officeId="+type,
+				async: true,
+				dataType: 'json',
+				success: function(data) {
+					if(data.status == 'success') {
+						$('.workingDayBox').removeClass('on')
+						var str = data.data.workWeek;
+						$('input[name="workBeginTime"]').val(data.data.workBeginTime);
+						$('input[name="workOverTime"]').val(data.data.workOverTime);
+						$('input[name="week"]').val(data.data.workWeek);
+						$('input[name="workCoordinate"]').val(data.data.workCoordinate);
+						$('input[name="workAddress"]').val(data.data.workAddress);
+						$('.foreAddressInfo').text(data.data.workAddress);
+						$('input[name="workRange"]').val(data.data.workRange);
+						$('.formSelect').text(data.data.workRange+'米');
+						var str = data.data.workWeek;
+						for (var i = 0; i < str.length; i++) {
+							if(!isNaN(str[i])){
+								arr.push(str[i]);
+								for (var j = 0; j < arr.length; j++) {
+									$('.workingDayBox').eq(arr[j]-1).addClass('on');
+								}
+							}
+						}
+					}
+				}
+			});
+		}
 	})
 	//IE placeholder 
 	$('.formInput').placeholder();
@@ -163,16 +193,16 @@ $(function() {
 
 		})
 		$('#groupForm').ajaxSubmit({
-            type:'post',
-            success:function(data){
-                data = $.parseJSON(data);
-                if(data.status == 'success'){
-                    location.href = data.url;
-                }else{
-                    popAlert(data.message); //弹出错误信息
-                }
-            }
-        })
+			type: 'post',
+			success: function(data) {
+				data = $.parseJSON(data);
+				if(data.status == 'success') {
+					location.href = data.url;
+				} else {
+					popAlert(data.message); //弹出错误信息
+				}
+			}
+		})
 	})
 
 })

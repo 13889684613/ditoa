@@ -31,6 +31,8 @@
 	$s_idno = getVal('s_idno',2,'');
 	$s_begintime = getVal('s_begintime',2,'');
 	$s_overtime = getVal('s_overtime',2,'');
+	$track = '&page='.$page.'&id='.$id.'&s_company='.$s_company.'&s_office='.$s_office.'&s_role='.$s_role.'&s_post='.$s_post.'&s_status='.$s_status.'';
+	$track .= '&s_name='.$s_name.'&s_idno='.$s_idno.'&s_begintime='.$s_begintime.'&s_overtime='.$s_overtime.'';
 	//记录列表页检索条件over
 
 	//页面分页配置
@@ -73,5 +75,7 @@
 	$smarty->assign('s_idno',$s_idno);
 	$smarty->assign('data',$data);
 	$smarty->assign('page',$page->show_link(1));
+	$smarty->assign('track',$track);
+	$smarty->assign('id',$id);
 
 ?>

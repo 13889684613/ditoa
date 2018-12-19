@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-17 15:04:56
+/* Smarty version 3.1.29, created on 2018-12-19 11:39:53
   from "F:\website\ditoaCoder\ditoa\pc\org\view\group.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c174a986bcc06_77544825',
+  'unifunc' => 'content_5c19bd89b7a344_77403890',
   'file_dependency' => 
   array (
     '834c4c4425bad0bc4e2b724ca7d87d6f1991b379' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\org\\view\\group.html',
-      1 => 1545029627,
+      1 => 1545190791,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c174a986bcc06_77544825 ($_smarty_tpl) {
+function content_5c19bd89b7a344_77403890 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -67,20 +67,20 @@ function content_5c174a986bcc06_77544825 ($_smarty_tpl) {
 				<div class="contentRightBox">
 					<div class="contentRightContent">
 						<!--检索begin-->
-						<form id="searchForm" name="searchForm" method="get">
-						<input type="hidden" name="_f" value="group">
-						<div class="retrievalBox">
-							<div class="retrievalTitle">快速检索</div>
-							<div class="retrievalInputBox clearfix">
-								<div class="retrievalTxt pull-left">所属办事处</div>
-								<div class="retrievalInput pull-left">
-									<label>办事处</label>
-									<input type="text" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputBm" placeholder="请选择" name="s_type" value="<?php echo $_smarty_tpl->tpl_vars['s_office']->value;?>
+						<!--<form id="searchForm" name="searchForm" method="get">
+							<input type="hidden" name="_f" value="group">
+							<div class="retrievalBox">
+								<div class="retrievalTitle">快速检索</div>
+								<div class="retrievalInputBox clearfix">
+									<div class="retrievalTxt pull-left">所属办事处</div>
+									<div class="retrievalInput pull-left">
+										<label>办事处</label>
+										<input type="text" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputBm" placeholder="请选择" name="s_type" value="<?php echo $_smarty_tpl->tpl_vars['s_office']->value;?>
 " data-type='0' />
-									<div class="retrievalsInputNavBox">
-										<ul class="retrievalsInputNav">
-											<li data-type = "0">请选择</li>
-											<?php
+										<div class="retrievalsInputNavBox">
+											<ul class="retrievalsInputNav">
+												<li data-type="0">请选择</li>
+												<?php
 $_from = $_smarty_tpl->tpl_vars['offices']->value;
 if (!is_array($_from) && !is_object($_from)) {
 settype($_from, 'array');
@@ -92,35 +92,99 @@ foreach ($_from as $_smarty_tpl->tpl_vars['o']->value) {
 $_smarty_tpl->tpl_vars['o']->_loop = true;
 $__foreach_offices_0_saved_local_item = $_smarty_tpl->tpl_vars['o'];
 ?>
-											<li data-type = "<?php echo $_smarty_tpl->tpl_vars['o']->value['officeId'];?>
+												<li data-type="<?php echo $_smarty_tpl->tpl_vars['o']->value['officeId'];?>
 "><?php echo $_smarty_tpl->tpl_vars['o']->value['officeName'];?>
 </li>
-											<?php
+												<?php
 $_smarty_tpl->tpl_vars['o'] = $__foreach_offices_0_saved_local_item;
 }
 if ($__foreach_offices_0_saved_item) {
 $_smarty_tpl->tpl_vars['o'] = $__foreach_offices_0_saved_item;
 }
 ?>
-										</ul>
+											</ul>
+										</div>
 									</div>
-								</div>
-								<div class="retrievalTxt pull-left">工作组名称</div>
-								<div class="retrievalInput pull-left"><input type="text" name="s_name" value="<?php echo $_smarty_tpl->tpl_vars['s_name']->value;?>
+									<div class="retrievalTxt pull-left">工作组名称</div>
+									<div class="retrievalInput pull-left"><input type="text" name="s_name" value="<?php echo $_smarty_tpl->tpl_vars['s_name']->value;?>
 " placeholder="请输入工作组名称" /></div>
-								<div class="retrievaButtonBox pull-left clearfix">
-									<div class="retrievaButton retrievaButtonL pull-left">
-										<a href="javascript:void(0);" onclick="document.getElementById('searchForm').submit();">查询</a>
+									<div class="retrievaButtonBox pull-left clearfix">
+										<div class="retrievaButton retrievaButtonL pull-left">
+											<a href="javascript:void(0);" onclick="document.getElementById('searchForm').submit();">查询</a>
+										</div>
+										<div class="retrievaButton retrievaButtonR pull-left">清空</div>
 									</div>
-									<div class="retrievaButton retrievaButtonR pull-left">清空</div>
 								</div>
 							</div>
+						</form>-->
+						<!--检索end-->
+
+						<!--检索begin-->
+						<div class="retrievalBox">
+							<div class="retrievalTitle">快速检索</div>
+							<div class="retrievalsForm clearfix">
+								<form id="searchForm" name="searchForm" method="get">
+									<input type="hidden" name="_f" value="group">
+									<div class="retrievalsInputBoxs retrievalsInputBoxsStar clearfix pull-left">
+										<div class="retrievalsInputContent">
+											<div class="retrievalsInput">
+												<label>所属办事处<span>*</span></label>
+												<input type="text" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputQy" placeholder="请选择" value="" data-type='0' />
+												<div class="retrievalsInputNavBox">
+													<ul class="retrievalsInputNav retrievalsInputNavSelsct">
+														<li data-type="0">请选择</li>
+														<?php
+$_from = $_smarty_tpl->tpl_vars['offices']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$__foreach_offices_1_saved_item = isset($_smarty_tpl->tpl_vars['o']) ? $_smarty_tpl->tpl_vars['o'] : false;
+$_smarty_tpl->tpl_vars['o'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['o']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['o']->value) {
+$_smarty_tpl->tpl_vars['o']->_loop = true;
+$__foreach_offices_1_saved_local_item = $_smarty_tpl->tpl_vars['o'];
+?>
+														<li data-type="<?php echo $_smarty_tpl->tpl_vars['o']->value['officeId'];?>
+"><?php echo $_smarty_tpl->tpl_vars['o']->value['officeName'];?>
+</li>
+														<?php
+$_smarty_tpl->tpl_vars['o'] = $__foreach_offices_1_saved_local_item;
+}
+if ($__foreach_offices_1_saved_item) {
+$_smarty_tpl->tpl_vars['o'] = $__foreach_offices_1_saved_item;
+}
+?>
+														<input type="hidden" class="selectVal" value="0" autocomplete="off" data-type="1">
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="retrievalsInputBoxs retrievalsInputBoxsStar clearfix pull-left">
+										<div class="retrievalsInputContent">
+											<div class="retrievalsInput">
+												<label>工作组名称<span>*</span></label>
+												<input name="groupName" type="text" placeholder="请输入工作组名称" value="<?php echo $_smarty_tpl->tpl_vars['s_name']->value;?>
+" class="choseInputName" data-type='0' />
+											</div>
+										</div>
+									</div>
+									<!--查询清空begin-->
+									<div class="retrievalsInput clearfix pull-left">
+										<a href="javascript:void(0);" onclick="document.getElementById('searchForm').submit();" class="queryButton pull-left">查询</a>
+										<div class="clearButton pull-left">清空</div>
+									</div>
+									<!--查询清空end-->
+								</form>
+							</div>
 						</div>
-						</form>
 						<!--检索end-->
 						<!--新增 导出数据按钮 begin-->
 						<div class="downloadAddButtonBox clearfix">
-							<a href="?_f=group-set&act=add"><div class="downloadAddButton downloadAddButtonL pull-left">新增</div></a>
+							<a href="?_f=group-set&act=add">
+								<div class="downloadAddButton downloadAddButtonL pull-left">新增</div>
+							</a>
 							<!-- <a href="">
 								<div class="downloadAddButton downloadAddButtonR pull-left">导出数据</div>
 							</a> -->
@@ -129,47 +193,47 @@ $_smarty_tpl->tpl_vars['o'] = $__foreach_offices_0_saved_item;
 						<!--表格begin-->
 						<div class="clearfix tableBoxFather">
 							<table class="table1 table1Fixed">
-									<tr>
-										<th width='133' class="text-center borderRight1"><span>操作</span></th>
-									</tr>
-									<?php
+								<tr>
+									<th width='133' class="text-center borderRight1"><span>操作</span></th>
+								</tr>
+								<?php
 $_from = $_smarty_tpl->tpl_vars['data']->value;
 if (!is_array($_from) && !is_object($_from)) {
 settype($_from, 'array');
 }
-$__foreach_data_1_saved_item = isset($_smarty_tpl->tpl_vars['i']) ? $_smarty_tpl->tpl_vars['i'] : false;
+$__foreach_data_2_saved_item = isset($_smarty_tpl->tpl_vars['i']) ? $_smarty_tpl->tpl_vars['i'] : false;
 $_smarty_tpl->tpl_vars['i'] = new Smarty_Variable();
 $_smarty_tpl->tpl_vars['i']->_loop = false;
 foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 $_smarty_tpl->tpl_vars['i']->_loop = true;
-$__foreach_data_1_saved_local_item = $_smarty_tpl->tpl_vars['i'];
+$__foreach_data_2_saved_local_item = $_smarty_tpl->tpl_vars['i'];
 ?>
-									<tr<?php if ($_smarty_tpl->tpl_vars['i']->value%2 == 1) {?> class="backgroundFFF"<?php }?>>
-										<td class="borderRight1">
-											<div class="editBox center-block clearfix">
-												<div class="editButton editButtonL pull-left text-center">
-													<a href="?_f=group-set&act=edit&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
+								<tr<?php if ($_smarty_tpl->tpl_vars['i']->value%2 == 1) {?> class="backgroundFFF" <?php }?>>
+									<td class="borderRight1">
+										<div class="editBox center-block clearfix">
+											<div class="editButton editButtonL pull-left text-center">
+												<a href="?_f=group-set&act=edit&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
 &id=<?php echo $_smarty_tpl->tpl_vars['i']->value['groupId'];
 echo $_smarty_tpl->tpl_vars['track']->value;?>
 "><img src="public/html/images/edit.jpg" alt="" /></a>
-												</div>
-												<div class="editButton editButtonR pull-left text-center">
-													<a href="?_f=group&act=remove&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
+											</div>
+											<div class="editButton editButtonR pull-left text-center">
+												<a href="?_f=group&act=remove&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
 &id=<?php echo $_smarty_tpl->tpl_vars['i']->value['groupId'];
 echo $_smarty_tpl->tpl_vars['track']->value;?>
 " onclick="return confirm('确认要删除？');"><img src="public/html/images/del.jpg" alt="" /></a>
-												</div>
 											</div>
-										</td>
+										</div>
+									</td>
 									</tr>
 									<?php
-$_smarty_tpl->tpl_vars['i'] = $__foreach_data_1_saved_local_item;
+$_smarty_tpl->tpl_vars['i'] = $__foreach_data_2_saved_local_item;
 }
-if ($__foreach_data_1_saved_item) {
-$_smarty_tpl->tpl_vars['i'] = $__foreach_data_1_saved_item;
+if ($__foreach_data_2_saved_item) {
+$_smarty_tpl->tpl_vars['i'] = $__foreach_data_2_saved_item;
 }
 ?>
-								</table>
+							</table>
 							<div class="tableBox clearfix">
 								<table class="table1 table1Content">
 									<tr>
@@ -189,14 +253,14 @@ $_from = $_smarty_tpl->tpl_vars['data']->value;
 if (!is_array($_from) && !is_object($_from)) {
 settype($_from, 'array');
 }
-$__foreach_data_2_saved_item = isset($_smarty_tpl->tpl_vars['i']) ? $_smarty_tpl->tpl_vars['i'] : false;
+$__foreach_data_3_saved_item = isset($_smarty_tpl->tpl_vars['i']) ? $_smarty_tpl->tpl_vars['i'] : false;
 $_smarty_tpl->tpl_vars['i'] = new Smarty_Variable();
 $_smarty_tpl->tpl_vars['i']->_loop = false;
 foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 $_smarty_tpl->tpl_vars['i']->_loop = true;
-$__foreach_data_2_saved_local_item = $_smarty_tpl->tpl_vars['i'];
+$__foreach_data_3_saved_local_item = $_smarty_tpl->tpl_vars['i'];
 ?>
-									<tr<?php if ($_smarty_tpl->tpl_vars['i']->value%2 == 1) {?> class="backgroundFFF"<?php }?>>
+									<tr<?php if ($_smarty_tpl->tpl_vars['i']->value%2 == 1) {?> class="backgroundFFF" <?php }?>>
 										<td class="paddingLeft12"><span><?php echo $_smarty_tpl->tpl_vars['i']->value['sn'];?>
 </span></td>
 										<td width="150"><span><?php echo $_smarty_tpl->tpl_vars['i']->value['office'];?>
@@ -216,12 +280,12 @@ echo $_smarty_tpl->tpl_vars['track']->value;?>
 &rank='+document.getElementById('rank<?php echo $_smarty_tpl->tpl_vars['i']->value['groupId'];?>
 ').value;"><span class="tableSureButton">确定</span></a>
 										</td>
-									</tr>
-									<?php
-$_smarty_tpl->tpl_vars['i'] = $__foreach_data_2_saved_local_item;
+										</tr>
+										<?php
+$_smarty_tpl->tpl_vars['i'] = $__foreach_data_3_saved_local_item;
 }
-if ($__foreach_data_2_saved_item) {
-$_smarty_tpl->tpl_vars['i'] = $__foreach_data_2_saved_item;
+if ($__foreach_data_3_saved_item) {
+$_smarty_tpl->tpl_vars['i'] = $__foreach_data_3_saved_item;
 }
 ?>
 								</table>
@@ -254,13 +318,13 @@ $_smarty_tpl->tpl_vars['i'] = $__foreach_data_2_saved_item;
  type="text/javascript" src="public/html/js/plugin/oa.bootstrap.min.js"><?php echo '</script'; ?>
 >
 		<?php echo '<script'; ?>
- type="text/javascript" src="public/html/js/plugin/jquery.mCustomScrollbar.concat.min.js" ><?php echo '</script'; ?>
+ type="text/javascript" src="public/html/js/plugin/jquery.mCustomScrollbar.concat.min.js"><?php echo '</script'; ?>
 >
 		<?php echo '<script'; ?>
  type="text/javascript" src="public/html/js/oa.common.js"><?php echo '</script'; ?>
 >
 		<?php echo '<script'; ?>
- type="text/javascript" src="public/html/js/jquery.form.min.js" ><?php echo '</script'; ?>
+ type="text/javascript" src="public/html/js/jquery.form.min.js"><?php echo '</script'; ?>
 >
 		<?php echo '<script'; ?>
  type="text/javascript" src="org/view/js/group.js"><?php echo '</script'; ?>

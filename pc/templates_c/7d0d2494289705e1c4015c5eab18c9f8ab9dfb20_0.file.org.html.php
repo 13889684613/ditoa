@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-17 15:53:47
+/* Smarty version 3.1.29, created on 2018-12-19 14:00:07
   from "F:\website\ditoaCoder\ditoa\pc\org\view\org.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c17560b829305_42563246',
+  'unifunc' => 'content_5c19de6771f764_62911843',
   'file_dependency' => 
   array (
     '7d0d2494289705e1c4015c5eab18c9f8ab9dfb20' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\org\\view\\org.html',
-      1 => 1545033225,
+      1 => 1545199205,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c17560b829305_42563246 ($_smarty_tpl) {
+function content_5c19de6771f764_62911843 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -198,7 +198,7 @@ if (!$_smarty_tpl->tpl_vars['i']->_loop) {
 												<img src="org/view/images/choseImage.jpg" class="choseImage" alt="" />
 												<?php }?>
 												<?php if ($_smarty_tpl->tpl_vars['TIP']->value == 1) {?>
-												<img src="org/view/images/choseImage.jpg" class="choseImage" alt="" />
+												<img src="org/view/images/zwyg.jpg" class="choseImage" alt="" />
 												<?php }?>
 											</td>
 										</tr>
@@ -208,6 +208,7 @@ if ($__foreach_data_2_saved_item) {
 $_smarty_tpl->tpl_vars['i'] = $__foreach_data_2_saved_item;
 }
 ?>
+										<tr></tr>
 									</table>
 								</div>
 							</div>

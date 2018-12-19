@@ -458,7 +458,7 @@
 	border-radius: 3px;
 	color: #222222;
 	font-size: 14px;
-	margin-left: 15px;
+	margin-left: 0px;
 	background: #fbfbfd;
 }
 .retrievalsInput .choseInput{
@@ -466,13 +466,19 @@
 	background: url(/org/view/images/input-down.jpg) no-repeat 92% 50% #fbfbfd;
 }
 .retrievalsInput label{
-	width: 60px;
+	width: 95px;
 }
 .retrievalsInputNavBox{
 	display: none;
 	position: absolute;
 	top: 0;
-	left: 79px;
+	left: 113px;
+}
+.retrievalsInput label span {
+    color: red;
+    font-size: 15px;
+    padding: 0 4px;
+    font-size: 17px;
 }
 .retrievalsInputNav{
 	/*position: absolute;
@@ -545,10 +551,14 @@
 	color: #e53631;
 }
 .retrievalsInput label{
-	width: 64px;
+	width: 95px;
+	margin-right: 15px;
 }
 .firstIn .retrievalsInputNavBox{
 	left: 135px;
+}
+.retrievalBox{
+	height:auto;
 }
 .contentRightBox{
 	background-color: transparent;

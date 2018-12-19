@@ -27,6 +27,8 @@
 	$s_overtime = getVal('s_overtime',2,'');
 	$s_category = getVal('s_category',1,'');	//离职类型，离职人员页面传参
 	$nav = getVal('nav',2,'');					//nav == quit时显示离职信息
+	$track = '&page='.$page.'&id='.$id.'&s_company='.$s_company.'&s_office='.$s_office.'&s_post='.$s_post.'&s_status='.$s_status.'';
+	$track .= '&s_name='.$s_name.'&s_category='.$s_category.'&s_begintime='.$s_begintime.'&s_overtime='.$s_overtime.'&nav='.$nav.'';
 	//记录列表页检索条件over
 
 	//身份证证文件
@@ -59,6 +61,9 @@
 		$others[$e]['attachFile'] = 'upload/file/staff/'.$others[$e]['attachFile'];
 	}
 
+	//员工档案进度轴
+	$archivesData = getArchivesCommon($id);
+
 	//数据绑定
 	$smarty->assign('pageTitle',$pageTitle);
 	$smarty->assign('s_company',$s_company);
@@ -71,8 +76,10 @@
 	$smarty->assign('id',$id);
 	$smarty->assign('page',$page);
 	$smarty->assign('i',$data);
+	$smarty->assign('a',$archivesData);
 	$smarty->assign('others',$others);
 	$smarty->assign('s_category',$s_category);
 	$smarty->assign('nav',$nav);
+	$smarty->assign('track',$track);
 
 ?>

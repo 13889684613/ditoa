@@ -48,25 +48,27 @@
 										<div class="retrievalsInputContent">
 											<div class="retrievalsInput">
 												<label>所属企业</label>
-												<input type="text" unselectable="on" onfocus="this.blur()" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputQy" placeholder="请选择" name="s_company" value="{{$s_company}}" data-type='0' />
+												<input type="text" unselectable="on" onfocus="this.blur()" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputQy" placeholder="请选择" name="s_company" value="" data-type='0' />
 												<div class="retrievalsInputNavBox">
 													<ul class="retrievalsInputNav">
 														<li data-type = "0">请选择</li>
 														{{foreach item=c name=company from=$company}}
 														<li data-type = "{{$c.companyId}}">{{$c.cnName}}</li>
 														{{/foreach}}
+														<input type="hidden" class="selectVal" value="{{$s_company}}" autocomplete="off" data-type="1">
 													</ul>
 												</div>
 											</div>
 											<div class="retrievalsInput">
 												<label>员工职务</label>
-												<input type="text" unselectable="on" onfocus="this.blur()" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputZw" placeholder="请选择" name="s_post" value="{{$s_post}}" data-type='0' />
+												<input type="text" unselectable="on" onfocus="this.blur()" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputZw" placeholder="请选择" name="s_post" value="" data-type='0' />
 												<div class="retrievalsInputNavBox">
 													<ul class="retrievalsInputNav">
 														<li data-type = "0">请选择</li>
 														{{foreach item=p name=post from=$post}}
 														<li data-type = "{{$p.postId}}">{{$p.postName}}</li>
 														{{/foreach}}
+														<input type="hidden" class="selectVal" value="{{$s_post}}" autocomplete="off" data-type="1">
 													</ul>
 												</div>
 											</div>
@@ -80,25 +82,27 @@
 										<div class="retrievalsInputContent">
 											<div class="retrievalsInput">
 												<label>所属部门</label>
-												<input type="text" unselectable="on" onfocus="this.blur()" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputBm" placeholder="请选择" name="s_office" value="{{$s_office}}" data-type='0' />
+												<input type="text" unselectable="on" onfocus="this.blur()" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputBm" placeholder="请选择" name="s_office" value="" data-type='0' />
 												<div class="retrievalsInputNavBox">
 													<ul class="retrievalsInputNav">
 														<li data-type = "0">请选择</li>
 														{{foreach item=o name=office from=$office}}
 														<li data-type = "{{$o.officeId}}">{{$o.officeName}}</li>
 														{{/foreach}}
+														<input type="hidden" class="selectVal" value="{{$s_office}}" autocomplete="off" data-type="1">
 													</ul>
 												</div>
 											</div>
 											<div class="retrievalsInput">
 												<label>状态</label>
-												<input type="text" unselectable="on" onfocus="this.blur()" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputZt" placeholder="请选择" name="s_status" value="{{$s_status}}" data-type='0' />
+												<input type="text" unselectable="on" onfocus="this.blur()" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputZt" placeholder="请选择" name="s_status" value="" data-type='0' />
 												<div class="retrievalsInputNavBox">
 													<ul class="retrievalsInputNav">
 														<li data-type = "0">请选择</li>
 														{{foreach $status as $key=>$value}}
 														<li data-type = "{{$key}}">{{$value}}</li>
 														{{/foreach}}
+														<input type="hidden" class="selectVal" value="{{$s_status}}" autocomplete="off" data-type="1">
 													</ul>
 												</div>
 											</div>
@@ -112,13 +116,14 @@
 										<div class="retrievalsInputContent">
 											<div class="retrievalsInput">
 												<label>系统角色</label>
-												<input type="text" unselectable="on" onfocus="this.blur()" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputJs" placeholder="请选择" name="s_role" value="{{$s_role}}" data-type='0' />
+												<input type="text" unselectable="on" onfocus="this.blur()" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputJs" placeholder="请选择" name="s_role" value="" data-type='0' />
 												<div class="retrievalsInputNavBox">
 													<ul class="retrievalsInputNav">
 														<li data-type = "0">请选择</li>
 														{{foreach item=r name=role from=$role}}
 														<li data-type = "{{$r.sysRoleId}}">{{$r.sysRoleName}}</li>
 														{{/foreach}}
+														<input type="hidden" class="selectVal" value="{{$s_role}}" autocomplete="off" data-type="1">
 													</ul>
 												</div>
 											</div>
@@ -157,7 +162,7 @@
 									<th width='85' class=""><span>真实姓名</span></th>
 								</tr>
 								{{foreach item=i name=data from=$data}}
-								<tr class="backgroundFFF">
+								<tr{{if $i%2==1}} class="backgroundFFF"{{/if}}}>
 									<td class="borderRight1">
 										<div class="editBox center-block clearfix">
 											<div class="editButton editButtonL pull-left text-center">
@@ -216,7 +221,7 @@
 											</div>
 										</td>
 										<td class=""><span>{{$i.createTime}}</span></td>
-										<td class=""><span>{{$i.status}}</span></td>
+										<td class=""><span class="quit">{{$i.status}}</span></td>
 									</tr>
 									{{/foreach}}
 								</table>
@@ -243,6 +248,7 @@
 		<script type="text/javascript" src="public/html/js/plugin/oa.jquery-ui.min.js"></script>
 		<script type="text/javascript" src="public/html/js/plugin/oa.jquery.multiselect.js"></script>
 		<script type="text/javascript" src="public/html/js/oa.common.js"></script>
+		<script type="text/javascript" src="public/html/js/jquery.form.min.js" ></script>
 		<script type="text/javascript" src="humanAffairs/view/js/staff.js"></script>
 	</body>
 

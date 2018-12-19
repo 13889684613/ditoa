@@ -90,21 +90,23 @@
 									{{foreach item=i name=data from=$data}}
 									<div class = "staffFamilyInfo clearfix">
 										<input type="hidden" name="resumeId[]" value="{{$i.resumeId}}">
-										<input type="text" name = "beginDate[]" value="{{$i.beginDate}}" placeholder="开始日期" class = "formInput beginDateForm dataInput datepicker" autocomplete="off"/>至
-										<input type="text" name = "overDate[]" value="{{$i.overDate}}" placeholder="结束日期" class = "formInput overDateForm dataInput datepicker" autocomplete="off"/>
+										<input type="text" name = "beginDate[]" value="{{$i.beginDate}}" placeholder="开始日期" class = "formInput startForm dataInput datepicker w150LeftMr12" autocomplete="off"/>
+										<span class="leftLh42DisBlock">至</span>
+										<input type="text" name = "overDate[]" value="{{$i.overDate}}" placeholder="结束日期" class = "formInput endForm dataInput datepicker w150LeftMl12Mr14" autocomplete="off"/>
 										<input type="text" name = "workUnit[]" value="{{$i.workUnit}}" placeholder="单位名称" class = "formInput workUnitForm" autocomplete="off"/>
-										<input type="text" name = "postName[]" value="{{$i.postName}}" placeholder="职务" class = "formInput postNameForm" autocomplete="off"/>
-										<input type="text" name = "remark[]" value="{{$i.remark}}" placeholder="备注" class = "formInput remarkForm" autocomplete="off"/>
+										<input type="text" name = "postName[]" value="{{$i.postName}}" placeholder="职务" class = "formInput postNameForm w100LeftMr14" autocomplete="off"/>
+										<input type="text" name = "remark[]" value="{{$i.remark}}" placeholder="备注" class = "formInput remarkForm w200LeftMr14" autocomplete="off"/>
 										<img src="public/html/images/input_remove.png" alt="" class = "remove">
 									</div>
 									{{/foreach}}
 									<div class = "staffFamilyInfo clearfix">
 										<input type="hidden" name="resumeId[]" value="0">
-										<input type="text" name = "beginDate[]" placeholder="开始日期" class = "formInput beginDateForm dataInput datepicker" autocomplete="off"/>至
-										<input type="text" name = "overDate[]" placeholder="结束日期" class = "formInput overDateForm dataInput datepicker" autocomplete="off"/>
+										<input type="text" name = "beginDate[]" placeholder="开始日期" class = "formInput startForm dataInput datepicker w150LeftMr12" autocomplete="off"/>
+										<span class="leftLh42DisBlock">至</span>
+										<input type="text" name = "overDate[]" placeholder="结束日期" class = "formInput endForm dataInput datepicker w150LeftMl12Mr14" autocomplete="off"/>
 										<input type="text" name = "workUnit[]" placeholder="单位名称" class = "formInput workUnitForm" autocomplete="off"/>
-										<input type="text" name = "postName[]" placeholder="职务" class = "formInput postNameForm" autocomplete="off"/>
-										<input type="text" name = "remark[]" placeholder="备注" class = "formInput remarkForm" autocomplete="off"/>
+										<input type="text" name = "postName[]" placeholder="职务" class = "formInput postNameForm w100LeftMr14" autocomplete="off"/>
+										<input type="text" name = "remark[]" placeholder="备注" class = "formInput remarkForm w200LeftMr14" autocomplete="off"/>
 										<img src="public/html/images/input_add.png" alt="" class = "add">
 									</div>
 								</div>
@@ -146,26 +148,31 @@
 	<script type="text/javascript" src="humanAffairs/view/js/staff-education.js" ></script>
 
 	<script>
-		$(".datepicker").datepicker({
+		$( ".startForm" ).datepicker({
 			inline: true,
 			showOtherMonths: true,
 			selectOtherMonths: true,
 			changeMonth: true,
 			changeYear: true,
 			yearRange: "1950:2050",
-			dateFormat: 'yy-mm-dd'
+			dateFormat: 'yy-mm-dd',
+			changeMonth: true,
+			onSelect: function( selectedDate ) {
+				$(this).parent().find( ".endForm" ).datepicker( "option", "minDate", selectedDate );
+			}
 		});
-
-		$(".datepickera").datepicker({
+		$( ".endForm" ).datepicker({
 			inline: true,
 			showOtherMonths: true,
 			selectOtherMonths: true,
 			changeMonth: true,
 			changeYear: true,
 			yearRange: "1950:2050",
-			dateFormat: 'yy-mm-dd'
+			dateFormat: 'yy-mm-dd',
+			onSelect: function( selectedDate ) {
+				$(this).parent().find( ".startForm" ).datepicker( "option", "maxDate", selectedDate );
+			}
 		});
-		
 	</script>
 </body>
 </html>

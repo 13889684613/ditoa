@@ -1,0 +1,182 @@
+.opinion span {
+    display: block;
+    width: 60px;
+    text-align: center;
+    position: relative;
+    margin-left: 8px;
+}
+
+.opinion span.refuse:after {
+    display: block;
+    content: '';
+    width: 10px;
+    height: 10px;
+    background-color: #e53631;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    left: -6px;
+}
+
+.opinion span.agree:after {
+    display: block;
+    content: '';
+    width: 10px;
+    height: 10px;
+    background-color: #7ace4c;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    left: -6px;
+}
+
+.opinion span.nothing:after {
+    display: block;
+    content: '';
+    width: 10px;
+    height: 10px;
+    background-color: #c8ced9;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    left: -6px;
+}
+
+.popTic{
+	display: none;
+}
+
+.marginBottom43{
+	margin-bottom: 43px;
+}
+
+.valueMust{
+	color: #e53631;
+	font-size: 18px;
+}
+
+input::-webkit-input-placeholder {
+	color: #aaaaaa;
+}
+
+input::-moz-placeholder {
+	/* Mozilla Firefox 19+ */
+	color: #aaaaaa;
+}
+
+input:-moz-placeholder {
+	/* Mozilla Firefox 4 to 18 */
+	color: #aaaaaa;
+}
+
+input:-ms-input-placeholder {
+	/* Internet Explorer 10-11 */
+	color: #aaaaaa;
+}
+
+.staff-ul1{
+	float: left;
+	margin-left: 6.5%;
+	border-right: 1px dashed #ddd;
+}
+
+.staff-ul{
+	font-size: 14px;
+	color: #888;
+	overflow: hidden;
+}
+
+.staff-ul2{
+	float: left;
+	font-size: 14px;
+	color: #888;
+	overflow: hidden;
+	margin-left: 5%;
+}
+
+.staff-ul li{
+	margin-bottom: 28px;
+	overflow: hidden;
+	line-height: 1;
+}
+
+.staff-text{
+	display: block;
+	width: 130px;
+	float: left;
+	text-align: right;
+}
+
+.staff-info{
+	display: block;
+	float: left;
+	margin-left: 8px;
+	width: 316px;
+	color: #222;
+}
+
+.margin-bottom-25{
+	margin-bottom: 25px;
+}
+
+@media (min-width: 1250px) and (max-width: 1590px) {
+	.staff-info{
+		width: 214px;
+	}
+	.staff-ul1 {
+	    margin-left: 2%;
+	}
+	.staff-ul2 {
+	    margin-left: 3%;
+	}
+}
+
+.margin-bottom-165{
+	margin-bottom: 165px;
+}
+
+.staffManageNav ul li {
+    float: left;
+    width: auto!important;
+    height: 70px;
+    margin-left: 2.5%;
+}
+
+.stepContentBox .text1{
+	margin-bottom: 10px;
+}
+
+.stepContentBox{
+	width: 160px;
+}
+
+.stepContentBox{
+	left: -66px;
+}
+
+.stepPart .position2{
+	left: 24.6%;
+}
+
+.stepPart .position3{
+	left: 49%;
+}
+
+.stepPart .position4{
+	left: 73.3%;
+}
+
+.staffManageNav ul li a{
+	font-size: 16px;
+}
+
+.apply-step-box {
+    margin-bottom: 0;
+    padding-top: 26px!important;
+}

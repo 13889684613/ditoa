@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-18 16:15:45
+/* Smarty version 3.1.29, created on 2018-12-19 16:55:27
   from "F:\website\ditoaCoder\ditoa\pc\humanAffairs\view\staff-education.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c18acb1083984_59407706',
+  'unifunc' => 'content_5c1a077f03f2e3_07192363',
   'file_dependency' => 
   array (
     'f39d4a3373ab17d2738c4803b579ae5e2fb29ef2' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\humanAffairs\\view\\staff-education.html',
-      1 => 1545120383,
+      1 => 1545209724,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c18acb1083984_59407706 ($_smarty_tpl) {
+function content_5c1a077f03f2e3_07192363 ($_smarty_tpl) {
 ?>
 <!-- 
 	# 员工基本资料页面
@@ -156,15 +156,16 @@ $__foreach_data_0_saved_local_item = $_smarty_tpl->tpl_vars['i'];
 										<input type="hidden" name="resumeId[]" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['resumeId'];?>
 ">
 										<input type="text" name = "beginDate[]" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['beginDate'];?>
-" placeholder="开始日期" class = "formInput beginDateForm dataInput datepicker" autocomplete="off"/>至
+" placeholder="开始日期" class = "formInput startForm dataInput datepicker w150LeftMr12" autocomplete="off"/>
+										<span class="leftLh42DisBlock">至</span>
 										<input type="text" name = "overDate[]" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['overDate'];?>
-" placeholder="结束日期" class = "formInput overDateForm dataInput datepicker" autocomplete="off"/>
+" placeholder="结束日期" class = "formInput endForm dataInput datepicker w150LeftMl12Mr14" autocomplete="off"/>
 										<input type="text" name = "workUnit[]" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['workUnit'];?>
 " placeholder="单位名称" class = "formInput workUnitForm" autocomplete="off"/>
 										<input type="text" name = "postName[]" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['postName'];?>
-" placeholder="职务" class = "formInput postNameForm" autocomplete="off"/>
+" placeholder="职务" class = "formInput postNameForm w100LeftMr14" autocomplete="off"/>
 										<input type="text" name = "remark[]" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['remark'];?>
-" placeholder="备注" class = "formInput remarkForm" autocomplete="off"/>
+" placeholder="备注" class = "formInput remarkForm w200LeftMr14" autocomplete="off"/>
 										<img src="public/html/images/input_remove.png" alt="" class = "remove">
 									</div>
 									<?php
@@ -176,11 +177,12 @@ $_smarty_tpl->tpl_vars['i'] = $__foreach_data_0_saved_item;
 ?>
 									<div class = "staffFamilyInfo clearfix">
 										<input type="hidden" name="resumeId[]" value="0">
-										<input type="text" name = "beginDate[]" placeholder="开始日期" class = "formInput beginDateForm dataInput datepicker" autocomplete="off"/>至
-										<input type="text" name = "overDate[]" placeholder="结束日期" class = "formInput overDateForm dataInput datepicker" autocomplete="off"/>
+										<input type="text" name = "beginDate[]" placeholder="开始日期" class = "formInput startForm dataInput datepicker w150LeftMr12" autocomplete="off"/>
+										<span class="leftLh42DisBlock">至</span>
+										<input type="text" name = "overDate[]" placeholder="结束日期" class = "formInput endForm dataInput datepicker w150LeftMl12Mr14" autocomplete="off"/>
 										<input type="text" name = "workUnit[]" placeholder="单位名称" class = "formInput workUnitForm" autocomplete="off"/>
-										<input type="text" name = "postName[]" placeholder="职务" class = "formInput postNameForm" autocomplete="off"/>
-										<input type="text" name = "remark[]" placeholder="备注" class = "formInput remarkForm" autocomplete="off"/>
+										<input type="text" name = "postName[]" placeholder="职务" class = "formInput postNameForm w100LeftMr14" autocomplete="off"/>
+										<input type="text" name = "remark[]" placeholder="备注" class = "formInput remarkForm w200LeftMr14" autocomplete="off"/>
 										<img src="public/html/images/input_add.png" alt="" class = "add">
 									</div>
 								</div>
@@ -245,26 +247,31 @@ $_smarty_tpl->tpl_vars['i'] = $__foreach_data_0_saved_item;
 
 	<?php echo '<script'; ?>
 >
-		$(".datepicker").datepicker({
+		$( ".startForm" ).datepicker({
 			inline: true,
 			showOtherMonths: true,
 			selectOtherMonths: true,
 			changeMonth: true,
 			changeYear: true,
 			yearRange: "1950:2050",
-			dateFormat: 'yy-mm-dd'
+			dateFormat: 'yy-mm-dd',
+			changeMonth: true,
+			onSelect: function( selectedDate ) {
+				$(this).parent().find( ".endForm" ).datepicker( "option", "minDate", selectedDate );
+			}
 		});
-
-		$(".datepickera").datepicker({
+		$( ".endForm" ).datepicker({
 			inline: true,
 			showOtherMonths: true,
 			selectOtherMonths: true,
 			changeMonth: true,
 			changeYear: true,
 			yearRange: "1950:2050",
-			dateFormat: 'yy-mm-dd'
+			dateFormat: 'yy-mm-dd',
+			onSelect: function( selectedDate ) {
+				$(this).parent().find( ".startForm" ).datepicker( "option", "maxDate", selectedDate );
+			}
 		});
-		
 	<?php echo '</script'; ?>
 >
 </body>

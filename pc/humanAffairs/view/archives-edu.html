@@ -1,0 +1,108 @@
+<!--
+	作者：sxh
+	时间：2018-11-12
+	描述：员工档案详情
+-->
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>{{$pageTitle}}</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+		<link rel="stylesheet" href="public/html/css/oa.base.css" />
+		<link rel="stylesheet" href="public/html/css/oa.bootstrap.min.css" />
+		<link rel="stylesheet" href="public/html/css/plugin/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" href="public/html/css/oa.common.css" />
+		<link rel="stylesheet" href="humanAffairs/view/css/archives-edu.css" />
+	</head>
+
+	<body>
+		<!--头部 begin-->
+		{{include file='public/html/head.html'}}
+		<!--头部 end-->
+
+		<!--内容 begin-->
+		<div class="container-fluid row">
+			<!--内容区左侧导航 begin-->
+			{{include file='public/html/menu.html'}}
+			<!--内容区左侧导航end-->
+			<!--内容区右侧begin-->
+			<div class="contentRight col-lg-10 row">
+				<!--内容区导航begin-->
+				<div class="contentRightNav clearfix">
+					<div class="contentRightNavLeft pull-left">
+						<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="?_f=archives{{$track}}">员工档案</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">员工档案详情</span></div>
+						<div class="contentRightNavBottom"><span class="name">员工档案详情 &nbsp;&nbsp;-&nbsp;&nbsp;{{$a.staffName}}</span><span class="time">创建时间：{{$a.createTime}}</span></div>
+					</div>
+				</div>
+				<!--内容区导航end-->
+				<!--内容区begin-->
+				<div class="contentRightBox">
+					<div class="contentRightContent">
+						<!--员工档案详情内容 begin-->
+						<div class="quitAppleContentBox">
+							{{include file='public/html/archives.html'}}
+							<div class = "staffManageNav">
+								<ul class = "clearfix margin-bottom-25">
+									<li><a href="human-affairs.php?_f=archives-info{{$track}}">员工基本资料</a></li>
+									<li><a href="human-affairs.php?_f=archives-family{{$track}}">家庭主要成员</a></li>
+									<li class = "width12 active"><a href="human-affairs.php?_f=archives-edu{{$track}}">教育与工作经历</a></li>
+									<li><a href="human-affairs.php?_f=archives-welfare{{$track}}">社保与公积金</a></li>
+									<li><a href="human-affairs.php?_f=archives-entry{{$track}}">入职信息</a></li>
+									<li><a href="human-affairs.php?_f=archives-contract{{$track}}">合同信息</a></li>
+									<li><a href="human-affairs.php?_f=archives-leave{{$track}}">假期信息</a></li>
+									<!-- <li><a href="human-affairs.php?_f=archives-officeTool{{$track}}">备品分配</a></li>	 -->
+									<li><a href="human-affairs.php?_f=archives-file{{$track}}">资料上传</a></li>
+									{{if $nav == 'quit'}}
+									<li><a href="human-affairs.php?_f=archives-quit{{$track}}">离职信息</a></li>
+									{{/if}}
+								</ul>
+							</div>
+							
+							<div></div>
+							<div class="quitApplyPart1 margin-bottom-165">
+								<div class="clearfix tableBoxFather">
+									<div class="tableBox clearfix">
+										<table class="table1 table1Content">
+											<tr>
+												<th width="70" class="paddingLeft12"><span>#</span></th>
+												<th width="100"><span>时间</span></th>
+												<th width="100"><span>所在单位</span></th>
+												<th width="100"><span>职务</span></th>
+												<th width="300"><span>备注</span></th>
+											</tr>
+											{{foreach item=i name=data from=$data}}
+											<tr{{if $i%2==1}} class="backgroundFFF"{{/if}}>
+												<td class="paddingLeft12"><span>{{$smarty.foreach.data.iteration}}</span></td>
+												<td><span>{{$i.workTime}}</span></td>
+												<td><span>{{$i.workUnit}}</span></td>
+												<td><span>{{$i.postName}}</span></td>
+												<td><span>{{$i.remark}}</span></td>
+											</tr>
+											{{/foreach}}
+										</table>
+									</div>
+								</div>
+							</div>
+
+						</div>
+						<!--离职申请详情内容 End-->
+					</div>
+				</div>
+				<!--内容区end-->
+			</div>
+			<!--内容区右侧end-->
+		</div>
+
+		<script type="text/javascript" src="public/html/js/plugin/oa.jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="public/html/js/plugin/oa.jquery.placeholder.min.js"></script>
+		<script type="text/javascript" src="public/html/js/plugin/jquery.mCustomScrollbar.concat.min.js" ></script>
+		<script type="text/javascript" src="public/html/js/plugin/oa.respond.js"></script>
+		<script type="text/javascript" src="public/html/js/plugin/oa.bootstrap.min.js"></script>
+		<script type="text/javascript" src="public/html/js/oa.common.js" ></script>
+
+	</body>
+
+</html>

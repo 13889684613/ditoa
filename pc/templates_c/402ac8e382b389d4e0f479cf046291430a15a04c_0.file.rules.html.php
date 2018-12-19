@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-18 08:33:24
+/* Smarty version 3.1.29, created on 2018-12-19 14:24:08
   from "F:\website\ditoaCoder\ditoa\pc\humanAffairs\view\rules.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c1840547dcdd8_94154075',
+  'unifunc' => 'content_5c19e40894abf8_86353862',
   'file_dependency' => 
   array (
     '402ac8e382b389d4e0f479cf046291430a15a04c' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\humanAffairs\\view\\rules.html',
-      1 => 1545093196,
+      1 => 1545200646,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c1840547dcdd8_94154075 ($_smarty_tpl) {
+function content_5c19e40894abf8_86353862 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -37,6 +37,11 @@ function content_5c1840547dcdd8_94154075 ($_smarty_tpl) {
 		<link rel="stylesheet" href="public/html/css/plugin/jquery.mCustomScrollbar.min.css" />
 		<link rel="stylesheet" href="public/html/css/oa.common.css" />
 		<link rel="stylesheet" href="generalAffairs/view/css/rules.css" />
+		<style type="text/css">
+			.editBox{
+				width: 40px;
+			}
+		</style>
 	</head>
 
 	<body>

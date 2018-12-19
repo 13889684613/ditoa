@@ -65,8 +65,8 @@
 		$track .= '&s_overtime='.$s_overtime.'';
 	}
 
-	//category=0为普通员工，1为系统管理员
-	$where = 'where category=0'.$where;
+	//category=0为普通员工，1为系统管理员，离职员工不在此显示 
+	$where = 'where category=0 and (status=0 or status=1)'.$where;
 
 	//页面分页配置
 	$total = $db->Count($table,$where);
@@ -105,8 +105,26 @@
 		}else{
 			$data[$key]['contract'] = $data[$key]['contractBeginDate'].'至'.$data[$key]['contractOverDate'];
 		}
-		//状态
-		$data[$key]['status'] = static_staffStatus($data[$key]['status']);
+		//状态 begin
+		$statuss = static_staffStatus($data[$key]['status']);
+		if($data[$key]['status'] == 0||$data[$key]['status'] == 1){
+			//查询请假状态 begin
+			$leaveWhere = 'where leaveId in(select leaveApplyId from '.PRFIX.'leaveapply_time where beginDate<="'.date().'" and overDate>="'.date().'") and checkStatus=2 limit 1';
+			$leave = $db->get_one(PRFIX.'leaveapply',$leaveWhere,'typeId,receiverUsr');
+			if($leave){
+				$statuss = '<span class="compassionateLeave center-block">请假</span>';
+			}else{
+				if($data[$key]['status'] == 1){
+					$statuss = '<span class="normal center-block">正常</span>';
+				}
+				if($data[$key]['status'] == 0){
+					$statuss = '<span class="quit center-block">试用</span>';
+				}
+			}
+			//查询请假状态 over
+		}
+		//状态 over
+		$data[$key]['status'] = $statuss;
 	}
 	
 	//数据绑定

@@ -81,7 +81,7 @@ $(function(){
     var hold = false;
     var regTel = /^1\d{10}$/;
     $('.formBtnSave').click(function() {
-        $('.workUnitForm').each(function() {
+        $('.workUnitForm').each(function(i) {
 			var inputValue = $(this).val();
 			if(inputValue == '') {
 				popAlert('请填写成员工作单位');
@@ -99,7 +99,7 @@ $(function(){
                 }
             }
         })
-        $('.telphoneForm').each(function() {
+        $('.telphoneForm').each(function(i) {
 			var inputValue = $(this).val();
 			if(inputValue == '') {
 				popAlert('请填写成员电话');
@@ -121,7 +121,7 @@ $(function(){
                 }
             }
 		})
-        $('.relationForm').each(function() {
+        $('.relationForm').each(function(i) {
 			var inputValue = $(this).val();
 			if(inputValue == '') {
 				popAlert('请填写成员关系');
@@ -137,25 +137,27 @@ $(function(){
                 }
             }
 		})
-        $('.birthDateForm').each(function() {
+        $('.birthDateForm').each(function(i) {
 			var inputValue = $(this).val();
 			if(inputValue == '' || inputValue == '请选择出生日期') {
 				popAlert('请选择出生日期');
-				// $(this).focus();
+                // $(this).focus();
+                $('input').blur();
 				hold = false;
 				return false;
             }
 		})
-        $('.sexForm').each(function() {
+        $('.sexForm').each(function(i) {
 			var inputValue = $(this).val();
 			if(inputValue == '' || inputValue == '性别') {
 				popAlert('请选择成员性别');
-				$(this).focus();
+                // $(this).focus();
+                $('input').blur();
 				hold = false;
 				return false;
 			}
 		})
-		$('.familyNameForm').each(function() {
+		$('.familyNameForm').each(function(i) {
 			var inputValue = $(this).val();
 			if(inputValue == '') {
 				popAlert('请填写成员姓名');
@@ -189,7 +191,8 @@ $(function(){
                         success:function(data){
                             data = $.parseJSON(data);
                             if(data.status == 'success'){
-                                location.href = data.url;
+                                // location.href = data.url;
+                                popAlert(data.message,data.url);
                             }else{
                                 popAlert(data.message); //弹出错误信息
                             }
@@ -202,44 +205,15 @@ $(function(){
                     success:function(data){
                         data = $.parseJSON(data);
                         if(data.status == 'success'){
-                            location.href = data.url;
+                            // location.href = data.url;
+                            popAlert(data.message,data.url);
                         }else{
                             popAlert(data.message); //弹出错误信息
                         }
                     }
                 })
             }
-        }
-        // $('input.formInput').each(function() {
-        //     var value = $(this).val();
-        //     if(value == '' && !$(this).hasClass('workUnitForm')){
-        //         popAlert('请完善家庭成员信息');
-        //         $(this).focus();
-        //         return false;
-        //     }
-        //     if($(this).hasClass('familyNameForm') && value.length > 50) {
-        //         popAlert('姓名长度需在50个字符以内');
-        //         $(this).focus();
-        //         return false;  
-        //     }
-        //     if($(this).hasClass('relationForm') && value.length > 20) {
-        //         popAlert('关系长度需在20个字符以内');
-        //         $(this).focus();
-        //         return false;  
-        //     }
-        //     if($(this).hasClass('telphoneForm') && value.length > 30) {
-        //         popAlert('手机号长度需在20个字符以内');
-        //         $(this).focus();
-        //         return false;  
-        //     }
-        //     if($(this).hasClass('workUnitForm') && value != '' && value.length > 50) {
-        //         popAlert('工作单位长度需在50个字符以内');
-        //         $(this).focus();
-        //         return false;  
-        //     }
-        // })
-
-        
+        }        
     })
 
 })

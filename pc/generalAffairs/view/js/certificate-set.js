@@ -26,6 +26,16 @@ $(function(){
         $(this).parents('.form').find(".showFileName span").text(fileName);
     })
 
+    $('.retrievalsInput input').click(function() {
+		if($(this).parent().find('.retrievalsInputNavBox')) {
+			$(this).parent().find('.retrievalsInputNavBox').show()
+		}
+    })
+    
+	$('.retrievalsInputNavBox').mouseleave(function() {
+		$(this).hide();
+    })
+    
     // 提交表单
     $('.formBtnSave').click(function() {
         var companyInput = $('.companyInput').val();

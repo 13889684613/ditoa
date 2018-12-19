@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-17 13:15:27
+/* Smarty version 3.1.29, created on 2018-12-19 13:29:21
   from "F:\website\ditoaCoder\ditoa\pc\org\view\company.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c1730ef62f010_71314374',
+  'unifunc' => 'content_5c19d731227b03_95194761',
   'file_dependency' => 
   array (
     '6ae8dd894377def2ef816c81d83163069c974f7d' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\org\\view\\company.html',
-      1 => 1545023584,
+      1 => 1545187224,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c1730ef62f010_71314374 ($_smarty_tpl) {
+function content_5c19d731227b03_95194761 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -96,10 +96,10 @@ function content_5c1730ef62f010_71314374 ($_smarty_tpl) {
 						<!--表格begin-->
 						<div class="clearfix tableBoxFather">
 							<table class="table1 table1Fixed">
-									<tr>
-										<th width='133' class="text-center borderRight1"><span>操作</span></th>
-									</tr>
-									<?php
+								<tr>
+									<th width='133' class="text-center borderRight1"><span>操作</span></th>
+								</tr>
+								<?php
 $_from = $_smarty_tpl->tpl_vars['data']->value;
 if (!is_array($_from) && !is_object($_from)) {
 settype($_from, 'array');
@@ -111,32 +111,32 @@ foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 $_smarty_tpl->tpl_vars['i']->_loop = true;
 $__foreach_data_0_saved_local_item = $_smarty_tpl->tpl_vars['i'];
 ?>
-									<tr<?php if ($_smarty_tpl->tpl_vars['i']->value%2 == 1) {?> class="backgroundFFF"<?php }?>>
-										<td class="borderRight1">
-											<div class="editBox center-block clearfix">
-												<div class="editButton editButtonL pull-left text-center">
-													<a href="?_f=company-set&act=edit&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
+								<tr<?php if ($_smarty_tpl->tpl_vars['i']->value%2 == 1) {?> class="backgroundFFF"<?php }?>>
+									<td class="borderRight1">
+										<div class="editBox center-block clearfix">
+											<div class="editButton editButtonL pull-left text-center">
+												<a href="?_f=company-set&act=edit&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
 &id=<?php echo $_smarty_tpl->tpl_vars['i']->value['companyId'];
 echo $_smarty_tpl->tpl_vars['track']->value;?>
 "><img src="public/html/images/edit.jpg" alt="" /></a>
-												</div>
-												<div class="editButton editButtonR pull-left text-center">
-													<a href="?_f=company&act=remove&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
+											</div>
+											<div class="editButton editButtonR pull-left text-center">
+												<a href="?_f=company&act=remove&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
 &id=<?php echo $_smarty_tpl->tpl_vars['i']->value['companyId'];
 echo $_smarty_tpl->tpl_vars['track']->value;?>
 " onclick="return confirm('确认要删除？');"><img src="public/html/images/del.jpg" alt="" /></a>
-												</div>
 											</div>
-										</td>
-									</tr>
-									<?php
+										</div>
+									</td>
+								</tr>
+								<?php
 $_smarty_tpl->tpl_vars['i'] = $__foreach_data_0_saved_local_item;
 }
 if ($__foreach_data_0_saved_item) {
 $_smarty_tpl->tpl_vars['i'] = $__foreach_data_0_saved_item;
 }
 ?>
-								</table>
+							</table>
 							<div class="tableBox clearfix">
 								<table class="table1 table1Content">
 									<tr>

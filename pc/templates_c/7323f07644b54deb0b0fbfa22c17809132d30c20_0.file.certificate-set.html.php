@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-18 16:19:47
+/* Smarty version 3.1.29, created on 2018-12-19 13:37:14
   from "F:\website\ditoaCoder\ditoa\pc\generalAffairs\view\certificate-set.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c18ada346a5e6_44140547',
+  'unifunc' => 'content_5c19d90a060538_56567924',
   'file_dependency' => 
   array (
     '7323f07644b54deb0b0fbfa22c17809132d30c20' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\generalAffairs\\view\\certificate-set.html',
-      1 => 1545121177,
+      1 => 1545189097,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c18ada346a5e6_44140547 ($_smarty_tpl) {
+function content_5c19d90a060538_56567924 ($_smarty_tpl) {
 ?>
 <!-- 
 	# 企业资质证件
@@ -221,7 +221,6 @@ $_smarty_tpl->tpl_vars['c'] = $__foreach_company_0_saved_item;
 			yearRange: "1950:2050",
 			dateFormat: 'yy-mm-dd'
 		});
-		
 	<?php echo '</script'; ?>
 >
 </body>

@@ -26,8 +26,13 @@
 	$s_begintime = getVal('s_begintime',2,'');
 	$s_overtime = getVal('s_overtime',2,'');
 	$s_category = getVal('s_category',1,'');	//离职类型，离职人员页面传参
-	$nav = getVal('nav',1,'');					//nav == quit时显示离职信息
+	$nav = getVal('nav',2,'');					//nav == quit时显示离职信息
+	$track = '&page='.$page.'&id='.$id.'&s_company='.$s_company.'&s_office='.$s_office.'&s_post='.$s_post.'&s_status='.$s_status.'';
+	$track .= '&s_name='.$s_name.'&s_category='.$s_category.'&s_begintime='.$s_begintime.'&s_overtime='.$s_overtime.'&nav='.$nav.'';
 	//记录列表页检索条件over
+
+	//员工档案进度轴
+	$archivesData = getArchivesCommon($id);
 
 	//拉取所有请假类型 begin
 	$data = $db->get_all($table,'order by rank desc,createTime desc','leaveTypeId,typeName,dayNumber,annualLeave');
@@ -50,9 +55,11 @@
 	$smarty->assign('s_overtime',$s_overtime);
 	$smarty->assign('s_name',$s_name);
 	$smarty->assign('data',$data);
+	$smarty->assign('a',$archivesData);
 	$smarty->assign('id',$id);
 	$smarty->assign('page',$page);
 	$smarty->assign('s_category',$s_category);
 	$smarty->assign('nav',$nav);
+	$smarty->assign('track',$track);
 
 ?>

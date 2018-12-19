@@ -497,10 +497,10 @@
 		if($result){
 
 			//记录修改内容 
-			$_COOKIE['usrId'] = 1;	//测试
+			// $_COOKIE['usrId'] = 1;	//测试
 
 			$record['staffId'] = $id;
-			$record['editUsr'] = $_COOKIE['usrId'];
+			$record['editUsr'] = $common_staffId;
 			$record['logContent'] = $updateRemark;
 			$record['logTime'] = date('Y-m-d H:i:s');
 

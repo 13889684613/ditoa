@@ -111,6 +111,9 @@ $(function(){
 	$('.formBtnCancel').click(function(){
 		history.go(-1);
 	})
+	$('.mCSB_draggerContainer').click(function(){
+		return false;
+	})
 })
 
 
@@ -118,9 +121,16 @@ $(function(){
 
 //删除提示
 function tic(a,b,c,d,e){
-var html = $('<div class="popTic"><div class="popTicBox"><div class="popTicTitle">'+a+'<img src="public/html/images/close.png" alt="" /></div><div class="popTicContent">'+b+'</div><div class="popTicButtonBox clearfix"><div class="popTicButton popTicButtonL pull-left"><a href="'+e+'">'+c+'</a></div><div class="popTicButton popTicButtonR pull-right"><a>'+d+'</a></div></div></div><div class="popTicMask"></div></div>')
-$('body').append(html);
-$('input,textarea').placeholder();
+	if (typeof(e) == "undefined") {
+		var html = $('<div class="popTic"><div class="popTicBox"><div class="popTicTitle">'+a+'<img src="public/html/images/close.png" alt="" /></div><div class="popTicContent">'+b+'</div><div class="popTicButtonBox clearfix"><div class="popTicButton popTicButtonL pull-left">'+c+'</div><div class="popTicButton popTicButtonR pull-right"><a>'+d+'</a></div></div></div><div class="popTicMask"></div></div>')
+		$('body').append(html);
+		$('input,textarea').placeholder();
+	}else{
+		var html = $('<div class="popTic"><div class="popTicBox"><div class="popTicTitle">'+a+'<img src="public/html/images/close.png" alt="" /></div><div class="popTicContent">'+b+'</div><div class="popTicButtonBox clearfix"><div class="popTicButton popTicButtonL pull-left"><a href="'+e+'">'+c+'</a></div><div class="popTicButton popTicButtonR pull-right"><a>'+d+'</a></div></div></div><div class="popTicMask"></div></div>')
+		$('body').append(html);
+		$('input,textarea').placeholder();
+	}
+	
 }
 
 

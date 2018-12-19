@@ -9,6 +9,11 @@
 	$act = $_REQUEST['act'];
 	$table = PRFIX.'staff';	
 	$where = '';
+	$id = getVal('id',1,'');
+	if($id == 0){
+		exit;
+	}
+	$page = getVal('page',2,'');
 
 	//记录列表页检索条件begin
 	$s_company = getVal('s_company',1,'');
@@ -19,44 +24,19 @@
 	$s_begintime = getVal('s_begintime',2,'');
 	$s_overtime = getVal('s_overtime',2,'');
 	$s_category = getVal('s_category',1,'');	//离职类型，离职人员页面传参
-	$nav = getVal('nav',1,'');					//nav == quit时显示离职信息
+	$nav = getVal('nav',2,'');					//nav == quit时显示离职信息
+	$track = '&page='.$page.'&id='.$id.'&s_company='.$s_company.'&s_office='.$s_office.'&s_post='.$s_post.'&s_status='.$s_status.'';
+	$track .= '&s_name='.$s_name.'&s_category='.$s_category.'&s_begintime='.$s_begintime.'&s_overtime='.$s_overtime.'&nav='.$nav.'';
 	//记录列表页检索条件over
 
-	$id = getVal('id',1,'');
-	$page = getVal('page',2,'');
+	//员工档案进度轴
+	$archivesData = getArchivesCommon($id);
 
 	$fileds = 'companyId,officeId,groupId,staffName,sex,idNumber,birthDate,lunarDate,height,weight,blood,politicalType,photo,';
 	$fileds .= 'nation,maritalStatus,school,education,major,registerAddress,registerNature,tel,phone,extensionNumber,address,';
-	$fileds .= 'email,postId,firstWorkDate,quitDate,cnBankAccount,busFee,background,remark,createTime,wechatActivate,activateTime,';
-	$fileds .= 'tryBeginDate,tryOverDate,contractBeginDate,contractOverDate,trueQuitDate';
+	$fileds .= 'email,postId,firstWorkDate,quitDate,cnBankAccount,busFee,background,remark,createTime,wechatActivate,activateTime';
 	$data = $db->get_one($table,'where staffId='.$id.'',$fileds);
 	if($data){
-
-		//试用期
-		if($data['tryBeginDate']!=''){
-			$data['try'] = $data['tryBeginDate'].'至'.$data['tryOverDate'];
-		}
-
-		//转正begin
-		$where = 'where result>0 and appraiseId=(select appraiseId from '.PRFIX.'staff_appraise where staffId='.$id.')';
-		$T = $db->get_one(PRFIX.'staff_appraise_check',$where.' order by checkTime desc limit 1','result,checkTime,checkUsr');
-		if($T){
-			$turn[0] = static_staffCheck($T['result']);
-			$turn[1] = $T['checkTime'];
-			$turn[2] = getStaffName($T['checkUsr']);
-			$data['turn'] = $turn;
-		}
-		//转正over
-
-		//合同签订
-		if($data['contractBeginDate']!=''){
-			$data['contract'] = $data['contractBeginDate'].'至'.$data['contractOverDate'];
-		}
-
-		//离职日期
-		if($data['trueQuitDate']!=''){
-			$data['quit'] = $data['trueQuitDate'];
-		}
 
 		$data['company'] = getCompanyName($data['companyId']);	//所属公司
 		$data['office'] = getOfficeName($data['officeId']);		//所属部门
@@ -70,7 +50,9 @@
 
 		//农历
 		$lunarDate = explode(',', $data['lunarDate']);
-		$data['lunar'] = $lunarDate[0].$lunarDate[1].$lunarDate[2].$luanDate[3];
+		if($lunarDate[0]!=''){
+			$data['lunar'] = static_lunarMonth($lunarDate[0]).static_lunarDay($lunarDate[1]).$lunarDate[2].$luanDate[3];
+		}
 
 		//座机号
 		if($data['extensionNumber']!=''){
@@ -99,11 +81,29 @@
 		//首次参加工作时间
 		if($data['firstWorkDate']!=''){
 			$data['firstWorkDate'] = date('Y年m月d日',strtotime($data['firstWorkDate']));
+		}else{
+			$data['firstWorkDate'] = '未设置';
 		}
 
 		//原单位解除合同日
 		if($data['quitDate']!=''){
 			$data['quitDate'] = date('Y年m月d日',strtotime($data['quitDate']));
+		}else{
+			$data['quitDate'] = '未设置';
+		}
+
+		if($data['cnBankAccount']==''){
+			$data['cnBankAccount'] = '未设置';
+		}
+
+		if($data['busFee']==0){
+			$data['busFee'] = '未设置';
+		}else{
+			$data['busFee'] = $data['busFee'].'元';
+		}
+
+		if($data['background']==''){
+			$data['background'] = '未设置';
 		}
 	}
 
@@ -121,6 +121,8 @@
 	$smarty->assign('page',$page);
 	$smarty->assign('s_category',$s_category);
 	$smarty->assign('nav',$nav);
+	$smarty->assign('track',$track);
+	$smarty->assign('a',$archivesData);
 
 
 ?>

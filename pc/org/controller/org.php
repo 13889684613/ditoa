@@ -89,7 +89,7 @@
 				if($data[$key]['status'] == 1){
 					$status = '<span class="normal center-block">正常</span>';
 				}
-				if($data[$key]['status'] == 2){
+				if($data[$key]['status'] == 0){
 					$status = '<span class="quit center-block">试用</span>';
 				}
 			}

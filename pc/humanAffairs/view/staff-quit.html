@@ -1,0 +1,164 @@
+<!-- 
+	# 员工基本资料页面
+	# Bowen
+	# 2018-11-12 
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+	<title>{{$pageTitle}}</title>
+	<link rel="stylesheet" href="public/html/css/oa.base.css" />
+	<link rel="stylesheet" href="public/html/css/oa.bootstrap.min.css" />
+	<link rel="stylesheet" href="public/html/css/plugin/jquery.mCustomScrollbar.min.css">
+	<link rel="stylesheet" href="public/html/css/oa.common.css" />
+	<link rel="stylesheet" href="public/html/css/oa.jquery-ui.min.css" />
+	<link rel="stylesheet" href="public/html/css/oa.jquery.multiselect.css" />
+	<link rel="stylesheet" href="humanAffairs/view/css/staff-quit.css" />
+</head>
+<body>
+
+	<!--头部 begin-->
+	{{include file='public/html/head.html'}}
+	<!--头部 end-->
+
+	<!--内容 begin-->
+	<div class="container-fluid row">
+		<!--内容区左侧导航 begin-->
+		{{include file='public/html/menu.html'}}
+		<!--内容区左侧导航end-->
+		<!--内容区右侧begin-->
+		<div class="contentRight col-lg-10 row">
+			<!--内容区导航begin-->
+			<div class="contentRightNav clearfix">
+				<div class="contentRightNavLeft pull-left">
+					<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="？_f=staff{{$track}}">员工管理</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">离职信息</span></div>
+					<div class="contentRightNavBottom"><span class="name">离职信息</span></div>
+				</div>
+			</div>
+			<!--内容区导航end-->
+			<!--内容区begin-->
+			<div class="contentRightBox">
+				<!-- 内容区 开始 -->
+				<div class = "rightContent">
+					<div class = "staffManageNav">
+						<ul class = "clearfix">
+							<li><a href="human-affairs.php?_f=staff-information{{$track}}">员工基本资料</a></li>
+							{{if $id!=0}}
+							<li><a href="human-affairs.php?_f=staff-entry{{$track}}">入职信息</a></li>
+							<li><a href="human-affairs.php?_f=staff-family{{$track}}">家庭主要成员</a></li>
+							<li class = "width12"><a href="human-affairs.php?_f=staff-education{{$track}}">教育与工作经历</a></li>
+							<li><a href="human-affairs.php?_f=staff-welfare{{$track}}">社保与公积金</a></li>
+							<li><a href="human-affairs.php?_f=staff-file{{$track}}">资料上传</a></li>
+							<li class = "active"><a href="human-affairs.php?_f=staff-quit{{$track}}">离职信息</a></li>
+							{{if $otherPower[1] == 1}}
+							<li><a href="human-affairs.php?_f=staff-contract{{$track}}">合同信息</a></li>
+							{{/if}}
+							{{if $otherPower[2] == 1}}
+							<li><a href="human-affairs.php?_f=staff-account{{$track}}">账号设置</a></li>
+							{{/if}}
+							{{if $otherPower[3] == 1}}
+							<li><a href="human-affairs.php?_f=staff-leave{{$track}}">假期设置</a></li>		
+							{{/if}}		
+							{{if $otherPower[4] == 1}}
+							<li><a href="human-affairs.php?_f=staff-edit-log{{$track}}">编辑记录</a></li>
+							{{/if}}
+							{{/if}}
+						</ul>
+					</div>
+					<div class = "staffInfoForm clearfix" style="background-color: #f6f6fa;padding-bottom: 0;">
+						<form id="quitForm" method="post" enctype="multipart/form-data">
+							<input type="hidden" name="page" value="{{$page}}" />
+							<input type="hidden" name="s_company" value="{{$s_company}}" />
+							<input type="hidden" name="s_office" value="{{$s_office}}" />
+							<input type="hidden" name="s_role" value="{{$s_role}}" />
+							<input type="hidden" name="s_post" value="{{$s_post}}" />
+							<input type="hidden" name="s_status" value="{{$s_status}}" />
+							<input type="hidden" name="s_begintime" value="{{$s_begintime}}" />
+							<input type="hidden" name="s_overtime" value="{{$s_overtime}}" />
+							<input type="hidden" name="s_name" value="{{$s_name}}" />
+							<input type="hidden" name="s_idno" value="{{$s_idno}}" />
+							<input type="hidden" name="id" value="{{$id}}" />
+							<input type="hidden" name="act" value="editSave" />
+							<div class = "dataContent">
+								<div class = "formBox formLeft">
+									<div class = "formList">
+										<div class = "uploadBox clearfix">
+											<div class = "uploadInfoBox">
+												<p class = "uploadInfoTitle">离职申请表<span>*</span></p>
+												<p class = "uploadInfo">请上传离职申请表，格式为PDF文件形式</p>
+											</div>
+											<div class = "uploadBtnBox">
+												<input type="file" class="inputFile" title="" id="quitTable" name = "quitTable[]"/> 
+												<img src="public/html/images/upload_file_icon.png" alt="" />
+												<p class = "uploadBtnTxt">上传申请表</p>
+											</div>
+											{{if $i.quitTable!=''}}
+											<div class = "showFileName" style="display:block;"><a href="upload/file/staff/{{$i.quitTable}}" target="_blank">查看离职申请表</a><span></span></div>
+											{{else}}
+											<div class = "showFileName">已选择：<span></span></div>
+											{{/if}}
+										</div>
+									</div>
+								</div>
+								<div class = "formBox formCenter">
+									<div class = "formBox formLeft">
+										<div class = "formList">
+											<p class = "formTitle">离职日期<span>*</span></p>
+											<input type="text" name = "trueQuitDate" value="{{$i.trueQuitDate}}" placeholder = "请选择离职日期" class="formInput quitDateForm dataInput datepicker" autocomplete="off"/>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class = "modifyBox"{{if $isSet == 0}} style="display: none;"{{/if}}>
+								<p class = "modifyTitle">修改备注信息</p>
+								<div class = "form modifyForm">
+									<p class = "formTitle">修改备注信息</p>
+									<textarea name="updateRemark" placeholder="请标明调整内容及原因" class = "formInput modifyRemarkInput"></textarea>
+								</div>
+							</div>
+							
+						</form>
+					</div>
+					
+					<div class = "formBtnsBox clearfix">
+						<div class = "formBtn formBtnSave">保存</div>
+						<div class = "formBtn formBtnCancel">取消</div>
+					</div>
+				</div>
+				<!-- 内容区 结束 -->
+			</div>
+			<!--内容区end-->
+		</div>
+		<!--内容区右侧end-->
+	</div>
+	<!--内容 end-->
+
+	<script type="text/javascript" src="public/html/js/plugin/oa.jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="public/html/js/plugin/oa.respond.js"></script>
+	<script type="text/javascript" src="public/html/js/plugin/oa.bootstrap.min.js"></script>
+	<script type="text/javascript" src="public/html/js/plugin/oa.jquery.placeholder.min.js"></script>
+	<script type="text/javascript" src="public/html/js/plugin/oa.jquery.placeholder.min.js"></script>
+	<script type="text/javascript" src="public/html/js/oa.common.js" ></script>
+	<script type="text/javascript" src="public/html/js/plugin/oa.jquery-ui.min.js" ></script>
+	<script type="text/javascript" src="public/html/js/plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script type="text/javascript" src="public/html/js/plugin/oa.jquery.multiselect.js"></script>
+	<script type="text/javascript" src="public/html/js/jquery.form.min.js" ></script>
+	<script type="text/javascript" src="humanAffairs/view/js/staff-quit.js" ></script>
+	<script>
+		$(".datepicker").datepicker({
+			inline: true,
+			showOtherMonths: true,
+			selectOtherMonths: true,
+			changeMonth: true,
+			changeYear: true,
+			yearRange: "1950:2050",
+			dateFormat: 'yy-mm-dd'
+		});
+	</script>
+
+</body>
+</html>

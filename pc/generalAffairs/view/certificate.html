@@ -37,7 +37,7 @@
 				<div class="contentRightBox">
 					<div class="contentRightContent">
 						<!--检索begin-->
-						<form id="searchForm" name="searchForm" method="get">
+						<!--<form id="searchForm" name="searchForm" method="get">
 						<input type="hidden" name="_f" value="certificate">
 						<div class="retrievalBox">
 							<div class="retrievalTitle">快速检索</div>
@@ -65,7 +65,48 @@
 								</div>
 							</div>
 						</div>
-						</form>
+						</form>-->
+						<!--检索end-->
+						<!--检索begin-->
+						<div class="retrievalBox">
+							<div class="retrievalTitle">快速检索</div>
+							<div class="retrievalsForm clearfix">
+								<form id="searchForm" name="searchForm" method="get">
+									<input type="hidden" name="_f" value="group">
+									<div class="retrievalsInputBoxs retrievalsInputBoxsStar clearfix pull-left">
+										<div class="retrievalsInputContent">
+											<div class="retrievalsInput">
+												<label>所属企业<span>*</span></label>
+												<input type="text" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputQy" placeholder="请选择" value="" data-type='0' />
+												<div class="retrievalsInputNavBox">
+													<ul class="retrievalsInputNav retrievalsInputNavSelsct">
+														<li data-type = "0">请选择</li>
+														{{foreach item=c name=company from=$company}}
+														<li data-type = "{{$c.companyId}}">{{$c.cnName}}</li>
+														{{/foreach}}
+														<input type="hidden" class="selectVal" value="{{$s_company}}" autocomplete="off" data-type="1">
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="retrievalsInputBoxs retrievalsInputBoxsStar clearfix pull-left">
+										<div class="retrievalsInputContent">
+											<div class="retrievalsInput">
+												<label>证件名称</label>
+												<input name="groupName" type="text" placeholder="请输入证件名称" value="{{$s_name}}" class="choseInputName" data-type='0' />
+											</div>
+										</div>
+									</div>
+									<!--查询清空begin-->
+									<div class="retrievalsInput clearfix pull-left">
+										<a href="javascript:void(0);" onclick="document.getElementById('searchForm').submit();" class="queryButton pull-left">查询</a>
+										<div class="clearButton retrievaButton retrievaButtonR pull-left">清空</div>
+									</div>
+									<!--查询清空end-->
+								</form>
+							</div>
+						</div>
 						<!--检索end-->
 						<!--新增 导出数据按钮 begin-->
 						<div class="downloadAddButtonBox clearfix">

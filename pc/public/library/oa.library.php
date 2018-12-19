@@ -409,7 +409,103 @@
 
 	}
 
-	
+	//通过系统角色id拉取系统角色名称
+	function getSysRoleName($roleId){
+
+		$sysRoleName = '';
+		if($roleId!=''&&$roleId!=0&&is_numeric($roleId)){
+
+			//拉取审批角色名称
+			global $db;
+			$G = $db->get_one(PRFIX.'sysrole','where sysRoleId='.$roleId.'','sysRoleName');
+			if($G){
+				$sysRoleName = $G['sysRoleName'];
+			}
+
+		}
+		return $sysRoleName;
+
+	}
+
+	//获取员工档案公共数据
+	function getArchivesCommon($staffId){
+
+		//蓝色线的长度---0 24.6% 49% 73.3% 100%
+
+		global $db;
+
+		$archivesFields = 'staffName,createTime,tryBeginDate,tryOverDate,contractBeginDate,contractOverDate,trueQuitDate';
+		$archivesData = $db->get_one(PRFIX.'staff','where staffId='.$staffId.'',$archivesFields);
+		if($archivesData){
+
+			$node = 0; $lineWidth = 0;
+			$tryClass = 'circleNormal ';		//试用期
+			$turnClass = 'circleNormal ';		//转正
+			$contractClass = 'circleNormal ';	//合同
+			$quitClass = 'circleNormal ';		//离职 
+			$finishClass = 'circleNormal ';		//完成
+
+			//试用期
+			if($archivesData['tryBeginDate']!=''){
+				$archivesData['try'] = $archivesData['tryBeginDate'].'至'.$archivesData['tryOverDate'];
+				$node = 1;
+				$tryClass = 'circleFinished ';
+			}
+
+			//转正begin
+			$where = 'where result>0 and appraiseId=(select appraiseId from '.PRFIX.'staff_appraise where staffId='.$staffId.')';
+			$T = $db->get_one(PRFIX.'staff_appraise_check',$where.' order by checkTime desc limit 1','result,checkTime,checkUsr');
+			if($T){
+				$turn[0] = static_staffCheck($T['result']);
+				$turn[1] = $T['checkTime'];
+				$turn[2] = getStaffName($T['checkUsr']);
+				$archivesData['turn'] = $turn;
+				$node = 2;
+				$turnClass = 'circleFinished ';
+			}
+			//转正over
+
+			//合同签订
+			if($archivesData['contractBeginDate']!=''){
+				$archivesData['contract'] = $archivesData['contractBeginDate'].'至'.$archivesData['contractOverDate'];
+				$node = 3;
+				$contractClass = 'circleFinished ';
+			}
+
+			//离职日期
+			if($archivesData['trueQuitDate']!=''){
+				$archivesData['quit'] = $archivesData['trueQuitDate'];
+				$node = 4;
+				$quitClass = 'circleFinished ';
+			}
+
+			if($node == 4){
+				$finishClass = 'circleFinished ';
+				$lineWidth = '100%';
+			}elseif($node == 3){
+				$contractClass = 'circleActive ';
+				$lineWidth = '49%';
+			}elseif($node == 2){
+				$turnClass = 'circleActive ';
+				$lineWidth = '24.6%';
+			}elseif($node == 1){
+				$tryClass = 'circleActive ';
+				$lineWidth = '0%';
+			}
+
+			$archivesData['node'] = $node;
+			$archivesData['tryClass'] = $tryClass;
+			$archivesData['turnClass'] = $turnClass;
+			$archivesData['contractClass'] = $contractClass;
+			$archivesData['quitClass'] = $quitClass;
+			$archivesData['finishClass'] = $finishClass;
+			$archivesData['lineWidth'] = $lineWidth;
+
+		}
+
+		return $archivesData;
+
+	}
 
 
 ?>

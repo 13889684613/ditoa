@@ -44,7 +44,7 @@
 }
 
 .staffInfoForm .width80 .formInput.formSelect {
-    background: #fbfbfd url(public/html/images/form_Select_Open.png) no-repeat 55px center;
+    background: #fbfbfd url(../../../public/html/images/form_Select_Open.png) no-repeat 55px center;
 }
 
 .staffInfoForm .formSelectList {
@@ -56,7 +56,7 @@
     float: left;
     width: 178px;
     margin-right: 14px;
-    background: #fbfbfd url(public/html/images/data_icon.png) no-repeat 145px center;
+    background: #fbfbfd url(../../../public/html/images/data_icon.png) no-repeat 145px center;
 }
 
 .staffInfoForm .formInput.relationForm {

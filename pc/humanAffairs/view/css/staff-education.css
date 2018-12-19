@@ -91,3 +91,34 @@
         padding-top: 40px;
     }   
 }
+
+.w150LeftMr12 {
+    float: left;
+    width: 150px;
+    margin-right: 12px;
+}
+
+.w150LeftMl12Mr14 {
+    float: left;
+    width: 150px;
+    margin-left: 12px;
+    margin-right: 14px;
+}
+
+.w100LeftMr14{
+    width: 100px;
+    margin-right: 14px;
+    float: left;
+}
+
+.w200LeftMr14{
+    width: 200px;
+    margin-right: 14px;
+    float: left;
+}
+
+.leftLh42DisBlock{
+    float: left;
+    line-height: 42px;
+    display: block;
+}

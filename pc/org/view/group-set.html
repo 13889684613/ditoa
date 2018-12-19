@@ -17,7 +17,7 @@
 		<link rel="stylesheet" href="public/html/css/oa.common.css" />
 		<link rel="stylesheet" href="public/html/css/oa.jquery-ui.min.css" />
 		<link rel="stylesheet" href="public/html/css/oa.jquery.multiselect.css" />
-		<link rel="stylesheet" href="org/view/css/office-set.css" />
+		<link rel="stylesheet" href="org/view/css/group-set.css" />
 	</head>
 
 	<body>
@@ -57,7 +57,7 @@
 								<input type="hidden" name="s_name" value="{{$s_name}}" />
 								<input type="hidden" name="id" value="{{$id}}" />
 								<input type="hidden" name="act" value="{{$action}}" />
-								<div class="infoBox infoBoxOne">
+								<!--<div class="infoBox infoBoxOne">
 									<p class="addApplyTitle">工作组信息</p>
 									<div class="formAllBox clearfix">
 										<div class="formBox w33">
@@ -89,7 +89,60 @@
 											</div>
 										</div>
 									</div>
+								</div>-->
+
+								<!--检索begin-->
+								<div class="retrievalBox">
+									<div class="retrievalTitle">工作组信息</div>
+									<div class="retrievalsForm clearfix">
+										<form id="groupForm" method="post" class="clearfix">
+											<input type="hidden" name="page" value="{{$page}}" />
+											<input type="hidden" name="s_office" value="{{$s_office}}" />
+											<input type="hidden" name="s_name" value="{{$s_name}}" />
+											<input type="hidden" name="id" value="{{$id}}" />
+											<input type="hidden" name="act" value="{{$action}}" />
+											<div class="retrievalsInputBoxs retrievalsInputBoxsStar clearfix pull-left">
+												<div class="retrievalsInputContent">
+													<div class="retrievalsInput">
+														<label>所属办事处<span>*</span></label>
+														<input type="text" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputQy" placeholder="请选择" value="" data-type='0' />
+														<div class="retrievalsInputNavBox">
+															<ul class="retrievalsInputNav retrievalsInputNavSelsct">
+																<li data-type="0">请选择</li>
+																{{foreach item=o name=offices from=$offices}}
+																<li data-type="{{$o.officeId}}">{{$o.officeName}}</li>
+																{{/foreach}}
+																<input type="hidden" class="selectVal" value="0" autocomplete="off" data-type="1">
+															</ul>
+														</div>
+													</div>
+													<div class="form">
+														<p class="formTitle">设置排序<span class="tipsIcon"><span class="tips" style="display: none;">数字越大，排序越靠前</span></span>
+														</p>
+														<input type="number" name="rank" value="{{$rank}}" placeholder="0" class="formInput rankInput" autocomplete="off">
+													</div>
+												</div>
+											</div>
+											<div class="retrievalsInputBoxs retrievalsInputBoxsStar clearfix pull-left">
+												<div class="retrievalsInputContent">
+													<div class="retrievalsInput">
+														<label>工作组名称<span>*</span></label>
+														<input name="groupName" type="text" placeholder="请输入工作组名称" value="{{$i.groupName}}" class="choseInputName" data-type='0' />
+													</div>
+												</div>
+											</div>
+											<div class="retrievalsInputBoxs retrievalsInputBoxsStar clearfix pull-left">
+												<div class="retrievalsInputContent">
+													<div class="retrievalsInput">
+														<label>部门联系电话<span>*</span></label>
+														<input name="groupName" name="phone" type="text" placeholder="请输入部门联系电话" value="{{$i.phone}}" class="choseInputName" data-type='0' />
+													</div>
+												</div>
+											</div>
+										</form>
+									</div>
 								</div>
+								<!--检索end-->
 								<div class="infoBox">
 									<p class="addApplyTitle">考勤设置</p>
 									<div class="formAllBox clearfix">
@@ -105,8 +158,10 @@
 												</div>
 												<!--<div class="foreAddress"></div>-->
 												<div class="foreAddressInfo">{{$i.workAddress}}</div>
-												<input type="hidden" name="workAddress" value="{{$i.workAddress}}" /><!--打卡地址-->
-												<input type="hidden" name="workCoordinate" value="{{$i.workCoordinate}}" /><!--打卡经纬度-->
+												<input type="hidden" name="workAddress" value="{{$i.workAddress}}" />
+												<!--打卡地址-->
+												<input type="hidden" name="workCoordinate" value="{{$i.workCoordinate}}" />
+												<!--打卡经纬度-->
 											</div>
 										</div>
 										<div class="formBox w25">
@@ -116,7 +171,7 @@
 											</div>
 											<div class="form form192">
 												<p class="formTitle">有效范围<span>*</span></p>
-												<div class="formInput formSelect">请选择有效范围</div>
+												<div class="formInput formSelect" id="formSelect">请选择有效范围</div>
 												<ul class="formSelectList">
 													<li class="default">请选择有效范围</li>
 													<li data-type="100">100米</li>
@@ -125,7 +180,8 @@
 													<li data-type="800">800米</li>
 													<li data-type="1000">1000米</li>
 												</ul>
-												<input type="hidden" name="workRange" value="{{$i.workRange}}" /><!--有效范围，仅传数字-->
+												<input type="hidden" name="workRange" value="{{$i.workRange}}" />
+												<!--有效范围，仅传数字-->
 											</div>
 										</div>
 										<div class="formBox w50">
@@ -141,7 +197,8 @@
 													<div class="workingDayBox{{if in_array('7',$i.workWeek)}} on{{/if}} pull-left">周日</div>
 												</div>
 											</div>
-											<input type="hidden" name="week" value="1,2,3,4,5,6,7" /><!--工作日，周一到周日对应数字1-7-->
+											<input type="hidden" name="week" value="1,2,3,4,5,6,7" />
+											<!--工作日，周一到周日对应数字1-7-->
 										</div>
 									</div>
 								</div>
@@ -206,8 +263,8 @@
 		<script type="text/javascript" src="public/html/js/plugin/oa.jquery-ui.min.js"></script>
 		<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.11&key=41c525dac4f369d457b111b56459bff8&plugin=AMap.Autocomplete,AMap.PlaceSearch,AMap.Scale,AMap.OverView,AMap.ToolBar"></script>
 		<script type="text/javascript" src="https://cache.amap.com/lbs/static/addToolbar.js"></script>
-		<script type="text/javascript" src="public/html/js/plugin/jquery.mCustomScrollbar.concat.min.js" ></script>
-		<script type="text/javascript" src="public/html/js/jquery.form.min.js" ></script>
+		<script type="text/javascript" src="public/html/js/plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="public/html/js/jquery.form.min.js"></script>
 		<script type="text/javascript" src="org/view/js/group-set.js"></script>
 	</body>
 

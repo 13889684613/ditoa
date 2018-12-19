@@ -79,7 +79,7 @@
     filter: alpha(opacity=0);
     cursor: pointer;
     z-index: 200;
-    font-size: 100px;
+    font-size: 47px;
 }
 
 .showFileName {
@@ -95,6 +95,11 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    z-index: 300;
+}
+
+.showFileName a{
+    z-index: 1000;
 }
 
 /* 其他 */

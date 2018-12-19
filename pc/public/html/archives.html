@@ -1,0 +1,65 @@
+							<div class="apply-step-box margin-bottom-0">
+								<h1 class="titleTips">员工档案</h1>
+								<div class="stepPart">
+									<!--
+                                    	作者：xhxhxh
+                                    	时间：2018-11-20
+                                    	描述：蓝色线的长度---0 24.6% 49% 73.3% 100%
+                                    -->
+									<div class="stepActiveLine" style="width:{{$a.lineWidth}};"></div>
+									<div class="stepNormalLine"></div>
+
+									<div class="{{$a.tryClass}}position1"><!--完成圆-->
+										<div class="stepContentBox">
+											<div class="text1 color5783f1">试用期</div>
+											<div class="text2">
+												{{if $a.try!=''}}
+												{{$a.try}}
+												{{/if}}
+											</div>
+										</div>
+									</div>
+									
+									<div class="{{$a.turnClass}}position2">
+										<div class="stepContentBox">
+											<div class="text1 color5783f1">转正</div>
+											<div class="text2">
+												{{if count($a.turn)>0}}
+												考核人：{{$a.turn[2]}}<br />
+												考核时间：{{$a.turn[1]}}<br />
+												考核结果：{{$a.turn[0]}}
+												{{/if}}
+											</div>
+										</div>
+									</div>
+									
+									
+									<div class="{{$a.contractClass}}position3"><!--默认圆-->
+										<div class="stepContentBox">
+											<div class="text1 color5783f1">合同签订</div>
+											<div class="text2">
+											{{if $a.contract!=''}}
+											{{$a.contract}}
+											{{/if}}
+											</div>
+										</div>
+									</div>
+									
+									<div class="{{$a.quitClass}}position4">
+										<div class="stepContentBox">
+											<div class="text1 color5783f1">离职</div>
+											<div class="text2">
+											{{if $a.quit!=''}}
+											{{$a.quit}}
+											{{/if}}
+											</div>
+										</div>
+									</div>
+									
+									<div class="{{$a.finishClass}}position6">
+										<div class="stepContentBox">
+											<div class="text1">DIT与您一起成长</div>
+										</div>
+									</div>
+								</div>
+							</div>

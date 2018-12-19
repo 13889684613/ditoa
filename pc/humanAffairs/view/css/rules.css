@@ -44,4 +44,6 @@ input:-ms-input-placeholder {
 		float: right;
 	}
 }
-
+.editBox{
+	width: 40px;
+}

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-18 14:39:00
+/* Smarty version 3.1.29, created on 2018-12-19 14:00:46
   from "F:\website\ditoaCoder\ditoa\pc\generalAffairs\view\rules-set.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c189604019920_91566783',
+  'unifunc' => 'content_5c19de8e7c3211_92132337',
   'file_dependency' => 
   array (
     '92e343c8eec73dafc245004de6ae712f2a07816a' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\generalAffairs\\view\\rules-set.html',
-      1 => 1545115138,
+      1 => 1545121482,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c189604019920_91566783 ($_smarty_tpl) {
+function content_5c19de8e7c3211_92132337 ($_smarty_tpl) {
 ?>
 <!-- 
 	# 企业规章制度

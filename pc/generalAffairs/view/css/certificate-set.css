@@ -461,7 +461,7 @@
 }
 
 
-/* .uploadFile {
+.uploadFile {
     float: left;
     width: 150px;
     height: 42px;
@@ -509,4 +509,4 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-} */
+}

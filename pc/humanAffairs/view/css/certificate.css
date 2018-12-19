@@ -45,3 +45,727 @@ input:-ms-input-placeholder {
 	}
 }
 
+
+input::-webkit-input-placeholder {
+	color: #aaaaaa;
+}
+
+input::-moz-placeholder {
+	/* Mozilla Firefox 19+ */
+	color: #aaaaaa;
+}
+
+input:-moz-placeholder {
+	/* Mozilla Firefox 4 to 18 */
+	color: #aaaaaa;
+}
+
+input:-ms-input-placeholder {
+	/* Internet Explorer 10-11 */
+	color: #aaaaaa;
+}
+
+.table1Fixed{
+	width: 9%;
+}
+.tableBox{
+	width: 91.07%;
+	float: right;
+}
+
+.sortInput{
+	line-height: 28px;
+}
+.sortTic{
+	left: -54px;
+}
+/* 
+    # 企业详情编辑
+	# Bowen
+	# 2018-11-21
+*/
+
+.contentForm {
+    width: 100%;
+    background-color: #f6f6fa;
+    padding-bottom: 0;
+}
+
+.addApplyTitle {
+    padding-left: 29px;
+    font-size: 20px;
+    color: #07196c;
+    background: url(/public/html/images/formTitle.jpg) no-repeat left center;
+    margin: 0;
+    margin-bottom: 38px;
+}
+
+.infoBox {
+    width: 100%;
+    padding: 25px 0 40px;
+    background-color: #fff;
+    margin-bottom: 32px;
+    border-radius: 5px;
+}
+
+.companyInfo {
+    padding-bottom: 0;
+}
+
+.businessScope .form {
+    margin-bottom: 0;
+}
+
+.businessScope textarea {
+    width: 500px;
+    height: 110px;
+    line-height: 2;
+    padding-top: 5px;
+}
+
+.formAllBox {
+    width: 100%;
+    height: auto;
+    padding-left: 1.5%;
+    padding-right: 3%;
+}
+
+.formBox {
+    padding-top: 0;
+}
+
+.formBox.w42 {
+    width: 42%;
+}
+
+.formBox.w35 {
+    width: 35%;
+}
+
+.formBox.w23 {
+    width: 23%;
+}
+
+.formBox.w42 .form {
+    width: 64%;
+}
+
+.formBox.w35 .form {
+    width: 69%;
+}
+
+.formBox.w23 .form {
+    width: 94%;
+}
+
+.form {
+    margin-bottom: 32px;
+}
+
+.formInput {
+    width: 100%;
+}
+
+.tips {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    font-size: 14px;
+    color: #999;
+}
+
+.otherAllbox {
+    margin-left: 1.5%;
+    margin-right: 3%;
+}
+
+.otherForm {
+    width: 100%;
+    background-color: #f6f6fa;
+    padding: 30px 0;
+    padding-left: 2%;
+    padding-right: 4%;
+    margin-bottom: 10px;
+}
+
+.otherFormBox {
+    float: left;
+    margin-top: 4px;
+}
+
+.otherFormBox p {
+    width: 10%;
+    height: 100%;
+    float: left;
+    line-height: 42px;
+    font-size: 14px;
+    color: #222222;
+    margin: 0;
+}
+
+.otherFormBox input {
+    float: left;
+    width: 100px;
+    height: 42px;
+    line-height: 40px;
+    border: 1px solid #e8e8e8;
+    border-radius: 3px;
+    font-size: 14px;
+    padding: 0 10px;
+}
+
+.otherFormBox input::-webkit-input-placeholder{ 
+	color: #aaa; 
+} 
+
+.otherFormBox input::-webkit-input-placeholder{ 
+	color: #aaa; 
+} 
+
+.otherFormBox input::-moz-placeholder{ 
+	color: #aaa; 
+} 
+
+.otherFormBox input:-ms-input-placeholder{
+	color: #aaa; 
+}
+
+.otherFormBox.w28 {
+    width: 320px;
+    margin-right: 5%;
+}
+
+.otherFormBox.w28 p {
+    width: 13%;
+}
+
+.otherFormBox.w28 input {
+    width: 86%;
+}
+
+.otherFormBox.w33 {
+    width: 470px;
+}
+
+.otherFormBox.w33 p {
+    width: 15%;
+}
+
+.otherFormBox.w33 input {
+    width: 84%;
+}
+
+.formBtnsBox {
+    margin-top: 0;
+}
+
+.addBtn {
+    float: right;
+    width: 60px;
+    height: 50px;
+    background: url(/org/view/images/add_btn_icon.png) no-repeat center;
+    cursor: pointer;
+}
+
+.removeBtn {
+    float: right;
+    width: 60px;
+    height: 50px;
+    background: url(/org/view/images/remove_btn_icon.png) no-repeat center;
+    cursor: pointer;
+}
+
+/* 2018-11-30 新增 start*/
+.rightTxt {
+    display: block;
+    padding-top: 70px;
+    font-size: 14px;
+    color: #999;
+}
+/* 2018-11-30 新增 end*/
+.form {
+    float: left;
+    margin-bottom: 0;
+}
+
+.formTitle {
+    margin-bottom: 0;
+    height: 42px;
+    line-height: 42px;
+    margin-right: 14px; 
+}
+
+.formInput {
+    float: left;
+    width: 192px;
+}
+
+.userName {
+    margin-right: 70px;
+}
+
+.userName .formInput {
+    width: 360px;
+}
+
+.setNum .formInput {
+    line-height: 42px;
+    padding-right: 0;
+}
+
+.tipsIcon {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    background: url(/public/html/images/form_tipsIcon.png) no-repeat center;
+    cursor: pointer;
+    margin-left: 7px;
+}
+
+.tips {
+    display: none;
+    position: absolute;
+    top: -60px;
+    left: -92px;
+    width: 200px;
+    height: 42px;
+    line-height: 40px;
+    border-radius: 3px;
+    border: 1px solid #f3dbdb;
+    background-color: #fce8e8;
+    font-size: 14px;
+    color: #d71e2d;
+    text-align: center;
+}
+
+.tips:after {
+    display: block;
+    content: '';
+    width: 13px;
+    height: 7px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    bottom: -7px;
+    background: url(/org/view/images/tipsDownIcon.png) no-repeat;
+}
+.workingDayBox {
+    width: 12%;
+    margin-bottom: 22px;
+    padding-left: 24px;
+    background: url(/org/view/images/check_icon.png) no-repeat left center;
+    cursor: pointer;
+}
+.workingDayBox.on {
+    background: url(/org/view/images/checked_icon.png) no-repeat left center;
+}
+.w25{
+	width: 25%;
+}
+.w50{
+	width: 50%;
+}
+.w100{
+	width: 100%;
+}
+@media (min-width: 1200px) and (max-width: 1420px) {
+	.workingDayBox {
+    width: 14%;
+    margin-bottom: 22px;
+    padding-left: 24px;
+    background: url(/org/view/images/check_icon.png) no-repeat left center;
+    cursor: pointer;
+}
+    .otherFormBox.w28 {
+        width: 320px;
+        margin-right: 2%;
+    }
+    .otherFormBox.w28 p {
+        width: 10%;
+    }
+    
+    .otherFormBox.w28 input {
+        width: 89%;
+    }
+    .otherFormBox.w33 {
+        width: 400px;
+    }
+}
+
+/*地图*/
+.map{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: none;
+}
+.containerBox{
+	width: 1120px;
+	height: 518px;
+	background-color: #fff;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	/*padding: 16px;*/
+	
+}
+#container{
+	width: 100%;
+	height: 400px;	
+}
+.mapMask{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	background: rgba(0, 0, 0,0.6);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000,endColorstr=#99000000);
+}
+#myPageTop{
+	position: absolute;
+	right:30px;
+	top: 30px;
+	background-color: #fff;
+	padding: 6px;
+	border: 1px solid #eee;
+}
+.addressNameInput:focus, .addressNameInput:hover {
+    border-color: #68c1ff;
+}
+.addressNameInput {
+    position: relative;
+    display: inline-block;
+    padding: 4px 7px;
+    width: 200px;
+    height: 28px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: rgba(0,0,0,.65);
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    transition: all .3s;
+}
+.addForm{
+	border-top: 1px solid #e9e9e9;
+    padding: 10px 16px 10px 10px;
+    text-align: right;
+    border-radius: 0 0 4px 4px;
+    position: relative;
+}
+.ant-modal-body {
+    padding: 16px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+.addressInfo{
+	margin-top: 10px;
+}
+.addressInfoInput{
+	border: none;
+}
+#myPageTop label {
+    margin: 0 20px 0 0;
+    color: #666666;
+    font-weight: normal;
+}
+.addFormBtnBox{
+	position: absolute;
+	overflow: hidden;
+	top: 0;
+	bottom: 0;
+	margin: auto 0;
+	right: 16px;
+	height: 28px;
+}
+.addFormBtnBox .addFormBtn{
+	float: left;
+	line-height: 28px;
+    padding: 0 15px;
+    font-size: 12px;
+    border-radius: 4px;
+    height: 28px;
+    border: 1px solid #d9d9d9;
+    color: #222;
+    cursor: pointer;
+}
+.addFormBtnBox .addFormBtn.addFormBtnL{
+	margin-right: 25px;
+}
+.addFormBtnBox .addFormBtn.addFormBtnL:hover{
+	color: #38adff;
+    background-color: transparent;
+    border-color: #38adff;
+}
+.addFormBtnBox .addFormBtn.addFormBtnR{
+	    color: #fff;
+    background-color: #38adff;
+    border-color: #38adff;
+}
+.addFormBtnBox .addFormBtn.addFormBtnR:hover {
+    color: #fff;
+    background-color: #68c1ff;
+    border-color: #68c1ff;
+    }
+/*地图*/
+
+/*检索*/
+.retrievalsForm{
+	padding-left: 2%;
+}
+.retrievalsInputBoxs{
+	width: 28.3%;
+}
+.retrievalsInput{
+	margin-bottom: 27px;
+	position: relative;
+}
+.retrievalsInput input{
+	width: 210px;
+	height: 42px;
+	line-height: 40px;
+	border: 1px solid #e8e8e8;
+	padding-left: 10px;
+	border-radius: 3px;
+	color: #222222;
+	font-size: 14px;
+	margin-left: 0px;
+	background: #fbfbfd;
+}
+.retrievalsInput .choseInput{
+	cursor: pointer;
+	background: url(/org/view/images/input-down.jpg) no-repeat 92% 50% #fbfbfd;
+}
+.retrievalsInput label{
+	width: 95px;
+}
+.retrievalsInputNavBox{
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 113px;
+}
+.retrievalsInput label span {
+    color: red;
+    font-size: 15px;
+    padding: 0 4px;
+    font-size: 17px;
+}
+.retrievalsInputNav{
+	/*position: absolute;
+	top: 55px;*/
+	/*left: 0;*/
+	position: relative;
+	background-color: #fff;
+	z-index: 10;
+	width: 240px;
+	box-shadow: 0 0 20px #e9e9e9;
+	margin-top: 55px;
+	/*display: none;*/
+}
+.retrievalsInputNav:after{
+	content: '';
+	display: block;
+	position: absolute;
+	width: 11px;
+	height: 8px;
+	background: url(/org/view/images/navTop.jpg) no-repeat;
+	top: -8px;
+	left: 17px;
+}
+.retrievalsInputNav li{
+	height: 45px;
+	line-height: 45px;
+	font-size: 13px;
+	color: #888888;
+	border-radius: 5px;
+	cursor: pointer;
+	padding-left: 13px;
+}
+.retrievalsInputNav li:hover{
+	background-color: #f4f5f9;
+}
+.retrievalsInput .datepicker{
+	width: 160px;
+	background: url(/public/html/images/data_icon.png) no-repeat 92% 50% #fbfbfd;
+}
+.retrievalsInputTime{
+	width: 418px;
+}
+.queryButton,.clearButton{
+	width: 140px;
+	height: 42px;
+	line-height: 42px;
+	color: #fff;
+	font-size: 14px;
+	text-align: center;
+	border-radius: 3px;
+	cursor: pointer;
+}
+.queryButton{
+	background-color: #012989;
+	margin-right: 15px;
+}
+.clearButton{
+	background-color: #b9bdc6;
+}
+/*检索end*/
+.retrievalsInput .lable_w{
+	width: 120px;
+}
+.retrievalsInput label{
+	position: relative;
+	font-weight: 500!important;
+}
+.must{
+	font-size: 18px;
+	color: #e53631;
+}
+.retrievalsInput label{
+	width: 95px;
+	margin-right: 15px;
+}
+.firstIn .retrievalsInputNavBox{
+	left: 135px;
+}
+.retrievalBox{
+	height:auto;
+}
+.contentRightBox{
+	background-color: transparent;
+}
+.retrievalBox{
+	margin-bottom: 0px;
+}
+.approval-informationTitle{
+	font-size: 16px;
+	color: #474e5d;
+	margin-bottom: 10px;
+}
+.Stable{
+	background-color: #fff;
+	width: 100%;
+}
+.Stable tr{
+	position: relative;
+}
+.Stable .td5{
+	margin-top: -6px;
+}
+.Stable td{
+	padding: 22px 0px;
+}
+.Stable .td1 span{
+	display: block;
+	width: 36px;
+	height: 36px;
+	background:url(/public/html/images/yuan.png) no-repeat center;
+	color: #fff;
+	text-align: center;
+	line-height: 39px;
+}
+.StableTdL{
+	font-size: 14px;
+	color: #222;
+	margin-right: 10px;
+	height: 42px;
+	line-height: 42px;
+}
+.StableTdR{
+	position: relative;
+}
+.StableTdR .retrievalsInputNavBox{
+	left: 0;
+}
+.StableTdR input{
+	width: 210px;
+	height: 42px;
+	line-height: 40px;
+	border-radius: 6px;
+	border: 1px solid #e8e8e8;
+	cursor: pointer;
+    background: url(/org/view/images/input-down.jpg) no-repeat 92% 50% #fbfbfd;
+    padding-left: 12px;
+}
+.approval-information{
+	margin-top: 43px;
+}
+.container-fluid{
+	background-color: #f6f6fa;
+}
+.addInformationBox{
+	width: 150px;
+	margin-top: 24px;
+}
+.formBtnsBox{
+	margin-top: 45px;
+}
+.addInformationBox img{
+	cursor: pointer;
+}
+.approvalInformationBox{
+	display: none;
+}
+.StableTd{
+	position: relative;
+}
+.Sdel{
+	position: absolute;
+	right: 5%;
+	top: -4px;
+}
+.form192{
+	width: 192px;
+}
+.formSelectList{
+	margin-top: 9px;
+}
+.foreAddress,.foreAddressInfo{
+	width: 100%;
+}
+#tipinput{
+	height: 26px;
+	line-height: 20px;
+}
+.infoBoxOne .formInput{
+	width: 229px;
+}
+.w33{
+	width: 32%;
+}
+.formTitle span{
+	font-size: 15px;
+}
+.table1.table1Content{
+	width: 100%;
+}
+.retrievalsInput a{
+	color: #fff;
+}
+.downloadAddButtonBox{
+	margin-top: 30px;
+}
+
+@media (min-width: 1250px) and (max-width: 1550px) {
+	.retrievaButton{
+		width: 120px;
+	}
+	.table1Fixed{
+		width: 11%;
+	}
+	.tableBox{
+		width: 89.07%;
+		float: right;
+	}
+}
+

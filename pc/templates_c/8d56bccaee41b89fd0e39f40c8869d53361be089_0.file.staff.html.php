@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-18 11:43:43
+/* Smarty version 3.1.29, created on 2018-12-19 15:03:09
   from "F:\website\ditoaCoder\ditoa\pc\humanAffairs\view\staff.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c186cefa45d22_46792321',
+  'unifunc' => 'content_5c19ed2dbe7ff2_70736656',
   'file_dependency' => 
   array (
     '8d56bccaee41b89fd0e39f40c8869d53361be089' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\humanAffairs\\view\\staff.html',
-      1 => 1545104621,
+      1 => 1545202985,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c186cefa45d22_46792321 ($_smarty_tpl) {
+function content_5c19ed2dbe7ff2_70736656 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -78,8 +78,7 @@ function content_5c186cefa45d22_46792321 ($_smarty_tpl) {
 										<div class="retrievalsInputContent">
 											<div class="retrievalsInput">
 												<label>所属企业</label>
-												<input type="text" unselectable="on" onfocus="this.blur()" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputQy" placeholder="请选择" name="s_company" value="<?php echo $_smarty_tpl->tpl_vars['s_company']->value;?>
-" data-type='0' />
+												<input type="text" unselectable="on" onfocus="this.blur()" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputQy" placeholder="请选择" name="s_company" value="" data-type='0' />
 												<div class="retrievalsInputNavBox">
 													<ul class="retrievalsInputNav">
 														<li data-type = "0">请选择</li>
@@ -105,13 +104,14 @@ if ($__foreach_company_0_saved_item) {
 $_smarty_tpl->tpl_vars['c'] = $__foreach_company_0_saved_item;
 }
 ?>
+														<input type="hidden" class="selectVal" value="<?php echo $_smarty_tpl->tpl_vars['s_company']->value;?>
+" autocomplete="off" data-type="1">
 													</ul>
 												</div>
 											</div>
 											<div class="retrievalsInput">
 												<label>员工职务</label>
-												<input type="text" unselectable="on" onfocus="this.blur()" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputZw" placeholder="请选择" name="s_post" value="<?php echo $_smarty_tpl->tpl_vars['s_post']->value;?>
-" data-type='0' />
+												<input type="text" unselectable="on" onfocus="this.blur()" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputZw" placeholder="请选择" name="s_post" value="" data-type='0' />
 												<div class="retrievalsInputNavBox">
 													<ul class="retrievalsInputNav">
 														<li data-type = "0">请选择</li>
@@ -137,6 +137,8 @@ if ($__foreach_post_1_saved_item) {
 $_smarty_tpl->tpl_vars['p'] = $__foreach_post_1_saved_item;
 }
 ?>
+														<input type="hidden" class="selectVal" value="<?php echo $_smarty_tpl->tpl_vars['s_post']->value;?>
+" autocomplete="off" data-type="1">
 													</ul>
 												</div>
 											</div>
@@ -151,8 +153,7 @@ $_smarty_tpl->tpl_vars['p'] = $__foreach_post_1_saved_item;
 										<div class="retrievalsInputContent">
 											<div class="retrievalsInput">
 												<label>所属部门</label>
-												<input type="text" unselectable="on" onfocus="this.blur()" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputBm" placeholder="请选择" name="s_office" value="<?php echo $_smarty_tpl->tpl_vars['s_office']->value;?>
-" data-type='0' />
+												<input type="text" unselectable="on" onfocus="this.blur()" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputBm" placeholder="请选择" name="s_office" value="" data-type='0' />
 												<div class="retrievalsInputNavBox">
 													<ul class="retrievalsInputNav">
 														<li data-type = "0">请选择</li>
@@ -178,13 +179,14 @@ if ($__foreach_office_2_saved_item) {
 $_smarty_tpl->tpl_vars['o'] = $__foreach_office_2_saved_item;
 }
 ?>
+														<input type="hidden" class="selectVal" value="<?php echo $_smarty_tpl->tpl_vars['s_office']->value;?>
+" autocomplete="off" data-type="1">
 													</ul>
 												</div>
 											</div>
 											<div class="retrievalsInput">
 												<label>状态</label>
-												<input type="text" unselectable="on" onfocus="this.blur()" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputZt" placeholder="请选择" name="s_status" value="<?php echo $_smarty_tpl->tpl_vars['s_status']->value;?>
-" data-type='0' />
+												<input type="text" unselectable="on" onfocus="this.blur()" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputZt" placeholder="请选择" name="s_status" value="" data-type='0' />
 												<div class="retrievalsInputNavBox">
 													<ul class="retrievalsInputNav">
 														<li data-type = "0">请选择</li>
@@ -215,6 +217,8 @@ if ($__foreach_value_3_saved_key) {
 $_smarty_tpl->tpl_vars['key'] = $__foreach_value_3_saved_key;
 }
 ?>
+														<input type="hidden" class="selectVal" value="<?php echo $_smarty_tpl->tpl_vars['s_status']->value;?>
+" autocomplete="off" data-type="1">
 													</ul>
 												</div>
 											</div>
@@ -229,8 +233,7 @@ $_smarty_tpl->tpl_vars['key'] = $__foreach_value_3_saved_key;
 										<div class="retrievalsInputContent">
 											<div class="retrievalsInput">
 												<label>系统角色</label>
-												<input type="text" unselectable="on" onfocus="this.blur()" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputJs" placeholder="请选择" name="s_role" value="<?php echo $_smarty_tpl->tpl_vars['s_role']->value;?>
-" data-type='0' />
+												<input type="text" unselectable="on" onfocus="this.blur()" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputJs" placeholder="请选择" name="s_role" value="" data-type='0' />
 												<div class="retrievalsInputNavBox">
 													<ul class="retrievalsInputNav">
 														<li data-type = "0">请选择</li>
@@ -256,6 +259,8 @@ if ($__foreach_role_4_saved_item) {
 $_smarty_tpl->tpl_vars['r'] = $__foreach_role_4_saved_item;
 }
 ?>
+														<input type="hidden" class="selectVal" value="<?php echo $_smarty_tpl->tpl_vars['s_role']->value;?>
+" autocomplete="off" data-type="1">
 													</ul>
 												</div>
 											</div>
@@ -307,7 +312,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 $_smarty_tpl->tpl_vars['i']->_loop = true;
 $__foreach_data_5_saved_local_item = $_smarty_tpl->tpl_vars['i'];
 ?>
-								<tr class="backgroundFFF">
+								<tr<?php if ($_smarty_tpl->tpl_vars['i']->value%2 == 1) {?> class="backgroundFFF"<?php }?>}>
 									<td class="borderRight1">
 										<div class="editBox center-block clearfix">
 											<div class="editButton editButtonL pull-left text-center">
@@ -400,7 +405,7 @@ $__foreach_data_6_saved_local_item = $_smarty_tpl->tpl_vars['i'];
 										</td>
 										<td class=""><span><?php echo $_smarty_tpl->tpl_vars['i']->value['createTime'];?>
 </span></td>
-										<td class=""><span><?php echo $_smarty_tpl->tpl_vars['i']->value['status'];?>
+										<td class=""><span class="quit"><?php echo $_smarty_tpl->tpl_vars['i']->value['status'];?>
 </span></td>
 									</tr>
 									<?php
@@ -450,6 +455,9 @@ $_smarty_tpl->tpl_vars['i'] = $__foreach_data_6_saved_item;
 >
 		<?php echo '<script'; ?>
  type="text/javascript" src="public/html/js/oa.common.js"><?php echo '</script'; ?>
+>
+		<?php echo '<script'; ?>
+ type="text/javascript" src="public/html/js/jquery.form.min.js" ><?php echo '</script'; ?>
 >
 		<?php echo '<script'; ?>
  type="text/javascript" src="humanAffairs/view/js/staff.js"><?php echo '</script'; ?>

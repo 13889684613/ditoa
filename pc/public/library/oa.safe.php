@@ -142,6 +142,7 @@
 
 	$_prfix = basename($_SERVER['PHP_SELF']);
 	$_file = getVal('_f',2,'');
+	$_nav = getVal('nav',2,'');
 
 	$indexPrfix = 'index.php';
 	$orgPrfix = 'org.php';
@@ -190,12 +191,17 @@
 		$cerMenu = 1; $humanMenus = true;
 	}
 	//员工管理
-	if($_file == 'staff' || $_file == 'staff-information' || $_file == 'staff-family' || $_file == 'staff-education' || $_file == 'staff-welfare'){
+	if($_file=='staff'||$_file=='staff-information'||$_file=='staff-family'||$_file=='staff-education'||$_file=='staff-welfare'||$_file=='staff-contract'||$_file=='staff-account'||$_file=='staff-quit'||$_file=='staff-edit-log'||$_file=='staff-leave'){
 		$staffMenu = 1; $humanMenus = true;
 	}
+	//员工档案管理
+	if($_nav!='quit'&&($_file=='archives'||$_file=='archives-info'||$_file=='archives-family'||$_file=='archives-edu'||$_file=='archives-welfare'||$_file=='archives-entry'||$_file=='archives-contract'||$_file=='archives-leave'||$_file=='archives-file')){
+		$archivesMenu = 1; $humanMenus = true;
+	}
+
 	//企业规章制度
 	if($_file == 'rules'){
-		$ruleMenu = 1; $humanMenus = true;
+		$rMenu = 1; $humanMenus = true;
 	}
 
 	if($_prfix == $humanPrfix && $humanMenus ){
@@ -303,6 +309,7 @@
 	$smarty->assign('cerMenu',$cerMenu);
 	$smarty->assign('ruleMenu',$ruleMenu);
 	$smarty->assign('staffMenu',$staffMenu);
+	$smarty->assign('archivesMenu',$archivesMenu);
 
 	$smarty->assign('leaveMenu',$leaveMenu);
 	$smarty->assign('businessMenu',$businessMenu);

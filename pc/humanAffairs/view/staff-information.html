@@ -120,38 +120,32 @@
 											<input type="text" name = "address" value="{{$i.address}}" placeholder = "请输入联系地址" class = "formInput addressForm" autocomplete="off"/>
 										</div>
 										<div class = "form">
-											<p class = "formTitle">学历<span>*</span></p>
-											<div class = "formInput formSelect">请选择学历</div>
-											<ul class = "formSelectList">
-												<li class = "default">请选择学历</li>
-												{{foreach $educations as $key=>$value}}
-												<li data-type="{{$key}}">{{$value}}</li>
-												{{/foreach}}
-											</ul>
-											<input type="hidden" name = "education" value="{{$i.education}}" class = "educationForm"/>
+											<p class = "formTitle">邮箱地址</p>
+											<input type="text" name = "email" value="{{$i.email}}" placeholder = "请输入邮箱地址" class = "formInput emailForm" autocomplete="off"/>
 										</div>
 										<div class = "form">
-											<p class = "formTitle">政治面貌</p>
-											<div class = "formInput formSelect">请选择政治面貌</div>
-											<ul class = "formSelectList">
-												<li class = "default">请选择政治面貌</li>
-												{{foreach $politicals as $key=>$value}}
-												<li data-type="{{$key}}">{{$value}}</li>
-												{{/foreach}}
-											</ul>
-											<input type="hidden" name = "politicalType" value="{{$i.politicalType}}" />
+											<p class = "formTitle">毕业专业<span>*</span></p>
+											<input type="text" name = "major" value="{{$i.major}}" placeholder = "请输入毕业专业" class = "formInput majorForm" autocomplete="off"/>
 										</div>
+
 										<div class = "form">
-											<p class = "formTitle">体重</p>
-											<input type="text" name = "weight" value="{{$i.weight}}" placeholder = "请输入体重" class = "formInput weightForm" autocomplete="off"/>
+											<p class = "formTitle">身高</p>
+											<input type="text" name = "height" value="{{$i.height}}" placeholder = "请输入身高" class = "formInput heightForm" autocomplete="off"/>
 										</div>
+
 										<div class = "form">
-											<p class = "formTitle">首次参加工作时间</p>
-											<input type="text" name = "firstWorkDate" value="{{$i.firstWorkDate}}" placeholder = "请选择首次参加工作时间" class = "formInput firstWorkDateForm dataInput datepicker1" autocomplete="off"/>
+											<p class = "formTitle">民族</p>
+											<input type="text" name = "nation" value="{{$i.nation}}" placeholder = "请输入民族" class = "formInput nationForm" autocomplete="off"/>
 										</div>
+
 										<div class = "form">
-											<p class = "formTitle">公交线路单程车费（元）</p>
-											<input type="text" name = "busFee" value="{{$i.busFee}}" placeholder = "请输入公交线路单程车费（元）" class = "formInput busFeeForm" autocomplete="off"/>
+											<p class = "formTitle">中国银行卡号</p>
+											<input type="text" name = "cnBankAccount" value="{{$i.cnBankAccount}}" placeholder = "请输入中国银行卡号" class = "formInput cnBankAccountForm" autocomplete="off"/>
+										</div>
+										
+										<div class = "form">
+											<p class = "formTitle">备注</p>
+											<textarea name="remark" placeholder="请输入" class = "formInput remarkInput">{{$i.remark}}</textarea>
 										</div>
 									</div>
 								</div>
@@ -197,26 +191,48 @@
 											<input type="text" name = "school" value="{{$i.school}}" placeholder = "请输入毕业学校" class = "formInput schoolForm" autocomplete="off"/>
 										</div>
 										<div class = "form">
-											<p class = "formTitle">户口所在地<span>*</span></p>
-											<input type="text" name = "registerAddress" value="{{$i.registerAddress}}" placeholder = "请输入户口所在地" class = "formInput registerAddressForm" autocomplete="off"/>
+											<p class = "formTitle">学历<span>*</span></p>
+											<div class = "formInput formSelect">请选择学历</div>
+											<ul class = "formSelectList">
+												<li class = "default">请选择学历</li>
+												{{foreach $educations as $key=>$value}}
+												<li data-type="{{$key}}">{{$value}}</li>
+												{{/foreach}}
+											</ul>
+											<input type="hidden" name = "education" value="{{$i.education}}" class = "educationForm"/>
 										</div>
 										<div class = "form">
-											<p class = "formTitle">民族</p>
-											<input type="text" name = "nation" value="{{$i.nation}}" placeholder = "请输入民族" class = "formInput nationForm" autocomplete="off"/>
+											<p class = "formTitle">政治面貌</p>
+											<div class = "formInput formSelect">请选择政治面貌</div>
+											<ul class = "formSelectList">
+												<li class = "default">请选择政治面貌</li>
+												{{foreach $politicals as $key=>$value}}
+												<li data-type="{{$key}}">{{$value}}</li>
+												{{/foreach}}
+											</ul>
+											<input type="hidden" name = "politicalType" value="{{$i.politicalType}}" />
 										</div>
+
 										<div class = "form">
-											<p class = "formTitle">血型</p>
+											<p class = "formTitle">体重</p>
+											<input type="text" name = "weight" value="{{$i.weight}}" placeholder = "请输入体重" class = "formInput weightForm" autocomplete="off"/>
+										</div>
+
+										<div class = "form">
+											<p class = "formTitle">婚姻状况</p>
 											<div class = "checkBox clearfix">
-												{{foreach $bloods as $key=>$value}}
-												<div data-type="{{$key}}" class = "checkBtn mRight30{{if $i.blood==$key}} on{{/if}}">{{$value}}</div>
+												{{foreach $maritals as $key=>$value}}
+												<div data-type="{{$key}}" class = "checkBtn mRight30{{if $i.maritalStatus==$key}} on{{/if}}">{{$value}}</div>
 												{{/foreach}}
 											</div>
-											<input type="hidden" name = "blood" value="{{$i.blood}}" class = "formInput bloodForm"/>
+											<input type="hidden" name = "marital" value="{{$i.maritalStatus}}" class = "formInput maritalStatusForm"/>
 										</div>
+
 										<div class = "form">
 											<p class = "formTitle">原单位解除合同日</p>
 											<input type="text" name = "quitDate" value="{{$i.quitDate}}" placeholder = "请选择原单位解除合同日" class = "formInput quitDateForm dataInput datepicker2" autocomplete="off"/>
 										</div>
+
 										<div class = "form">
 											<p class = "formTitle">背景调查</p>
 											<textarea name="background" placeholder="请输入" class = "formInput backgroundInput">{{$i.background}}</textarea>
@@ -250,13 +266,33 @@
 											</div>
 										</div>
 										<div class = "form">
-											<p class = "formTitle">邮箱地址</p>
-											<input type="text" name = "email" value="{{$i.email}}" placeholder = "请输入邮箱地址" class = "formInput emailForm" autocomplete="off"/>
+											<p class = "formTitle">农历<span>*</span></p>
+											<div class = "formInput formSelect">请选择月份</div>
+											<ul class = "formSelectList">
+												<li class = "default">请选择月份</li>
+												{{foreach $lunarMonths as $key=>$value}}
+												<li data-type="{{$key}}">{{$value}}</li>
+												{{/foreach}}
+											</ul>
+											<input type="hidden" name = "lunarMonth" value="{{$i.lunarMonth}}" class = "lunarMonthForm"/>
+											<div class = "formInput formSelect">请选择日期</div>
+												<ul class = "formSelectList">
+													<li class = "default">请选择日期</li>
+													{{foreach $lunarDays as $key=>$value}}
+													<li data-type="{{$key}}">{{$value}}</li>
+													{{/foreach}}
+												</ul>
+												<input type="hidden" name = "lunarDay" value="{{$i.lunarDay}}" class = "lunarDayForm"/>
+											</div>
+											<input type="text" name = "lunarHour" value="{{$i.lunarHour}}" placeholder = "时" class = "formInput lunarHourForm" autocomplete="off"/>
+											<input type="text" name = "lunarMinute" value="{{$i.lunarMinute}}" placeholder = "分" class = "formInput lunarMinuteForm" autocomplete="off"/>
 										</div>
+
 										<div class = "form">
-											<p class = "formTitle">毕业专业<span>*</span></p>
-											<input type="text" name = "major" value="{{$i.major}}" placeholder = "请输入毕业专业" class = "formInput majorForm" autocomplete="off"/>
+											<p class = "formTitle">户口所在地<span>*</span></p>
+											<input type="text" name = "registerAddress" value="{{$i.registerAddress}}" placeholder = "请输入户口所在地" class = "formInput registerAddressForm" autocomplete="off"/>
 										</div>
+										
 										<div class = "form">
 											<p class = "formTitle">户口性质<span>*</span></p>
 											<div class = "checkBox clearfix">
@@ -266,27 +302,27 @@
 											</div>
 											<input type="hidden" name = "registerNature" value="{{$i.registerNature}}" class = "formInput registerNatureForm"/>
 										</div>
+
 										<div class = "form">
-											<p class = "formTitle">身高</p>
-											<input type="text" name = "height" value="{{$i.height}}" placeholder = "请输入身高" class = "formInput heightForm" autocomplete="off"/>
-										</div>
-										<div class = "form">
-											<p class = "formTitle">婚姻状况</p>
+											<p class = "formTitle">血型</p>
 											<div class = "checkBox clearfix">
-												{{foreach $maritals as $key=>$value}}
-												<div data-type="{{$key}}" class = "checkBtn mRight30{{if $i.maritalStatus==$key}} on{{/if}}">{{$value}}</div>
+												{{foreach $bloods as $key=>$value}}
+												<div data-type="{{$key}}" class = "checkBtn mRight30{{if $i.blood==$key}} on{{/if}}">{{$value}}</div>
 												{{/foreach}}
 											</div>
-											<input type="hidden" name = "marital" value="{{$i.maritalStatus}}" class = "formInput maritalStatusForm"/>
+											<input type="hidden" name = "blood" value="{{$i.blood}}" class = "formInput bloodForm"/>
 										</div>
+
 										<div class = "form">
-											<p class = "formTitle">中国银行卡号</p>
-											<input type="text" name = "cnBankAccount" value="{{$i.cnBankAccount}}" placeholder = "请输入中国银行卡号" class = "formInput cnBankAccountForm" autocomplete="off"/>
+											<p class = "formTitle">公交线路单程车费（元）</p>
+											<input type="text" name = "busFee" value="{{$i.busFee}}" placeholder = "请输入公交线路单程车费（元）" class = "formInput busFeeForm" autocomplete="off"/>
 										</div>
+
 										<div class = "form">
-											<p class = "formTitle">备注</p>
-											<textarea name="remark" placeholder="请输入" class = "formInput remarkInput">{{$i.remark}}</textarea>
+											<p class = "formTitle">首次参加工作时间</p>
+											<input type="text" name = "firstWorkDate" value="{{$i.firstWorkDate}}" placeholder = "请选择首次参加工作时间" class = "formInput firstWorkDateForm dataInput datepicker1" autocomplete="off"/>
 										</div>
+
 										<input id="res" name="res" type="reset" style="display:none;"/>
 									</div>
 								</div>

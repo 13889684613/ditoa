@@ -1,4 +1,11 @@
 $(function(){
+	$('body').delegate('.retrievalsInput input,.StableTdR input', 'click', function(e) {
+		$('.retrievalsInputNavBox').hide();
+		if($(this).parent().find('.retrievalsInputNavBox')) {
+			$(this).parent().find('.retrievalsInputNavBox').show()
+		}
+		stopBubble(e);
+	})
 	$(".tableBox").mCustomScrollbar({
 		axis:"x",
 		theme:"dark",
@@ -40,5 +47,8 @@ $(function(){
 	
 	$('body').delegate('.popTicButtonL,.popTicButtonR,.popTicTitle img,.popTicMask','click',function(){
 		$('.popTic').remove();
+	})
+	$('.clearButton').click(function(){
+		$('.retrievalsForm input').val('')
 	})
 })

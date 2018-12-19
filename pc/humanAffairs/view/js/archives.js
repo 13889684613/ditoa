@@ -5,18 +5,18 @@ $(function() {
 		scrollInertia: 0,
 	});
 	$('.editButtonL').hover(function(){
-		$(this).find('img').attr('src','../../public/html/images/chakanActive.png')
+		$(this).find('img').attr('src','public/html/images/chakanActive.png')
 		$(this).css('background-color','#969696');
 	},function(){
-		$(this).find('img').attr('src','images/bj.jpg')
+		$(this).find('img').attr('src','public/html/images/bj.jpg')
 		$(this).css('background-color','#fff');
 	})
 	
 	$('.editButtonR').hover(function(){
-		$(this).find('img').attr('src','../../public/html/images/shanchuActive.png')
+		$(this).find('img').attr('src','public/html/images/shanchuActive.png')
 		$(this).css('background-color','#fb545a');
 	},function(){
-		$(this).find('img').attr('src','images/del.jpg')
+		$(this).find('img').attr('src','public/html/images/del.jpg')
 		$(this).css('background-color','#fff');
 	})
 	$('.contentTic img').click(function() {
