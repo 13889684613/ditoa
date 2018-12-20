@@ -108,7 +108,7 @@ input:-ms-input-placeholder {
 
 .staff-text{
 	display: block;
-	width: 130px;
+	width: 142px;
 	float: left;
 	text-align: right;
 }
@@ -173,7 +173,7 @@ input:-ms-input-placeholder {
 }
 
 .staffManageNav ul li a{
-	font-size: 16px;
+	font-size: 15px;
 }
 
 .apply-step-box {

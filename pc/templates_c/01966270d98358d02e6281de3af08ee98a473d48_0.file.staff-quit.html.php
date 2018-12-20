@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-19 10:51:00
+/* Smarty version 3.1.29, created on 2018-12-20 10:11:31
   from "F:\website\ditoaCoder\ditoa\pc\humanAffairs\view\staff-quit.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c19b2142cebf1_30668902',
+  'unifunc' => 'content_5c1afa53971412_97782033',
   'file_dependency' => 
   array (
     '01966270d98358d02e6281de3af08ee98a473d48' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\humanAffairs\\view\\staff-quit.html',
-      1 => 1545187086,
+      1 => 1545271889,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c19b2142cebf1_30668902 ($_smarty_tpl) {
+function content_5c1afa53971412_97782033 ($_smarty_tpl) {
 ?>
 <!-- 
 	# 员工基本资料页面
@@ -136,35 +136,27 @@ function content_5c19b2142cebf1_30668902 ($_smarty_tpl) {
 " />
 							<input type="hidden" name="act" value="editSave" />
 							<div class = "dataContent">
-								<div class = "formBox formLeft">
-									<div class = "formList">
-										<div class = "uploadBox clearfix">
-											<div class = "uploadInfoBox">
-												<p class = "uploadInfoTitle">离职申请表<span>*</span></p>
-												<p class = "uploadInfo">请上传离职申请表，格式为PDF文件形式</p>
-											</div>
-											<div class = "uploadBtnBox">
-												<input type="file" class="inputFile" title="" id="quitTable" name = "quitTable[]"/> 
-												<img src="public/html/images/upload_file_icon.png" alt="" />
-												<p class = "uploadBtnTxt">上传申请表</p>
-											</div>
-											<?php if ($_smarty_tpl->tpl_vars['i']->value['quitTable'] != '') {?>
-											<div class = "showFileName" style="display:block;"><a href="upload/file/staff/<?php echo $_smarty_tpl->tpl_vars['i']->value['quitTable'];?>
+								<div class = "uploadBox clearfix">
+									<div class = "uploadInfoBox">
+										<p class = "uploadInfoTitle">离职申请表<span>*</span></p>
+										<p class = "uploadInfo">请上传离职申请表，格式为PDF文件形式</p>
+									</div>
+									<div class = "uploadBtnBox">
+										<input type="file" class="inputFile" title="" id="quitTable" name = "quitTable[]"/> 
+										<img src="public/html/images/upload_file_icon.png" alt="" />
+										<p class = "uploadBtnTxt">上传申请表</p>
+									</div>
+									<?php if ($_smarty_tpl->tpl_vars['i']->value['quitTable'] != '') {?>
+									<div class = "showFileName" style="display:block;"><a href="upload/file/staff/<?php echo $_smarty_tpl->tpl_vars['i']->value['quitTable'];?>
 " target="_blank">查看离职申请表</a><span></span></div>
-											<?php } else { ?>
-											<div class = "showFileName">已选择：<span></span></div>
-											<?php }?>
-										</div>
-									</div>
+									<?php } else { ?>
+									<div class = "showFileName">已选择：<span></span></div>
+									<?php }?>
 								</div>
-								<div class = "formBox formCenter">
-									<div class = "formBox formLeft">
-										<div class = "formList">
-											<p class = "formTitle">离职日期<span>*</span></p>
-											<input type="text" name = "trueQuitDate" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['trueQuitDate'];?>
-" placeholder = "请选择离职日期" class="formInput quitDateForm dataInput datepicker" autocomplete="off"/>
-										</div>
-									</div>
+								<div class = "formList m0w100 clearfix">
+									<p class = "formTitle pull-left w490">离职日期<span>*</span></p>
+									<input type="text" name = "trueQuitDate" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['trueQuitDate'];?>
+" placeholder = "请选择离职日期" class="formInput quitDateForm dataInput datepicker pull-left w270" autocomplete="off"/>
 								</div>
 							</div>
 

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-19 17:09:17
+/* Smarty version 3.1.29, created on 2018-12-20 14:13:25
   from "F:\website\ditoaCoder\ditoa\pc\humanAffairs\view\archives-entry.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c1a0abda10fa5_88550676',
+  'unifunc' => 'content_5c1b3305b15607_44873908',
   'file_dependency' => 
   array (
     'f4617ab60399abc325264eed3d365c73daa27f46' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\humanAffairs\\view\\archives-entry.html',
-      1 => 1545210019,
+      1 => 1545260783,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/archives.html' => 1,
   ),
 ),false)) {
-function content_5c1a0abda10fa5_88550676 ($_smarty_tpl) {
+function content_5c1b3305b15607_44873908 ($_smarty_tpl) {
 ?>
 <!--
 	作者：sxh
@@ -118,7 +118,7 @@ function content_5c1a0abda10fa5_88550676 ($_smarty_tpl) {
 									<li>
 										<span class="staff-text">试用期工资：</span>
 										<span class="staff-info"><?php echo $_smarty_tpl->tpl_vars['i']->value['trySalary'];?>
-元</span>
+</span>
 									</li>
 									<li>
 										<span class="staff-text">面试人员：</span>
@@ -136,7 +136,7 @@ function content_5c1a0abda10fa5_88550676 ($_smarty_tpl) {
 									<li>
 										<span class="staff-text">期望工资：</span>
 										<span class="staff-info"><?php echo $_smarty_tpl->tpl_vars['i']->value['expectedSalary'];?>
-元</span>
+</span>
 									</li>
 								</ul>
 							</div>

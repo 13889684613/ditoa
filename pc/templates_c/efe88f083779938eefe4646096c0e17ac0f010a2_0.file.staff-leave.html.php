@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-19 11:11:59
+/* Smarty version 3.1.29, created on 2018-12-20 13:54:25
   from "F:\website\ditoaCoder\ditoa\pc\humanAffairs\view\staff-leave.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c19b6ff2b8863_46875946',
+  'unifunc' => 'content_5c1b2e91a671b4_89125292',
   'file_dependency' => 
   array (
     'efe88f083779938eefe4646096c0e17ac0f010a2' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\humanAffairs\\view\\staff-leave.html',
-      1 => 1545189117,
+      1 => 1545284885,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c19b6ff2b8863_46875946 ($_smarty_tpl) {
+function content_5c1b2e91a671b4_89125292 ($_smarty_tpl) {
 ?>
 <!-- 
 	# 员工基本资料页面
@@ -134,8 +134,8 @@ function content_5c19b6ff2b8863_46875946 ($_smarty_tpl) {
 " />
 							<input type="hidden" name="act" value="editSave" />
 							<div class="clearfix" style="background-color: #fff;">
-								<div class = "formBox formLeft">
-									<div class = "formList">
+								<div class = "formBox w100">
+									<div class = "formList w100 clearfix">
 										<?php
 $_from = $_smarty_tpl->tpl_vars['data']->value;
 if (!is_array($_from) && !is_object($_from)) {
@@ -148,7 +148,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 $_smarty_tpl->tpl_vars['i']->_loop = true;
 $__foreach_data_0_saved_local_item = $_smarty_tpl->tpl_vars['i'];
 ?>
-										<div class = "form mbottom57">
+										<div class = "form mbottom57 w50Fl">
 											<input type="hidden" name="leaveTypeId[]" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['leaveTypeId'];?>
 ">
 											<input type="hidden" name="vacationId[]" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['vacationId'];?>
@@ -163,7 +163,7 @@ $_smarty_tpl->tpl_vars['i'] = $__foreach_data_0_saved_local_item;
 }
 if (!$_smarty_tpl->tpl_vars['i']->_loop) {
 ?>
-										<div class = "form mbottom57">
+										<div class = "form mbottom57 w100Tc">
 											员工假期统一设置，暂无假期需要特殊设置
 										</div>
 										<?php

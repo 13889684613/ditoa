@@ -25,7 +25,7 @@ $(function(){
     var i = 0;
     $('.add').click(function(){
         i++;
-        var html = '<div class="staffFamilyInfo clearfix"><input type="hidden" name="resumeId[]" value="0" /><input type="text"name="beginDate[]" placeholder="开始日期"class="formInput beginDateForm dataInput datepicker'+i+'"autocomplete="off"/><input type="text" name="overDate[]" placeholder="结束日期"class="formInput overDateForm dataInput datepicker'+i+'"autocomplete="off"/><input type="text" name="workUnit[]" placeholder="单位名称"class="formInput workUnitForm"autocomplete="off"/><input type="text" name="postName[]" placeholder="职务"class="formInput postNameForm"autocomplete="off"/><input type="text"name="remark[]"placeholder="备注"class="formInput remarkForm"autocomplete="off"/><img src="public/html/images/input_remove.png"alt=""class="remove"></div>';
+        var html = '<div class="staffFamilyInfo clearfix"><input type="hidden" name="resumeId[]" value="0" /><input type="text"name="beginDate[]" placeholder="开始日期"class="formInput startForm dataInput w150LeftMr12 datepicker'+i+'"autocomplete="off"/><span class="leftLh42DisBlock">至</span><input type="text" name="overDate[]" placeholder="结束日期"class="formInput endForm dataInput w150LeftMl12Mr14 datepicker'+i+'"autocomplete="off"/><input type="text" name="workUnit[]" placeholder="单位名称"class="formInput workUnitForm"autocomplete="off"/><input type="text" name="postName[]" placeholder="职务"class="formInput postNameForm w100LeftMr14"autocomplete="off"/><input type="text"name="remark[]"placeholder="备注"class="formInput remarkForm w200LeftMr14"autocomplete="off"/><img src="public/html/images/input_remove.png"alt=""class="remove"></div>';
         $('.staffFamilyContent').append(html);
         $(".datepicker"+i).datepicker({
             inline: true,
@@ -81,22 +81,22 @@ $(function(){
     var hold = false;
     var regTel = /^1\d{10}$/;
     $('.formBtnSave').click(function() {
-        $('.beginDateForm').each(function() {
-            var inputValue = $(this).val();
-            if(inputValue == '' || inputValue == '请开始日期') {
-                popAlert('请选择开始日期');
-                // $(this).focus();
-                hold = false;
-                return false;
-            }
-        })
-        $('.overDateForm').each(function() {
-            var inputValue = $(this).val();
-            if(inputValue == '' || inputValue == '结束日期') {
-                popAlert('请选择结束日期');
-                // $(this).focus();
-                hold = false;
-                return false;
+        $('.postNameForm').each(function() {
+			var inputValue = $(this).val();
+			if(inputValue == '') {
+				popAlert('请填写职务');
+				$(this).focus();
+				hold = false;
+				return false;
+            }else{
+                if(inputValue.length > 50){
+                    popAlert('职务长度需在50个字符以内');
+                    $(this).focus();
+                    hold = false;
+                    return false;
+                }else {
+                    hold = true;
+                }
             }
         })
         $('.workUnitForm').each(function() {
@@ -114,21 +114,23 @@ $(function(){
                     return false;
                 }
             }
-		})
-		$('.postNameForm').each(function() {
-			var inputValue = $(this).val();
-			if(inputValue == '') {
-				popAlert('请填写职务');
-				$(this).focus();
-				hold = false;
-				return false;
-            }else{
-                if(inputValue.length > 50){
-                    popAlert('职务长度需在50个字符以内');
-                    $(this).focus();
-                    hold = false;
-                    return false;
-                }
+        })
+        $('.endForm').each(function() {
+            var inputValue = $(this).val();
+            if(inputValue == '' || inputValue == '结束日期') {
+                popAlert('请选择结束日期');
+                $('input').blur();
+                hold = false;
+                return false;
+            }
+        })
+        $('.startForm').each(function() {
+            var inputValue = $(this).val();
+            if(inputValue == '' || inputValue == '请开始日期') {
+                popAlert('请选择开始日期');
+                $('input').blur();
+                hold = false;
+                return false;
             }
         })
         
@@ -149,7 +151,8 @@ $(function(){
                         success:function(data){
                             data = $.parseJSON(data);
                             if(data.status == 'success'){
-                                location.href = data.url;
+                                popAlert(data.message,data.url); 
+                                // location.href = data.url;
                             }else{
                                 popAlert(data.message); //弹出错误信息
                             }
@@ -162,7 +165,8 @@ $(function(){
                     success:function(data){
                         data = $.parseJSON(data);
                         if(data.status == 'success'){
-                            location.href = data.url;
+                            popAlert(data.message,data.url); 
+                            // location.href = data.url;
                         }else{
                             popAlert(data.message); //弹出错误信息
                         }

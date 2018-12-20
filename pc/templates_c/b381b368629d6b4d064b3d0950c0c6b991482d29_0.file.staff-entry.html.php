@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-18 15:24:53
+/* Smarty version 3.1.29, created on 2018-12-20 10:53:11
   from "F:\website\ditoaCoder\ditoa\pc\humanAffairs\view\staff-entry.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c18a0c524afc5_63524310',
+  'unifunc' => 'content_5c1b0417dcbd55_33110550',
   'file_dependency' => 
   array (
     'b381b368629d6b4d064b3d0950c0c6b991482d29' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\humanAffairs\\view\\staff-entry.html',
-      1 => 1545117017,
+      1 => 1545274388,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c18a0c524afc5_63524310 ($_smarty_tpl) {
+function content_5c1b0417dcbd55_33110550 ($_smarty_tpl) {
 ?>
 <!-- 
 	# 员工基本资料页面
@@ -153,13 +153,13 @@ function content_5c18a0c524afc5_63524310 ($_smarty_tpl) {
 										<div class = "form mbottom57">
 											<p class = "formTitle">试用期 <span>*</span></p>
 											<input type="text" name = "tryBeginDate" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['tryBeginDate'];?>
-" placeholder = "请选择试用开始日期" class = "formInput tryBeginDateForm dataInput datepicker1" autocomplete="off"/> - <input type="text" name = "tryOverDate" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['tryOverDate'];?>
-" placeholder = "请选择试用结束日期" class = "formInput tryOverDateForm dataInput datepicker2" autocomplete="off"/>
+" placeholder = "请选择试用开始日期" class = "w142 formInput tryBeginDateForm dataInput datepicker1" autocomplete="off"/> - <input type="text" name = "tryOverDate" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['tryOverDate'];?>
+" placeholder = "请选择试用结束日期" class = "w142 formInput tryOverDateForm dataInput datepicker2" autocomplete="off"/>
 										</div>
 										<div class = "form">
 											<p class = "formTitle">试用期工资<span>*</span></p>
 											<input type="text" name = "trySalary" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['trySalary'];?>
-" placeholder = "请输入试用期工资" class = "formInput trySalaryForm" autocomplete="off"/>
+" placeholder = "请输入试用期工资" class = " formInput trySalaryForm" autocomplete="off"/>
 										</div>
 									</div>
 								</div>

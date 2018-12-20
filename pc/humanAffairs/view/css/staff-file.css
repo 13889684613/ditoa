@@ -175,19 +175,19 @@
 
 @media (min-width: 1400px) and (max-width: 1550px) {
     .showFileName{
-        width: 315px;
+        /* width: 315px; */
     }
     .uploadOtherBox .showFileName{
-        width: 251px;
+        width: 230px;
     }
 }
 
 @media (min-width: 1550px) and (max-width: 1920px) {
     .showFileName{
-        width: 490px;
+        width: 400px;
     }
     .uploadOtherBox .showFileName{
-        width: 425px;
+        width: 380px;
     }
 }
 

@@ -48,25 +48,27 @@
 										<div class="retrievalsInputContent">
 											<div class="retrievalsInput">
 												<label>所属企业</label>
-												<input type="text"  unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputQy" placeholder="请选择" name="s_company" value="{{$s_company}}" data-type='0' />
+												<input type="text"  unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputQy" placeholder="请选择" name="s_company" value="" data-type='0' />
 												<div class="retrievalsInputNavBox">
 													<ul class="retrievalsInputNav">
 														<li data-type = "0">请选择</li>
 														{{foreach item=c name=company from=$company}}
 														<li data-type="{{$c.companyId}}">{{$c.cnName}}</li>
 														{{/foreach}}
+														<input type="hidden" class="selectVal" value="{{$s_company}}" autocomplete="off" data-type="1">
 													</ul>
 												</div>
 											</div>
 											<div class="retrievalsInput">
 												<label>离职类型</label>
-												<input type="text"  unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputQy" placeholder="请选择" name="s_category" value="{{$s_category}}" data-type='0' />
+												<input type="text"  unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputQy" placeholder="请选择" name="s_category" value="" data-type='0' />
 												<div class="retrievalsInputNavBox">
 													<ul class="retrievalsInputNav">
 														<li data-type = "0">请选择</li>
 														{{foreach $quitCategory as $key=>$value}}
 														<li data-type="{{$key}}">{{$value}}</li>
 														{{/foreach}}
+														<input type="hidden" class="selectVal" value="{{$s_category}}" autocomplete="off" data-type="1">
 													</ul>
 												</div>
 											</div>
@@ -76,13 +78,14 @@
 										<div class="retrievalsInputContent">
 											<div class="retrievalsInput">
 												<label>所属部门</label>
-												<input type="text" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputBm" placeholder="请选择" name="s_office" value="{{$s_office}}" data-type='0' />
+												<input type="text" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputBm" placeholder="请选择" name="s_office" value="" data-type='0' />
 												<div class="retrievalsInputNavBox">
 													<ul class="retrievalsInputNav">
 														<li data-type = "0">请选择</li>
 														{{foreach item=o name=office from=$office}}
 														<li data-type="{{$o.officeId}}">{{$o.officeName}}</li>
 														{{/foreach}}
+														<input type="hidden" class="selectVal" value="{{$s_office}}" autocomplete="off" data-type="1">
 													</ul>
 												</div>
 											</div>

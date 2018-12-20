@@ -173,10 +173,14 @@ input:-ms-input-placeholder {
 }
 
 .staffManageNav ul li a{
-	font-size: 16px;
+	font-size: 15px;
 }
 
 .apply-step-box {
     margin-bottom: 0;
     padding-top: 26px!important;
+}
+
+.paddingLeft30{
+	padding-left: 30px;
 }

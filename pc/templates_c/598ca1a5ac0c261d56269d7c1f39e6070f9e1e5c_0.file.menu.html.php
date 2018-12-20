@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-19 14:29:20
+/* Smarty version 3.1.29, created on 2018-12-20 09:02:34
   from "F:\website\ditoaCoder\ditoa\pc\public\html\menu.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c19e5405b65c1_87600699',
+  'unifunc' => 'content_5c1aea2a655053_02989562',
   'file_dependency' => 
   array (
     '598ca1a5ac0c261d56269d7c1f39e6070f9e1e5c' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\public\\html\\menu.html',
-      1 => 1545200940,
+      1 => 1545260783,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5c19e5405b65c1_87600699 ($_smarty_tpl) {
+function content_5c1aea2a655053_02989562 ($_smarty_tpl) {
 ?>
 			<div class="contentLeftNav col-lg-2 row">
 				<div class="contentLeftNavListTop col-lg-12">
@@ -76,29 +76,29 @@ function content_5c19e5405b65c1_87600699 ($_smarty_tpl) {
 							</li>
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuHumanAffairs']->value[3] == 1) {?>
-							<li>
-								<a href="">离职员工</a>
+							<li<?php if ($_smarty_tpl->tpl_vars['quitStaffMenu']->value == 1) {?> class="active"<?php }?>>
+								<a href="human-affairs.php?_f=quit-staff">离职员工</a>
 							</li>
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuHumanAffairs']->value[4] == 1) {?>
-							<li>
-								<a href="">转正考核</a>
+							<li<?php if ($_smarty_tpl->tpl_vars['employCheckMenu']->value == 1) {?> class="active"<?php }?>>
+								<a href="human-affairs.php?_f=employ-check">转正考核</a>
 							</li>
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuHumanAffairs']->value[5] == 1) {?>
-							<li>
-								<a href="">转正考核审批</a>
+							<li<?php if ($_smarty_tpl->tpl_vars['employCheckCheckMenu']->value == 1) {?> class="active"<?php }?>>
+								<a href="human-affairs.php?_f=employ-check-check">转正考核审批</a>
 							</li>
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuHumanAffairs']->value[6] == 1) {?>
-							<li>
+							<!-- <li>
 								<a href="">离职申请</a>
-							</li>
+							</li> -->
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuHumanAffairs']->value[7] == 1) {?>
-							<li>
+							<!-- <li>
 								<a href="">离职申请审批</a>
-							</li>
+							</li> -->
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuHumanAffairs']->value[8] == 1) {?>
 							<li<?php if ($_smarty_tpl->tpl_vars['rMenu']->value == 1) {?> class="active"<?php }?>>
@@ -106,14 +106,14 @@ function content_5c19e5405b65c1_87600699 ($_smarty_tpl) {
 							</li>
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuHumanAffairs']->value[9] == 1) {?>
-							<li>
+							<!-- <li>
 								<a href="">邮箱申请</a>
-							</li>
+							</li> -->
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuHumanAffairs']->value[10] == 1) {?>
-							<li>
+							<!-- <li>
 								<a href="">邮箱审批</a>
-							</li>
+							</li> -->
 							<?php }?>
 						</ul>
 					</div>

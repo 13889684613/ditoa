@@ -20,22 +20,77 @@ $(function(){
             }
         })
     })
+
+    // 表单页 -- select选择框
+	$('.staffFamilyContent').delegate('.formSelect','click',function(e){
+		if($(this).hasClass('on')){
+			$(this).parents('.form').find('.formSelectList').hide();
+			$(this).removeClass('on');
+		}else{
+			$('.formSelectList').hide();
+			$('.formSelect').removeClass('on'); 
+			$(this).parents('.staffFamilyInfo').find('.formSelectList').show();
+			$(this).addClass('on');
+		}
+		stopBubble(e);
+	})
+
+	// 表单页 -- select 选择
+	$('.staffFamilyContent').delegate('.formSelectList li','click',function(){
+		var type = $(this).attr('data-type');
+		var txt = $(this).text();
+		if($(this).hasClass('default')){
+			$(this).parents('.staffFamilyInfo').find('.formSelect').removeClass('on').text(txt).css('color','#aaa');
+			$(this).parents('.staffFamilyInfo').find('input[type="hidden"]').val($(this).data('type'));
+			$(this).parents('.formSelectList').hide();
+			return false;
+		}
+		$(this).parents('.staffFamilyInfo').find('.formSelect').removeClass('on').text(txt).css('color','#222');
+		$(this).parents('.staffFamilyInfo').find('input[type="hidden"]').val($(this).data('type'));
+		$(this).parents('.formSelectList').hide();
+	})
+
     
     //添加关系
     var i = 0;
     $('.add').click(function(){
         i++;
-        var html = '<div class="staffFamilyInfo clearfix"><input type="hidden" name="contractId[]" value="0" /><input type="text" name="contractNo[]" placeholder="合同编号"class="formInput contractNoForm"autocomplete="off"/><input type="text"name="beginDate[]" placeholder="开始日期"class="formInput beginDateForm dataInput datepicker'+i+'"autocomplete="off"/><input type="text" name="overDate[]" placeholder="结束日期"class="formInput overDateForm dataInput datepicker'+i+'"autocomplete="off"/><img src="public/html/images/input_remove.png"alt=""class="remove"></div>';
+        var html = '<div class="staffFamilyInfo clearfix"><p class = "formTitle w75H42Mb0Fl">所属企业<span>*</span></p><div class = "formInput formSelect company w250Mr14Fl">请选择所属企业</div><ul class = "formSelectList"><li class = "default">请选择所属企业</li>{{foreach item=c name=companys from=$companys}}<li data-type="{{$c.companyId}}">{{$c.cnName}}</li>{{/foreach}}</ul><input type="hidden" name = "company[]" class = "companyIdForm"/><input type="hidden" name="contractId[]" value="0" /><input type="text" name="contractNo[]" placeholder="合同编号"class="formInput contractNoForm w150Mr14Fl"autocomplete="off"/><input type="text"name="beginDate[]" placeholder="开始日期"class="formInput beginDateForm dataInput w180Mr12Fl datepicker'+i+'"autocomplete="off"/><span class="leftLh42DisBlock">至</span><input type="text" name="overDate[]" placeholder="结束日期"class="formInput overDateForm dataInput w180Mr14Ml12Fl datepicker'+i+'"autocomplete="off"/><img src="public/html/images/input_remove.png"alt=""class="remove"></div>';
         $('.staffFamilyContent').append(html);
-        $(".datepicker"+i).datepicker({
-            inline: true,
-            showOtherMonths: true,
-            selectOtherMonths: true,
-            changeMonth: true,
-            changeYear: true,
-            yearRange: "1950:2050",
-            dateFormat: 'yy-mm-dd'
-        });
+        // $(".datepicker"+i).datepicker({
+        //     inline: true,
+        //     showOtherMonths: true,
+        //     selectOtherMonths: true,
+        //     changeMonth: true,
+        //     changeYear: true,
+        //     yearRange: "1950:2050",
+        //     dateFormat: 'yy-mm-dd'
+        // });
+        $( ".beginDateForm" ).datepicker({
+			inline: true,
+			showOtherMonths: true,
+			selectOtherMonths: true,
+			changeMonth: true,
+			changeYear: true,
+			yearRange: "1950:2050",
+			dateFormat: 'yy-mm-dd',
+			changeMonth: true,
+			onSelect: function( selectedDate ) {
+				$(this).parent().find( ".overDateForm" ).datepicker( "option", "minDate", selectedDate );
+			}
+		});
+		$( ".overDateForm" ).datepicker({
+			inline: true,
+			showOtherMonths: true,
+			selectOtherMonths: true,
+			changeMonth: true,
+			changeYear: true,
+			yearRange: "1950:2050",
+			dateFormat: 'yy-mm-dd',
+			onSelect: function( selectedDate ) {
+				$(this).parent().find( ".beginDateForm" ).datepicker( "option", "maxDate", selectedDate );
+			}
+		});
         $('.familyAge').hide();
         $('.formInput').placeholder();
     })
@@ -81,6 +136,17 @@ $(function(){
     var hold = false;
     var regTel = /^1\d{10}$/;
     $('.formBtnSave').click(function() {
+        $('.overDateForm').each(function() {
+            var inputValue = $(this).val();
+            if(inputValue == '' || inputValue == '结束日期') {
+                popAlert('请选择结束日期');
+                // $(this).focus();
+                hold = false;
+                return false;
+            }else{
+                hold = true;
+            }
+        })
         $('.beginDateForm').each(function() {
             var inputValue = $(this).val();
             if(inputValue == '' || inputValue == '请开始日期') {
@@ -90,18 +156,9 @@ $(function(){
                 return false;
             }
         })
-        $('.overDateForm').each(function() {
-            var inputValue = $(this).val();
-            if(inputValue == '' || inputValue == '结束日期') {
-                popAlert('请选择结束日期');
-                // $(this).focus();
-                hold = false;
-                return false;
-            }
-        })
         $('.company').each(function() {
-			var inputValue = $(this).val();
-			if(inputValue == '') {
+			var inputValue = $(this).text();
+			if(inputValue == '' || inputValue == '请选择所属企业') {
 				popAlert('请选择所属企业');
 				$(this).focus();
 				hold = false;
@@ -126,7 +183,8 @@ $(function(){
                         success:function(data){
                             data = $.parseJSON(data);
                             if(data.status == 'success'){
-                                location.href = data.url;
+                                // location.href = data.url;
+                                popAlert(data.message,data.url);
                             }else{
                                 popAlert(data.message); //弹出错误信息
                             }
@@ -139,7 +197,8 @@ $(function(){
                     success:function(data){
                         data = $.parseJSON(data);
                         if(data.status == 'success'){
-                            location.href = data.url;
+                            popAlert(data.message,data.url);
+                            // location.href = data.url;
                         }else{
                             popAlert(data.message); //弹出错误信息
                         }

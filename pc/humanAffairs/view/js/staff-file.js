@@ -64,53 +64,53 @@ $(function(){
     $('.formBtnSave').click(function() {
         
 
-       // $('.uploadOtherBox').each(function(){
-       //      if($(this).hasClass('holdBox')) {
-       //          if($(this).find('.setUploadFileTitle').val() != '' && $(this).find('.noMust').val() == ''){
-       //              var pop = $(this).find('.setUploadFileTitle').val();
-       //              popAlert('请上传'+pop+'证件文件');
-       //              hold = false;
-       //              return false;
-       //          }else if($(this).find('.setUploadFileTitle').val() == '' && $(this).find('.noMust').val() != ''){
-       //              $(this).find('.setUploadFileTitle').focus();
-       //              popAlert('请输入证件名称');
-       //              hold = false;
-       //              return false;
-       //          }else{
-       //              hold = true;
-       //          }
-       //      }else{
-       //          if($(this).find('.setUploadFileTitle').val() == '' && $(this).find('.noMust').val() == ''){
-       //              $(this).find('.setUploadFileTitle').focus();
-       //              popAlert('请输入证件名称并上传');
-       //              hold = false;
-       //              return false;
-       //          }else if($(this).find('.setUploadFileTitle').val() != '' && $(this).find('.noMust').val() == ''){
-       //              var pop = $(this).find('.setUploadFileTitle').val();
-       //              popAlert('请上传'+pop+'证件文件');
-       //              hold = false;
-       //              return false;
-       //          }else if($(this).find('.setUploadFileTitle').val() == '' && $(this).find('.noMust').val() != ''){
-       //              $(this).find('.setUploadFileTitle').focus();
-       //              popAlert('请输入证件名称');
-       //              hold = false;
-       //              return false;
-       //          }else{
-       //              hold = true;
-       //          }
-       //      }
-       // })
+    //    $('.uploadOtherBox').each(function(){
+    //         if($(this).hasClass('holdBox')) {
+    //             if($(this).find('.setUploadFileTitle').val() != '' && $(this).find('.noMust').val() == ''){
+    //                 var pop = $(this).find('.setUploadFileTitle').val();
+    //                 popAlert('请上传'+pop+'证件文件');
+    //                 hold = false;
+    //                 return false;
+    //             }else if($(this).find('.setUploadFileTitle').val() == '' && $(this).find('.noMust').val() != ''){
+    //                 $(this).find('.setUploadFileTitle').focus();
+    //                 popAlert('请输入证件名称');
+    //                 hold = false;
+    //                 return false;
+    //             }else{
+    //                 hold = true;
+    //             }
+    //         }else{
+    //             if($(this).find('.setUploadFileTitle').val() == '' && $(this).find('.noMust').val() == ''){
+    //                 $(this).find('.setUploadFileTitle').focus();
+    //                 popAlert('请输入证件名称并上传');
+    //                 hold = false;
+    //                 return false;
+    //             }else if($(this).find('.setUploadFileTitle').val() != '' && $(this).find('.noMust').val() == ''){
+    //                 var pop = $(this).find('.setUploadFileTitle').val();
+    //                 popAlert('请上传'+pop+'证件文件');
+    //                 hold = false;
+    //                 return false;
+    //             }else if($(this).find('.setUploadFileTitle').val() == '' && $(this).find('.noMust').val() != ''){
+    //                 $(this).find('.setUploadFileTitle').focus();
+    //                 popAlert('请输入证件名称');
+    //                 hold = false;
+    //                 return false;
+    //             }else{
+    //                 hold = true;
+    //             }
+    //         }
+    //    })
 
-        // $('.inputFile').each(function(){
-        //     if($(this).val() == ''){
-        //         if(!$(this).hasClass('noMust')) {
-        //             var pop = $(this).parents('.uploadBtnBox').find('.uploadBtnTxt').text();
-        //             popAlert('请'+pop);
-        //             hold = false;
-        //             return false;
-        //         }
-        //     }
-        // })
+    //     $('.inputFile').each(function(){
+    //         if($(this).val() == ''){
+    //             if(!$(this).hasClass('noMust')) {
+    //                 var pop = $(this).parents('.uploadBtnBox').find('.uploadBtnTxt').text();
+    //                 popAlert('请'+pop);
+    //                 hold = false;
+    //                 return false;
+    //             }
+    //         }
+    //     })
 
         hold = true;
         if(hold == true){
@@ -130,7 +130,7 @@ $(function(){
                         success:function(data){
                             data = $.parseJSON(data);
                             if(data.status == 'success'){
-                                location.href = data.url;
+                                popAlert(data.message,data.url);
                             }else{
                                 popAlert(data.message); //弹出错误信息
                             }
@@ -143,51 +143,16 @@ $(function(){
                     success:function(data){
                         data = $.parseJSON(data);
                         if(data.status == 'success'){
-                            location.href = data.url;
+                            popAlert(data.message,data.url);
+                            // location.href = data.url;
                         }else{
                             popAlert(data.message); //弹出错误信息
                         }
                     }
                 })
             }
-        }
-       
-       
-    //    popAlert('上传成功！');
+        }  
     })
-
-    //创建fileLoad方法用来上传文件
-    // function fileLoad(ele){
-    //     //创建一个formData对象
-    //     var formData = new formData();
-    //     //获取传入元素的val
-    //     var name = $(ele).val();
-    //     //获取files
-    //     var files = $(ele)[0].files[0];
-    //     //将name 和 files 添加到formData中，键值对形式
-    //     formData.append("file", files);
-    //     formData.append("name", name);
-    //     $.ajax({
-    //         url: "",
-    //         type: 'POST',
-    //         data: formData,
-    //         processData: false,// 告诉jQuery不要去处理发送的数据
-    //         contentType: false, // 告诉jQuery不要去设置Content-Type请求头
-    //         beforeSend: function () {
-    //             //发送之前的动作
-    //             alert("我还没开始发送呢");
-    //         },
-    //         success: function (responseStr) {
-    //             //成功后的动作
-    //             alert("成功啦");
-    //         }
-    //         ,
-    //         error : function (responseStr) {
-    //             //出错后的动作
-    //             alert("出错啦");
-    //         }
-    //     });
-    // }
 })
 
 

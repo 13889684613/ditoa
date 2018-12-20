@@ -14,15 +14,13 @@
 	$s_company = getVal('s_company',1,'');
 	$s_office = getVal('s_office',1,'');
 	$s_name = getVal('s_name',2,'');
+	$track = '&page='.$page.'&s_company='.$s_company.'&s_office='.$s_office.'&s_name='.$s_name.'';
 	//记录列表页检索条件over
 
 	//获取值 begin
 	$staffId = getVal('s',1,'');			//被考核员工id
 	if($staffId == 0){
-		$data['status'] = 'fail';
-		$data['message'] = '参数缺失！';
-		$returnJson = json_encode($data);
-		echo $returnJson; exit;	
+		ErrorResturn('参数缺失！');
 	}
 
 	$appraiseId = getVal('id',1,'');		//考核记录id
@@ -79,7 +77,7 @@
 		$checkRoleId = $U['checkRoleId'];
 		$data['office'] = getOfficeName($officeId);
 		$data['group'] = getGroupName($groupId);
-		$data['photo'] = 'upload/images/straff/head/'.$U['photo'];
+		$data['photo'] = 'upload/images/staff/head/'.$U['photo'];
 		$data['try'] = $U['tryBeginDate'].'至'.$U['tryOverDate'];
 	}
 
@@ -276,5 +274,6 @@
 	$smarty->assign('id',$appraiseId);
 	$smarty->assign('page',$page);
 	$smarty->assign('s',$staffId);
+	$smarty->assign('track',$track);
 
 ?>

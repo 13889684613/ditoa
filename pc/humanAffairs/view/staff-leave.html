@@ -81,17 +81,17 @@
 							<input type="hidden" name="id" value="{{$id}}" />
 							<input type="hidden" name="act" value="editSave" />
 							<div class="clearfix" style="background-color: #fff;">
-								<div class = "formBox formLeft">
-									<div class = "formList">
+								<div class = "formBox w100">
+									<div class = "formList w100 clearfix">
 										{{foreach item=i name=data from=$data}}
-										<div class = "form mbottom57">
+										<div class = "form mbottom57 w50Fl">
 											<input type="hidden" name="leaveTypeId[]" value="{{$i.leaveTypeId}}">
 											<input type="hidden" name="vacationId[]" value="{{$i.vacationId}}">
 											<p class = "formTitle">{{$i.typeName}}（天）<span>*</span></p>
 											<input type="text" name = "dayNumber[]" value="{{$i.dayNumber}}" placeholder = "请填写假期天数" class = "formInput" autocomplete="off"/>
 										</div>
 										{{foreachelse}}
-										<div class = "form mbottom57">
+										<div class = "form mbottom57 w100Tc">
 											员工假期统一设置，暂无假期需要特殊设置
 										</div>
 										{{/foreach}}

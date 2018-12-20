@@ -136,6 +136,13 @@
 		global $db;
 		$checkLevel = 0; $cusor = 0;  //20181213 add
 
+		//获取审批业务当前审批级别begin
+		$applyId = $applyInfo[3];
+		$T = static_checkTable($bussinessType);
+		$cur = $db->get_one($T[2],'where '.$T[1].' = '.$applyId.'','curCheckLevel');
+		$curCheckLevel = $cur['curCheckLevel'] - 1; //db中存储的为下一级审批级别,查询当前的需要减去1
+		//获取审批业务当前审批级别over
+
 		//获取发起信息 begin
 		$beginRole = getCheckRoleName($applyInfo[0]);
 		$beginStaff = $applyInfo[1];
@@ -144,6 +151,11 @@
 		$processs[$cusor]['staff'] = $beginStaff;
 		$processs[$cusor]['result'] = '发起';
 		$processs[$cusor]['time'] = $beginTime;
+		$processs[$cusor]['circleClass'] = 'circleFinished ';
+		// if($curCheckLevel == 0 && $bussinessType!=10){
+		// 	$processs[$cusor]['circleClass'] = 'circleActive ';
+		// }
+		$processs[$cusor]['fontColor'] = ' color5783f1';
 		//获取发起信息 over
 
 		//转正考核者信息 begin
@@ -153,6 +165,11 @@
 			$processs[$cusor]['staff'] = $applyInfo[4];	//考核者姓名
 			$processs[$cusor]['result'] = '已考核';	
 			$processs[$cusor]['time'] = $applyInfo[6];	//考核时间
+			$processs[$cusor]['circleClass'] = 'circleFinished ';
+			$processs[$cusor]['fontColor'] = ' color5783f1';
+			// if($curCheckLevel == 0){
+			// 	$processs[$cusor]['circleClass'] = 'circleActive ';
+			// }
 		}
 		//转正考核者信息 over
 
@@ -165,6 +182,10 @@
 				$custom = $db->get_all(PRFIX.'checkprocess_detail','where checkProcessId='.$process['checkProcessId'].' order by checkLevel asc','checkLevel,roleId,officeId,groupId');
 				for($c=0;$c<count($custom);$c++){
 					$p = $cusor+1;	//20181213 update
+
+					$processs[$p]['circleClass'] = 'circleNormal ';
+					$processs[$p]['fontColor'] = '';
+
 					$processs[$p]['role'] = getCheckRoleName($custom[$c]['roleId']);				//审批角色
 					
 					//获得审批人员、结果、时间
@@ -176,6 +197,18 @@
 					$processs[$p]['staff'] = $result[0];
 					$processs[$p]['result'] = $result[1];
 					$processs[$p]['time'] = $result[2];
+					$processs[$p]['status'] = $result[3];	//转正审批流程用	20181213 add
+					$processs[$p]['level'] = $custom[$c]['checkLevel'];
+					if($result[1]!=''){
+						$processs[$p]['circleClass'] = 'circleFinished ';
+						$processs[$p]['fontColor'] = ' color5783f1';
+					}
+
+					//当前审批级别改变圆的样式
+					// if($custom[$c]['checkLevel'] == $curCheckLevel){
+					// 	$processs[$p]['circleClass'] = 'circleActive ';
+					// }
+
 					++ $cusor;	//20181213 add
 				}
 			}
@@ -191,6 +224,8 @@
 				$default = $db->get_all(PRFIX.'default_checkprocess_detail','where checkProcessId='.$process['defaultCheckProcessId'].' order by checkLevel asc','checkLevel,roleId');
 				for($c=0;$c<count($default);$c++){
 					$p = $cusor+1;	//20181213 update
+					$processs[$p]['circleClass'] = 'circleNormal ';
+					$processs[$p]['fontColor'] = '';
 					//审批角色
 					$processs[$p]['role'] = getCheckRoleName($default[$c]['roleId']);
 
@@ -204,14 +239,23 @@
 					$processs[$p]['result'] = $result[1];
 					$processs[$p]['time'] = $result[2];
 					$processs[$p]['status'] = $result[3];	//转正审批流程用	20181213 add
+					$processs[$p]['level'] = $default[$c]['checkLevel'];
+					if($result[1]!=''){
+						$processs[$p]['circleClass'] = 'circleFinished ';
+						$processs[$p]['fontColor'] = ' color5783f1';
+					}
+					//当前审批级别改变圆的样式
+					// if($default[$c]['checkLevel'] == $curCheckLevel){
+					// 	$processs[$p]['circleClass'] = 'circleActive ';
+					// }
 					++ $cusor; //20181213 add
 				}
 
 			}
 		}
 
-		$val[0] = $checkLevel;
-		$val[1] = $processs;
+		$val[0] = $checkLevel;		//审批总级别
+		$val[1] = $processs;		//审批进度详情	
 
 		return $val;
 
@@ -239,7 +283,7 @@
 			$staffName = getStaffName($ci['checkUsr']);			//审批人员
 			$status = $ci['checkResult'];						//审批结果状态，转正审批流程会用到	20181213 add
 			$result = static_checkResult($ci['checkResult']);	//审批结果
-			$time = $ci['checkTime'];							//审批时间 
+			$time = $ci['checkTime'];							//审批时间
 		}else{
 			//审批人员
 			$swhere = 'where checkRoleId='.$roleId.'';
@@ -275,17 +319,39 @@
 		$tableName = $TF[0];
 		$fieldName = $TF[1];
 
-		$check = $db->get_all($tableName,'where '.$fieldName.'='.$applyId.'','checkLevel,checkUsr,checkRole,checkResult,remark,checkTime');
+		$check = $db->get_all($tableName,'where '.$fieldName.'='.$applyId.'','checkId,checkLevel,checkUsr,checkRole,checkResult,remark,checkTime');
 		for($e=0;$e<count($check);$e++){
 			$check[$e]['role'] = getCheckRoleName($check[$e]['checkRole']);
 			//20181213 udpate
 			if($category == 10){
 				//转正审批流程特殊处理
+
+				$turn = $db->get_one(PRFIX.'staff_appraise_check','where checkId='.$check[$e]['checkId'].'','remark,beginDate,overDate,quitDate');
+
 				$check[$e]['result'] = '已审批';
-				$check[$e]['remark'] = static_staffCheck($check[$e]['checkResult']);
+				switch ($check[$e]['checkResult']) {
+					case 1:
+						$checkResult = '<span class="nothing">延长试用期</span>';
+						$checkResult .= '（'.$turn['beginDate'].'至'.$turn['overDate'].'）';
+						break;
+					case 2:
+						$checkResult = '<span class="agree">正式录用</span>';
+						if($turn['remark']!=''){
+							$checkResult .= '（' . $turn['remark'] . '）';
+						}
+						break;
+					case 3:
+						$checkResult = '<span class="refuse">不再录用</span>';
+						$checkResult .= '（离职日期：'.$turn['quitDate'].'）';
+						break;
+				}
+				$check[$e]['remark'] = $checkResult;
 			}else{
 				//其它审批流程
 				$check[$e]['result'] = static_checkResult($check[$e]['checkResult']);
+				if($check[$e]['remark']!=''){
+					$check[$e]['result'] = $check[$e]['result'].'('.$check[$e]['remark'].')';
+				}
 			}
 			$check[$e]['checkUsr'] = getStaffName($check[$e]['checkUsr']);
 		}

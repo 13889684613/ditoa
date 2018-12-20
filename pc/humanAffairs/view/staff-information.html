@@ -5,343 +5,352 @@
 -->
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
-	<meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
-	<title>{{$pageTitle}}</title>
-	<link rel="stylesheet" href="public/html/css/oa.base.css" />
-	<link rel="stylesheet" href="public/html/css/oa.bootstrap.min.css" />
-	<link rel="stylesheet" href="public/html/css/plugin/jquery.mCustomScrollbar.min.css">
-	<link rel="stylesheet" href="public/html/css/oa.common.css" />
-	<link rel="stylesheet" href="public/html/css/oa.jquery-ui.min.css" />
-	<link rel="stylesheet" href="public/html/css/oa.jquery.multiselect.css" />
-	<link rel="stylesheet" href="humanAffairs/view/css/staff-information.css" />
-</head>
-<body>
 
-	<!--头部 begin-->
-	{{include file='public/html/head.html'}}
-	<!--头部 end-->
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+		<title>{{$pageTitle}}</title>
+		<link rel="stylesheet" href="public/html/css/oa.base.css" />
+		<link rel="stylesheet" href="public/html/css/oa.bootstrap.min.css" />
+		<link rel="stylesheet" href="public/html/css/plugin/jquery.mCustomScrollbar.min.css">
+		<link rel="stylesheet" href="public/html/css/oa.common.css" />
+		<link rel="stylesheet" href="public/html/css/oa.jquery-ui.min.css" />
+		<link rel="stylesheet" href="public/html/css/oa.jquery.multiselect.css" />
+		<link rel="stylesheet" href="humanAffairs/view/css/staff-information.css" />
+	</head>
 
-	<!--内容 begin-->
-	<div class="container-fluid row">
-		<!--内容区左侧导航 begin-->
-		{{include file='public/html/menu.html'}}
-		<!--内容区左侧导航end-->
-		<!--内容区右侧begin-->
-		<div class="contentRight col-lg-10 row">
-			<!--内容区导航begin-->
-			<div class="contentRightNav clearfix">
-				<div class="contentRightNavLeft pull-left">
-					<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="？_f=staff{{$track}}">员工管理</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">员工基本资料</span></div>
-					<div class="contentRightNavBottom"><span class="name">员工基本资料</span></div>
-				</div>
-			</div>
-			<!--内容区导航end-->
-			<!--内容区begin-->
-			<div class="contentRightBox">
-				<!-- 内容区 开始 -->
-				<div class = "rightContent">
-					<div class = "staffManageNav">
-						<ul class = "clearfix">
-							<li class = "active"><a href="human-affairs.php?_f=staff-information{{$track}}">员工基本资料</a></li>
-							{{if $id!=0}}
-							<li><a href="human-affairs.php?_f=staff-entry{{$track}}">入职信息</a></li>
-							<li><a href="human-affairs.php?_f=staff-family{{$track}}">家庭主要成员</a></li>
-							<li class = "width12"><a href="human-affairs.php?_f=staff-education{{$track}}">教育与工作经历</a></li>
-							<li><a href="human-affairs.php?_f=staff-welfare{{$track}}">社保与公积金</a></li>
-							<li><a href="human-affairs.php?_f=staff-file{{$track}}">资料上传</a></li>
-							<li><a href="human-affairs.php?_f=staff-quit{{$track}}">离职信息</a></li>
-							{{if $otherPower[1] == 1}}
-							<li><a href="human-affairs.php?_f=staff-contract{{$track}}">合同信息</a></li>
-							{{/if}}
-							{{if $otherPower[2] == 1}}
-							<li><a href="human-affairs.php?_f=staff-account{{$track}}">账号设置</a></li>
-							{{/if}}
-							{{if $otherPower[3] == 1}}
-							<li><a href="human-affairs.php?_f=staff-leave{{$track}}">假期设置</a></li>		
-							{{/if}}		
-							{{if $otherPower[4] == 1}}
-							<li><a href="human-affairs.php?_f=staff-edit-log{{$track}}">编辑记录</a></li>
-							{{/if}}
-							{{/if}}
-						</ul>
+	<body>
+
+		<!--头部 begin-->
+		{{include file='public/html/head.html'}}
+		<!--头部 end-->
+
+		<!--内容 begin-->
+		<div class="container-fluid row">
+			<!--内容区左侧导航 begin-->
+			{{include file='public/html/menu.html'}}
+			<!--内容区左侧导航end-->
+			<!--内容区右侧begin-->
+			<div class="contentRight col-lg-10 row">
+				<!--内容区导航begin-->
+				<div class="contentRightNav clearfix">
+					<div class="contentRightNavLeft pull-left">
+						<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="？_f=staff{{$track}}">员工管理</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">员工基本资料</span></div>
+						<div class="contentRightNavBottom"><span class="name">员工基本资料</span></div>
 					</div>
-					<div class = "staffInfoForm clearfix" style="background-color: #f6f6fa;padding-bottom: 0;">
-						<form id="staffForm" method="post">
-							<input type="hidden" name="page" value="{{$page}}" />
-							<input type="hidden" name="s_company" value="{{$s_company}}" />
-							<input type="hidden" name="s_office" value="{{$s_office}}" />
-							<input type="hidden" name="s_role" value="{{$s_role}}" />
-							<input type="hidden" name="s_post" value="{{$s_post}}" />
-							<input type="hidden" name="s_status" value="{{$s_status}}" />
-							<input type="hidden" name="s_begintime" value="{{$s_begintime}}" />
-							<input type="hidden" name="s_overtime" value="{{$s_overtime}}" />
-							<input type="hidden" name="s_name" value="{{$s_name}}" />
-							<input type="hidden" name="s_idno" value="{{$s_idno}}" />
-							<input type="hidden" name="id" value="{{$id}}" />
-							<input type="hidden" name="act" value="{{$action}}" />
-							<div class="clearfix" style="background-color: #fff;">
-								<div class = "formBox formLeft">
-									<div class = "formList">
-										<div class = "form mbottom57">
-											<p class = "formTitle">所属企业<span>*</span></p>
-											<div class = "formInput formSelect">请选择所属企业</div>
-											<ul class = "formSelectList">
-												<li class = "default">请选择所属企业</li>
-												{{foreach item=c name=companys from=$companys}}
-												<li data-type="{{$c.companyId}}">{{$c.cnName}}</li>
-												{{/foreach}}
-											</ul>
-											<input type="hidden" name = "company" value="{{$i.companyId}}" class = "companyIdForm"/>
-										</div>
-										<div class = "form">
-											<p class = "formTitle">小组<span>*</span></p>
-											<div class = "formInput formSelect">请选择所属小组</div>
-											<ul class = "formSelectList">
-												<li class = "default">请选择所属小组</li>
-												{{foreach item=g name=groups from=$groups}}
-												<li data-type="{{$g.groupId}}">{{$g.groupName}}</li>
-												{{/foreach}}
-											</ul>
-											<input type="hidden" name = "group" value="{{$i.groupId}}" class = "groupIdForm"/>
-										</div>
-										<div class = "form">
-											<p class = "formTitle">真实姓名<span>*</span></p>
-											<input type="text" name = "staffName" value="{{$i.staffName}}" placeholder = "请输入员工真实姓名" class = "formInput nameForm" autocomplete="off"/>
-										</div>
-										<div class = "form">
-											<p class = "formTitle">身份证号<span>*</span></p>
-											<input type="text" name = "idNumber"  value="{{$i.idNumber}}" placeholder = "请输入身份证号" class = "formInput idForm" autocomplete="off"/>
-										</div>
-										<div class = "form">
-											<p class = "formTitle">联系地址<span>*</span></p>
-											<input type="text" name = "address" value="{{$i.address}}" placeholder = "请输入联系地址" class = "formInput addressForm" autocomplete="off"/>
-										</div>
-										<div class = "form">
-											<p class = "formTitle">邮箱地址</p>
-											<input type="text" name = "email" value="{{$i.email}}" placeholder = "请输入邮箱地址" class = "formInput emailForm" autocomplete="off"/>
-										</div>
-										<div class = "form">
-											<p class = "formTitle">毕业专业<span>*</span></p>
-											<input type="text" name = "major" value="{{$i.major}}" placeholder = "请输入毕业专业" class = "formInput majorForm" autocomplete="off"/>
-										</div>
-
-										<div class = "form">
-											<p class = "formTitle">身高</p>
-											<input type="text" name = "height" value="{{$i.height}}" placeholder = "请输入身高" class = "formInput heightForm" autocomplete="off"/>
-										</div>
-
-										<div class = "form">
-											<p class = "formTitle">民族</p>
-											<input type="text" name = "nation" value="{{$i.nation}}" placeholder = "请输入民族" class = "formInput nationForm" autocomplete="off"/>
-										</div>
-
-										<div class = "form">
-											<p class = "formTitle">中国银行卡号</p>
-											<input type="text" name = "cnBankAccount" value="{{$i.cnBankAccount}}" placeholder = "请输入中国银行卡号" class = "formInput cnBankAccountForm" autocomplete="off"/>
-										</div>
-										
-										<div class = "form">
-											<p class = "formTitle">备注</p>
-											<textarea name="remark" placeholder="请输入" class = "formInput remarkInput">{{$i.remark}}</textarea>
+				</div>
+				<!--内容区导航end-->
+				<!--内容区begin-->
+				<div class="contentRightBox">
+					<!-- 内容区 开始 -->
+					<div class="rightContent">
+						<div class="staffManageNav">
+							<ul class="clearfix">
+								<li class="active">
+									<a href="human-affairs.php?_f=staff-information{{$track}}">员工基本资料</a>
+								</li>
+								{{if $id!=0}}
+								<li>
+									<a href="human-affairs.php?_f=staff-entry{{$track}}">入职信息</a>
+								</li>
+								<li>
+									<a href="human-affairs.php?_f=staff-family{{$track}}">家庭主要成员</a>
+								</li>
+								<li class="width12">
+									<a href="human-affairs.php?_f=staff-education{{$track}}">教育与工作经历</a>
+								</li>
+								<li>
+									<a href="human-affairs.php?_f=staff-welfare{{$track}}">社保与公积金</a>
+								</li>
+								<li>
+									<a href="human-affairs.php?_f=staff-file{{$track}}">资料上传</a>
+								</li>
+								<li>
+									<a href="human-affairs.php?_f=staff-quit{{$track}}">离职信息</a>
+								</li>
+								{{if $otherPower[1] == 1}}
+								<li>
+									<a href="human-affairs.php?_f=staff-contract{{$track}}">合同信息</a>
+								</li>
+								{{/if}} {{if $otherPower[2] == 1}}
+								<li>
+									<a href="human-affairs.php?_f=staff-account{{$track}}">账号设置</a>
+								</li>
+								{{/if}} {{if $otherPower[3] == 1}}
+								<li>
+									<a href="human-affairs.php?_f=staff-leave{{$track}}">假期设置</a>
+								</li>
+								{{/if}} {{if $otherPower[4] == 1}}
+								<li>
+									<a href="human-affairs.php?_f=staff-edit-log{{$track}}">编辑记录</a>
+								</li>
+								{{/if}} {{/if}}
+							</ul>
+						</div>
+						<form id="staffForm" method="post"></form>
+							<div class="staffInfoForm clearfix" style="background-color: #f6f6fa;padding-bottom: 0;">
+								<input type="hidden" name="page" value="{{$page}}" />
+								<input type="hidden" name="s_company" value="{{$s_company}}" />
+								<input type="hidden" name="s_office" value="{{$s_office}}" />
+								<input type="hidden" name="s_role" value="{{$s_role}}" />
+								<input type="hidden" name="s_post" value="{{$s_post}}" />
+								<input type="hidden" name="s_status" value="{{$s_status}}" />
+								<input type="hidden" name="s_begintime" value="{{$s_begintime}}" />
+								<input type="hidden" name="s_overtime" value="{{$s_overtime}}" />
+								<input type="hidden" name="s_name" value="{{$s_name}}" />
+								<input type="hidden" name="s_idno" value="{{$s_idno}}" />
+								<input type="hidden" name="id" value="{{$id}}" />
+								<input type="hidden" name="act" value="{{$action}}" />
+								<div class="clearfix" style="background-color: #fff;">
+									<div class="formBox formLeft">
+										<div class="formList">
+											<div class="form mbottom57">
+												<p class="formTitle">所属企业<span>*</span></p>
+												<div class="formInput formSelect">请选择所属企业</div>
+												<ul class="formSelectList">
+													<li class="default">请选择所属企业</li>
+													{{foreach item=c name=companys from=$companys}}
+													<li data-type="{{$c.companyId}}">{{$c.cnName}}</li>
+													{{/foreach}}
+												</ul>
+												<input type="hidden" name="company" value="{{$i.companyId}}" class="companyIdForm" />
+											</div>
+											<div class="form">
+												<p class="formTitle">小组<span>*</span></p>
+												<div class="formInput formSelect">请选择所属小组</div>
+												<ul class="formSelectList formSelectListSelect2">
+													<li class="default">请选择所属小组</li>
+													{{foreach item=g name=groups from=$groups}}
+													<li class="li" data-type="{{$g.groupId}}">{{$g.groupName}}</li>
+													{{/foreach}}
+												</ul>
+												<input type="hidden" name="group" value="{{$i.groupId}}" class="groupIdForm" />
+											</div>
+											<div class="form">
+												<p class="formTitle">真实姓名<span>*</span></p>
+												<input type="text" name="staffName" value="{{$i.staffName}}" placeholder="请输入员工真实姓名" class="formInput nameForm" autocomplete="off" />
+											</div>
+											<div class="form">
+												<p class="formTitle">身份证号<span>*</span></p>
+												<input type="text" name="idNumber" value="{{$i.idNumber}}" placeholder="请输入身份证号" class="formInput idForm" autocomplete="off" />
+											</div>
+											<div class="form">
+												<p class="formTitle">联系地址<span>*</span></p>
+												<input type="text" name="address" value="{{$i.address}}" placeholder="请输入联系地址" class="formInput addressForm" autocomplete="off" />
+											</div>
+											<div class="form">
+												<p class="formTitle">邮箱地址</p>
+												<input type="text" name="email" value="{{$i.email}}" placeholder="请输入邮箱地址" class="formInput emailForm" autocomplete="off" />
+											</div>
+											<div class="form">
+												<p class="formTitle">毕业专业<span>*</span></p>
+												<input type="text" name="major" value="{{$i.major}}" placeholder="请输入毕业专业" class="formInput majorForm" autocomplete="off" />
+											</div>
+											<div class="form">
+												<p class="formTitle">身高</p>
+												<input type="text" name="height" value="{{$i.height}}" placeholder="请输入身高" class="formInput heightForm" autocomplete="off" />
+											</div>
+											<div class="form">
+												<p class="formTitle">民族</p>
+												<input type="text" name="nation" value="{{$i.nation}}" placeholder="请输入民族" class="formInput nationForm" autocomplete="off" />
+											</div>
+											<div class="form">
+												<p class="formTitle">中国银行卡号</p>
+												<input type="text" name="cnBankAccount" value="{{$i.cnBankAccount}}" placeholder="请输入中国银行卡号" class="formInput cnBankAccountForm" autocomplete="off" />
+											</div>
+											<div class="form">
+												<p class="formTitle">备注</p>
+												<textarea name="remark" placeholder="请输入" class="formInput remarkInput">{{$i.remark}}</textarea>
+											</div>
 										</div>
 									</div>
-								</div>
-								<div class = "formBox formCenter">
-									<div class = "formList">
-										<div class = "form mbottom57">
-											<p class = "formTitle">部门名称<span>*</span></p>
-											<div class = "formInput formSelect">请选择部门名称</div>
-											<ul class = "formSelectList">
-												<li class = "default">请选择部门名称</li>
-												{{foreach item=o name=offices from=$offices}}
-												<li data-type="{{$o.officeId}}">{{$o.officeName}}</li>
-												{{/foreach}}
-											</ul>
-											<input type="hidden" name = "office" value="{{$i.officeId}}" class = "officeIdForm"/>
-										</div>
-										<div class = "form">
-											<p class = "formTitle">职务<span>*</span></p>
-											<div class = "formInput formSelect">请选择职务</div>
-											<ul class = "formSelectList">
-												<li class = "default">请选择职务</li>
-												{{foreach item=p name=posts from=$posts}}
-												<li data-type="{{$p.postId}}">{{$p.postName}}</li>
-												{{/foreach}}
-											</ul>
-											<input type="hidden" name = "post" value="{{$i.postId}}" class = "sysRoleIdForm"/>
-										</div>
-										<div class = "form">
-											<p class = "formTitle">性别<span>*</span></p>
-											<div class = "checkBox clearfix">
-												{{foreach $sex as $key=>$value}}
-												<div data-type="{{$key}}" class = "checkBtn mRight50{{if $i.sex==$key}} on{{/if}}">{{$value}}</div>
-												{{/foreach}}
+									<div class="formBox formCenter">
+										<div class="formList">
+											<div class="form mbottom57">
+												<p class="formTitle">部门名称<span>*</span></p>
+												<div class="formInput formSelect">请选择部门名称</div>
+												<ul class="formSelectList formSelectListSelect1">
+													<li class="default">请选择部门名称</li>
+													{{foreach item=o name=offices from=$offices}}
+													<li data-type="{{$o.officeId}}">{{$o.officeName}}</li>
+													{{/foreach}}
+												</ul>
+												<input type="hidden" name="office" value="{{$i.officeId}}" class="officeIdForm" />
 											</div>
-											<input type="hidden" name = "sex" value="{{$i.sex}}" class = "formInput sexForm"/>
-										</div>
-										<div class = "form">
-											<p class = "formTitle">出生日期<span>*</span></p>
-											<input type="text" name = "birthDate" value="{{$i.birthDate}}" placeholder = "请选择出生日期" class="formInput birthDateForm dataInput datepicker" autocomplete="off"/>
-										</div>
-										<div class = "form">
-											<p class = "formTitle">毕业学校<span>*</span></p>
-											<input type="text" name = "school" value="{{$i.school}}" placeholder = "请输入毕业学校" class = "formInput schoolForm" autocomplete="off"/>
-										</div>
-										<div class = "form">
-											<p class = "formTitle">学历<span>*</span></p>
-											<div class = "formInput formSelect">请选择学历</div>
-											<ul class = "formSelectList">
-												<li class = "default">请选择学历</li>
-												{{foreach $educations as $key=>$value}}
-												<li data-type="{{$key}}">{{$value}}</li>
-												{{/foreach}}
-											</ul>
-											<input type="hidden" name = "education" value="{{$i.education}}" class = "educationForm"/>
-										</div>
-										<div class = "form">
-											<p class = "formTitle">政治面貌</p>
-											<div class = "formInput formSelect">请选择政治面貌</div>
-											<ul class = "formSelectList">
-												<li class = "default">请选择政治面貌</li>
-												{{foreach $politicals as $key=>$value}}
-												<li data-type="{{$key}}">{{$value}}</li>
-												{{/foreach}}
-											</ul>
-											<input type="hidden" name = "politicalType" value="{{$i.politicalType}}" />
-										</div>
-
-										<div class = "form">
-											<p class = "formTitle">体重</p>
-											<input type="text" name = "weight" value="{{$i.weight}}" placeholder = "请输入体重" class = "formInput weightForm" autocomplete="off"/>
-										</div>
-
-										<div class = "form">
-											<p class = "formTitle">婚姻状况</p>
-											<div class = "checkBox clearfix">
-												{{foreach $maritals as $key=>$value}}
-												<div data-type="{{$key}}" class = "checkBtn mRight30{{if $i.maritalStatus==$key}} on{{/if}}">{{$value}}</div>
-												{{/foreach}}
+											<div class="form">
+												<p class="formTitle">职务<span>*</span></p>
+												<div class="formInput formSelect">请选择职务</div>
+												<ul class="formSelectList">
+													<li class="default">请选择职务</li>
+													{{foreach item=p name=posts from=$posts}}
+													<li data-type="{{$p.postId}}">{{$p.postName}}</li>
+													{{/foreach}}
+												</ul>
+												<input type="hidden" name="post" value="{{$i.postId}}" class="sysRoleIdForm" />
 											</div>
-											<input type="hidden" name = "marital" value="{{$i.maritalStatus}}" class = "formInput maritalStatusForm"/>
-										</div>
-
-										<div class = "form">
-											<p class = "formTitle">原单位解除合同日</p>
-											<input type="text" name = "quitDate" value="{{$i.quitDate}}" placeholder = "请选择原单位解除合同日" class = "formInput quitDateForm dataInput datepicker2" autocomplete="off"/>
-										</div>
-
-										<div class = "form">
-											<p class = "formTitle">背景调查</p>
-											<textarea name="background" placeholder="请输入" class = "formInput backgroundInput">{{$i.background}}</textarea>
-										</div>
-									</div>
-								</div>
-								<div class = "formBox formRight">
-									<div class = "formList">
-										<div class = "form upload">
-											{{if $i.photo!=''}}
-											<img class="addImg" onclick="clickImg(this);" src="upload/images/staff/head/{{$i.photo}}" />
-											{{else}}
-											<img class="addImg" onclick="clickImg(this);" src="humanAffairs/view/images/upload_bg.jpg" />
-											{{/if}}
-											<input name="upload_photo" type="file" class="upload_input" onchange="change(this)"/>
-											<div class="preBlock">
-												<img class="preview" id="preview" alt="" name="photo" width="190" height="190" />
+											<div class="form">
+												<p class="formTitle">性别<span>*</span></p>
+												<div class="checkBox clearfix">
+													{{foreach $sex as $key=>$value}}
+													<div data-type="{{$key}}" class="checkBtn mRight50{{if $i.sex==$key}} on{{/if}}">{{$value}}</div>
+													{{/foreach}}
+												</div>
+												<input type="hidden" name="sex" value="{{$i.sex}}" class="formInput sexForm" />
 											</div>
-											<img class="delete" onclick="deleteImg(this)" src="humanAffairs/view/images/delete.png"/>
-										</div>
-										<div class = "form">
-											<p class = "formTitle">手机号<span>*</span></p>
-											<input type="text" name = "tel" value="{{$i.tel}}" placeholder = "请输入手机号" class = "formInput telForm" autocomplete="off"/>
-										</div>
-										<div class = "form">
-											<p class = "formTitle">座机 - 分机号</p>
-											<div class = "formLandlineBox clearfix">
-												<input type="text" placeholder = "座机" name="phone" value="{{$i.phone}}" class = "formInput landLineInput" autocomplete="off"/>
-												<span>--</span>
-												<input type="text" name = "extensionNumber" value="{{$i.extensionNumber}}" placeholder = "分机号" class = "formInput extensionNumInput" autocomplete="off"/>
+											<div class="form">
+												<p class="formTitle">出生日期<span>*</span></p>
+												<input type="text" name="birthDate" value="{{$i.birthDate}}" placeholder="请选择出生日期" class="formInput birthDateForm dataInput datepicker" autocomplete="off" />
 											</div>
-										</div>
-										<div class = "form">
-											<p class = "formTitle">农历</p>
-											<div class = "formInput formSelect">请选择月份</div>
-											<ul class = "formSelectList">
-												<li class = "default">请选择月份</li>
-												{{foreach $lunarMonths as $key=>$value}}
-												<li data-type="{{$key}}">{{$value}}</li>
-												{{/foreach}}
-											</ul>
-											<input type="hidden" name = "lunarMonth" value="{{$i.lunarMonth}}" class = "lunarMonthForm"/>
-											<div class = "formInput formSelect">请选择日期</div>
-												<ul class = "formSelectList">
-													<li class = "default">请选择日期</li>
-													{{foreach $lunarDays as $key=>$value}}
+											<div class="form">
+												<p class="formTitle">毕业学校<span>*</span></p>
+												<input type="text" name="school" value="{{$i.school}}" placeholder="请输入毕业学校" class="formInput schoolForm" autocomplete="off" />
+											</div>
+											<div class="form">
+												<p class="formTitle">学历<span>*</span></p>
+												<div class="formInput formSelect">请选择学历</div>
+												<ul class="formSelectList">
+													<li class="default">请选择学历</li>
+													{{foreach $educations as $key=>$value}}
 													<li data-type="{{$key}}">{{$value}}</li>
 													{{/foreach}}
 												</ul>
-												<input type="hidden" name = "lunarDay" value="{{$i.lunarDay}}" class = "lunarDayForm"/>
+												<input type="hidden" name="education" value="{{$i.education}}" class="educationForm" />
 											</div>
-											<input type="text" name = "lunarHour" value="{{$i.lunarHour}}" placeholder = "时" class = "formInput lunarHourForm" autocomplete="off"/>
-											<input type="text" name = "lunarMinute" value="{{$i.lunarMinute}}" placeholder = "分" class = "formInput lunarMinuteForm" autocomplete="off"/>
-										</div>
-
-										<div class = "form">
-											<p class = "formTitle">户口所在地<span>*</span></p>
-											<input type="text" name = "registerAddress" value="{{$i.registerAddress}}" placeholder = "请输入户口所在地" class = "formInput registerAddressForm" autocomplete="off"/>
-										</div>
-										
-										<div class = "form">
-											<p class = "formTitle">户口性质<span>*</span></p>
-											<div class = "checkBox clearfix">
-												{{foreach $registers as $key=>$value}}
-												<div data-type="{{$key}}" class = "checkBtn mRight50{{if $i.registerNature==$key}} on{{/if}}">{{$value}}</div>
-												{{/foreach}}
+											<div class="form">
+												<p class="formTitle">政治面貌</p>
+												<div class="formInput formSelect">请选择政治面貌</div>
+												<ul class="formSelectList">
+													<li class="default">请选择政治面貌</li>
+													{{foreach $politicals as $key=>$value}}
+													<li data-type="{{$key}}">{{$value}}</li>
+													{{/foreach}}
+												</ul>
+												<input type="hidden" name="politicalType" value="{{$i.politicalType}}" />
 											</div>
-											<input type="hidden" name = "registerNature" value="{{$i.registerNature}}" class = "formInput registerNatureForm"/>
-										</div>
-
-										<div class = "form">
-											<p class = "formTitle">血型</p>
-											<div class = "checkBox clearfix">
-												{{foreach $bloods as $key=>$value}}
-												<div data-type="{{$key}}" class = "checkBtn mRight30{{if $i.blood==$key}} on{{/if}}">{{$value}}</div>
-												{{/foreach}}
+											<div class="form">
+												<p class="formTitle">体重</p>
+												<input type="text" name="weight" value="{{$i.weight}}" placeholder="请输入体重" class="formInput weightForm" autocomplete="off" />
 											</div>
-											<input type="hidden" name = "blood" value="{{$i.blood}}" class = "formInput bloodForm"/>
+											<div class="form">
+												<p class="formTitle">婚姻状况</p>
+												<div class="checkBox clearfix">
+													{{foreach $maritals as $key=>$value}}
+													<div data-type="{{$key}}" class="checkBtn mRight30{{if $i.maritalStatus==$key}} on{{/if}}">{{$value}}</div>
+													{{/foreach}}
+												</div>
+												<input type="hidden" name="marital" value="{{$i.maritalStatus}}" class="formInput maritalStatusForm" />
+											</div>
+											<div class="form">
+												<p class="formTitle">原单位解除合同日</p>
+												<input type="text" name="quitDate" value="{{$i.quitDate}}" placeholder="请选择原单位解除合同日" class="formInput quitDateForm dataInput datepicker2" autocomplete="off" />
+											</div>
+											<div class="form">
+												<p class="formTitle">背景调查</p>
+												<textarea name="background" placeholder="请输入" class="formInput backgroundInput">{{$i.background}}</textarea>
+											</div>
 										</div>
-
-										<div class = "form">
-											<p class = "formTitle">公交线路单程车费（元）</p>
-											<input type="text" name = "busFee" value="{{$i.busFee}}" placeholder = "请输入公交线路单程车费（元）" class = "formInput busFeeForm" autocomplete="off"/>
-										</div>
-
-										<div class = "form">
-											<p class = "formTitle">首次参加工作时间</p>
-											<input type="text" name = "firstWorkDate" value="{{$i.firstWorkDate}}" placeholder = "请选择首次参加工作时间" class = "formInput firstWorkDateForm dataInput datepicker1" autocomplete="off"/>
-										</div>
-
-										<input id="res" name="res" type="reset" style="display:none;"/>
 									</div>
-								</div>
-							</div>		
-						
-							<div class = "modifyBox"{{if $action != 'editSave'}} style="display: none;"{{/if}}>
-								<p class = "modifyTitle">修改备注信息</p>
-								<div class = "form modifyForm">
-									<p class = "formTitle">修改备注信息</p>
-									<textarea name="updateRemark" placeholder="请标明调整内容及原因" class = "formInput modifyRemarkInput"></textarea>
+									<div class="formBox formRight">
+										<div class="formList">
+											<div class="form upload">
+												{{if $i.photo!=''}}
+												<img class="addImg" onclick="clickImg(this);" src="upload/images/staff/head/{{$i.photo}}" /> {{else}}
+												<img class="addImg" onclick="clickImg(this);" src="humanAffairs/view/images/upload_bg.jpg" /> {{/if}}
+												<input name="upload_photo" type="file" class="upload_input" onchange="change(this)" />
+												<div class="preBlock">
+													<img class="preview" id="preview" alt="" name="photo" width="190" height="190" />
+													<input type="hidden" name="" value="" class="uploadPhotoUrl" />
+												</div>
+												<img class="delete" onclick="deleteImg(this)" src="humanAffairs/view/images/delete.png" />
+											</div>
+											<div class="form">
+												<p class="formTitle">手机号<span>*</span></p>
+												<input type="text" name="tel" value="{{$i.tel}}" placeholder="请输入手机号" class="formInput telForm" autocomplete="off" />
+											</div>
+											<div class="form">
+												<p class="formTitle">座机 - 分机号</p>
+												<div class="formLandlineBox clearfix">
+													<input type="text" placeholder="座机" name="phone" value="{{$i.phone}}" class="formInput landLineInput" autocomplete="off" />
+													<span>--</span>
+													<input type="text" name="extensionNumber" value="{{$i.extensionNumber}}" placeholder="分机号" class="formInput extensionNumInput" autocomplete="off" />
+												</div>
+											</div>
+											<div class="formBoxL clearfix">
+												<div class="form formL2 pull-left">
+													<p class="formTitle">农历</p>
+													<div class="formInput formSelect">请选择月份</div>
+													<ul class="formSelectList">
+														<li class="default">请选择月份</li>
+														{{foreach $lunarMonths as $key=>$value}}
+														<li data-type="{{$key}}">{{$value}}</li>
+														{{/foreach}}
+													</ul>
+													<input type="hidden" name="lunarMonth" value="{{$i.lunarMonth}}" class="lunarMonthForm" />
+												</div>
+												<div class="form formL2 marginL6 pull-left">
+													<div class="formInput formSelect">请选择日期</div>
+													<ul class="formSelectList">
+														<li class="default">请选择日期</li>
+														{{foreach $lunarDays as $key=>$value}}
+														<li data-type="{{$key}}">{{$value}}</li>
+														{{/foreach}}
+													</ul>
+													<input type="hidden" name="lunarDay" value="{{$i.lunarDay}}" class="lunarDayForm" />
+												</div>
+											</div>
+											<div class="form">
+												<input type="text" name="lunarHour" value="{{$i.lunarHour}}" placeholder="时" class="formInput lunarHourForm width147" autocomplete="off" />
+												<input type="text" name="lunarMinute" value="{{$i.lunarMinute}}" placeholder="分" class="formInput lunarMinuteForm width147 marginL6" autocomplete="off" />
+											</div>
+											<div class="form">
+												<p class="formTitle">户口所在地<span>*</span></p>
+												<input type="text" name="registerAddress" value="{{$i.registerAddress}}" placeholder="请输入户口所在地" class="formInput registerAddressForm" autocomplete="off" />
+											</div>
+											<div class="form">
+												<p class="formTitle">户口性质<span>*</span></p>
+												<div class="checkBox clearfix">
+													{{foreach $registers as $key=>$value}}
+													<div data-type="{{$key}}" class="checkBtn mRight50{{if $i.registerNature==$key}} on{{/if}}">{{$value}}</div>
+													{{/foreach}}
+												</div>
+												<input type="hidden" name="registerNature" value="{{$i.registerNature}}" class="formInput registerNatureForm" />
+											</div>
+											<div class="form">
+												<p class="formTitle">血型</p>
+												<div class="checkBox clearfix">
+													{{foreach $bloods as $key=>$value}}
+													<div data-type="{{$key}}" class="checkBtn mRight30{{if $i.blood==$key}} on{{/if}}">{{$value}}</div>
+													{{/foreach}}
+												</div>
+												<input type="hidden" name="blood" value="{{$i.blood}}" class="formInput bloodForm" />
+											</div>
+											<div class="form">
+												<p class="formTitle">公交线路单程车费（元）</p>
+												<input type="text" name="busFee" value="{{$i.busFee}}" placeholder="请输入公交线路单程车费（元）" class="formInput busFeeForm" autocomplete="off" />
+											</div>
+											<div class="form">
+												<p class="formTitle">首次参加工作时间</p>
+												<input type="text" name="firstWorkDate" value="{{$i.firstWorkDate}}" placeholder="请选择首次参加工作时间" class="formInput firstWorkDateForm dataInput datepicker1" autocomplete="off" />
+											</div>
+										</div>
+									</div> 
 								</div>
 							</div>
-							
+							<div class="modifyBox" {{if $action !='editSave' }} style="display: none;" {{/if}}>
+								<p class="modifyTitle">修改备注信息</p>
+								<div class="form modifyForm">
+									<p class="formTitle">修改备注信息</p>
+									<textarea name="updateRemark" placeholder="请标明调整内容及原因" class="formInput modifyRemarkInput"></textarea>
+								</div>
+							</div>
+
 						</form>
 					</div>
-					
-					<div class = "formBtnsBox clearfix">
-						<div class = "formBtn formBtnSave">保存</div>
-						<div class = "formBtn formBtnCancel">取消</div>
+
+					<div class="formBtnsBox clearfix">
+						<div class="formBtn formBtnSave">保存</div>
+						<div class="formBtn formBtnCancel">取消</div>
 					</div>
 				</div>
 				<!-- 内容区 结束 -->
@@ -349,117 +358,120 @@
 			<!--内容区end-->
 		</div>
 		<!--内容区右侧end-->
-	</div>
-	<!--内容 end-->
+		</div>
+		<!--内容 end-->
 
-	<script type="text/javascript" src="public/html/js/plugin/oa.jquery-1.11.3.min.js"></script>
-	<script type="text/javascript" src="public/html/js/plugin/oa.respond.js"></script>
-	<script type="text/javascript" src="public/html/js/plugin/oa.bootstrap.min.js"></script>
-	<script type="text/javascript" src="public/html/js/plugin/oa.jquery.placeholder.min.js"></script>
-	<script type="text/javascript" src="public/html/js/plugin/oa.jquery.placeholder.min.js"></script>
-	<script type="text/javascript" src="public/html/js/oa.common.js" ></script>
-	<script type="text/javascript" src="public/html/js/plugin/oa.jquery-ui.min.js" ></script>
-	<script type="text/javascript" src="public/html/js/plugin/jquery.mCustomScrollbar.concat.min.js"></script>
-	<script type="text/javascript" src="public/html/js/plugin/oa.jquery.multiselect.js"></script>
-	<script type="text/javascript" src="public/html/js/jquery.form.min.js" ></script>
-	<script type="text/javascript" src="humanAffairs/view/js/staff-information.js" ></script>
+		<script type="text/javascript" src="public/html/js/plugin/oa.jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="public/html/js/plugin/oa.respond.js"></script>
+		<script type="text/javascript" src="public/html/js/plugin/oa.bootstrap.min.js"></script>
+		<script type="text/javascript" src="public/html/js/plugin/oa.jquery.placeholder.min.js"></script>
+		<script type="text/javascript" src="public/html/js/plugin/oa.jquery.placeholder.min.js"></script>
+		<script type="text/javascript" src="public/html/js/oa.common.js"></script>
+		<script type="text/javascript" src="public/html/js/plugin/oa.jquery-ui.min.js"></script>
+		<script type="text/javascript" src="public/html/js/plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="public/html/js/plugin/oa.jquery.multiselect.js"></script>
+		<script type="text/javascript" src="public/html/js/jquery.form.min.js"></script>
+		<script type="text/javascript" src="humanAffairs/view/js/staff-information.js"></script>
 
-	<script>
-		$(".datepicker").datepicker({
-			inline: true,
-			showOtherMonths: true,
-			selectOtherMonths: true,
-			changeMonth: true,
-			changeYear: true,
-			yearRange: "1950:2050",
-			dateFormat: 'yy-mm-dd'
-		});
-		$(".datepicker1").datepicker({
-			inline: true,
-			showOtherMonths: true,
-			selectOtherMonths: true,
-			changeMonth: true,
-			changeYear: true,
-			yearRange: "1950:2050",
-			dateFormat: 'yy-mm-dd'
-		});
-		$(".datepicker2").datepicker({
-			inline: true,
-			showOtherMonths: true,
-			selectOtherMonths: true,
-			changeMonth: true,
-			changeYear: true,
-			yearRange: "1950:2050",
-			dateFormat: 'yy-mm-dd'
-		});
-	</script>
+		<script>
+			$(".datepicker").datepicker({
+				inline: true,
+				showOtherMonths: true,
+				selectOtherMonths: true,
+				changeMonth: true,
+				changeYear: true,
+				yearRange: "1950:2050",
+				dateFormat: 'yy-mm-dd'
+			});
+			$(".datepicker1").datepicker({
+				inline: true,
+				showOtherMonths: true,
+				selectOtherMonths: true,
+				changeMonth: true,
+				changeYear: true,
+				yearRange: "1950:2050",
+				dateFormat: 'yy-mm-dd'
+			});
+			$(".datepicker2").datepicker({
+				inline: true,
+				showOtherMonths: true,
+				selectOtherMonths: true,
+				changeMonth: true,
+				changeYear: true,
+				yearRange: "1950:2050",
+				dateFormat: 'yy-mm-dd'
+			});
+		</script>
 
-	<script>
-		//点击
-		function clickImg(obj){
-			$(obj).parent().find('.upload_input').click();
-		}
-		//删除
-		function deleteImg(obj){
-			$(obj).parent().find('input').val('');
-			$(obj).parent().find('img.preview').attr("src","");
-			//IE9以下
-			$(obj).parent().find('img.preview').css("filter","");
-			$(obj).hide();
-			$(obj).parent().find('.addImg').show();
-		}
-		//选择图片
-		function change(file) {
-			//预览
-			var pic = $(file).parent().find(".preview");
-			//添加按钮
-			var addImg = $(file).parent().find(".addImg");
-			//删除按钮
-			var deleteImg = $(file).parent().find(".delete");
-
-			var ext=file.value.substring(file.value.lastIndexOf(".")+1).toLowerCase();
-
-			// gif在IE浏览器暂时无法显示
-			if(ext!='png'&&ext!='jpg'&&ext!='jpeg'){
-				if (ext != '') {
-					popAlert("请上传png或jpg格式照片"); 
-				} 
-				return;
+		<script>
+			//点击
+			function clickImg(obj) {
+				$(obj).parent().find('.upload_input').click();
 			}
-			//判断IE版本
-			var isIE = navigator.userAgent.match(/MSIE/)!= null,
-				isIE6 = navigator.userAgent.match(/MSIE 6.0/)!= null;
-				isIE10 = navigator.userAgent.match(/MSIE 10.0/)!= null;
-			if(isIE && !isIE10) {
-				file.select();
-				file.blur();
-				var reallocalpath = document.selection.createRange().text;
-				// IE6浏览器设置img的src为本地路径可以直接显示图片
-				if (isIE6) {
-					pic.attr("src",reallocalpath);
-				}else{
-					// 非IE6版本的IE由于安全问题直接设置img的src无法显示本地图片，但是可以通过滤镜来实现             
-					pic.css("filter","progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src=\"" + reallocalpath + "\")");
-					// 设置img的src为base64编码的透明图片 取消显示浏览器默认图片
-					pic.attr('src','data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==');             
+			//删除
+			function deleteImg(obj) {
+				$(obj).parent().find('input').val('');
+				$(obj).parent().find('img.preview').attr("src", "");
+				//IE9以下
+				$(obj).parent().find('img.preview').css("filter", "");
+				$(obj).hide();
+				$(obj).parent().find('.addImg').show();
+			}
+			//选择图片
+			function change(file) {
+				//预览
+				var pic = $(file).parent().find(".preview");
+				//添加按钮
+				var addImg = $(file).parent().find(".addImg");
+				//删除按钮
+				var deleteImg = $(file).parent().find(".delete");
+
+				var ext = file.value.substring(file.value.lastIndexOf(".") + 1).toLowerCase();
+
+				// gif在IE浏览器暂时无法显示
+				if(ext != 'png' && ext != 'jpg' && ext != 'jpeg') {
+					if(ext != '') {
+						popAlert("请上传png或jpg格式照片");
+					}
+					return;
+				}
+				//判断IE版本
+				var isIE = navigator.userAgent.match(/MSIE/) != null,
+					isIE6 = navigator.userAgent.match(/MSIE 6.0/) != null;
+				isIE10 = navigator.userAgent.match(/MSIE 10.0/) != null;
+				if(isIE && !isIE10) {
+					file.select();
+					file.blur();
+					var reallocalpath = document.selection.createRange().text;
+					// IE6浏览器设置img的src为本地路径可以直接显示图片
+					if(isIE6) {
+						pic.attr("src", reallocalpath);
+					} else {
+						// 非IE6版本的IE由于安全问题直接设置img的src无法显示本地图片，但是可以通过滤镜来实现             
+						pic.css("filter", "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src=\"" + reallocalpath + "\")");
+
+						// 设置img的src为base64编码的透明图片 取消显示浏览器默认图片
+						pic.attr('src', 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==');
+					}
+					addImg.hide();
+					deleteImg.show();
+				} else {
+					html5Reader(file, pic, addImg, deleteImg);
+				}
+			}
+			//H5渲染
+			function html5Reader(file, pic, addImg, deleteImg) {
+				var file = file.files[0];
+				var reader = new FileReader();
+				reader.readAsDataURL(file);
+				reader.onload = function(e) {
+					pic.attr("src", this.result);
+					$('.uploadPhotoUrl').val(this.result);
 				}
 				addImg.hide();
 				deleteImg.show();
-			}else {
-				html5Reader(file,pic,addImg,deleteImg);
 			}
-		}
-		//H5渲染
-		function html5Reader(file,pic,addImg,deleteImg){
-			var file = file.files[0];
-			var reader = new FileReader();
-			reader.readAsDataURL(file);
-			reader.onload = function(e){
-				pic.attr("src",this.result);
-			}
-			addImg.hide();
-			deleteImg.show();
-		}
-	</script>
-</body>
+		</script>
+	</body>
+
 </html>

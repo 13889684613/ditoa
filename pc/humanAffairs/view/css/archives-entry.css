@@ -127,7 +127,7 @@ input:-ms-input-placeholder {
 
 @media (min-width: 1250px) and (max-width: 1590px) {
 	.staff-info{
-		width: 214px;
+		width: 228px;
 	}
 	.staff-ul1 {
 	    margin-left: 2%;
@@ -173,7 +173,7 @@ input:-ms-input-placeholder {
 }
 
 .staffManageNav ul li a{
-	font-size: 16px;
+	font-size: 15px;
 }
 
 .apply-step-box {

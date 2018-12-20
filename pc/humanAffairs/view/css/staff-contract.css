@@ -48,8 +48,9 @@
 }
 
 .staffInfoForm .formSelectList {
-    width: 80px;
+    /* width: 80px; */
     top:54px;
+    left: 76px;
 }
 
 .staffInfoForm .formInput.birthDateForm {
@@ -90,4 +91,43 @@
         padding: 0;
         padding-top: 40px;
     }   
+}
+
+.w75H42Mb0Fl {
+    width: 75px;
+    height: 42px;
+    line-height: 42px;
+    margin-bottom: 0;
+    float: left;
+}
+
+.w250Mr14Fl {
+    width: 250px;
+    margin-right: 14px;
+    float: left;
+}
+
+.w150Mr14Fl {
+    width: 150px;
+    margin-right: 14px;
+    float: left;
+}
+
+.w180Mr12Fl {
+    width: 180px;
+    margin-right: 12px;
+    float: left;
+}
+
+.w180Mr14Ml12Fl {
+    width: 180px;
+    margin-right: 14px;
+    margin-left: 12px;
+    float: left;
+}
+
+.leftLh42DisBlock {
+    float: left;
+    line-height: 42px;
+    display: block;
 }

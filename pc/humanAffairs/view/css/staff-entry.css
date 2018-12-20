@@ -8,7 +8,7 @@
 /* 上传头像 */
 
 .formRight {
-    padding-top: 25px;
+    /*padding-top: 25px;*/
 }
 
 .upload {
@@ -107,4 +107,7 @@
         padding: 0;
         padding-top: 40px;
     }   
+}
+.w142{
+	width: 142px;
 }

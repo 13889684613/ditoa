@@ -20,6 +20,35 @@ $(function(){
         })
     })
     
+    // 表单页 -- select选择框
+	$('.staffInfoForm').delegate('.formSelect','click',function(e){
+		if($(this).hasClass('on')){
+			$(this).parents('.dataNumBoxL').find('.formSelectList').hide();
+			$(this).removeClass('on');
+		}else{
+			$('.formSelectList').hide();
+			$('.formSelect').removeClass('on'); 
+			$(this).parents('.dataNumBoxL').find('.formSelectList').show();
+			$(this).addClass('on');
+		}
+		stopBubble(e);
+	})
+
+	// 表单页 -- select 选择
+	$('.staffInfoForm').delegate('.formSelectList li','click',function(){
+		var type = $(this).attr('data-type');
+		var txt = $(this).text();
+		if($(this).hasClass('default')){
+			$(this).parents('.dataNumBoxL').find('.formSelect').removeClass('on').text(txt).css('color','#aaa');
+			$(this).parents('.dataNumBoxL').find('input[type="hidden"]').val($(this).data('type'));
+			$(this).parents('.formSelectList').hide();
+			return false;
+		}
+		$(this).parents('.dataNumBoxL').find('.formSelect').removeClass('on').text(txt).css('color','#222');
+		$(this).parents('.dataNumBoxL').find('input[type="hidden"]').val($(this).data('type'));
+		$(this).parents('.formSelectList').hide();
+	})
+    
     // 提交表单
     $('.formBtnSave').click(function() {
         //必填

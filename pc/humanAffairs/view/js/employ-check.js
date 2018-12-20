@@ -11,6 +11,14 @@ $(function() {
 		$(this).find('img').attr('src','public/html/images/bj.jpg')
 		$(this).css('background-color','#fff');
 	})
+
+	$('.editButtonZ').hover(function(){
+		$(this).find('img').attr('src','public/html/images/bjActive.png')
+		$(this).css('background-color','#969696');
+	},function(){
+		$(this).find('img').attr('src','public/html/images/edit.jpg')
+		$(this).css('background-color','#fff');
+	})
 	
 	$('.editButtonR').hover(function(){
 		$(this).find('img').attr('src','public/html/images/shanchuActive.png')

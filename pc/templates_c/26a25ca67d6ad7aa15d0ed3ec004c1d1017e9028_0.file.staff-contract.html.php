@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-19 10:37:16
+/* Smarty version 3.1.29, created on 2018-12-20 13:20:20
   from "F:\website\ditoaCoder\ditoa\pc\humanAffairs\view\staff-contract.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c19aedcb0efa3_86662882',
+  'unifunc' => 'content_5c1b26941896b7_66408181',
   'file_dependency' => 
   array (
     '26a25ca67d6ad7aa15d0ed3ec004c1d1017e9028' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\humanAffairs\\view\\staff-contract.html',
-      1 => 1545185112,
+      1 => 1545283217,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c19aedcb0efa3_86662882 ($_smarty_tpl) {
+function content_5c1b26941896b7_66408181 ($_smarty_tpl) {
 ?>
 <!-- 
 	# 员工基本资料页面
@@ -150,8 +150,8 @@ $__foreach_data_0_saved_local_item = $_smarty_tpl->tpl_vars['i'];
 									<div class = "staffFamilyInfo clearfix">
 										<input type="hidden" name="contractId[]" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['contractId'];?>
 ">
-										<p class = "formTitle">所属企业<span>*</span></p>
-										<div class = "formInput formSelect">请选择所属企业</div>
+										<p class = "formTitle w75H42Mb0Fl">所属企业<span>*</span></p>
+										<div class = "formInput formSelect company w250Mr14Fl">请选择所属企业</div>
 										<ul class = "formSelectList">
 											<li class = "default">请选择所属企业</li>
 											<?php
@@ -180,11 +180,12 @@ $_smarty_tpl->tpl_vars['c'] = $__foreach_companys_1_saved_item;
 										<input type="hidden" name = "company[]" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['companyId'];?>
 " class = "companyIdForm"/>
 										<input type="text" name = "contractNo[]" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['contractNo'];?>
-" placeholder="合同编号" class = "formInput contractNoForm" autocomplete="off"/>
+" placeholder="合同编号" class = "formInput contractNoForm w150Mr14Fl" autocomplete="off"/>
 										<input type="text" name = "beginDate[]" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['beginDate'];?>
-" placeholder="开始日期" class = "formInput beginDateForm dataInput datepicker" autocomplete="off"/>至
+" placeholder="开始日期" class = "formInput beginDateForm dataInput datepicker w180Mr12Fl" autocomplete="off"/>
+										<span class="leftLh42DisBlock">至</span>
 										<input type="text" name = "overDate[]" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['overDate'];?>
-" placeholder="结束日期" class = "formInput overDateForm dataInput datepickera" autocomplete="off"/>
+" placeholder="结束日期" class = "formInput overDateForm dataInput datepickera w180Mr14Ml12Fl" autocomplete="off"/>
 										<img src="public/html/images/input_remove.png" alt="" class = "remove">
 									</div>
 									<?php
@@ -196,8 +197,8 @@ $_smarty_tpl->tpl_vars['i'] = $__foreach_data_0_saved_item;
 ?>
 									<div class = "staffFamilyInfo clearfix">
 										<input type="hidden" name="contractId[]" value="0">
-										<p class = "formTitle">所属企业<span>*</span></p>
-										<div class = "formInput formSelect">请选择所属企业</div>
+										<p class = "formTitle w75H42Mb0Fl">所属企业<span>*</span></p>
+										<div class = "formInput formSelect company w250Mr14Fl">请选择所属企业</div>
 										<ul class = "formSelectList">
 											<li class = "default">请选择所属企业</li>
 											<?php
@@ -224,9 +225,10 @@ $_smarty_tpl->tpl_vars['c'] = $__foreach_companys_2_saved_item;
 ?>
 										</ul>
 										<input type="hidden" name = "company[]" class = "companyIdForm"/>
-										<input type="text" name = "contractNo[]" placeholder="合同编号" class = "formInput contractNoForm" autocomplete="off"/>
-										<input type="text" name = "beginDate[]" placeholder="开始日期" class = "formInput beginDateForm dataInput datepicker" autocomplete="off"/>至
-										<input type="text" name = "overDate[]" placeholder="结束日期" class = "formInput overDateForm dataInput datepickera" autocomplete="off"/>
+										<input type="text" name = "contractNo[]" placeholder="合同编号" class = "formInput contractNoForm w150Mr14Fl" autocomplete="off"/>
+										<input type="text" name = "beginDate[]" placeholder="开始日期" class = "formInput beginDateForm dataInput datepicker w180Mr12Fl" autocomplete="off"/>
+										<span class="leftLh42DisBlock">至</span>
+										<input type="text" name = "overDate[]" placeholder="结束日期" class = "formInput overDateForm dataInput datepickera w180Mr14Ml12Fl" autocomplete="off"/>
 										<img src="public/html/images/input_add.png" alt="" class = "add">
 									</div>
 								</div>
@@ -291,26 +293,33 @@ $_smarty_tpl->tpl_vars['c'] = $__foreach_companys_2_saved_item;
 
 	<?php echo '<script'; ?>
 >
-		$(".datepicker").datepicker({
-			inline: true,
-			showOtherMonths: true,
-			selectOtherMonths: true,
-			changeMonth: true,
-			changeYear: true,
-			yearRange: "1950:2050",
-			dateFormat: 'yy-mm-dd'
-		});
-
-		$(".datepickera").datepicker({
-			inline: true,
-			showOtherMonths: true,
-			selectOtherMonths: true,
-			changeMonth: true,
-			changeYear: true,
-			yearRange: "1950:2050",
-			dateFormat: 'yy-mm-dd'
-		});
 		
+		$( ".beginDateForm" ).datepicker({
+			inline: true,
+			showOtherMonths: true,
+			selectOtherMonths: true,
+			changeMonth: true,
+			changeYear: true,
+			yearRange: "1950:2050",
+			dateFormat: 'yy-mm-dd',
+			changeMonth: true,
+			onSelect: function( selectedDate ) {
+				$(this).parent().find( ".overDateForm" ).datepicker( "option", "minDate", selectedDate );
+			}
+		});
+		$( ".overDateForm" ).datepicker({
+			inline: true,
+			showOtherMonths: true,
+			selectOtherMonths: true,
+			changeMonth: true,
+			changeYear: true,
+			yearRange: "1950:2050",
+			dateFormat: 'yy-mm-dd',
+			onSelect: function( selectedDate ) {
+				$(this).parent().find( ".beginDateForm" ).datepicker( "option", "maxDate", selectedDate );
+			}
+		});
+	
 	<?php echo '</script'; ?>
 >
 </body>

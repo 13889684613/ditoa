@@ -18,18 +18,19 @@
 	if($appraiseId == 0){
 		ErrorResturn('参数缺失！');
 	}
+	$track = '&page='.$page.'&s_company='.$s_company.'&s_office='.$s_office.'&s_name='.$s_name.'';
 	//记录列表页检索条件over
 
 	//获取用户数据 begin
 
-	$fields = 'staffId,staffRole,staffOffice,staffGroup,morality,moralityScore,attitude,attitudeScore,business,businessScore,efficiency,efficiencyScore,achievement,achievementScore,late,earlyRetreat,sickLeave,eventLeave,absenteeism,score,checkStatus,checkCategory,checkProcessId,appraiseUsr,appraiseUsrRole,appraiseTime';
+	$fields = 'staffId,staffRole,staffOffice,staffGroup,morality,moralityScore,attitude,attitudeScore,business,businessScore,efficiency,efficiencyScore,achievement,achievementScore,late,earlyRetreat,sickLeave,eventLeave,absenteeism,score,checkStatus,checkCategory,checkProcessId,appraiseUsr,appraiseUsrRole,appraiseTime,curCheckLevel';
 	$A = $db->get_one(PRFIX.'staff_appraise','where appraiseId='.$appraiseId.'',$fields);
 	if($A){
 
 		$U = $db->get_one(PRFIX.'staff','where staffId='.$A['staffId'].'','staffName,photo,tryBeginDate,tryOverDate');
 		if($U){
 			$data['staffName'] = $U['staffName'];
-			$data['photo'] = 'upload/images/straff/head/'.$U['photo'];
+			$data['photo'] = 'upload/images/staff/head/'.$U['photo'];
 			$data['try'] = $U['tryBeginDate'].'至'.$U['tryOverDate'];
 		}
 
@@ -91,29 +92,54 @@
 
 		//状态
 		if($data['checkStatus'] == 0){
-			$status = '待审批';
+			$status = '待审批'; $class = ' contentRightNavRightTxtBlue oneRows';
 		}elseif($data['checkStatus'] == 1){
-			$status = '审批中';
+			$status = '审批中'; $class = ' contentRightNavRightTxtYellow oneRows';
 		}elseif($data['checkStatus'] == 2){	//审批完成
 			//查询审批结果
 			$R = $db->get_one(PRFIX.'staff_appraise_check','where appraiseId='.$appraiseId.' order by checkId desc limit 1','checkResult,remark,beginDate,overDate,quitDate');
 			if($R){
 				$data['checkResult'] = $R['checkResult'];
 				$status = static_staffCheck($R['checkResult']);
+				switch ($R['checkResult']) {
+					case 1:
+						$status = '延长<br />试用期';
+						$class = '  contentRightNavRightTxtYellow twoRows';
+						break;
+					case 2:
+						$class = ' contentRightNavRightTxtGreen oneRows';	//正式录用
+						break;
+					case 3:
+						$class = ' contentRightNavRightTxtred oneRows';		//不再录用
+						break;
+				}
 				$data['remark'] = $R['remark'];
 				$data['quitDate'] = $R['quitDate'];
 				$data['tryOverDate'] = $R['beginDate'].'至'.$R['overDate'];
 			}
 		}
 
-		$data['status'] = $status;
+		$data['statusText'] = $status;
+		$data['statusClass'] = $class;
 		$data['scoreLevel'] = static_checkLevel($A['score']);
 		$data['checkCategory'] = $A['checkCategory'];
 		$data['checkProcessId'] = $A['checkProcessId'];
 		$data['staffRole'] = $A['staffRole'];
+		$data['appraiseTime'] = $A['appraiseTime'];
+
+		$curCheckLevel = $A['curCheckLevel'];
 	}
 
 	//获取用户数据 over
+
+	//审批进度轴蓝色宽度设置 begin
+	// if($curCheckLevel > 1){
+	// 	$curCheckLevel = $curCheckLevel + 1;	//转正审批前两级是固定的,其它审批流+1即可
+	// }
+	echo $curCheckLevel;exit;
+	$blueLineWidth = getBlueLineWidth($curCheckLevel);
+	$data['blueLineWidth'] = $blueLineWidth;
+	//审批进度轴蓝色宽度设置 over
 
 	//拉取审批进度轴 begin
 	$checkLevel = 0;
@@ -140,23 +166,8 @@
 		for ($e=0; $e < count($processs); $e++) { 
 			if($processs[$e]['status']!=''){
 				$processs[$e]['result'] = static_staffCheck($processs[$e]['status']);
-				if($processs[$e]['status'] == 1){
-					//延长试用期
-					$check = $db->get_one(PRFIX.'staff_appraise_check','where appraiseId='.$appraiseId.' and checkResult=1 order by checkId desc limit 1','beginDate,overDate');
-					$processs[$e]['text'] = $check['beginDate'].'至'.$check['overDate'];
-				}elseif($processs[$e]['status'] == 2){
-					//正式录用
-					$check = $db->get_one(PRFIX.'staff_appraise_check','where appraiseId='.$appraiseId.' and checkResult=2 order by checkId desc limit 1','remark');
-					$processs[$e]['text'] = $check['remark'];
-				}elseif($processs[$e]['status'] = 3){
-					//不再录用
-					$check = $db->get_one(PRFIX.'staff_appraise_check','where appraiseId='.$appraiseId.' and checkResult=3 order by checkId desc limit 1','quitDate');
-					$processs[$e]['text'] = '离职日期：'.$check['quitDate'];
-				}
-				$processs[$e]['result'] = $processs[$e]['result'].'/'.$processs[$e]['text'];
 			}
 		}
-
 	}
 
 	//获取审批信息 over
@@ -176,5 +187,6 @@
 	$smarty->assign('process',$processs);
 	$smarty->assign('check',$check);
 	$smarty->assign('page',$page);
+	$smarty->assign('track',$track);
 
 ?>

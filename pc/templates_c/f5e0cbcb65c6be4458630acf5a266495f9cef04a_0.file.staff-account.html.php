@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-19 09:50:07
+/* Smarty version 3.1.29, created on 2018-12-20 11:19:05
   from "F:\website\ditoaCoder\ditoa\pc\humanAffairs\view\staff-account.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c19a3cf148d65_04893653',
+  'unifunc' => 'content_5c1b0a2900d1c2_41500199',
   'file_dependency' => 
   array (
     'f5e0cbcb65c6be4458630acf5a266495f9cef04a' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\humanAffairs\\view\\staff-account.html',
-      1 => 1545184202,
+      1 => 1545275939,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c19a3cf148d65_04893653 ($_smarty_tpl) {
+function content_5c1b0a2900d1c2_41500199 ($_smarty_tpl) {
 ?>
 <!-- 
 	# 员工基本资料页面
@@ -228,7 +228,8 @@ $_smarty_tpl->tpl_vars['value']->_loop = true;
 $__foreach_value_2_saved_local_item = $_smarty_tpl->tpl_vars['value'];
 ?>
 												<div data-type="<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
-" class = "checkBtn mRight50<?php if ($_smarty_tpl->tpl_vars['i']->value['status'] == $_smarty_tpl->tpl_vars['key']->value) {?> on<?php }?>"><?php echo $_smarty_tpl->tpl_vars['value']->value;?>
+" class = "checkBtn<?php if ($_smarty_tpl->tpl_vars['key']->value < 2) {?> mRight50<?php }
+if ($_smarty_tpl->tpl_vars['i']->value['status'] == $_smarty_tpl->tpl_vars['key']->value) {?> on<?php }?>"><?php echo $_smarty_tpl->tpl_vars['value']->value;?>
 </div>
 												<?php
 $_smarty_tpl->tpl_vars['value'] = $__foreach_value_2_saved_local_item;

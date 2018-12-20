@@ -26,7 +26,8 @@
 			$data['data'] = $group;
 		}else{
 			$data['status'] = 'fail';
-			$data['message'] = ERRORTIPS;
+			$data['message'] = '未找到工作组';
+			$data['data'] = '';
 		}
 
 		$returnJson = json_encode($data);
@@ -54,7 +55,8 @@
 			$data['data'] = $office;
 		}else{
 			$data['status'] = 'fail';
-			$data['message'] = ERRORTIPS;
+			$data['message'] = '未找到考勤数据';
+			$data['data'] = '';
 		}
 		$returnJson = json_encode($data);
 		echo $returnJson; exit;

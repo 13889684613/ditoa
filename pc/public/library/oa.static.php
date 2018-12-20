@@ -52,6 +52,34 @@
 
 	}
 
+	//审批进度轴蓝线宽度
+	function getBlueLineWidth($curCheckLevel){
+
+		switch ($curCheckLevel) {
+			case 1:
+				$lineWidth = '19.5%';
+				break;
+			case 2:
+				$lineWidth = '39.1%';
+				break;
+			case 3:
+				$lineWidth = '58.7%';
+				break;
+			case 4:
+				$lineWidth = '78.3%';
+				break;
+			case 5:
+				$lineWidth = '100%';
+				break;
+			default:
+				$lineWidth = '0%';
+				break;
+		}
+
+		return $lineWidth;
+
+	}
+
 	//性别
 	function static_sex($key=''){
 		$sexArray = array(

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-19 17:20:14
+/* Smarty version 3.1.29, created on 2018-12-20 14:22:37
   from "F:\website\ditoaCoder\ditoa\pc\humanAffairs\view\archives-family.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c1a0d4ec5ece7_81818150',
+  'unifunc' => 'content_5c1b352d9587e9_85229421',
   'file_dependency' => 
   array (
     '56c4282d089278fe053e0e5f1af58b5b29cc3455' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\humanAffairs\\view\\archives-family.html',
-      1 => 1545209972,
+      1 => 1545286953,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/archives.html' => 1,
   ),
 ),false)) {
-function content_5c1a0d4ec5ece7_81818150 ($_smarty_tpl) {
+function content_5c1b352d9587e9_85229421 ($_smarty_tpl) {
 ?>
 <!--
 	作者：sxh
@@ -108,20 +108,19 @@ function content_5c1a0d4ec5ece7_81818150 ($_smarty_tpl) {
 							</div>
 							
 							<div></div>
-							<div class="quitApplyPart1 margin-bottom-165">
-								<div class="clearfix tableBoxFather">
-									<div class="tableBox clearfix">
-										<table class="table1 table1Content">
-											<tr>
-												<th width="70" class="paddingLeft12"><span>#</span></th>
-												<th width="100"><span>姓名</span></th>
-												<th width="100"><span>性别</span></th>
-												<th width="100"><span>年龄</span></th>
-												<th width="100"><span>与本人关系</span></th>
-												<th width="100"><span>联系电话</span></th>
-												<th width="300"><span>工作单位</span></th>
-											</tr>
-											<?php
+							<div class="clearfix tableBoxFather">
+								<div class="tableBox clearfix">
+									<table class="table1 table1Content">
+										<tr>
+											<th width="100" class="paddingLeft30"><span>#</span></th>
+											<th width="100"><span>姓名</span></th>
+											<th width="100"><span>性别</span></th>
+											<th width="100"><span>年龄</span></th>
+											<th width="100"><span>与本人关系</span></th>
+											<th width="100"><span>联系电话</span></th>
+											<th width="300"><span>工作单位</span></th>
+										</tr>
+										<?php
 $_from = $_smarty_tpl->tpl_vars['data']->value;
 if (!is_array($_from) && !is_object($_from)) {
 settype($_from, 'array');
@@ -136,23 +135,23 @@ $_smarty_tpl->tpl_vars['i']->_loop = true;
 $_smarty_tpl->tpl_vars['__smarty_foreach_data']->value['iteration']++;
 $__foreach_data_0_saved_local_item = $_smarty_tpl->tpl_vars['i'];
 ?>
-											<tr<?php if ($_smarty_tpl->tpl_vars['i']->value%2 == 1) {?> class="backgroundFFF"<?php }?>>
-												<td class="paddingLeft12"><span><?php echo (isset($_smarty_tpl->tpl_vars['__smarty_foreach_data']->value['iteration']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_data']->value['iteration'] : null);?>
+										<tr<?php if ($_smarty_tpl->tpl_vars['i']->value%2 == 1) {?> class="backgroundFFF"<?php }?>>
+											<td class="paddingLeft30"><span><?php echo (isset($_smarty_tpl->tpl_vars['__smarty_foreach_data']->value['iteration']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_data']->value['iteration'] : null);?>
 </span></td>
-												<td><span><?php echo $_smarty_tpl->tpl_vars['i']->value['familyName'];?>
+											<td><span><?php echo $_smarty_tpl->tpl_vars['i']->value['familyName'];?>
 </span></td>
-												<td><span><?php echo $_smarty_tpl->tpl_vars['i']->value['sex'];?>
+											<td><span><?php echo $_smarty_tpl->tpl_vars['i']->value['sex'];?>
 </span></td>
-												<td><span><?php echo $_smarty_tpl->tpl_vars['i']->value['age'];?>
+											<td><span><?php echo $_smarty_tpl->tpl_vars['i']->value['age'];?>
 </span></td>
-												<td><span><?php echo $_smarty_tpl->tpl_vars['i']->value['relation'];?>
+											<td><span><?php echo $_smarty_tpl->tpl_vars['i']->value['relation'];?>
 </span></td>
-												<td><span><?php echo $_smarty_tpl->tpl_vars['i']->value['telphone'];?>
+											<td><span><?php echo $_smarty_tpl->tpl_vars['i']->value['telphone'];?>
 </span></td>
-												<td><span><?php echo $_smarty_tpl->tpl_vars['i']->value['workUnit'];?>
+											<td><span><?php echo $_smarty_tpl->tpl_vars['i']->value['workUnit'];?>
 </span></td>
-											</tr>
-											<?php
+										</tr>
+										<?php
 $_smarty_tpl->tpl_vars['i'] = $__foreach_data_0_saved_local_item;
 }
 if ($__foreach_data_0_saved) {
@@ -162,8 +161,7 @@ if ($__foreach_data_0_saved_item) {
 $_smarty_tpl->tpl_vars['i'] = $__foreach_data_0_saved_item;
 }
 ?>
-										</table>
-									</div>
+									</table>
 								</div>
 							</div>
 

@@ -323,6 +323,8 @@
 	$smarty->assign('staffMenu',$staffMenu);
 	$smarty->assign('archivesMenu',$archivesMenu);
 	$smarty->assign('quitStaffMenu',$quitStaffMenu);
+	$smarty->assign('employCheckMenu',$employCheckMenu);
+	$smarty->assign('employCheckCheckMenu',$employCheckCheckMenu);
 
 	$smarty->assign('leaveMenu',$leaveMenu);
 	$smarty->assign('businessMenu',$businessMenu);

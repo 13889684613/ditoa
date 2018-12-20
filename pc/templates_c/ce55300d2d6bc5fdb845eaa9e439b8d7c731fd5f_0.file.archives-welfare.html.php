@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-19 16:45:24
+/* Smarty version 3.1.29, created on 2018-12-20 14:13:55
   from "F:\website\ditoaCoder\ditoa\pc\humanAffairs\view\archives-welfare.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c1a0524573549_00391440',
+  'unifunc' => 'content_5c1b33239f3e32_35338767',
   'file_dependency' => 
   array (
     'ce55300d2d6bc5fdb845eaa9e439b8d7c731fd5f' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\humanAffairs\\view\\archives-welfare.html',
-      1 => 1545209050,
+      1 => 1545210002,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/archives.html' => 1,
   ),
 ),false)) {
-function content_5c1a0524573549_00391440 ($_smarty_tpl) {
+function content_5c1b33239f3e32_35338767 ($_smarty_tpl) {
 ?>
 <!--
 	作者：sxh
@@ -96,8 +96,8 @@ function content_5c1a0524573549_00391440 ($_smarty_tpl) {
 ">合同信息</a></li>
 									<li><a href="human-affairs.php?_f=archives-leave<?php echo $_smarty_tpl->tpl_vars['track']->value;?>
 ">假期信息</a></li>
-									<li><a href="human-affairs.php?_f=archives-officeTool<?php echo $_smarty_tpl->tpl_vars['track']->value;?>
-">备品分配</a></li>	
+									<!-- <li><a href="human-affairs.php?_f=archives-officeTool<?php echo $_smarty_tpl->tpl_vars['track']->value;?>
+">备品分配</a></li>	 -->
 									<li><a href="human-affairs.php?_f=archives-file<?php echo $_smarty_tpl->tpl_vars['track']->value;?>
 ">资料上传</a></li>
 									<?php if ($_smarty_tpl->tpl_vars['nav']->value == 'quit') {?>

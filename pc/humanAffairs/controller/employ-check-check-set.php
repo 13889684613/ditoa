@@ -14,6 +14,9 @@
 	$s_company = getVal('s_company',1,'');
 	$s_office = getVal('s_office',1,'');
 	$s_name = getVal('s_name',2,'');
+
+	$track = '&page='.$page.'&s_company='.$s_company.'&s_office='.$s_office.'&s_name='.$s_name.'';
+
 	$appraiseId = getVal('id',1,'');		//考核记录id
 	if($appraiseId == 0){
 		ErrorResturn('参数缺失！');
@@ -22,14 +25,14 @@
 
 	//获取用户数据 begin
 
-	$fields = 'staffId,staffRole,staffOffice,staffGroup,morality,moralityScore,attitude,attitudeScore,business,businessScore,efficiency,efficiencyScore,achievement,achievementScore,late,earlyRetreat,sickLeave,eventLeave,absenteeism,score,checkStatus,checkCategory,checkProcessId,curCheckLevel';
+	$fields = 'staffId,staffRole,staffOffice,staffGroup,morality,moralityScore,attitude,attitudeScore,business,businessScore,efficiency,efficiencyScore,achievement,achievementScore,late,earlyRetreat,sickLeave,eventLeave,absenteeism,score,checkStatus,checkCategory,checkProcessId,curCheckLevel,appraiseTime';
 	$A = $db->get_one(PRFIX.'staff_appraise','where appraiseId='.$appraiseId.'',$fields);
 	if($A){
 
 		$U = $db->get_one(PRFIX.'staff','where staffId='.$A['staffId'].'','staffName,photo,tryBeginDate,tryOverDate');
 		if($U){
 			$data['staffName'] = $U['staffName'];
-			$data['photo'] = 'upload/images/straff/head/'.$U['photo'];
+			$data['photo'] = 'upload/images/staff/head/'.$U['photo'];
 			$data['try'] = $U['tryBeginDate'].'至'.$U['tryOverDate'];
 		}
 
@@ -107,6 +110,7 @@
 		$data['checkCategory'] = $A['checkCategory'];
 		$data['checkProcessId'] = $A['checkProcessId'];
 		$data['staffRole'] = $A['staffRole'];
+		$data['appraiseTime'] = $A['appraiseTime'];
 	}
 
 	//获取用户数据 over
@@ -136,16 +140,25 @@
 
 		$result = getVal('result',1,'');
 		if($result == 0){
-			ErrorResturn('请选择考核结果!');
+			$data['status'] = 'fail';
+			$data['message'] = '请选择考核结果';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;	
 		}
 		if($result == 1){
 			$beginDate = getVal('beginDate',2,'');
 			$overDate = getVal('overDate',2,'');
 			if($beginDate == ''||$overDate == ''){
-				ErrorResturn('请设置延长试用期有效期！');
+				$data['status'] = 'fail';
+				$data['message'] = '请设置延长试用期有效期！';
+				$returnJson = json_encode($data);
+				echo $returnJson; exit;
 			}
 			if(!isdate($beginDate)||!isdate($overDate)){
-				ErrorResturn('请正确设置延长试用期有效期的时间！');
+				$data['status'] = 'fail';
+				$data['message'] = '请正确设置延长试用期有效期的时间！';
+				$returnJson = json_encode($data);
+				echo $returnJson; exit;
 			}
 			$val['beginDate'] = $beginDate;
 			$val['overDate'] = $overDate;
@@ -157,7 +170,10 @@
 		if($result == 3){
 			$quitDate = getVal('quitDate',2,'');
 			if($quitDate == ''){
-				ErrorResturn('请填写离职时间！');
+				$data['status'] = 'fail';
+				$data['message'] = '请填写离职时间！';
+				$returnJson = json_encode($data);
+				echo $returnJson; exit;
 			}
 			$val['quitDate'] = $quitDate;
 		}
@@ -193,10 +209,17 @@
 			}
 			$db->update(PRFIX.'staff_appraise',$apply,'where appraiseId='.$appraiseId.'');
 
-			RefreshResturn('?_f=employ-check-info&sign=check&id='.$appraiseId.'');
+			$data['status'] = 'fail';
+			$data['message'] = '操作成功';
+			$data['url'] = '?_f=employ-check-check-info&id='.$appraiseId.'';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 
 		}else{
-			ErrorResturn(ERRORTIPS);
+			$data['status'] = 'fail';
+			$data['message'] = ERRORTIPS;
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 
 	}
@@ -210,5 +233,6 @@
 	$smarty->assign('i',$data);
 	$smarty->assign('id',$appraiseId);
 	$smarty->assign('page',$page);
+	$smarty->assign('track',$track);
 
 ?>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>{{$pageTitle}}</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+		<link rel="stylesheet" href="public/html/css/oa.base.css" />
+		<link rel="stylesheet" href="public/html/css/oa.bootstrap.min.css" />
+		<link rel="stylesheet" href="public/html/css/plugin/jquery.mCustomScrollbar.min.css" />
+		<link rel="stylesheet" href="public/html/css/oa.jquery-ui.min.css" />
+		<link rel="stylesheet" href="public/html/css/oa.jquery.multiselect.css" />
+		<link rel="stylesheet" href="public/html/css/oa.common.css" />
+		<link rel="stylesheet" href="humanAffairs/view/css/employ-check-check.css" />
+	</head>
+
+	<body>
+		<!--头部 begin-->
+		{{include file='public/html/head.html'}}
+		<!--头部 end-->
+
+		<!--内容 begin-->
+		<div class="container-fluid row">
+			<!--内容区左侧导航 begin-->
+			{{include file='public/html/menu.html'}}
+			<!--内容区左侧导航end-->
+			<!--内容区右侧begin-->
+			<div class="contentRight col-lg-10 row">
+				<!--内容区导航begin-->
+				<div class="contentRightNav clearfix">
+					<div class="contentRightNavLeft pull-left">
+						<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">转正考核审批</span></div>
+						<div class="contentRightNavBottom"><span class="name">转正考核审批</span><span class="time"></span></div>
+					</div>
+				</div>
+				<!--内容区导航end-->
+				<!--内容区begin-->
+				<div class="contentRightBox">
+					<div class="contentRightContent">
+						<!--检索begin-->
+						<div class="retrievalBox">
+							<div class="retrievalTitle">快速检索</div>
+							<div class="retrievalsForm">
+								<form id="searchForm" method="get" class="clearfix">
+									<input type="hidden" name="_f" value="employ-check-check">
+									<div class="retrievalsInputBoxs retrievalsInputBoxsStar clearfix pull-left">
+										<div class="retrievalsInputContent">
+											<div class="retrievalsInput">
+												<label>所属企业</label>
+												<input type="text"  unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputQy" placeholder="请选择" name="s_company" value="{{$s_company}}" data-type='0' />
+												<div class="retrievalsInputNavBox">
+													<ul class="retrievalsInputNav">
+														<li data-type = "0">请选择</li>
+														{{foreach item=c name=company from=$company}}
+														<li data-type="{{$c.companyId}}">{{$c.cnName}}</li>
+														{{/foreach}}
+													</ul>
+												</div>
+											</div>
+											<div class="retrievalsInput">
+												<label>试用人员</label>
+												<input type="text" class="choseInputName" placeholder="试用人员" name="s_name" value="{{$s_name}}" data-type='0' />
+											</div>
+										</div>
+									</div>
+									<div class="retrievalsInputBoxs clearfix pull-left">
+										<div class="retrievalsInputContent">
+											<div class="retrievalsInput">
+												<label>所属部门</label>
+												<input type="text" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputBm" placeholder="请选择" name="s_office" value="{{$s_office}}" data-type='0' />
+												<div class="retrievalsInputNavBox">
+													<ul class="retrievalsInputNav">
+														<li data-type = "0">请选择</li>
+														{{foreach item=o name=office from=$office}}
+														<li data-type="{{$o.officeId}}">{{$o.officeName}}</li>
+														{{/foreach}}
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!--查询清空begin-->
+									<div class="retrievalsInput clearfix pull-left">
+										<a href="javascript:void(0);" onclick="document.getElementById('searchForm').submit();"><div class="queryButton pull-left">查询</div></a>
+										<div class="clearButton pull-left">清空</div>
+									</div>
+									<!--查询清空end-->
+								</form>
+							</div>
+						</div>
+						<!--检索end-->
+						<!--表格begin-->
+						<div class="clearfix tableBoxFather">
+							<table class="table1 table1Fixed">
+								<tr>
+									<th width='77' class="text-center borderRight1"><span>操作</span></th>
+								</tr>
+								{{foreach item=i name=data from=$data}}
+								<tr{{if $i%2==1}} class="backgroundFFF"{{/if}}}>
+									<td class="borderRight1">
+										<div class="editBox center-block clearfix">
+											{{if $i.isSp == 1}}
+											<div class="editButton editButtonL pull-left text-center">
+												<a href="?_f=employ-check-check-info&sign=check&page={{$curPage}}&id={{$i.appraiseId}}&s={{$i.staffId}}{{$track}}"><img src="public/html/images/bj.jpg" /></a>
+											</div>
+											{{else}}
+											<div class="editButton editButtonZ pull-left text-center">
+												<a href="?_f=employ-check-check-set&page={{$curPage}}&id={{$i.appraiseId}}{{$track}}"><img src="public/html/images/edit.jpg" alt="" /></a>
+											</div>
+											{{/if}}
+										</div>
+									</td>
+								</tr>
+								{{/foreach}}
+							</table>
+							<div class="tableBox clearfix">
+								<table class="table1 table1Content">
+									<tr>
+										<th width="70" class="paddingLeft12"><span>#</span></th>
+										<th width="98"><span>试用人员</span></th>
+										<th width="150"><span>所属部门</span></th>
+										<th width="83" class=""><span>所属工作组</span></th>
+										<th width="150" class=""><span>试用期</span></th>
+										<th width="120" class=""><span>考核结果</span></th>
+										<th width="120" class=""><span>考核人员</span></th>
+										<th width="120" class=""><span>审批状态</span></th>
+										<th width="120" class=""><span>审批意见</span></th>
+										<th width="120" class=""><span>审批人</span></th>
+										<th width="120" class=""><span>审批时间</span></th>
+									</tr>
+									{{foreach item=i name=data from=$data}}
+									<tr class="backgroundFFF">
+										<td class="paddingLeft12"><span>{{$i.sn}}</span></td>
+										<td><span>{{$i.staffName}}</span></td>
+										<td><span>{{$i.office}}</span></td>
+										<td class=""><span>{{$i.group}}</span></td>
+										<td class=""><span>{{$i.date}}</span></td>
+										<td class=""><span>{{$i.appraiseResult}}</span></td>
+										<td class=""><span>{{$i.appraiseUsr}}</span></td>
+										<td class=""><span>{{$i.checkStatus}}</span></td>
+										<td class=""><span>{{$i.checkResult}}</span></td>
+										<td class=""><span>{{$i.checkUsr}}</span></td>
+										<td class=""><span>{{$i.checkTime}}</span></td>
+									</tr>
+									{{/foreach}}
+								</table>
+							</div>
+						</div>
+						<!--表格end-->
+						<!--分页begin-->
+						<div class="page clearfix">
+							{{$page}}
+						</div>
+						<!--分页end-->
+					</div>
+				</div>
+				<!--内容区end-->
+			</div>
+			<!--内容区右侧end-->
+		</div>
+		<!--内容 end-->
+		<script type="text/javascript" src="public/html/js/plugin/oa.jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="public/html/js/plugin/oa.jquery.placeholder.min.js"></script>
+		<script type="text/javascript" src="public/html/js/plugin/oa.respond.js"></script>
+		<script type="text/javascript" src="public/html/js/plugin/oa.bootstrap.min.js"></script>
+		<script type="text/javascript" src="public/html/js/plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="public/html/js/plugin/oa.jquery-ui.min.js"></script>
+		<script type="text/javascript" src="public/html/js/plugin/oa.jquery.multiselect.js"></script>
+		<script type="text/javascript" src="public/html/js/oa.common.js"></script>
+		<script type="text/javascript" src="public/html/js/jquery.form.min.js" ></script>
+		<script type="text/javascript" src="humanAffairs/view/js/employ-check-check.js"></script>
+	</body>
+
+</html>

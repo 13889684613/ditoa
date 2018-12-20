@@ -101,15 +101,15 @@
 									<td class="borderRight1">
 										<div class="editBox center-block clearfix">
 											{{if $i.isCheck == 0}}
-											<div class="editButton editButtonL pull-left text-center">
-												<a href="?_f=employ-check-set&act=edit&page={{$curPage}}&id={{$i.companyId}}{{$track}}"><img src="public/html/images/edit.jpg" alt="" /></a>
+											<div class="editButton editButtonZ pull-left text-center">
+												<a href="?_f=employ-check-set&page={{$curPage}}&s={{$i.staffId}}{{$track}}"><img src="public/html/images/edit.jpg" alt="" /></a>
 											</div>
 											{{else}}
 											<div class="editButton editButtonL pull-left text-center">
-												<a href="?_f=employ-check-info&nav=quit&page={{$curPage}}&id={{$i.staffId}}{{$track}}"><img src="public/html/images/bj.jpg" /></a>
+												<a href="?_f=employ-check-info&page={{$curPage}}&id={{$i.appraiseId}}&s={{$i.staffId}}{{$track}}"><img src="public/html/images/bj.jpg" /></a>
 											</div>
 											{{if $i.isSp == 0}}
-											<div class="editButton editButtonL pull-left text-center">
+											<div class="editButton editButtonZ pull-left text-center">
 												<a href="?_f=employ-check-set&page={{$curPage}}&id={{$i.appraiseId}}&s={{$i.staffId}}{{$track}}"><img src="public/html/images/edit.jpg" alt="" /></a>
 											</div>
 											{{/if}}

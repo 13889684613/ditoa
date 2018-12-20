@@ -18,12 +18,12 @@ $(function(){
 		$('.retrievalsInputNav li').eq(i).attr('title',$('.retrievalsInputNav li').eq(i).text())
 	}
 	
-	$('.contentNavList').click(function(){
-		if($(this).hasClass('on')){
-			$(this).removeClass('on');
+	$('.contentNavList .contentNavListText').click(function(){
+		if($(this).parent().hasClass('on')){
+			$(this).parent().removeClass('on');
 		}else{
 			$('.contentNavList').removeClass('on');
-			$(this).addClass('on');
+			$(this).parent().addClass('on');
 		}
 	})
 	
@@ -80,15 +80,38 @@ $(function(){
 
 	// 表单页 -- select 选择
 	$('.staffInfoForm').delegate('.formSelectList li','click',function(){
+		var type = $(this).attr('data-type');
 		var txt = $(this).text();
+		if($(this).parents('.formSelectList').hasClass('formSelectListSelect1')){
+			$('.formSelectListSelect2 .li').remove();
+			$('.formSelectListSelect2').next().val('0');
+			$.ajax({
+				type:"get",
+				url:"http://192.168.1.137:5555/ajax.php?act=getGroup&officeId="+type,
+				async:true,
+				dataType: 'json',
+				success:function(data){
+					if(data.status == 'success'){
+					for (var i = 0; i < data.data.length; i++) {
+						var html = $('<li class="li" data-type="'+data.data[i].groupId+'">'+data.data[i].groupName+'</li>');
+						$('.formSelectListSelect2').append(html)
+					}
+				}
+				}
+			});
+		}
 		if($(this).hasClass('default')){
 			$(this).parents('.form').find('.formSelect').removeClass('on').text(txt).css('color','#aaa');
 			$(this).parents('.form').find('input[type="hidden"]').val($(this).data('type'));
 			$(this).parents('.formSelectList').hide();
+			$('.formSelectListSelect2').prev().text('请选择所属小组').css('color','#aaa')
 			return false;
 		}
 		$(this).parents('.form').find('.formSelect').removeClass('on').text(txt).css('color','#222');
 		$(this).parents('.form').find('input[type="hidden"]').val($(this).data('type'));
+		if($('.formSelectListSelect2 ').next().val() == 0){
+			$('.formSelectListSelect2').prev().text('请选择所属小组').css('color','#aaa')
+		}
 		$(this).parents('.formSelectList').hide();
 	})
 
@@ -139,16 +162,20 @@ var t;
 function popAlert(txt,url) {
 	$('.popAlert').remove();
 	clearTimeout(t);
-	var html = '<div class = "popAlert"><img src="public/html/images/popAlertIcon.png" alt="" class = "popAlertIcon" /><p class = "popAlertText">'+txt+'</p></div><div class="popMask"><div>';
-	$('body').append(html);
-	$('.popAlert').show(); 
-	$('.popMask').show();
 	if (typeof(url) == "undefined") {
+		var html = '<div class = "popAlert"><img src="public/html/images/popAlertIcon.png" alt="" class = "popAlertIcon" /><p class = "popAlertText">'+txt+'</p></div><div class="popMask"><div>';
+		$('body').append(html);
+		$('.popAlert').show(); 
+		$('.popMask').show();
 		t = setTimeout(function(){
 			$('.popAlert').hide(); 
 			$('.popMask').hide();
 		},2000);
 	}else{
+		var html = '<div class = "popAlert"><img src="public/html/images/popAlertIconOk.png" alt="" class = "popAlertIcon" /><p class = "popAlertText">'+txt+'</p></div><div class="popMask"><div>';
+		$('body').append(html);
+		$('.popAlert').show(); 
+		$('.popMask').show();
 		t = setTimeout(function(){
 			location.href= url;
 		},3000);
