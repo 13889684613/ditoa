@@ -33,8 +33,18 @@
 				<!--内容区导航begin-->
 				<div class="contentRightNav clearfix">
 					<div class="contentRightNavLeft pull-left">
-						<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="?_f=archives{{$track}}">员工档案</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">员工档案详情</span></div>
-						<div class="contentRightNavBottom"><span class="name">员工档案详情 &nbsp;&nbsp;-&nbsp;&nbsp;{{$a.staffName}}</span><span class="time">创建时间：{{$a.createTime}}</span></div>
+						<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>
+							{{if $l == 'm'}}
+							&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">我的档案</span>
+							{{elseif $nav == 'quit'}}
+							&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="?_f=quit-staff{{$track}}">离职员工</a></span>
+							&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">员工档案详情</span>
+							{{else}}
+							&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="?_f=archives{{$track}}">员工档案</a></span>
+							&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">员工档案详情</span>
+							{{/if}}
+						</div>
+						<div class="contentRightNavBottom"><span class="name">{{$a.staffName}} 档案</span><span class="time">创建时间：{{$a.createTime}}</span></div>
 					</div>
 				</div>
 				<!--内容区导航end-->

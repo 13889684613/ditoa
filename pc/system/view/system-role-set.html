@@ -97,6 +97,8 @@
 											<div class="treeNavContentBoxPart{{if in_array('1',$i.humanAffairsPower)}} on{{/if}}">
 												<span class="treeNavContentBoxPartImageNew{{if in_array('1',$i.humanAffairsPower)}} on{{/if}}"><span{{if in_array('1',$i.humanAffairsPower)}} class="on"{{/if}} data-id="06"></span>人事管理</span>
 												<ul{{if in_array('1',$i.humanAffairsPower)}} class="on"{{/if}}>
+													<li{{if $i.humanAffairsPower[11]==1}} class="on"{{/if}} data-id="69">我的档案</li>
+													<input type="hidden" value="{{$i.humanAffairsPower[11]}}" class="treeHidden" name="m59"/>
 													<li{{if $i.humanAffairsPower[0]==1}} class="on"{{/if}} data-id="07">企业资质证件</li>
 													<input type="hidden" value="{{$i.humanAffairsPower[0]}}" class="treeHidden" name="m5"/>
 													<li{{if $i.humanAffairsPower[1]==1}} class="on"{{/if}} data-id="08">员工管理</li>
@@ -273,6 +275,7 @@
 													<span class="cloneItem{{if in_array('1',$i.humanAffairsPower)}} on{{/if}}" data-id="06"{{if in_array('1',$i.humanAffairsPower)}} style="display: inline-block;"{{/if}}></span>人事管理
 												</span>
 												<ul{{if in_array('1',$i.humanAffairsPower)}} class="on" style="display: block;"{{/if}}>
+													<li class="cloneItem{{if $i.humanAffairsPower[11]==1}} on{{/if}}" data-id="69"{{if $i.humanAffairsPower[11]==1}} style="display: list-item;"{{/if}}>我的档案</li>
 													<li class="cloneItem{{if $i.humanAffairsPower[0]==1}} on{{/if}}" data-id="07"{{if $i.humanAffairsPower[0]==1}} style="display: list-item;"{{/if}}>企业资质证件</li>
 													<li class="cloneItem{{if $i.humanAffairsPower[1]==1}} on{{/if}}" data-id="08"{{if $i.humanAffairsPower[1]==1}} style="display: list-item;"{{/if}}>员工管理</li>
 													<li class="cloneItem{{if $i.humanAffairsPower[2]==1}} on{{/if}}" data-id="09"{{if $i.humanAffairsPower[2]==1}} style="display: list-item;"{{/if}}>员工档案管理</li>

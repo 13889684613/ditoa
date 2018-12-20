@@ -136,7 +136,7 @@
 	// if($curCheckLevel > 1){
 	// 	$curCheckLevel = $curCheckLevel + 1;	//转正审批前两级是固定的,其它审批流+1即可
 	// }
-	echo $curCheckLevel;exit;
+	// echo $curCheckLevel;exit;
 	$blueLineWidth = getBlueLineWidth($curCheckLevel);
 	$data['blueLineWidth'] = $blueLineWidth;
 	//审批进度轴蓝色宽度设置 over

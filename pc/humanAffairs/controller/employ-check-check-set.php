@@ -195,6 +195,8 @@
 			//满足以上两个条件时视为审批完成
 			if($checkLevel == 0||$checkLevel == $A['curCheckLevel']||$result==1||$result==3){
 				$apply['checkStatus'] = 2;	//审批完成
+				$apply['curCheckLevel'] = $A['curCheckLevel'] + 1;	//20181220更新，为了进度轴最后一级蓝线显示，后期有问题再调整。
+
 			}else{
 				$apply['checkStatus'] = 1;	//审批中
 				$nextCheckLevel = $A['curCheckLevel'] + 1;

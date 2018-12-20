@@ -26,7 +26,7 @@
 		$groups = $db->get_all(PRFIX.'group','where officeId='.$offices[$e]['officeId'].'','groupId,groupName');
 		for($g=0;$g<count($groups);$g++){
 			//员工数量
-			$groups[$g]['number'] = $db->Count(PRFIX.'staff','where groupId='.$groups[$g]['groupId'].'');
+			$groups[$g]['number'] = $db->Count(PRFIX.'staff','where groupId='.$groups[$g]['groupId'].' and status<>2');
 		}
 		$offices[$e]['groups'] = $groups;
 	}

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-14 21:02:47
+/* Smarty version 3.1.29, created on 2018-12-20 21:17:10
   from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/index/view/index.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c13a9f717a099_63350128',
+  'unifunc' => 'content_5c1b9656996357_60186490',
   'file_dependency' => 
   array (
     'c3f837d1d6618db41a36db209cd6b70db8746e4f' => 
     array (
       0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/index/view/index.html',
-      1 => 1544791776,
+      1 => 1545310204,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c13a9f717a099_63350128 ($_smarty_tpl) {
+function content_5c1b9656996357_60186490 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -88,21 +88,21 @@ function content_5c13a9f717a099_63350128 ($_smarty_tpl) {
 									</div>
 								</div>
 							</a>
-							<a href="">
+							<a href="human-affairs.php?_f=archives-info&l=m">
 								<div class="quickFunctionBox pull-left">
 									<div class="quickFunctionPart">
 										<img src="index/view/images/index-icon-b.jpg" alt="" />我的档案
 									</div>
 								</div>
 							</a>
-							<a href="">
+							<a href="human-affairs.php?_f=rules">
 								<div class="quickFunctionBox pull-left">
 									<div class="quickFunctionPart">
 										<img src="index/view/images/index-icon-c.jpg" alt="" />企业规章制度
 									</div>
 								</div>
 							</a>
-							<a href="">
+							<a href="org.php?_f=org">
 								<div class="quickFunctionBox pull-left">
 									<div class="quickFunctionPart">
 										<img src="index/view/images/index-icon-d.jpg" alt="" />组织架构

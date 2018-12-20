@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-19 21:59:17
+/* Smarty version 3.1.29, created on 2018-12-20 19:47:27
   from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/humanAffairs/view/employ-check.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c1a4eb5530820_71995272',
+  'unifunc' => 'content_5c1b814f6a8b65_20907749',
   'file_dependency' => 
   array (
     '6485191b82526f17be2a67ec404571c70bfecd4d' => 
     array (
       0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/humanAffairs/view/employ-check.html',
-      1 => 1545227956,
+      1 => 1545306285,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c1a4eb5530820_71995272 ($_smarty_tpl) {
+function content_5c1b814f6a8b65_20907749 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -183,21 +183,22 @@ $__foreach_data_2_saved_local_item = $_smarty_tpl->tpl_vars['i'];
 									<td class="borderRight1">
 										<div class="editBox center-block clearfix">
 											<?php if ($_smarty_tpl->tpl_vars['i']->value['isCheck'] == 0) {?>
-											<div class="editButton editButtonL pull-left text-center">
-												<a href="?_f=employ-check-set&act=edit&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
-&id=<?php echo $_smarty_tpl->tpl_vars['i']->value['companyId'];
+											<div class="editButton editButtonZ pull-left text-center">
+												<a href="?_f=employ-check-set&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
+&s=<?php echo $_smarty_tpl->tpl_vars['i']->value['staffId'];
 echo $_smarty_tpl->tpl_vars['track']->value;?>
 "><img src="public/html/images/edit.jpg" alt="" /></a>
 											</div>
 											<?php } else { ?>
 											<div class="editButton editButtonL pull-left text-center">
-												<a href="?_f=employ-check-info&nav=quit&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
-&id=<?php echo $_smarty_tpl->tpl_vars['i']->value['staffId'];
+												<a href="?_f=employ-check-info&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
+&id=<?php echo $_smarty_tpl->tpl_vars['i']->value['appraiseId'];?>
+&s=<?php echo $_smarty_tpl->tpl_vars['i']->value['staffId'];
 echo $_smarty_tpl->tpl_vars['track']->value;?>
 "><img src="public/html/images/bj.jpg" /></a>
 											</div>
 											<?php if ($_smarty_tpl->tpl_vars['i']->value['isSp'] == 0) {?>
-											<div class="editButton editButtonL pull-left text-center">
+											<div class="editButton editButtonZ pull-left text-center">
 												<a href="?_f=employ-check-set&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
 &id=<?php echo $_smarty_tpl->tpl_vars['i']->value['appraiseId'];?>
 &s=<?php echo $_smarty_tpl->tpl_vars['i']->value['staffId'];

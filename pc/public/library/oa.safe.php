@@ -57,7 +57,7 @@
 			}else{
 				if($common_category == 1){
 					//系统管理员拥有所有权限
-					$common_power = '1,1,1,1|1,1,1,1,1,1,1,1,1,1,1|1,1,1,1|1,1|1,1,1,1,1,1|1,1,1,1,1,1,1,1,1,1|1,1,1|1,1,1,1,1,1,1,1|1,1,1,1,1|1,1,1,1,1';
+					$common_power = '1,1,1,1|1,1,1,1,1,1,1,1,1,1,1,1|1,1,1,1|1,1|1,1,1,1,1,1|1,1,1,1,1,1,1,1,1,1|1,1,1|1,1,1,1,1,1,1,1|1,1,1,1,1|1,1,1,1,1';
 					$menuPower = explode('|', $common_power);
 				}else{
 					$menuPower = explode('|',$getPower['power']);				//完整权限
@@ -143,6 +143,7 @@
 	$_prfix = basename($_SERVER['PHP_SELF']);
 	$_file = getVal('_f',2,'');
 	$_nav = getVal('nav',2,'');
+	$_my = getVal('l',2,'');
 
 	$indexPrfix = 'index.php';
 	$orgPrfix = 'org.php';
@@ -186,6 +187,12 @@
 
 	//人事管理menu
 	$humanMenus = false;
+
+	//我的档案
+	if($_my=='m'&&($_file=='archives-info'||$_file=='archives-family'||$_file=='archives-edu'||$_file=='archives-welfare'||$_file=='archives-entry'||$_file=='archives-contract'||$_file=='archives-leave'||$_file=='archives-file')){
+		$myMenu = 1; $humanMenus = true;
+	}
+
 	//企业资质证件
 	if($_file == 'certificate'){
 		$cerMenu = 1; $humanMenus = true;
@@ -195,7 +202,7 @@
 		$staffMenu = 1; $humanMenus = true;
 	}
 	//员工档案管理
-	if($_nav!='quit'&&($_file=='archives'||$_file=='archives-info'||$_file=='archives-family'||$_file=='archives-edu'||$_file=='archives-welfare'||$_file=='archives-entry'||$_file=='archives-contract'||$_file=='archives-leave'||$_file=='archives-file')){
+	if($_nav!='quit'&&$_my!='m'&&($_file=='archives'||$_file=='archives-info'||$_file=='archives-family'||$_file=='archives-edu'||$_file=='archives-welfare'||$_file=='archives-entry'||$_file=='archives-contract'||$_file=='archives-leave'||$_file=='archives-file')){
 		$archivesMenu = 1; $humanMenus = true;
 	}
 	//离职员工
@@ -318,6 +325,7 @@
 
 	//人事管理
 	$smarty->assign('humanMenu',$humanMenu);
+	$smarty->assign('myMenu',$myMenu);
 	$smarty->assign('cerMenu',$cerMenu);
 	$smarty->assign('ruleMenu',$ruleMenu);
 	$smarty->assign('staffMenu',$staffMenu);

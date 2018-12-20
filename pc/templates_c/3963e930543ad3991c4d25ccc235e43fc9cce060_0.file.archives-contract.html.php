@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-19 21:31:47
+/* Smarty version 3.1.29, created on 2018-12-20 21:13:57
   from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/humanAffairs/view/archives-contract.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c1a4843134601_81491770',
+  'unifunc' => 'content_5c1b9595aecde4_73048195',
   'file_dependency' => 
   array (
     '3963e930543ad3991c4d25ccc235e43fc9cce060' => 
     array (
       0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/humanAffairs/view/archives-contract.html',
-      1 => 1545221122,
+      1 => 1545311636,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/archives.html' => 1,
   ),
 ),false)) {
-function content_5c1a4843134601_81491770 ($_smarty_tpl) {
+function content_5c1b9595aecde4_73048195 ($_smarty_tpl) {
 ?>
 <!--
 	作者：sxh
@@ -64,10 +64,21 @@ function content_5c1a4843134601_81491770 ($_smarty_tpl) {
 				<!--内容区导航begin-->
 				<div class="contentRightNav clearfix">
 					<div class="contentRightNavLeft pull-left">
-						<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="?_f=archives<?php echo $_smarty_tpl->tpl_vars['track']->value;?>
-">员工档案</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">员工档案详情</span></div>
-						<div class="contentRightNavBottom"><span class="name">员工档案详情 &nbsp;&nbsp;-&nbsp;&nbsp;<?php echo $_smarty_tpl->tpl_vars['a']->value['staffName'];?>
-</span><span class="time">创建时间：<?php echo $_smarty_tpl->tpl_vars['a']->value['createTime'];?>
+						<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>
+							<?php if ($_smarty_tpl->tpl_vars['l']->value == 'm') {?>
+							&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">我的档案</span>
+							<?php } elseif ($_smarty_tpl->tpl_vars['nav']->value == 'quit') {?>
+							&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="?_f=quit-staff<?php echo $_smarty_tpl->tpl_vars['track']->value;?>
+">离职员工</a></span>
+							&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">员工档案详情</span>
+							<?php } else { ?>
+							&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="?_f=archives<?php echo $_smarty_tpl->tpl_vars['track']->value;?>
+">员工档案</a></span>
+							&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">员工档案详情</span>
+							<?php }?>
+						</div>
+						<div class="contentRightNavBottom"><span class="name"><?php echo $_smarty_tpl->tpl_vars['a']->value['staffName'];?>
+ 档案</span><span class="time">创建时间：<?php echo $_smarty_tpl->tpl_vars['a']->value['createTime'];?>
 </span></div>
 					</div>
 				</div>
@@ -108,17 +119,16 @@ function content_5c1a4843134601_81491770 ($_smarty_tpl) {
 							</div>
 							
 							<div></div>
-							<div class="quitApplyPart1 margin-bottom-165">
-								<div class="clearfix tableBoxFather">
-									<div class="tableBox clearfix">
-										<table class="table1 table1Content">
-											<tr>
-												<th width="70" class="paddingLeft12"><span>#</span></th>
-												<th width="100"><span>合同所属企业</span></th>
-												<th width="100"><span>合同编号</span></th>
-												<th width="300"><span>合同有效期</span></th>
-											</tr>
-											<?php
+							<div class="clearfix tableBoxFather">
+								<div class="tableBox clearfix">
+									<table class="table1 table1Content">
+										<tr>
+											<th width="70" class="paddingLeft30"><span>#</span></th>
+											<th width="100"><span>合同所属企业</span></th>
+											<th width="100"><span>合同编号</span></th>
+											<th width="300"><span>合同有效期</span></th>
+										</tr>
+										<?php
 $_from = $_smarty_tpl->tpl_vars['data']->value;
 if (!is_array($_from) && !is_object($_from)) {
 settype($_from, 'array');
@@ -133,17 +143,17 @@ $_smarty_tpl->tpl_vars['i']->_loop = true;
 $_smarty_tpl->tpl_vars['__smarty_foreach_data']->value['iteration']++;
 $__foreach_data_0_saved_local_item = $_smarty_tpl->tpl_vars['i'];
 ?>
-											<tr<?php if ($_smarty_tpl->tpl_vars['i']->value%2 == 1) {?> class="backgroundFFF"<?php }?>>
-												<td class="paddingLeft12"><span><?php echo (isset($_smarty_tpl->tpl_vars['__smarty_foreach_data']->value['iteration']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_data']->value['iteration'] : null);?>
+										<tr<?php if ($_smarty_tpl->tpl_vars['i']->value%2 == 1) {?> class="backgroundFFF"<?php }?>>
+											<td class="paddingLeft30"><span><?php echo (isset($_smarty_tpl->tpl_vars['__smarty_foreach_data']->value['iteration']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_data']->value['iteration'] : null);?>
 </span></td>
-												<td><span><?php echo $_smarty_tpl->tpl_vars['i']->value['company'];?>
+											<td><span><?php echo $_smarty_tpl->tpl_vars['i']->value['company'];?>
 </span></td>
-												<td><span><?php echo $_smarty_tpl->tpl_vars['i']->value['contractNo'];?>
+											<td><span><?php echo $_smarty_tpl->tpl_vars['i']->value['contractNo'];?>
 </span></td>
-												<td><span><?php echo $_smarty_tpl->tpl_vars['i']->value['time'];?>
+											<td><span><?php echo $_smarty_tpl->tpl_vars['i']->value['time'];?>
 </span></td>
-											</tr>
-											<?php
+										</tr>
+										<?php
 $_smarty_tpl->tpl_vars['i'] = $__foreach_data_0_saved_local_item;
 }
 if ($__foreach_data_0_saved) {
@@ -153,8 +163,7 @@ if ($__foreach_data_0_saved_item) {
 $_smarty_tpl->tpl_vars['i'] = $__foreach_data_0_saved_item;
 }
 ?>
-										</table>
-									</div>
+									</table>
 								</div>
 							</div>
 						</div>
