@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-20 09:02:34
+/* Smarty version 3.1.29, created on 2018-12-21 10:02:38
   from "F:\website\ditoaCoder\ditoa\pc\public\html\menu.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c1aea2a655053_02989562',
+  'unifunc' => 'content_5c1c49bebaac18_38442084',
   'file_dependency' => 
   array (
     '598ca1a5ac0c261d56269d7c1f39e6070f9e1e5c' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\public\\html\\menu.html',
-      1 => 1545260783,
+      1 => 1545357361,
       2 => 'file',
     ),
   ),
@@ -19,13 +19,13 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5c1aea2a655053_02989562 ($_smarty_tpl) {
+function content_5c1c49bebaac18_38442084 ($_smarty_tpl) {
 ?>
 			<div class="contentLeftNav col-lg-2 row">
 				<div class="contentLeftNavListTop col-lg-12">
 					<div class="contentNavList col-md-12 row<?php echo $_smarty_tpl->tpl_vars['indexMenu']->value;?>
 ">
-						<a href="?_f=index"><div class="contentNavListText"><img src="public/html/images/nav-image-a.png" alt="" class="navLogo" />首页</div></a>
+						<a href="index.php?_f=index"><div class="contentNavListText"><img src="public/html/images/nav-image-a.png" alt="" class="navLogo" />首页</div></a>
 					</div>
 					<?php if (in_array('1',$_smarty_tpl->tpl_vars['menuOrg']->value)) {?>
 					<div class="contentNavList col-md-12 row<?php echo $_smarty_tpl->tpl_vars['orgMenu']->value;?>
@@ -60,6 +60,11 @@ function content_5c1aea2a655053_02989562 ($_smarty_tpl) {
 ">
 						<div class="contentNavListText"><img src="public/html/images/nav-image-c.png" alt="" class="navLogo" />人事管理</div>
 						<ul class="contentNavListMore">
+							<?php if ($_smarty_tpl->tpl_vars['menuHumanAffairs']->value[11] == 1) {?>
+							<li<?php if ($_smarty_tpl->tpl_vars['myMenu']->value == 1) {?> class="active"<?php }?>>
+								<a href="human-affairs.php?_f=archives-info&l=m">我的档案</a>
+							</li>
+							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuHumanAffairs']->value[0] == 1) {?>
 							<li<?php if ($_smarty_tpl->tpl_vars['cerMenu']->value == 1) {?> class="active"<?php }?>>
 								<a href="human-affairs.php?_f=certificate">企业资质证件</a>
@@ -147,7 +152,7 @@ function content_5c1aea2a655053_02989562 ($_smarty_tpl) {
 					</div>
 					<?php }?>
 					<?php if (in_array('1',$_smarty_tpl->tpl_vars['menuBusinessTravel']->value)) {?>
-					<div class="contentNavList col-md-12 row<?php echo $_smarty_tpl->tpl_vars['businessMenu']->value;?>
+					<!-- <div class="contentNavList col-md-12 row<?php echo $_smarty_tpl->tpl_vars['businessMenu']->value;?>
 ">
 						<div class="contentNavListText"><img src="public/html/images/nav-image-e.png" alt="" class="navLogo" />出差管理</div>
 						<ul class="contentNavListMore">
@@ -162,10 +167,10 @@ function content_5c1aea2a655053_02989562 ($_smarty_tpl) {
 							</li>
 							<?php }?>
 						</ul>
-					</div>
+					</div> -->
 					<?php }?>
 					<?php if (in_array('1',$_smarty_tpl->tpl_vars['menuCar']->value)) {?>
-					<div class="contentNavList col-md-12 row<?php echo $_smarty_tpl->tpl_vars['carMenu']->value;?>
+					<!-- <div class="contentNavList col-md-12 row<?php echo $_smarty_tpl->tpl_vars['carMenu']->value;?>
 ">
 						<div class="contentNavListText"><img src="public/html/images/nav-image-f.png" alt="" class="navLogo" />车辆管理</div>
 						<ul class="contentNavListMore">
@@ -200,10 +205,10 @@ function content_5c1aea2a655053_02989562 ($_smarty_tpl) {
 							</li>
 							<?php }?>
 						</ul>
-					</div>
+					</div> -->
 					<?php }?>
 					<?php if (in_array('1',$_smarty_tpl->tpl_vars['menuOfficeTool']->value)) {?>
-					<div class="contentNavList col-md-12 row<?php echo $_smarty_tpl->tpl_vars['officeMenu']->value;?>
+					<!-- <div class="contentNavList col-md-12 row<?php echo $_smarty_tpl->tpl_vars['officeMenu']->value;?>
 ">
 						<div class="contentNavListText"><img src="public/html/images/nav-image-g.png" alt="" class="navLogo" />办公备品管理</div>
 						<ul class="contentNavListMore">
@@ -258,7 +263,7 @@ function content_5c1aea2a655053_02989562 ($_smarty_tpl) {
 							</li>
 							<?php }?>
 						</ul>
-					</div>
+					</div> -->
 					<?php }?>
 					<?php if (in_array('1',$_smarty_tpl->tpl_vars['menuGeneralAffairs']->value)) {?>
 					<div class="contentNavList col-md-12 row<?php echo $_smarty_tpl->tpl_vars['generalMenu']->value;?>

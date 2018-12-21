@@ -111,6 +111,8 @@ input:-ms-input-placeholder {
 	width: 130px;
 	float: left;
 	text-align: right;
+	height: 22px;
+	line-height: 22px;
 }
 
 .staff-info{
@@ -119,6 +121,12 @@ input:-ms-input-placeholder {
 	margin-left: 8px;
 	width: 316px;
 	color: #222;
+	height: 22px;
+	line-height: 22px;
+}
+
+.staff-info img{
+	margin-right: 6px;
 }
 
 .margin-bottom-25{

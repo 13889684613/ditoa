@@ -110,7 +110,7 @@
 						$class = ' contentRightNavRightTxtGreen oneRows';	//正式录用
 						break;
 					case 3:
-						$class = ' contentRightNavRightTxtred oneRows';		//不再录用
+						$class = ' contentRightNavRightTxtRed oneRows';		//不再录用
 						break;
 				}
 				$data['remark'] = $R['remark'];

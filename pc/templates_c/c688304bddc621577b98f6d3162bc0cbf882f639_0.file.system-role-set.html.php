@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-18 11:10:53
+/* Smarty version 3.1.29, created on 2018-12-21 13:53:13
   from "F:\website\ditoaCoder\ditoa\pc\system\view\system-role-set.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c18653d4672b9_70082611',
+  'unifunc' => 'content_5c1c7fc9902332_76401758',
   'file_dependency' => 
   array (
     'c688304bddc621577b98f6d3162bc0cbf882f639' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\system\\view\\system-role-set.html',
-      1 => 1545102061,
+      1 => 1545357361,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c18653d4672b9_70082611 ($_smarty_tpl) {
+function content_5c1c7fc9902332_76401758 ($_smarty_tpl) {
 ?>
 <!-- 
 	# 新增系统角色
@@ -140,6 +140,9 @@ function content_5c18653d4672b9_70082611 ($_smarty_tpl) {
 											<div class="treeNavContentBoxPart<?php if (in_array('1',$_smarty_tpl->tpl_vars['i']->value['humanAffairsPower'])) {?> on<?php }?>">
 												<span class="treeNavContentBoxPartImageNew<?php if (in_array('1',$_smarty_tpl->tpl_vars['i']->value['humanAffairsPower'])) {?> on<?php }?>"><span<?php if (in_array('1',$_smarty_tpl->tpl_vars['i']->value['humanAffairsPower'])) {?> class="on"<?php }?> data-id="06"></span>人事管理</span>
 												<ul<?php if (in_array('1',$_smarty_tpl->tpl_vars['i']->value['humanAffairsPower'])) {?> class="on"<?php }?>>
+													<li<?php if ($_smarty_tpl->tpl_vars['i']->value['humanAffairsPower'][11] == 1) {?> class="on"<?php }?> data-id="69">我的档案</li>
+													<input type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['humanAffairsPower'][11];?>
+" class="treeHidden" name="m59"/>
 													<li<?php if ($_smarty_tpl->tpl_vars['i']->value['humanAffairsPower'][0] == 1) {?> class="on"<?php }?> data-id="07">企业资质证件</li>
 													<input type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['humanAffairsPower'][0];?>
 " class="treeHidden" name="m5"/>
@@ -370,6 +373,7 @@ function content_5c18653d4672b9_70082611 ($_smarty_tpl) {
 													<span class="cloneItem<?php if (in_array('1',$_smarty_tpl->tpl_vars['i']->value['humanAffairsPower'])) {?> on<?php }?>" data-id="06"<?php if (in_array('1',$_smarty_tpl->tpl_vars['i']->value['humanAffairsPower'])) {?> style="display: inline-block;"<?php }?>></span>人事管理
 												</span>
 												<ul<?php if (in_array('1',$_smarty_tpl->tpl_vars['i']->value['humanAffairsPower'])) {?> class="on" style="display: block;"<?php }?>>
+													<li class="cloneItem<?php if ($_smarty_tpl->tpl_vars['i']->value['humanAffairsPower'][11] == 1) {?> on<?php }?>" data-id="69"<?php if ($_smarty_tpl->tpl_vars['i']->value['humanAffairsPower'][11] == 1) {?> style="display: list-item;"<?php }?>>我的档案</li>
 													<li class="cloneItem<?php if ($_smarty_tpl->tpl_vars['i']->value['humanAffairsPower'][0] == 1) {?> on<?php }?>" data-id="07"<?php if ($_smarty_tpl->tpl_vars['i']->value['humanAffairsPower'][0] == 1) {?> style="display: list-item;"<?php }?>>企业资质证件</li>
 													<li class="cloneItem<?php if ($_smarty_tpl->tpl_vars['i']->value['humanAffairsPower'][1] == 1) {?> on<?php }?>" data-id="08"<?php if ($_smarty_tpl->tpl_vars['i']->value['humanAffairsPower'][1] == 1) {?> style="display: list-item;"<?php }?>>员工管理</li>
 													<li class="cloneItem<?php if ($_smarty_tpl->tpl_vars['i']->value['humanAffairsPower'][2] == 1) {?> on<?php }?>" data-id="09"<?php if ($_smarty_tpl->tpl_vars['i']->value['humanAffairsPower'][2] == 1) {?> style="display: list-item;"<?php }?>>员工档案管理</li>

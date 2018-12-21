@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-20 14:22:37
+/* Smarty version 3.1.29, created on 2018-12-21 11:58:10
   from "F:\website\ditoaCoder\ditoa\pc\humanAffairs\view\archives-family.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c1b352d9587e9_85229421',
+  'unifunc' => 'content_5c1c64d2b6b850_63276269',
   'file_dependency' => 
   array (
     '56c4282d089278fe053e0e5f1af58b5b29cc3455' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\humanAffairs\\view\\archives-family.html',
-      1 => 1545286953,
+      1 => 1545357361,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/archives.html' => 1,
   ),
 ),false)) {
-function content_5c1b352d9587e9_85229421 ($_smarty_tpl) {
+function content_5c1c64d2b6b850_63276269 ($_smarty_tpl) {
 ?>
 <!--
 	作者：sxh
@@ -64,10 +64,21 @@ function content_5c1b352d9587e9_85229421 ($_smarty_tpl) {
 				<!--内容区导航begin-->
 				<div class="contentRightNav clearfix">
 					<div class="contentRightNavLeft pull-left">
-						<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="?_f=archives<?php echo $_smarty_tpl->tpl_vars['track']->value;?>
-">员工档案</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">员工档案详情</span></div>
-						<div class="contentRightNavBottom"><span class="name">员工档案详情 &nbsp;&nbsp;-&nbsp;&nbsp;<?php echo $_smarty_tpl->tpl_vars['a']->value['staffName'];?>
-</span><span class="time">创建时间：<?php echo $_smarty_tpl->tpl_vars['a']->value['createTime'];?>
+						<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>
+							<?php if ($_smarty_tpl->tpl_vars['l']->value == 'm') {?>
+							&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">我的档案</span>
+							<?php } elseif ($_smarty_tpl->tpl_vars['nav']->value == 'quit') {?>
+							&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="?_f=quit-staff<?php echo $_smarty_tpl->tpl_vars['track']->value;?>
+">离职员工</a></span>
+							&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">员工档案详情</span>
+							<?php } else { ?>
+							&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="?_f=archives<?php echo $_smarty_tpl->tpl_vars['track']->value;?>
+">员工档案</a></span>
+							&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">员工档案详情</span>
+							<?php }?>
+						</div>
+						<div class="contentRightNavBottom"><span class="name"><?php echo $_smarty_tpl->tpl_vars['a']->value['staffName'];?>
+ 档案</span><span class="time">创建时间：<?php echo $_smarty_tpl->tpl_vars['a']->value['createTime'];?>
 </span></div>
 					</div>
 				</div>

@@ -170,7 +170,16 @@
 	border-radius: 3px;
 	margin-bottom: 27px;
 	vertical-align: top;
-	line-height: 38px;
+	line-height: 36px;
+	display: inline-block;
+	font-size: 14px;
+	color: #222;
+	text-align: left;
+	cursor: text;
+}
+
+.margin-right-28{
+	margin-right: 28px;
 }
 
 .formBox-official-assessment table td span{
