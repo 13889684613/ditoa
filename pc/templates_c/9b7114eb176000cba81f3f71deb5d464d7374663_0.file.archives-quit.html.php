@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-19 17:15:52
+/* Smarty version 3.1.29, created on 2018-12-21 11:00:23
   from "F:\website\ditoaCoder\ditoa\pc\humanAffairs\view\archives-quit.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c1a0c48d1c797_26823646',
+  'unifunc' => 'content_5c1c57476fbd74_12515910',
   'file_dependency' => 
   array (
     '9b7114eb176000cba81f3f71deb5d464d7374663' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\humanAffairs\\view\\archives-quit.html',
-      1 => 1545210797,
+      1 => 1545361214,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/archives.html' => 1,
   ),
 ),false)) {
-function content_5c1a0c48d1c797_26823646 ($_smarty_tpl) {
+function content_5c1c57476fbd74_12515910 ($_smarty_tpl) {
 ?>
 <!--
 	作者：sxh
@@ -118,7 +118,7 @@ function content_5c1a0c48d1c797_26823646 ($_smarty_tpl) {
 									<li>
 										<span class="staff-text">离职申请表：</span>
 										<span class="staff-info"><a href="<?php echo $_smarty_tpl->tpl_vars['i']->value['quitTable'];?>
-" target="_blank"><?php echo $_smarty_tpl->tpl_vars['i']->value['staffName'];?>
+" target="_blank"><img src="../../../public/html/images/upload_ok.png"/><?php echo $_smarty_tpl->tpl_vars['i']->value['staffName'];?>
 -离职申请表</a></span>
 									</li>
 								</ul>

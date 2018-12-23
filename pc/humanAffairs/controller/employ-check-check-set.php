@@ -145,24 +145,24 @@
 
 		$result = getVal('result',1,'');
 		if($result == 0){
-			$data['status'] = 'fail';
-			$data['message'] = '请选择考核结果';
-			$returnJson = json_encode($data);
+			$json['status'] = 'fail';
+			$json['message'] = '请选择考核结果';
+			$returnJson = json_encode($json);
 			echo $returnJson; exit;	
 		}
 		if($result == 1){
 			$beginDate = getVal('beginDate',2,'');
 			$overDate = getVal('overDate',2,'');
 			if($beginDate == ''||$overDate == ''){
-				$data['status'] = 'fail';
-				$data['message'] = '请设置延长试用期有效期！';
-				$returnJson = json_encode($data);
+				$json['status'] = 'fail';
+				$json['message'] = '请设置延长试用期有效期！';
+				$returnJson = json_encode($json);
 				echo $returnJson; exit;
 			}
 			if(!isdate($beginDate)||!isdate($overDate)){
-				$data['status'] = 'fail';
-				$data['message'] = '请正确设置延长试用期有效期的时间！';
-				$returnJson = json_encode($data);
+				$json['status'] = 'fail';
+				$json['message'] = '请正确设置延长试用期有效期的时间！';
+				$returnJson = json_encode($json);
 				echo $returnJson; exit;
 			}
 			$val['beginDate'] = $beginDate;
@@ -175,9 +175,9 @@
 		if($result == 3){
 			$quitDate = getVal('quitDate',2,'');
 			if($quitDate == ''){
-				$data['status'] = 'fail';
-				$data['message'] = '请填写离职时间！';
-				$returnJson = json_encode($data);
+				$json['status'] = 'fail';
+				$json['message'] = '请填写离职时间！';
+				$returnJson = json_encode($json);
 				echo $returnJson; exit;
 			}
 			$val['quitDate'] = $quitDate;
@@ -216,16 +216,23 @@
 			}
 			$db->update(PRFIX.'staff_appraise',$apply,'where appraiseId='.$appraiseId.'');
 
+<<<<<<< HEAD
 			$data['status'] = 'success';
 			$data['message'] = '操作成功';
 			$data['url'] = '?_f=employ-check-check-info&id='.$appraiseId.'';
 			$returnJson = json_encode($data);
+=======
+			$json['status'] = 'success';
+			$json['message'] = '操作成功';
+			$json['url'] = '?_f=employ-check-check-info&id='.$appraiseId.'';
+			$returnJson = json_encode($json);
+>>>>>>> 63e315206b29bb078b817a3565d169b3d907439f
 			echo $returnJson; exit;
 
 		}else{
-			$data['status'] = 'fail';
-			$data['message'] = ERRORTIPS;
-			$returnJson = json_encode($data);
+			$json['status'] = 'fail';
+			$json['message'] = ERRORTIPS;
+			$returnJson = json_encode($json);
 			echo $returnJson; exit;
 		}
 

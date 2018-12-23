@@ -1,4 +1,17 @@
 $(function(){
+	if($('.circlePosition').length>0){
+		var circleNum = $('.circlePosition').length;
+		var left = 100/(circleNum-1);
+		console.log(left);
+		for(var i=0;i<circleNum;i++){
+			$('.circlePosition').eq(i).css('left',(left*i)+"%");
+		}
+		var a = $('.circleActive').css('left');
+		console.log(a)
+		$('.stepActiveLine').css('width',a);
+	}
+	
+	
    $('.contentLeftNav').append($('<div class="contentLeftNavMak"></div>'))
 	$('.retrievalsInputNav').mCustomScrollbar({
 		axis: "y",
@@ -178,7 +191,7 @@ function popAlert(txt,url) {
 		$('.popMask').show();
 		t = setTimeout(function(){
 			location.href= url;
-		},3000);
+		},2000);
 	}
 }
 

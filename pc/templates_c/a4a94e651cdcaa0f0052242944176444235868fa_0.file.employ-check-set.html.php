@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-20 10:47:51
+/* Smarty version 3.1.29, created on 2018-12-21 14:11:05
   from "F:\website\ditoaCoder\ditoa\pc\humanAffairs\view\employ-check-set.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c1b02d73c71d9_07607831',
+  'unifunc' => 'content_5c1c83f927c348_17462964',
   'file_dependency' => 
   array (
     'a4a94e651cdcaa0f0052242944176444235868fa' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\humanAffairs\\view\\employ-check-set.html',
-      1 => 1545274067,
+      1 => 1545372607,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c1b02d73c71d9_07607831 ($_smarty_tpl) {
+function content_5c1c83f927c348_17462964 ($_smarty_tpl) {
 ?>
 <!--
 	作者：sxh
@@ -626,7 +626,7 @@ function content_5c1b02d73c71d9_07607831 ($_smarty_tpl) {
 								
 							</div>
 							<div class="buttonGroup2-bottom">
-								<div class="button-feedback-bottom button-submit-bottom">提交反馈</div>
+								<div class="button-feedback-bottom button-submit-bottom margin-right-28">提交反馈</div>
 								<div class="button-back-bottom">返回</div>
 							</div>
 							

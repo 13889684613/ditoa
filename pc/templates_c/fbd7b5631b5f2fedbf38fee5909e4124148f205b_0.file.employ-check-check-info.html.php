@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-20 17:19:31
+/* Smarty version 3.1.29, created on 2018-12-21 15:20:59
   from "F:\website\ditoaCoder\ditoa\pc\humanAffairs\view\employ-check-check-info.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c1b5ea36b3d45_03884191',
+  'unifunc' => 'content_5c1c945b9c6ba1_93545140',
   'file_dependency' => 
   array (
     'fbd7b5631b5f2fedbf38fee5909e4124148f205b' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\humanAffairs\\view\\employ-check-check-info.html',
-      1 => 1545296408,
+      1 => 1545376837,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c1b5ea36b3d45_03884191 ($_smarty_tpl) {
+function content_5c1c945b9c6ba1_93545140 ($_smarty_tpl) {
 ?>
 <!--
 	作者：sxh
@@ -370,7 +370,7 @@ $_smarty_tpl->tpl_vars['c'] = $__foreach_check_1_saved_item;
 										<div class="totalScoreBox">
 											<div class="totalScore">
 												<span>得分：</span>
-												<span class="score"><?php echo $_smarty_tpl->tpl_vars['i']->value['moralityScore'];?>
+												<span class="score scoreRed"><?php echo $_smarty_tpl->tpl_vars['i']->value['moralityScore'];?>
 </span>
 												<span>分</span>
 											</div>
@@ -448,7 +448,7 @@ $_smarty_tpl->tpl_vars['c'] = $__foreach_check_1_saved_item;
 										<div class="totalScoreBox">
 											<div class="totalScore">
 												<span>得分：</span>
-												<span class="score"><?php echo $_smarty_tpl->tpl_vars['i']->value['attitudeScore'];?>
+												<span class="score scoreRed"><?php echo $_smarty_tpl->tpl_vars['i']->value['attitudeScore'];?>
 </span>
 												<span>分</span>
 											</div>
@@ -526,7 +526,7 @@ $_smarty_tpl->tpl_vars['c'] = $__foreach_check_1_saved_item;
 										<div class="totalScoreBox">
 											<div class="totalScore">
 												<span>得分：</span>
-												<span class="score"><?php echo $_smarty_tpl->tpl_vars['i']->value['businessScore'];?>
+												<span class="score scoreRed"><?php echo $_smarty_tpl->tpl_vars['i']->value['businessScore'];?>
 </span>
 												<span>分</span>
 											</div>
@@ -622,7 +622,7 @@ $_smarty_tpl->tpl_vars['c'] = $__foreach_check_1_saved_item;
 										<div class="totalScoreBox">
 											<div class="totalScore">
 												<span>得分：</span>
-												<span class="score"><?php echo $_smarty_tpl->tpl_vars['i']->value['efficiencyScore'];?>
+												<span class="score scoreRed"><?php echo $_smarty_tpl->tpl_vars['i']->value['efficiencyScore'];?>
 </span>
 												<span>分</span>
 											</div>
@@ -700,7 +700,7 @@ $_smarty_tpl->tpl_vars['c'] = $__foreach_check_1_saved_item;
 										<div class="totalScoreBox">
 											<div class="totalScore">
 												<span>得分：</span>
-												<span class="score"><?php echo $_smarty_tpl->tpl_vars['i']->value['achievementScore'];?>
+												<span class="score scoreRed"><?php echo $_smarty_tpl->tpl_vars['i']->value['achievementScore'];?>
 </span>
 												<span>分</span>
 											</div>

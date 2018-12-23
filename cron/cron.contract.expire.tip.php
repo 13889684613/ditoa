@@ -4,14 +4,21 @@
 <?php
 
 	//# Mr.Z
+<<<<<<< HEAD
 	//# 2018-12-22
 	//# 员工合同到期提醒 提醒周期 30天/15天/7天/3天内
 	//# 任务执行时间 09:00
+=======
+	//# 2018-12-20
+	//# 员工到达离职日期自动变更员工状态为离职状态
+	//# 任务执行时间 00:00
+>>>>>>> 63e315206b29bb078b817a3565d169b3d907439f
 
 	// ** 全局配置文件
 	date_default_timezone_set('Asia/Shanghai');
 
 	include("common/oa.common.php");
+<<<<<<< HEAD
 	include("common/oa.wechat.php");
 
 	$beginTime = time();
@@ -84,6 +91,28 @@
 
 			}
 
+=======
+
+	$beginTime = time();
+	$remark = '';
+
+	//找到1个月内合同到期的员工
+	$S = $db->get_all(PRFIX.'staff','where (status=0 or status=1) and trueQuitDate="'.date('Y-m-d').'"','staffId,staffName');
+
+	for($e=0;$e<count($S);$e++){
+
+		//变更为离职状态
+		$val['status'] = 2;
+		$result = $db->update(PRFIX.'staff',$val,'where staffId='.$S[$e]['staffId'].'');
+		if($result){
+			$staff .= ',' . $S[$e]['staffName'];
+		}
+
+	}
+
+	if($staff!=''){
+		$remark = '离职人员'.$staff;
+>>>>>>> 63e315206b29bb078b817a3565d169b3d907439f
 	}
 
 	$overTime = time();
@@ -92,7 +121,11 @@
 	$duration = $overTime - $beginTime;
 
 	//写入计划任务执行监测日志 begin
+<<<<<<< HEAD
 	$log['category'] = 2;
+=======
+	$log['category'] = 1;
+>>>>>>> 63e315206b29bb078b817a3565d169b3d907439f
 	$log['cronTime'] = date('Y-m-d H:i:s');
 	$log['duration'] = $duration;
 	$log['remark'] = $remark;

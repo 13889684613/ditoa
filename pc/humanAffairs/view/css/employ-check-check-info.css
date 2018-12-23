@@ -326,7 +326,7 @@ input:-ms-input-placeholder,textarea:-ms-input-placeholder {
     top: 0;
     bottom: 0;
     margin: auto;
-    left: -6px;
+    left: -12px;
 }
 
 .opinion span.agree:after {
@@ -340,7 +340,7 @@ input:-ms-input-placeholder,textarea:-ms-input-placeholder {
     top: 0;
     bottom: 0;
     margin: auto;
-    left: -6px;
+    left: -12px;
 }
 
 .opinion span.nothing:after {
@@ -354,7 +354,7 @@ input:-ms-input-placeholder,textarea:-ms-input-placeholder {
     top: 0;
     bottom: 0;
     margin: auto;
-    left: -6px;
+    left: -12px;
 }
 
 .popTic{
@@ -472,4 +472,10 @@ input:-ms-input-placeholder {
 	background: #fce8e8!important;
 	padding-top: 0;
 	line-height: 90px;
+}
+
+.scoreRed {
+    color: #d71e2d;
+    font-size: 30px;
+    font-weight: bold;
 }

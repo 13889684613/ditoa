@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-19 17:10:22
+/* Smarty version 3.1.29, created on 2018-12-21 10:38:50
   from "F:\website\ditoaCoder\ditoa\pc\humanAffairs\view\archives-file.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c1a0afe9c7d45_21546995',
+  'unifunc' => 'content_5c1c523acda738_16152969',
   'file_dependency' => 
   array (
     '4c2e203daf9183c71d303d84621bcfeb09207d73' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\humanAffairs\\view\\archives-file.html',
-      1 => 1545210621,
+      1 => 1545359929,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/archives.html' => 1,
   ),
 ),false)) {
-function content_5c1a0afe9c7d45_21546995 ($_smarty_tpl) {
+function content_5c1c523acda738_16152969 ($_smarty_tpl) {
 ?>
 <!--
 	作者：sxh
@@ -64,10 +64,21 @@ function content_5c1a0afe9c7d45_21546995 ($_smarty_tpl) {
 				<!--内容区导航begin-->
 				<div class="contentRightNav clearfix">
 					<div class="contentRightNavLeft pull-left">
-						<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="?_f=archives<?php echo $_smarty_tpl->tpl_vars['track']->value;?>
-">员工档案</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">员工档案详情</span></div>
-						<div class="contentRightNavBottom"><span class="name">员工档案详情 &nbsp;&nbsp;-&nbsp;&nbsp;<?php echo $_smarty_tpl->tpl_vars['a']->value['staffName'];?>
-</span><span class="time">创建时间：<?php echo $_smarty_tpl->tpl_vars['a']->value['createTime'];?>
+						<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>
+							<?php if ($_smarty_tpl->tpl_vars['l']->value == 'm') {?>
+							&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">我的档案</span>
+							<?php } elseif ($_smarty_tpl->tpl_vars['nav']->value == 'quit') {?>
+							&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="?_f=quit-staff<?php echo $_smarty_tpl->tpl_vars['track']->value;?>
+">离职员工</a></span>
+							&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">员工档案详情</span>
+							<?php } else { ?>
+							&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="?_f=archives<?php echo $_smarty_tpl->tpl_vars['track']->value;?>
+">员工档案</a></span>
+							&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">员工档案详情</span>
+							<?php }?>
+						</div>
+						<div class="contentRightNavBottom"><span class="name"><?php echo $_smarty_tpl->tpl_vars['a']->value['staffName'];?>
+ 档案</span><span class="time">创建时间：<?php echo $_smarty_tpl->tpl_vars['a']->value['createTime'];?>
 </span></div>
 					</div>
 				</div>
@@ -117,7 +128,7 @@ function content_5c1a0afe9c7d45_21546995 ($_smarty_tpl) {
 											未上传
 											<?php } else { ?>
 											<a href="<?php echo $_smarty_tpl->tpl_vars['i']->value['idFile'];?>
-" target="_blank"><?php echo $_smarty_tpl->tpl_vars['a']->value['staffName'];?>
+" target="_blank"><img src="../../../public/html/images/upload_ok.png"/><?php echo $_smarty_tpl->tpl_vars['a']->value['staffName'];?>
 -身份证文件</a>
 											<?php }?>
 										</span>
@@ -129,7 +140,7 @@ function content_5c1a0afe9c7d45_21546995 ($_smarty_tpl) {
 											未上传
 											<?php } else { ?>
 											<a href="<?php echo $_smarty_tpl->tpl_vars['i']->value['eduFile'];?>
-" target="_blank"><?php echo $_smarty_tpl->tpl_vars['a']->value['staffName'];?>
+" target="_blank"><img src="../../../public/html/images/upload_ok.png"/><?php echo $_smarty_tpl->tpl_vars['a']->value['staffName'];?>
 -学历证书</a>
 											<?php }?>
 										</span>
@@ -141,7 +152,7 @@ function content_5c1a0afe9c7d45_21546995 ($_smarty_tpl) {
 											未上传
 											<?php } else { ?>
 											<a href="<?php echo $_smarty_tpl->tpl_vars['i']->value['registerFile'];?>
-" target="_blank"><?php echo $_smarty_tpl->tpl_vars['a']->value['staffName'];?>
+" target="_blank"><img src="../../../public/html/images/upload_ok.png"/><?php echo $_smarty_tpl->tpl_vars['a']->value['staffName'];?>
 -户口本</a>
 											<?php }?>
 										</span>
@@ -153,7 +164,7 @@ function content_5c1a0afe9c7d45_21546995 ($_smarty_tpl) {
 											未上传
 											<?php } else { ?>
 											<a href="<?php echo $_smarty_tpl->tpl_vars['i']->value['reportFile'];?>
-" target="_blank"><?php echo $_smarty_tpl->tpl_vars['a']->value['staffName'];?>
+" target="_blank"><img src="../../../public/html/images/upload_ok.png"/><?php echo $_smarty_tpl->tpl_vars['a']->value['staffName'];?>
 -体检报告</a>
 											<?php }?>
 										</span>

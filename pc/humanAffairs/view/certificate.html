@@ -10,7 +10,12 @@
 		<link rel="stylesheet" href="public/html/css/oa.bootstrap.min.css" />
 		<link rel="stylesheet" href="public/html/css/plugin/jquery.mCustomScrollbar.min.css" />
 		<link rel="stylesheet" href="public/html/css/oa.common.css" />
-		<link rel="stylesheet" href="generalAffairs/view/css/certificate.css" />
+		<link rel="stylesheet" href="humanAffairs/view/css/certificate.css" />
+		<style type="text/css">
+			.editBox{
+				width: 40px;
+				}
+		</style>
 	</head>
 
 	<body>
@@ -37,7 +42,7 @@
 				<div class="contentRightBox">
 					<div class="contentRightContent">
 						<!--检索begin-->
-						<form id="searchForm" name="searchForm" method="get">
+						<!--<form id="searchForm" name="searchForm" method="get">
 						<input type="hidden" name="_f" value="certificate">
 						<div class="retrievalBox">
 							<div class="retrievalTitle">快速检索</div>
@@ -65,9 +70,50 @@
 								</div>
 							</div>
 						</div>
-						</form>
+						</form>-->
 						<!--检索end-->
 						<!--表格begin-->
+						<!--检索begin-->
+						<div class="retrievalBox">
+							<div class="retrievalTitle">快速检索</div>
+							<div class="retrievalsForm">
+								<form id="searchForm" method="get" class="clearfix">
+									<input type="hidden" name="_f" value="certificate">
+									<div class="retrievalsInputBoxs clearfix pull-left">
+										<div class="retrievalsInputContent">
+											<div class="retrievalsInput">
+												<label>所属企业</label>
+												<input type="text"  unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputQy" placeholder="请选择" name="s_company" value="" data-type='0' />
+												<div class="retrievalsInputNavBox">
+										<ul class="retrievalsInputNav">
+											<li data-type = "0">请选择</li>
+											{{foreach item=c name=company from=$company}}
+											<li data-type = "{{$c.companyId}}">{{$c.cnName}}</li>
+											{{/foreach}}
+											<input type="hidden" class="selectVal" value="" autocomplete="off" data-type="1">
+										</ul>
+									</div>
+											</div>
+										</div>
+									</div>
+									<div class="retrievalsInputBoxs clearfix pull-left">
+										<div class="retrievalsInputContent">
+											<div class="retrievalsInput">
+												<label>证件名称</label>
+												<input type="text" class="choseInputName" placeholder="请输入证件名称" name="s_name" value="{{$s_name}}" data-type='0' />
+											</div>
+										</div>
+									</div>
+									<!--查询清空begin-->
+									<div class="retrievalsInput clearfix pull-left">
+										<a href="javascript:void(0);" onclick="document.getElementById('searchForm').submit();"><div class="queryButton pull-left">查询</div></a>
+										<div class="clearButton pull-left">清空</div>
+									</div>
+									<!--查询清空end-->
+								</form>
+							</div>
+						</div>
+						<!--检索end-->
 						<div class="clearfix tableBoxFather">
 							<table class="table1 table1Fixed">
 									<tr>
