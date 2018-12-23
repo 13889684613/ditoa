@@ -57,14 +57,14 @@
 									<div class = "retrievalsInput pull-left mR40 clearfix">
 										<label class="lable_w">备品类别<span class="must">*</span></label>		
 										<!-- <p class = "formTitle">所属企业<span>*</span></p> -->
-										<input type="text" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputBm companyInput" placeholder="请选择" name="company" value="{{$i.companyId}}" data-type='0' />
+										<input type="text" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputBm companyInput" placeholder="请选择" data-type='0' />
 										<div class="retrievalsInputNavBox">
 											<ul class="retrievalsInputNav">
 												<li data-type = "0">请选择</li>
 												{{foreach item=c name=company from=$company}}
 												<li data-type = "{{$c.companyId}}">{{$c.cnName}}</li>
 												{{/foreach}}
-												<input type="hidden" class="selectVal" value="" autocomplete="off">
+												<input type="hidden" name="company" value="{{$i.companyId}}" class="selectVal" value="" autocomplete="off">
 											</ul>
 										</div>
 									</div>

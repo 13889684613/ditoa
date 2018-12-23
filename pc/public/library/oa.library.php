@@ -591,5 +591,67 @@
 
 	}
 
+	//推送系统消息 - 单点推送，推送给个人
+	//category：1请假 2加班 3出差 4车辆维修 5办公备品 6入职 7转正 8离职 9邮箱申请 10证件到期 11企业动态 12企业活动  13 员工合同到期提醒
+	//content：推送内容
+	//staffId：推送用户id
+	function sendSystemSms($category,$content,$staffId){
+
+		global $db;
+
+		$sms['category'] = $category;					//转正
+		$sms['content'] = $content;
+		$sms['receiverRole'] = 3;						//推送给个人
+		$sms['receiverUsr'] = $staffId;
+		$sms['messageTime'] = date('Y-m-d H:i:s');
+
+		$db->insert(PRFIX.'message',$sms);
+
+	}
+
+	//推送微信模板消息 - 审批业务
+	//data：array - wxOpenId：微信openId，url：页面跳转url，checkNumber：审批业务编号，beginUsr：发起人，beginTime：发起时间
+	//            - category：审批流程类别，remark：备注说明
+	function sendWechatSms($data){
+
+		global $db;
+
+		//推送消息
+		$templateContent = array(
+			'touser'=>$data['wxOpenId'],
+			'template_id'=>'8_NNb71TszEjxNkyEw_v6GvMh_bDvt0cZG-hiKErhs8',								//审批模板id
+			'url' => $data['url'],
+			'topcolor'=>"#FF0000",
+			'data'=>array(
+				'first'=>array('value'=>urlencode($data['title']),'color'=>"#173177"),					//标题
+				'keyword1'=>array('value'=>urlencode($data['checkNumber']),'color'=>'#173177'),			//编号
+				'keyword2'=>array('value'=>urlencode($data['beginUsr']),'color'=>'#173177'),			//发起人
+				'keyword3'=>array('value'=>urlencode($data['beginTime']),'color'=>'#173177'),			//发起时间
+				'keyword4'=>array('value'=>urlencode($data['category']),'color'=>'#173177'),			//流程类别
+				'remark'=>array('value'=>urlencode($data['remark']),'color'=>'#173177'),				//备注
+			)
+		);
+		 
+		//获取推送状态
+		$result = messageSendStatus($templateContent);
+		//返回失败写入日志
+		if($result['errcode'] != 0){
+			//写入日志表
+			$val = array();
+
+			$val['logTime'] = date('Y-m-d H:i:s');
+			$val['errCode'] = $result['errcode'];
+			$val['errMsg'] = $result['errmsg'];
+			$val['msgId'] = $result['msgid'];
+			$val['category'] = $data['category'];
+			$val['toStaff'] = $data['staffName'];
+
+			$db->insert(PRFIX.'template_sms',$val);
+
+		}
+
+	}
+
+
 
 ?>

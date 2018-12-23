@@ -30,7 +30,7 @@
 
 	//获取用户数据 begin
 
-	$fields = 'staffId,staffRole,staffOffice,staffGroup,morality,moralityScore,attitude,attitudeScore,business,businessScore,efficiency,efficiencyScore,achievement,achievementScore,late,earlyRetreat,sickLeave,eventLeave,absenteeism,score,checkStatus,checkCategory,checkProcessId,curCheckLevel,appraiseTime';
+	$fields = 'staffId,staffRole,staffOffice,staffGroup,morality,moralityScore,attitude,attitudeScore,business,businessScore,efficiency,efficiencyScore,achievement,achievementScore,late,earlyRetreat,sickLeave,eventLeave,absenteeism,score,checkStatus,checkCategory,checkProcessId,curCheckLevel,appraiseTime,checkNumber,appraiseUsr';
 	$A = $db->get_one(PRFIX.'staff_appraise','where appraiseId='.$appraiseId.'',$fields);
 	if($A){
 
@@ -214,27 +214,127 @@
 				$apply['curCheckGroup'] = $nextCheckInfo[1];
 				$apply['curCheckRole'] = $nextCheckInfo[2];
 			}
-			$db->update(PRFIX.'staff_appraise',$apply,'where appraiseId='.$appraiseId.'');
+			$result = $db->update(PRFIX.'staff_appraise',$apply,'where appraiseId='.$appraiseId.'');
+			if($result){
 
-<<<<<<< HEAD
-			$data['status'] = 'success';
-			$data['message'] = '操作成功';
-			$data['url'] = '?_f=employ-check-check-info&id='.$appraiseId.'';
-			$returnJson = json_encode($data);
-=======
+				if($apply['checkStatus'] == 1){
+
+					//给下一级审批人员推送消息
+
+					//同时推送系统消息、邮件与微信审批消息提醒 begin
+
+					//获取审批人员
+					$S = $db->get_all(PRFIX.'staff','where officeId='.$apply['curCheckOffice'].' and groupId='.$apply['curCheckGroup'].' and checkRoleId='.$apply['curCheckRole'].'','staffId,wxOpenId,email,staffName');
+					for($e=0;$e<count($S);$e++){
+
+						//推送系统消息 begin
+						sendSystemSms(7,'您有1条员工转正审批申请需要处理',$S[$e]['staffId']);
+						//推送系统消息 over
+
+						//推送微信模板消息 begin
+						if($S[$e]['wxOpenId']!=''){
+
+							$template = array();
+
+							$template['wxOpenId'] = $S[$e]['wxOpenId'];					//用户openId
+							$template['staffName'] = $S[$e]['staffName'];				//用户姓名
+							$template['url'] = '';										//跳转业务页面url
+							$template['checkNumber'] = $A['checkNumber'];				//审批编号
+							$template['beginUsr'] = getStaffName($A['appraiseUsr']);	//发起人，部门主任，考核人员
+							$template['beginTime'] = $A['appraiseTime'];				//发起时间
+							$template['category'] = '员工转正考核审批';						//流程类别
+							$template['remark'] = '您有1条员工转正审批申请需要处理';			//备注
+
+							sendWechatSms($template);	//发送微信模板消息
+							
+						}
+						//推送微信模板消息 over
+
+						//推送邮件 begin
+						if($S[$e]['email']!=''){
+
+							$content = '亲爱的'.$S[$e]['staffName'].'，<br />';
+							$content .= '您有1条员工转正审批申请需要处理<br /><br />';
+							$content .= '发起人：'.getStaffName($A['appraiseUsr']).'<br />';
+							$content .= '发起时间：'.$A['appraiseTime'].'<br /><br />';
+							$content .= '请尽快登录OA处理！';
+
+							// sendMail($S[$e]['email'],'【DIT】亲爱的'.$S[$e]['staffName'].'，您有1条员工转正审批申请需要处理',$content)；
+
+						}
+						//推送邮件 over
+
+					}
+
+				}else{
+
+					//给员工推送审批结果
+					$sms = '试用期考核结果：';
+					switch ($result) {
+						case 1:
+							$sms .= '根据你试用期的表现，公司经再三考虑，决定延长试用期至'.$overDate.'。请继续努力！';
+							break;
+						case 2:
+							$sms .= '恭喜你，通过转正考核，欢迎加入DIT大家庭！';
+							break;
+						case 3:
+							$sms .= '很遗憾，你没有通过转正考核，将于'.$quitDate.'离开DIT';
+							break;
+					}
+
+					//推送系统消息 begin
+					sendSystemSms(7,$sms,$A['staffId']);
+					//推送系统消息 over
+
+					$S = $db->get_one(PRFIX.'staff','where staffId='.$A['staffId'].'','email,wxOpenId,staffName');
+
+					//推送微信模板消息 begin
+					if($S['wxOpenId']!=''){
+
+						$template = array();
+
+						$template['wxOpenId'] = $S['wxOpenId'];					//用户openId
+						$template['staffName'] = $S['staffName'];				//用户姓名
+						$template['url'] = '';									//跳转业务页面url
+						$template['title'] = '转正考核审批结果';					//消息标题
+						$template['checkNumber'] = $A['checkNumber'];			//审批编号
+						$template['beginUsr'] = getStaffName($A['staffId']);	//发起人，被考核员工
+						$template['beginTime'] = $A['appraiseTime'];			//发起时间
+						$template['category'] = '员工转正考核审批';					//流程类别
+						$template['remark'] = $sms;								//备注
+
+						sendWechatSms($template);	//发送微信模板消息
+						
+					}
+					//推送微信模板消息 over
+
+					//推送邮件 begin
+					if($S['email']!=''){
+
+						$content = '亲爱的'.$S['staffName'].'，<br />';
+						$content .= '根据你试用期的综合表现，考核结果如下：<br /><br />';
+						$content .= $sms . '<br /><br />';
+						$content .= '时间：'.date('Y-m-d H:i:s');
+
+						// sendMail($S['email'],'【DIT】亲爱的'.$S['staffName'].'，请查收试用考核结果！',$content)；
+
+					}
+					//推送邮件 over
+
+				}
+
+			}
+
 			$json['status'] = 'success';
 			$json['message'] = '操作成功';
 			$json['url'] = '?_f=employ-check-check-info&id='.$appraiseId.'';
-			$returnJson = json_encode($json);
->>>>>>> 63e315206b29bb078b817a3565d169b3d907439f
-			echo $returnJson; exit;
 
 		}else{
 			$json['status'] = 'fail';
 			$json['message'] = ERRORTIPS;
-			$returnJson = json_encode($json);
-			echo $returnJson; exit;
 		}
+		$returnJson = json_encode($json);
+		echo $returnJson; exit;
 
 	}
 	//考核 over

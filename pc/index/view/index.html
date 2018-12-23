@@ -95,7 +95,7 @@
 											<div class="liL pull-left">
 												{{$n.title}}
 											</div>
-											<div class="liR pull-right">{{$n.newsTime}}</div>
+											<div class="liR pull-right">{{$n.newsTime|date_format:"%Y-%m-%d"}}</div>
 										</div>
 									</a>
 									{{/foreach}}

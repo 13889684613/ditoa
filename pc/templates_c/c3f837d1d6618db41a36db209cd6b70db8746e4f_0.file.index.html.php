@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-20 21:17:10
+/* Smarty version 3.1.29, created on 2018-12-23 22:38:17
   from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/index/view/index.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c1b9656996357_60186490',
+  'unifunc' => 'content_5c1f9dd95dc9a6_61798657',
   'file_dependency' => 
   array (
     'c3f837d1d6618db41a36db209cd6b70db8746e4f' => 
     array (
       0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/index/view/index.html',
-      1 => 1545310204,
+      1 => 1545575894,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,8 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c1b9656996357_60186490 ($_smarty_tpl) {
+function content_5c1f9dd95dc9a6_61798657 ($_smarty_tpl) {
+if (!is_callable('smarty_modifier_date_format')) require_once '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/public/library/smarty/plugins/modifier.date_format.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -144,7 +145,7 @@ $__foreach_news_0_saved_local_item = $_smarty_tpl->tpl_vars['n'];
 												<?php echo $_smarty_tpl->tpl_vars['n']->value['title'];?>
 
 											</div>
-											<div class="liR pull-right"><?php echo $_smarty_tpl->tpl_vars['n']->value['newsTime'];?>
+											<div class="liR pull-right"><?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['n']->value['newsTime'],"%Y-%m-%d");?>
 </div>
 										</div>
 									</a>

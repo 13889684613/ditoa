@@ -132,17 +132,20 @@
 					}
 
 					$menuPower = explode('|',$common_power);			//完整权限
-					$menuOrg = explode(',',$menuPower[0]);				//DIT组织架构
-					$menuHumanAffairs = explode(',',$menuPower[1]);		//人事管理
-					$menuLeave = explode(',',$menuPower[2]);			//请假管理
-					$menuBusinessTravel = explode(',',$menuPower[3]);	//出差管理
-					$menuCar = explode(',',$menuPower[4]);				//车辆管理
-					$menuOfficeTool = explode(',',$menuPower[5]);		//办公备品管理
-					$menuGeneralAffairs =explode(',',$menuPower[6]);	//综合事务管理
-					$menuSystem =explode(',',$menuPower[7]);			//系统运维管理	
-					$menuSignPower = explode(',',$menuPower[8]);		//考勤管理
-					$otherPower = explode(',',$menuPower[9]);	//其它权限 员工信息 0:背景调查查看 1:合同信息 2:假期设置 3:账号设置 4:编辑记录
 				}
+
+				//左侧菜单赋能 begin
+				$menuOrg = explode(',',$menuPower[0]);				//DIT组织架构
+				$menuHumanAffairs = explode(',',$menuPower[1]);		//人事管理
+				$menuLeave = explode(',',$menuPower[2]);			//请假管理
+				$menuBusinessTravel = explode(',',$menuPower[3]);	//出差管理
+				$menuCar = explode(',',$menuPower[4]);				//车辆管理
+				$menuOfficeTool = explode(',',$menuPower[5]);		//办公备品管理
+				$menuGeneralAffairs =explode(',',$menuPower[6]);	//综合事务管理
+				$menuSystem =explode(',',$menuPower[7]);			//系统运维管理	
+				$menuSignPower = explode(',',$menuPower[8]);		//考勤管理
+				$otherPower = explode(',',$menuPower[9]);			//其它权限 员工信息 0:背景调查查看 1:合同信息 2:假期设置 3:账号设置 4:编辑记录
+				//左侧菜单赋能 over
 			}
 			//获取权限信息 over
 

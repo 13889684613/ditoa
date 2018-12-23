@@ -26,13 +26,22 @@
 	//验证
 	if($act == 'addSave'||$act == 'editSave'){
 		if($category == 0){
-			ErrorResturn('审批流程类别');
+			$data['status'] = 'fail';
+			$data['message'] = '审批流程类别';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 		if($beginRole == 0){
-			ErrorResturn('请选择发起审批角色');
+			$data['status'] = 'fail';
+			$data['message'] = '请选择发起审批角色';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}	
 		if(count(array_filter($role)) == 0){
-			ErrorResturn('请制定审批流程');
+			$data['status'] = 'fail';
+			$data['message'] = '请制定审批流程';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;
 		}
 	}
 
@@ -86,11 +95,16 @@
 
 			}
 
-			TipsRefreshResturn('操作成功','system.php?_f=checkProcess-default');
+			$data['status'] = 'success';
+			$data['message'] = '操作成功';
+			$data['url'] = 'system.php?_f=checkProcess-default';
 
 		}else{
-			ErrorResturn(ERRORTIPS);
+			$data['status'] = 'fail';
+			$data['message'] = ERRORTIPS;
 		}
+		$returnJson = json_encode($data);
+		echo $returnJson; exit;
 
 	}
 
@@ -155,10 +169,15 @@
 
 			}
 
-			TipsRefreshResturn('操作成功','system.php?_f=checkProcess-default&page='.$page.'&s_type='.$s_type.'&s_role='.$s_role.'');
+			$data['status'] = 'success';
+			$data['message'] = '操作成功';
+			$data['url'] = 'system.php?_f=checkProcess-default&page='.$page.'&s_type='.$s_type.'&s_role='.$s_role.'';
 		}else{
-			ErrorResturn(ERRORTIPS);
+			$data['status'] = 'fail';
+			$data['message'] = ERRORTIPS;
 		}
+		$returnJson = json_encode($data);
+		echo $returnJson; exit;
 
 	}
 

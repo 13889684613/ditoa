@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-22 21:43:22
+/* Smarty version 3.1.29, created on 2018-12-23 18:54:21
   from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/generalAffairs/view/certificate-set.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c1e3f7a424214_47044238',
+  'unifunc' => 'content_5c1f695def3fa2_42632188',
   'file_dependency' => 
   array (
     'c703ddf66188aa4e8a670f544cffb334f15182b9' => 
     array (
       0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/generalAffairs/view/certificate-set.html',
-      1 => 1545221122,
+      1 => 1545562457,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c1e3f7a424214_47044238 ($_smarty_tpl) {
+function content_5c1f695def3fa2_42632188 ($_smarty_tpl) {
 ?>
 <!-- 
 	# 企业资质证件
@@ -95,8 +95,7 @@ function content_5c1e3f7a424214_47044238 ($_smarty_tpl) {
 									<div class = "retrievalsInput pull-left mR40 clearfix">
 										<label class="lable_w">备品类别<span class="must">*</span></label>		
 										<!-- <p class = "formTitle">所属企业<span>*</span></p> -->
-										<input type="text" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputBm companyInput" placeholder="请选择" name="company" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['companyId'];?>
-" data-type='0' />
+										<input type="text" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputBm companyInput" placeholder="请选择" data-type='0' />
 										<div class="retrievalsInputNavBox">
 											<ul class="retrievalsInputNav">
 												<li data-type = "0">请选择</li>
@@ -122,7 +121,8 @@ if ($__foreach_company_0_saved_item) {
 $_smarty_tpl->tpl_vars['c'] = $__foreach_company_0_saved_item;
 }
 ?>
-												<input type="hidden" class="selectVal" value="" autocomplete="off">
+												<input type="hidden" name="company" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['companyId'];?>
+" class="selectVal" value="" autocomplete="off">
 											</ul>
 										</div>
 									</div>

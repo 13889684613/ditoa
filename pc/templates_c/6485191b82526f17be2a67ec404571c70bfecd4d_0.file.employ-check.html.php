@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-20 19:47:27
+/* Smarty version 3.1.29, created on 2018-12-23 19:31:43
   from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/humanAffairs/view/employ-check.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c1b814f6a8b65_20907749',
+  'unifunc' => 'content_5c1f721fd59512_27804946',
   'file_dependency' => 
   array (
     '6485191b82526f17be2a67ec404571c70bfecd4d' => 
     array (
       0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/humanAffairs/view/employ-check.html',
-      1 => 1545306285,
+      1 => 1545536337,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c1b814f6a8b65_20907749 ($_smarty_tpl) {
+function content_5c1f721fd59512_27804946 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -74,12 +74,11 @@ function content_5c1b814f6a8b65_20907749 ($_smarty_tpl) {
 							<div class="retrievalsForm">
 								<form id="searchForm" method="get" class="clearfix">
 									<input type="hidden" name="_f" value="employ-check">
-									<div class="retrievalsInputBoxs retrievalsInputBoxsStar clearfix pull-left">
+									<div class="retrievalsInputBoxs clearfix pull-left">
 										<div class="retrievalsInputContent">
 											<div class="retrievalsInput">
 												<label>所属企业</label>
-												<input type="text"  unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputQy" placeholder="请选择" name="s_company" value="<?php echo $_smarty_tpl->tpl_vars['s_company']->value;?>
-" data-type='0' />
+												<input type="text"  unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputQy" placeholder="请选择" name="s_company" value="" data-type='0' />
 												<div class="retrievalsInputNavBox">
 													<ul class="retrievalsInputNav">
 														<li data-type = "0">请选择</li>
@@ -105,13 +104,10 @@ if ($__foreach_company_0_saved_item) {
 $_smarty_tpl->tpl_vars['c'] = $__foreach_company_0_saved_item;
 }
 ?>
+														<input type="hidden" class="selectVal" value="<?php echo $_smarty_tpl->tpl_vars['s_company']->value;?>
+" autocomplete="off" data-type="1">
 													</ul>
 												</div>
-											</div>
-											<div class="retrievalsInput">
-												<label>试用人员</label>
-												<input type="text" class="choseInputName" placeholder="试用人员" name="s_name" value="<?php echo $_smarty_tpl->tpl_vars['s_name']->value;?>
-" data-type='0' />
 											</div>
 										</div>
 									</div>
@@ -119,8 +115,7 @@ $_smarty_tpl->tpl_vars['c'] = $__foreach_company_0_saved_item;
 										<div class="retrievalsInputContent">
 											<div class="retrievalsInput">
 												<label>所属部门</label>
-												<input type="text" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputBm" placeholder="请选择" name="s_office" value="<?php echo $_smarty_tpl->tpl_vars['s_office']->value;?>
-" data-type='0' />
+												<input type="text" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputBm" placeholder="请选择" name="s_office" value="" data-type='0' />
 												<div class="retrievalsInputNavBox">
 													<ul class="retrievalsInputNav">
 														<li data-type = "0">请选择</li>
@@ -146,8 +141,19 @@ if ($__foreach_office_1_saved_item) {
 $_smarty_tpl->tpl_vars['o'] = $__foreach_office_1_saved_item;
 }
 ?>
+														<input type="hidden" class="selectVal" value="<?php echo $_smarty_tpl->tpl_vars['s_office']->value;?>
+" autocomplete="off" data-type="1">
 													</ul>
 												</div>
+											</div>
+										</div>
+									</div>
+									<div class="retrievalsInputBoxs clearfix pull-left">
+										<div class="retrievalsInputContent">
+											<div class="retrievalsInput">
+												<label>试用人员</label>
+												<input type="text" class="choseInputName" placeholder="试用人员" name="s_name" value="<?php echo $_smarty_tpl->tpl_vars['s_name']->value;?>
+" data-type='0' />
 											</div>
 										</div>
 									</div>

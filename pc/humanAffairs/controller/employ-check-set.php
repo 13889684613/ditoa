@@ -9,6 +9,9 @@
 		RefreshResturn('index.php?_f=login');
 	}
 
+	//微信Api
+	include_once(PUBLICPATH.'oa.wechat.php');
+
 	//当前页面公共配置
 	$pageTitle = '转正考核';
 	$act = $_REQUEST['act'];
@@ -241,6 +244,8 @@
 			//初始化审批流信息 over
 
 			//审批数据 begin
+			$checkNumber = date('YmdHis').rand(10,99);
+			$val['checkNumber'] = $checkNumber;			//审批单号,20181223 add，推送消息会用到
 			$val['checkStatus'] = $checkStatus;
 			$val['curCheckLevel'] = 1;
 			$val['curCheckOffice'] = $checkOffice;
@@ -259,8 +264,6 @@
 		if(!$result){
 			$data['status'] = 'fail';
 			$data['message'] = ERRORTIPS;
-			$returnJson = json_encode($data);
-			echo $returnJson; exit;
 		}else{
 			if($appraiseId == 0){
 				$dataId = $db->get_lastId();
@@ -271,10 +274,62 @@
 			$data['status'] = 'success';
 			$data['message'] = '考核成功';
 			$data['url'] = '?_f=employ-check-info&id='.$dataId.'';
-			$returnJson = json_encode($data);
-			echo $returnJson; exit;	
+
+			//发起审批申请时推送消息，修改时不推送
+			if($appraiseId == 0){
+
+				//同时推送系统消息、邮件与微信审批消息提醒 begin
+
+				//获取审批人员
+				$S = $db->get_all(PRFIX.'staff','where officeId='.$checkOffice.' and groupId='.$checkGroup.' and checkRoleId='.$checkRole.'','staffId,wxOpenId,email,staffName');
+				for($e=0;$e<count($S);$e++){
+
+					//推送系统消息 begin
+					sendSystemSms(7,'您有1条员工转正审批申请需要处理',$S[$e]['staffId']);
+					//推送系统消息 over
+
+					//推送微信模板消息 begin
+					if($S[$e]['wxOpenId']!=''){
+
+						$template = array();
+
+						$template['wxOpenId'] = $S[$e]['wxOpenId'];					//用户openId
+						$template['staffName'] = $S[$e]['staffName'];				//用户姓名
+						$template['url'] = '';										//跳转业务页面url
+						$template['title'] = '审批提醒';								//消息标题
+						$template['checkNumber'] = $checkNumber;					//审批编号
+						$template['beginUsr'] = getStaffName($common_staffId);		//发起人，部门主任，考核人员
+						$template['beginTime'] = date('Y-m-d H:i');					//发起时间
+						$template['category'] = '员工转正考核审批';						//流程类别
+						$template['remark'] = '您有1条员工转正审批申请需要处理';			//备注
+
+						sendWechatSms($template);	//发送微信模板消息
+						
+					}
+					//推送微信模板消息 over
+
+					//推送邮件 begin
+					if($S[$e]['email']!=''){
+
+						$content = '亲爱的'.$S[$e]['staffName'].'，<br />';
+						$content .= '您有1条员工转正审批申请需要处理<br /><br />';
+						$content .= '发起人：'.getStaffName($common_staffId).'<br />';
+						$content .= '发起时间：'.date('Y-m-d H:i').'<br /><br />';
+						$content .= '请尽快登录OA处理！';
+
+						// sendMail($S[$e]['email'],'【DIT】亲爱的'.$S[$e]['staffName'].'，您有1条员工转正审批申请需要处理',$content)；
+
+					}
+					//推送邮件 over
+
+				}
+
+				//同时推送系统消息、邮件与微信审批消息提醒 over
+			}
 
 		}
+		$returnJson = json_encode($data);
+		echo $returnJson; exit;
 
 	}
 
