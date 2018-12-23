@@ -48,14 +48,14 @@
 										<div class="retrievalsInputContent">
 											<div class="retrievalsInput">
 												<label>类别</label>
-												<input type="text" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputBm" placeholder="请选择" name="s_type" value="{{$s_type}}" data-type='0' />
+												<input type="text" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputBm" placeholder="请选择" data-type='0' />
 												<div class="retrievalsInputNavBox">
 													<ul class="retrievalsInputNav">
 														<li data-type = "0">请选择</li>
 														{{foreach $categorys as $key=>$value}}
 														<li data-type = "{{$key}}">{{$value}}</li>
 														{{/foreach}}
-														<input type="hidden" class="selectVal" value="" />
+														<input type="hidden" name="s_type" value="{{$s_type}}"  class="selectVal" value="" />
 													</ul>
 												</div>
 											</div>
@@ -65,14 +65,14 @@
 										<div class="retrievalsInputContent">
 											<div class="retrievalsInput">
 												<label>角色</label>
-												<input type="text" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputXz" placeholder="请选择" name="s_role" value="{{$s_role}}" data-type='0' />
+												<input type="text" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputXz" placeholder="请选择" data-type='0' />
 												<div class="retrievalsInputNavBox">
 													<ul class="retrievalsInputNav">
 														<li data-type = "0">请选择</li>
 														{{foreach item=r name=roles from=$roles}}
 														<li data-type='{{$r.checkRoleId}}'>{{$r.checkRoleName}}</li>
 														{{/foreach}}
-														<input type="hidden" class="selectVal" value="" />
+														<input type="hidden" name="s_role" value="{{$s_role}}" class="selectVal" value="" />
 													</ul>
 												</div>
 											</div>
@@ -82,14 +82,14 @@
 										<div class="retrievalsInputContent">
 											<div class="retrievalsInput">
 												<label>所属部门</label>
-												<input type="text" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputLz" placeholder="请选择" name="s_office" value="{{$s_office}}" data-type='0' />
+												<input type="text" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputLz" placeholder="请选择" data-type='0' />
 												<div class="retrievalsInputNavBox">
 													<ul class="retrievalsInputNav">
 														<li data-type = "0">请选择</li>
 														{{foreach item=o name=offices from=$offices}}
 														<li data-type='{{$o.officeId}}'>{{$o.officeName}}</li>
 														{{/foreach}}
-														<input type="hidden" class="selectVal" value="" />
+														<input type="hidden" name="s_office" value="{{$s_office}}" class="selectVal" value="" />
 													</ul>
 												</div>
 											</div>
@@ -120,7 +120,7 @@
 									<th width='145' class="text-center borderRight1"><span>操作</span></th>
 								</tr>
 								{{foreach item=i name=data from=$data}}
-								<tr class="backgroundFFF">
+								<tr{{if $i%2==1}} class="backgroundFFF"{{/if}}>
 									<td class="borderRight1">
 										<div class="editBox center-block clearfix">
 											{{if $i.isOpt}}
@@ -131,6 +131,8 @@
 												<img src="public/html/images/del.jpg" alt="" />
 												<input type="hidden" value="?_f=checkProcess-custom&act=remove&page={{$curPage}}&id={{$i.checkProcessId}}{{$track}}"/>
 											</div>
+											{{else}}
+											已应用
 											{{/if}}
 										</div>
 									</td>
@@ -155,8 +157,8 @@
 										<td><span>{{$i.checkLevel}}级</span></td>
 										<td class=""><span>{{$i.office}}</span></td>
 										<td class=""><span>{{$i.group}}</span></td>
-										<td class=""><span>{$i.checkProcess}}</span></td>
-										<td><span>{$i.createTime}}</span></td>
+										<td class=""><span>{{$i.checkProcess}}</span></td>
+										<td><span>{{$i.createTime}}</span></td>
 									</tr>
 									{{/foreach}}
 								</table>

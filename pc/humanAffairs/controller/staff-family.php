@@ -4,6 +4,11 @@
 	//# 2018-11-10
 	//# 家庭主要成员
 
+	//权限验证
+	if($menuHumanAffairs[1] == 0){
+		RefreshResturn('index.php?_f=login');
+	}
+
 	//当前页面公共配置
 	$pageTitle = '家庭主要成员';
 	$act = $_REQUEST['act'];
@@ -15,6 +20,14 @@
 	$id = getVal('id',1,'');
 	if($id == 0){
 		exit;
+	}
+
+	//非系统管理员操作权限验证，验证是否为同部门人员操作
+	$O = $db->get_one(PRFIX.'staff','where staffId='.$id.'','officeId');
+	if($common_category == 0){
+		if($common_office != $O['officeId']){
+			RefreshResturn('index.php?_f=login');
+		}
 	}
 
 	//表单元素赋能 begin
@@ -55,7 +68,7 @@
 		}
 	}
 
-	$fileds = 'familyId,familyName,sex,birthDate,relation,telphone,workUnit';
+	$fileds = 'officeId,familyId,familyName,sex,birthDate,relation,telphone,workUnit';
 	$data = $db->get_all($table,'where staffId='.$id.'',$fileds);
 	$dataCount = count($data);
 

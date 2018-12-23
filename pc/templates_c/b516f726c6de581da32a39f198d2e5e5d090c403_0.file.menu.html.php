@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-20 20:39:20
+/* Smarty version 3.1.29, created on 2018-12-21 07:04:35
   from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/public/html/menu.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c1b8d78cc4362_65605598',
+  'unifunc' => 'content_5c1c2003812cf6_05389576',
   'file_dependency' => 
   array (
     'b516f726c6de581da32a39f198d2e5e5d090c403' => 
     array (
       0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/public/html/menu.html',
-      1 => 1545309182,
+      1 => 1545347072,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5c1b8d78cc4362_65605598 ($_smarty_tpl) {
+function content_5c1c2003812cf6_05389576 ($_smarty_tpl) {
 ?>
 			<div class="contentLeftNav col-lg-2 row">
 				<div class="contentLeftNavListTop col-lg-12">
@@ -77,7 +77,7 @@ function content_5c1b8d78cc4362_65605598 ($_smarty_tpl) {
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuHumanAffairs']->value[2] == 1) {?>
 							<li<?php if ($_smarty_tpl->tpl_vars['archivesMenu']->value == 1) {?> class="active"<?php }?>>
-								<a href="human-affairs.php?_f=archives">员工档案管理</a>
+								<a href="human-affairs.php?_f=archives">员工档案</a>
 							</li>
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuHumanAffairs']->value[3] == 1) {?>
@@ -324,14 +324,14 @@ function content_5c1b8d78cc4362_65605598 ($_smarty_tpl) {
 							</li>
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuSystem']->value[6] == 1) {?>
-							<li<?php if ($_smarty_tpl->tpl_vars['officeToolTypeMenu']->value == 1) {?> class="active"<?php }?>>
+							<!-- <li<?php if ($_smarty_tpl->tpl_vars['officeToolTypeMenu']->value == 1) {?> class="active"<?php }?>>
 								<a href="system.php?_f=officeTool-type">备品类别管理</a>
-							</li>
+							</li> -->
 							<?php }?>
 							<?php if ($_smarty_tpl->tpl_vars['menuSystem']->value[7] == 1) {?>
-							<li<?php if ($_smarty_tpl->tpl_vars['officeToolNameMenu']->value == 1) {?> class="active"<?php }?>>
+							<!-- <li<?php if ($_smarty_tpl->tpl_vars['officeToolNameMenu']->value == 1) {?> class="active"<?php }?>>
 								<a href="system.php?_f=officeTool-name">备品名称管理</a>
-							</li>
+							</li> -->
 							<?php }?>
 						</ul>
 					</div>

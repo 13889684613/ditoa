@@ -4,6 +4,11 @@
 	//# 2018-11-04
 	//# 自定义审批流程设置
 
+	//权限验证
+	if($menuSystem[2] == 0){
+		RefreshResturn('index.php?_f=login');
+	}
+
 	//当前页面公共配置
 	$pageTitle = '自定义审批流程设置';
 	$curPage = $_REQUEST['page'];

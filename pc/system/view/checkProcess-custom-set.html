@@ -43,7 +43,7 @@
 				<!--内容区begin-->
 				<div class="contentRightBox">
 					<div class="contentRightContent">
-						<form method="post" class="clearfix">
+						<form id="checkForm" method="post" class="clearfix">
 						<input type="hidden" name="page" value="{{$page}}" />
 						<input type="hidden" name="s_type" value="{{$s_type}}" />
 						<input type="hidden" name="s_role" value="{{$s_role}}" />
@@ -57,27 +57,27 @@
 									<div class="retrievalsInputContent">
 										<div class="retrievalsInput firstIn">
 											<label class="lable_w">审批流程类别<span class="must">*</span></label>
-											<input type="text" readonly="readonly" onfocus="this.blur()" class="choseInput choseInputLc" placeholder="请选择" name="category" value="{{$i.checkCategory}}" data-type='0' />
+											<input type="text" readonly="readonly" onfocus="this.blur()" class="choseInput choseInputLc" placeholder="请选择"  data-type='0' />
 											<div class="retrievalsInputNavBox">
 												<ul class="retrievalsInputNav">
 													<li data-type='0'>请选择</li>
 													{{foreach $categorys as $key=>$value}}
 													<li data-type = "{{$key}}">{{$value}}</li>
 													{{/foreach}}
-													<input type="hidden" class="selectVal" value="" />
+													<input type="hidden" name="category" class="selectVal" value="{{$i.checkCategory}}" />
 												</ul>
 											</div>
 										</div>
 										<div class="retrievalsInput  firstIn">
 											<label class="lable_w">发起审批角色<span class="must">*</span></label>
-											<input type="text" readonly="readonly" onfocus="this.blur()" class="choseInput choseInputJs" placeholder="请选择" name="beginRole" value="{{$i.beginRole}}" data-type='0' />
+											<input type="text" readonly="readonly" onfocus="this.blur()" class="choseInput choseInputJs" placeholder="请选择"  data-type='0' />
 											<div class="retrievalsInputNavBox">
 												<ul class="retrievalsInputNav">
 													<li data-type='0'>请选择</li>
 													{{foreach item=r name=roles from=$roles}}
 													<li data-type='{{$r.checkRoleId}}'>{{$r.checkRoleName}}</li>
 													{{/foreach}}
-													<input type="hidden" class="selectVal" value="" />
+													<input type="hidden" name="beginRole" class="selectVal" value="{{$i.beginRole}}" />
 												</ul>
 											</div>
 										</div>
@@ -87,14 +87,14 @@
 									<div class="retrievalsInputContent">
 										<div class="retrievalsInput">
 											<label>办事处<span class="must">*</span></label>
-											<input type="text" readonly="readonly" onfocus="this.blur()" class="choseInput choseInputQy" placeholder="请选择" name="beginOffice" value="{{$i.officeId}}" data-type='0' />
+											<input type="text" readonly="readonly" onfocus="this.blur()" class="choseInput choseInputQy" placeholder="请选择"  data-type='0' />
 											<div class="retrievalsInputNavBox">
 												<ul class="retrievalsInputNav selectLinkage">
 													<li data-type='0'>请选择</li>
 													{{foreach item=o name=offices from=$offices}}
 													<li data-type='{{$o.officeId}}'>{{$o.officeName}}</li>
 													{{/foreach}}
-													<input type="hidden" class="selectVal" value="" />
+													<input type="hidden" name="beginOffice" class="selectVal" value="{{$i.officeId}}" />
 												</ul>
 											</div>
 										</div>
@@ -107,14 +107,14 @@
 									<div class="retrievalsInputContent">
 										<div class="retrievalsInput">
 											<label>工作组<span class="must">*</span></label>
-											<input type="text" readonly="readonly" onfocus="this.blur()" class="choseInput choseInputBm" placeholder="请选择" value="{{$i.groupId}}" data-type='0' name="beginGroup" />
+											<input type="text" readonly="readonly" onfocus="this.blur()" class="choseInput choseInputBm" placeholder="请选择" data-type='0' />
 											<div class="retrievalsInputNavBox">
 												<ul class="retrievalsInputNav">
 													<li data-type='0'>请选择</li>
 													{{foreach item=g name=groups from=$groups}}
 													<li class="li" data-type='{{$g.groupId}}'>{{$g.groupName}}</li>
 													{{/foreach}}
-													<input type="hidden" class="selectVal" value="" />
+													<input type="hidden" name="beginGroup" class="selectVal" value="{{$i.groupId}}"  />
 												</ul>
 											</div>
 										</div>
@@ -136,14 +136,14 @@
 											<td class="td2 selectLinkage" width="392">
 												<div class="StableTd clearfix">
 													<div class="StableTdL pull-left">所属办事处<span class="must">*</span></div>
-													<div class="StableTdR pull-left"><input type="text" data-type='0' onfocus="this.blur()" readonly="readonly" class="choseInput InputQy" placeholder="请选择" name="office[]"/>
+													<div class="StableTdR pull-left"><input type="text" data-type='0' onfocus="this.blur()" readonly="readonly" class="choseInput InputQy" placeholder="请选择" />
 														<div class="retrievalsInputNavBox">
 															<ul class="retrievalsInputNav">
 																<li data-type='0'>请选择</li>
 																{{foreach item=o name=offices from=$offices}}
 																<li data-type='{{$o.officeId}}'>{{$o.officeName}}</li>
 																{{/foreach}}
-																<input type="hidden" class="selectVal" value="" />
+																<input type="hidden" class="selectVal" name="office[]" value="" />
 															</ul>
 														</div>
 													</div>
@@ -152,14 +152,14 @@
 											<td class="td3" width="398">
 												<div class="StableTd clearfix">
 													<div class="StableTdL pull-left">所属工作组<span class="must">*</span></div>
-													<div class="StableTdR pull-left"><input type="text" data-type='0' onfocus="this.blur()" readonly="readonly" class="choseInput InputBm" placeholder="请选择" name="group[]" />
+													<div class="StableTdR pull-left"><input type="text" data-type='0' onfocus="this.blur()" readonly="readonly" class="choseInput InputBm" placeholder="请选择"  />
 														<div class="retrievalsInputNavBox">
 															<ul class="retrievalsInputNav">
 																<li data-type='0'>请选择</li>
 																{{foreach item=g name=groups from=$groups}}
 																<li class="li" data-type='{{$g.groupId}}'>{{$g.groupName}}</li>
 																{{/foreach}}
-																<input type="hidden" class="selectVal" value="" />
+																<input type="hidden" class="selectVal" name="group[]" value="" />
 															</ul>
 														</div>
 													</div>
@@ -168,14 +168,14 @@
 											<td class="td4" width="633">
 												<div class="StableTd clearfix">
 													<div class="StableTdL pull-left">所属角色<span class="must">*</span></div>
-													<div class="StableTdR pull-left"><input type="text" data-type='0' onfocus="this.blur()" readonly="readonly" class="choseInput InputJs" placeholder="请选择" name="role[]" />
+													<div class="StableTdR pull-left"><input type="text" data-type='0' onfocus="this.blur()" readonly="readonly" class="choseInput InputJs" placeholder="请选择"  />
 														<div class="retrievalsInputNavBox">
 															<ul class="retrievalsInputNav">
 																<li data-type='0'>请选择</li>
 																{{foreach item=r name=roles from=$roles}}
 																<li data-type='{{$r.checkRoleId}}'>{{$r.checkRoleName}}</li>
 																{{/foreach}}
-																<input type="hidden" class="selectVal" value="" />
+																<input type="hidden" class="selectVal" name="role[]" value="" />
 															</ul>
 														</div>
 													</div>
@@ -191,14 +191,14 @@
 											<td class="td2" width="392">
 												<div class="StableTd clearfix">
 													<div class="StableTdL pull-left">所属办事处<span class="must">*</span></div>
-													<div class="StableTdR pull-left"><input type="text" data-type='0' onfocus="this.blur()" readonly="readonly" class="choseInput InputQy" placeholder="请选择" name="office[]" value="{{$p.officeId}}" />
+													<div class="StableTdR pull-left"><input type="text" data-type='0' onfocus="this.blur()" readonly="readonly" class="choseInput InputQy" placeholder="请选择"/>
 														<div class="retrievalsInputNavBox">
 															<ul class="retrievalsInputNav">
 																<li data-type='0'>请选择</li>
 																{{foreach item=o name=offices from=$offices}}
 																<li data-type='{{$o.officeId}}'>{{$o.officeName}}</li>
 																{{/foreach}}
-																<input type="hidden" class="selectVal" value="" />
+																<input type="hidden" name="office[]" value="{{$p.officeId}}" class="selectVal" value="" />
 															</ul>
 														</div>
 													</div>
@@ -207,14 +207,14 @@
 											<td class="td3" width="398">
 												<div class="StableTd clearfix">
 													<div class="StableTdL pull-left">所属工作组<span class="must">*</span></div>
-													<div class="StableTdR pull-left"><input type="text" data-type='0' onfocus="this.blur()" readonly="readonly" class="choseInput InputBm" placeholder="请选择" name="group[]" value="{{$p.groupId}}" />
+													<div class="StableTdR pull-left"><input type="text" data-type='0' onfocus="this.blur()" readonly="readonly" class="choseInput InputBm" placeholder="请选择" />
 														<div class="retrievalsInputNavBox">
 															<ul class="retrievalsInputNav">
 																<li data-type='0'>请选择</li>
 																{{foreach item=g name=groups from=$groups}}
 																<li data-type='{{$g.groupId}}'>{{$g.groupName}}</li>
 																{{/foreach}}
-																<input type="hidden" class="selectVal" value="" />
+																<input type="hidden" name="group[]" value="{{$p.groupId}}" class="selectVal" value="" />
 															</ul>
 														</div>
 													</div>
@@ -223,14 +223,14 @@
 											<td class="td4" width="633">
 												<div class="StableTd clearfix">
 													<div class="StableTdL pull-left">所属角色<span class="must">*</span></div>
-													<div class="StableTdR pull-left"><input type="text" data-type='0' onfocus="this.blur()" readonly="readonly" class="choseInput InputJs" placeholder="请选择" name="role[]" value="{{$p.roleId}}" />
+													<div class="StableTdR pull-left"><input type="text" data-type='0' onfocus="this.blur()" readonly="readonly" class="choseInput InputJs" placeholder="请选择"/>
 														<div class="retrievalsInputNavBox">
 															<ul class="retrievalsInputNav">
 																<li data-type='0'>请选择</li>
 																{{foreach item=r name=roles from=$roles}}
 																<li data-type='{{$r.checkRoleId}}'>{{$r.checkRoleName}}</li>
 																{{/foreach}}
-																<input type="hidden" class="selectVal" value="" />
+																<input type="hidden" name="role[]" value="{{$p.roleId}}"  class="selectVal" value="" />
 															</ul>
 														</div>
 													</div>

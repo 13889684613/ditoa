@@ -4,6 +4,11 @@
 	//# 2018-12-2
 	//# 企业资质证件设置
 
+	//权限验证
+	if($menuGeneralAffairs[2] == 0){
+		RefreshResturn('index.php?_f=login');
+	}
+
 	//当前页面公共配置
 	$pageTitle = '企业资质证件设置';
 	$act = $_REQUEST['act'];

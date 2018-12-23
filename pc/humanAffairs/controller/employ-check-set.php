@@ -4,6 +4,11 @@
 	//# 2018-12-10
 	//# 转正考核
 
+	//权限验证
+	if($menuHumanAffairs[4] == 0){
+		RefreshResturn('index.php?_f=login');
+	}
+
 	//当前页面公共配置
 	$pageTitle = '转正考核';
 	$act = $_REQUEST['act'];
@@ -71,6 +76,14 @@
 
 	$U = $db->get_one(PRFIX.'staff','where staffId='.$staffId.'','staffName,officeId,groupId,photo,tryBeginDate,tryOverDate,checkRoleId');
 	if($U){
+
+		//非系统管理员仅能查看自己办事处的员工
+		if($common_category == 0){
+			if($common_office != $U['officeId']){
+				RefreshResturn('index.php?_f=login');
+			}
+		}
+
 		$data['staffName'] = $U['staffName'];
 		$officeId = $U['officeId'];
 		$groupId = $U['groupId'];

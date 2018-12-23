@@ -20,7 +20,7 @@
 	}
 
 	if($id == 0){
-		QuickReturn('index.php?_f=index');
+		RefreshResturn('index.php?_f=index');
 	}
 
 	//记录列表页检索条件begin

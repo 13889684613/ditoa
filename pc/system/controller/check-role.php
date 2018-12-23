@@ -4,6 +4,11 @@
 	//# 2018-10-25
 	//# 审核角色管理
 
+	//权限验证
+	if($menuSystem[1] == 0){
+		RefreshResturn('index.php?_f=login');
+	}
+
 	//分页类
 	include_once(PUBLICPATH.'oa.page.php');
 

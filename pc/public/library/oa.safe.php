@@ -18,20 +18,30 @@
 	}else{
 		$common_staffId = decrypt($_SESSION['cache_staffId'],'dit');	//用户id
 
-		$commons = $db->get_one(PRFIX.'staff','where staffId='.$common_staffId.'','staffName,officeId,groupId,category,sysRoleId,checkRoleId,trueQuitDate,status,photo');
+		$commons = $db->get_one(PRFIX.'staff','where staffId='.$common_staffId.' and status<>2','staffName,companyId,officeId,groupId,category,sysRoleId,checkRoleId,trueQuitDate,status,photo');
 		if($commons){
-			//员工离职
-			if($commons['trueQuitDate']!=''){
-				$quitDate = strtotime($commons['trueQuitDate']);
-				if(time()>=$quitDate||$commons['status']==2){
-					TipsRefreshResturn('您已离职，登录帐号已关闭','index.php?_f=login');
-				}
-			}
+
+			$now = date('Y-m-d H:i:s');
+
 			$common_staffName = $commons['staffName'];		//员工姓名
+			$common_company = $commons['companyId'];		//员工所属企业
 			$common_office = $commons['officeId'];			//员工所属部门
 			$common_group = $commons['groupId'];			//员工所属工作组
 			$common_category = $commons['category'];		//系统级角色 1系统管理员 0普通员工
 			$common_checkRole = $commons['checkRoleId'];	//审批角色id
+			$begin_checkRole = $commons['checkRoleId'];		//用于library审批流函数中
+
+			//审批工作接管 begin
+			$take = $db->get_all(PRFIX.'takeover','where takeOverUsr='.$common_staffId.' and beginTime<="'.$now.'" and overTime>="'.$now.'"','staffId');
+			for($t=0;$t<count($take);$t++){
+
+				//获得被接管人审批角色，工作接管仅适用于同部门、同工作组，仅合并审批角色即可
+				$P = $db->get_one(PRFIX.'staff','where staffId='.$take[$t]['staffId'].'','checkRoleId');
+				$common_checkRole .= ',' . $P['checkRoleId'];
+
+			}
+			//审批工作接管 over
+
 			$common_head = 'upload/images/staff/head/'.$commons['photo'];
 
 			//获取办事处名称
@@ -57,28 +67,84 @@
 			}else{
 				if($common_category == 1){
 					//系统管理员拥有所有权限
-					$common_power = '1,1,1,1|1,1,1,1,1,1,1,1,1,1,1,1|1,1,1,1|1,1|1,1,1,1,1,1|1,1,1,1,1,1,1,1,1,1|1,1,1|1,1,1,1,1,1,1,1|1,1,1,1,1|1,1,1,1,1';
+					$menuOrg = '1,1,1,1|';								//DIT组织架构
+					$menuHumanAffairs = '1,1,1,1,1,1,1,1,1,1,1,1|';		//人事管理
+					$menuLeave = '1,1,1,1|';							//请假管理
+					$menuBusinessTravel = '1,1|';						//出差管理
+					$menuCar = '1,1,1,1,1,1|';							//车辆管理
+					$menuOfficeTool = '1,1,1,1,1,1,1,1,1,1|';			//办公备品管理
+					$menuGeneralAffairs = '1,1,1|';						//综合事务管理
+					$menuSystem = '1,1,1,1,1,1,1,1|';					//系统运维管理	
+					$menuSignPower = '1,1,1,1,1|';						//考勤管理
+					$otherPower = '1,1,1,1,1';							//其它权限 员工信息 0:背景调查查看 1:合同信息 2:假期设置 3:账号设置
+
+					$common_power = $menuOrg.$menuHumanAffairs.$menuLeave.$menuBusinessTravel.$menuCar.$menuOfficeTool.$menuGeneralAffairs.$menuSystem.$menuSignPower.$otherPower;
 					$menuPower = explode('|', $common_power);
+
 				}else{
-					$menuPower = explode('|',$getPower['power']);				//完整权限
+
+					$common_power = $getPower['power'];
+
+					//工作接管权限合并 begin
+					$finalPower = '';
+					$take = $db->get_all(PRFIX.'takeover','where takeOverUsr='.$common_staffId.' and beginTime<="'.$now.'" and overTime>="'.$now.'"','staffId');
+					for($t=0;$t<count($take);$t++){
+
+						//获得被接管人权限
+						$P = $db->get_one(PRFIX.'staff as s,'.PRFIX.'sysrole as r','where s.staffId='.$take[$t]['staffId'].' and s.sysRoleId=r.sysRoleId','r.power');
+						if($P){
+							$takePower = $P['power'];	//被接管权限
+						}
+
+						//合并权限
+						$str = ''; 
+						if($t == 0){
+							$power1 = $common_power;
+						}else{
+							$power1 = $finalPower;
+						}
+						$power2 = $takePower;
+						$powerLen = strlen($takePower);
+
+						for ($i=0; $i <= $powerLen; $i++) { 
+
+							$s1 = substr($power1,$i,1);
+							$s2 = substr($power2,$i,1);
+							
+							if(is_numeric($s1)&&is_numeric($s2)){
+								if($s2>$s1){
+									$str .= $s2;
+								}else{
+									$str .= $s1;
+								}
+							}else{
+								$str .= $s1;
+							}
+
+						}
+						$finalPower = $str;
+
+					}
+					//工作接管权限合并 over
+
+					if($finalPower!=''){
+						$common_power = $finalPower;
+					}
+
+					$menuPower = explode('|',$common_power);			//完整权限
+					$menuOrg = explode(',',$menuPower[0]);				//DIT组织架构
+					$menuHumanAffairs = explode(',',$menuPower[1]);		//人事管理
+					$menuLeave = explode(',',$menuPower[2]);			//请假管理
+					$menuBusinessTravel = explode(',',$menuPower[3]);	//出差管理
+					$menuCar = explode(',',$menuPower[4]);				//车辆管理
+					$menuOfficeTool = explode(',',$menuPower[5]);		//办公备品管理
+					$menuGeneralAffairs =explode(',',$menuPower[6]);	//综合事务管理
+					$menuSystem =explode(',',$menuPower[7]);			//系统运维管理	
+					$menuSignPower = explode(',',$menuPower[8]);		//考勤管理
+					$otherPower = explode(',',$menuPower[9]);	//其它权限 员工信息 0:背景调查查看 1:合同信息 2:假期设置 3:账号设置 4:编辑记录
 				}
-				
-				$menuOrg = explode(',',$menuPower[0]);						//DIT组织架构
-				$menuHumanAffairs = explode(',',$menuPower[1]);				//人事管理
-				$menuLeave = explode(',',$menuPower[2]);					//请假管理
-				$menuBusinessTravel = explode(',',$menuPower[3]);			//出差管理
-				$menuCar = explode(',',$menuPower[4]);						//车辆管理
-				$menuOfficeTool = explode(',',$menuPower[5]);				//办公备品管理
-				$menuGeneralAffairs =explode(',',$menuPower[6]);			//综合事务管理
-				$menuSystem =explode(',',$menuPower[7]);					//系统运维管理	
-				$menuSignPower = explode(',',$menuPower[8]);				//考勤管理
-				$otherPower = explode(',',$menuPower[9]);					//其它权限 员工信息 0:背景调查查看 1:合同信息 2:假期设置 3:账号设置 4:编辑记录
 			}
 			//获取权限信息 over
-
-			//工作接管权限合并 begin
-			// 待完善
-			//工作接管权限合并 over
 
 			//系统消息
 			$msgWhere = 'where (receiverRole=0';
@@ -97,6 +163,11 @@
 			$smarty->assign('common_groupName',$common_groupName);
 			$smarty->assign('common_noRead',$common_noRead);
 			$smarty->assign('common_head',$common_head);
+			$smarty->assign('common_company',$common_company);
+			$smarty->assign('common_office',$common_office);
+			$smarty->assign('common_group',$common_group);
+			$smarty->assign('common_category',$common_category);
+			$smarty->assign('common_checkRole',$common_checkRole);
 
 			//左侧菜单绑定
 			$smarty->assign('menuOrg',$menuOrg);
@@ -198,7 +269,7 @@
 		$cerMenu = 1; $humanMenus = true;
 	}
 	//员工管理
-	if($_file=='staff'||$_file=='staff-information'||$_file=='staff-family'||$_file=='staff-education'||$_file=='staff-welfare'||$_file=='staff-contract'||$_file=='staff-account'||$_file=='staff-quit'||$_file=='staff-edit-log'||$_file=='staff-leave'){
+	if($_file=='staff'||$_file=='staff-information'||$_file=='staff-family'||$_file=='staff-education'||$_file=='staff-welfare'||$_file=='staff-contract'||$_file=='staff-account'||$_file=='staff-quit'||$_file=='staff-edit-log'||$_file=='staff-leave'||$_file=='staff-entry'){
 		$staffMenu = 1; $humanMenus = true;
 	}
 	//员工档案管理
@@ -327,7 +398,7 @@
 	$smarty->assign('humanMenu',$humanMenu);
 	$smarty->assign('myMenu',$myMenu);
 	$smarty->assign('cerMenu',$cerMenu);
-	$smarty->assign('ruleMenu',$ruleMenu);
+	$smarty->assign('rMenu',$rMenu);
 	$smarty->assign('staffMenu',$staffMenu);
 	$smarty->assign('archivesMenu',$archivesMenu);
 	$smarty->assign('quitStaffMenu',$quitStaffMenu);

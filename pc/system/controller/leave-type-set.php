@@ -4,6 +4,11 @@
 	//# 2018-10-25
 	//# 请假类型添加/编辑
 
+	//权限验证
+	if($menuSystem[5] == 0){
+		RefreshResturn('index.php?_f=login');
+	}
+
 	//当前页面公共配置
 	$pageTitle = '请假类型设置';
 	$curPage = $_REQUEST['page'];

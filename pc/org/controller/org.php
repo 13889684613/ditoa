@@ -4,6 +4,11 @@
 	//# 2018-11-06
 	//# 企业组织架构
 
+	//权限验证
+	if($menuOrg[3] == 0){
+		RefreshResturn('index.php?_f=login');
+	}
+
 	//分页类
 	include_once(PUBLICPATH.'oa.page.php');
 

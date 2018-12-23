@@ -297,7 +297,8 @@ $(function(){
             success:function(data){
                 data = $.parseJSON(data);
                 if(data.status == 'success'){
-                    location.href = data.url;
+                    popAlert(data.message,data.url); //弹出成功信息
+                    // location.href = data.url;
                 }else{
                     popAlert(data.message); //弹出错误信息
                 }

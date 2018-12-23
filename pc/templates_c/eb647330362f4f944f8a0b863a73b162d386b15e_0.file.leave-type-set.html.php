@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-16 22:16:08
+/* Smarty version 3.1.29, created on 2018-12-22 21:50:12
   from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/system/view/leave-type-set.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c165e28d20a10_67552358',
+  'unifunc' => 'content_5c1e41148df931_22815456',
   'file_dependency' => 
   array (
     'eb647330362f4f944f8a0b863a73b162d386b15e' => 
     array (
       0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/system/view/leave-type-set.html',
-      1 => 1544969767,
+      1 => 1545051960,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c165e28d20a10_67552358 ($_smarty_tpl) {
+function content_5c1e41148df931_22815456 ($_smarty_tpl) {
 ?>
 <!-- 
 	# 新增系统角色
@@ -99,46 +99,46 @@ function content_5c165e28d20a10_67552358 ($_smarty_tpl) {
 " placeholder = "0" class = "formInput dayInput" autocomplete="off"/>天
 									</div>
 								</div>
-								<div class = "roleUserInfo clearfix">
-									<div class = "form setNum clearfix">		
+								<div class = "roleUserInfo mT26 clearfix">
+									<div class = "form setNum w528 clearfix">		
 										<p class = "formTitle">是否为年假</p>
-										<div class = "checkBox clearfix">
-											<div class = "checkBtn mRight50"<?php if ($_smarty_tpl->tpl_vars['i']->value['annualLeave'] == 1) {?> on<?php }?>>是</div>
-											<div class = "checkBtn"<?php if ($_smarty_tpl->tpl_vars['i']->value['annualLeave'] == 0) {?> on<?php }?>>否</div>
+										<div class = "checkBox pull-left mT0 clearfix">
+											<div class = "checkBtn mRight50"<?php if ($_smarty_tpl->tpl_vars['i']->value['annualLeave'] == 1) {?> on<?php }?> data-type="1">是</div>
+											<div class = "checkBtn"<?php if ($_smarty_tpl->tpl_vars['i']->value['annualLeave'] == 0) {?> on<?php }?> data-type="0">否</div>
 										</div>
 										<input type="hidden" name = "annualLeave" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['annualLeave'];?>
 " class = "formInput annualForm"/>
-										<span class="tipsIcon"><span class = "tips">如为年休假一年仅能休一次，以年为单位</span></span>
+										<span class="tipsIcon mT0"><span class = "tips w300">如为年休假一年仅能休一次，以年为单位</span></span>
 									</div>
 									<div class = "form setNum clearfix">		
 										<p class = "formTitle">是否需要上传附件</p>
-										<div class = "checkBox clearfix">
-											<div class = "checkBtn mRight50"<?php if ($_smarty_tpl->tpl_vars['i']->value['isAttach'] == 1) {?> on<?php }?>>是</div>
-											<div class = "checkBtn"<?php if ($_smarty_tpl->tpl_vars['i']->value['isAttach'] == 0) {?> on<?php }?>>否</div>
+										<div class = "checkBox pull-left mT0 clearfix">
+											<div class = "checkBtn mRight50"<?php if ($_smarty_tpl->tpl_vars['i']->value['isAttach'] == 1) {?> on<?php }?> data-type="1">是</div>
+											<div class = "checkBtn"<?php if ($_smarty_tpl->tpl_vars['i']->value['isAttach'] == 0) {?> on<?php }?> data-type="0">否</div>
 										</div>
 										<input type="hidden" name = "isAttach" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['isAttach'];?>
 " class = "formInput attachForm"/>
 									</div>
 								</div>
-								<div class = "roleUserInfo clearfix">
-									<div class = "form setNum clearfix">		
+								<div class = "roleUserInfo mT26 clearfix">
+									<div class = "form setNum w528 clearfix">		
 										<p class = "formTitle">是否为固定天数假期</p>
-										<div class = "checkBox clearfix">
-											<div class = "checkBtn mRight50"<?php if ($_smarty_tpl->tpl_vars['i']->value['isSameSetting'] == 1) {?> on<?php }?>>是</div>
-											<div class = "checkBtn"<?php if ($_smarty_tpl->tpl_vars['i']->value['isSameSetting'] == 0) {?> on<?php }?>>否</div>
+										<div class = "checkBox pull-left mT0 clearfix">
+											<div class = "checkBtn mRight50"<?php if ($_smarty_tpl->tpl_vars['i']->value['isSameSetting'] == 1) {?> on<?php }?> data-type="1">是</div>
+											<div class = "checkBtn"<?php if ($_smarty_tpl->tpl_vars['i']->value['isSameSetting'] == 0) {?> on<?php }?> data-type="0">否</div>
 										</div>
 										<input type="hidden" name = "isSameSetting" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['isSameSetting'];?>
 " class = "formInput sameForm"/>
-										<span class="tipsIcon"><span class = "tips">固定天数假期针对某一员工可再调整</span></span>
+										<span class="tipsIcon mT0"><span class = "tips w300">固定天数假期针对某一员工可再调整</span></span>
 									</div>
 									<div class = "form setNum clearfix">		
 										<p class = "formTitle">设置排序</p>
 										<input type="number" name = "rank" value="<?php echo $_smarty_tpl->tpl_vars['rank']->value;?>
 " placeholder = "0" class = "formInput rankInput" autocomplete="off"/>
-										<span class="tipsIcon"><span class = "tips">数字越大，排序越靠前</span></span>
+										<span class="tipsIcon mT0"><span class = "tips">数字越大，排序越靠前</span></span>
 									</div>
 								</div>
-								<div class = "roleUserInfo clearfix">
+								<div class = "roleUserInfo mT26 clearfix">
 									<div class = "form userName clearfix">
 										<p class = "formTitle">假期说明</p>
 										<textarea name="remark" placeholder="请填写假期说明" class="formInput modifyRemarkInput"><?php echo $_smarty_tpl->tpl_vars['i']->value['remark'];?>

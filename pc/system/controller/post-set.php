@@ -4,6 +4,11 @@
 	//# 2018-10-25
 	//# 职务添加/编辑
 
+	//权限验证
+	if($menuSystem[4] == 0){
+		RefreshResturn('index.php?_f=login');
+	}
+
 	//当前页面公共配置
 	$pageTitle = '职务设置';
 	$curPage = $_REQUEST['page'];

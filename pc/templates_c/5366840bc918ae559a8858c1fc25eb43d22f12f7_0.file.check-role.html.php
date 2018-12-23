@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-16 17:22:29
+/* Smarty version 3.1.29, created on 2018-12-22 21:45:47
   from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/system/view/check-role.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c16195571b298_99004294',
+  'unifunc' => 'content_5c1e400bd53c64_00445775',
   'file_dependency' => 
   array (
     '5366840bc918ae559a8858c1fc25eb43d22f12f7' => 
     array (
       0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/system/view/check-role.html',
-      1 => 1544952119,
+      1 => 1545221122,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c16195571b298_99004294 ($_smarty_tpl) {
+function content_5c1e400bd53c64_00445775 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -45,7 +45,6 @@ function content_5c16195571b298_99004294 ($_smarty_tpl) {
 ?>
 
 		<!--头部 end-->
-
 		<!--内容 begin-->
 		<div class="container-fluid row">
 			<!--内容区左侧导航 begin-->
@@ -53,7 +52,7 @@ function content_5c16195571b298_99004294 ($_smarty_tpl) {
 ?>
 
 			<!--内容区左侧导航end-->
-			<!--内容区右侧begin-->
+				<!--内容区右侧begin-->
 			<div class="contentRight col-lg-10 row">
 				<!--内容区导航begin-->
 				<div class="contentRightNav clearfix">
@@ -121,10 +120,11 @@ echo $_smarty_tpl->tpl_vars['track']->value;?>
 "><img src="public/html/images/edit.jpg" alt="" /></a>
 												</div>
 												<div class="editButton editButtonR pull-left text-center">
-													<a href="?_f=check-role&act=remove&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
+													<img src="public/html/images/del.jpg" alt="" />
+													<input type="hidden" value="?_f=check-role&act=remove&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
 &id=<?php echo $_smarty_tpl->tpl_vars['i']->value['checkRoleId'];
 echo $_smarty_tpl->tpl_vars['track']->value;?>
-" onclick="return confirm('确认要删除？');"><img src="public/html/images/del.jpg" alt="" /></a>
+" />
 												</div>
 											</div>
 										</td>

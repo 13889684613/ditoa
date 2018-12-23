@@ -4,17 +4,30 @@
 	//# 2018-11-12
 	//# 合同信息
 
+	//权限验证
+	if($menuHumanAffairs[1] == 0||$otherPower[0] == 0){
+		RefreshResturn('index.php?_f=login');
+	}
+
 	//当前页面公共配置
 	$pageTitle = '合同信息';
 	$act = $_REQUEST['act'];
 	$page = $_REQUEST['page'];
-	$table = PRFIX.'staff_contract';	
+	$table = PRFIX.'staff_contract';
 	$where = '';
 
 	//员工id
 	$id = getVal('id',1,'');
 	if($id == 0){
 		exit;
+	}
+
+	//非系统管理员操作权限验证，验证是否为同部门人员操作
+	$O = $db->get_one(PRFIX.'staff','where staffId='.$id.'','officeId');
+	if($common_category == 0){
+		if($common_office != $O['officeId']){
+			RefreshResturn('index.php?_f=login');
+		}
 	}
 
 	//所属企业

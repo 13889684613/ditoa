@@ -4,6 +4,11 @@
 	//# 2018-12-13
 	//# 转正考核审批
 
+	//权限验证
+	if($menuHumanAffairs[5] == 0){
+		RefreshResturn('index.php?_f=login');
+	}
+
 	//当前页面公共配置
 	$pageTitle = '转正考核审批';
 	$act = $_REQUEST['act'];
@@ -211,7 +216,7 @@
 			}
 			$db->update(PRFIX.'staff_appraise',$apply,'where appraiseId='.$appraiseId.'');
 
-			$data['status'] = 'fail';
+			$data['status'] = 'success';
 			$data['message'] = '操作成功';
 			$data['url'] = '?_f=employ-check-check-info&id='.$appraiseId.'';
 			$returnJson = json_encode($data);

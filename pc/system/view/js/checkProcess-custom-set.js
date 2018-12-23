@@ -54,7 +54,7 @@ $(function() {
 			$(this).parents('td').next().find('.InputBm').val('').attr('data-type','0');
 			$.ajax({
 				type:"get",
-				url:"http://192.168.1.137:5555/ajax.php?act=getGroup&officeId="+type,
+				url:"ajax.php?act=getGroup&officeId="+type,
 				async:true,
 				dataType: 'json',
 				success:function(data){
@@ -238,7 +238,19 @@ $(function() {
 		})
 
 		if(hold == true) {
-			$('#form').submit();
+			// $('#form').submit();
+			$('#checkForm').ajaxSubmit({
+                type:'post',
+                success:function(data){
+                    data = $.parseJSON(data);
+                    if(data.status == 'success'){
+                        // location.href = data.url;
+                        popAlert(data.message,data.url);
+                    }else{
+                        popAlert(data.message); //弹出错误信息
+                    }
+                }
+            })
 		}
 	})
 	

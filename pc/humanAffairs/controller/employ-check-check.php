@@ -4,6 +4,11 @@
 	//# 2018-12-11
 	//# 转正考核审批
 
+	//权限验证
+	if($menuHumanAffairs[5] == 0){
+		RefreshResturn('index.php?_f=login');
+	}
+
 	//分页类
 	include_once(PUBLICPATH.'oa.page.php');
 
@@ -15,11 +20,17 @@
 	$table = PRFIX.'staff_appraise';
 	$where = '';
 
+	//非系统管理员仅显示相同的企业、部门
+	if($common_category == 0){
+		$companyWhere = 'where companyId='.$common_company.' ';
+		$officeWhere = 'where officeId='.$common_office.' ';
+	}
+
 	//所属企业
-	$company = $db->get_all(PRFIX.'company','order by rank desc,createTime desc','companyId,cnName');
+	$company = $db->get_all(PRFIX.'company',''.$companyWhere.'order by rank desc,createTime desc','companyId,cnName');
 
 	//所属部门
-	$office = $db->get_all(PRFIX.'office','order by rank desc,createTime desc','officeId,officeName');
+	$office = $db->get_all(PRFIX.'office',''.$officeWhere.'order by rank desc,createTime desc','officeId,officeName');
 
 	//检索
 	$s_company = getVal('s_company',1,'');
@@ -37,6 +48,15 @@
 	if($s_name!=''){
 		$where .= ' and staffId in(select staffId from '.PRFIX.'staff where staffName like "%'.$s_name.'%")';
 		$track .= '&s_name='.$s_name.'';
+	}
+
+	//仅显示待审批与审批中的数据
+	$where .= ' and (checkStatus=0 or checkStatus=1)';
+
+	//普通员工,curCheckOffice/curCheckGroup为0时为总经办与总经理,审批完成后不在此显示
+	if($common_category == 0){
+		//工作接管仅支持同办事处同工作组之间人员审批权限接管，curCheckRole可能会存在多种角色，故引用in的方式。
+		$where .= ' and (curCheckOffice='.$common_office.' or curCheckOffice=0) and (curCheckGroup='.$common_group.' or curCheckGroup=0) and curCheckRole in('.$common_checkRole.')';
 	}
 	
 	$where = 'where 1=1'.$where;

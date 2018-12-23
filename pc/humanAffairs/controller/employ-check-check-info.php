@@ -4,6 +4,11 @@
 	//# 2018-12-11
 	//# 转正考核详情
 
+	//权限验证
+	if($menuHumanAffairs[5] == 0){
+		RefreshResturn('index.php?_f=login');
+	}
+
 	//当前页面公共配置
 	$pageTitle = '转正考核详情';
 	$act = $_REQUEST['act'];

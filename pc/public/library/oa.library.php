@@ -13,7 +13,7 @@
 		global $db;
 		global $common_office;
 		global $common_group;
-		global $common_checkRole;
+		global $begin_checkRole;
 
 		$checkStatus = 2;	//默认不需要审批，不审批情况下，视为直接审批通过
 		$checkOffice = 0;
@@ -23,7 +23,7 @@
 		$checkProcessId = 0;
 
 		//如定义了自定义审批流遵循自定义审批流
-		$custom = $db->get_one(PRFIX.'checkprocess','where checkCategory='.$categoryPara.' and officeId='.$common_office.' and groupId='.$common_group.' and beginRole='.$common_checkRole.' order by createTime desc limit 1','checkProcessId');
+		$custom = $db->get_one(PRFIX.'checkprocess','where checkCategory='.$categoryPara.' and officeId='.$common_office.' and groupId='.$common_group.' and beginRole='.$begin_checkRole.' order by createTime desc limit 1','checkProcessId');
 		if($custom){
 
 			//查询审批流程
@@ -39,7 +39,7 @@
 
 		}else{
 			//默认审批流
-			$default = $db->get_one(PRFIX.'default_checkprocess','where checkCategory='.$categoryPara.' and beginRole='.$common_checkRole.' order by createTime desc limit 1','defaultCheckProcessId');
+			$default = $db->get_one(PRFIX.'default_checkprocess','where checkCategory='.$categoryPara.' and beginRole='.$begin_checkRole.' order by createTime desc limit 1','defaultCheckProcessId');
 			if($default){
 
 				//查询审批流程
@@ -490,6 +490,24 @@
 
 		}
 		return $sysRoleName;
+
+	}
+
+	//通过职务id拉取职务名称
+	function getPostName($postId){
+
+		$postName = '';
+		if($postId!=''&&$postId!=0&&is_numeric($postId)){
+
+			//拉取审批角色名称
+			global $db;
+			$G = $db->get_one(PRFIX.'post','where postId='.$postId.'','postName');
+			if($G){
+				$postName = $G['postName'];
+			}
+
+		}
+		return $postName;
 
 	}
 

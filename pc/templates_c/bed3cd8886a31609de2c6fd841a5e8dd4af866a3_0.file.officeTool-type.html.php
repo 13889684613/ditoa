@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-16 22:48:39
+/* Smarty version 3.1.29, created on 2018-12-21 07:03:41
   from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/system/view/officeTool-type.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c1665c7e4e3f9_04337359',
+  'unifunc' => 'content_5c1c1fcd41e773_64961681',
   'file_dependency' => 
   array (
     'bed3cd8886a31609de2c6fd841a5e8dd4af866a3' => 
     array (
       0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/system/view/officeTool-type.html',
-      1 => 1544971076,
+      1 => 1545221122,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c1665c7e4e3f9_04337359 ($_smarty_tpl) {
+function content_5c1c1fcd41e773_64961681 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -73,10 +73,10 @@ function content_5c1665c7e4e3f9_04337359 ($_smarty_tpl) {
 								<div class="retrievalTitle">快速检索</div>
 								<div class="retrievalInputBox clearfix">
 									<div class="retrievalTxt pull-left">类别名称</div>
-									<div class="retrievalInput pull-left"><input type="text" name="s_name" value="<?php echo $_smarty_tpl->tpl_vars['s_name']->value;?>
+									<div class="retrievalsInput pull-left"><input type="text" name="s_name" value="<?php echo $_smarty_tpl->tpl_vars['s_name']->value;?>
 " placeholder="请填写类别名称" /></div>
 									<div class="retrievalTxt pull-left">类别编号</div>
-									<div class="retrievalInput pull-left"><input type="text" name="s_code" value="<?php echo $_smarty_tpl->tpl_vars['s_code']->value;?>
+									<div class="retrievalsInput pull-left"><input type="text" name="s_code" value="<?php echo $_smarty_tpl->tpl_vars['s_code']->value;?>
 " placeholder="请填写类别编号" /></div>
 									<div class="retrievaButtonBox pull-left clearfix">
 										<div class="retrievaButton retrievaButtonL pull-left">
@@ -124,10 +124,11 @@ echo $_smarty_tpl->tpl_vars['track']->value;?>
 "><img src="public/html/images/edit.jpg" alt="" /></a>
 												</div>
 												<div class="editButton editButtonR pull-left text-center">
-													<a href="?_f=officeTool-type&act=remove&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
+													<img src="public/html/images/del.jpg" alt="" />
+													<input type="hidden" value="?_f=officeTool-type&act=remove&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
 &id=<?php echo $_smarty_tpl->tpl_vars['i']->value['categoryId'];
 echo $_smarty_tpl->tpl_vars['track']->value;?>
-" onclick="return confirm('确认要删除？');"><img src="public/html/images/del.jpg" alt="" /></a>
+"/>
 												</div>
 											</div>
 										</td>

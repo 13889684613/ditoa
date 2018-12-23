@@ -4,6 +4,11 @@
 	//# 2018-11-09
 	//# 员工基本资料设置
 
+	//权限验证
+	if($menuHumanAffairs[1] == 0){
+		RefreshResturn('index.php?_f=login');
+	}
+
 	//当前页面公共配置
 	$pageTitle = '员工基本资料设置';
 	$act = $_REQUEST['act'];
@@ -14,14 +19,26 @@
 
 	//表单元素赋能 begin
 
+	$select['company'] = '请选择所属企业';
+	$select['office'] = '请选择部门名称';
+	$select['group'] = '请选择所属小组';
+	$select['post'] = '请选择职务';
+	$select['lunarMonth'] = '请选择月份';
+	$select['lunarDay'] = '请选择日期';
+	$select['education'] = '请选择学历';
+	$select['political'] = '请选择政治面貌';
+
+	//非系统管理员仅显示相同的企业、部门、工作组
+	if($common_category == 0){
+		$companyWhere = 'where companyId='.$common_company.' ';
+		$officeWhere = 'where officeId='.$common_office.' ';
+	}
+
 	//所属企业
-	$companys = $db->get_all(PRFIX.'company','order by rank desc,createTime desc','companyId,cnName');
+	$companys = $db->get_all(PRFIX.'company',''.$companyWhere.'order by rank desc,createTime desc','companyId,cnName');
 
 	//所属部门
-	$offices = $db->get_all(PRFIX.'office','order by rank desc,createTime desc','officeId,officeName');
-
-	//所属工作组
-	$groups  = $db->get_all(PRFIX.'group','order by rank desc,createTime desc','groupId,groupName');
+	$offices = $db->get_all(PRFIX.'office',''.$officeWhere.'order by rank desc,createTime desc','officeId,officeName');
 
 	//职务 
 	$posts = $db->get_all(PRFIX.'post','order by rank desc,createTime desc','postId,postName');
@@ -91,6 +108,7 @@
 
 	//验证
 	if($act == 'addSave'||$act == 'editSave'){
+
 		if($company == 0){
 			$data['status'] = 'fail';
 			$data['message'] = '请选择所属企业';
@@ -409,6 +427,17 @@
 		$fileds .= 'firstWorkDate,quitDate,cnBankAccount,busFee,background,remark';
 		$data = $db->get_one($table,'where staffId='.$id.'',$fileds);
 		if($data){
+
+			//所属工作组
+			$groups  = $db->get_all(PRFIX.'group','where officeId='.$data['officeId'].' order by rank desc,createTime desc','groupId,groupName');	
+
+			//非系统管理员操作权限验证，验证是否为同部门人员操作
+			if($common_category == 0){
+				if($common_office != $data['officeId']){
+					RefreshResturn('index.php?_f=login');
+				}
+			}
+
 			$lunarDate = explode(',', $data['lunarDate']);
 			$data['lunarMonth'] = $lunarDate[0];	//公历月
 			$data['lunarDay'] = $lunarDate[1];		//公历日
@@ -417,6 +446,15 @@
 			if($data['busFee'] == 0){
 				$data['busFee'] = '';
 			}
+			$select['company'] = getCompanyName($data['companyId']);
+			$select['office'] = getOfficeName($data['officeId']);
+			$select['group'] = getGroupName($data['groupId']);
+			$select['post'] = getPostName($data['postId']);
+			$select['lunarMonth'] = static_lunarMonth($data['lunarMonth']);
+			$select['lunarDay'] = static_lunarDay($data['lunarDay']);
+			$select['education'] = static_education($data['education']);
+			$select['political'] = static_political($data['politicalType']);
+
 		}
 
 	}
@@ -550,5 +588,6 @@
 	$smarty->assign('s_overtime',$s_overtime);
 	$smarty->assign('s_name',$s_name);
 	$smarty->assign('s_idno',$s_idno);
+	$smarty->assign('select',$select);
 
 ?>

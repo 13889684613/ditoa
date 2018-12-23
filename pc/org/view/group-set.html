@@ -95,12 +95,6 @@
 								<div class="retrievalBox">
 									<div class="retrievalTitle">工作组信息</div>
 									<div class="retrievalsForm clearfix">
-										<form id="groupForm" method="post" class="clearfix">
-											<input type="hidden" name="page" value="{{$page}}" />
-											<input type="hidden" name="s_office" value="{{$s_office}}" />
-											<input type="hidden" name="s_name" value="{{$s_name}}" />
-											<input type="hidden" name="id" value="{{$id}}" />
-											<input type="hidden" name="act" value="{{$action}}" />
 											<div class="retrievalsInputBoxs retrievalsInputBoxsStar clearfix pull-left">
 												<div class="retrievalsInputContent">
 													<div class="retrievalsInput">
@@ -112,7 +106,7 @@
 																{{foreach item=o name=offices from=$offices}}
 																<li data-type="{{$o.officeId}}">{{$o.officeName}}</li>
 																{{/foreach}}
-																<input type="hidden" class="selectVal" value="0" autocomplete="off" data-type="1">
+																<input type="hidden" name="office" class="selectVal" value="0" autocomplete="off" data-type="1">
 															</ul>
 														</div>
 													</div>
@@ -135,11 +129,10 @@
 												<div class="retrievalsInputContent">
 													<div class="retrievalsInput">
 														<label>部门联系电话<span>*</span></label>
-														<input name="groupName" name="phone" type="text" placeholder="请输入部门联系电话" value="{{$i.phone}}" class="choseInputName" data-type='0' />
+														<input name="phone" type="text" placeholder="请输入部门联系电话" value="{{$i.phone}}" class="choseInputName" data-type='0' />
 													</div>
 												</div>
 											</div>
-										</form>
 									</div>
 								</div>
 								<!--检索end-->

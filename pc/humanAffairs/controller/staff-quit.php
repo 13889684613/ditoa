@@ -4,6 +4,11 @@
 	//# 2018-11-12
 	//# 离职信息
 
+	//权限验证
+	if($menuHumanAffairs[1] == 0){
+		RefreshResturn('index.php?_f=login');
+	}
+
 	//当前页面公共配置
 	$pageTitle = '离职信息';
 	$act = $_REQUEST['act'];
@@ -60,7 +65,13 @@
 	}
 
 	//离职信息
-	$data = $db->get_one($table,'where staffId='.$id.'','trueQuitDate,quitTable');
+	$data = $db->get_one($table,'where staffId='.$id.'','officeId,trueQuitDate,quitTable');
+	//非系统管理员操作权限验证，验证是否为同部门人员操作
+	if($common_category == 0){
+		if($common_office != $data['officeId']){
+			RefreshResturn('index.php?_f=login');
+		}
+	}
 	
 	//创建保存
 	if($act == 'editSave'){

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-16 22:17:09
+/* Smarty version 3.1.29, created on 2018-12-23 11:34:00
   from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/system/view/checkProcess-custom.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c165e65583243_63363871',
+  'unifunc' => 'content_5c1f0228341724_46168880',
   'file_dependency' => 
   array (
     'ed3e20099f5a9e215791e3349f3467eec191f4ad' => 
     array (
       0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/system/view/checkProcess-custom.html',
-      1 => 1544968048,
+      1 => 1545535967,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c165e65583243_63363871 ($_smarty_tpl) {
+function content_5c1f0228341724_46168880 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -78,8 +78,7 @@ function content_5c165e65583243_63363871 ($_smarty_tpl) {
 										<div class="retrievalsInputContent">
 											<div class="retrievalsInput">
 												<label>类别</label>
-												<input type="text" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputBm" placeholder="请选择" name="s_type" value="<?php echo $_smarty_tpl->tpl_vars['s_type']->value;?>
-" data-type='0' />
+												<input type="text" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputBm" placeholder="请选择" data-type='0' />
 												<div class="retrievalsInputNavBox">
 													<ul class="retrievalsInputNav">
 														<li data-type = "0">请选择</li>
@@ -110,6 +109,8 @@ if ($__foreach_value_0_saved_key) {
 $_smarty_tpl->tpl_vars['key'] = $__foreach_value_0_saved_key;
 }
 ?>
+														<input type="hidden" name="s_type" value="<?php echo $_smarty_tpl->tpl_vars['s_type']->value;?>
+"  class="selectVal" value="" />
 													</ul>
 												</div>
 											</div>
@@ -119,8 +120,7 @@ $_smarty_tpl->tpl_vars['key'] = $__foreach_value_0_saved_key;
 										<div class="retrievalsInputContent">
 											<div class="retrievalsInput">
 												<label>角色</label>
-												<input type="text" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputXz" placeholder="请选择" name="s_role" value="<?php echo $_smarty_tpl->tpl_vars['s_role']->value;?>
-" data-type='0' />
+												<input type="text" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputXz" placeholder="请选择" data-type='0' />
 												<div class="retrievalsInputNavBox">
 													<ul class="retrievalsInputNav">
 														<li data-type = "0">请选择</li>
@@ -146,6 +146,8 @@ if ($__foreach_roles_1_saved_item) {
 $_smarty_tpl->tpl_vars['r'] = $__foreach_roles_1_saved_item;
 }
 ?>
+														<input type="hidden" name="s_role" value="<?php echo $_smarty_tpl->tpl_vars['s_role']->value;?>
+" class="selectVal" value="" />
 													</ul>
 												</div>
 											</div>
@@ -155,8 +157,7 @@ $_smarty_tpl->tpl_vars['r'] = $__foreach_roles_1_saved_item;
 										<div class="retrievalsInputContent">
 											<div class="retrievalsInput">
 												<label>所属部门</label>
-												<input type="text" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputLz" placeholder="请选择" name="s_office" value="<?php echo $_smarty_tpl->tpl_vars['s_office']->value;?>
-" data-type='0' />
+												<input type="text" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputLz" placeholder="请选择" data-type='0' />
 												<div class="retrievalsInputNavBox">
 													<ul class="retrievalsInputNav">
 														<li data-type = "0">请选择</li>
@@ -182,6 +183,8 @@ if ($__foreach_offices_2_saved_item) {
 $_smarty_tpl->tpl_vars['o'] = $__foreach_offices_2_saved_item;
 }
 ?>
+														<input type="hidden" name="s_office" value="<?php echo $_smarty_tpl->tpl_vars['s_office']->value;?>
+" class="selectVal" value="" />
 													</ul>
 												</div>
 											</div>
@@ -223,7 +226,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 $_smarty_tpl->tpl_vars['i']->_loop = true;
 $__foreach_data_3_saved_local_item = $_smarty_tpl->tpl_vars['i'];
 ?>
-								<tr class="backgroundFFF">
+								<tr<?php if ($_smarty_tpl->tpl_vars['i']->value%2 == 1) {?> class="backgroundFFF"<?php }?>>
 									<td class="borderRight1">
 										<div class="editBox center-block clearfix">
 											<?php if ($_smarty_tpl->tpl_vars['i']->value['isOpt']) {?>
@@ -234,11 +237,14 @@ echo $_smarty_tpl->tpl_vars['track']->value;?>
 "><img src="public/html/images/edit.jpg" alt="" /></a>
 											</div>
 											<div class="editButton editButtonR pull-left text-center">
-												<a href="?_f=checkProcess-custom&act=remove&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
+												<img src="public/html/images/del.jpg" alt="" />
+												<input type="hidden" value="?_f=checkProcess-custom&act=remove&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
 &id=<?php echo $_smarty_tpl->tpl_vars['i']->value['checkProcessId'];
 echo $_smarty_tpl->tpl_vars['track']->value;?>
-"><img src="public/html/images/del.jpg" alt="" /></a>
+"/>
 											</div>
+											<?php } else { ?>
+											已应用
 											<?php }?>
 										</div>
 									</td>
@@ -285,8 +291,10 @@ $__foreach_data_4_saved_local_item = $_smarty_tpl->tpl_vars['i'];
 </span></td>
 										<td class=""><span><?php echo $_smarty_tpl->tpl_vars['i']->value['group'];?>
 </span></td>
-										<td class=""><span>{$i.checkProcess}}</span></td>
-										<td><span>{$i.createTime}}</span></td>
+										<td class=""><span><?php echo $_smarty_tpl->tpl_vars['i']->value['checkProcess'];?>
+</span></td>
+										<td><span><?php echo $_smarty_tpl->tpl_vars['i']->value['createTime'];?>
+</span></td>
 									</tr>
 									<?php
 $_smarty_tpl->tpl_vars['i'] = $__foreach_data_4_saved_local_item;

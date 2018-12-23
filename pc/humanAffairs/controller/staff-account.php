@@ -4,6 +4,11 @@
 	//# 2018-11-12
 	//# 帐号设置
 
+	//权限验证
+	if($menuHumanAffairs[1] == 0||$otherPower[3] == 0){
+		RefreshResturn('index.php?_f=login');
+	}
+
 	//当前页面公共配置
 	$pageTitle = '帐号设置';
 	$act = $_REQUEST['act'];
@@ -72,7 +77,15 @@
 	}
 
 	//初始化数据
-	$data = $db->get_one($table,'where staffId='.$id.'','sysRoleId,checkRoleId,status');
+	$data = $db->get_one($table,'where staffId='.$id.'','officeId,sysRoleId,checkRoleId,status');
+
+	//非系统管理员操作权限验证，验证是否为同部门人员操作
+	if($common_category == 0){
+		if($common_office != $data['officeId']){
+			RefreshResturn('index.php?_f=login');
+		}
+	}
+
 	if($data['sysRoleId'] == 0){
 		$isSet = 0;
 		$data['sysRoleName'] = '请选择系统角色';

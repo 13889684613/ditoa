@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-16 21:01:54
+/* Smarty version 3.1.29, created on 2018-12-23 10:44:14
   from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/system/view/checkProcess-custom-set.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c164cc2ee8d99_41812984',
+  'unifunc' => 'content_5c1ef67e3596d6_95184678',
   'file_dependency' => 
   array (
     '5c8d5e5fee08f19f35955451fb8514b74dd1b70c' => 
     array (
       0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/system/view/checkProcess-custom-set.html',
-      1 => 1544965308,
+      1 => 1545533030,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c164cc2ee8d99_41812984 ($_smarty_tpl) {
+function content_5c1ef67e3596d6_95184678 ($_smarty_tpl) {
 ?>
 <!-- 
 	# 创建自定义审批流程
@@ -46,7 +46,7 @@ function content_5c164cc2ee8d99_41812984 ($_smarty_tpl) {
 		<link rel="stylesheet" href="system/view/css/checkProcess-custom-set.css" />
 	</head>
 
-	<body>
+	<body class="clearfix">
 		<!--头部 begin-->
 		<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:public/html/head.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -75,7 +75,7 @@ echo $_smarty_tpl->tpl_vars['track']->value;?>
 				<!--内容区begin-->
 				<div class="contentRightBox">
 					<div class="contentRightContent">
-						<form method="post" class="clearfix">
+						<form id="checkForm" method="post" class="clearfix">
 						<input type="hidden" name="page" value="<?php echo $_smarty_tpl->tpl_vars['page']->value;?>
 " />
 						<input type="hidden" name="s_type" value="<?php echo $_smarty_tpl->tpl_vars['s_type']->value;?>
@@ -90,13 +90,12 @@ echo $_smarty_tpl->tpl_vars['track']->value;?>
 " />
 						<div class="retrievalBox">
 							<div class="retrievalTitle">设置审批流程信息</div>
-							<div class="retrievalsForm">
+							<div class="retrievalsForm clearfix">
 								<div class="retrievalsInputBoxs mediaWidthChange clearfix pull-left">
 									<div class="retrievalsInputContent">
 										<div class="retrievalsInput firstIn">
 											<label class="lable_w">审批流程类别<span class="must">*</span></label>
-											<input type="text" readonly="readonly" onfocus="this.blur()" class="choseInput choseInputLc" placeholder="请选择" name="category" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['checkCategory'];?>
-" data-type='0' />
+											<input type="text" readonly="readonly" onfocus="this.blur()" class="choseInput choseInputLc" placeholder="请选择"  data-type='0' />
 											<div class="retrievalsInputNavBox">
 												<ul class="retrievalsInputNav">
 													<li data-type='0'>请选择</li>
@@ -127,13 +126,14 @@ if ($__foreach_value_0_saved_key) {
 $_smarty_tpl->tpl_vars['key'] = $__foreach_value_0_saved_key;
 }
 ?>
+													<input type="hidden" name="category" class="selectVal" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['checkCategory'];?>
+" />
 												</ul>
 											</div>
 										</div>
 										<div class="retrievalsInput  firstIn">
 											<label class="lable_w">发起审批角色<span class="must">*</span></label>
-											<input type="text" readonly="readonly" onfocus="this.blur()" class="choseInput choseInputJs" placeholder="请选择" name="beginRole" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['beginRole'];?>
-" data-type='0' />
+											<input type="text" readonly="readonly" onfocus="this.blur()" class="choseInput choseInputJs" placeholder="请选择"  data-type='0' />
 											<div class="retrievalsInputNavBox">
 												<ul class="retrievalsInputNav">
 													<li data-type='0'>请选择</li>
@@ -159,6 +159,8 @@ if ($__foreach_roles_1_saved_item) {
 $_smarty_tpl->tpl_vars['r'] = $__foreach_roles_1_saved_item;
 }
 ?>
+													<input type="hidden" name="beginRole" class="selectVal" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['beginRole'];?>
+" />
 												</ul>
 											</div>
 										</div>
@@ -168,10 +170,9 @@ $_smarty_tpl->tpl_vars['r'] = $__foreach_roles_1_saved_item;
 									<div class="retrievalsInputContent">
 										<div class="retrievalsInput">
 											<label>办事处<span class="must">*</span></label>
-											<input type="text" readonly="readonly" onfocus="this.blur()" class="choseInput choseInputQy" placeholder="请选择" name="beginOffice" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['officeId'];?>
-" data-type='0' />
+											<input type="text" readonly="readonly" onfocus="this.blur()" class="choseInput choseInputQy" placeholder="请选择"  data-type='0' />
 											<div class="retrievalsInputNavBox">
-												<ul class="retrievalsInputNav">
+												<ul class="retrievalsInputNav selectLinkage">
 													<li data-type='0'>请选择</li>
 													<?php
 $_from = $_smarty_tpl->tpl_vars['offices']->value;
@@ -195,6 +196,8 @@ if ($__foreach_offices_2_saved_item) {
 $_smarty_tpl->tpl_vars['o'] = $__foreach_offices_2_saved_item;
 }
 ?>
+													<input type="hidden" name="beginOffice" class="selectVal" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['officeId'];?>
+" />
 												</ul>
 											</div>
 										</div>
@@ -207,8 +210,7 @@ $_smarty_tpl->tpl_vars['o'] = $__foreach_offices_2_saved_item;
 									<div class="retrievalsInputContent">
 										<div class="retrievalsInput">
 											<label>工作组<span class="must">*</span></label>
-											<input type="text" readonly="readonly" onfocus="this.blur()" class="choseInput choseInputBm" placeholder="请选择" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['groupId'];?>
-" data-type='0' name="beginGroup" />
+											<input type="text" readonly="readonly" onfocus="this.blur()" class="choseInput choseInputBm" placeholder="请选择" data-type='0' />
 											<div class="retrievalsInputNavBox">
 												<ul class="retrievalsInputNav">
 													<li data-type='0'>请选择</li>
@@ -224,7 +226,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['g']->value) {
 $_smarty_tpl->tpl_vars['g']->_loop = true;
 $__foreach_groups_3_saved_local_item = $_smarty_tpl->tpl_vars['g'];
 ?>
-													<li data-type='<?php echo $_smarty_tpl->tpl_vars['g']->value['groupId'];?>
+													<li class="li" data-type='<?php echo $_smarty_tpl->tpl_vars['g']->value['groupId'];?>
 '><?php echo $_smarty_tpl->tpl_vars['g']->value['groupName'];?>
 </li>
 													<?php
@@ -234,6 +236,8 @@ if ($__foreach_groups_3_saved_item) {
 $_smarty_tpl->tpl_vars['g'] = $__foreach_groups_3_saved_item;
 }
 ?>
+													<input type="hidden" name="beginGroup" class="selectVal" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['groupId'];?>
+"  />
 												</ul>
 											</div>
 										</div>
@@ -252,10 +256,10 @@ $_smarty_tpl->tpl_vars['g'] = $__foreach_groups_3_saved_item;
 											<td width="84" class="td1 text-center">
 												<span class="center-block">01</span>
 											</td>
-											<td class="td2" width="392">
+											<td class="td2 selectLinkage" width="392">
 												<div class="StableTd clearfix">
 													<div class="StableTdL pull-left">所属办事处<span class="must">*</span></div>
-													<div class="StableTdR pull-left"><input type="text" data-type='0' onfocus="this.blur()" readonly="readonly" class="InputQy" placeholder="请选择" name="office[]"/>
+													<div class="StableTdR pull-left"><input type="text" data-type='0' onfocus="this.blur()" readonly="readonly" class="choseInput InputQy" placeholder="请选择" />
 														<div class="retrievalsInputNavBox">
 															<ul class="retrievalsInputNav">
 																<li data-type='0'>请选择</li>
@@ -281,6 +285,7 @@ if ($__foreach_offices_4_saved_item) {
 $_smarty_tpl->tpl_vars['o'] = $__foreach_offices_4_saved_item;
 }
 ?>
+																<input type="hidden" class="selectVal" name="office[]" value="" />
 															</ul>
 														</div>
 													</div>
@@ -289,7 +294,7 @@ $_smarty_tpl->tpl_vars['o'] = $__foreach_offices_4_saved_item;
 											<td class="td3" width="398">
 												<div class="StableTd clearfix">
 													<div class="StableTdL pull-left">所属工作组<span class="must">*</span></div>
-													<div class="StableTdR pull-left"><input type="text" data-type='0' onfocus="this.blur()" readonly="readonly" class="InputBm" placeholder="请选择" name="group[]" />
+													<div class="StableTdR pull-left"><input type="text" data-type='0' onfocus="this.blur()" readonly="readonly" class="choseInput InputBm" placeholder="请选择"  />
 														<div class="retrievalsInputNavBox">
 															<ul class="retrievalsInputNav">
 																<li data-type='0'>请选择</li>
@@ -305,7 +310,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['g']->value) {
 $_smarty_tpl->tpl_vars['g']->_loop = true;
 $__foreach_groups_5_saved_local_item = $_smarty_tpl->tpl_vars['g'];
 ?>
-																<li data-type='<?php echo $_smarty_tpl->tpl_vars['g']->value['groupId'];?>
+																<li class="li" data-type='<?php echo $_smarty_tpl->tpl_vars['g']->value['groupId'];?>
 '><?php echo $_smarty_tpl->tpl_vars['g']->value['groupName'];?>
 </li>
 																<?php
@@ -315,6 +320,7 @@ if ($__foreach_groups_5_saved_item) {
 $_smarty_tpl->tpl_vars['g'] = $__foreach_groups_5_saved_item;
 }
 ?>
+																<input type="hidden" class="selectVal" name="group[]" value="" />
 															</ul>
 														</div>
 													</div>
@@ -323,7 +329,7 @@ $_smarty_tpl->tpl_vars['g'] = $__foreach_groups_5_saved_item;
 											<td class="td4" width="633">
 												<div class="StableTd clearfix">
 													<div class="StableTdL pull-left">所属角色<span class="must">*</span></div>
-													<div class="StableTdR pull-left"><input type="text" data-type='0' onfocus="this.blur()" readonly="readonly" class="InputJs" placeholder="请选择" name="role[]" />
+													<div class="StableTdR pull-left"><input type="text" data-type='0' onfocus="this.blur()" readonly="readonly" class="choseInput InputJs" placeholder="请选择"  />
 														<div class="retrievalsInputNavBox">
 															<ul class="retrievalsInputNav">
 																<li data-type='0'>请选择</li>
@@ -349,6 +355,7 @@ if ($__foreach_roles_6_saved_item) {
 $_smarty_tpl->tpl_vars['r'] = $__foreach_roles_6_saved_item;
 }
 ?>
+																<input type="hidden" class="selectVal" name="role[]" value="" />
 															</ul>
 														</div>
 													</div>
@@ -379,8 +386,7 @@ $__foreach_process_7_saved_local_item = $_smarty_tpl->tpl_vars['p'];
 											<td class="td2" width="392">
 												<div class="StableTd clearfix">
 													<div class="StableTdL pull-left">所属办事处<span class="must">*</span></div>
-													<div class="StableTdR pull-left"><input type="text" data-type='0' onfocus="this.blur()" readonly="readonly" class="InputQy" placeholder="请选择" name="office[]" value="<?php echo $_smarty_tpl->tpl_vars['p']->value['officeId'];?>
-" />
+													<div class="StableTdR pull-left"><input type="text" data-type='0' onfocus="this.blur()" readonly="readonly" class="choseInput InputQy" placeholder="请选择"/>
 														<div class="retrievalsInputNavBox">
 															<ul class="retrievalsInputNav">
 																<li data-type='0'>请选择</li>
@@ -406,6 +412,8 @@ if ($__foreach_offices_8_saved_item) {
 $_smarty_tpl->tpl_vars['o'] = $__foreach_offices_8_saved_item;
 }
 ?>
+																<input type="hidden" name="office[]" value="<?php echo $_smarty_tpl->tpl_vars['p']->value['officeId'];?>
+" class="selectVal" value="" />
 															</ul>
 														</div>
 													</div>
@@ -414,8 +422,7 @@ $_smarty_tpl->tpl_vars['o'] = $__foreach_offices_8_saved_item;
 											<td class="td3" width="398">
 												<div class="StableTd clearfix">
 													<div class="StableTdL pull-left">所属工作组<span class="must">*</span></div>
-													<div class="StableTdR pull-left"><input type="text" data-type='0' onfocus="this.blur()" readonly="readonly" class="InputBm" placeholder="请选择" name="group[]" value="<?php echo $_smarty_tpl->tpl_vars['p']->value['groupId'];?>
-" />
+													<div class="StableTdR pull-left"><input type="text" data-type='0' onfocus="this.blur()" readonly="readonly" class="choseInput InputBm" placeholder="请选择" />
 														<div class="retrievalsInputNavBox">
 															<ul class="retrievalsInputNav">
 																<li data-type='0'>请选择</li>
@@ -441,6 +448,8 @@ if ($__foreach_groups_9_saved_item) {
 $_smarty_tpl->tpl_vars['g'] = $__foreach_groups_9_saved_item;
 }
 ?>
+																<input type="hidden" name="group[]" value="<?php echo $_smarty_tpl->tpl_vars['p']->value['groupId'];?>
+" class="selectVal" value="" />
 															</ul>
 														</div>
 													</div>
@@ -449,8 +458,7 @@ $_smarty_tpl->tpl_vars['g'] = $__foreach_groups_9_saved_item;
 											<td class="td4" width="633">
 												<div class="StableTd clearfix">
 													<div class="StableTdL pull-left">所属角色<span class="must">*</span></div>
-													<div class="StableTdR pull-left"><input type="text" data-type='0' onfocus="this.blur()" readonly="readonly" class="InputJs" placeholder="请选择" name="role[]" value="<?php echo $_smarty_tpl->tpl_vars['p']->value['roleId'];?>
-" />
+													<div class="StableTdR pull-left"><input type="text" data-type='0' onfocus="this.blur()" readonly="readonly" class="choseInput InputJs" placeholder="请选择"/>
 														<div class="retrievalsInputNavBox">
 															<ul class="retrievalsInputNav">
 																<li data-type='0'>请选择</li>
@@ -476,6 +484,8 @@ if ($__foreach_roles_10_saved_item) {
 $_smarty_tpl->tpl_vars['r'] = $__foreach_roles_10_saved_item;
 }
 ?>
+																<input type="hidden" name="role[]" value="<?php echo $_smarty_tpl->tpl_vars['p']->value['roleId'];?>
+"  class="selectVal" value="" />
 															</ul>
 														</div>
 													</div>

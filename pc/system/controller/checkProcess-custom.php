@@ -4,6 +4,11 @@
 	//# 2018-11-04
 	//# 自定义审批流管理
 
+	//权限验证
+	if($menuSystem[2] == 0){
+		RefreshResturn('index.php?_f=login');
+	}
+
 	//分页类
 	include_once(PUBLICPATH.'oa.page.php');
 

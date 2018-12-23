@@ -4,6 +4,11 @@
 	//# 2018-10-25
 	//# 系统角色权限-添加/编辑
 
+	//权限验证
+	if($menuSystem[0] == 0){
+		RefreshResturn('index.php?_f=login');
+	}
+
 	//当前页面公共配置
 	$pageTitle = '系统角色权限设置';
 	$curPage = $_REQUEST['page'];

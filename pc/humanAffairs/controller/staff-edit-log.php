@@ -4,6 +4,11 @@
 	//# 2018-11-12
 	//# 员工资料编辑记录
 
+	//权限验证
+	if($menuHumanAffairs[1] == 0||$otherPower[4] == 0){
+		RefreshResturn('index.php?_f=login');
+	}
+
 	//分页类
 	include_once(PUBLICPATH.'oa.page.php');
 

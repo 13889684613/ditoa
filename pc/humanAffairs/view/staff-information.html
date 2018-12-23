@@ -88,7 +88,7 @@
 								{{/if}} {{/if}}
 							</ul>
 						</div>
-						<form id="staffForm" method="post"></form>
+						<form id="staffForm">
 							<div class="staffInfoForm clearfix" style="background-color: #f6f6fa;padding-bottom: 0;">
 								<input type="hidden" name="page" value="{{$page}}" />
 								<input type="hidden" name="s_company" value="{{$s_company}}" />
@@ -107,7 +107,7 @@
 										<div class="formList">
 											<div class="form mbottom57">
 												<p class="formTitle">所属企业<span>*</span></p>
-												<div class="formInput formSelect">请选择所属企业</div>
+												<div class="formInput formSelect">{{$select.company}}</div>
 												<ul class="formSelectList">
 													<li class="default">请选择所属企业</li>
 													{{foreach item=c name=companys from=$companys}}
@@ -118,7 +118,7 @@
 											</div>
 											<div class="form">
 												<p class="formTitle">小组<span>*</span></p>
-												<div class="formInput formSelect">请选择所属小组</div>
+												<div class="formInput formSelect">{{$select.group}}</div>
 												<ul class="formSelectList formSelectListSelect2">
 													<li class="default">请选择所属小组</li>
 													{{foreach item=g name=groups from=$groups}}
@@ -169,7 +169,7 @@
 										<div class="formList">
 											<div class="form mbottom57">
 												<p class="formTitle">部门名称<span>*</span></p>
-												<div class="formInput formSelect">请选择部门名称</div>
+												<div class="formInput formSelect">{{$select.office}}</div>
 												<ul class="formSelectList formSelectListSelect1">
 													<li class="default">请选择部门名称</li>
 													{{foreach item=o name=offices from=$offices}}
@@ -180,7 +180,7 @@
 											</div>
 											<div class="form">
 												<p class="formTitle">职务<span>*</span></p>
-												<div class="formInput formSelect">请选择职务</div>
+												<div class="formInput formSelect">{{$select.post}}</div>
 												<ul class="formSelectList">
 													<li class="default">请选择职务</li>
 													{{foreach item=p name=posts from=$posts}}
@@ -208,7 +208,7 @@
 											</div>
 											<div class="form">
 												<p class="formTitle">学历<span>*</span></p>
-												<div class="formInput formSelect">请选择学历</div>
+												<div class="formInput formSelect">{{$select.education}}</div>
 												<ul class="formSelectList">
 													<li class="default">请选择学历</li>
 													{{foreach $educations as $key=>$value}}
@@ -219,7 +219,7 @@
 											</div>
 											<div class="form">
 												<p class="formTitle">政治面貌</p>
-												<div class="formInput formSelect">请选择政治面貌</div>
+												<div class="formInput formSelect">{{$select.political}}</div>
 												<ul class="formSelectList">
 													<li class="default">请选择政治面貌</li>
 													{{foreach $politicals as $key=>$value}}
@@ -279,7 +279,7 @@
 											<div class="formBoxL clearfix">
 												<div class="form formL2 pull-left">
 													<p class="formTitle">农历</p>
-													<div class="formInput formSelect">请选择月份</div>
+													<div class="formInput formSelect">{{$select.lunarMonth}}</div>
 													<ul class="formSelectList">
 														<li class="default">请选择月份</li>
 														{{foreach $lunarMonths as $key=>$value}}
@@ -289,7 +289,7 @@
 													<input type="hidden" name="lunarMonth" value="{{$i.lunarMonth}}" class="lunarMonthForm" />
 												</div>
 												<div class="form formL2 marginL6 pull-left">
-													<div class="formInput formSelect">请选择日期</div>
+													<div class="formInput formSelect">{{$select.lunarDay}}</div>
 													<ul class="formSelectList">
 														<li class="default">请选择日期</li>
 														{{foreach $lunarDays as $key=>$value}}

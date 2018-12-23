@@ -4,6 +4,11 @@
 	//# 2018-11-04
 	//# 部门信息设置
 
+	//权限验证
+	if($menuOrg[1] == 0){
+		RefreshResturn('index.php?_f=login');
+	}
+
 	//当前页面公共配置
 	$pageTitle = '部门信息设置';
 	$curPage = $_REQUEST['page'];

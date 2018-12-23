@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-20 20:17:13
+/* Smarty version 3.1.29, created on 2018-12-23 10:00:48
   from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/system/view/system-role-set.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c1b8849a3de01_23429048',
+  'unifunc' => 'content_5c1eec50796250_09480444',
   'file_dependency' => 
   array (
     '72458065ffd9815da82d3bb27fcb819e3a5fafe3' => 
     array (
       0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/system/view/system-role-set.html',
-      1 => 1545308222,
+      1 => 1545530366,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c1b8849a3de01_23429048 ($_smarty_tpl) {
+function content_5c1eec50796250_09480444 ($_smarty_tpl) {
 ?>
 <!-- 
 	# 新增系统角色
@@ -149,7 +149,7 @@ function content_5c1b8849a3de01_23429048 ($_smarty_tpl) {
 													<li<?php if ($_smarty_tpl->tpl_vars['i']->value['humanAffairsPower'][1] == 1) {?> class="on"<?php }?> data-id="08">员工管理</li>
 													<input type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['humanAffairsPower'][1];?>
 " class="treeHidden" name="m6"/>
-													<li<?php if ($_smarty_tpl->tpl_vars['i']->value['humanAffairsPower'][2] == 1) {?> class="on"<?php }?> data-id="09">员工档案管理</li>
+													<li<?php if ($_smarty_tpl->tpl_vars['i']->value['humanAffairsPower'][2] == 1) {?> class="on"<?php }?> data-id="09">员工档案</li>
 													<input type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['humanAffairsPower'][2];?>
 " class="treeHidden" name="m7"/>
 													<li<?php if ($_smarty_tpl->tpl_vars['i']->value['humanAffairsPower'][3] == 1) {?> class="on"<?php }?> data-id="10">离职员工</li>
@@ -376,7 +376,7 @@ function content_5c1b8849a3de01_23429048 ($_smarty_tpl) {
 													<li class="cloneItem<?php if ($_smarty_tpl->tpl_vars['i']->value['humanAffairsPower'][11] == 1) {?> on<?php }?>" data-id="69"<?php if ($_smarty_tpl->tpl_vars['i']->value['humanAffairsPower'][11] == 1) {?> style="display: list-item;"<?php }?>>我的档案</li>
 													<li class="cloneItem<?php if ($_smarty_tpl->tpl_vars['i']->value['humanAffairsPower'][0] == 1) {?> on<?php }?>" data-id="07"<?php if ($_smarty_tpl->tpl_vars['i']->value['humanAffairsPower'][0] == 1) {?> style="display: list-item;"<?php }?>>企业资质证件</li>
 													<li class="cloneItem<?php if ($_smarty_tpl->tpl_vars['i']->value['humanAffairsPower'][1] == 1) {?> on<?php }?>" data-id="08"<?php if ($_smarty_tpl->tpl_vars['i']->value['humanAffairsPower'][1] == 1) {?> style="display: list-item;"<?php }?>>员工管理</li>
-													<li class="cloneItem<?php if ($_smarty_tpl->tpl_vars['i']->value['humanAffairsPower'][2] == 1) {?> on<?php }?>" data-id="09"<?php if ($_smarty_tpl->tpl_vars['i']->value['humanAffairsPower'][2] == 1) {?> style="display: list-item;"<?php }?>>员工档案管理</li>
+													<li class="cloneItem<?php if ($_smarty_tpl->tpl_vars['i']->value['humanAffairsPower'][2] == 1) {?> on<?php }?>" data-id="09"<?php if ($_smarty_tpl->tpl_vars['i']->value['humanAffairsPower'][2] == 1) {?> style="display: list-item;"<?php }?>>员工档案</li>
 													<li class="cloneItem<?php if ($_smarty_tpl->tpl_vars['i']->value['humanAffairsPower'][3] == 1) {?> on<?php }?>" data-id="10"<?php if ($_smarty_tpl->tpl_vars['i']->value['humanAffairsPower'][3] == 1) {?> style="display: list-item;"<?php }?>>离职员工</li>
 													<li class="cloneItem<?php if ($_smarty_tpl->tpl_vars['i']->value['humanAffairsPower'][4] == 1) {?> on<?php }?>" data-id="11"<?php if ($_smarty_tpl->tpl_vars['i']->value['humanAffairsPower'][4] == 1) {?> style="display: list-item;"<?php }?>>转正考核</li>
 													<li class="cloneItem<?php if ($_smarty_tpl->tpl_vars['i']->value['humanAffairsPower'][5] == 1) {?> on<?php }?>" data-id="12"<?php if ($_smarty_tpl->tpl_vars['i']->value['humanAffairsPower'][5] == 1) {?> style="display: list-item;"<?php }?>>转正考核审批</li>

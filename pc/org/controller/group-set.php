@@ -4,6 +4,11 @@
 	//# 2018-11-05
 	//# 工作组信息设置
 
+	//权限验证
+	if($menuOrg[2] == 0){
+		RefreshResturn('index.php?_f=login');
+	}
+
 	//当前页面公共配置
 	$pageTitle = '工作组信息设置';
 	$curPage = $_REQUEST['page'];
@@ -126,7 +131,7 @@
 		$val['officeId'] = $office;
 		$val['groupName'] = $groupName;
 		$val['phone'] = $phone;
-		$val['workWeek'] = implode(",", $week);
+		$val['workWeek'] = $week;
 		$val['workBeginTime'] = $workBeginTime;
 		$val['workOverTime'] = $workOverTime;
 		$val['workCoordinate'] = $workCoordinate;
@@ -188,7 +193,7 @@
 		$val['officeId'] = $office;
 		$val['groupName'] = $groupName;
 		$val['phone'] = $phone;
-		$val['workWeek'] = implode(",", $week);
+		$val['workWeek'] = $week;
 		$val['workBeginTime'] = $workBeginTime;
 		$val['workOverTime'] = $workOverTime;
 		$val['workCoordinate'] = $workCoordinate;

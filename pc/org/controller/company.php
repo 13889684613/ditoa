@@ -4,6 +4,11 @@
 	//# 2018-11-04
 	//# 企业信息管理
 
+	//权限验证
+	if($menuOrg[0] == 0){
+		RefreshResturn('index.php?_f=login');
+	}
+
 	//分页类
 	include_once(PUBLICPATH.'oa.page.php');
 

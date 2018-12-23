@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-16 17:28:24
+/* Smarty version 3.1.29, created on 2018-12-22 21:51:14
   from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/system/view/check-role-set.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c161ab8d162f0_24937803',
+  'unifunc' => 'content_5c1e4152ebb1f4_73642569',
   'file_dependency' => 
   array (
     '9b62a91c4825cbf9ebefabaa67f9cce1cc20605a' => 
     array (
       0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/system/view/check-role-set.html',
-      1 => 1544952503,
+      1 => 1545051960,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c161ab8d162f0_24937803 ($_smarty_tpl) {
+function content_5c1e4152ebb1f4_73642569 ($_smarty_tpl) {
 ?>
 <!-- 
 	# 新增系统角色
@@ -101,12 +101,12 @@ function content_5c161ab8d162f0_24937803 ($_smarty_tpl) {
 									</div>
 									
 								</div>
-								<div class = "roleUserInfo clearfix">
+								<div class = "roleUserInfo mT26 clearfix">
 									<div class = "form setNum clearfix">		
-										<p class = "formTitle">默认角色</p>
-										<div class = "checkBox clearfix">
-											<div class = "checkBtn mRight50<?php if ($_smarty_tpl->tpl_vars['i']->value['isDefault'] == 1) {?> on<?php }?>">是</div>
-											<div class = "checkBtn<?php if ($_smarty_tpl->tpl_vars['i']->value['isDefault'] == 0) {?> on<?php }?>">否</div>
+										<p class = "formTitle mR40">默认角色</p>
+										<div class = "checkBox pull-left mT10 clearfix">
+											<div class = "checkBtn mRight50<?php if ($_smarty_tpl->tpl_vars['i']->value['isDefault'] == 1) {?> on<?php }?>" data-type="1">是</div>
+											<div class = "checkBtn<?php if ($_smarty_tpl->tpl_vars['i']->value['isDefault'] == 0) {?> on<?php }?>" data-type="0">否</div>
 										</div>
 										<input type="hidden" name = "default" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['isDefault'];?>
 " class = "formInput sexForm"/>
@@ -117,7 +117,7 @@ function content_5c161ab8d162f0_24937803 ($_smarty_tpl) {
 					</div>
 					<div class = "formBtnsBox clearfix">
 						<div class = "formBtn formBtnSave">保存</div>
-						<div class = "formBtn formBtnCancel" onclick="javascript:history.go(-1);">取消</div>
+						<div class = "formBtn formBtnCancel">取消</div>
 					</div>
 				</div>
 				<!-- 内容区 结束 -->

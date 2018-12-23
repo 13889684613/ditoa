@@ -4,6 +4,11 @@
 	//# 2018-11-10
 	//# 入职信息
 
+	//权限验证
+	if($menuHumanAffairs[1] == 0){
+		RefreshResturn('index.php?_f=login');
+	}
+
 	//当前页面公共配置
 	$pageTitle = '入职信息';
 	$act = $_REQUEST['act'];
@@ -81,8 +86,16 @@
 	}
 
 	$isSet = 0;
-	$fileds = 'joinDate,tryBeginDate,tryOverDate,interviewer,expectedSalary,trySalary';
+	$fileds = 'officeId,joinDate,tryBeginDate,tryOverDate,interviewer,expectedSalary,trySalary';
 	$data = $db->get_one($table,'where staffId='.$id.'',$fileds);
+
+	//非系统管理员操作权限验证，验证是否为同部门人员操作
+	if($common_category == 0){
+		if($common_office != $data['officeId']){
+			RefreshResturn('index.php?_f=login');
+		}
+	}
+	
 	if($data['joinDate']!=''){
 		$isSet = 1;
 	}

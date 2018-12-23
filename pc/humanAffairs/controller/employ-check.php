@@ -4,6 +4,11 @@
 	//# 2018-12-09
 	//# 转正考核
 
+	//权限验证
+	if($menuHumanAffairs[4] == 0){
+		RefreshResturn('index.php?_f=login');
+	}
+
 	//分页类
 	include_once(PUBLICPATH.'oa.page.php');
 
@@ -15,11 +20,17 @@
 	$table = PRFIX.'staff';
 	$where = '';
 
+	//非系统管理员仅显示相同的企业、部门
+	if($common_category == 0){
+		$companyWhere = 'where companyId='.$common_company.' ';
+		$officeWhere = 'where officeId='.$common_office.' ';
+	}
+
 	//所属企业
-	$company = $db->get_all(PRFIX.'company','order by rank desc,createTime desc','companyId,cnName');
+	$company = $db->get_all(PRFIX.'company',''.$companyWhere.'order by rank desc,createTime desc','companyId,cnName');
 
 	//所属部门
-	$office = $db->get_all(PRFIX.'office','order by rank desc,createTime desc','officeId,officeName');
+	$office = $db->get_all(PRFIX.'office',''.$officeWhere.'order by rank desc,createTime desc','officeId,officeName');
 
 	//检索
 	$s_company = getVal('s_company',1,'');
@@ -38,9 +49,13 @@
 		$where .= ' and staffName like "%'.$s_name.'%"';
 		$track .= '&s_name='.$s_name.'';
 	}
+
+	//非系统管理员仅能查看自己办事处的员工
+	if($common_category == 0){
+		$where .= ' and officeId='.$common_office.'';
+	}
 	
 	//category=0为普通员工，1为系统管理员
-	// $where = 'where 1=1'.$where;		//测试条件，切换正式需删除
 	$where = 'where category=0 and status=0'.$where;
 
 	//页面分页配置

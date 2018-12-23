@@ -87,7 +87,7 @@ $(function(){
 			$('.formSelectListSelect2').next().val('0');
 			$.ajax({
 				type:"get",
-				url:"http://192.168.1.137:5555/ajax.php?act=getGroup&officeId="+type,
+				url:"ajax.php?act=getGroup&officeId="+type,
 				async:true,
 				dataType: 'json',
 				success:function(data){

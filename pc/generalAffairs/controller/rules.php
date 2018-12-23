@@ -4,6 +4,11 @@
 	//# 2018-12-2
 	//# 规章制度
 
+	//权限验证
+	if($menuHumanAffairs[8] == 0){
+		RefreshResturn('index.php?_f=login');
+	}
+
 	//分页类
 	include_once(PUBLICPATH.'oa.page.php');
 

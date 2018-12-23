@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-16 21:34:37
+/* Smarty version 3.1.29, created on 2018-12-21 07:03:09
   from "/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/system/view/post.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c16546d0e6d59_28930727',
+  'unifunc' => 'content_5c1c1fad7011a7_14050499',
   'file_dependency' => 
   array (
     '1e63a91a9b9cb51d6919a9a42204c43351c62d6c' => 
     array (
       0 => '/Library/WebServer/Documents/Coder/2018/system/ditoa/pc/system/view/post.html',
-      1 => 1544966819,
+      1 => 1545221122,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c16546d0e6d59_28930727 ($_smarty_tpl) {
+function content_5c1c1fad7011a7_14050499 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -121,10 +121,11 @@ echo $_smarty_tpl->tpl_vars['track']->value;?>
 "><img src="public/html/images/edit.jpg" alt="" /></a>
 												</div>
 												<div class="editButton editButtonR pull-left text-center">
-													<a href="?_f=post&act=remove&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
+													<img src="public/html/images/del.jpg" alt="" />
+													<input type="hidden" value="?_f=post&act=remove&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
 &id=<?php echo $_smarty_tpl->tpl_vars['i']->value['postId'];
 echo $_smarty_tpl->tpl_vars['track']->value;?>
-" onclick="return confirm('确认要删除？');"><img src="public/html/images/del.jpg" alt="" /></a>
+"/>
 												</div>
 											</div>
 										</td>
