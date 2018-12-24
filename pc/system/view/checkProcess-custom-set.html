@@ -62,7 +62,7 @@
 												<ul class="retrievalsInputNav">
 													<li data-type='0'>请选择</li>
 													{{foreach $categorys as $key=>$value}}
-													<li data-type = "{{$key}}">{{$value}}</li>
+													<li data-type = "{{$key}}"{{if $key==$i.checkCategory}} data-select="true"{{/if}}>{{$value}}</li>
 													{{/foreach}}
 													<input type="hidden" name="category" class="selectVal" value="{{$i.checkCategory}}" />
 												</ul>
@@ -75,7 +75,7 @@
 												<ul class="retrievalsInputNav">
 													<li data-type='0'>请选择</li>
 													{{foreach item=r name=roles from=$roles}}
-													<li data-type='{{$r.checkRoleId}}'>{{$r.checkRoleName}}</li>
+													<li data-type='{{$r.checkRoleId}}'{{if $r.checkRoleId==$i.beginRole}} data-select="true"{{/if}}>{{$r.checkRoleName}}</li>
 													{{/foreach}}
 													<input type="hidden" name="beginRole" class="selectVal" value="{{$i.beginRole}}" />
 												</ul>
@@ -92,7 +92,7 @@
 												<ul class="retrievalsInputNav selectLinkage">
 													<li data-type='0'>请选择</li>
 													{{foreach item=o name=offices from=$offices}}
-													<li data-type='{{$o.officeId}}'>{{$o.officeName}}</li>
+													<li data-type='{{$o.officeId}}'{{if $o.officeId==$i.officeId}} data-select="true"{{/if}}>{{$o.officeName}}</li>
 													{{/foreach}}
 													<input type="hidden" name="beginOffice" class="selectVal" value="{{$i.officeId}}" />
 												</ul>
@@ -112,7 +112,7 @@
 												<ul class="retrievalsInputNav">
 													<li data-type='0'>请选择</li>
 													{{foreach item=g name=groups from=$groups}}
-													<li class="li" data-type='{{$g.groupId}}'>{{$g.groupName}}</li>
+													<li class="li" data-type='{{$g.groupId}}'{{if $g.groupId==$i.groupId}} data-select="true"{{/if}}>{{$g.groupName}}</li>
 													{{/foreach}}
 													<input type="hidden" name="beginGroup" class="selectVal" value="{{$i.groupId}}"  />
 												</ul>
@@ -122,13 +122,13 @@
 								</div>
 							</div>
 						</div>
-						<div class="approvalInformationBox">
+						<div class="approvalInformationBox"{{if $action=='editSave'}} style="display: block;"{{/if}}>
 							<!--审批信息begin-->
 							<div class="approval-informationBox">
+								{{if $action=='addSave'}}
 								<div class="approval-information">
 									<div class="approval-informationTitle">设置审批信息</div>
 									<table class="Stable">
-										{{if $action=='addSave'}}
 										<tr>
 											<td width="84" class="td1 text-center">
 												<span class="center-block">01</span>
@@ -182,8 +182,13 @@
 												</div>
 											</td>
 										</tr>
-										{{/if}}
-										{{foreach item=p name=process from=$i.process}}
+									</table>
+								</div>
+								{{/if}}
+								{{foreach item=p name=process from=$i.process}}
+								<div class="approval-information">
+									{{if $smarty.foreach.process.iteration==1}}<div class="approval-informationTitle">设置审批信息</div>{{/if}}
+									<table class="Stable">
 										<tr>
 											<td width="84" class="td1 text-center">
 												<span class="center-block">{{$smarty.foreach.process.iteration}}</span>
@@ -196,9 +201,9 @@
 															<ul class="retrievalsInputNav">
 																<li data-type='0'>请选择</li>
 																{{foreach item=o name=offices from=$offices}}
-																<li data-type='{{$o.officeId}}'>{{$o.officeName}}</li>
+																<li data-type='{{$o.officeId}}'{{if $o.officeId==$p.officeId}} data-select="true"{{/if}}>{{$o.officeName}}</li>
 																{{/foreach}}
-																<input type="hidden" name="office[]" value="{{$p.officeId}}" class="selectVal" value="" />
+																<input type="hidden" name="office[]" value="{{$p.officeId}}" class="selectVal"/>
 															</ul>
 														</div>
 													</div>
@@ -212,9 +217,9 @@
 															<ul class="retrievalsInputNav">
 																<li data-type='0'>请选择</li>
 																{{foreach item=g name=groups from=$groups}}
-																<li data-type='{{$g.groupId}}'>{{$g.groupName}}</li>
+																<li data-type='{{$g.groupId}}'{{if $g.groupId==$p.groupId}} data-select="true"{{/if}}>{{$g.groupName}}</li>
 																{{/foreach}}
-																<input type="hidden" name="group[]" value="{{$p.groupId}}" class="selectVal" value="" />
+																<input type="hidden" name="group[]" value="{{$p.groupId}}" class="selectVal" />
 															</ul>
 														</div>
 													</div>
@@ -228,18 +233,18 @@
 															<ul class="retrievalsInputNav">
 																<li data-type='0'>请选择</li>
 																{{foreach item=r name=roles from=$roles}}
-																<li data-type='{{$r.checkRoleId}}'>{{$r.checkRoleName}}</li>
+																<li data-type='{{$r.checkRoleId}}'{{if $r.checkRoleId==$p.roleId}} data-select="true"{{/if}}>{{$r.checkRoleName}}</li>
 																{{/foreach}}
-																<input type="hidden" name="role[]" value="{{$p.roleId}}"  class="selectVal" value="" />
+																<input type="hidden" name="role[]" value="{{$p.roleId}}"  class="selectVal" />
 															</ul>
 														</div>
 													</div>
 												</div>
 											</td>
 										</tr>
-										{{/foreach}}
 									</table>
 								</div>
+								{{/foreach}}
 							</div>
 							<!--审批信息end-->
 							<div class="addInformationBox">

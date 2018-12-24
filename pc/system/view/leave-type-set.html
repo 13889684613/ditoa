@@ -58,15 +58,15 @@
 									</div>
 									<div class = "form setNum clearfix">
 										<p class = "formTitle">假期天数</p>
-										<input type="number" name = "day" value="{{$i.dayNumber}}" placeholder = "0" class = "formInput dayInput" autocomplete="off"/>天
+										<input type="number" name = "day" value="{{$i.dayNumber}}" placeholder = "0" class = "formInput dayInput" autocomplete="off"/>&nbsp;天
 									</div>
 								</div>
 								<div class = "roleUserInfo mT26 clearfix">
 									<div class = "form setNum w528 clearfix">		
 										<p class = "formTitle">是否为年假</p>
 										<div class = "checkBox pull-left mT0 clearfix">
-											<div class = "checkBtn mRight50"{{if $i.annualLeave==1}} on{{/if}} data-type="1">是</div>
-											<div class = "checkBtn"{{if $i.annualLeave==0}} on{{/if}} data-type="0">否</div>
+											<div class = "checkBtn mRight50{{if $i.annualLeave==1}} on{{/if}}" data-type="1">是</div>
+											<div class = "checkBtn{{if $i.annualLeave==0}} on{{/if}}" data-type="0">否</div>
 										</div>
 										<input type="hidden" name = "annualLeave" value="{{$i.annualLeave}}" class = "formInput annualForm"/>
 										<span class="tipsIcon mT0"><span class = "tips w300">如为年休假一年仅能休一次，以年为单位</span></span>
@@ -74,8 +74,8 @@
 									<div class = "form setNum clearfix">		
 										<p class = "formTitle">是否需要上传附件</p>
 										<div class = "checkBox pull-left mT0 clearfix">
-											<div class = "checkBtn mRight50"{{if $i.isAttach==1}} on{{/if}} data-type="1">是</div>
-											<div class = "checkBtn"{{if $i.isAttach==0}} on{{/if}} data-type="0">否</div>
+											<div class = "checkBtn mRight50{{if $i.isAttach==1}} on{{/if}}" data-type="1">是</div>
+											<div class = "checkBtn{{if $i.isAttach==0}} on{{/if}}" data-type="0">否</div>
 										</div>
 										<input type="hidden" name = "isAttach" value="{{$i.isAttach}}" class = "formInput attachForm"/>
 									</div>
@@ -84,8 +84,8 @@
 									<div class = "form setNum w528 clearfix">		
 										<p class = "formTitle">是否为固定天数假期</p>
 										<div class = "checkBox pull-left mT0 clearfix">
-											<div class = "checkBtn mRight50"{{if $i.isSameSetting==1}} on{{/if}} data-type="1">是</div>
-											<div class = "checkBtn"{{if $i.isSameSetting==0}} on{{/if}} data-type="0">否</div>
+											<div class = "checkBtn mRight50{{if $i.isSameSetting==1}} on{{/if}}" data-type="1">是</div>
+											<div class = "checkBtn{{if $i.isSameSetting==0}} on{{/if}}" data-type="0">否</div>
 										</div>
 										<input type="hidden" name = "isSameSetting" value="{{$i.isSameSetting}}" class = "formInput sameForm"/>
 										<span class="tipsIcon mT0"><span class = "tips w300">固定天数假期针对某一员工可再调整</span></span>

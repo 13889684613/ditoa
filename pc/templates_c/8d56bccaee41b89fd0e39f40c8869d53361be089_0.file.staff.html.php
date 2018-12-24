@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-19 15:03:09
+/* Smarty version 3.1.29, created on 2018-12-24 18:18:46
   from "F:\website\ditoaCoder\ditoa\pc\humanAffairs\view\staff.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c19ed2dbe7ff2_70736656',
+  'unifunc' => 'content_5c20b2867efeb1_25445108',
   'file_dependency' => 
   array (
     '8d56bccaee41b89fd0e39f40c8869d53361be089' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\humanAffairs\\view\\staff.html',
-      1 => 1545202985,
+      1 => 1545646724,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c19ed2dbe7ff2_70736656 ($_smarty_tpl) {
+function content_5c20b2867efeb1_25445108 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -78,7 +78,7 @@ function content_5c19ed2dbe7ff2_70736656 ($_smarty_tpl) {
 										<div class="retrievalsInputContent">
 											<div class="retrievalsInput">
 												<label>所属企业</label>
-												<input type="text" unselectable="on" onfocus="this.blur()" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputQy" placeholder="请选择" name="s_company" value="" data-type='0' />
+												<input type="text" unselectable="on" onfocus="this.blur()" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputQy" placeholder="请选择" value="" data-type='0' />
 												<div class="retrievalsInputNavBox">
 													<ul class="retrievalsInputNav">
 														<li data-type = "0">请选择</li>
@@ -95,7 +95,7 @@ $_smarty_tpl->tpl_vars['c']->_loop = true;
 $__foreach_company_0_saved_local_item = $_smarty_tpl->tpl_vars['c'];
 ?>
 														<li data-type = "<?php echo $_smarty_tpl->tpl_vars['c']->value['companyId'];?>
-"><?php echo $_smarty_tpl->tpl_vars['c']->value['cnName'];?>
+"<?php if ($_smarty_tpl->tpl_vars['c']->value['companyId'] == $_smarty_tpl->tpl_vars['s_company']->value) {?> data-select="true"<?php }?>><?php echo $_smarty_tpl->tpl_vars['c']->value['cnName'];?>
 </li>
 														<?php
 $_smarty_tpl->tpl_vars['c'] = $__foreach_company_0_saved_local_item;
@@ -104,14 +104,14 @@ if ($__foreach_company_0_saved_item) {
 $_smarty_tpl->tpl_vars['c'] = $__foreach_company_0_saved_item;
 }
 ?>
-														<input type="hidden" class="selectVal" value="<?php echo $_smarty_tpl->tpl_vars['s_company']->value;?>
+														<input type="hidden" class="selectVal" name="s_company" value="<?php echo $_smarty_tpl->tpl_vars['s_company']->value;?>
 " autocomplete="off" data-type="1">
 													</ul>
 												</div>
 											</div>
 											<div class="retrievalsInput">
 												<label>员工职务</label>
-												<input type="text" unselectable="on" onfocus="this.blur()" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputZw" placeholder="请选择" name="s_post" value="" data-type='0' />
+												<input type="text" unselectable="on" onfocus="this.blur()" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputZw" placeholder="请选择" data-type='0' />
 												<div class="retrievalsInputNavBox">
 													<ul class="retrievalsInputNav">
 														<li data-type = "0">请选择</li>
@@ -128,7 +128,7 @@ $_smarty_tpl->tpl_vars['p']->_loop = true;
 $__foreach_post_1_saved_local_item = $_smarty_tpl->tpl_vars['p'];
 ?>
 														<li data-type = "<?php echo $_smarty_tpl->tpl_vars['p']->value['postId'];?>
-"><?php echo $_smarty_tpl->tpl_vars['p']->value['postName'];?>
+"<?php if ($_smarty_tpl->tpl_vars['p']->value['postId'] == $_smarty_tpl->tpl_vars['s_post']->value) {?> data-select='true'<?php }?>><?php echo $_smarty_tpl->tpl_vars['p']->value['postName'];?>
 </li>
 														<?php
 $_smarty_tpl->tpl_vars['p'] = $__foreach_post_1_saved_local_item;
@@ -137,7 +137,7 @@ if ($__foreach_post_1_saved_item) {
 $_smarty_tpl->tpl_vars['p'] = $__foreach_post_1_saved_item;
 }
 ?>
-														<input type="hidden" class="selectVal" value="<?php echo $_smarty_tpl->tpl_vars['s_post']->value;?>
+														<input type="hidden" class="selectVal" name="s_post" value="<?php echo $_smarty_tpl->tpl_vars['s_post']->value;?>
 " autocomplete="off" data-type="1">
 													</ul>
 												</div>
@@ -153,7 +153,7 @@ $_smarty_tpl->tpl_vars['p'] = $__foreach_post_1_saved_item;
 										<div class="retrievalsInputContent">
 											<div class="retrievalsInput">
 												<label>所属部门</label>
-												<input type="text" unselectable="on" onfocus="this.blur()" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputBm" placeholder="请选择" name="s_office" value="" data-type='0' />
+												<input type="text" unselectable="on" onfocus="this.blur()" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputBm" placeholder="请选择" value="" data-type='0' />
 												<div class="retrievalsInputNavBox">
 													<ul class="retrievalsInputNav">
 														<li data-type = "0">请选择</li>
@@ -170,7 +170,7 @@ $_smarty_tpl->tpl_vars['o']->_loop = true;
 $__foreach_office_2_saved_local_item = $_smarty_tpl->tpl_vars['o'];
 ?>
 														<li data-type = "<?php echo $_smarty_tpl->tpl_vars['o']->value['officeId'];?>
-"><?php echo $_smarty_tpl->tpl_vars['o']->value['officeName'];?>
+"<?php if ($_smarty_tpl->tpl_vars['o']->value['officeId'] == $_smarty_tpl->tpl_vars['s_office']->value) {?> data-select='true'<?php }?>><?php echo $_smarty_tpl->tpl_vars['o']->value['officeName'];?>
 </li>
 														<?php
 $_smarty_tpl->tpl_vars['o'] = $__foreach_office_2_saved_local_item;
@@ -179,17 +179,17 @@ if ($__foreach_office_2_saved_item) {
 $_smarty_tpl->tpl_vars['o'] = $__foreach_office_2_saved_item;
 }
 ?>
-														<input type="hidden" class="selectVal" value="<?php echo $_smarty_tpl->tpl_vars['s_office']->value;?>
+														<input type="hidden" class="selectVal" name="s_office" value="<?php echo $_smarty_tpl->tpl_vars['s_office']->value;?>
 " autocomplete="off" data-type="1">
 													</ul>
 												</div>
 											</div>
 											<div class="retrievalsInput">
 												<label>状态</label>
-												<input type="text" unselectable="on" onfocus="this.blur()" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputZt" placeholder="请选择" name="s_status" value="" data-type='0' />
+												<input type="text" unselectable="on" onfocus="this.blur()" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputZt" placeholder="请选择" value=""/>
 												<div class="retrievalsInputNavBox">
 													<ul class="retrievalsInputNav">
-														<li data-type = "0">请选择</li>
+														<li data-type = "">请选择</li>
 														<?php
 $_from = $_smarty_tpl->tpl_vars['status']->value;
 if (!is_array($_from) && !is_object($_from)) {
@@ -205,7 +205,7 @@ $_smarty_tpl->tpl_vars['value']->_loop = true;
 $__foreach_value_3_saved_local_item = $_smarty_tpl->tpl_vars['value'];
 ?>
 														<li data-type = "<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
-"><?php echo $_smarty_tpl->tpl_vars['value']->value;?>
+"<?php if ($_smarty_tpl->tpl_vars['key']->value == $_smarty_tpl->tpl_vars['s_status']->value) {?> data-select="true"<?php }?>><?php echo $_smarty_tpl->tpl_vars['value']->value;?>
 </li>
 														<?php
 $_smarty_tpl->tpl_vars['value'] = $__foreach_value_3_saved_local_item;
@@ -217,8 +217,9 @@ if ($__foreach_value_3_saved_key) {
 $_smarty_tpl->tpl_vars['key'] = $__foreach_value_3_saved_key;
 }
 ?>
-														<input type="hidden" class="selectVal" value="<?php echo $_smarty_tpl->tpl_vars['s_status']->value;?>
-" autocomplete="off" data-type="1">
+														<input type="hidden" class="selectVal" name="s_status" value="<?php echo $_smarty_tpl->tpl_vars['s_status']->value;?>
+" autocomplete="off" data-type="<?php echo $_smarty_tpl->tpl_vars['s_status']->value;?>
+">
 													</ul>
 												</div>
 											</div>
@@ -233,7 +234,7 @@ $_smarty_tpl->tpl_vars['key'] = $__foreach_value_3_saved_key;
 										<div class="retrievalsInputContent">
 											<div class="retrievalsInput">
 												<label>系统角色</label>
-												<input type="text" unselectable="on" onfocus="this.blur()" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputJs" placeholder="请选择" name="s_role" value="" data-type='0' />
+												<input type="text" unselectable="on" onfocus="this.blur()" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputJs" placeholder="请选择" value="" data-type='0' />
 												<div class="retrievalsInputNavBox">
 													<ul class="retrievalsInputNav">
 														<li data-type = "0">请选择</li>
@@ -250,7 +251,7 @@ $_smarty_tpl->tpl_vars['r']->_loop = true;
 $__foreach_role_4_saved_local_item = $_smarty_tpl->tpl_vars['r'];
 ?>
 														<li data-type = "<?php echo $_smarty_tpl->tpl_vars['r']->value['sysRoleId'];?>
-"><?php echo $_smarty_tpl->tpl_vars['r']->value['sysRoleName'];?>
+"<?php if ($_smarty_tpl->tpl_vars['r']->value['sysRoleId'] == $_smarty_tpl->tpl_vars['s_role']->value) {?> data-select="true"<?php }?>><?php echo $_smarty_tpl->tpl_vars['r']->value['sysRoleName'];?>
 </li>
 														<?php
 $_smarty_tpl->tpl_vars['r'] = $__foreach_role_4_saved_local_item;
@@ -259,16 +260,16 @@ if ($__foreach_role_4_saved_item) {
 $_smarty_tpl->tpl_vars['r'] = $__foreach_role_4_saved_item;
 }
 ?>
-														<input type="hidden" class="selectVal" value="<?php echo $_smarty_tpl->tpl_vars['s_role']->value;?>
+														<input type="hidden" class="selectVal" name="s_role" value="<?php echo $_smarty_tpl->tpl_vars['s_role']->value;?>
 " autocomplete="off" data-type="1">
 													</ul>
 												</div>
 											</div>
 											<div class="retrievalsInput retrievalsInputTime">
 												<label>合同时间</label>
-												<input type="text" class="datepicker startForm" placeholder="开始日期" name="s_begintime" value="<?php echo $_smarty_tpl->tpl_vars['s_begintime']->value;?>
+												<input type="text" class="datepicker startForm" placeholder="到期开始日期" name="s_begintime" value="<?php echo $_smarty_tpl->tpl_vars['s_begintime']->value;?>
 " data-type='0' />
-												<input type="text" class="datepicker endForm" placeholder="结束日期" name="s_begintime" value="<?php echo $_smarty_tpl->tpl_vars['s_begintime']->value;?>
+												<input type="text" class="datepicker endForm" placeholder="到期结束日期" name="s_overtime" value="<?php echo $_smarty_tpl->tpl_vars['s_overtime']->value;?>
 " data-type='0' />
 											</div>
 											<!--查询清空begin-->
@@ -305,14 +306,17 @@ $_from = $_smarty_tpl->tpl_vars['data']->value;
 if (!is_array($_from) && !is_object($_from)) {
 settype($_from, 'array');
 }
+$__foreach_data_5_saved = isset($_smarty_tpl->tpl_vars['__smarty_foreach_data']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_data'] : false;
 $__foreach_data_5_saved_item = isset($_smarty_tpl->tpl_vars['i']) ? $_smarty_tpl->tpl_vars['i'] : false;
 $_smarty_tpl->tpl_vars['i'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['__smarty_foreach_data'] = new Smarty_Variable(array('iteration' => 0));
 $_smarty_tpl->tpl_vars['i']->_loop = false;
 foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 $_smarty_tpl->tpl_vars['i']->_loop = true;
+$_smarty_tpl->tpl_vars['__smarty_foreach_data']->value['iteration']++;
 $__foreach_data_5_saved_local_item = $_smarty_tpl->tpl_vars['i'];
 ?>
-								<tr<?php if ($_smarty_tpl->tpl_vars['i']->value%2 == 1) {?> class="backgroundFFF"<?php }?>}>
+								<tr<?php if ((isset($_smarty_tpl->tpl_vars['__smarty_foreach_data']->value['iteration']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_data']->value['iteration'] : null)%2 == 1) {?> class="backgroundFFF"<?php }?>}>
 									<td class="borderRight1">
 										<div class="editBox center-block clearfix">
 											<div class="editButton editButtonL pull-left text-center">
@@ -322,10 +326,11 @@ echo $_smarty_tpl->tpl_vars['track']->value;?>
 "><img src="public/html/images/edit.jpg" alt="" /></a>
 											</div>
 											<div class="editButton editButtonR pull-left text-center">
-												<a href="?_f=staff&act=remove&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
+												<img src="public/html/images/del.jpg" alt="" />
+												<input type="hidden" value="?_f=staff&act=remove&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
 &id=<?php echo $_smarty_tpl->tpl_vars['i']->value['staffId'];
 echo $_smarty_tpl->tpl_vars['track']->value;?>
-" onclick="return confirm('确认要删除？');"><img src="public/html/images/del.jpg" alt="" /></a>
+"/>
 											</div>
 										</div>
 									</td>
@@ -344,6 +349,9 @@ echo $_smarty_tpl->tpl_vars['track']->value;?>
 								<?php
 $_smarty_tpl->tpl_vars['i'] = $__foreach_data_5_saved_local_item;
 }
+if ($__foreach_data_5_saved) {
+$_smarty_tpl->tpl_vars['__smarty_foreach_data'] = $__foreach_data_5_saved;
+}
 if ($__foreach_data_5_saved_item) {
 $_smarty_tpl->tpl_vars['i'] = $__foreach_data_5_saved_item;
 }
@@ -353,16 +361,16 @@ $_smarty_tpl->tpl_vars['i'] = $__foreach_data_5_saved_item;
 								<table class="table1 table1Content">
 									<tr>
 										<th width="66" class="paddingLeft12"><span>性别</span></th>
-										<th width="200"><span>所属企业</span></th>
+										<th width="400"><span>所属企业</span></th>
 										<th width="136"><span>所属部门</span></th>
 										<th width="122" class=""><span>职务</span></th>
 										<th width="200" class=""><span>身份证号</span></th>
 										<th width="121" class=""><span>手机号码</span></th>
 										<th width="150" class=""><span>座机</span></th>
-										<th width="300" class="">
+										<th width="360" class="">
 											<span class="">合同期间</span>
 										</th>
-										<th width="100" class=""><span>创建时间</span></th>
+										<th width="240" class=""><span>创建时间</span></th>
 										<th width="100" class=""><span>状态</span></th>
 									</tr>
 									<?php
@@ -370,14 +378,17 @@ $_from = $_smarty_tpl->tpl_vars['data']->value;
 if (!is_array($_from) && !is_object($_from)) {
 settype($_from, 'array');
 }
+$__foreach_data_6_saved = isset($_smarty_tpl->tpl_vars['__smarty_foreach_data']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_data'] : false;
 $__foreach_data_6_saved_item = isset($_smarty_tpl->tpl_vars['i']) ? $_smarty_tpl->tpl_vars['i'] : false;
 $_smarty_tpl->tpl_vars['i'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['__smarty_foreach_data'] = new Smarty_Variable(array('iteration' => 0));
 $_smarty_tpl->tpl_vars['i']->_loop = false;
 foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 $_smarty_tpl->tpl_vars['i']->_loop = true;
+$_smarty_tpl->tpl_vars['__smarty_foreach_data']->value['iteration']++;
 $__foreach_data_6_saved_local_item = $_smarty_tpl->tpl_vars['i'];
 ?>
-									<tr<?php if ($_smarty_tpl->tpl_vars['i']->value%2 == 1) {?> class="backgroundFFF"<?php }?>>
+									<tr<?php if ((isset($_smarty_tpl->tpl_vars['__smarty_foreach_data']->value['iteration']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_data']->value['iteration'] : null)%2 == 1) {?> class="backgroundFFF"<?php }?>>
 										<td class="paddingLeft12"><span><?php echo $_smarty_tpl->tpl_vars['i']->value['sex'];?>
 </span></td>
 										<td><span><?php echo $_smarty_tpl->tpl_vars['i']->value['company'];?>
@@ -397,7 +408,7 @@ $__foreach_data_6_saved_local_item = $_smarty_tpl->tpl_vars['i'];
 											<span class="<?php if ($_smarty_tpl->tpl_vars['i']->value['expire'] == 1) {?>soonEnpire <?php }?>sortText">
 												<?php echo $_smarty_tpl->tpl_vars['i']->value['contract'];?>
 
-												<?php if ($_smarty_tpl->tpl_vars['i']->value['isFill'] == 0) {?><img src="humanAffairs/view/images/tictable.png" class="tictable" alt="" /><?php }?>
+												<?php if ($_smarty_tpl->tpl_vars['i']->value['expire'] == 1) {?><img src="humanAffairs/view/images/tictable.png" class="tictable" alt="" /><?php }?>
 											</span>
 											<div class="sortTic sortTicL">
 												合同即将到期，请注意查看
@@ -410,6 +421,9 @@ $__foreach_data_6_saved_local_item = $_smarty_tpl->tpl_vars['i'];
 									</tr>
 									<?php
 $_smarty_tpl->tpl_vars['i'] = $__foreach_data_6_saved_local_item;
+}
+if ($__foreach_data_6_saved) {
+$_smarty_tpl->tpl_vars['__smarty_foreach_data'] = $__foreach_data_6_saved;
 }
 if ($__foreach_data_6_saved_item) {
 $_smarty_tpl->tpl_vars['i'] = $__foreach_data_6_saved_item;

@@ -61,6 +61,8 @@
 		if($result){
 			$data['status'] = 'success';
 			$data['message'] = '新密码设置成功，请重新登录';
+			$data['url'] = 'index.php?_f=login';
+
 		}else{
 			$data['status'] = 'fail';
 			$data['message'] = ERRORTIPS;

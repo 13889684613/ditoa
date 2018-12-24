@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-21 14:28:51
+/* Smarty version 3.1.29, created on 2018-12-24 18:59:42
   from "F:\website\ditoaCoder\ditoa\pc\humanAffairs\view\employ-check-info.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c1c88234824d2_90895489',
+  'unifunc' => 'content_5c20bc1e8f70d2_09930256',
   'file_dependency' => 
   array (
     '2ea1a0cd7531b84ea8f72a4be4b1b699cede8a07' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\humanAffairs\\view\\employ-check-info.html',
-      1 => 1545373728,
+      1 => 1545649167,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c1c88234824d2_90895489 ($_smarty_tpl) {
+function content_5c20bc1e8f70d2_09930256 ($_smarty_tpl) {
 ?>
 <!--
 	作者：sxh
@@ -123,7 +123,7 @@ function content_5c1c88234824d2_90895489 ($_smarty_tpl) {
                                     -->
 									<div class="stepActiveLine" style="width: <?php echo $_smarty_tpl->tpl_vars['i']->value['blueLineWidth'];?>
 ;"></div>
-									<div class="stepNormalLine"></div>
+									<div class="stepNormalLine" style="width: 78.3%;"></div>
 									<?php
 $_from = $_smarty_tpl->tpl_vars['process']->value;
 if (!is_array($_from) && !is_object($_from)) {
@@ -164,11 +164,11 @@ if ($__foreach_process_0_saved_item) {
 $_smarty_tpl->tpl_vars['p'] = $__foreach_process_0_saved_item;
 }
 ?>
-									<div class="circleNormal position6">
+									<!-- <div class="circleNormal position6">
 										<div class="stepContentBox">
 											<div class="text1">完成</div>
 										</div>
-									</div>
+									</div> -->
 								</div>
 							</div>
 							<div class="official-assessment-out-box">
@@ -185,7 +185,7 @@ $_smarty_tpl->tpl_vars['p'] = $__foreach_process_0_saved_item;
 									<img src="public/html/images/icon-extend.png"/>
 									<div class="statusTips1">待审批</div>
 									<div class="statusTips2"><?php echo $_smarty_tpl->tpl_vars['i']->value['staffName'];?>
- 小伙伴儿，请耐心等待哦</div>
+ 转正考核待审批</div>
 								</div>
 								<?php }?>
 								<?php if ($_smarty_tpl->tpl_vars['i']->value['checkStatus'] == 1) {?>
@@ -193,7 +193,7 @@ $_smarty_tpl->tpl_vars['p'] = $__foreach_process_0_saved_item;
 									<img src="public/html/images/icon-extend.png"/>
 									<div class="statusTips1">审批中</div>
 									<div class="statusTips2"><?php echo $_smarty_tpl->tpl_vars['i']->value['staffName'];?>
- 小伙伴儿，正在审批中，请耐心等待哦</div>
+ 转正考核审批中</div>
 								</div>
 								<?php }?>
 								<?php if ($_smarty_tpl->tpl_vars['i']->value['checkResult'] == 3) {?>
@@ -211,7 +211,7 @@ $_smarty_tpl->tpl_vars['p'] = $__foreach_process_0_saved_item;
 									<div class="statusTips1">正式录用</div>
 									<div class="statusTips2">恭喜 <?php echo $_smarty_tpl->tpl_vars['i']->value['staffName'];?>
   通过转正考核，欢迎加入DIT大家庭</div>
-									<div class="statusTips2">“工作认真负责，欢迎你的加入”</div>
+									<div class="statusTips2">“工作认真负责，欢迎加入”</div>
 								</div>
 								<?php }?>
 								<?php if ($_smarty_tpl->tpl_vars['i']->value['checkResult'] == 1) {?>
@@ -219,9 +219,9 @@ $_smarty_tpl->tpl_vars['p'] = $__foreach_process_0_saved_item;
 									<img src="public/html/images/icon-extend.png"/>
 									<div class="statusTips1">延长试用期</div>
 									<div class="statusTips2"><?php echo $_smarty_tpl->tpl_vars['i']->value['staffName'];?>
-  根据你试用期的表现，公司经再三考虑，决定延长试用期至<?php echo $_smarty_tpl->tpl_vars['i']->value['tryOverDate'];?>
+  根据试用期的表现，延长试用期至<?php echo $_smarty_tpl->tpl_vars['i']->value['tryOverDate'];?>
 </div>
-									<div class="statusTips2">“请继续努力，加油！”</div>
+									<div class="statusTips2">“继续努力，加油！”</div>
 								</div>
 								<?php }?>
 								<?php if (count($_smarty_tpl->tpl_vars['check']->value) > 0) {?>

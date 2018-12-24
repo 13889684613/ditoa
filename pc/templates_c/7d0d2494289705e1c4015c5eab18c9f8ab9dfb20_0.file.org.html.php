@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-19 14:00:07
+/* Smarty version 3.1.29, created on 2018-12-24 18:17:21
   from "F:\website\ditoaCoder\ditoa\pc\org\view\org.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c19de6771f764_62911843',
+  'unifunc' => 'content_5c20b231eb6715_79878251',
   'file_dependency' => 
   array (
     '7d0d2494289705e1c4015c5eab18c9f8ab9dfb20' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\org\\view\\org.html',
-      1 => 1545199205,
+      1 => 1545646637,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c19de6771f764_62911843 ($_smarty_tpl) {
+function content_5c20b231eb6715_79878251 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -152,11 +152,11 @@ $_smarty_tpl->tpl_vars['o'] = $__foreach_offices_0_saved_item;
 									<table class="table1 table1Content">
 										<tr style="height: 54px;">
 											<th class="paddingLeft27" width="106"><span>员工姓名</span></th>
-											<th width="152"><span>隶属公司</span></th>
+											<th width="220"><span>隶属公司</span></th>
 											<th width="154"><span>职务</span></th>
 											<th width="155"><span>座机</span></th>
 											<th width="120"><span>手机号码</span></th>
-											<th width="120"><span>电子邮箱</span></th>
+											<th width="100"><span>电子邮箱</span></th>
 											<th class="text-center" width="244"><span>状态</span></th>
 										</tr>
 										<?php
@@ -164,14 +164,17 @@ $_from = $_smarty_tpl->tpl_vars['data']->value;
 if (!is_array($_from) && !is_object($_from)) {
 settype($_from, 'array');
 }
+$__foreach_data_2_saved = isset($_smarty_tpl->tpl_vars['__smarty_foreach_data']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_data'] : false;
 $__foreach_data_2_saved_item = isset($_smarty_tpl->tpl_vars['i']) ? $_smarty_tpl->tpl_vars['i'] : false;
 $_smarty_tpl->tpl_vars['i'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['__smarty_foreach_data'] = new Smarty_Variable(array('iteration' => 0));
 $_smarty_tpl->tpl_vars['i']->_loop = false;
 foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 $_smarty_tpl->tpl_vars['i']->_loop = true;
+$_smarty_tpl->tpl_vars['__smarty_foreach_data']->value['iteration']++;
 $__foreach_data_2_saved_local_item = $_smarty_tpl->tpl_vars['i'];
 ?>
-										<tr<?php if ($_smarty_tpl->tpl_vars['i']->value%2 == 1) {?> class="backgroundFFF"<?php } else { ?>class="backgroundfb"<?php }?>>
+										<tr<?php if ((isset($_smarty_tpl->tpl_vars['__smarty_foreach_data']->value['iteration']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_data']->value['iteration'] : null)%2 == 1) {?> class="backgroundFFF"<?php } else { ?>class="backgroundfb"<?php }?>>
 											<td class="paddingLeft27"><span><?php echo $_smarty_tpl->tpl_vars['i']->value['staffName'];?>
 </span></td>
 											<td><span><?php echo $_smarty_tpl->tpl_vars['i']->value['company'];?>
@@ -203,6 +206,9 @@ if (!$_smarty_tpl->tpl_vars['i']->_loop) {
 											</td>
 										</tr>
 										<?php
+}
+if ($__foreach_data_2_saved) {
+$_smarty_tpl->tpl_vars['__smarty_foreach_data'] = $__foreach_data_2_saved;
 }
 if ($__foreach_data_2_saved_item) {
 $_smarty_tpl->tpl_vars['i'] = $__foreach_data_2_saved_item;

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-20 12:02:42
+/* Smarty version 3.1.29, created on 2018-12-24 18:56:16
   from "F:\website\ditoaCoder\ditoa\pc\humanAffairs\view\employ-check-check-set.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c1b1462a84270_72472540',
+  'unifunc' => 'content_5c20bb501809e3_45663007',
   'file_dependency' => 
   array (
     '959d283ee980cee7e0a9ad0c28a985fa26dc116b' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\humanAffairs\\view\\employ-check-check-set.html',
-      1 => 1545278504,
+      1 => 1545648974,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c1b1462a84270_72472540 ($_smarty_tpl) {
+function content_5c20bb501809e3_45663007 ($_smarty_tpl) {
 ?>
 <!--
 	作者：sxh
@@ -66,7 +66,7 @@ function content_5c1b1462a84270_72472540 ($_smarty_tpl) {
 					<div class="contentRightNavLeft pull-left">
 						<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="?_f=employ-check-check<?php echo $_smarty_tpl->tpl_vars['track']->value;?>
 ">转正考核审批</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">转正考核审批详情</span></div>
-						<div class="contentRightNavBottom"><span class="name">转正考核审批详情 &nbsp;&nbsp;-&nbsp;&nbsp;<?php echo $_smarty_tpl->tpl_vars['i']->value['staffName'];?>
+						<div class="contentRightNavBottom"><span class="name">转正考核审批 &nbsp;&nbsp;-&nbsp;&nbsp;<?php echo $_smarty_tpl->tpl_vars['i']->value['staffName'];?>
 </span><span class="time">创建时间：<?php echo $_smarty_tpl->tpl_vars['i']->value['appraiseTime'];?>
 </span></div>
 					</div>
@@ -130,8 +130,8 @@ function content_5c1b1462a84270_72472540 ($_smarty_tpl) {
 											<p class = "formTitle">录用情况（选填）</p>
 											<textarea name="remark" class="official-assessment-regular" placeholder="请输入"></textarea>
 											<p class="textareaTips">备注</p>
-											<p class="textareaTips">1.被考核人迟到/早退3次及以上，病假5天及以上，事假2天及以上，旷工1天及以上不予转正。</p>
-											<p class="textareaTips">2.考核分数低于84分不予转正。</p>
+											<p class="textareaTips">1. 被考核人迟到/早退3次及以上，病假5天及以上，事假2天及以上，旷工1天及以上不予转正。</p>
+											<p class="textareaTips">2. 考核分数低于84分不予转正。</p>
 										</form>
 									</div>
 								</div>

@@ -37,38 +37,6 @@
 				<div class="contentRightBox">
 					<div class="contentRightContent">
 						<!--检索begin-->
-						<!--<form id="searchForm" name="searchForm" method="get">
-							<input type="hidden" name="_f" value="group">
-							<div class="retrievalBox">
-								<div class="retrievalTitle">快速检索</div>
-								<div class="retrievalInputBox clearfix">
-									<div class="retrievalTxt pull-left">所属办事处</div>
-									<div class="retrievalInput pull-left">
-										<label>办事处</label>
-										<input type="text" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputBm" placeholder="请选择" name="s_type" value="{{$s_office}}" data-type='0' />
-										<div class="retrievalsInputNavBox">
-											<ul class="retrievalsInputNav">
-												<li data-type="0">请选择</li>
-												{{foreach item=o name=offices from=$offices}}
-												<li data-type="{{$o.officeId}}">{{$o.officeName}}</li>
-												{{/foreach}}
-											</ul>
-										</div>
-									</div>
-									<div class="retrievalTxt pull-left">工作组名称</div>
-									<div class="retrievalInput pull-left"><input type="text" name="s_name" value="{{$s_name}}" placeholder="请输入工作组名称" /></div>
-									<div class="retrievaButtonBox pull-left clearfix">
-										<div class="retrievaButton retrievaButtonL pull-left">
-											<a href="javascript:void(0);" onclick="document.getElementById('searchForm').submit();">查询</a>
-										</div>
-										<div class="retrievaButton retrievaButtonR pull-left">清空</div>
-									</div>
-								</div>
-							</div>
-						</form>-->
-						<!--检索end-->
-
-						<!--检索begin-->
 						<div class="retrievalBox">
 							<div class="retrievalTitle">快速检索</div>
 							<div class="retrievalsForm clearfix">
@@ -77,15 +45,15 @@
 									<div class="retrievalsInputBoxs retrievalsInputBoxsStar clearfix pull-left">
 										<div class="retrievalsInputContent">
 											<div class="retrievalsInput">
-												<label>所属办事处<span>*</span></label>
-												<input type="text" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputQy" placeholder="请选择" value="" data-type='0' />
+												<label>所属办事处</label>
+												<input type="text" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputQy" placeholder="请选择" data-type='0' />
 												<div class="retrievalsInputNavBox">
 													<ul class="retrievalsInputNav retrievalsInputNavSelsct">
 														<li data-type="0">请选择</li>
 														{{foreach item=o name=offices from=$offices}}
-														<li data-type="{{$o.officeId}}">{{$o.officeName}}</li>
+														<li data-type="{{$o.officeId}}"{{if $s_office==$o.officeId}} data-select="true"{{/if}}>{{$o.officeName}}</li>
 														{{/foreach}}
-														<input type="hidden" class="selectVal" value="0" autocomplete="off" data-type="1">
+														<input type="hidden" name="s_office" value="{{$s_office}}" class="selectVal" autocomplete="off" data-type="{{$s_office}}">
 													</ul>
 												</div>
 											</div>
@@ -94,8 +62,8 @@
 									<div class="retrievalsInputBoxs retrievalsInputBoxsStar clearfix pull-left">
 										<div class="retrievalsInputContent">
 											<div class="retrievalsInput">
-												<label>工作组名称<span>*</span></label>
-												<input name="groupName" type="text" placeholder="请输入工作组名称" value="{{$s_name}}" class="choseInputName" data-type='0' />
+												<label>工作组名称</label>
+												<input name="s_name" value="{{$s_name}}" type="text" placeholder="请输入工作组名称" class="choseInputName" data-type='0' />
 											</div>
 										</div>
 									</div>
@@ -126,14 +94,15 @@
 									<th width='133' class="text-center borderRight1"><span>操作</span></th>
 								</tr>
 								{{foreach item=i name=data from=$data}}
-								<tr{{if $i%2==1}} class="backgroundFFF" {{/if}}>
+								<tr{{if $smarty.foreach.data.iteration%2==1}} class="backgroundFFF" {{/if}}>
 									<td class="borderRight1">
 										<div class="editBox center-block clearfix">
 											<div class="editButton editButtonL pull-left text-center">
 												<a href="?_f=group-set&act=edit&page={{$curPage}}&id={{$i.groupId}}{{$track}}"><img src="public/html/images/edit.jpg" alt="" /></a>
 											</div>
 											<div class="editButton editButtonR pull-left text-center">
-												<a href="?_f=group&act=remove&page={{$curPage}}&id={{$i.groupId}}{{$track}}" onclick="return confirm('确认要删除？');"><img src="public/html/images/del.jpg" alt="" /></a>
+												<img src="public/html/images/del.jpg" alt="" />
+												<input type="hidden" value="?_f=group&act=remove&page={{$curPage}}&id={{$i.groupId}}{{$track}}"/>
 											</div>
 										</div>
 									</td>
@@ -155,7 +124,7 @@
 										</th>
 									</tr>
 									{{foreach item=i name=data from=$data}}
-									<tr{{if $i%2==1}} class="backgroundFFF" {{/if}}>
+									<tr{{if $smarty.foreach.data.iteration%2==1}} class="backgroundFFF" {{/if}}>
 										<td class="paddingLeft12"><span>{{$i.sn}}</span></td>
 										<td width="150"><span>{{$i.office}}</span></td>
 										<td width="200"><span>{{$i.groupName}}</span></td>
@@ -164,8 +133,8 @@
 										<td>
 											<a href="javascript:void(0);" onclick="javascript:location.href='?_f=group&act=updateRank&page={{$curPage}}&id={{$i.groupId}}{{$track}}&rank='+document.getElementById('rank{{$i.groupId}}').value;"><span class="tableSureButton">确定</span></a>
 										</td>
-										</tr>
-										{{/foreach}}
+									</tr>
+									{{/foreach}}
 								</table>
 							</div>
 						</div>

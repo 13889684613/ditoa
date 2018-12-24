@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-18 11:27:01
+/* Smarty version 3.1.29, created on 2018-12-24 16:22:34
   from "F:\website\ditoaCoder\ditoa\pc\index\view\update-password.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c1869059d6a06_45408053',
+  'unifunc' => 'content_5c20974a4d7467_79925781',
   'file_dependency' => 
   array (
     '3a71f143f8eec9329c4830652cb049dc02e92279' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\index\\view\\update-password.html',
-      1 => 1545103619,
+      1 => 1545639752,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c1869059d6a06_45408053 ($_smarty_tpl) {
+function content_5c20974a4d7467_79925781 ($_smarty_tpl) {
 ?>
 <!-- 
 	# 出差申请
@@ -73,7 +73,7 @@ function content_5c1869059d6a06_45408053 ($_smarty_tpl) {
 			<div class="contentRightBox">
 				<!-- 内容区 开始 -->
 				<div class = "rightContent">
-					<div class = "staffInfoForm contentForm clearfix">
+					<div class = "staffInfoForm contentForm clearfix padding-bottom-0">
 						<form id="pwdForm" class = "clearfix" method="post">
 							<input type="hidden" name="act" value="updatePost">
 							<div class = "addApply clearfix">
@@ -84,19 +84,23 @@ function content_5c1869059d6a06_45408053 ($_smarty_tpl) {
 										<p class = "formTitle">原密码<span>*</span></p>
 										<input type="password" placeholder="请填写当前密码" name = "oldPwd" class = "formInput" style="vertical-align:middle;" autocomplete="off"/>
 									</div>
+								</div>
+								<div class = "formsBox clearfix">
 									<div class = "form">
 										<p class = "formTitle">设置新密码<span>*</span></p>
 										<input type="password" placeholder="请设置新密码" name = "newPwd" class = "formInput" style="vertical-align:middle;" autocomplete="off"/>
+										<div class="passwordTic">密码为至少为6位，至少包含数字和字母两种形式</div>
 									</div>
 									<div class = "form">
 										<p class = "formTitle">确认新密码<span>*</span></p>
 										<input type="password" name = "enterPwd" placeholder = "请再次填写新密码" class = "formInput tripForm" autocomplete="off" />
+										<div class="passwordTic">密码为至少为6位，至少包含数字和字母两种形式</div>
 									</div>
 								</div>
 							</div>
 						</form>
 					</div>
-					<div class = "formBtnsBox clearfix">
+					<div class = "formBtnsBox clearfix margin-top-0">
 						<div class = "formBtn formBtnSave">提交</div>
 						<div class = "formBtn formBtnCancel">取消</div>
 					</div>

@@ -55,7 +55,7 @@ $(function(){
     var i = 0;
     $('.add').click(function(){
         i++;
-        var html = '<div class="staffFamilyInfo clearfix"><p class = "formTitle w75H42Mb0Fl">所属企业<span>*</span></p><div class = "formInput formSelect company w250Mr14Fl">请选择所属企业</div><ul class = "formSelectList"><li class = "default">请选择所属企业</li>{{foreach item=c name=companys from=$companys}}<li data-type="{{$c.companyId}}">{{$c.cnName}}</li>{{/foreach}}</ul><input type="hidden" name = "company[]" class = "companyIdForm"/><input type="hidden" name="contractId[]" value="0" /><input type="text" name="contractNo[]" placeholder="合同编号"class="formInput contractNoForm w150Mr14Fl"autocomplete="off"/><input type="text"name="beginDate[]" placeholder="开始日期"class="formInput beginDateForm dataInput w180Mr12Fl datepicker'+i+'"autocomplete="off"/><span class="leftLh42DisBlock">至</span><input type="text" name="overDate[]" placeholder="结束日期"class="formInput overDateForm dataInput w180Mr14Ml12Fl datepicker'+i+'"autocomplete="off"/><img src="public/html/images/input_remove.png"alt=""class="remove"></div>';
+        var html = '<div class="staffFamilyInfo clearfix"><div class = "formInput formSelect company w250Mr14Fl">请选择所属企业</div><ul class = "formSelectList"><li class = "default">请选择所属企业</li>{{foreach item=c name=companys from=$companys}}<li data-type="{{$c.companyId}}">{{$c.cnName}}</li>{{/foreach}}</ul><input type="hidden" name = "company[]" class = "companyIdForm"/><input type="hidden" name="contractId[]" value="0" /><input type="text" name="contractNo[]" placeholder="合同编号"class="formInput contractNoForm w150Mr14Fl"autocomplete="off"/><input type="text"name="beginDate[]" placeholder="开始日期"class="formInput beginDateForm dataInput w180Mr12Fl datepicker'+i+'"autocomplete="off"/><span class="leftLh42DisBlock">至</span><input type="text" name="overDate[]" placeholder="结束日期"class="formInput overDateForm dataInput w180Mr14Ml12Fl datepicker'+i+'"autocomplete="off"/><img src="public/html/images/input_remove.png"alt=""class="remove"></div>';
         $('.staffFamilyContent').append(html);
         // $(".datepicker"+i).datepicker({
         //     inline: true,
@@ -158,7 +158,7 @@ $(function(){
         })
         $('.company').each(function() {
 			var inputValue = $(this).text();
-			if(inputValue == '' || inputValue == '请选择所属企业') {
+			if(inputValue == '' || inputValue == '所属企业') {
 				popAlert('请选择所属企业');
 				$(this).focus();
 				hold = false;

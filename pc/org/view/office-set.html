@@ -61,8 +61,8 @@
 									<div class="formAllBox clearfix">
 										<div class="formBox w33">
 											<div class="form">
-												<p class="formTitle">办事处名称<span>*</span></p>
-												<input type="text" name="officeName" value="{{$i.officeName}}" placeholder="请输入办事处名称" class="formInput officeNameInput" autocomplete="off" />
+												<p class="formTitle">部门编号<span>*</span></p>
+												<input type="text" name="officeCode" value="{{$i.officeCode}}" placeholder="请输入部门编号" class="formInput officeCodeInputb" autocomplete="off" />
 											</div>
 											<div class="form">
 												<p class="formTitle">传真<span>*</span></p>
@@ -75,9 +75,10 @@
 										</div>
 										<div class="formBox w33">
 											<div class="form">
-												<p class="formTitle">部门联系电话<span>*</span></p>
-												<input type="text" name="phone" value="{{$i.phone}}" placeholder="请输入部门联系电话" class="formInput phoneInput" autocomplete="off" />
+												<p class="formTitle">办事处名称<span>*</span></p>
+												<input type="text" name="officeName" value="{{$i.officeName}}" placeholder="请输入办事处名称" class="formInput officeNameInput" autocomplete="off" />
 											</div>
+											
 											<div class="form">
 												<p class="formTitle">详细地址<span>*</span></p>
 												<input name="address" value="{{$i.address}}" placeholder="请输入详细地址" class="formInput addressInput">
@@ -85,8 +86,8 @@
 										</div>
 										<div class="formBox w33">
 											<div class="form">
-												<p class="formTitle">部门编号<span>*</span></p>
-												<input type="text" name="officeCode" value="{{$i.officeCode}}" placeholder="请输入部门编号" class="formInput officeCodeInputb" autocomplete="off" />
+												<p class="formTitle">部门联系电话<span>*</span></p>
+												<input type="text" name="phone" value="{{$i.phone}}" placeholder="请输入部门联系电话" class="formInput phoneInput" autocomplete="off" />
 											</div>
 											<div class="form">
 												<p class="formTitle">职能范围</p>
@@ -124,11 +125,11 @@
 												<div class="formInput formSelect" id="formSelect">请选择有效范围</div>
 												<ul class="formSelectList">
 													<li class="default">请选择有效范围</li>
-													<li data-type="100">100米</li>
-													<li data-type="300">300米</li>
-													<li data-type="500">500米</li>
-													<li data-type="800">800米</li>
-													<li data-type="1000">1000米</li>
+													<li data-type="100"{{if $i.workRange==100}} data-select="true"{{/if}}>100米</li>
+													<li data-type="300"{{if $i.workRange==300}} data-select="true"{{/if}}>300米</li>
+													<li data-type="500"{{if $i.workRange==500}} data-select="true"{{/if}}>500米</li>
+													<li data-type="800"{{if $i.workRange==800}} data-select="true"{{/if}}>800米</li>
+													<li data-type="1000"{{if $i.workRange==1000}} data-select="true"{{/if}}>1000米</li>
 												</ul>
 												<input type="hidden" name="workRange" value="{{$i.workRange}}" /><!--有效范围，仅传数字-->
 											</div>

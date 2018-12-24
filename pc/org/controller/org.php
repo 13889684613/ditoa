@@ -40,7 +40,7 @@
 
 	//检索
 	$s_name = getVal('s_name',2,'');
-	if($s_name!=''){
+	if($s_name!=''&&$s_name!='搜索当前组织员工'){
 		$where .= ' and staffName like "%'.$s_name.'%"';
 		$track .= '&s_name='.$s_name.'';
 	}

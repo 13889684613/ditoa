@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-17 14:36:18
+/* Smarty version 3.1.29, created on 2018-12-24 19:55:22
   from "F:\website\ditoaCoder\ditoa\pc\system\view\check-role-set.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c1743e2206076_72367384',
+  'unifunc' => 'content_5c20c92aa08f84_53389213',
   'file_dependency' => 
   array (
     'fcf7256cc49c7edaec63c4e5f4743698c0a6d7b6' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\system\\view\\check-role-set.html',
-      1 => 1545028575,
+      1 => 1545652521,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c1743e2206076_72367384 ($_smarty_tpl) {
+function content_5c20c92aa08f84_53389213 ($_smarty_tpl) {
 ?>
 <!-- 
 	# 新增系统角色
@@ -86,10 +86,10 @@ function content_5c1743e2206076_72367384 ($_smarty_tpl) {
 							<input type="hidden" name="act" value="<?php echo $_smarty_tpl->tpl_vars['action']->value;?>
 " />
 							<div class = "roleInfo">
-								<p class = "addApplyTitle mB26">请填写审批角色信息</p>
+								<p class = "addApplyTitle mB26">审批角色信息</p>
 								<div class = "roleUserInfo clearfix">
 									<div class = "form userName clearfix">
-										<p class = "formTitle">系统角色名称</p>
+										<p class = "formTitle">角色名称</p>
 										<input type="text" name = "roleName" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['checkRoleName'];?>
 " placeholder = "请输入" class = "formInput nameInput" autocomplete="off"/>
 									</div>

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-19 16:21:21
+/* Smarty version 3.1.29, created on 2018-12-24 17:46:23
   from "F:\website\ditoaCoder\ditoa\pc\public\html\archives.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c19ff81dd5710_26518859',
+  'unifunc' => 'content_5c20aaef7258e3_34187800',
   'file_dependency' => 
   array (
     '5f491aa3a3c2d828993973d41472f678bd0ed7d3' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\public\\html\\archives.html',
-      1 => 1545207680,
+      1 => 1545644780,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5c19ff81dd5710_26518859 ($_smarty_tpl) {
+function content_5c20aaef7258e3_34187800 ($_smarty_tpl) {
 ?>
 							<div class="apply-step-box margin-bottom-0">
 								<h1 class="titleTips">员工档案</h1>
@@ -31,7 +31,7 @@ function content_5c19ff81dd5710_26518859 ($_smarty_tpl) {
                                     -->
 									<div class="stepActiveLine" style="width:<?php echo $_smarty_tpl->tpl_vars['a']->value['lineWidth'];?>
 ;"></div>
-									<div class="stepNormalLine"></div>
+									<div class="stepNormalLine" style="width:73.3%;"></div>
 
 									<div class="<?php echo $_smarty_tpl->tpl_vars['a']->value['tryClass'];?>
 position1"><!--完成圆-->
@@ -90,12 +90,12 @@ position4">
 										</div>
 									</div>
 									
-									<div class="<?php echo $_smarty_tpl->tpl_vars['a']->value['finishClass'];?>
+									<!-- <div class="<?php echo $_smarty_tpl->tpl_vars['a']->value['finishClass'];?>
 position6">
 										<div class="stepContentBox">
 											<div class="text1">DIT与您一起成长</div>
 										</div>
-									</div>
+									</div> -->
 								</div>
 							</div><?php }
 }

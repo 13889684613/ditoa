@@ -34,8 +34,8 @@
 			<!--内容区导航begin-->
 			<div class="contentRightNav clearfix">
 				<div class="contentRightNavLeft pull-left">
-					<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="？_f=staff{{$track}}">员工管理</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">入职信息</span></div>
-					<div class="contentRightNavBottom"><span class="name">入职信息</span></div>
+					<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="human-affairs.php?_f=staff{{$track}}">员工管理</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">入职信息</span></div>
+					<div class="contentRightNavBottom"><span class="name">{{$staffName}} - 入职信息</span></div>
 				</div>
 			</div>
 			<!--内容区导航end-->
@@ -85,11 +85,11 @@
 									<div class = "formList">
 										<div class = "form mbottom57">
 											<p class = "formTitle">入职时间 <span>*</span></p>
-											<input type="text" name = "joinDate" value="{{$i.joinDate}}" placeholder = "请选择入职时间" class = "formInput joinDateForm dataInput datepicker" autocomplete="off"/>
+											<input type="text" name = "joinDate" value="{{$i.joinDate}}" placeholder = "入职时间" class = "formInput joinDateForm dataInput datepicker" autocomplete="off"/>
 										</div>
 										<div class = "form">
 											<p class = "formTitle">期望工资<span>*</span></p>
-											<input type="text" name = "expectedSalary" value="{{$i.expectedSalary}}" placeholder = "请输入期望工资" class = "formInput expectedSalaryForm" autocomplete="off"/>
+											<input type="text" name = "expectedSalary" value="{{$i.expectedSalary}}" placeholder = "期望工资" class = "formInput expectedSalaryForm" autocomplete="off"/>
 										</div>
 									</div>
 								</div>
@@ -97,11 +97,11 @@
 									<div class = "formList">
 										<div class = "form mbottom57">
 											<p class = "formTitle">试用期 <span>*</span></p>
-											<input type="text" name = "tryBeginDate" value="{{$i.tryBeginDate}}" placeholder = "请选择试用开始日期" class = "w142 formInput tryBeginDateForm dataInput datepicker1" autocomplete="off"/> - <input type="text" name = "tryOverDate" value="{{$i.tryOverDate}}" placeholder = "请选择试用结束日期" class = "w142 formInput tryOverDateForm dataInput datepicker2" autocomplete="off"/>
+											<input type="text" name = "tryBeginDate" value="{{$i.tryBeginDate}}" placeholder = "开始日期" class = "w142 formInput tryBeginDateForm dataInput datepicker1" autocomplete="off"/> - <input type="text" name = "tryOverDate" value="{{$i.tryOverDate}}" placeholder = "结束日期" class = "w142 formInput tryOverDateForm dataInput datepicker2" autocomplete="off"/>
 										</div>
 										<div class = "form">
 											<p class = "formTitle">试用期工资<span>*</span></p>
-											<input type="text" name = "trySalary" value="{{$i.trySalary}}" placeholder = "请输入试用期工资" class = " formInput trySalaryForm" autocomplete="off"/>
+											<input type="text" name = "trySalary" value="{{$i.trySalary}}" placeholder = "试用期工资" class = " formInput trySalaryForm" autocomplete="off"/>
 										</div>
 									</div>
 								</div>
@@ -109,7 +109,7 @@
 									<div class = "formList">
 										<div class = "form">
 											<p class = "formTitle">面试人员<span>*</span></p>
-											<input type="text" name = "interviewer" value="{{$i.interviewer}}" placeholder = "请输入面试人员" class = "formInput interviewerForm" autocomplete="off"/>
+											<input type="text" name = "interviewer" value="{{$i.interviewer}}" placeholder = "面试人员" class = "formInput interviewerForm" autocomplete="off"/>
 										</div>
 										<input id="res" name="res" type="reset" style="display:none;"/>
 									</div>

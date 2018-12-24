@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-20 10:53:11
+/* Smarty version 3.1.29, created on 2018-12-24 16:09:55
   from "F:\website\ditoaCoder\ditoa\pc\humanAffairs\view\staff-entry.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c1b0417dcbd55_33110550',
+  'unifunc' => 'content_5c20945322daa6_02535338',
   'file_dependency' => 
   array (
     'b381b368629d6b4d064b3d0950c0c6b991482d29' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\humanAffairs\\view\\staff-entry.html',
-      1 => 1545274388,
+      1 => 1545638969,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c1b0417dcbd55_33110550 ($_smarty_tpl) {
+function content_5c20945322daa6_02535338 ($_smarty_tpl) {
 ?>
 <!-- 
 	# 员工基本资料页面
@@ -64,9 +64,10 @@ function content_5c1b0417dcbd55_33110550 ($_smarty_tpl) {
 			<!--内容区导航begin-->
 			<div class="contentRightNav clearfix">
 				<div class="contentRightNavLeft pull-left">
-					<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="？_f=staff<?php echo $_smarty_tpl->tpl_vars['track']->value;?>
+					<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="human-affairs.php?_f=staff<?php echo $_smarty_tpl->tpl_vars['track']->value;?>
 ">员工管理</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">入职信息</span></div>
-					<div class="contentRightNavBottom"><span class="name">入职信息</span></div>
+					<div class="contentRightNavBottom"><span class="name"><?php echo $_smarty_tpl->tpl_vars['staffName']->value;?>
+ - 入职信息</span></div>
 				</div>
 			</div>
 			<!--内容区导航end-->
@@ -139,12 +140,12 @@ function content_5c1b0417dcbd55_33110550 ($_smarty_tpl) {
 										<div class = "form mbottom57">
 											<p class = "formTitle">入职时间 <span>*</span></p>
 											<input type="text" name = "joinDate" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['joinDate'];?>
-" placeholder = "请选择入职时间" class = "formInput joinDateForm dataInput datepicker" autocomplete="off"/>
+" placeholder = "入职时间" class = "formInput joinDateForm dataInput datepicker" autocomplete="off"/>
 										</div>
 										<div class = "form">
 											<p class = "formTitle">期望工资<span>*</span></p>
 											<input type="text" name = "expectedSalary" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['expectedSalary'];?>
-" placeholder = "请输入期望工资" class = "formInput expectedSalaryForm" autocomplete="off"/>
+" placeholder = "期望工资" class = "formInput expectedSalaryForm" autocomplete="off"/>
 										</div>
 									</div>
 								</div>
@@ -153,13 +154,13 @@ function content_5c1b0417dcbd55_33110550 ($_smarty_tpl) {
 										<div class = "form mbottom57">
 											<p class = "formTitle">试用期 <span>*</span></p>
 											<input type="text" name = "tryBeginDate" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['tryBeginDate'];?>
-" placeholder = "请选择试用开始日期" class = "w142 formInput tryBeginDateForm dataInput datepicker1" autocomplete="off"/> - <input type="text" name = "tryOverDate" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['tryOverDate'];?>
-" placeholder = "请选择试用结束日期" class = "w142 formInput tryOverDateForm dataInput datepicker2" autocomplete="off"/>
+" placeholder = "开始日期" class = "w142 formInput tryBeginDateForm dataInput datepicker1" autocomplete="off"/> - <input type="text" name = "tryOverDate" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['tryOverDate'];?>
+" placeholder = "结束日期" class = "w142 formInput tryOverDateForm dataInput datepicker2" autocomplete="off"/>
 										</div>
 										<div class = "form">
 											<p class = "formTitle">试用期工资<span>*</span></p>
 											<input type="text" name = "trySalary" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['trySalary'];?>
-" placeholder = "请输入试用期工资" class = " formInput trySalaryForm" autocomplete="off"/>
+" placeholder = "试用期工资" class = " formInput trySalaryForm" autocomplete="off"/>
 										</div>
 									</div>
 								</div>
@@ -168,7 +169,7 @@ function content_5c1b0417dcbd55_33110550 ($_smarty_tpl) {
 										<div class = "form">
 											<p class = "formTitle">面试人员<span>*</span></p>
 											<input type="text" name = "interviewer" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['interviewer'];?>
-" placeholder = "请输入面试人员" class = "formInput interviewerForm" autocomplete="off"/>
+" placeholder = "面试人员" class = "formInput interviewerForm" autocomplete="off"/>
 										</div>
 										<input id="res" name="res" type="reset" style="display:none;"/>
 									</div>

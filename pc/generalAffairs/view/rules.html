@@ -29,7 +29,7 @@
 				<div class="contentRightNav clearfix">
 					<div class="contentRightNavLeft pull-left">
 						<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">规章制度</span></div>
-						<div class="contentRightNavBottom"><span class="name">企业规章制度</span><span class="time"></span></div>
+						<div class="contentRightNavBottom"><span class="name">企业规章制度管理</span><span class="time"></span></div>
 					</div>
 				</div>
 				<!--内容区导航end-->
@@ -69,14 +69,15 @@
 										<th width='133' class="text-center borderRight1"><span>操作</span></th>
 									</tr>
 									{{foreach item=i name=data from=$data}}
-									<tr{{if $i%2==1}} class="backgroundFFF"{{/if}}>
+									<tr{{if $smarty.foreach.data.iteration%2==1}} class="backgroundFFF"{{/if}}}>
 										<td class="borderRight1">
 											<div class="editBox center-block clearfix">
 												<div class="editButton editButtonL pull-left text-center">
 													<a href="?_f=rules-set&act=edit&page={{$curPage}}&id={{$i.rulesId}}{{$track}}"><img src="public/html/images/edit.jpg" alt="" /></a>
 												</div>
 												<div class="editButton editButtonR pull-left text-center">
-													<a href="?_f=rules&act=remove&page={{$curPage}}&id={{$i.rulesId}}{{$track}}" onclick="return confirm('确认要删除？');"><img src="public/html/images/del.jpg" alt="" /></a>
+													<img src="public/html/images/del.jpg" alt="" />
+													<input type="hidden" value="?_f=rules&act=remove&page={{$curPage}}&id={{$i.rulesId}}{{$track}}"/>
 												</div>
 											</div>
 										</td>
@@ -97,7 +98,7 @@
 										</th>
 									</tr>
 									{{foreach item=i name=data from=$data}}
-									<tr class="backgroundFFF">
+									<tr{{if $smarty.foreach.data.iteration%2==1}} class="backgroundFFF"{{/if}}}>
 										<td class="paddingLeft12"><span>{{$i.sn}}</span></td>
 										<td width="254"><span><a href="upload/file/rule/{{$i.attach}}" target="_blank">{{$i.title}}</a></span></td>
 										<td width="259"><span>{{$i.createTime}}</span></td>

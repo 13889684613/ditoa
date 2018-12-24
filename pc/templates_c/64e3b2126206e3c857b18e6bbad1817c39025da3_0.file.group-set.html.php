@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-19 11:32:06
+/* Smarty version 3.1.29, created on 2018-12-24 13:56:33
   from "F:\website\ditoaCoder\ditoa\pc\org\view\group-set.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c19bbb6e665b7_70565444',
+  'unifunc' => 'content_5c207511954328_18867897',
   'file_dependency' => 
   array (
     '64e3b2126206e3c857b18e6bbad1817c39025da3' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\org\\view\\group-set.html',
-      1 => 1545190132,
+      1 => 1545630973,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c19bbb6e665b7_70565444 ($_smarty_tpl) {
+function content_5c207511954328_18867897 ($_smarty_tpl) {
 ?>
 <!-- 
 	# 企业详情编辑
@@ -96,78 +96,10 @@ function content_5c19bbb6e665b7_70565444 ($_smarty_tpl) {
 " />
 								<input type="hidden" name="act" value="<?php echo $_smarty_tpl->tpl_vars['action']->value;?>
 " />
-								<!--<div class="infoBox infoBoxOne">
-									<p class="addApplyTitle">工作组信息</p>
-									<div class="formAllBox clearfix">
-										<div class="formBox w33">
-											<div class="form">
-												<p class="formTitle">所属办事处<span>*</span></p>
-												<input type="text" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputBm officeInput" placeholder="请选择" name="office" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['officeId'];?>
-" data-type='0' />
-												<div class="retrievalsInputNavBox">
-													<ul class="retrievalsInputNav">
-														<li data-type = "0">请选择</li>
-														<?php
-$_from = $_smarty_tpl->tpl_vars['offices']->value;
-if (!is_array($_from) && !is_object($_from)) {
-settype($_from, 'array');
-}
-$__foreach_offices_0_saved_item = isset($_smarty_tpl->tpl_vars['o']) ? $_smarty_tpl->tpl_vars['o'] : false;
-$_smarty_tpl->tpl_vars['o'] = new Smarty_Variable();
-$_smarty_tpl->tpl_vars['o']->_loop = false;
-foreach ($_from as $_smarty_tpl->tpl_vars['o']->value) {
-$_smarty_tpl->tpl_vars['o']->_loop = true;
-$__foreach_offices_0_saved_local_item = $_smarty_tpl->tpl_vars['o'];
-?>
-														<li data-type = "<?php echo $_smarty_tpl->tpl_vars['o']->value['officeId'];?>
-"><?php echo $_smarty_tpl->tpl_vars['o']->value['officeName'];?>
-</li>
-														<?php
-$_smarty_tpl->tpl_vars['o'] = $__foreach_offices_0_saved_local_item;
-}
-if ($__foreach_offices_0_saved_item) {
-$_smarty_tpl->tpl_vars['o'] = $__foreach_offices_0_saved_item;
-}
-?>
-													</ul>
-												</div>
-											</div>
-											<div class="form">
-												<p class="formTitle">工作组名称<span>*</span></p>
-												<input name="groupName" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['groupName'];?>
-" placeholder="请输入工作组名称" class="formInput groupNameInput">
-											</div>
-										</div>
-										<div class="formBox w33">
-											<div class="form">
-												<p class="formTitle">部门联系电话<span>*</span></p>
-												<input type="text" name="phone" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['phone'];?>
-" placeholder="请输入部门联系电话" class="formInput phoneInputb" autocomplete="off" />
-											</div>
-											<div class="form">
-												<p class="formTitle">设置排序<span class="tipsIcon"><span class="tips" style="display: none;">数字越大，排序越靠前</span></span></p>
-												<input type="number" name="rank" value="<?php echo $_smarty_tpl->tpl_vars['rank']->value;?>
-" placeholder="0" class="formInput rankInput" autocomplete="off">
-											</div>
-										</div>
-									</div>
-								</div>-->
-
 								<!--检索begin-->
 								<div class="retrievalBox">
 									<div class="retrievalTitle">工作组信息</div>
 									<div class="retrievalsForm clearfix">
-										<form id="groupForm" method="post" class="clearfix">
-											<input type="hidden" name="page" value="<?php echo $_smarty_tpl->tpl_vars['page']->value;?>
-" />
-											<input type="hidden" name="s_office" value="<?php echo $_smarty_tpl->tpl_vars['s_office']->value;?>
-" />
-											<input type="hidden" name="s_name" value="<?php echo $_smarty_tpl->tpl_vars['s_name']->value;?>
-" />
-											<input type="hidden" name="id" value="<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
-" />
-											<input type="hidden" name="act" value="<?php echo $_smarty_tpl->tpl_vars['action']->value;?>
-" />
 											<div class="retrievalsInputBoxs retrievalsInputBoxsStar clearfix pull-left">
 												<div class="retrievalsInputContent">
 													<div class="retrievalsInput">
@@ -181,32 +113,31 @@ $_from = $_smarty_tpl->tpl_vars['offices']->value;
 if (!is_array($_from) && !is_object($_from)) {
 settype($_from, 'array');
 }
-$__foreach_offices_1_saved_item = isset($_smarty_tpl->tpl_vars['o']) ? $_smarty_tpl->tpl_vars['o'] : false;
+$__foreach_offices_0_saved_item = isset($_smarty_tpl->tpl_vars['o']) ? $_smarty_tpl->tpl_vars['o'] : false;
 $_smarty_tpl->tpl_vars['o'] = new Smarty_Variable();
 $_smarty_tpl->tpl_vars['o']->_loop = false;
 foreach ($_from as $_smarty_tpl->tpl_vars['o']->value) {
 $_smarty_tpl->tpl_vars['o']->_loop = true;
-$__foreach_offices_1_saved_local_item = $_smarty_tpl->tpl_vars['o'];
+$__foreach_offices_0_saved_local_item = $_smarty_tpl->tpl_vars['o'];
 ?>
 																<li data-type="<?php echo $_smarty_tpl->tpl_vars['o']->value['officeId'];?>
-"><?php echo $_smarty_tpl->tpl_vars['o']->value['officeName'];?>
+"<?php if ($_smarty_tpl->tpl_vars['o']->value['officeId'] == $_smarty_tpl->tpl_vars['i']->value['officeId']) {?> data-select='true'<?php }?>><?php echo $_smarty_tpl->tpl_vars['o']->value['officeName'];?>
 </li>
 																<?php
-$_smarty_tpl->tpl_vars['o'] = $__foreach_offices_1_saved_local_item;
+$_smarty_tpl->tpl_vars['o'] = $__foreach_offices_0_saved_local_item;
 }
-if ($__foreach_offices_1_saved_item) {
-$_smarty_tpl->tpl_vars['o'] = $__foreach_offices_1_saved_item;
+if ($__foreach_offices_0_saved_item) {
+$_smarty_tpl->tpl_vars['o'] = $__foreach_offices_0_saved_item;
 }
 ?>
-																<input type="hidden" class="selectVal" value="0" autocomplete="off" data-type="1">
+																<input type="hidden" name="office" class="selectVal officeInput" value="0" autocomplete="off" data-type="1">
 															</ul>
 														</div>
 													</div>
 													<div class="form">
-														<p class="formTitle">设置排序<span class="tipsIcon"><span class="tips" style="display: none;">数字越大，排序越靠前</span></span>
-														</p>
-														<input type="number" name="rank" value="<?php echo $_smarty_tpl->tpl_vars['rank']->value;?>
-" placeholder="0" class="formInput rankInput" autocomplete="off">
+														<p class="formTitle">部门联系电话<span>*</span></p>
+														<input type="phone" name="phone" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['phone'];?>
+" placeholder="请输入部门联系电话" class="formInput phoneInputb" autocomplete="off">
 													</div>
 												</div>
 											</div>
@@ -215,20 +146,15 @@ $_smarty_tpl->tpl_vars['o'] = $__foreach_offices_1_saved_item;
 													<div class="retrievalsInput">
 														<label>工作组名称<span>*</span></label>
 														<input name="groupName" type="text" placeholder="请输入工作组名称" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['groupName'];?>
-" class="choseInputName" data-type='0' />
+" class="choseInputName groupNameInput" data-type='0' />
 													</div>
 												</div>
-											</div>
-											<div class="retrievalsInputBoxs retrievalsInputBoxsStar clearfix pull-left">
-												<div class="retrievalsInputContent">
-													<div class="retrievalsInput">
-														<label>部门联系电话<span>*</span></label>
-														<input name="groupName" name="phone" type="text" placeholder="请输入部门联系电话" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['phone'];?>
-" class="choseInputName" data-type='0' />
-													</div>
+												<div class="form">
+													<p class="formTitle">设置排序<span class="tipsIcon"><span class="tips" style="display: none;">数字越大，排序越靠前</span></span></p>
+													<input type="number" name="rank" value="<?php echo $_smarty_tpl->tpl_vars['rank']->value;?>
+" placeholder="0" class="formInput rankInput" autocomplete="off">
 												</div>
 											</div>
-										</form>
 									</div>
 								</div>
 								<!--检索end-->
@@ -268,11 +194,11 @@ $_smarty_tpl->tpl_vars['o'] = $__foreach_offices_1_saved_item;
 												<div class="formInput formSelect" id="formSelect">请选择有效范围</div>
 												<ul class="formSelectList">
 													<li class="default">请选择有效范围</li>
-													<li data-type="100">100米</li>
-													<li data-type="300">300米</li>
-													<li data-type="500">500米</li>
-													<li data-type="800">800米</li>
-													<li data-type="1000">1000米</li>
+													<li data-type="100"<?php if ($_smarty_tpl->tpl_vars['i']->value['workRange'] == 100) {?> data-select="true"<?php }?>>100米</li>
+													<li data-type="300"<?php if ($_smarty_tpl->tpl_vars['i']->value['workRange'] == 300) {?> data-select="true"<?php }?>>300米</li>
+													<li data-type="500"<?php if ($_smarty_tpl->tpl_vars['i']->value['workRange'] == 500) {?> data-select="true"<?php }?>>500米</li>
+													<li data-type="800"<?php if ($_smarty_tpl->tpl_vars['i']->value['workRange'] == 800) {?> data-select="true"<?php }?>>800米</li>
+													<li data-type="1000"<?php if ($_smarty_tpl->tpl_vars['i']->value['workRange'] == 1000) {?> data-select="true"<?php }?>>1000米</li>
 												</ul>
 												<input type="hidden" name="workRange" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['workRange'];?>
 " />
@@ -292,7 +218,8 @@ $_smarty_tpl->tpl_vars['o'] = $__foreach_offices_1_saved_item;
 													<div class="workingDayBox<?php if (in_array('7',$_smarty_tpl->tpl_vars['i']->value['workWeek'])) {?> on<?php }?> pull-left">周日</div>
 												</div>
 											</div>
-											<input type="hidden" name="week" value="1,2,3,4,5,6,7" />
+											<input type="hidden" name="week" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['workWeekString'];?>
+" />
 											<!--工作日，周一到周日对应数字1-7-->
 										</div>
 									</div>
@@ -301,7 +228,7 @@ $_smarty_tpl->tpl_vars['o'] = $__foreach_offices_1_saved_item;
 						</div>
 						<div class="formBtnsBox clearfix">
 							<div class="formBtn formBtnSave">保存</div>
-							<div class="formBtn formBtnCancel">取消</div>
+							<div class="formBtn formBtnCancel">返回</div>
 						</div>
 					</div>
 					<!-- 内容区 结束 -->

@@ -23,7 +23,7 @@
 	}
 
 	//非系统管理员操作权限验证，验证是否为同部门人员操作
-	$O = $db->get_one(PRFIX.'staff','where staffId='.$id.'','officeId');
+	$O = $db->get_one(PRFIX.'staff','where staffId='.$id.'','officeId,staffName');
 	if($common_category == 0){
 		if($common_office != $O['officeId']){
 			RefreshResturn('index.php?_f=login');
@@ -249,7 +249,7 @@
 
 					$val = array();
 
-					if($other_file[$e]['attachName']!=''){
+					if($other_file[$e]['attachName']!=''&&$other_file[$e]['attachName']!='请输入证件名称'){
 
 						$val['staffId'] = $id;
 						$val['category'] = 5;
@@ -317,5 +317,6 @@
 	$smarty->assign('page',$page);
 	$smarty->assign('isSet',$isSet);
 	$smarty->assign('track',$track);
+	$smarty->assign('staffName',$O['staffName']);
 
 ?>

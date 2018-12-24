@@ -69,14 +69,17 @@
 									<th width='133' class="text-center borderRight1"><span>操作</span></th>
 								</tr>
 								{{foreach item=i name=data from=$data}}
-								<tr{{if $i%2==1}} class="backgroundFFF"{{/if}}>
+								<tr{{if $smarty.foreach.data.iteration%2==1}} class="backgroundFFF"{{/if}}>
 									<td class="borderRight1">
 										<div class="editBox center-block clearfix">
 											<div class="editButton editButtonL pull-left text-center">
-												<a href="?_f=company-set&act=edit&page={{$curPage}}&id={{$i.companyId}}{{$track}}"><img src="public/html/images/edit.jpg" alt="" /></a>
+												<a href="?_f=company-set&act=edit&page={{$curPage}}&id={{$i.companyId}}{{$track}}">
+													<img src="public/html/images/edit.jpg" alt="" />
+												</a>
 											</div>
 											<div class="editButton editButtonR pull-left text-center">
-												<a href="?_f=company&act=remove&page={{$curPage}}&id={{$i.companyId}}{{$track}}" onclick="return confirm('确认要删除？');"><img src="public/html/images/del.jpg" alt="" /></a>
+												<img src="public/html/images/del.jpg" alt="" />
+												<input type="hidden" value="?_f=company&act=remove&page={{$curPage}}&id={{$i.companyId}}{{$track}}"/>
 											</div>
 										</div>
 									</td>
@@ -101,7 +104,7 @@
 										</th>
 									</tr>
 									{{foreach item=i name=data from=$data}}
-									<tr{{if $i%2==1}} class="backgroundFFF"{{/if}}>
+									<tr{{if $smarty.foreach.data.iteration%2==1}} class="backgroundFFF"{{/if}}>
 										<td class="paddingLeft12"><span>{{$i.sn}}</span></td>
 										<td><span>{{$i.cnName}}</span></td>
 										<td><span>{{$i.cnOfficeAddress}}</span></td>

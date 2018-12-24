@@ -1,4 +1,24 @@
 $(function(){
+	$('.retrievalsInputNav li').each(function(i){
+		var $this = $(this);
+		if($this.attr('data-select') == 'true'){
+			$this.parents('.retrievalsInput').find('.choseInput').val($this.text());
+			$this.parents('.retrievalsInput').find('.selectVal').val($this.attr('data-type'));
+		}
+	})
+	
+	$('.form li').each(function(i){
+		var $this = $(this);
+		if($this.attr('data-select') == 'true'){
+			$this.parents('.form').find('.formInput').text($this.text());
+			$this.parents('.form').find('.groupIdForm').val($this.attr('data-type'));
+		}
+	})
+	
+	$('.disabled').click(function(){
+		return false;
+	})
+	$('head').append('<link rel="icon" href="public/html/images/favicon.ico" type="image/x-icon"/>');
 	if($('.circlePosition').length>0){
 		var circleNum = $('.circlePosition').length;
 		var left = 100/(circleNum-1);
@@ -191,7 +211,7 @@ function popAlert(txt,url) {
 		$('.popMask').show();
 		t = setTimeout(function(){
 			location.href= url;
-		},2000);
+		},1000);
 	}
 }
 

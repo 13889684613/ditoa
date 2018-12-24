@@ -85,12 +85,6 @@
 		$data['bloods'] = static_blood($data['blood']);							//血型
 		$data['marital'] = static_marital($data['maritalStatus']);				//婚姻状况
 
-		if($data['busFee'] == 0){
-			$data['busFee'] = '';
-		}else{
-			$data['busFee'] = $data['busFee'].'元';
-		}
-
 		if($data['wechatActivate'] == 1){
 			$data['wechat'] = '已激活';
 		}else{

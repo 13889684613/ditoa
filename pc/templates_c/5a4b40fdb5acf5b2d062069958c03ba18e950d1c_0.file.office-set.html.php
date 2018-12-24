@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-18 16:37:07
+/* Smarty version 3.1.29, created on 2018-12-24 13:47:35
   from "F:\website\ditoaCoder\ditoa\pc\org\view\office-set.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c18b1b372b665_72091329',
+  'unifunc' => 'content_5c2072f75144f7_51636965',
   'file_dependency' => 
   array (
     '5a4b40fdb5acf5b2d062069958c03ba18e950d1c' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\org\\view\\office-set.html',
-      1 => 1545122217,
+      1 => 1545630443,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c18b1b372b665_72091329 ($_smarty_tpl) {
+function content_5c2072f75144f7_51636965 ($_smarty_tpl) {
 ?>
 <!-- 
 	# 企业详情编辑
@@ -98,9 +98,9 @@ function content_5c18b1b372b665_72091329 ($_smarty_tpl) {
 									<div class="formAllBox clearfix">
 										<div class="formBox w33">
 											<div class="form">
-												<p class="formTitle">办事处名称<span>*</span></p>
-												<input type="text" name="officeName" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['officeName'];?>
-" placeholder="请输入办事处名称" class="formInput officeNameInput" autocomplete="off" />
+												<p class="formTitle">部门编号<span>*</span></p>
+												<input type="text" name="officeCode" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['officeCode'];?>
+" placeholder="请输入部门编号" class="formInput officeCodeInputb" autocomplete="off" />
 											</div>
 											<div class="form">
 												<p class="formTitle">传真<span>*</span></p>
@@ -115,10 +115,11 @@ function content_5c18b1b372b665_72091329 ($_smarty_tpl) {
 										</div>
 										<div class="formBox w33">
 											<div class="form">
-												<p class="formTitle">部门联系电话<span>*</span></p>
-												<input type="text" name="phone" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['phone'];?>
-" placeholder="请输入部门联系电话" class="formInput phoneInput" autocomplete="off" />
+												<p class="formTitle">办事处名称<span>*</span></p>
+												<input type="text" name="officeName" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['officeName'];?>
+" placeholder="请输入办事处名称" class="formInput officeNameInput" autocomplete="off" />
 											</div>
+											
 											<div class="form">
 												<p class="formTitle">详细地址<span>*</span></p>
 												<input name="address" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['address'];?>
@@ -127,9 +128,9 @@ function content_5c18b1b372b665_72091329 ($_smarty_tpl) {
 										</div>
 										<div class="formBox w33">
 											<div class="form">
-												<p class="formTitle">部门编号<span>*</span></p>
-												<input type="text" name="officeCode" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['officeCode'];?>
-" placeholder="请输入部门编号" class="formInput officeCodeInputb" autocomplete="off" />
+												<p class="formTitle">部门联系电话<span>*</span></p>
+												<input type="text" name="phone" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['phone'];?>
+" placeholder="请输入部门联系电话" class="formInput phoneInput" autocomplete="off" />
 											</div>
 											<div class="form">
 												<p class="formTitle">职能范围</p>
@@ -173,11 +174,11 @@ function content_5c18b1b372b665_72091329 ($_smarty_tpl) {
 												<div class="formInput formSelect" id="formSelect">请选择有效范围</div>
 												<ul class="formSelectList">
 													<li class="default">请选择有效范围</li>
-													<li data-type="100">100米</li>
-													<li data-type="300">300米</li>
-													<li data-type="500">500米</li>
-													<li data-type="800">800米</li>
-													<li data-type="1000">1000米</li>
+													<li data-type="100"<?php if ($_smarty_tpl->tpl_vars['i']->value['workRange'] == 100) {?> data-select="true"<?php }?>>100米</li>
+													<li data-type="300"<?php if ($_smarty_tpl->tpl_vars['i']->value['workRange'] == 300) {?> data-select="true"<?php }?>>300米</li>
+													<li data-type="500"<?php if ($_smarty_tpl->tpl_vars['i']->value['workRange'] == 500) {?> data-select="true"<?php }?>>500米</li>
+													<li data-type="800"<?php if ($_smarty_tpl->tpl_vars['i']->value['workRange'] == 800) {?> data-select="true"<?php }?>>800米</li>
+													<li data-type="1000"<?php if ($_smarty_tpl->tpl_vars['i']->value['workRange'] == 1000) {?> data-select="true"<?php }?>>1000米</li>
 												</ul>
 												<input type="hidden" name="workRange" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['workRange'];?>
 " /><!--有效范围，仅传数字-->

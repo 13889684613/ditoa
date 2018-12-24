@@ -140,12 +140,6 @@ $(function(){
             $('.businessInput').focus(); 
             return false;
         }
-        if(createDateForm == '') {
-            popAlert('请输入企业成立日期'); 
-            hold = false;
-            $('.createDateForm').focus(); 
-            return false;
-        }
         if(bankAccountInput == '') {
             popAlert('请输入开户行账号');
             hold = false; 
@@ -153,6 +147,12 @@ $(function(){
             return false;
         }else{
             hold = true;
+        }
+        if(createDateForm == '') {
+            popAlert('请输入企业成立日期'); 
+            hold = false;
+            $('.createDateForm').focus(); 
+            return false;
         }
 
         if(hold == true){

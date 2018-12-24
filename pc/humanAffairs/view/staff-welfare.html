@@ -34,8 +34,8 @@
 			<!--内容区导航begin-->
 			<div class="contentRightNav clearfix">
 				<div class="contentRightNavLeft pull-left">
-					<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="？_f=staff{{$track}}">员工管理</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">社保与公积金</span></div>
-					<div class="contentRightNavBottom"><span class="name">社保与公积金</span></div>
+					<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="human-affairs.php?_f=staff{{$track}}">员工管理</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">社保与公积金</span></div>
+					<div class="contentRightNavBottom"><span class="name">{{$staffName}} - 社保与公积金</span></div>
 				</div>
 			</div>
 			<!--内容区导航end-->
@@ -118,11 +118,11 @@
 								<div class = "formBox pT45">
 									<div class = "formList">
 										<div class = "form">
-											<p class = "formTitle">末次社保缴纳日期<span>*</span></p>
+											<p class = "formTitle">末次社保缴纳日期</p>
 											<input type="text" name = "insuranceOverDate" value="{{$i.insuranceOverDate}}" placeholder = "请填写末次社保缴纳日期" class = "formInput insuranceOverDateForm dataInput datepicker" autocomplete="off"/>
 										</div>
 										<div class = "form">
-											<p class = "formTitle">末次公积金缴纳日期<span>*</span></p>
+											<p class = "formTitle">末次公积金缴纳日期</p>
 											<input type="text" name = "fundOverDate" value="{{$i.fundOverDate}}" placeholder = "请填写末次社保缴纳日期" class = "formInput fundOverDateForm dataInput datepicker1" autocomplete="off"/>
 										</div>
 										<input id="res" name="res" type="reset" style="display:none;"/>

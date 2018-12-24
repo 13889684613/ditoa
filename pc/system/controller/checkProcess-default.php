@@ -80,6 +80,8 @@
 	$smarty->assign('roles',$roles);
 	$smarty->assign('categorys',$categorys);
 	$smarty->assign('track',$track);
+	$smarty->assign('s_type',$s_type);
+	$smarty->assign('s_role',$s_role);
 
 	//操作返回地址
 	$url = $router.'&page='.$curPage.''.$track;

@@ -48,27 +48,27 @@
 										<div class="retrievalsInputContent">
 											<div class="retrievalsInput">
 												<label>所属企业</label>
-												<input type="text" unselectable="on" onfocus="this.blur()" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputQy" placeholder="请选择" name="s_company" value="" data-type='0' />
+												<input type="text" unselectable="on" onfocus="this.blur()" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputQy" placeholder="请选择" value="" data-type='0' />
 												<div class="retrievalsInputNavBox">
 													<ul class="retrievalsInputNav">
 														<li data-type = "0">请选择</li>
 														{{foreach item=c name=company from=$company}}
-														<li data-type = "{{$c.companyId}}">{{$c.cnName}}</li>
+														<li data-type = "{{$c.companyId}}"{{if $c.companyId==$s_company}} data-select="true"{{/if}}>{{$c.cnName}}</li>
 														{{/foreach}}
-														<input type="hidden" class="selectVal" value="{{$s_company}}" autocomplete="off" data-type="1">
+														<input type="hidden" class="selectVal" name="s_company" value="{{$s_company}}" autocomplete="off" data-type="1">
 													</ul>
 												</div>
 											</div>
 											<div class="retrievalsInput">
 												<label>员工职务</label>
-												<input type="text" unselectable="on" onfocus="this.blur()" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputZw" placeholder="请选择" name="s_post" value="" data-type='0' />
+												<input type="text" unselectable="on" onfocus="this.blur()" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputZw" placeholder="请选择" data-type='0' />
 												<div class="retrievalsInputNavBox">
 													<ul class="retrievalsInputNav">
 														<li data-type = "0">请选择</li>
 														{{foreach item=p name=post from=$post}}
-														<li data-type = "{{$p.postId}}">{{$p.postName}}</li>
+														<li data-type = "{{$p.postId}}"{{if $p.postId==$s_post}} data-select='true'{{/if}}>{{$p.postName}}</li>
 														{{/foreach}}
-														<input type="hidden" class="selectVal" value="{{$s_post}}" autocomplete="off" data-type="1">
+														<input type="hidden" class="selectVal" name="s_post" value="{{$s_post}}" autocomplete="off" data-type="1">
 													</ul>
 												</div>
 											</div>
@@ -82,27 +82,27 @@
 										<div class="retrievalsInputContent">
 											<div class="retrievalsInput">
 												<label>所属部门</label>
-												<input type="text" unselectable="on" onfocus="this.blur()" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputBm" placeholder="请选择" name="s_office" value="" data-type='0' />
+												<input type="text" unselectable="on" onfocus="this.blur()" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputBm" placeholder="请选择" value="" data-type='0' />
 												<div class="retrievalsInputNavBox">
 													<ul class="retrievalsInputNav">
 														<li data-type = "0">请选择</li>
 														{{foreach item=o name=office from=$office}}
-														<li data-type = "{{$o.officeId}}">{{$o.officeName}}</li>
+														<li data-type = "{{$o.officeId}}"{{if $o.officeId==$s_office}} data-select='true'{{/if}}>{{$o.officeName}}</li>
 														{{/foreach}}
-														<input type="hidden" class="selectVal" value="{{$s_office}}" autocomplete="off" data-type="1">
+														<input type="hidden" class="selectVal" name="s_office" value="{{$s_office}}" autocomplete="off" data-type="1">
 													</ul>
 												</div>
 											</div>
 											<div class="retrievalsInput">
 												<label>状态</label>
-												<input type="text" unselectable="on" onfocus="this.blur()" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputZt" placeholder="请选择" name="s_status" value="" data-type='0' />
+												<input type="text" unselectable="on" onfocus="this.blur()" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputZt" placeholder="请选择" value=""/>
 												<div class="retrievalsInputNavBox">
 													<ul class="retrievalsInputNav">
-														<li data-type = "0">请选择</li>
+														<li data-type = "">请选择</li>
 														{{foreach $status as $key=>$value}}
-														<li data-type = "{{$key}}">{{$value}}</li>
+														<li data-type = "{{$key}}"{{if $key==$s_status}} data-select="true"{{/if}}>{{$value}}</li>
 														{{/foreach}}
-														<input type="hidden" class="selectVal" value="{{$s_status}}" autocomplete="off" data-type="1">
+														<input type="hidden" class="selectVal" name="s_status" value="{{$s_status}}" autocomplete="off" data-type="{{$s_status}}">
 													</ul>
 												</div>
 											</div>
@@ -116,21 +116,21 @@
 										<div class="retrievalsInputContent">
 											<div class="retrievalsInput">
 												<label>系统角色</label>
-												<input type="text" unselectable="on" onfocus="this.blur()" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputJs" placeholder="请选择" name="s_role" value="" data-type='0' />
+												<input type="text" unselectable="on" onfocus="this.blur()" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputJs" placeholder="请选择" value="" data-type='0' />
 												<div class="retrievalsInputNavBox">
 													<ul class="retrievalsInputNav">
 														<li data-type = "0">请选择</li>
 														{{foreach item=r name=role from=$role}}
-														<li data-type = "{{$r.sysRoleId}}">{{$r.sysRoleName}}</li>
+														<li data-type = "{{$r.sysRoleId}}"{{if $r.sysRoleId==$s_role}} data-select="true"{{/if}}>{{$r.sysRoleName}}</li>
 														{{/foreach}}
-														<input type="hidden" class="selectVal" value="{{$s_role}}" autocomplete="off" data-type="1">
+														<input type="hidden" class="selectVal" name="s_role" value="{{$s_role}}" autocomplete="off" data-type="1">
 													</ul>
 												</div>
 											</div>
 											<div class="retrievalsInput retrievalsInputTime">
 												<label>合同时间</label>
-												<input type="text" class="datepicker startForm" placeholder="开始日期" name="s_begintime" value="{{$s_begintime}}" data-type='0' />
-												<input type="text" class="datepicker endForm" placeholder="结束日期" name="s_begintime" value="{{$s_begintime}}" data-type='0' />
+												<input type="text" class="datepicker startForm" placeholder="到期开始日期" name="s_begintime" value="{{$s_begintime}}" data-type='0' />
+												<input type="text" class="datepicker endForm" placeholder="到期结束日期" name="s_overtime" value="{{$s_overtime}}" data-type='0' />
 											</div>
 											<!--查询清空begin-->
 											<div class="retrievalsInput clearfix">
@@ -162,14 +162,15 @@
 									<th width='85' class=""><span>真实姓名</span></th>
 								</tr>
 								{{foreach item=i name=data from=$data}}
-								<tr{{if $i%2==1}} class="backgroundFFF"{{/if}}}>
+								<tr{{if $smarty.foreach.data.iteration%2==1}} class="backgroundFFF"{{/if}}}>
 									<td class="borderRight1">
 										<div class="editBox center-block clearfix">
 											<div class="editButton editButtonL pull-left text-center">
 												<a href="?_f=staff-information&act=edit&page={{$curPage}}&id={{$i.staffId}}{{$track}}"><img src="public/html/images/edit.jpg" alt="" /></a>
 											</div>
 											<div class="editButton editButtonR pull-left text-center">
-												<a href="?_f=staff&act=remove&page={{$curPage}}&id={{$i.staffId}}{{$track}}" onclick="return confirm('确认要删除？');"><img src="public/html/images/del.jpg" alt="" /></a>
+												<img src="public/html/images/del.jpg" alt="" />
+												<input type="hidden" value="?_f=staff&act=remove&page={{$curPage}}&id={{$i.staffId}}{{$track}}"/>
 											</div>
 										</div>
 									</td>
@@ -189,20 +190,20 @@
 								<table class="table1 table1Content">
 									<tr>
 										<th width="66" class="paddingLeft12"><span>性别</span></th>
-										<th width="200"><span>所属企业</span></th>
+										<th width="400"><span>所属企业</span></th>
 										<th width="136"><span>所属部门</span></th>
 										<th width="122" class=""><span>职务</span></th>
 										<th width="200" class=""><span>身份证号</span></th>
 										<th width="121" class=""><span>手机号码</span></th>
 										<th width="150" class=""><span>座机</span></th>
-										<th width="300" class="">
+										<th width="360" class="">
 											<span class="">合同期间</span>
 										</th>
-										<th width="100" class=""><span>创建时间</span></th>
+										<th width="240" class=""><span>创建时间</span></th>
 										<th width="100" class=""><span>状态</span></th>
 									</tr>
 									{{foreach item=i name=data from=$data}}
-									<tr{{if $i%2==1}} class="backgroundFFF"{{/if}}>
+									<tr{{if $smarty.foreach.data.iteration%2==1}} class="backgroundFFF"{{/if}}>
 										<td class="paddingLeft12"><span>{{$i.sex}}</span></td>
 										<td><span>{{$i.company}}</span></td>
 										<td><span>{{$i.office}}</span></td>
@@ -214,7 +215,7 @@
 											<!--合同即将到期添加class soonEnpire-->
 											<span class="{{if $i.expire==1}}soonEnpire {{/if}}sortText">
 												{{$i.contract}}
-												{{if $i.isFill==0}}<img src="humanAffairs/view/images/tictable.png" class="tictable" alt="" />{{/if}}
+												{{if $i.expire==1}}<img src="humanAffairs/view/images/tictable.png" class="tictable" alt="" />{{/if}}
 											</span>
 											<div class="sortTic sortTicL">
 												合同即将到期，请注意查看

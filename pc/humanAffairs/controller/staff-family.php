@@ -23,7 +23,7 @@
 	}
 
 	//非系统管理员操作权限验证，验证是否为同部门人员操作
-	$O = $db->get_one(PRFIX.'staff','where staffId='.$id.'','officeId');
+	$O = $db->get_one(PRFIX.'staff','where staffId='.$id.'','officeId,staffName');
 	if($common_category == 0){
 		if($common_office != $O['officeId']){
 			RefreshResturn('index.php?_f=login');
@@ -68,7 +68,7 @@
 		}
 	}
 
-	$fileds = 'officeId,familyId,familyName,sex,birthDate,relation,telphone,workUnit';
+	$fileds = 'familyId,familyName,sex,birthDate,relation,telphone,workUnit';
 	$data = $db->get_all($table,'where staffId='.$id.'',$fileds);
 	$dataCount = count($data);
 
@@ -167,5 +167,6 @@
 	$smarty->assign('id',$id);
 	$smarty->assign('page',$page);
 	$smarty->assign('track',$track);
+	$smarty->assign('staffName',$O['staffName']);
 
 ?>

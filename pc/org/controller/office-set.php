@@ -294,6 +294,5 @@
 	$smarty->assign('rank',$rank);
 	$smarty->assign('workBeginTime',$workBeginTime);
 	$smarty->assign('workOverTime',$workOverTime);
-
 	
 ?>

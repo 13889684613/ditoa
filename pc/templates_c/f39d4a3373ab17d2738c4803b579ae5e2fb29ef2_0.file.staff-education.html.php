@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-19 17:31:25
+/* Smarty version 3.1.29, created on 2018-12-24 16:08:22
   from "F:\website\ditoaCoder\ditoa\pc\humanAffairs\view\staff-education.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c1a0fed792925_69515146',
+  'unifunc' => 'content_5c2093f6c4ceb8_93921688',
   'file_dependency' => 
   array (
     'f39d4a3373ab17d2738c4803b579ae5e2fb29ef2' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\humanAffairs\\view\\staff-education.html',
-      1 => 1545211878,
+      1 => 1545638900,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c1a0fed792925_69515146 ($_smarty_tpl) {
+function content_5c2093f6c4ceb8_93921688 ($_smarty_tpl) {
 ?>
 <!-- 
 	# 员工基本资料页面
@@ -64,9 +64,10 @@ function content_5c1a0fed792925_69515146 ($_smarty_tpl) {
 			<!--内容区导航begin-->
 			<div class="contentRightNav clearfix">
 				<div class="contentRightNavLeft pull-left">
-					<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="？_f=staff<?php echo $_smarty_tpl->tpl_vars['track']->value;?>
+					<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="human-affairs.php?_f=staff<?php echo $_smarty_tpl->tpl_vars['track']->value;?>
 ">员工管理</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">教育与工作经历</span></div>
-					<div class="contentRightNavBottom"><span class="name">教育与工作经历设置</span></div>
+					<div class="contentRightNavBottom"><span class="name"><?php echo $_smarty_tpl->tpl_vars['staffName']->value;?>
+ - 教育与工作经历设置</span></div>
 				</div>
 				<!--状态begin-->
 				<!-- <div class="contentRightNavRight pull-right clearfix">

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-18 16:01:13
+/* Smarty version 3.1.29, created on 2018-12-24 16:06:21
   from "F:\website\ditoaCoder\ditoa\pc\humanAffairs\view\staff-file.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c18a949c03e99_56451606',
+  'unifunc' => 'content_5c20937d9c7560_12607411',
   'file_dependency' => 
   array (
     '37993294b1a39a231b0dceb76b602c749cf36687' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\humanAffairs\\view\\staff-file.html',
-      1 => 1545120030,
+      1 => 1545638779,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c18a949c03e99_56451606 ($_smarty_tpl) {
+function content_5c20937d9c7560_12607411 ($_smarty_tpl) {
 ?>
 <!-- 
 	# 资料上传
@@ -64,9 +64,10 @@ function content_5c18a949c03e99_56451606 ($_smarty_tpl) {
 			<!--内容区导航begin-->
 			<div class="contentRightNav clearfix">
 				<div class="contentRightNavLeft pull-left">
-					<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="？_f=staff<?php echo $_smarty_tpl->tpl_vars['track']->value;?>
+					<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="human-affairs.php?_f=staff<?php echo $_smarty_tpl->tpl_vars['track']->value;?>
 ">员工管理</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">资料上传</span></div>
-					<div class="contentRightNavBottom"><span class="name">资料上传</span></div>
+					<div class="contentRightNavBottom"><span class="name"><?php echo $_smarty_tpl->tpl_vars['staffName']->value;?>
+ - 资料上传</span></div>
 				</div>
 			</div>
 			<!--内容区导航end-->
@@ -146,7 +147,7 @@ function content_5c18a949c03e99_56451606 ($_smarty_tpl) {
 									</div>
 									<?php if ($_smarty_tpl->tpl_vars['idFile']->value != '') {?>
 									<div class = "showFileName" style="display:block;"><a href="upload/file/staff/<?php echo $_smarty_tpl->tpl_vars['idFile']->value;?>
-" target="_blank">查看已上传文件</a><span></span></div>
+" target="_blank">身份证</a><span></span></div>
 									<?php } else { ?>
 									<div class = "showFileName">已选择：<span></span></div>
 									<?php }?>
@@ -241,7 +242,7 @@ $_smarty_tpl->tpl_vars['o'] = $__foreach_others_0_saved_item;
 ?>
 								<div class = "uploadBox uploadOtherBox holdBox clearfix">
 									<input type="hidden" name="otherId[]" value="0">
-									<input type="text" placeholder="请输入证件名称" name="otherName[]" class = "setUploadFileTitle" autocomplete="off"/>
+									<input type="text" placeholder="请输入证件名称" value="" name="otherName[]" class = "setUploadFileTitle" autocomplete="off"/>
 									<div class = "uploadBtnBox">
 										<input type="file" class="inputFile noMust" title=" " name = "staffFile[]"/> 
 										<img src="public/html/images/upload_file_icon.png" alt="" />

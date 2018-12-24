@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-19 13:29:21
+/* Smarty version 3.1.29, created on 2018-12-24 18:15:58
   from "F:\website\ditoaCoder\ditoa\pc\org\view\company.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c19d731227b03_95194761',
+  'unifunc' => 'content_5c20b1dead87e9_43641149',
   'file_dependency' => 
   array (
     '6ae8dd894377def2ef816c81d83163069c974f7d' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\org\\view\\company.html',
-      1 => 1545187224,
+      1 => 1545646557,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c19d731227b03_95194761 ($_smarty_tpl) {
+function content_5c20b1dead87e9_43641149 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -104,33 +104,42 @@ $_from = $_smarty_tpl->tpl_vars['data']->value;
 if (!is_array($_from) && !is_object($_from)) {
 settype($_from, 'array');
 }
+$__foreach_data_0_saved = isset($_smarty_tpl->tpl_vars['__smarty_foreach_data']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_data'] : false;
 $__foreach_data_0_saved_item = isset($_smarty_tpl->tpl_vars['i']) ? $_smarty_tpl->tpl_vars['i'] : false;
 $_smarty_tpl->tpl_vars['i'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['__smarty_foreach_data'] = new Smarty_Variable(array('iteration' => 0));
 $_smarty_tpl->tpl_vars['i']->_loop = false;
 foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 $_smarty_tpl->tpl_vars['i']->_loop = true;
+$_smarty_tpl->tpl_vars['__smarty_foreach_data']->value['iteration']++;
 $__foreach_data_0_saved_local_item = $_smarty_tpl->tpl_vars['i'];
 ?>
-								<tr<?php if ($_smarty_tpl->tpl_vars['i']->value%2 == 1) {?> class="backgroundFFF"<?php }?>>
+								<tr<?php if ((isset($_smarty_tpl->tpl_vars['__smarty_foreach_data']->value['iteration']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_data']->value['iteration'] : null)%2 == 1) {?> class="backgroundFFF"<?php }?>>
 									<td class="borderRight1">
 										<div class="editBox center-block clearfix">
 											<div class="editButton editButtonL pull-left text-center">
 												<a href="?_f=company-set&act=edit&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
 &id=<?php echo $_smarty_tpl->tpl_vars['i']->value['companyId'];
 echo $_smarty_tpl->tpl_vars['track']->value;?>
-"><img src="public/html/images/edit.jpg" alt="" /></a>
+">
+													<img src="public/html/images/edit.jpg" alt="" />
+												</a>
 											</div>
 											<div class="editButton editButtonR pull-left text-center">
-												<a href="?_f=company&act=remove&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
+												<img src="public/html/images/del.jpg" alt="" />
+												<input type="hidden" value="?_f=company&act=remove&page=<?php echo $_smarty_tpl->tpl_vars['curPage']->value;?>
 &id=<?php echo $_smarty_tpl->tpl_vars['i']->value['companyId'];
 echo $_smarty_tpl->tpl_vars['track']->value;?>
-" onclick="return confirm('确认要删除？');"><img src="public/html/images/del.jpg" alt="" /></a>
+"/>
 											</div>
 										</div>
 									</td>
 								</tr>
 								<?php
 $_smarty_tpl->tpl_vars['i'] = $__foreach_data_0_saved_local_item;
+}
+if ($__foreach_data_0_saved) {
+$_smarty_tpl->tpl_vars['__smarty_foreach_data'] = $__foreach_data_0_saved;
 }
 if ($__foreach_data_0_saved_item) {
 $_smarty_tpl->tpl_vars['i'] = $__foreach_data_0_saved_item;
@@ -159,14 +168,17 @@ $_from = $_smarty_tpl->tpl_vars['data']->value;
 if (!is_array($_from) && !is_object($_from)) {
 settype($_from, 'array');
 }
+$__foreach_data_1_saved = isset($_smarty_tpl->tpl_vars['__smarty_foreach_data']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_data'] : false;
 $__foreach_data_1_saved_item = isset($_smarty_tpl->tpl_vars['i']) ? $_smarty_tpl->tpl_vars['i'] : false;
 $_smarty_tpl->tpl_vars['i'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['__smarty_foreach_data'] = new Smarty_Variable(array('iteration' => 0));
 $_smarty_tpl->tpl_vars['i']->_loop = false;
 foreach ($_from as $_smarty_tpl->tpl_vars['i']->value) {
 $_smarty_tpl->tpl_vars['i']->_loop = true;
+$_smarty_tpl->tpl_vars['__smarty_foreach_data']->value['iteration']++;
 $__foreach_data_1_saved_local_item = $_smarty_tpl->tpl_vars['i'];
 ?>
-									<tr<?php if ($_smarty_tpl->tpl_vars['i']->value%2 == 1) {?> class="backgroundFFF"<?php }?>>
+									<tr<?php if ((isset($_smarty_tpl->tpl_vars['__smarty_foreach_data']->value['iteration']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_data']->value['iteration'] : null)%2 == 1) {?> class="backgroundFFF"<?php }?>>
 										<td class="paddingLeft12"><span><?php echo $_smarty_tpl->tpl_vars['i']->value['sn'];?>
 </span></td>
 										<td><span><?php echo $_smarty_tpl->tpl_vars['i']->value['cnName'];?>
@@ -195,6 +207,9 @@ echo $_smarty_tpl->tpl_vars['track']->value;?>
 									</tr>
 									<?php
 $_smarty_tpl->tpl_vars['i'] = $__foreach_data_1_saved_local_item;
+}
+if ($__foreach_data_1_saved) {
+$_smarty_tpl->tpl_vars['__smarty_foreach_data'] = $__foreach_data_1_saved;
 }
 if ($__foreach_data_1_saved_item) {
 $_smarty_tpl->tpl_vars['i'] = $__foreach_data_1_saved_item;

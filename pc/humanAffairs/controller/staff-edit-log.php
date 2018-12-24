@@ -25,6 +25,8 @@
 	if($id == 0){
 		exit;
 	}
+
+	$staffName = getStaffName($id);
 	
 	//记录列表页检索条件begin
 	$s_company = getVal('s_company',1,'');
@@ -82,5 +84,6 @@
 	$smarty->assign('page',$page->show_link(1));
 	$smarty->assign('track',$track);
 	$smarty->assign('id',$id);
+	$smarty->assign('staffName',$staffName);
 
 ?>

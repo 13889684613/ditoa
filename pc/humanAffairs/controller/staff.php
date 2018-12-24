@@ -175,11 +175,21 @@
 			}
 		}
 		//状态
-		$data[$key]['status'] = static_staffStatus($data[$key]['status']);
+		switch ($data[$key]['status']) {
+			case 0:
+				$data[$key]['status'] = '<span class="compassionateLeave center-block">试用</span>';
+				break;
+			case 1:
+				$data[$key]['status'] = '<span class="normal center-block">正常</span>';
+				break;
+			case 2:
+				$data[$key]['status'] = '<span class="quit center-block">离职</span>';
+				break;
+		}
 		//性别
 		$data[$key]['sex'] = static_sex($data[$key]['sex']);
 	}
-	
+
 	//数据绑定
 	$smarty->assign('pageTitle',$pageTitle);
 	$smarty->assign('company',$company);

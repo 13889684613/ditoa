@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-20 09:54:20
+/* Smarty version 3.1.29, created on 2018-12-24 16:07:40
   from "F:\website\ditoaCoder\ditoa\pc\humanAffairs\view\staff-welfare.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c1af64c50f4c8_95111729',
+  'unifunc' => 'content_5c2093cc8b40c9_42869177',
   'file_dependency' => 
   array (
     'b448e6bba14ca874a6e86fb1ce567d9c360421c2' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\humanAffairs\\view\\staff-welfare.html',
-      1 => 1545270851,
+      1 => 1545638857,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c1af64c50f4c8_95111729 ($_smarty_tpl) {
+function content_5c2093cc8b40c9_42869177 ($_smarty_tpl) {
 ?>
 <!-- 
 	# 员工基本资料页面
@@ -64,9 +64,10 @@ function content_5c1af64c50f4c8_95111729 ($_smarty_tpl) {
 			<!--内容区导航begin-->
 			<div class="contentRightNav clearfix">
 				<div class="contentRightNavLeft pull-left">
-					<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="？_f=staff<?php echo $_smarty_tpl->tpl_vars['track']->value;?>
+					<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="human-affairs.php?_f=staff<?php echo $_smarty_tpl->tpl_vars['track']->value;?>
 ">员工管理</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">社保与公积金</span></div>
-					<div class="contentRightNavBottom"><span class="name">社保与公积金</span></div>
+					<div class="contentRightNavBottom"><span class="name"><?php echo $_smarty_tpl->tpl_vars['staffName']->value;?>
+ - 社保与公积金</span></div>
 				</div>
 			</div>
 			<!--内容区导航end-->
@@ -223,12 +224,12 @@ $_smarty_tpl->tpl_vars['key'] = $__foreach_value_1_saved_key;
 								<div class = "formBox pT45">
 									<div class = "formList">
 										<div class = "form">
-											<p class = "formTitle">末次社保缴纳日期<span>*</span></p>
+											<p class = "formTitle">末次社保缴纳日期</p>
 											<input type="text" name = "insuranceOverDate" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['insuranceOverDate'];?>
 " placeholder = "请填写末次社保缴纳日期" class = "formInput insuranceOverDateForm dataInput datepicker" autocomplete="off"/>
 										</div>
 										<div class = "form">
-											<p class = "formTitle">末次公积金缴纳日期<span>*</span></p>
+											<p class = "formTitle">末次公积金缴纳日期</p>
 											<input type="text" name = "fundOverDate" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['fundOverDate'];?>
 " placeholder = "请填写末次社保缴纳日期" class = "formInput fundOverDateForm dataInput datepicker1" autocomplete="off"/>
 										</div>

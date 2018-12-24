@@ -83,10 +83,22 @@
 			$returnJson = json_encode($data);
 			echo $returnJson; exit;	
 		}
+		if($expectedSalary == 0){
+			$data['status'] = 'fail';
+			$data['message'] = '请填写期望工资';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;	
+		}
+		if($trySalary == 0){
+			$data['status'] = 'fail';
+			$data['message'] = '请填写试用期工资';
+			$returnJson = json_encode($data);
+			echo $returnJson; exit;	
+		}
 	}
 
 	$isSet = 0;
-	$fileds = 'officeId,joinDate,tryBeginDate,tryOverDate,interviewer,expectedSalary,trySalary';
+	$fileds = 'officeId,joinDate,tryBeginDate,tryOverDate,interviewer,expectedSalary,trySalary,staffName';
 	$data = $db->get_one($table,'where staffId='.$id.'',$fileds);
 
 	//非系统管理员操作权限验证，验证是否为同部门人员操作
@@ -171,5 +183,6 @@
 	$smarty->assign('page',$page);
 	$smarty->assign('isSet',$isSet);
 	$smarty->assign('track',$track);
+	$smarty->assign('staffName',$data['staffName']);
 
 ?>

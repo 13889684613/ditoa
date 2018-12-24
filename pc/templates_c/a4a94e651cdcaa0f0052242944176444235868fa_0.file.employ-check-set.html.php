@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-21 14:11:05
+/* Smarty version 3.1.29, created on 2018-12-24 18:43:17
   from "F:\website\ditoaCoder\ditoa\pc\humanAffairs\view\employ-check-set.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c1c83f927c348_17462964',
+  'unifunc' => 'content_5c20b8455d0228_87019375',
   'file_dependency' => 
   array (
     'a4a94e651cdcaa0f0052242944176444235868fa' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\humanAffairs\\view\\employ-check-set.html',
-      1 => 1545372607,
+      1 => 1545648195,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c1c83f927c348_17462964 ($_smarty_tpl) {
+function content_5c20b8455d0228_87019375 ($_smarty_tpl) {
 ?>
 <!--
 	作者：sxh
@@ -64,7 +64,8 @@ function content_5c1c83f927c348_17462964 ($_smarty_tpl) {
 					<div class="contentRightNavLeft pull-left">
 						<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="?_f=employ-check<?php echo $_smarty_tpl->tpl_vars['track']->value;?>
 ">转正考核</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">评价考核</span></div>
-						<div class="contentRightNavBottom"><span class="name">评价考核</span></div>
+						<div class="contentRightNavBottom"><span class="name"><?php echo $_smarty_tpl->tpl_vars['i']->value['staffName'];?>
+&nbsp;&nbsp;转正考核</span></div>
 					</div>
 				</div>
 				<!--内容区导航end-->

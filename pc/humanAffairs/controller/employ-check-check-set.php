@@ -202,6 +202,11 @@
 				$apply['checkStatus'] = 2;	//审批完成
 				$apply['curCheckLevel'] = $A['curCheckLevel'] + 1;	//20181220更新，为了进度轴最后一级蓝线显示，后期有问题再调整。
 
+				//结果为离职更新员工离职类型 begin
+				$arr['quitCategory'] = 1;
+				$db->update(PRFIX.'staff',$arr,'where staffId='.$A['staffId'].'');
+				//结果为离职更新员工离职类型 over
+
 			}else{
 				$apply['checkStatus'] = 1;	//审批中
 				$nextCheckLevel = $A['curCheckLevel'] + 1;

@@ -33,7 +33,7 @@
 					</div>
 					{{/if}}
 					<div class="contentHand clearfix">
-						<div class="contentHandLeft pull-left"><img src="{{$common_head}}" alt="" /></div>
+						<div class="contentHandLeft pull-left"><div class="indexHandMask"><img src="public/html/images/indexHandMask.png"/></div><img src="{{$common_head}}" alt="" /></div>
 						<div class="contentHandRight pull-left">
 							<div class="contentHandRightTop">{{$common_staffName}} ，欢迎您回来，祝你开心每一天！</div>
 							<div class="contentHandRightBottom">{{$common_officeName}} - {{$common_groupName}}</div>
@@ -112,7 +112,7 @@
 											<div class="liL pull-left">
 												{{$a.title}}
 											</div>
-											<div class="liR pull-right">{{$a.newsTime}}</div>
+											<div class="liR pull-right">{{$a.newsTime|date_format:"%Y-%m-%d"}}</div>
 										</div>
 									</a>
 									{{/foreach}}

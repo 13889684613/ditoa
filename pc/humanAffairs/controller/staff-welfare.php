@@ -70,7 +70,7 @@
 	}
 
 	$isSet = 0;
-	$fileds = 'officeId,insuranceNo,insuranceStatus,insuranceOverDate,fundNo,fundStatus,fundOverDate';
+	$fileds = 'officeId,insuranceNo,insuranceStatus,insuranceOverDate,fundNo,fundStatus,fundOverDate,staffName';
 	$data = $db->get_one($table,'where staffId='.$id.'',$fileds);
 	
 	//非系统管理员操作权限验证，验证是否为同部门人员操作
@@ -163,5 +163,6 @@
 	$smarty->assign('action',$action);
 	$smarty->assign('isSet',$isSet);
 	$smarty->assign('track',$track);
+	$smarty->assign('staffName',$data['staffName']);
 
 ?>

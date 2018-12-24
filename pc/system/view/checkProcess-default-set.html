@@ -61,12 +61,16 @@
 												<ul class="retrievalsInputNav">
 													<li data-type='0'>请选择</li>
 													{{foreach $categorys as $key=>$value}}
-													<li data-type = "{{$key}}">{{$value}}</li>
+													<li data-type = "{{$key}}"{{if $key==$i.checkCategory}} data-select="true"{{/if}}>{{$value}}</li>
 													{{/foreach}}
 													<input type="hidden" name="category" class="selectVal" value="{{$i.checkCategory}}" />
 												</ul>
 											</div>
 										</div>
+									</div>
+								</div>
+								<div class="retrievalsInputBoxs mediaWidthChange clearfix pull-left">
+									<div class="retrievalsInputContent">
 										<div class="retrievalsInput  firstIn">
 											<label class="lable_w">发起审批角色<span class="must">*</span></label>
 											<input type="text" readonly="readonly" onfocus="this.blur()" class="choseInput choseInputJs" placeholder="请选择"  data-type='0' />
@@ -74,26 +78,27 @@
 												<ul class="retrievalsInputNav">
 													<li data-type='0'>请选择</li>
 													{{foreach item=r name=roles from=$roles}}
-													<li data-type='{{$r.checkRoleId}}'>{{$r.checkRoleName}}</li>
+													<li data-type='{{$r.checkRoleId}}'{{if $r.checkRoleId==$i.beginRole}} data-select="true"{{/if}}>{{$r.checkRoleName}}</li>
 													{{/foreach}}
 													<input type="hidden" name="beginRole" class="selectVal" value="{{$i.beginRole}}" />
 												</ul>
 											</div>
 										</div>
-										<div class="retrievalsInput clearfix">
-											<div class="queryButton pull-left">确定</div>
-										</div>
+										
 									</div>
 								</div>
+								<div class="retrievalsInput clearfix pull-left">
+											<div class="queryButton pull-left">确定</div>
+										</div>
 							</div>
 						</div>
-						<div class="approvalInformationBox">
+						<div class="approvalInformationBox"{{if $action=='editSave'}} style="display: block;"{{/if}}>
 							<!--审批信息begin-->
 							<div class="approval-informationBox">
+								{{if $action=='addSave'}}
 								<div class="approval-information">
 									<div class="approval-informationTitle">设置审批信息</div>
 									<table class="Stable">
-										{{if $action=='addSave'}}
 										<tr>
 											<td width="84" class="td1 text-center">
 												<span class="center-block">01</span>
@@ -115,8 +120,13 @@
 												</div>
 											</td>
 										</tr>
-										{{/if}}
-										{{foreach item=p name=process from=$i.process}}
+									</table>
+								</div>
+								{{/if}}
+								{{foreach item=p name=process from=$i.process}}
+								<div class="approval-information">
+									{{if $smarty.foreach.process.iteration==1}}<div class="approval-informationTitle">设置审批信息</div>{{/if}}
+									<table class="Stable">
 										<tr>
 											<td width="84" class="td1 text-center">
 												<span class="center-block">{{$smarty.foreach.process.iteration}}</span>
@@ -129,7 +139,7 @@
 															<ul class="retrievalsInputNav">
 																<li data-type='0'>请选择</li>
 																{{foreach item=r name=roles from=$roles}}
-																<li data-type='{{$r.checkRoleId}}'>{{$r.checkRoleName}}</li>
+																<li data-type='{{$r.checkRoleId}}'{{if $r.checkRoleId==$p.roleId}} data-select="true"{{/if}}>{{$r.checkRoleName}}</li>
 																{{/foreach}}
 																<input type="hidden" name="role[]" value="{{$p.roleId}}"  class="selectVal" value="" />
 															</ul>
@@ -138,9 +148,9 @@
 												</div>
 											</td>
 										</tr>
-										{{/foreach}}
 									</table>
 								</div>
+								{{/foreach}}
 							</div>
 							<!--审批信息end-->
 							<div class="addInformationBox">

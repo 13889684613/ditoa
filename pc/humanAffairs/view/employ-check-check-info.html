@@ -82,7 +82,7 @@
                                     	描述：蓝色线的长度---0 19.5% 39.1% 58.7% 78.3% 100%
                                     -->
 									<div class="stepActiveLine" style="width: {{$i.blueLineWidth}};"></div>
-									<div class="stepNormalLine"></div>
+									<div class="stepNormalLine" style="width: 78.3%;"></div>
 									{{foreach item=p name=process from=$process}}
 									<div class="{{$p.circleClass}}position{{$smarty.foreach.process.iteration}}"><!--完成圆-->
 										<div class="stepContentBox">
@@ -93,11 +93,11 @@
 										</div>
 									</div>
 									{{/foreach}}
-									<div class="circleNormal position6">
+									<!-- <div class="circleNormal position6">
 										<div class="stepContentBox">
 											<div class="text1">完成</div>
 										</div>
-									</div>
+									</div> -->
 								</div>
 							</div>
 							<div class="official-assessment-out-box">
@@ -113,14 +113,14 @@
 								<div class="official-assessment-status">
 									<img src="public/html/images/icon-extend.png"/>
 									<div class="statusTips1">待审批</div>
-									<div class="statusTips2">{{$i.staffName}} 小伙伴儿，请耐心等待哦</div>
+									<div class="statusTips2">{{$i.staffName}} 小伙伴儿待审批</div>
 								</div>
 								{{/if}}
 								{{if $i.checkStatus == 1}}
 								<div class="official-assessment-status">
 									<img src="public/html/images/icon-extend.png"/>
 									<div class="statusTips1">审批中</div>
-									<div class="statusTips2">{{$i.staffName}} 小伙伴儿，正在审批中，请耐心等待哦</div>
+									<div class="statusTips2">{{$i.staffName}} 小伙伴儿，正在审批中</div>
 								</div>
 								{{/if}}
 								{{if $i.checkResult == 3}}
@@ -142,8 +142,8 @@
 								<div class="official-assessment-status">
 									<img src="public/html/images/icon-extend.png"/>
 									<div class="statusTips1">延长试用期</div>
-									<div class="statusTips2">{{$i.staffName}}  根据你试用期的表现，公司经再三考虑，决定延长试用期至{{$i.tryOverDate}}</div>
-									<div class="statusTips2">“请继续努力，加油！”</div>
+									<div class="statusTips2">{{$i.staffName}}  根据试用期的表现，决定延长试用期至{{$i.tryOverDate}}</div>
+									<div class="statusTips2">“继续努力，加油！”</div>
 								</div>
 								{{/if}}
 								{{if count($check)>0}}

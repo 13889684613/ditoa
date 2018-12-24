@@ -97,19 +97,14 @@ $(function() {
 		var timeFormz = $('.timeFormz').val();
 		var reg = /^(20|21|22|23|[0-1]\d):[0-5]\d$/;
 		var regExp = new RegExp(reg);
+		if(officeCodeInputb == '') {
+			popAlert('请输入部门编号');
+			$('.officeCodeInputb').focus();
+			return false;
+		}
 		if(officeNameInput == '') {
 			popAlert('请输入办事处名称');
 			$('.officeNameInput').focus();
-			return false;
-		}
-		if(faxInput == '') {
-			popAlert('请输入传真');
-			$('.faxInput').focus();
-			return false;
-		}
-		if(rankInput == '') {
-			popAlert('请设置排序');
-			$('.rankInput').focus();
 			return false;
 		}
 		if(phoneInput == '') {
@@ -117,14 +112,19 @@ $(function() {
 			$('.phoneInput').focus();
 			return false;
 		}
+		if(faxInput == '') {
+			popAlert('请输入传真');
+			$('.faxInput').focus();
+			return false;
+		}
 		if(addressInput == '') {
 			popAlert('请输入详细地址');
 			$('.addressInput').focus();
 			return false;
 		}
-		if(officeCodeInputb == '') {
-			popAlert('请输入部门编号');
-			$('.officeCodeInputb').focus();
+		if(rankInput == '') {
+			popAlert('请设置排序');
+			$('.rankInput').focus();
 			return false;
 		}
 		if(timeForms == '') {

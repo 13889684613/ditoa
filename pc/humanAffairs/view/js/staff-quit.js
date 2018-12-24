@@ -86,7 +86,7 @@ $(function(){
                     success:function(data){
                         data = $.parseJSON(data);
                         if(data.status == 'success'){
-                            location.href = data.url;
+                            popAlert(data.message,data.url); //弹出错误信息
                         }else{
                             popAlert(data.message); //弹出错误信息
                         }

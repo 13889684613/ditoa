@@ -136,6 +136,7 @@
 		$val['workOverTime'] = $workOverTime;
 		$val['workCoordinate'] = $workCoordinate;
 		$val['workRange'] = $workRange;
+		$val['workAddress'] = $workAddress;
 		$val['rank'] = $rank;
 		$val['createTime'] = date('Y-m-d H:i:s');
 
@@ -165,6 +166,7 @@
 
 		$data = $db->get_one($table,'where groupId='.$id.'');
 		if($data){
+			$data['workWeekString'] = $data['workWeek'];
 			$data['workWeek'] = explode(',',$data['workWeek']);
 			$rank = $data['rank'];
 			$workBeginTime = $data['workBeginTime'];
@@ -198,6 +200,7 @@
 		$val['workOverTime'] = $workOverTime;
 		$val['workCoordinate'] = $workCoordinate;
 		$val['workRange'] = $workRange;
+		$val['workAddress'] = $workAddress;
 		$val['rank'] = $rank;
 		$val['updateTime'] = date('Y-m-d H:i:s');
 

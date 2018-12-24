@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-19 13:37:14
+/* Smarty version 3.1.29, created on 2018-12-24 19:44:07
   from "F:\website\ditoaCoder\ditoa\pc\generalAffairs\view\certificate-set.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c19d90a060538_56567924',
+  'unifunc' => 'content_5c20c68701e374_92794461',
   'file_dependency' => 
   array (
     '7323f07644b54deb0b0fbfa22c17809132d30c20' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\generalAffairs\\view\\certificate-set.html',
-      1 => 1545189097,
+      1 => 1545651844,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c19d90a060538_56567924 ($_smarty_tpl) {
+function content_5c20c68701e374_92794461 ($_smarty_tpl) {
 ?>
 <!-- 
 	# 企业资质证件
@@ -93,10 +93,9 @@ function content_5c19d90a060538_56567924 ($_smarty_tpl) {
 								<div class = "roleUserInfo clearfix">
 									<!-- <div class = "form userName clearfix"> -->
 									<div class = "retrievalsInput pull-left mR40 clearfix">
-										<label class="lable_w">备品类别<span class="must">*</span></label>		
+										<label class="lable_w">所属企业<span class="must">*</span></label>		
 										<!-- <p class = "formTitle">所属企业<span>*</span></p> -->
-										<input type="text" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputBm companyInput" placeholder="请选择" name="company" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['companyId'];?>
-" data-type='0' />
+										<input type="text" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputBm companyInput" placeholder="请选择" data-type='0' />
 										<div class="retrievalsInputNavBox">
 											<ul class="retrievalsInputNav">
 												<li data-type = "0">请选择</li>
@@ -113,7 +112,7 @@ $_smarty_tpl->tpl_vars['c']->_loop = true;
 $__foreach_company_0_saved_local_item = $_smarty_tpl->tpl_vars['c'];
 ?>
 												<li data-type = "<?php echo $_smarty_tpl->tpl_vars['c']->value['companyId'];?>
-"><?php echo $_smarty_tpl->tpl_vars['c']->value['cnName'];?>
+"<?php if ($_smarty_tpl->tpl_vars['c']->value['companyId'] == $_smarty_tpl->tpl_vars['i']->value['companyId']) {?> data-select="true"<?php }?>><?php echo $_smarty_tpl->tpl_vars['c']->value['cnName'];?>
 </li>
 												<?php
 $_smarty_tpl->tpl_vars['c'] = $__foreach_company_0_saved_local_item;
@@ -122,7 +121,8 @@ if ($__foreach_company_0_saved_item) {
 $_smarty_tpl->tpl_vars['c'] = $__foreach_company_0_saved_item;
 }
 ?>
-												<input type="hidden" class="selectVal" value="" autocomplete="off">
+												<input type="hidden" name="company" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['companyId'];?>
+" class="selectVal" value="" autocomplete="off">
 											</ul>
 										</div>
 									</div>
@@ -168,6 +168,8 @@ $_smarty_tpl->tpl_vars['c'] = $__foreach_company_0_saved_item;
 									</div>
 								</div>	
 							</div>
+							<input type="hidden" name="old" value="upload/file/cer/<?php echo $_smarty_tpl->tpl_vars['i']->value['cerImg'];?>
+">
 						</form>
 					</div>
 					<div class = "formBtnsBox clearfix">

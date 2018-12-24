@@ -565,7 +565,7 @@
 
 			if($node == 4){
 				$finishClass = 'circleFinished ';
-				$lineWidth = '100%';
+				$lineWidth = '73.3%';
 			}elseif($node == 3){
 				$contractClass = 'circleActive ';
 				$lineWidth = '49%';

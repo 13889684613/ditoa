@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-20 13:20:20
+/* Smarty version 3.1.29, created on 2018-12-24 16:59:11
   from "F:\website\ditoaCoder\ditoa\pc\humanAffairs\view\staff-contract.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c1b26941896b7_66408181',
+  'unifunc' => 'content_5c209fdfacca81_62846640',
   'file_dependency' => 
   array (
     '26a25ca67d6ad7aa15d0ed3ec004c1d1017e9028' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\humanAffairs\\view\\staff-contract.html',
-      1 => 1545283217,
+      1 => 1545641905,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c1b26941896b7_66408181 ($_smarty_tpl) {
+function content_5c209fdfacca81_62846640 ($_smarty_tpl) {
 ?>
 <!-- 
 	# 员工基本资料页面
@@ -64,9 +64,10 @@ function content_5c1b26941896b7_66408181 ($_smarty_tpl) {
 			<!--内容区导航begin-->
 			<div class="contentRightNav clearfix">
 				<div class="contentRightNavLeft pull-left">
-					<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="？_f=staff<?php echo $_smarty_tpl->tpl_vars['track']->value;?>
+					<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="human-affairs.php?_f=staff<?php echo $_smarty_tpl->tpl_vars['track']->value;?>
 ">员工管理</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">合同信息</span></div>
-					<div class="contentRightNavBottom"><span class="name">合同信息</span></div>
+					<div class="contentRightNavBottom"><span class="name"><?php echo $_smarty_tpl->tpl_vars['staffName']->value;?>
+ - 合同信息</span></div>
 				</div>
 			</div>
 			<!--内容区导航end-->
@@ -148,12 +149,9 @@ $_smarty_tpl->tpl_vars['i']->_loop = true;
 $__foreach_data_0_saved_local_item = $_smarty_tpl->tpl_vars['i'];
 ?>
 									<div class = "staffFamilyInfo clearfix">
-										<input type="hidden" name="contractId[]" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['contractId'];?>
-">
-										<p class = "formTitle w75H42Mb0Fl">所属企业<span>*</span></p>
-										<div class = "formInput formSelect company w250Mr14Fl">请选择所属企业</div>
+										<div class = "formInput formSelect company w250Mr14Fl">所属企业</div>
 										<ul class = "formSelectList">
-											<li class = "default">请选择所属企业</li>
+											<li data-type="" class = "default">所属企业</li>
 											<?php
 $_from = $_smarty_tpl->tpl_vars['companys']->value;
 if (!is_array($_from) && !is_object($_from)) {
@@ -167,7 +165,7 @@ $_smarty_tpl->tpl_vars['c']->_loop = true;
 $__foreach_companys_1_saved_local_item = $_smarty_tpl->tpl_vars['c'];
 ?>
 											<li data-type="<?php echo $_smarty_tpl->tpl_vars['c']->value['companyId'];?>
-"><?php echo $_smarty_tpl->tpl_vars['c']->value['cnName'];?>
+"<?php if ($_smarty_tpl->tpl_vars['c']->value['companyId'] == $_smarty_tpl->tpl_vars['i']->value['companyId']) {?> data-select="true"<?php }?>><?php echo $_smarty_tpl->tpl_vars['c']->value['cnName'];?>
 </li>
 											<?php
 $_smarty_tpl->tpl_vars['c'] = $__foreach_companys_1_saved_local_item;
@@ -186,6 +184,8 @@ $_smarty_tpl->tpl_vars['c'] = $__foreach_companys_1_saved_item;
 										<span class="leftLh42DisBlock">至</span>
 										<input type="text" name = "overDate[]" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['overDate'];?>
 " placeholder="结束日期" class = "formInput overDateForm dataInput datepickera w180Mr14Ml12Fl" autocomplete="off"/>
+										<input type="hidden" name="contractId[]" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['contractId'];?>
+">
 										<img src="public/html/images/input_remove.png" alt="" class = "remove">
 									</div>
 									<?php
@@ -196,11 +196,9 @@ $_smarty_tpl->tpl_vars['i'] = $__foreach_data_0_saved_item;
 }
 ?>
 									<div class = "staffFamilyInfo clearfix">
-										<input type="hidden" name="contractId[]" value="0">
-										<p class = "formTitle w75H42Mb0Fl">所属企业<span>*</span></p>
-										<div class = "formInput formSelect company w250Mr14Fl">请选择所属企业</div>
+										<div class = "formInput formSelect company w250Mr14Fl">所属企业</div>
 										<ul class = "formSelectList">
-											<li class = "default">请选择所属企业</li>
+											<li class = "default">所属企业</li>
 											<?php
 $_from = $_smarty_tpl->tpl_vars['companys']->value;
 if (!is_array($_from) && !is_object($_from)) {
@@ -229,6 +227,7 @@ $_smarty_tpl->tpl_vars['c'] = $__foreach_companys_2_saved_item;
 										<input type="text" name = "beginDate[]" placeholder="开始日期" class = "formInput beginDateForm dataInput datepicker w180Mr12Fl" autocomplete="off"/>
 										<span class="leftLh42DisBlock">至</span>
 										<input type="text" name = "overDate[]" placeholder="结束日期" class = "formInput overDateForm dataInput datepickera w180Mr14Ml12Fl" autocomplete="off"/>
+										<input type="hidden" name="contractId[]" value="0">
 										<img src="public/html/images/input_add.png" alt="" class = "add">
 									</div>
 								</div>

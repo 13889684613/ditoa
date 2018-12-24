@@ -19,15 +19,6 @@
 
 	//表单元素赋能 begin
 
-	$select['company'] = '请选择所属企业';
-	$select['office'] = '请选择部门名称';
-	$select['group'] = '请选择所属小组';
-	$select['post'] = '请选择职务';
-	$select['lunarMonth'] = '请选择月份';
-	$select['lunarDay'] = '请选择日期';
-	$select['education'] = '请选择学历';
-	$select['political'] = '请选择政治面貌';
-
 	//非系统管理员仅显示相同的企业、部门、工作组
 	if($common_category == 0){
 		$companyWhere = 'where companyId='.$common_company.' ';
@@ -78,8 +69,8 @@
 	$birthDate = getVal('birthDate',2,'');
 	$lunarMonth = getVal('lunarMonth',2,'');
 	$lunarDay = getVal('lunarDay',2,'');
-	$lunarHour = getVal('lunarHour',1,'');
-	$lunarMinute = getVal('lunarMinute',1,'');
+	$lunarHour = getVal('lunarHour',2,'');
+	$lunarMinute = getVal('lunarMinute',2,'');
 	$lunarDate = $lunarMonth.','.$lunarDay.','.$lunarHour.','.$lunarMinute;	//农历日期
 	$tel = getVal('tel',1,'');
 	$phone = getVal('phone',2,'');
@@ -446,14 +437,6 @@
 			if($data['busFee'] == 0){
 				$data['busFee'] = '';
 			}
-			$select['company'] = getCompanyName($data['companyId']);
-			$select['office'] = getOfficeName($data['officeId']);
-			$select['group'] = getGroupName($data['groupId']);
-			$select['post'] = getPostName($data['postId']);
-			$select['lunarMonth'] = static_lunarMonth($data['lunarMonth']);
-			$select['lunarDay'] = static_lunarDay($data['lunarDay']);
-			$select['education'] = static_education($data['education']);
-			$select['political'] = static_political($data['politicalType']);
 
 		}
 
@@ -588,6 +571,5 @@
 	$smarty->assign('s_overtime',$s_overtime);
 	$smarty->assign('s_name',$s_name);
 	$smarty->assign('s_idno',$s_idno);
-	$smarty->assign('select',$select);
 
 ?>

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-21 10:02:38
+/* Smarty version 3.1.29, created on 2018-12-24 15:56:09
   from "F:\website\ditoaCoder\ditoa\pc\index\view\index.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c1c49be9f34b3_15233106',
+  'unifunc' => 'content_5c2091198a00c8_82731892',
   'file_dependency' => 
   array (
     'd4b9b3ff6ddc6dc96ab3c4af64b80c09e6e169f5' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\index\\view\\index.html',
-      1 => 1545357361,
+      1 => 1545638164,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,8 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c1c49be9f34b3_15233106 ($_smarty_tpl) {
+function content_5c2091198a00c8_82731892 ($_smarty_tpl) {
+if (!is_callable('smarty_modifier_date_format')) require_once 'F:\\website\\ditoaCoder\\ditoa\\pc\\public\\library\\smarty\\plugins\\modifier.date_format.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -64,7 +65,7 @@ function content_5c1c49be9f34b3_15233106 ($_smarty_tpl) {
 					</div>
 					<?php }?>
 					<div class="contentHand clearfix">
-						<div class="contentHandLeft pull-left"><img src="<?php echo $_smarty_tpl->tpl_vars['common_head']->value;?>
+						<div class="contentHandLeft pull-left"><div class="indexHandMask"><img src="public/html/images/indexHandMask.png"/></div><img src="<?php echo $_smarty_tpl->tpl_vars['common_head']->value;?>
 " alt="" /></div>
 						<div class="contentHandRight pull-left">
 							<div class="contentHandRightTop"><?php echo $_smarty_tpl->tpl_vars['common_staffName']->value;?>
@@ -144,7 +145,7 @@ $__foreach_news_0_saved_local_item = $_smarty_tpl->tpl_vars['n'];
 												<?php echo $_smarty_tpl->tpl_vars['n']->value['title'];?>
 
 											</div>
-											<div class="liR pull-right"><?php echo $_smarty_tpl->tpl_vars['n']->value['newsTime'];?>
+											<div class="liR pull-right"><?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['n']->value['newsTime'],"%Y-%m-%d");?>
 </div>
 										</div>
 									</a>
@@ -181,7 +182,7 @@ $__foreach_actives_1_saved_local_item = $_smarty_tpl->tpl_vars['a'];
 												<?php echo $_smarty_tpl->tpl_vars['a']->value['title'];?>
 
 											</div>
-											<div class="liR pull-right"><?php echo $_smarty_tpl->tpl_vars['a']->value['newsTime'];?>
+											<div class="liR pull-right"><?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['a']->value['newsTime'],"%Y-%m-%d");?>
 </div>
 										</div>
 									</a>

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-18 16:14:53
+/* Smarty version 3.1.29, created on 2018-12-24 16:09:06
   from "F:\website\ditoaCoder\ditoa\pc\humanAffairs\view\staff-family.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c18ac7d303788_58397310',
+  'unifunc' => 'content_5c2094226a6cc8_74253286',
   'file_dependency' => 
   array (
     '287b14c94cc883f3a86ebfab166c2ba91234867f' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\humanAffairs\\view\\staff-family.html',
-      1 => 1545120882,
+      1 => 1545638920,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c18ac7d303788_58397310 ($_smarty_tpl) {
+function content_5c2094226a6cc8_74253286 ($_smarty_tpl) {
 ?>
 <!-- 
 	# 员工基本资料页面
@@ -64,9 +64,10 @@ function content_5c18ac7d303788_58397310 ($_smarty_tpl) {
 			<!--内容区导航begin-->
 			<div class="contentRightNav clearfix">
 				<div class="contentRightNavLeft pull-left">
-					<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="？_f=staff<?php echo $_smarty_tpl->tpl_vars['track']->value;?>
+					<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="human-affairs.php?_f=staff<?php echo $_smarty_tpl->tpl_vars['track']->value;?>
 ">员工管理</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">家庭主要成员</span></div>
-					<div class="contentRightNavBottom"><span class="name">家庭主要成员设置</span></div>
+					<div class="contentRightNavBottom"><span class="name"><?php echo $_smarty_tpl->tpl_vars['staffName']->value;?>
+ - 家庭主要成员设置</span></div>
 				</div>
 				<!--状态begin-->
 				<!-- <div class="contentRightNavRight pull-right clearfix">
@@ -200,7 +201,7 @@ $_smarty_tpl->tpl_vars['key'] = $__foreach_value_1_saved_key;
 " placeholder="联系电话" class = "formInput telphoneForm" autocomplete="off"/>
 										<input type="text" name = "workUnit[]" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['workUnit'];?>
 " placeholder="工作单位" class = "formInput workUnitForm" autocomplete="off"/>
-										<img src="public/html/images/input_add.png" alt="" class = "remove">
+										<img src="public/html/images/input_remove.png" alt="" class = "remove">
 										<p class = "familyAge">年龄：<span>0</span></p>
 									</div>
 									<?php

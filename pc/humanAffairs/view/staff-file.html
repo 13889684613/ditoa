@@ -34,8 +34,8 @@
 			<!--内容区导航begin-->
 			<div class="contentRightNav clearfix">
 				<div class="contentRightNavLeft pull-left">
-					<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="？_f=staff{{$track}}">员工管理</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">资料上传</span></div>
-					<div class="contentRightNavBottom"><span class="name">资料上传</span></div>
+					<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="human-affairs.php?_f=staff{{$track}}">员工管理</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">资料上传</span></div>
+					<div class="contentRightNavBottom"><span class="name">{{$staffName}} - 资料上传</span></div>
 				</div>
 			</div>
 			<!--内容区导航end-->
@@ -92,7 +92,7 @@
 										<p class = "uploadBtnTxt">上传身份证</p>
 									</div>
 									{{if $idFile!=''}}
-									<div class = "showFileName" style="display:block;"><a href="upload/file/staff/{{$idFile}}" target="_blank">查看已上传文件</a><span></span></div>
+									<div class = "showFileName" style="display:block;"><a href="upload/file/staff/{{$idFile}}" target="_blank">身份证</a><span></span></div>
 									{{else}}
 									<div class = "showFileName">已选择：<span></span></div>
 									{{/if}}
@@ -164,7 +164,7 @@
 								{{/foreach}}
 								<div class = "uploadBox uploadOtherBox holdBox clearfix">
 									<input type="hidden" name="otherId[]" value="0">
-									<input type="text" placeholder="请输入证件名称" name="otherName[]" class = "setUploadFileTitle" autocomplete="off"/>
+									<input type="text" placeholder="请输入证件名称" value="" name="otherName[]" class = "setUploadFileTitle" autocomplete="off"/>
 									<div class = "uploadBtnBox">
 										<input type="file" class="inputFile noMust" title=" " name = "staffFile[]"/> 
 										<img src="public/html/images/upload_file_icon.png" alt="" />

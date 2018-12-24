@@ -66,7 +66,7 @@
 									<th width='77' class="text-center borderRight1"><span>操作</span></th>
 								</tr>
 								{{foreach item=i name=data from=$data}}
-								<tr{{if $i%2==1}} class="backgroundFFF"{{/if}}>
+								<tr{{if $smarty.foreach.data.iteration%2==1}} class="backgroundFFF"{{/if}}}>
 									<td class="borderRight1">
 										<div class="editBox center-block clearfix">
 											<div class="editButton editButtonZ pull-left text-center">
@@ -81,13 +81,13 @@
 								<table class="table1 table1Content">
 									<tr>
 										<th width="70" class="paddingLeft12"><span>#</span></th>
-										<th width="254"><span>规章制度</span></th>
-										<th width="500"><span>创建时间</span></th>
+										<th width="200"><span>规章制度</span></th>
+										<th width="400"><span>创建时间</span></th>
 									</tr>
 									{{foreach item=i name=data from=$data}}
-									<tr class="backgroundFFF">
+									<tr{{if $smarty.foreach.data.iteration%2==1}} class="backgroundFFF"{{/if}}}>
 										<td class="paddingLeft12"><span>{{$i.sn}}</span></td>
-										<td width="254"><span>{{$i.title}}</span></td>
+										<td><span>{{$i.title}}</span></td>
 										<td><span>{{$i.createTime}}</span></td>
 									</tr>
 									{{/foreach}}

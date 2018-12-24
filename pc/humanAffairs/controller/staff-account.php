@@ -77,7 +77,7 @@
 	}
 
 	//初始化数据
-	$data = $db->get_one($table,'where staffId='.$id.'','officeId,sysRoleId,checkRoleId,status');
+	$data = $db->get_one($table,'where staffId='.$id.'','officeId,sysRoleId,checkRoleId,status,staffName');
 
 	//非系统管理员操作权限验证，验证是否为同部门人员操作
 	if($common_category == 0){
@@ -170,5 +170,6 @@
 	$smarty->assign('page',$page);
 	$smarty->assign('track',$track);
 	$smarty->assign('isSet',$isSet);
+	$smarty->assign('staffName',$data['staffName']);
 
 ?>

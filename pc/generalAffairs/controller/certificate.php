@@ -31,7 +31,7 @@
 		$where .= ' and companyId='.$s_company.'';
 		$track .= '&s_company='.$s_company.'';
 	}
-	if($s_name!=''){
+	if($s_name!=''&&$s_name!='请输入证件名称'){
 		$where .= ' and (cerName like "%'.$s_name.'%" or remark like "%'.$s_name.'%")';
 		$track .= '&s_name='.$s_name.'';
 	}

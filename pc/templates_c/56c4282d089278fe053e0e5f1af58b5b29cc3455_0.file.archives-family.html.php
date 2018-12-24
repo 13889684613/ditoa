@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-21 11:58:10
+/* Smarty version 3.1.29, created on 2018-12-24 18:20:19
   from "F:\website\ditoaCoder\ditoa\pc\humanAffairs\view\archives-family.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c1c64d2b6b850_63276269',
+  'unifunc' => 'content_5c20b2e329b1e7_68406727',
   'file_dependency' => 
   array (
     '56c4282d089278fe053e0e5f1af58b5b29cc3455' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\humanAffairs\\view\\archives-family.html',
-      1 => 1545357361,
+      1 => 1545646811,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/archives.html' => 1,
   ),
 ),false)) {
-function content_5c1c64d2b6b850_63276269 ($_smarty_tpl) {
+function content_5c20b2e329b1e7_68406727 ($_smarty_tpl) {
 ?>
 <!--
 	作者：sxh
@@ -146,7 +146,7 @@ $_smarty_tpl->tpl_vars['i']->_loop = true;
 $_smarty_tpl->tpl_vars['__smarty_foreach_data']->value['iteration']++;
 $__foreach_data_0_saved_local_item = $_smarty_tpl->tpl_vars['i'];
 ?>
-										<tr<?php if ($_smarty_tpl->tpl_vars['i']->value%2 == 1) {?> class="backgroundFFF"<?php }?>>
+										<tr<?php if ((isset($_smarty_tpl->tpl_vars['__smarty_foreach_data']->value['iteration']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_data']->value['iteration'] : null)%2 == 1) {?> class="backgroundFFF"<?php }?>}>
 											<td class="paddingLeft30"><span><?php echo (isset($_smarty_tpl->tpl_vars['__smarty_foreach_data']->value['iteration']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_data']->value['iteration'] : null);?>
 </span></td>
 											<td><span><?php echo $_smarty_tpl->tpl_vars['i']->value['familyName'];?>

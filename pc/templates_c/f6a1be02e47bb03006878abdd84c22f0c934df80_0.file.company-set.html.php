@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-18 14:21:25
+/* Smarty version 3.1.29, created on 2018-12-24 10:57:03
   from "F:\website\ditoaCoder\ditoa\pc\org\view\company-set.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c1891e5348e52_35182650',
+  'unifunc' => 'content_5c204aff8abaa6_01817281',
   'file_dependency' => 
   array (
     'f6a1be02e47bb03006878abdd84c22f0c934df80' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\org\\view\\company-set.html',
-      1 => 1545114080,
+      1 => 1545620222,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c1891e5348e52_35182650 ($_smarty_tpl) {
+function content_5c204aff8abaa6_01817281 ($_smarty_tpl) {
 ?>
 <!-- 
 	# 企业详情编辑
@@ -147,7 +147,7 @@ function content_5c1891e5348e52_35182650 ($_smarty_tpl) {
 											<p class = "formTitle">电话<span>*</span></p>
 											<input type="text" name = "phone" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['phone'];?>
 " placeholder = "请输入企业电话" class = "formInput phoneInput" autocomplete="off" />
-											<p class = "tips">如有多个，请使用“ ；”号隔开</p>
+											<p class = "tips">如有多个，请使用“ / ”隔开</p>
 										</div>
 									</div>
 									<div class = "formBox w23">
@@ -155,7 +155,7 @@ function content_5c1891e5348e52_35182650 ($_smarty_tpl) {
 											<p class = "formTitle">传真<span>*</span></p>
 											<input type="text" name = "fax" value="<?php echo $_smarty_tpl->tpl_vars['i']->value['fax'];?>
 " placeholder = "请输入企业传真号码" class = "formInput faxInput" autocomplete="off" />
-											<p class = "tips">如有多个，请使用“ ；”号隔开</p>
+											<p class = "tips">如有多个，请使用“ / ”隔开</p>
 										</div>
 									</div>
 								</div>

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-21 10:38:50
+/* Smarty version 3.1.29, created on 2018-12-24 18:11:23
   from "F:\website\ditoaCoder\ditoa\pc\humanAffairs\view\archives-file.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c1c523acda738_16152969',
+  'unifunc' => 'content_5c20b0cb90d8c7_92519733',
   'file_dependency' => 
   array (
     '4c2e203daf9183c71d303d84621bcfeb09207d73' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\humanAffairs\\view\\archives-file.html',
-      1 => 1545359929,
+      1 => 1545645416,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/archives.html' => 1,
   ),
 ),false)) {
-function content_5c1c523acda738_16152969 ($_smarty_tpl) {
+function content_5c20b0cb90d8c7_92519733 ($_smarty_tpl) {
 ?>
 <!--
 	作者：sxh
@@ -128,7 +128,7 @@ function content_5c1c523acda738_16152969 ($_smarty_tpl) {
 											未上传
 											<?php } else { ?>
 											<a href="<?php echo $_smarty_tpl->tpl_vars['i']->value['idFile'];?>
-" target="_blank"><img src="../../../public/html/images/upload_ok.png"/><?php echo $_smarty_tpl->tpl_vars['a']->value['staffName'];?>
+" target="_blank"><img src="/public/html/images/upload_ok.png"/><?php echo $_smarty_tpl->tpl_vars['a']->value['staffName'];?>
 -身份证文件</a>
 											<?php }?>
 										</span>
@@ -140,7 +140,7 @@ function content_5c1c523acda738_16152969 ($_smarty_tpl) {
 											未上传
 											<?php } else { ?>
 											<a href="<?php echo $_smarty_tpl->tpl_vars['i']->value['eduFile'];?>
-" target="_blank"><img src="../../../public/html/images/upload_ok.png"/><?php echo $_smarty_tpl->tpl_vars['a']->value['staffName'];?>
+" target="_blank"><img src="/public/html/images/upload_ok.png"/><?php echo $_smarty_tpl->tpl_vars['a']->value['staffName'];?>
 -学历证书</a>
 											<?php }?>
 										</span>
@@ -152,7 +152,7 @@ function content_5c1c523acda738_16152969 ($_smarty_tpl) {
 											未上传
 											<?php } else { ?>
 											<a href="<?php echo $_smarty_tpl->tpl_vars['i']->value['registerFile'];?>
-" target="_blank"><img src="../../../public/html/images/upload_ok.png"/><?php echo $_smarty_tpl->tpl_vars['a']->value['staffName'];?>
+" target="_blank"><img src="/public/html/images/upload_ok.png"/><?php echo $_smarty_tpl->tpl_vars['a']->value['staffName'];?>
 -户口本</a>
 											<?php }?>
 										</span>
@@ -164,7 +164,7 @@ function content_5c1c523acda738_16152969 ($_smarty_tpl) {
 											未上传
 											<?php } else { ?>
 											<a href="<?php echo $_smarty_tpl->tpl_vars['i']->value['reportFile'];?>
-" target="_blank"><img src="../../../public/html/images/upload_ok.png"/><?php echo $_smarty_tpl->tpl_vars['a']->value['staffName'];?>
+" target="_blank"><img src="/public/html/images/upload_ok.png"/><?php echo $_smarty_tpl->tpl_vars['a']->value['staffName'];?>
 -体检报告</a>
 											<?php }?>
 										</span>
@@ -185,7 +185,7 @@ $__foreach_others_0_saved_local_item = $_smarty_tpl->tpl_vars['o'];
 										<span class="staff-text"><?php echo $_smarty_tpl->tpl_vars['o']->value['attachName'];?>
 ：</span>
 										<span class="staff-info"><a href="<?php echo $_smarty_tpl->tpl_vars['o']->value['attachFile'];?>
-" target="_blank"><?php echo $_smarty_tpl->tpl_vars['a']->value['staffName'];?>
+" target="_blank"><img src="/public/html/images/upload_ok.png"/><?php echo $_smarty_tpl->tpl_vars['a']->value['staffName'];?>
 -<?php echo $_smarty_tpl->tpl_vars['o']->value['attachName'];?>
 </a></span>
 									</li>

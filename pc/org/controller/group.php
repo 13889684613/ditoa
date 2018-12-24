@@ -30,7 +30,7 @@
 		$where .= ' and officeId='.$s_office.'';
 		$track .= '&s_office='.$s_office.'';
 	}
-	if($s_name!=''){
+	if($s_name!=''&&$s_name!='请输入工作组名称'){
 		$where .= ' and groupName like "%'.$s_name.'%"';
 		$track .= '&s_name='.$s_name.'';
 	}

@@ -53,9 +53,9 @@
 													<ul class="retrievalsInputNav">
 														<li data-type = "0">请选择</li>
 														{{foreach item=c name=company from=$company}}
-														<li data-type="{{$c.companyId}}">{{$c.cnName}}</li>
+														<li data-type="{{$c.companyId}}"{{if $s_company==$c.companyId}} data-select="true"{{/if}}>{{$c.cnName}}</li>
 														{{/foreach}}
-														<input type="hidden" class="selectVal" value="{{$s_company}}" autocomplete="off" data-type="1">
+														<input type="hidden" class="selectVal" name="s_company" value="{{$s_company}}" autocomplete="off" data-type="{{$s_company}}">
 													</ul>
 												</div>
 											</div>
@@ -74,9 +74,9 @@
 													<ul class="retrievalsInputNav">
 														<li data-type = "0">请选择</li>
 														{{foreach item=o name=office from=$office}}
-														<li data-type="{{$o.officeId}}">{{$o.officeName}}</li>
+														<li data-type="{{$o.officeId}}"{{if $s_office==$o.officeId}} data-select="true"{{/if}}>{{$o.officeName}}</li>
 														{{/foreach}}
-														<input type="hidden" class="selectVal" value="{{$s_office}}" autocomplete="off" data-type="1">
+														<input type="hidden" class="selectVal" name="s_office" value="{{$s_office}}" autocomplete="off" data-type="{{$s_office}}">
 													</ul>
 												</div>
 											</div>
@@ -96,9 +96,9 @@
 													<ul class="retrievalsInputNav">
 														<li data-type = "0">请选择</li>
 														{{foreach item=p name=post from=$post}}
-														<li data-type="{{$p.postId}}">{{$p.postName}}</li>
+														<li data-type="{{$p.postId}}"{{if $s_post==$p.postId}} data-select="true"{{/if}}>{{$p.postName}}</li>
 														{{/foreach}}
-														<input type="hidden" class="selectVal" value="{{$s_post}}" autocomplete="off" data-type="1">
+														<input type="hidden" class="selectVal" name="s_post" value="{{$s_post}}" autocomplete="off" data-type="1">
 													</ul>
 												</div>
 											</div>
@@ -107,11 +107,11 @@
 												<input type="text" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputZt" placeholder="请选择" value="" data-type='0' />
 												<div class="retrievalsInputNavBox">
 													<ul class="retrievalsInputNav">
-														<li data-type = "0">请选择</li>
+														<li data-type = "0"{{if $s_status == ''}} data-select="true"{{/if}}>请选择</li>
 														{{foreach $status as $key=>$value}}
-														<li data-type="{{$key}}">{{$value}}</li>
+														<li data-type="{{$key}}"{{if $s_status==$key}} data-select="true"{{/if}}>{{$value}}</li>
 														{{/foreach}}
-														<input type="hidden" class="selectVal" value="{{$s_status}}" autocomplete="off" data-type="1">
+														<input type="hidden" class="selectVal" name="s_status" value="{{$s_status}}" autocomplete="off" data-type="{{$s_status}}">
 													</ul>
 												</div>
 											</div>
@@ -134,7 +134,7 @@
 									<th width='77' class="text-center borderRight1"><span>操作</span></th>
 								</tr>
 								{{foreach item=i name=data from=$data}}
-								<tr{{if $i%2==1}} class="backgroundFFF"{{/if}}}>
+								<tr{{if $smarty.foreach.data.iteration%2==1}} class="backgroundFFF"{{/if}}}>
 									<td class="borderRight1">
 										<div class="editBox center-block clearfix">
 											<div class="editButton editButtonL pull-left text-center">
@@ -161,7 +161,7 @@
 										<th width="94" class="text-center"><span>状态</span></th>
 									</tr>
 									{{foreach item=i name=data from=$data}}
-									<tr class="backgroundFFF">
+									<tr{{if $smarty.foreach.data.iteration%2==1}} class="backgroundFFF"{{/if}}}>
 										<td class="paddingLeft12"><span>{{$i.sn}}</span></td>
 										<td><span>{{$i.staffName}}</span></td>
 										<td><span>{{$i.company}}</span></td>

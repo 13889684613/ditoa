@@ -69,7 +69,7 @@
 										<th width='133' class="text-center borderRight1"><span>操作</span></th>
 									</tr>
 									{{foreach item=i name=data from=$data}}
-									<tr{{if $i%2==1}} class="backgroundFFF"{{/if}}>
+									<tr{{if $smarty.foreach.data.iteration%2==1}} class="backgroundFFF"{{/if}}}>
 										<td class="borderRight1">
 											<div class="editBox center-block clearfix">
 												<div class="editButton editButtonL pull-left text-center">
@@ -102,7 +102,7 @@
 										</th>
 									</tr>
 									{{foreach item=i name=data from=$data}}
-									<tr class="backgroundFFF">
+									<tr{{if $smarty.foreach.data.iteration%2==1}} class="backgroundFFF"{{/if}}}>
 										<td class="paddingLeft12"><span>{{$i.sn}}</span></td>
 										<td width="200"><span>{{$i.typeName}}</span></td>
 										<td width="200"><span>{{$i.dayNumber}}天</span></td>

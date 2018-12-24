@@ -22,7 +22,7 @@
 
 	//检索
 	$s_name = getVal('s_name',2,'');
-	if($s_name!=''){
+	if($s_name!=''&&$s_name!='请填写职务名称'){
 		$where .= 'where postName like "%'.$s_name.'%"';
 		$track .= '&s_name='.$s_name.'';
 	}

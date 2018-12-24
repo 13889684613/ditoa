@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-20 16:40:02
+/* Smarty version 3.1.29, created on 2018-12-24 16:11:48
   from "F:\website\ditoaCoder\ditoa\pc\humanAffairs\view\staff-information.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c1b5562f08d02_01630314',
+  'unifunc' => 'content_5c2094c4164766_10268732',
   'file_dependency' => 
   array (
     'c7b0edd75ec28af41d835e38cda232b487656b7b' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\humanAffairs\\view\\staff-information.html',
-      1 => 1545295196,
+      1 => 1545639105,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/menu.html' => 1,
   ),
 ),false)) {
-function content_5c1b5562f08d02_01630314 ($_smarty_tpl) {
+function content_5c2094c4164766_10268732 ($_smarty_tpl) {
 ?>
 <!-- 
 	# 员工基本资料页面
@@ -66,9 +66,11 @@ function content_5c1b5562f08d02_01630314 ($_smarty_tpl) {
 				<!--内容区导航begin-->
 				<div class="contentRightNav clearfix">
 					<div class="contentRightNavLeft pull-left">
-						<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="？_f=staff<?php echo $_smarty_tpl->tpl_vars['track']->value;?>
+						<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="human-affairs.php?_f=staff<?php echo $_smarty_tpl->tpl_vars['track']->value;?>
 ">员工管理</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">员工基本资料</span></div>
-						<div class="contentRightNavBottom"><span class="name">员工基本资料</span></div>
+						<div class="contentRightNavBottom"><span class="name"><?php if ($_smarty_tpl->tpl_vars['i']->value['staffName'] != '') {
+echo $_smarty_tpl->tpl_vars['i']->value['staffName'];?>
+ - <?php }?>员工基本资料</span></div>
 					</div>
 				</div>
 				<!--内容区导航end-->
@@ -130,7 +132,7 @@ function content_5c1b5562f08d02_01630314 ($_smarty_tpl) {
 								<?php }?> <?php }?>
 							</ul>
 						</div>
-						<form id="staffForm" method="post"></form>
+						<form id="staffForm">
 							<div class="staffInfoForm clearfix" style="background-color: #f6f6fa;padding-bottom: 0;">
 								<input type="hidden" name="page" value="<?php echo $_smarty_tpl->tpl_vars['page']->value;?>
 " />
@@ -177,7 +179,7 @@ $_smarty_tpl->tpl_vars['c']->_loop = true;
 $__foreach_companys_0_saved_local_item = $_smarty_tpl->tpl_vars['c'];
 ?>
 													<li data-type="<?php echo $_smarty_tpl->tpl_vars['c']->value['companyId'];?>
-"><?php echo $_smarty_tpl->tpl_vars['c']->value['cnName'];?>
+"<?php if ($_smarty_tpl->tpl_vars['c']->value['companyId'] == $_smarty_tpl->tpl_vars['i']->value['companyId']) {?> data-select='true'<?php }?>><?php echo $_smarty_tpl->tpl_vars['c']->value['cnName'];?>
 </li>
 													<?php
 $_smarty_tpl->tpl_vars['c'] = $__foreach_companys_0_saved_local_item;
@@ -192,9 +194,10 @@ $_smarty_tpl->tpl_vars['c'] = $__foreach_companys_0_saved_item;
 											</div>
 											<div class="form">
 												<p class="formTitle">小组<span>*</span></p>
-												<div class="formInput formSelect">请选择所属小组</div>
+												<div class="formInput formSelect"><?php echo $_smarty_tpl->tpl_vars['select']->value['group'];?>
+</div>
 												<ul class="formSelectList formSelectListSelect2">
-													<li class="default">请选择所属小组</li>
+													<li data-type="" class="default">请选择所属小组</li>
 													<?php
 $_from = $_smarty_tpl->tpl_vars['groups']->value;
 if (!is_array($_from) && !is_object($_from)) {
@@ -208,7 +211,7 @@ $_smarty_tpl->tpl_vars['g']->_loop = true;
 $__foreach_groups_1_saved_local_item = $_smarty_tpl->tpl_vars['g'];
 ?>
 													<li class="li" data-type="<?php echo $_smarty_tpl->tpl_vars['g']->value['groupId'];?>
-"><?php echo $_smarty_tpl->tpl_vars['g']->value['groupName'];?>
+"<?php if ($_smarty_tpl->tpl_vars['g']->value['groupId'] == $_smarty_tpl->tpl_vars['i']->value['groupId']) {?> data-select='true'<?php }?>><?php echo $_smarty_tpl->tpl_vars['g']->value['groupName'];?>
 </li>
 													<?php
 $_smarty_tpl->tpl_vars['g'] = $__foreach_groups_1_saved_local_item;
@@ -272,7 +275,8 @@ $_smarty_tpl->tpl_vars['g'] = $__foreach_groups_1_saved_item;
 										<div class="formList">
 											<div class="form mbottom57">
 												<p class="formTitle">部门名称<span>*</span></p>
-												<div class="formInput formSelect">请选择部门名称</div>
+												<div class="formInput formSelect"><?php echo $_smarty_tpl->tpl_vars['select']->value['office'];?>
+</div>
 												<ul class="formSelectList formSelectListSelect1">
 													<li class="default">请选择部门名称</li>
 													<?php
@@ -288,7 +292,7 @@ $_smarty_tpl->tpl_vars['o']->_loop = true;
 $__foreach_offices_2_saved_local_item = $_smarty_tpl->tpl_vars['o'];
 ?>
 													<li data-type="<?php echo $_smarty_tpl->tpl_vars['o']->value['officeId'];?>
-"><?php echo $_smarty_tpl->tpl_vars['o']->value['officeName'];?>
+"<?php if ($_smarty_tpl->tpl_vars['o']->value['officeId'] == $_smarty_tpl->tpl_vars['i']->value['officeId']) {?> data-select='true'<?php }?>><?php echo $_smarty_tpl->tpl_vars['o']->value['officeName'];?>
 </li>
 													<?php
 $_smarty_tpl->tpl_vars['o'] = $__foreach_offices_2_saved_local_item;
@@ -303,7 +307,8 @@ $_smarty_tpl->tpl_vars['o'] = $__foreach_offices_2_saved_item;
 											</div>
 											<div class="form">
 												<p class="formTitle">职务<span>*</span></p>
-												<div class="formInput formSelect">请选择职务</div>
+												<div class="formInput formSelect"><?php echo $_smarty_tpl->tpl_vars['select']->value['post'];?>
+</div>
 												<ul class="formSelectList">
 													<li class="default">请选择职务</li>
 													<?php
@@ -319,7 +324,7 @@ $_smarty_tpl->tpl_vars['p']->_loop = true;
 $__foreach_posts_3_saved_local_item = $_smarty_tpl->tpl_vars['p'];
 ?>
 													<li data-type="<?php echo $_smarty_tpl->tpl_vars['p']->value['postId'];?>
-"><?php echo $_smarty_tpl->tpl_vars['p']->value['postName'];?>
+"<?php if ($_smarty_tpl->tpl_vars['p']->value['postId'] == $_smarty_tpl->tpl_vars['i']->value['postId']) {?> data-select='true'<?php }?>><?php echo $_smarty_tpl->tpl_vars['p']->value['postName'];?>
 </li>
 													<?php
 $_smarty_tpl->tpl_vars['p'] = $__foreach_posts_3_saved_local_item;
@@ -378,9 +383,10 @@ $_smarty_tpl->tpl_vars['key'] = $__foreach_value_4_saved_key;
 											</div>
 											<div class="form">
 												<p class="formTitle">学历<span>*</span></p>
-												<div class="formInput formSelect">请选择学历</div>
+												<div class="formInput formSelect"><?php echo $_smarty_tpl->tpl_vars['select']->value['education'];?>
+</div>
 												<ul class="formSelectList">
-													<li class="default">请选择学历</li>
+													<li<?php if ($_smarty_tpl->tpl_vars['i']->value['education'] == 0) {?> data-select='true'<?php }?>>请选择学历</li>
 													<?php
 $_from = $_smarty_tpl->tpl_vars['educations']->value;
 if (!is_array($_from) && !is_object($_from)) {
@@ -396,7 +402,7 @@ $_smarty_tpl->tpl_vars['value']->_loop = true;
 $__foreach_value_5_saved_local_item = $_smarty_tpl->tpl_vars['value'];
 ?>
 													<li data-type="<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
-"><?php echo $_smarty_tpl->tpl_vars['value']->value;?>
+"<?php if ($_smarty_tpl->tpl_vars['key']->value == $_smarty_tpl->tpl_vars['i']->value['education']) {?> data-select='true'<?php }?>><?php echo $_smarty_tpl->tpl_vars['value']->value;?>
 </li>
 													<?php
 $_smarty_tpl->tpl_vars['value'] = $__foreach_value_5_saved_local_item;
@@ -414,9 +420,10 @@ $_smarty_tpl->tpl_vars['key'] = $__foreach_value_5_saved_key;
 											</div>
 											<div class="form">
 												<p class="formTitle">政治面貌</p>
-												<div class="formInput formSelect">请选择政治面貌</div>
+												<div class="formInput formSelect"><?php echo $_smarty_tpl->tpl_vars['select']->value['political'];?>
+</div>
 												<ul class="formSelectList">
-													<li class="default">请选择政治面貌</li>
+													<li data-type=""<?php if ($_smarty_tpl->tpl_vars['i']->value['politicalType'] == 0) {?> data-select='true'<?php }?>>请选择政治面貌</li>
 													<?php
 $_from = $_smarty_tpl->tpl_vars['politicals']->value;
 if (!is_array($_from) && !is_object($_from)) {
@@ -432,7 +439,7 @@ $_smarty_tpl->tpl_vars['value']->_loop = true;
 $__foreach_value_6_saved_local_item = $_smarty_tpl->tpl_vars['value'];
 ?>
 													<li data-type="<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
-"><?php echo $_smarty_tpl->tpl_vars['value']->value;?>
+"<?php if ($_smarty_tpl->tpl_vars['key']->value == $_smarty_tpl->tpl_vars['i']->value['politicalType']) {?> data-select='true'<?php }?>><?php echo $_smarty_tpl->tpl_vars['value']->value;?>
 </li>
 													<?php
 $_smarty_tpl->tpl_vars['value'] = $__foreach_value_6_saved_local_item;
@@ -471,7 +478,8 @@ $_smarty_tpl->tpl_vars['value']->_loop = true;
 $__foreach_value_7_saved_local_item = $_smarty_tpl->tpl_vars['value'];
 ?>
 													<div data-type="<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
-" class="checkBtn mRight30<?php if ($_smarty_tpl->tpl_vars['i']->value['maritalStatus'] == $_smarty_tpl->tpl_vars['key']->value) {?> on<?php }?>"><?php echo $_smarty_tpl->tpl_vars['value']->value;?>
+" class="checkBtn<?php if ($_smarty_tpl->tpl_vars['key']->value != 4) {?> mRight30<?php }
+if ($_smarty_tpl->tpl_vars['i']->value['maritalStatus'] == $_smarty_tpl->tpl_vars['key']->value) {?> on<?php }?>"><?php echo $_smarty_tpl->tpl_vars['value']->value;?>
 </div>
 													<?php
 $_smarty_tpl->tpl_vars['value'] = $__foreach_value_7_saved_local_item;
@@ -508,8 +516,8 @@ $_smarty_tpl->tpl_vars['key'] = $__foreach_value_7_saved_key;
 												<img class="addImg" onclick="clickImg(this);" src="humanAffairs/view/images/upload_bg.jpg" /> <?php }?>
 												<input name="upload_photo" type="file" class="upload_input" onchange="change(this)" />
 												<div class="preBlock">
-													<img class="preview" id="preview" alt="" name="photo" width="190" height="190" />
-													<input type="hidden" name="" value="" class="uploadPhotoUrl" />
+													<img class="preview" id="preview" alt="" width="190" height="190" />
+													<input type="hidden" name="photo" value="" class="uploadPhotoUrl" />
 												</div>
 												<img class="delete" onclick="deleteImg(this)" src="humanAffairs/view/images/delete.png" />
 											</div>
@@ -531,9 +539,10 @@ $_smarty_tpl->tpl_vars['key'] = $__foreach_value_7_saved_key;
 											<div class="formBoxL clearfix">
 												<div class="form formL2 pull-left">
 													<p class="formTitle">农历</p>
-													<div class="formInput formSelect">请选择月份</div>
+													<div class="formInput formSelect"><?php echo $_smarty_tpl->tpl_vars['select']->value['lunarMonth'];?>
+</div>
 													<ul class="formSelectList">
-														<li class="default">请选择月份</li>
+														<li data-type=""<?php if ($_smarty_tpl->tpl_vars['i']->value['lunarMonth'] == '') {?> data-select='true'<?php }?>>请选择月份</li>
 														<?php
 $_from = $_smarty_tpl->tpl_vars['lunarMonths']->value;
 if (!is_array($_from) && !is_object($_from)) {
@@ -549,7 +558,7 @@ $_smarty_tpl->tpl_vars['value']->_loop = true;
 $__foreach_value_8_saved_local_item = $_smarty_tpl->tpl_vars['value'];
 ?>
 														<li data-type="<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
-"><?php echo $_smarty_tpl->tpl_vars['value']->value;?>
+"<?php if ($_smarty_tpl->tpl_vars['key']->value == $_smarty_tpl->tpl_vars['i']->value['lunarMonth']) {?> data-select='true'<?php }?>><?php echo $_smarty_tpl->tpl_vars['value']->value;?>
 </li>
 														<?php
 $_smarty_tpl->tpl_vars['value'] = $__foreach_value_8_saved_local_item;
@@ -566,9 +575,10 @@ $_smarty_tpl->tpl_vars['key'] = $__foreach_value_8_saved_key;
 " class="lunarMonthForm" />
 												</div>
 												<div class="form formL2 marginL6 pull-left">
-													<div class="formInput formSelect">请选择日期</div>
+													<div class="formInput formSelect"><?php echo $_smarty_tpl->tpl_vars['select']->value['lunarDay'];?>
+</div>
 													<ul class="formSelectList">
-														<li class="default">请选择日期</li>
+														<li data-type=""<?php if ($_smarty_tpl->tpl_vars['i']->value['lunarDay'] == '') {?> data-select='true'<?php }?>>请选择日期</li>
 														<?php
 $_from = $_smarty_tpl->tpl_vars['lunarDays']->value;
 if (!is_array($_from) && !is_object($_from)) {
@@ -584,7 +594,7 @@ $_smarty_tpl->tpl_vars['value']->_loop = true;
 $__foreach_value_9_saved_local_item = $_smarty_tpl->tpl_vars['value'];
 ?>
 														<li data-type="<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
-"><?php echo $_smarty_tpl->tpl_vars['value']->value;?>
+"<?php if ($_smarty_tpl->tpl_vars['key']->value == $_smarty_tpl->tpl_vars['i']->value['lunarDay']) {?> data-select='true'<?php }?>><?php echo $_smarty_tpl->tpl_vars['value']->value;?>
 </li>
 														<?php
 $_smarty_tpl->tpl_vars['value'] = $__foreach_value_9_saved_local_item;
@@ -664,7 +674,8 @@ $_smarty_tpl->tpl_vars['value']->_loop = true;
 $__foreach_value_11_saved_local_item = $_smarty_tpl->tpl_vars['value'];
 ?>
 													<div data-type="<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
-" class="checkBtn mRight30<?php if ($_smarty_tpl->tpl_vars['i']->value['blood'] == $_smarty_tpl->tpl_vars['key']->value) {?> on<?php }?>"><?php echo $_smarty_tpl->tpl_vars['value']->value;?>
+" class="checkBtn<?php if ($_smarty_tpl->tpl_vars['key']->value != 4) {?> mRight30<?php }
+if ($_smarty_tpl->tpl_vars['i']->value['blood'] == $_smarty_tpl->tpl_vars['key']->value) {?> on<?php }?>"><?php echo $_smarty_tpl->tpl_vars['value']->value;?>
 </div>
 													<?php
 $_smarty_tpl->tpl_vars['value'] = $__foreach_value_11_saved_local_item;

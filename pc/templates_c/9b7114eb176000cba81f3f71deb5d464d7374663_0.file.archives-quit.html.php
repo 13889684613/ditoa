@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2018-12-21 11:00:23
+/* Smarty version 3.1.29, created on 2018-12-24 18:11:53
   from "F:\website\ditoaCoder\ditoa\pc\humanAffairs\view\archives-quit.html" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5c1c57476fbd74_12515910',
+  'unifunc' => 'content_5c20b0e9cd56b5_98159797',
   'file_dependency' => 
   array (
     '9b7114eb176000cba81f3f71deb5d464d7374663' => 
     array (
       0 => 'F:\\website\\ditoaCoder\\ditoa\\pc\\humanAffairs\\view\\archives-quit.html',
-      1 => 1545361214,
+      1 => 1545646311,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:public/html/archives.html' => 1,
   ),
 ),false)) {
-function content_5c1c57476fbd74_12515910 ($_smarty_tpl) {
+function content_5c20b0e9cd56b5_98159797 ($_smarty_tpl) {
 ?>
 <!--
 	作者：sxh
@@ -66,8 +66,8 @@ function content_5c1c57476fbd74_12515910 ($_smarty_tpl) {
 					<div class="contentRightNavLeft pull-left">
 						<div class="contentRightNavTop"><span><a href="index.php?_f=index">首页</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span><a href="?_f=archives<?php echo $_smarty_tpl->tpl_vars['track']->value;?>
 ">员工档案</a></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="on">员工档案详情</span></div>
-						<div class="contentRightNavBottom"><span class="name">员工档案详情 &nbsp;&nbsp;-&nbsp;&nbsp;<?php echo $_smarty_tpl->tpl_vars['a']->value['staffName'];?>
-</span><span class="time">创建时间：<?php echo $_smarty_tpl->tpl_vars['a']->value['createTime'];?>
+						<div class="contentRightNavBottom"><span class="name"><?php echo $_smarty_tpl->tpl_vars['a']->value['staffName'];?>
+ 档案</span><span class="time">创建时间：<?php echo $_smarty_tpl->tpl_vars['a']->value['createTime'];?>
 </span></div>
 					</div>
 				</div>

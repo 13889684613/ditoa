@@ -14,7 +14,7 @@
     padding-left: 29px;
     font-size: 20px;
     color: #07196c;
-    background: url(public/html/images/formTitle.jpg) no-repeat left center;
+    background: url(/public/html/images/formTitle.jpg) no-repeat left center;
     margin: 0;
     margin-bottom: 38px;
 }
@@ -182,7 +182,7 @@
     float: right;
     width: 60px;
     height: 50px;
-    background: url(org/view/images/add_btn_icon.png) no-repeat center;
+    background: url(/org/view/images/add_btn_icon.png) no-repeat center;
     cursor: pointer;
 }
 
@@ -190,7 +190,7 @@
     float: right;
     width: 60px;
     height: 50px;
-    background: url(org/view/images/remove_btn_icon.png) no-repeat center;
+    background: url(/org/view/images/remove_btn_icon.png) no-repeat center;
     cursor: pointer;
 }
 
@@ -238,7 +238,7 @@
     vertical-align: middle;
     width: 20px;
     height: 20px;
-    background: url(public/html/images/form_tipsIcon.png) no-repeat center;
+    background: url(/public/html/images/form_tipsIcon.png) no-repeat center;
     cursor: pointer;
     margin-left: 7px;
 }
@@ -269,17 +269,17 @@
     right: 0;
     margin: 0 auto;
     bottom: -7px;
-    background: url(org/view/images/tipsDownIcon.png) no-repeat;
+    background: url(/org/view/images/tipsDownIcon.png) no-repeat;
 }
 .workingDayBox {
     width: 12%;
     margin-bottom: 22px;
     padding-left: 24px;
-    background: url(org/view/images/check_icon.png) no-repeat left center;
+    background: url(/org/view/images/check_icon.png) no-repeat left center;
     cursor: pointer;
 }
 .workingDayBox.on {
-    background: url(org/view/images/checked_icon.png) no-repeat left center;
+    background: url(/org/view/images/checked_icon.png) no-repeat left center;
 }
 .w25{
 	width: 25%;
@@ -295,7 +295,7 @@
     width: 14%;
     margin-bottom: 22px;
     padding-left: 24px;
-    background: url(org/view/images/check_icon.png) no-repeat left center;
+    background: url(/org/view/images/check_icon.png) no-repeat left center;
     cursor: pointer;
 }
     .otherFormBox.w28 {
@@ -463,7 +463,7 @@
 }
 .retrievalsInput .choseInput{
 	cursor: pointer;
-	background: url(org/view/images/input-down.jpg) no-repeat 92% 50% #fbfbfd;
+	background: url(/org/view/images/input-down.jpg) no-repeat 92% 50% #fbfbfd;
 }
 .retrievalsInput label{
 	width: 95px;
@@ -498,7 +498,7 @@
 	position: absolute;
 	width: 11px;
 	height: 8px;
-	background: url(org/view/images/navTop.jpg) no-repeat;
+	background: url(/org/view/images/navTop.jpg) no-repeat;
 	top: -8px;
 	left: 17px;
 }
@@ -516,7 +516,7 @@
 }
 .retrievalsInput .datepicker{
 	width: 160px;
-	background: url(public/html/images/data_icon.png) no-repeat 92% 50% #fbfbfd;
+	background: url(/public/html/images/data_icon.png) no-repeat 92% 50% #fbfbfd;
 }
 .retrievalsInputTime{
 	width: 418px;
@@ -588,7 +588,7 @@
 	display: block;
 	width: 36px;
 	height: 36px;
-	background:url(public/html/images/yuan.png) no-repeat center;
+	background:url(/public/html/images/yuan.png) no-repeat center;
 	color: #fff;
 	text-align: center;
 	line-height: 39px;
@@ -613,7 +613,7 @@
 	border-radius: 6px;
 	border: 1px solid #e8e8e8;
 	cursor: pointer;
-    background: url(org/view/images/input-down.jpg) no-repeat 92% 50% #fbfbfd;
+    background: url(/org/view/images/input-down.jpg) no-repeat 92% 50% #fbfbfd;
     padding-left: 12px;
 }
 .approval-information{

@@ -23,7 +23,7 @@
 	}
 
 	//非系统管理员操作权限验证，验证是否为同部门人员操作
-	$O = $db->get_one(PRFIX.'staff','where staffId='.$id.'','officeId');
+	$O = $db->get_one(PRFIX.'staff','where staffId='.$id.'','officeId,staffName');
 	if($common_category == 0){
 		if($common_office != $O['officeId']){
 			RefreshResturn('index.php?_f=login');
@@ -109,10 +109,10 @@
 		}
 
 		//记录修改内容 
-		$_COOKIE['usrId'] = 1;	//测试
+		// $_COOKIE['usrId'] = 1;	//测试
 
 		$record['staffId'] = $id;
-		$record['editUsr'] = $_COOKIE['usrId'];
+		$record['editUsr'] = $common_staffId;
 		$record['logContent'] = $updateRemark;
 		$record['logTime'] = date('Y-m-d H:i:s');
 
@@ -146,5 +146,6 @@
 	$smarty->assign('id',$id);
 	$smarty->assign('page',$page);
 	$smarty->assign('track',$track);
+	$smarty->assign('staffName',$O['staffName']);
 
 ?>

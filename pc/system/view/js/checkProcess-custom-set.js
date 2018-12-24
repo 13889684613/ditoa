@@ -119,7 +119,9 @@ $(function() {
 		} else {
 			$('.approvalInformationBox').show();
 			$('.approvalInformationBox .InputQy').eq(0).val($('.choseInputQy').val()).attr('data-type',$('.choseInputQy').attr('data-type'));
+			$('.approvalInformationBox .InputQy').eq(0).next().find('.selectVal').val($('.choseInputQy').attr('data-type'));
 			$('.approvalInformationBox .InputBm').eq(0).val($('.choseInputBm').val()).attr('data-type',$('.choseInputBm').attr('data-type'));
+			$('.approvalInformationBox .InputBm').eq(0).next().find('.selectVal').val($('.choseInputBm').attr('data-type'));
 			//			$('form').submit();
 		}
 	})
@@ -182,6 +184,7 @@ $(function() {
 			var html = $('.approval-informationBox .approval-information').eq($('.approval-informationBox .approval-information').length - 1).clone();
 			$('.approval-informationBox').append(html);
 			$('.approval-informationBox .approval-information').eq($('.approval-informationBox .approval-information').length - 1).find('.Stable tr').eq(0).find('td').eq(0).find('span').text(i);
+			$('.approval-informationBox .approval-information').eq($('.approval-informationBox .approval-information').length - 1).find('.approval-informationTitle').eq(0).remove();
 			$('.approval-informationBox .approval-information').eq($('.approval-informationBox .approval-information').length - 1).find('.td4 .StableTd').eq(0).append($('<div class="Sdel"><img src="system/view/images/del.jpg" alt="" /></div>'))
 			$('input').placeholder();
 		}

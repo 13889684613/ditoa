@@ -82,7 +82,7 @@
 											<th width="300"><span>合同有效期</span></th>
 										</tr>
 										{{foreach item=i name=data from=$data}}
-										<tr{{if $i%2==1}} class="backgroundFFF"{{/if}}>
+										<tr{{if $smarty.foreach.data.iteration%2==1}} class="backgroundFFF"{{/if}}}>
 											<td class="paddingLeft30"><span>{{$smarty.foreach.data.iteration}}</span></td>
 											<td><span>{{$i.company}}</span></td>
 											<td><span>{{$i.contractNo}}</span></td>

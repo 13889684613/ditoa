@@ -57,40 +57,6 @@
 								<input type="hidden" name="s_name" value="{{$s_name}}" />
 								<input type="hidden" name="id" value="{{$id}}" />
 								<input type="hidden" name="act" value="{{$action}}" />
-								<!--<div class="infoBox infoBoxOne">
-									<p class="addApplyTitle">工作组信息</p>
-									<div class="formAllBox clearfix">
-										<div class="formBox w33">
-											<div class="form">
-												<p class="formTitle">所属办事处<span>*</span></p>
-												<input type="text" unselectable="on" onfocus="this.blur()" readonly="readonly" class="choseInput choseInputBm officeInput" placeholder="请选择" name="office" value="{{$i.officeId}}" data-type='0' />
-												<div class="retrievalsInputNavBox">
-													<ul class="retrievalsInputNav">
-														<li data-type = "0">请选择</li>
-														{{foreach item=o name=offices from=$offices}}
-														<li data-type = "{{$o.officeId}}">{{$o.officeName}}</li>
-														{{/foreach}}
-													</ul>
-												</div>
-											</div>
-											<div class="form">
-												<p class="formTitle">工作组名称<span>*</span></p>
-												<input name="groupName" value="{{$i.groupName}}" placeholder="请输入工作组名称" class="formInput groupNameInput">
-											</div>
-										</div>
-										<div class="formBox w33">
-											<div class="form">
-												<p class="formTitle">部门联系电话<span>*</span></p>
-												<input type="text" name="phone" value="{{$i.phone}}" placeholder="请输入部门联系电话" class="formInput phoneInputb" autocomplete="off" />
-											</div>
-											<div class="form">
-												<p class="formTitle">设置排序<span class="tipsIcon"><span class="tips" style="display: none;">数字越大，排序越靠前</span></span></p>
-												<input type="number" name="rank" value="{{$rank}}" placeholder="0" class="formInput rankInput" autocomplete="off">
-											</div>
-										</div>
-									</div>
-								</div>-->
-
 								<!--检索begin-->
 								<div class="retrievalBox">
 									<div class="retrievalTitle">工作组信息</div>
@@ -104,16 +70,15 @@
 															<ul class="retrievalsInputNav retrievalsInputNavSelsct">
 																<li data-type="0">请选择</li>
 																{{foreach item=o name=offices from=$offices}}
-																<li data-type="{{$o.officeId}}">{{$o.officeName}}</li>
+																<li data-type="{{$o.officeId}}"{{if $o.officeId==$i.officeId}} data-select='true'{{/if}}>{{$o.officeName}}</li>
 																{{/foreach}}
-																<input type="hidden" name="office" class="selectVal" value="0" autocomplete="off" data-type="1">
+																<input type="hidden" name="office" class="selectVal officeInput" value="0" autocomplete="off" data-type="1">
 															</ul>
 														</div>
 													</div>
 													<div class="form">
-														<p class="formTitle">设置排序<span class="tipsIcon"><span class="tips" style="display: none;">数字越大，排序越靠前</span></span>
-														</p>
-														<input type="number" name="rank" value="{{$rank}}" placeholder="0" class="formInput rankInput" autocomplete="off">
+														<p class="formTitle">部门联系电话<span>*</span></p>
+														<input type="phone" name="phone" value="{{$i.phone}}" placeholder="请输入部门联系电话" class="formInput phoneInputb" autocomplete="off">
 													</div>
 												</div>
 											</div>
@@ -121,16 +86,12 @@
 												<div class="retrievalsInputContent">
 													<div class="retrievalsInput">
 														<label>工作组名称<span>*</span></label>
-														<input name="groupName" type="text" placeholder="请输入工作组名称" value="{{$i.groupName}}" class="choseInputName" data-type='0' />
+														<input name="groupName" type="text" placeholder="请输入工作组名称" value="{{$i.groupName}}" class="choseInputName groupNameInput" data-type='0' />
 													</div>
 												</div>
-											</div>
-											<div class="retrievalsInputBoxs retrievalsInputBoxsStar clearfix pull-left">
-												<div class="retrievalsInputContent">
-													<div class="retrievalsInput">
-														<label>部门联系电话<span>*</span></label>
-														<input name="phone" type="text" placeholder="请输入部门联系电话" value="{{$i.phone}}" class="choseInputName" data-type='0' />
-													</div>
+												<div class="form">
+													<p class="formTitle">设置排序<span class="tipsIcon"><span class="tips" style="display: none;">数字越大，排序越靠前</span></span></p>
+													<input type="number" name="rank" value="{{$rank}}" placeholder="0" class="formInput rankInput" autocomplete="off">
 												</div>
 											</div>
 									</div>
@@ -167,11 +128,11 @@
 												<div class="formInput formSelect" id="formSelect">请选择有效范围</div>
 												<ul class="formSelectList">
 													<li class="default">请选择有效范围</li>
-													<li data-type="100">100米</li>
-													<li data-type="300">300米</li>
-													<li data-type="500">500米</li>
-													<li data-type="800">800米</li>
-													<li data-type="1000">1000米</li>
+													<li data-type="100"{{if $i.workRange==100}} data-select="true"{{/if}}>100米</li>
+													<li data-type="300"{{if $i.workRange==300}} data-select="true"{{/if}}>300米</li>
+													<li data-type="500"{{if $i.workRange==500}} data-select="true"{{/if}}>500米</li>
+													<li data-type="800"{{if $i.workRange==800}} data-select="true"{{/if}}>800米</li>
+													<li data-type="1000"{{if $i.workRange==1000}} data-select="true"{{/if}}>1000米</li>
 												</ul>
 												<input type="hidden" name="workRange" value="{{$i.workRange}}" />
 												<!--有效范围，仅传数字-->
@@ -190,7 +151,7 @@
 													<div class="workingDayBox{{if in_array('7',$i.workWeek)}} on{{/if}} pull-left">周日</div>
 												</div>
 											</div>
-											<input type="hidden" name="week" value="1,2,3,4,5,6,7" />
+											<input type="hidden" name="week" value="{{$i.workWeekString}}" />
 											<!--工作日，周一到周日对应数字1-7-->
 										</div>
 									</div>
@@ -199,7 +160,7 @@
 						</div>
 						<div class="formBtnsBox clearfix">
 							<div class="formBtn formBtnSave">保存</div>
-							<div class="formBtn formBtnCancel">取消</div>
+							<div class="formBtn formBtnCancel">返回</div>
 						</div>
 					</div>
 					<!-- 内容区 结束 -->

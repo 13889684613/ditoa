@@ -53,9 +53,9 @@
 													<ul class="retrievalsInputNav">
 														<li data-type = "0">请选择</li>
 														{{foreach $categorys as $key=>$value}}
-														<li data-type = "{{$key}}">{{$value}}</li>
+														<li data-type = "{{$key}}"{{if $s_type==$key}} data-select="true"{{/if}}>{{$value}}</li>
 														{{/foreach}}
-														<input type="hidden" name="s_type" value="{{$s_type}}"  class="selectVal" value="" />
+														<input type="hidden" name="s_type" value="{{$s_type}}" class="selectVal" value="" />
 													</ul>
 												</div>
 											</div>
@@ -70,7 +70,7 @@
 													<ul class="retrievalsInputNav">
 														<li data-type = "0">请选择</li>
 														{{foreach item=r name=roles from=$roles}}
-														<li data-type='{{$r.checkRoleId}}'>{{$r.checkRoleName}}</li>
+														<li data-type='{{$r.checkRoleId}}'{{if $s_role==$r.checkRoleId}} data-select="true"{{/if}}>{{$r.checkRoleName}}</li>
 														{{/foreach}}
 														<input type="hidden" name="s_role" value="{{$s_role}}" class="selectVal" value="" />
 													</ul>
@@ -87,7 +87,7 @@
 													<ul class="retrievalsInputNav">
 														<li data-type = "0">请选择</li>
 														{{foreach item=o name=offices from=$offices}}
-														<li data-type='{{$o.officeId}}'>{{$o.officeName}}</li>
+														<li data-type='{{$o.officeId}}'{{if $s_office==$o.officeId}} data-select="true"{{/if}}>{{$o.officeName}}</li>
 														{{/foreach}}
 														<input type="hidden" name="s_office" value="{{$s_office}}" class="selectVal" value="" />
 													</ul>
@@ -120,7 +120,7 @@
 									<th width='145' class="text-center borderRight1"><span>操作</span></th>
 								</tr>
 								{{foreach item=i name=data from=$data}}
-								<tr{{if $i%2==1}} class="backgroundFFF"{{/if}}>
+								<tr{{if $smarty.foreach.data.iteration%2==1}} class="backgroundFFF"{{/if}}>
 									<td class="borderRight1">
 										<div class="editBox center-block clearfix">
 											{{if $i.isOpt}}
@@ -144,14 +144,14 @@
 									<tr>
 										<th width="78" class="paddingLeft12"><span>#</span></th>
 										<th width="143"><span>类别</span></th>
-										<th width="295"><span>级别</span></th>
-										<th width="153" class=""><span>所属企业</span></th>
-										<th width="167" class=""><span>所属部门</span></th>
-										<th width="203" class=""><span>审批流程</span></th>
-										<th width="158" class="text-center"><span>创建时间</span></th>
+										<th width="100"><span>级别</span></th>
+										<th width="153" class=""><span>所属办事处</span></th>
+										<th width="167" class=""><span>所属工作组</span></th>
+										<th width="350" class=""><span>审批流程</span></th>
+										<th width="400"><span>创建时间</span></th>
 									</tr>
 									{{foreach item=i name=data from=$data}}
-									<tr{{if $i%2==1}} class="backgroundFFF"{{/if}}>
+									<tr{{if $smarty.foreach.data.iteration%2==1}} class="backgroundFFF"{{/if}}>
 										<td class="paddingLeft12"><span>{{$i.sn}}</span></td>
 										<td><span>{{$i.checkCategory}}</span></td>
 										<td><span>{{$i.checkLevel}}级</span></td>
